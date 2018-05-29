@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Form;
 
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
-use Schleuniger\App\Application\Type\AbstractWorkflowApplication;
+use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\Status\AbstractWorkflowStatus;
 
@@ -47,8 +47,8 @@ class WorkflowStartForm extends BootstrapModelForm
     {
 
         $builder = new WorkflowBuilder();
-        $builder->application =$this->applicationType;
-        $builder->workflowSubject = '';
+        $builder->process =$this->applicationType;
+        $builder->subject = '';
         $builder->workflowStatus =$this->workflowStatus;
         $builder->createItem();
 

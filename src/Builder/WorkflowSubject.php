@@ -24,7 +24,7 @@ class WorkflowSubject
     {
 
         $update = new WorkflowUpdate();
-        $update->workflowSubject = $subject;
+        $update->subject = $subject;
         $update->updateById($this->workflowId);
 
     }

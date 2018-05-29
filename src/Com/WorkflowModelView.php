@@ -4,8 +4,9 @@ namespace Nemundo\Workflow\Com;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Design\Bootstrap\Table\BootstrapLabelValueTable;
 use Nemundo\Model\View\ModelViewTrait;
-use Schleuniger\Com\Table\SchleunigerLabelValueTable;
+use Nemundo\Com\Table\NemundoLabelValueTable;
 
 class WorkflowModelView extends AbstractHtmlContainerList
 {
@@ -21,7 +22,7 @@ class WorkflowModelView extends AbstractHtmlContainerList
     public function getHtml()
     {
 
-        $table = new SchleunigerLabelValueTable($this);
+        $table = new BootstrapLabelValueTable($this);
 
         foreach ($this->getComList() as $com) {
             $table->addLabelValue($com->type->label, $com->getHtmlString());

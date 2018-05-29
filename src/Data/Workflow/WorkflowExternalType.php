@@ -7,9 +7,64 @@ class WorkflowExternalType extends \Nemundo\Model\Type\External\ExternalType {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\Number\PrefixAutoNumberType
+* @var \Nemundo\Model\Type\Number\NumberType
+*/
+public $number;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
 */
 public $workflowNumber;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $subject;
+
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $processId;
+
+/**
+* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
+*/
+public $process;
+
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $dataId;
+
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $draft;
+
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $closed;
+
+/**
+* @var \Nemundo\Model\Type\Number\ItemOrderType
+*/
+public $itemOrder;
+
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $workflowStatusId;
+
+/**
+* @var \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType
+*/
+public $workflowStatus;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\DateType
+*/
+public $deadline;
 
 protected function loadType() {
 parent::loadType();
@@ -23,13 +78,97 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
-$this->workflowNumber = new \Nemundo\Model\Type\Number\PrefixAutoNumberType();
+$this->number = new \Nemundo\Model\Type\Number\NumberType();
+$this->number->fieldName = "number";
+$this->number->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->number->aliasFieldName = $this->number->tableName . "_" . $this->number->fieldName;
+$this->number->label = "Number";
+$this->addType($this->number);
+
+$this->workflowNumber = new \Nemundo\Model\Type\Text\TextType();
 $this->workflowNumber->fieldName = "workflow_number";
 $this->workflowNumber->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->workflowNumber->aliasFieldName = $this->workflowNumber->tableName . "_" . $this->workflowNumber->fieldName;
 $this->workflowNumber->label = "Workflow Number";
-$this->workflowNumber->createObject();
 $this->addType($this->workflowNumber);
 
+$this->subject = new \Nemundo\Model\Type\Text\TextType();
+$this->subject->fieldName = "subject";
+$this->subject->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->subject->aliasFieldName = $this->subject->tableName . "_" . $this->subject->fieldName;
+$this->subject->label = "Subject";
+$this->addType($this->subject);
+
+$this->processId = new \Nemundo\Model\Type\Id\IdType();
+$this->processId->fieldName = "process";
+$this->processId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->processId->aliasFieldName = $this->processId->tableName ."_".$this->processId->fieldName;
+$this->processId->label = "Process";
+$this->addType($this->processId);
+
+$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
+$this->dataId->fieldName = "data_id";
+$this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
+$this->dataId->label = "Data Id";
+$this->addType($this->dataId);
+
+$this->draft = new \Nemundo\Model\Type\Number\YesNoType();
+$this->draft->fieldName = "draft";
+$this->draft->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->draft->aliasFieldName = $this->draft->tableName . "_" . $this->draft->fieldName;
+$this->draft->label = "Draft";
+$this->addType($this->draft);
+
+$this->closed = new \Nemundo\Model\Type\Number\YesNoType();
+$this->closed->fieldName = "closed";
+$this->closed->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->closed->aliasFieldName = $this->closed->tableName . "_" . $this->closed->fieldName;
+$this->closed->label = "Closed";
+$this->addType($this->closed);
+
+$this->itemOrder = new \Nemundo\Model\Type\Number\ItemOrderType();
+$this->itemOrder->fieldName = "item_order";
+$this->itemOrder->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->itemOrder->aliasFieldName = $this->itemOrder->tableName . "_" . $this->itemOrder->fieldName;
+$this->itemOrder->label = "Item Order";
+$this->addType($this->itemOrder);
+
+$this->workflowStatusId = new \Nemundo\Model\Type\Id\IdType();
+$this->workflowStatusId->fieldName = "workflow_status";
+$this->workflowStatusId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->workflowStatusId->aliasFieldName = $this->workflowStatusId->tableName ."_".$this->workflowStatusId->fieldName;
+$this->workflowStatusId->label = "Workflow Status";
+$this->addType($this->workflowStatusId);
+
+$this->deadline = new \Nemundo\Model\Type\DateTime\DateType();
+$this->deadline->fieldName = "deadline";
+$this->deadline->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->deadline->aliasFieldName = $this->deadline->tableName . "_" . $this->deadline->fieldName;
+$this->deadline->label = "Deadline";
+$this->addType($this->deadline);
+
+}
+public function loadProcess() {
+if ($this->process == null) {
+$this->process = new \Nemundo\Workflow\Data\Process\ProcessExternalType(null, $this->parentFieldName . "_process");
+$this->process->fieldName = "process";
+$this->process->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->process->aliasFieldName = $this->process->tableName ."_".$this->process->fieldName;
+$this->process->label = "Process";
+$this->addType($this->process);
+}
+return $this;
+}
+public function loadWorkflowStatus() {
+if ($this->workflowStatus == null) {
+$this->workflowStatus = new \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType(null, $this->parentFieldName . "_workflow_status");
+$this->workflowStatus->fieldName = "workflow_status";
+$this->workflowStatus->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->workflowStatus->aliasFieldName = $this->workflowStatus->tableName ."_".$this->workflowStatus->fieldName;
+$this->workflowStatus->label = "Workflow Status";
+$this->addType($this->workflowStatus);
+}
+return $this;
 }
 }

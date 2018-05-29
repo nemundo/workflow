@@ -11,7 +11,7 @@ class WorkflowProject extends AbstractProject
     public function loadProject()
     {
 
-        $this->project = 'Nemundo\Workflow';
+        $this->project = 'Workflow';
         $this->path = __DIR__;
         $this->namespace = __NAMESPACE__;
         $this->dbFilename = (new Path())

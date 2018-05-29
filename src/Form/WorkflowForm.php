@@ -9,7 +9,7 @@ use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\AbstractModelForm;
-use Schleuniger\App\Application\Type\AbstractWorkflowApplication;
+use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Status\AbstractWorkflowStatus;
@@ -22,10 +22,11 @@ class WorkflowForm extends BootstrapModelForm
     public function getHtml()
     {
 
+        /*
         if (is_null($this->workflowStatus->modelClassName)) {
             LogMessage::writeError('Workflow Form: No Model Class Name');
             return;
-        }
+        }*/
 
 
         //$workflowReader = new WorkflowReader();
@@ -48,17 +49,18 @@ class WorkflowForm extends BootstrapModelForm
 
         } else {
 
-            $model = (new ModelFactory())->getModelByClassName($this->application->baseModelClassName);
+            $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
 
+            /*
             $data = new ModelData();
             $data->model = $model;
-            $dataId = $data->save();
+            $dataId = $data->save();*/
 
 
             $builder = new WorkflowBuilder();
-            $builder->application = $this->application;
+            $builder->process = $this->process;
             $builder->workflowStatus = $this->workflowStatus;
-            $builder->dataId = $dataId;
+            $builder->dataId =$workflowItemId; // $dataId;
             $workflowId = $builder->createItem();
 
             /*

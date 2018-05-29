@@ -5,12 +5,13 @@ namespace Nemundo\Workflow\Com;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\Site\WorkflowStatusChangeSite;
 use Nemundo\Workflow\Status\AbstractWorkflowStatus;
-use Schleuniger\Com\Button\SchleunigerButton;
+use Nemundo\Com\Button\NemundoButton;
 
 class WorkflowActionButton extends AbstractHtmlContainerList
 {
@@ -43,8 +44,8 @@ class WorkflowActionButton extends AbstractHtmlContainerList
             /** @var AbstractWorkflowStatus $followingStatusClass */
             $followingStatusClass = new $className();
 
-            $btn = new SchleunigerButton($this);
-            $btn->content = $followingStatusClass->statusLabel;
+            $btn = new BootstrapButton($this);
+            $btn->content = $followingStatusClass->status;
 
             $site = null;
 

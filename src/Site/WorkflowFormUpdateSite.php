@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site;
 
 
+use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\WorkflowTitle;
@@ -12,7 +13,7 @@ use Nemundo\Workflow\Form\WorkflowForm;
 use Nemundo\Workflow\Form\WorkflowFormUpdate;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
-use Schleuniger\Template\SchleunigerTemplate;
+
 
 class WorkflowFormUpdateSite extends AbstractSite
 {
@@ -25,7 +26,7 @@ class WorkflowFormUpdateSite extends AbstractSite
     protected function loadSite()
     {
         $this->url = 'workflow-update';
-        $this->menuActive = true;
+        $this->menuActive = false;
     }
 
 
@@ -38,27 +39,27 @@ class WorkflowFormUpdateSite extends AbstractSite
     public function loadContent()
     {
 
-        $page = new SchleunigerTemplate();
-
+        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $statusChangeId = (new WorkflowStatusChangeParameter())->getValue();
 
         $statusChangeReader = new WorkflowStatusChangeReader();
         $statusChangeReader->model->loadWorkflow();
-        $statusChangeReader->model->workflow->loadApplication();
+        $statusChangeReader->model->workflow->loadWorkflowStatus();
+        $statusChangeReader->model->workflow->loadProcess();
         $statusChangeRow = $statusChangeReader->getRowById($statusChangeId);
 
         $title = new WorkflowTitle($page);
         $title->workflowId = $statusChangeRow->workflowId;
 
         $status = $statusChangeRow->workflowStatus->getWorkflowStatusClassObject();
-        $application = $statusChangeRow->workflow->application->getApplicationTypeClassNameObject();
+        $application = $statusChangeRow->workflow->process->getProcessClassObject();
         $model =(new ModelFactory())->getModelByClassName($status->modelClassName);
 
         $form = new WorkflowFormUpdate($page);
         $form->model = $model;
         $form->updateId = $statusChangeRow->workflowItemId;
-        $form->redirectSite = $application->getApplicationSite($statusChangeRow->workflowId);
+       // $form->redirectSite = $application->getApplicationSite($statusChangeRow->workflowId);
 
 
 

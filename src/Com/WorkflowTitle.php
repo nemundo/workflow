@@ -4,9 +4,10 @@ namespace Nemundo\Workflow\Com;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Schleuniger\Com\Title\SchleunigerTitle;
+use Nemundo\Com\Title\NemundoTitle;
 
 class WorkflowTitle extends AbstractHtmlContainerList
 {
@@ -24,8 +25,8 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $workflowReader->model->loadWorkflowStatus();
         $workflowRow =$workflowReader->getRowById($this->workflowId);
 
-        $title = new SchleunigerTitle($this);
-        $title->content = $workflowRow->workflowNumber . ': ' . $workflowRow->workflowSubject;
+        $title = new H1($this);
+        $title->content = $workflowRow->workflowNumber . ': ' . $workflowRow->subject;
 
         $p = new Paragraph($this);
         $p->content = 'Status: '.$workflowRow->workflowStatus->workflowStatus;

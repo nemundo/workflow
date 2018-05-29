@@ -1,0 +1,13 @@
+
+
+Workflow Inbox:
+(new Message) à la WhatsApp
+
+
+
+
+General Workflow status
+
+ApprovalWorkflowStatus
+DisapprovalWorkflowStatus
+

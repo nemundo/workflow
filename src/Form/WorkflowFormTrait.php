@@ -5,17 +5,18 @@ namespace Nemundo\Workflow\Form;
 
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Factory\ModelFactory;
-use Schleuniger\App\Application\Type\AbstractWorkflowApplication;
+use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
+use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Status\AbstractWorkflowStatus;
 
 trait WorkflowFormTrait
 {
 
     /**
-     * @var AbstractWorkflowApplication
+     * @var AbstractProcess
      */
-    public $application;
+    public $process;
 
     /**
      * @var AbstractWorkflowStatus
@@ -37,7 +38,7 @@ trait WorkflowFormTrait
 
         } else {
 
-            $model = (new ModelFactory())->getModelByClassName($this->application->baseModelClassName);
+            $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
 
             /*$data = new ModelData();
             $data->model = $model;
@@ -45,7 +46,7 @@ trait WorkflowFormTrait
 
 
             $builder = new WorkflowBuilder();
-            $builder->application = $this->application;
+            $builder->process = $this->process;
             $builder->workflowStatus = $this->workflowStatus;
             $builder->dataId = $workflowItemId;
             $workflowId = $builder->createItem();

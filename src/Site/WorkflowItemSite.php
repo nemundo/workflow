@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\Site;
 
 
 use Nemundo\Com\Html\Basic\H1;
+use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\View\ModelView;
 use Nemundo\Web\Site\AbstractSite;
@@ -15,7 +16,7 @@ use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowView;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeTable;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
-use Schleuniger\Template\SchleunigerTemplate;
+use Nemundo\Template\NemundoTemplate;
 
 class WorkflowItemSite extends AbstractSite
 {
@@ -42,64 +43,23 @@ class WorkflowItemSite extends AbstractSite
     public function loadContent()
     {
 
-        $page = new SchleunigerTemplate();
+        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $workflowId = (new WorkflowParameter())->getValue();
 
         $workflowReader = new WorkflowReader();
         $workflowReader->model->loadWorkflowStatus();
+        $workflowReader->model->loadProcess();
         $workflowRow = $workflowReader->getRowById($workflowId);
 
-        $application = $workflowRow->application->getApplicationTypeClassNameObject();
+        $application = $workflowRow->process->getProcessClassObject();
 
         $title = new H1($page);
-        $title->content = 'app:' . $application->application;
-
-
-        /*
-        $title = new H1($page);
-        $title->content = $workflowRow->workflowNumber . ':  ' . $workflowRow->workflowSubject;
-
-        $title = new H1($page);
-        $title->content = 'status:' . $workflowRow->workflowStatus->workflowStatus;*/
-
-     /*   $title = new WorkflowTitle($page);
-        $title->workflowId = $workflowId;*/
-
-
-        //$view = new WorkflowView($page);
-        //$view->dataId = $workflowId;
-
-
-       /* $model = (new ModelFactory())->getModelByClassName($application->baseModelClassName);
-
-        $view = new WorkflowModelView($page);
-        $view->model = $model;
-        $view->filter->andEqual($model->workflowId, $workflowId);
-
-
-        $table = new WorkflowStatusChangeTable($page);
-        $table->filter->andEqual($table->model->workflowId, $workflowRow->id);*/
-
+        $title->content = $application->process;
 
         $workflow = new WorkflowItemList($page);
         $workflow->application = $application;
         $workflow->workflowId = $workflowRow->id;
-
-
-
-        //$workflow->worklfowNumber = '';
-        //$workflow->workflowTitle = '';
-        //$workflow->workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
-
-
-
-
-
-
-        $actionButton = new WorkflowActionButton($page);
-        $actionButton->workflowId = $workflowRow->id;
-
 
         $page->render();
 

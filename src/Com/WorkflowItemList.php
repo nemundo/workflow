@@ -5,27 +5,31 @@ namespace Nemundo\Workflow\Com;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\H5;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
-use Schleuniger\App\Application\Type\AbstractWorkflowApplication;
+use Nemundo\App\Application\Type\AbstractWorkflowApplication;
+use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
+use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
+use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
 use Nemundo\Workflow\Status\AbstractWorkflowStatus;
-use Schleuniger\Com\Button\SchleunigerButton;
+use Nemundo\Com\Button\NemundoButton;
 
 
 class WorkflowItemList extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractWorkflowApplication
+     * @var AbstractProcess
      */
     public $application;
 
@@ -52,7 +56,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
             exit;
         }
 
-        if (!$this->checkObject('application', $this->application, AbstractWorkflowApplication::class)) {
+        if (!$this->checkObject('application', $this->application, AbstractProcess::class)) {
             exit;
         }
 
@@ -82,6 +86,37 @@ class WorkflowItemList extends AbstractHtmlContainerList
             $view->filter->andEqual($model->workflowId, $this->workflowId);
         }
 
+
+        $h3 = new H5($this);
+        $h3->content = 'User Assignment';
+
+        $list = new UnorderedList($this);
+
+        $assignmentReader = new UserAssignmentReader();
+        $assignmentReader->model->loadUser();
+        $assignmentReader->filter->andEqual($assignmentReader->model->workflowId, $this->workflowId);
+
+
+        foreach ($assignmentReader->getData() as $assignmentRow) {
+            $list->addText($assignmentRow->user->login);
+        }
+
+
+        $h3 = new H5($this);
+        $h3->content = 'Usergroup Assignment';
+
+        $list = new UnorderedList($this);
+
+        $assignmentReader = new UsergroupAssignmentReader();
+        $assignmentReader->model->loadUsergroup();
+        $assignmentReader->filter->andEqual($assignmentReader->model->workflowId, $this->workflowId);
+
+        foreach ($assignmentReader->getData() as $assignmentRow) {
+            $list->addText($assignmentRow->usergroup->usergroup);
+        }
+
+
+
         $h3 = new H5($this);
         $h3->content = 'Workflow History';
 
@@ -97,6 +132,8 @@ class WorkflowItemList extends AbstractHtmlContainerList
         $list = new BootstrapHyperlinkList($colLeft);
 
         $changeReader = new WorkflowStatusChangeReader();
+        $changeReader->model->loadWorkflowStatus();
+        $changeReader->model->loadUser();
         $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
         foreach ($changeReader->getData() as $changeRow) {
 
@@ -104,7 +141,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
             $workflowStatus->workflowId = $changeRow->workflowId;
             $workflowStatus->workflowItemId = $changeRow->workflowItemId;
 
-            $statusLabel = $workflowStatus->statusLabel;
+            $statusLabel = $workflowStatus->status;
             if ($changeRow->draft) {
                 $statusLabel .= ' (Entwurf)';
             }
@@ -117,7 +154,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 /** @var WorkflowItem $item */
                 $item = new $workflowStatus->workflowItemClassName($colRight);
                 $item->id = $changeRow->id;
-                $item->title = $workflowStatus->statusLabel;
+                $item->title = $workflowStatus->status;
                 $item->workflowId = $changeRow->workflowId;
                 $item->workflowItemId = $changeRow->workflowItemId;
                 $item->user = $changeRow->user->displayName;
@@ -127,7 +164,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
 
                 $item = new WorkflowDefaultWorkflowItem($colRight);
                 $item->id = $changeRow->id;
-                $item->title = $workflowStatus->statusLabel;
+                $item->title = $workflowStatus->status;
 
                 if ($workflowStatus->modelClassName !== null) {
                     $item->model = new $workflowStatus->modelClassName();
@@ -141,7 +178,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
 
             if ($changeRow->draft) {
 
-                $btn = new SchleunigerButton($colRight);
+                $btn = new BootstrapButton($colRight);
                 $btn->content = 'Edit';
 
                 if ($workflowStatus->formSite !== null) {
@@ -153,7 +190,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
                     $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));
                 }
 
-                $btn = new SchleunigerButton($colRight);
+                $btn = new BootstrapButton($colRight);
                 $btn->content = 'Entwurf freigeben';
                 $btn->site = clone(WorkflowDraftFreigabeSite::$site);
                 $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));

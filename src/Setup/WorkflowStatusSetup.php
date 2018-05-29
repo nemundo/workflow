@@ -16,7 +16,7 @@ class WorkflowStatusSetup extends AbstractBase
         $data = new WorkflowStatus();
         $data->updateOnDuplicate = true;
         $data->id = $workflowStatus->statusId;
-        $data->workflowStatus = $workflowStatus->statusLabel;
+        $data->workflowStatus = $workflowStatus->status;
         $data->workflowStatusClass = $workflowStatus->getClassName();
         $data->save();
 

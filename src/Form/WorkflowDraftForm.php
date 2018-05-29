@@ -11,7 +11,7 @@ use Nemundo\Design\Bootstrap\FormElement\BootstrapSubmitButton;
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
-use Schleuniger\Com\Form\DraftParameter;
+use Nemundo\Com\Form\DraftParameter;
 
 class WorkflowDraftForm extends AbstractSubmitForm
 {
