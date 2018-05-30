@@ -249,8 +249,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
     protected function onChange($workflowId, $workflowItemId = null)
     {
-        // (new Debug())->write('onchange' . $this->statusLabel);
-        // exit;
+
     }
 
 }

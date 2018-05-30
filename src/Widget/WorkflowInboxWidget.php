@@ -3,6 +3,8 @@
 namespace Nemundo\Workflow\Widget;
 
 
+use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Dev\App\Widget\AbstractWidget;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Login\Session\UserIdSession;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentPaginationReader;
@@ -30,7 +32,7 @@ use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
-class WorkflowInboxWidget extends ParanautikWidget
+class WorkflowInboxWidget extends AbstractHtmlContainerList  // AbstractWidget ParanautikWidget
 {
 
     public function getHtml()

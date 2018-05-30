@@ -7,6 +7,7 @@ $this->addModel(new \Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeModel())
 $this->addModel(new \Nemundo\Workflow\Data\Process\ProcessModel());
 $this->addModel(new \Nemundo\Workflow\Data\SubjectChange\SubjectChangeModel());
 $this->addModel(new \Nemundo\Workflow\Data\UserAssignment\UserAssignmentModel());
+$this->addModel(new \Nemundo\Workflow\Data\UserAssignmentChange\UserAssignmentChangeModel());
 $this->addModel(new \Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentModel());
 $this->addModel(new \Nemundo\Workflow\Data\Workflow\WorkflowModel());
 $this->addModel(new \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusModel());

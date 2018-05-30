@@ -28,6 +28,7 @@ use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
 
 
 class WorkflowSite extends AbstractSite
@@ -44,6 +45,9 @@ class WorkflowSite extends AbstractSite
 
         $this->title = 'Workflow';
         $this->url = 'workflow-app';
+        $this->restricted = true;
+        $this->addRestrictedUsergroup(new WorkflowUsergroup());
+
         //$this->menuActive = false;
 
         new WorkflowStatusChangeSite($this);
