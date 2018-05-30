@@ -16,6 +16,7 @@ use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
+use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
@@ -31,7 +32,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
     /**
      * @var AbstractProcess
      */
-    public $application;
+    public $process;
 
     /**
      * @var string
@@ -56,7 +57,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
             exit;
         }
 
-        if (!$this->checkObject('application', $this->application, AbstractProcess::class)) {
+        if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
             exit;
         }
 
@@ -67,7 +68,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
         if ($this->showSubscription) {
 
             $btn = new SubscriptionButton($this);
-            $btn->applicationType = $this->application;
+            $btn->applicationType = $this->process;
             $btn->workflowId = $this->workflowId;
 
         }
@@ -78,7 +79,8 @@ class WorkflowItemList extends AbstractHtmlContainerList
             $h3 = new H5($this);
             $h3->content = 'Workflow Data';
 
-            $model = (new ModelFactory())->getModelByClassName($this->application->baseModelClassName);
+            /** @var AbstractWorkflowBaseModel $model */
+            $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
 
 
             $view = new WorkflowModelView($this);

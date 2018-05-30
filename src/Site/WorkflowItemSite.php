@@ -58,7 +58,7 @@ class WorkflowItemSite extends AbstractSite
         $title->content = $application->process;
 
         $workflow = new WorkflowItemList($page);
-        $workflow->application = $application;
+        $workflow->process = $application;
         $workflow->workflowId = $workflowRow->id;
 
         $page->render();

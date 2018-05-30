@@ -3,5 +3,14 @@
 ### Installation
 
 ```
-git submodule add https://github.com/nemundo/framework.git lib/framework
+git submodule add https://github.com/nemundo/workflow.git lib/workflow
+```
+
+
+### App Designer Setup
+```
+(new \Nemundo\Workflow\Install\WorkflowAppDesignerInstall())->run();
+
+(new WorkflowInstall())->run();
+
 ```
