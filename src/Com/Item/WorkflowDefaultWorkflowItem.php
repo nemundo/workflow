@@ -1,10 +1,10 @@
 <?php
 
-namespace Nemundo\Workflow\Com;
+namespace Nemundo\Workflow\Com\Item;
 
 
 use Nemundo\Model\Definition\Model\AbstractModel;
-use Nemundo\Model\View\ModelView;
+use Nemundo\Workflow\Com\View\WorkflowModelView;
 
 class WorkflowDefaultWorkflowItem extends WorkflowItem
 {
@@ -18,18 +18,15 @@ class WorkflowDefaultWorkflowItem extends WorkflowItem
     {
 
         if ($this->model !== null) {
+
             $view = new WorkflowModelView($this);
             $view->model = $this->model;
             $view->dataId = $this->workflowItemId;
 
-            /*
-            $view->labelCellWidth = 300;
-            $view->smallTable = true;
-            $view->border = 0;
-            $view->cssClass = '';*/
         }
 
         return parent::getHtml();
+
     }
 
 }

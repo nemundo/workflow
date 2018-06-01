@@ -1,10 +1,11 @@
 <?php
 
-namespace Nemundo\Workflow\Status;
+namespace Nemundo\Workflow\WorkflowStatus;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Design\Bootstrap\Form\BootstrapForm;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\User\Access\UserAccessTrait;
@@ -28,19 +29,15 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
     use UserAccessTrait;
 
+    /**
+     * @var string
+     */
+    public $workflowStatus;
 
     /**
      * @var string
      */
-    public $status;
-
-    // workflowStatus
-    // workflowStatusId
-
-    /**
-     * @var string
-     */
-    public $statusId;
+    public $workflowStatusId;
 
     /**
      * @var string
@@ -51,14 +48,11 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
      * @var AbstractModel
      */
     public $modelClassName;
-    // model
 
     /**
      * @var WorkflowItem
      */
     public $workflowItemClassName;
-// workflowItemClasName
-
 
     /**
      * @var BootstrapForm
@@ -125,15 +119,22 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function changeSubject($subject)
     {
 
-//        $subject = new WorkflowSubject($this->workflowId);
-//        $subject->changeSubject($subject);
-
         $update = new WorkflowUpdate();
         $update->subject = $subject;
         $update->updateById($this->workflowId);
 
+    }
+
+
+    protected function changeDeadline(Date $deadline)
+    {
+
+        $update = new WorkflowUpdate();
+        $update->deadline = $deadline;
+        $update->updateById($this->workflowId);
 
     }
+
 
     protected function addFollowingStatusClassName($statusClassName)
     {
@@ -178,7 +179,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
-    public function runWorkflow($workflowId, $workflowItemId = null)  //, $draft = false)
+    public function runWorkflow($workflowId, $workflowItemId = null)
     {
 
         if (is_null($workflowId)) {
@@ -192,25 +193,13 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $this->workflowId = $workflowId;
         $this->workflowItemId = $workflowItemId;
 
-        /*
-        if ($this->changeWorkflowStatus) {
-            $update = new WorkflowUpdate();
-            $update->workflowStatusId = $this->statusId;
-            $update->updateById($this->workflowId);
-        }*/
-
         // Status Change
         $data = new WorkflowStatusChange();
-        $data->workflowStatusId = $this->statusId;
+        $data->workflowStatusId = $this->workflowStatusId;
         $data->workflowId = $workflowId;
         $data->workflowItemId = $workflowItemId;
 
         $draft = $this->draftMode;
-        /*$draftParameter = new DraftParameter();
-        if ($draftParameter->exists()) {
-            $draft = true;
-        }*/
-
         $data->draft = $draft;
         $data->save();
 
@@ -219,23 +208,12 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $update = new WorkflowUpdate();
 
         if ($this->changeWorkflowStatus) {
-            $update->workflowStatusId = $this->statusId;
+            $update->workflowStatusId = $this->workflowStatusId;
         }
-        //$update->filter->andEqual($update->model->dataId, $workflowId);
 
-        // Close
-
-        //(new Debug())->write('count'.sizeof($this->followingStatusClassList));
-
-        //if (sizeof($this->followingStatusClassList) == 0) {
         if ($this->closingWorkflow) {
             $update->closed = true;
         }
-
-        // Draft
-        /*if ($draftParameter->exists()) {
-            $draft = true;
-        }*/
 
         $update->draft = $draft;
 

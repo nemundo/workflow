@@ -7,7 +7,7 @@ use Nemundo\Core\Log\LogMessage;
 use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowStartForm extends BootstrapModelForm
 {

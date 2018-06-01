@@ -12,6 +12,8 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
+use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
+use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
@@ -22,7 +24,7 @@ use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 use Nemundo\Com\Button\NemundoButton;
 
 
@@ -82,7 +84,6 @@ class WorkflowItemList extends AbstractHtmlContainerList
             /** @var AbstractWorkflowBaseModel $model */
             $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
 
-
             $view = new WorkflowModelView($this);
             $view->model = $model;
             $view->filter->andEqual($model->workflowId, $this->workflowId);
@@ -118,7 +119,6 @@ class WorkflowItemList extends AbstractHtmlContainerList
         }
 
 
-
         $h3 = new H5($this);
         $h3->content = 'Workflow History';
 
@@ -143,7 +143,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
             $workflowStatus->workflowId = $changeRow->workflowId;
             $workflowStatus->workflowItemId = $changeRow->workflowItemId;
 
-            $statusLabel = $workflowStatus->status;
+            $statusLabel = $workflowStatus->workflowStatus;
             if ($changeRow->draft) {
                 $statusLabel .= ' (Entwurf)';
             }
@@ -156,17 +156,18 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 /** @var WorkflowItem $item */
                 $item = new $workflowStatus->workflowItemClassName($colRight);
                 $item->id = $changeRow->id;
-                $item->title = $workflowStatus->status;
+                $item->title = $workflowStatus->workflowStatus;
                 $item->workflowId = $changeRow->workflowId;
                 $item->workflowItemId = $changeRow->workflowItemId;
                 $item->user = $changeRow->user->displayName;
                 $item->dateTime = $changeRow->dateTime;
+                $item->draft = $changeRow->draft;
 
             } else {
 
                 $item = new WorkflowDefaultWorkflowItem($colRight);
                 $item->id = $changeRow->id;
-                $item->title = $workflowStatus->status;
+                $item->title = $workflowStatus->workflowStatus;
 
                 if ($workflowStatus->modelClassName !== null) {
                     $item->model = new $workflowStatus->modelClassName();
@@ -175,6 +176,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 $item->workflowItemId = $changeRow->workflowItemId;
                 $item->user = $changeRow->user->displayName;
                 $item->dateTime = $changeRow->dateTime;
+                $item->draft = $changeRow->draft;
 
             }
 

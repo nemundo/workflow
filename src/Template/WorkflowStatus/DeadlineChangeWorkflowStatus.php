@@ -1,11 +1,11 @@
 <?php
 
-namespace Nemundo\Workflow\Status;
-
+namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeModel;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
 {
@@ -18,8 +18,8 @@ class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
     protected function loadWorkflowStatus()
     {
 
-        $this->status = 'Deadline Change';
-        $this->statusId = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
+        $this->workflowStatus = 'Deadline Change';
+        $this->workflowStatusId = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
         $this->modelClassName = DeadlineChangeModel::class;
         $this->changeWorkflowStatus = false;
 

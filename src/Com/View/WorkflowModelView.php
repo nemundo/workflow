@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Com;
+namespace Nemundo\Workflow\Com\View;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
@@ -23,6 +23,8 @@ class WorkflowModelView extends AbstractHtmlContainerList
     {
 
         $table = new BootstrapLabelValueTable($this);
+        $table->labelCellWidth = 200;
+        $table->smallTable = true;
 
         foreach ($this->getComList() as $com) {
             $table->addLabelValue($com->type->label, $com->getHtmlString());

@@ -19,6 +19,7 @@ use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Dev\Application\Data\Application\ApplicationListBox;
 use Nemundo\Workflow\Com\OpenClosedWorkflowListBox;
+use Nemundo\Workflow\Com\Process\ProcessDropdown;
 use Nemundo\Workflow\Data\Process\ProcessListBox;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
@@ -74,7 +75,11 @@ class WorkflowSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $dropdown = new BootstrapDropdown($page);
+
+        new ProcessDropdown($page);
+
+
+        /*$dropdown = new BootstrapDropdown($page);
 
         $processReader = new ProcessReader();
 
@@ -154,6 +159,8 @@ class WorkflowSite extends AbstractSite
 
 
         $table = new BootstrapClickableTable($page);
+        $table->smallTable = true;
+        $table->hover = true;
 
         $header = new TableHeader($table);
         $header->addText('Prozess');
@@ -176,7 +183,7 @@ class WorkflowSite extends AbstractSite
             $row->addText($workflowRow->workflowStatus->workflowStatus);
             $row->addYesNo($workflowRow->closed);
 
-            if ($workflowRow->deadline->getDbFormat() !== '0000-00-00') {
+           if ($workflowRow->deadline !== null) {
                 $row->addText($workflowRow->deadline->getShortDateLeadingZeroFormat());
             } else {
                 $row->addEmpty();

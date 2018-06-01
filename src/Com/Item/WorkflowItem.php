@@ -1,15 +1,17 @@
 <?php
 
-namespace Nemundo\Workflow\Com;
+namespace Nemundo\Workflow\Com\Item;
 
 
 use Nemundo\Com\Container\AbstractContainer;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Core\Type\DateTime\DateTime;
+use Nemundo\Workflow\Com\WorkflowItemTrait;
 
 class WorkflowItem extends Div
 {
+
+    use WorkflowItemTrait;
 
     /**
      * @var string
@@ -26,15 +28,16 @@ class WorkflowItem extends Div
      */
     public $dateTime;
 
-    /**
-     * @var string
-     */
-    public $workflowId;
 
     /**
      * @var string
      */
     public $workflowItemId;
+
+    /**
+     * @var bool
+     */
+    public $draft = false;
 
     /**
      * @var Div
@@ -72,7 +75,14 @@ class WorkflowItem extends Div
     public function getHtml()
     {
 
-        $this->headerDiv->content = $this->title . ': ' . $this->user . ' ' . $this->dateTime->getShortDateTimeLeadingZeroFormat();
+
+        $draftText = '';
+        if ($this->draft) {
+            $draftText = ' (Entwurf)';
+        }
+
+
+        $this->headerDiv->content = $this->title .$draftText. ': ' . $this->user . ' ' . $this->dateTime->getShortDateTimeLeadingZeroFormat();
 
         parent::addCom($this->headerDiv);
         parent::addCom($this->contentDiv);

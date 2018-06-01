@@ -1,12 +1,13 @@
 <?php
 
-namespace Nemundo\Workflow\Status;
+namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 
 use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
 use Nemundo\Workflow\Data\UserAssignmentChange\UserAssignmentChangeModel;
 use Nemundo\Workflow\Data\UserAssignmentChange\UserAssignmentChangeReader;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
 {
@@ -14,8 +15,8 @@ class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
     protected function loadWorkflowStatus()
     {
 
-        $this->status = 'User Assignment';
-        $this->statusId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
+        $this->workflowStatus = 'User Assignment';
+        $this->workflowStatusId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeWorkflowStatus = false;
 
         $this->modelClassName = UserAssignmentChangeModel::class;

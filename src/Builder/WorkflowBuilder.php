@@ -9,9 +9,10 @@ use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\Data\Workflow\WorkflowValue;
+use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowBuilder extends AbstractBase
 {
@@ -50,7 +51,7 @@ class WorkflowBuilder extends AbstractBase
     /**
      * @var AbstractWorkflowStatus
      */
-    public $workflowStatus;
+   // public $workflowStatus;
 
 
 
@@ -75,23 +76,28 @@ class WorkflowBuilder extends AbstractBase
     {
 
 
-        /*
-        if (!$this->checkObject('application', $this->application, AbstractWorkflowApplication::class)) {
+
+        if (!$this->checkObject('process', $this->process,AbstractProcess::class)) {
             return;
         }
 
+        /*
         if (!$this->checkObject('workflowStatus', $this->workflowStatus, AbstractWorkflowStatus::class)) {
             return;
         }*/
 
-        /*
-        if (!$this->checkProperty(['workflowSubject','dataId'])) {
+
+        if (!$this->checkProperty(['dataId'])) {
             return;
-        }*/
+        }
 
 
         /** @var AbstractWorkflowBaseModel $baseModel */
         $baseModel = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
+
+        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
+
+
 
 
         if ($this->dataId == null) {
@@ -130,7 +136,7 @@ class WorkflowBuilder extends AbstractBase
         $data->number = $number;
         $data->workflowNumber = $workflowNumber;
         $data->subject = $this->subject;
-        $data->workflowStatusId = $this->workflowStatus->statusId;
+        $data->workflowStatusId = $workflowStatus->workflowStatusId;
         $data->dataId = $this->dataId;
         $workflowId = $data->save();
 
@@ -142,6 +148,9 @@ class WorkflowBuilder extends AbstractBase
 
 
         //$this->workflowStatus->runWorkflow($workflowId, $this->dataId);
+
+        $workflowStatus->runWorkflow($workflowId, $this->dataId);
+
 
         return $workflowId;
 

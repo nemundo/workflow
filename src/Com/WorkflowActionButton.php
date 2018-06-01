@@ -10,7 +10,7 @@ use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\Site\WorkflowStatusChangeSite;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 use Nemundo\Com\Button\NemundoButton;
 
 class WorkflowActionButton extends AbstractHtmlContainerList
@@ -45,7 +45,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
             $followingStatusClass = new $className();
 
             $btn = new BootstrapButton($this);
-            $btn->content = $followingStatusClass->status;
+            $btn->content = $followingStatusClass->workflowStatus;
 
             $site = null;
 
@@ -55,7 +55,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
                 $site = clone($followingStatusClass->formSite);
             }
 
-            $site->addParameter(new WorkflowStatusParameter($followingStatusClass->statusId));
+            $site->addParameter(new WorkflowStatusParameter($followingStatusClass->workflowStatusId));
             //$site->addParameter($workflowStatus->parameter->setValue($this->workflowId));
             $site->addParameter(new WorkflowParameter($this->workflowId));
 

@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Setup;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatus;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowStatusSetup extends AbstractBase
 {
@@ -15,8 +15,8 @@ class WorkflowStatusSetup extends AbstractBase
 
         $data = new WorkflowStatus();
         $data->updateOnDuplicate = true;
-        $data->id = $workflowStatus->statusId;
-        $data->workflowStatus = $workflowStatus->status;
+        $data->id = $workflowStatus->workflowStatusId;
+        $data->workflowStatus = $workflowStatus->workflowStatus;
         $data->workflowStatusClass = $workflowStatus->getClassName();
         $data->save();
 

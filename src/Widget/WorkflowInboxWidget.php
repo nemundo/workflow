@@ -32,13 +32,17 @@ use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
+
+// nur Table???
+
+// WorkflowInboxTable
 class WorkflowInboxWidget extends AbstractHtmlContainerList  // AbstractWidget ParanautikWidget
 {
 
     public function getHtml()
     {
 
-        $this->widgetTitle = 'Workflow Inbox';
+        //$this->widgetTitle = 'Workflow Inbox';
 
 
         $reader = new UserAssignmentPaginationReader();

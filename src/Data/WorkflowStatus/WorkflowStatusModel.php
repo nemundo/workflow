@@ -48,7 +48,7 @@ $this->workflowStatusClass->fieldName = "workflow_status_class";
 $this->workflowStatusClass->aliasFieldName = "workflow_workflow_status_workflow_status_class";
 $this->workflowStatusClass->label = "Workflow Status Class";
 $this->workflowStatusClass->allowNullValue = "";
-$this->workflowStatusClass->phpClassName = Nemundo\Workflow\Status\AbstractWorkflowStatus::class;
+$this->workflowStatusClass->phpClassName = Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus::class;
 
 }
 }

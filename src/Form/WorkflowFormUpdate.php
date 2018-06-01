@@ -14,7 +14,7 @@ use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowFormUpdate extends ModelFormUpdate
 {

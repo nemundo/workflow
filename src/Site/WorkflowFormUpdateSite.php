@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
@@ -47,42 +48,20 @@ class WorkflowFormUpdateSite extends AbstractSite
         $statusChangeReader->model->loadWorkflow();
         $statusChangeReader->model->workflow->loadWorkflowStatus();
         $statusChangeReader->model->workflow->loadProcess();
+        $statusChangeReader->model->loadWorkflowStatus();
         $statusChangeRow = $statusChangeReader->getRowById($statusChangeId);
 
         $title = new WorkflowTitle($page);
         $title->workflowId = $statusChangeRow->workflowId;
 
         $status = $statusChangeRow->workflowStatus->getWorkflowStatusClassObject();
-        $application = $statusChangeRow->workflow->process->getProcessClassObject();
-        $model =(new ModelFactory())->getModelByClassName($status->modelClassName);
+        $model = (new ModelFactory())->getModelByClassName($status->modelClassName);
 
         $form = new WorkflowFormUpdate($page);
         $form->model = $model;
         $form->updateId = $statusChangeRow->workflowItemId;
-       // $form->redirectSite = $application->getApplicationSite($statusChangeRow->workflowId);
-
-
-
-        //$form->workflowStatus = $status;
-        //$form->workflowId = $workflowId;
-
-        /*
-        $workflowParameter = new WorkflowParameter();
-        $workflowId = $workflowParameter->getValue();
-
-        $title = new WorkflowTitle($page);
-        $title->workflowId = $workflowId;
-
-        $workflowRow = (new WorkflowReader())->getRowById($workflowId);
-
-        $status = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
-        $model =(new ModelFactory())->getModelByClassName($status->modelClassName);
-
-        $form = new WorkflowFormUpdate($page);
-        $form->workflowStatus = $status;
-        $form->workflowId = $workflowId;*/
-
-
+        $form->redirectSite = clone(WorkflowItemSite::$site);
+        $form->redirectSite->addParameter(new WorkflowParameter($statusChangeRow->workflowId));
 
         $page->render();
 

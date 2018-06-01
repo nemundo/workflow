@@ -3,6 +3,7 @@ namespace Nemundo\Workflow\Data;
 use Nemundo\Model\Collection\AbstractModelCollection;
 class WorkflowCollection extends AbstractModelCollection {
 protected function loadCollection() {
+$this->addModel(new \Nemundo\Workflow\Data\Comment\CommentModel());
 $this->addModel(new \Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeModel());
 $this->addModel(new \Nemundo\Workflow\Data\Process\ProcessModel());
 $this->addModel(new \Nemundo\Workflow\Data\SubjectChange\SubjectChangeModel());

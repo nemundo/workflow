@@ -90,7 +90,10 @@ $this->workflowStatusId = $this->getModelValue($model->workflowStatusId);
 if ($model->workflowStatus !== null) {
 $this->loadNemundoWorkflowDataWorkflowStatusWorkflowStatusworkflowStatusRow($model->workflowStatus);
 }
+$value = $this->getModelValue($model->deadline);
+if ($value !== "0000-00-00") {
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date($this->getModelValue($model->deadline));
+}
 }
 private function loadNemundoWorkflowDataProcessProcessprocessRow($model) {
 $this->process = new \Nemundo\Workflow\Data\Process\ProcessRow($this->row, $model);

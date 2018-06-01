@@ -29,7 +29,7 @@ $this->process = $this->getModelValue($model->process);
 $this->processClass = $this->getModelValue($model->processClass);
 }
 /**
-* @return \Schleuniger\Workflow\Process\AbstractProcess
+* @return \Nemundo\Workflow\Process\AbstractProcess
 */
 public function getProcessClassObject() {
 

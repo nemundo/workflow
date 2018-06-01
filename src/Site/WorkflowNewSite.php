@@ -7,6 +7,7 @@ use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\Process\ProcessReader;
+use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Form\WorkflowForm;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 
@@ -43,22 +44,14 @@ class WorkflowNewSite extends AbstractSite
         $title = new H1($page);
         $title->content = $processRow->process;
 
-
         $process = $processRow->getProcessClassObject();
-
-
-        //$form = new WorkflowForm($this);
-        //$form->application = new FluggebietProposalProcess();
-        //$form->workflowStatus = new FluggebietErfassungWorkflowStatus();
 
         $form = new WorkflowForm($page);
         $form->process = $process;
-        $form->workflowStatus = $process->startWorkflowStatus;
+        $form->workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($process->startWorkflowStatusClassName);
         $form->redirectSite = WorkflowSite::$site;
 
-
         $page->render();
-
 
     }
 

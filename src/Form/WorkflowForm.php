@@ -12,7 +12,7 @@ use Nemundo\Model\Form\AbstractModelForm;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Status\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowForm extends BootstrapModelForm
 {
