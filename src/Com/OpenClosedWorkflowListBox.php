@@ -21,7 +21,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
         $this->addItem(1, 'Offene');
         $this->addItem(2, 'Abgeschlossene');
         if ($this->getValue() == '') {
-            $this->value = 1;
+            $this->value = 0;
         } else {
             $this->value = $this->getValue();
         }

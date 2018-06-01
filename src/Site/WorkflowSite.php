@@ -27,6 +27,8 @@ use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
+use Nemundo\Workflow\Inbox\WorkflowInboxTable;
+use Nemundo\Workflow\Inbox\WorkflowStatus;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
@@ -110,17 +112,18 @@ class WorkflowSite extends AbstractSite
 
         $statusListBox = new OpenClosedWorkflowListBox($row);
 
-        $assignmentListBox = new UserListBox($row);
-        $assignmentListBox->label = 'User Assignment';
-        $assignmentListBox->submitOnChange = true;
-        $assignmentListBox->value = $assignmentListBox->getValue();
+        $userListBox = new UserListBox($row);
+        $userListBox->label = 'User Assignment';
+        $userListBox->submitOnChange = true;
+        $userListBox->value = $userListBox->getValue();
 
-        $usergroupAssignmentListBox = new UsergroupListBox($row);
-        $usergroupAssignmentListBox->label = 'Usergroup Assignment';
-        $usergroupAssignmentListBox->submitOnChange = true;
-        $usergroupAssignmentListBox->value = $usergroupAssignmentListBox->getValue();
+        $usergroupListBox = new UsergroupListBox($row);
+        $usergroupListBox->label = 'Usergroup Assignment';
+        $usergroupListBox->submitOnChange = true;
+        $usergroupListBox->value = $usergroupListBox->getValue();
 
 
+        /*
         $usergroupId = $usergroupAssignmentListBox->getValue();
         if ($usergroupId !== '') {
 
@@ -136,9 +139,35 @@ class WorkflowSite extends AbstractSite
             }
 
 
+        }*/
+
+
+
+
+
+        $table = new WorkflowInboxTable($page);
+
+        if ($statusListBox->getValue() == 1) {
+            $table->status =WorkflowStatus::SHOW_OPEN;
         }
 
+        if ($statusListBox->getValue() == 2) {
+            $table->status =WorkflowStatus::SHOW_CLOSED;
+        }
 
+        if ($processListBox->getValue() !== '') {
+           $table->addProcessIdFilter($processListBox->getValue());
+        }
+
+        if ($usergroupListBox->getValue() !== '') {
+            $table->addUsergroupIdFilter($usergroupListBox->getValue());
+        }
+
+        if ($userListBox->getValue() !== '') {
+            $table->addUserIdFilter($userListBox->getValue());
+        }
+
+        /*
         $workflowReader = new WorkflowPaginationReader();
         $workflowReader->model->loadWorkflowStatus();
         $workflowReader->model->loadProcess();
@@ -160,7 +189,7 @@ class WorkflowSite extends AbstractSite
 
         $table = new BootstrapClickableTable($page);
         $table->smallTable = true;
-        $table->hover = true;
+        $table
 
         $header = new TableHeader($table);
         $header->addText('Prozess');
@@ -223,7 +252,7 @@ class WorkflowSite extends AbstractSite
 
             //$row->addText($changeRow->itemOrder);
 
-            $site = $workflowRow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
+ /*           $site = $workflowRow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
             $site->addParameter(new WorkflowParameter($workflowRow->id));
             $row->addClickableSite($site);
 
@@ -231,7 +260,7 @@ class WorkflowSite extends AbstractSite
 
 
         $pagination = new BootstrapModelPagination($page);
-        $pagination->paginationReader = $workflowReader;
+        $pagination->paginationReader = $workflowReader;*/
 
 
         $page->render();

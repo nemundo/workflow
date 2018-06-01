@@ -59,7 +59,7 @@ class WorkflowForm extends BootstrapModelForm
 
             $builder = new WorkflowBuilder();
             $builder->process = $this->process;
-            $builder->workflowStatus = $this->workflowStatus;
+            //$builder->workflowStatus = $this->workflowStatus;
             $builder->dataId =$workflowItemId; // $dataId;
             $workflowId = $builder->createItem();
 
@@ -70,7 +70,7 @@ class WorkflowForm extends BootstrapModelForm
             $dataId = $data->save();
             */
 
-            $this->workflowStatus->runWorkflow($workflowId, $workflowItemId);
+            //$this->workflowStatus->runWorkflow($workflowId, $workflowItemId);
 
         }
 
