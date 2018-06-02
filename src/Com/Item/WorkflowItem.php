@@ -6,12 +6,12 @@ namespace Nemundo\Workflow\Com\Item;
 use Nemundo\Com\Container\AbstractContainer;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Core\Type\DateTime\DateTime;
-use Nemundo\Workflow\Com\WorkflowItemTrait;
+use Nemundo\Workflow\Com\WorkflowIdTrait;
 
 class WorkflowItem extends Div
 {
 
-    use WorkflowItemTrait;
+    use WorkflowIdTrait;
 
     /**
      * @var string

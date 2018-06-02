@@ -54,6 +54,9 @@ class WorkflowStatusChangeSite extends AbstractSite
             $form = null;
             if ($workflowStatus->formClassName !== null) {
 
+                $workflowStatus->draftMode = true;
+                $workflowStatus->runWorkflow($workflowId);
+
                 $form = new $workflowStatus->formClassName($page);
                 $form->workflowId = $workflowId;
 
@@ -65,12 +68,6 @@ class WorkflowStatusChangeSite extends AbstractSite
                 $form->redirectSite->addParameter($workflowParameter);
 
             }
-
-
-
-
-
-            //$form->redirectSite->addParameter($workflowStatus->parameter->setValue($workflowId));
 
             $page->render();
 

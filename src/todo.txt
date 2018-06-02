@@ -1,13 +1,41 @@
-
-
 Workflow Inbox:
 (new Message) à la WhatsApp
 
+Workflow Inbox
+
+- last change
+
+
+Meine erstellten Workflows
+
+Process Category
+
+links/rechts mit Gruppierung der Prozesse
 
 
 
-General Workflow status
+User Notification
 
-ApprovalWorkflowStatus
-DisapprovalWorkflowStatus
+Usergroup Notification
+
+Ampel System
+
+Testing Workflow:
+
+Flying Around (Pilot, Airport mit Active Model etc.)
+
+Intranet News Blog
+
+Breaking News
+
+Task
+
+Doodle
+
+
+
+
+
+Team Workflow
+
 

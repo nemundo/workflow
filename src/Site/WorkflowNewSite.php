@@ -49,7 +49,7 @@ class WorkflowNewSite extends AbstractSite
         $form = new WorkflowForm($page);
         $form->process = $process;
         $form->workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($process->startWorkflowStatusClassName);
-        $form->redirectSite = WorkflowSite::$site;
+        $form->redirectSite = WorkflowSearchEngineSite::$site;
 
         $page->render();
 

@@ -57,11 +57,27 @@ class WorkflowFormUpdateSite extends AbstractSite
         $status = $statusChangeRow->workflowStatus->getWorkflowStatusClassObject();
         $model = (new ModelFactory())->getModelByClassName($status->modelClassName);
 
-        $form = new WorkflowFormUpdate($page);
-        $form->model = $model;
-        $form->updateId = $statusChangeRow->workflowItemId;
-        $form->redirectSite = clone(WorkflowItemSite::$site);
-        $form->redirectSite->addParameter(new WorkflowParameter($statusChangeRow->workflowId));
+
+        if ($status->formClassName !== '') {
+
+            $workflowId = $statusChangeRow->workflowId;
+
+
+            $form = new $status->formClassName($page);
+            $form->workflowId = $workflowId;
+            //$form->
+
+
+        } else {
+
+
+            $form = new WorkflowFormUpdate($page);
+            $form->model = $model;
+            $form->updateId = $statusChangeRow->workflowItemId;
+            $form->redirectSite = clone(WorkflowItemSite::$site);
+            $form->redirectSite->addParameter(new WorkflowParameter($statusChangeRow->workflowId));
+
+        }
 
         $page->render();
 

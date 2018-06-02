@@ -2,18 +2,13 @@
 
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
-use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeModel;
+use Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
 {
-
-    /**
-     * @var Date
-     */
-    public $deadline;
 
     protected function loadWorkflowStatus()
     {
@@ -29,8 +24,10 @@ class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
     protected function onChange($workflowId, $workflowItemId = null)
     {
 
+        $row = (new DeadlineChangeReader())->getRowById($workflowItemId);
+
         $update = new WorkflowUpdate();
-        $update->deadline = $this->deadline;
+        $update->deadline = $row->deadline;
         $update->updateById($workflowId);
 
     }

@@ -71,6 +71,21 @@ public $workflowStatus;
 */
 public $deadline;
 
+/**
+* @var string
+*/
+public $userId;
+
+/**
+* @var \Nemundo\User\Data\User\UserRow
+*/
+public $user;
+
+/**
+* @var \Nemundo\Core\Type\DateTime\DateTime
+*/
+public $dateTime;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -94,11 +109,19 @@ $value = $this->getModelValue($model->deadline);
 if ($value !== "0000-00-00") {
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date($this->getModelValue($model->deadline));
 }
+$this->userId = $this->getModelValue($model->userId);
+if ($model->user !== null) {
+$this->loadNemundoUserDataUserUseruserRow($model->user);
+}
+$this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTime));
 }
 private function loadNemundoWorkflowDataProcessProcessprocessRow($model) {
 $this->process = new \Nemundo\Workflow\Data\Process\ProcessRow($this->row, $model);
 }
 private function loadNemundoWorkflowDataWorkflowStatusWorkflowStatusworkflowStatusRow($model) {
 $this->workflowStatus = new \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusRow($this->row, $model);
+}
+private function loadNemundoUserDataUserUseruserRow($model) {
+$this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);
 }
 }

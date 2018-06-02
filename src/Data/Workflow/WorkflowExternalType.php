@@ -66,6 +66,21 @@ public $workflowStatus;
 */
 public $deadline;
 
+/**
+* @var \Nemundo\Model\Type\User\CreatedUserType
+*/
+public $userId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $user;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
+*/
+public $dateTime;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WorkflowModel::class;
@@ -148,6 +163,20 @@ $this->deadline->aliasFieldName = $this->deadline->tableName . "_" . $this->dead
 $this->deadline->label = "Deadline";
 $this->addType($this->deadline);
 
+$this->userId = new \Nemundo\Model\Type\User\CreatedUserType();
+$this->userId->fieldName = "user";
+$this->userId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->userId->aliasFieldName = $this->userId->tableName ."_".$this->userId->fieldName;
+$this->userId->label = "User";
+$this->addType($this->userId);
+
+$this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType();
+$this->dateTime->fieldName = "date_time";
+$this->dateTime->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dateTime->aliasFieldName = $this->dateTime->tableName . "_" . $this->dateTime->fieldName;
+$this->dateTime->label = "Date Time";
+$this->addType($this->dateTime);
+
 }
 public function loadProcess() {
 if ($this->process == null) {
@@ -168,6 +197,17 @@ $this->workflowStatus->tableName = $this->parentFieldName . "_" . $this->externa
 $this->workflowStatus->aliasFieldName = $this->workflowStatus->tableName ."_".$this->workflowStatus->fieldName;
 $this->workflowStatus->label = "Workflow Status";
 $this->addType($this->workflowStatus);
+}
+return $this;
+}
+public function loadUser() {
+if ($this->user == null) {
+$this->user = new \Nemundo\User\Data\User\UserExternalType(null, $this->parentFieldName . "_user");
+$this->user->fieldName = "user";
+$this->user->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->user->aliasFieldName = $this->user->tableName ."_".$this->user->fieldName;
+$this->user->label = "User";
+$this->addType($this->user);
 }
 return $this;
 }

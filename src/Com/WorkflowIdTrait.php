@@ -4,7 +4,7 @@
 namespace Nemundo\Workflow\Com;
 
 
-trait WorkflowItemTrait
+trait WorkflowIdTrait
 {
 
     /**

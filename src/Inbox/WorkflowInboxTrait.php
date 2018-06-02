@@ -4,13 +4,11 @@
 namespace Nemundo\Workflow\Inbox;
 
 
-use Nemundo\Db\Reader\AbstractDataReader;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\Data\Workflow\WorkflowCount;
 use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Process\AbstractProcess;
-use Nemundo\Core\Base\DataSource\AbstractDataSource;
-use Nemundo\Workflow\Data\Workflow\WorkflowRow;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Model\Join\ModelJoin;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentModel;
@@ -21,25 +19,12 @@ use Nemundo\Db\Sql\Order\SortOrder;
 trait WorkflowInboxTrait
 {
 
-    // Sorting
-
-    /**
-     * @var bool
-     */
-    // public $showOpenWorklow = true;
-
-    /**
-     * @var bool
-     */
-    //public $showClosedWorkflow = true;
-
     /**
      * @var WorkflowStatus
      */
     public $status = WorkflowStatus::SHOW_ALL;
 
-    public $sorting = WorkflowSorting::BY_NUMBER_DESC;
-
+    public $sorting = WorkflowSorting::BY_ITEM_ORDER_DESC;
 
     /**
      * @var AbstractProcess[]
@@ -57,6 +42,13 @@ trait WorkflowInboxTrait
 
     private $userIdFilterList = [];
 
+    private $userCreatorIdFilterList = [];
+
+    /**
+     * @var WorkflowCount
+     */
+    private $workflowCount;
+
 
     public function addUsergroupFilter(AbstractUsergroup $usergroup)
     {
@@ -73,6 +65,12 @@ trait WorkflowInboxTrait
     public function addUserIdFilter($userId)
     {
         $this->userIdFilterList[] = $userId;
+        return $this;
+    }
+
+    public function addUserCreatorIdFilter($userId)
+    {
+        $this->userCreatorIdFilterList[] = $userId;
         return $this;
     }
 
@@ -97,28 +95,30 @@ trait WorkflowInboxTrait
     protected function loadReader($workflowReader)
     {
 
-
         $workflowReader->model->loadWorkflowStatus();
         $workflowReader->model->loadProcess();
-        //$workflowReader->paginationLimit = 30;
-        //$workflowReader->addOrder($workflowReader->model->itemOrder, SortOrder::DESCENDING);
 
-        //$workflowCount = new WorkflowCount();
+        $this->workflowCount = new WorkflowCount();
 
         // Process Filter
         foreach ($this->processFilterList as $process) {
             $workflowReader->filter->andEqual($workflowReader->model->processId, $process->processId);
-            //$workflowCount->filter->andEqual($workflowReader->model->processId, $process->processId);
+            $this->workflowCount->filter->andEqual($workflowReader->model->processId, $process->processId);
         }
 
         foreach ($this->processIdList as $processId) {
             $workflowReader->filter->andEqual($workflowReader->model->processId, $processId);
-            //$workflowCount->filter->andEqual($workflowReader->model->processId, $process->processId);
+            $this->workflowCount->filter->andEqual($workflowReader->model->processId, $processId);
         }
 
 
+        $userUsergroupFilter = new Filter();
+        $userUsergroupFilterMode = false;
+
         // User Filter
         if (sizeof($this->userIdFilterList) > 0) {
+
+            $userUsergroupFilterMode = true;
 
             $userAssignmentModel = new UserAssignmentModel();
 
@@ -128,15 +128,14 @@ trait WorkflowInboxTrait
             $join->externalType = $userAssignmentModel->workflowId;
 
             $workflowReader->addJoin($join);
-            //$workflowCount->addJoin($join);
+            $this->workflowCount->addJoin($join);
 
 
             $filter = new Filter();
             foreach ($this->userIdFilterList as $userId) {
-                $filter->andEqual($userAssignmentModel->userId, $userId);
+                $filter->orEqual($userAssignmentModel->userId, $userId);
             }
-            $workflowReader->filter->orFilter($filter);
-            //$workflowCount->filter->orFilter($filter);
+            $userUsergroupFilter->orFilter($filter);
 
         }
 
@@ -145,10 +144,12 @@ trait WorkflowInboxTrait
         $usergroupIdList = $this->usergroupIdFilterList;
 
         foreach ($this->usergroupFilterList as $usergroup) {
-         $usergroupIdList[]=  $usergroup->usergroupId;
+            $usergroupIdList[] = $usergroup->usergroupId;
         }
 
         if (sizeof($usergroupIdList) > 0) {
+
+            $userUsergroupFilterMode = true;
 
             $usergroupAssignmentModel = new UsergroupAssignmentModel();
 
@@ -158,53 +159,44 @@ trait WorkflowInboxTrait
             $join->externalType = $usergroupAssignmentModel->workflowId;
 
             $workflowReader->addJoin($join);
-            //$workflowCount->addJoin($join);
+            $this->workflowCount->addJoin($join);
 
             $filter = new Filter();
-            foreach ($usergroupIdList  as $usergroupId) {
-                $filter->andEqual($usergroupAssignmentModel->usergroupId, $usergroupId);
+            foreach ($usergroupIdList as $usergroupId) {
+                $filter->orEqual($usergroupAssignmentModel->usergroupId, $usergroupId);
             }
-            $workflowReader->filter->orFilter($filter);
-            //$workflowCount->filter->orFilter($filter);
+            $userUsergroupFilter->orFilter($filter);
 
         }
 
 
+        if ($userUsergroupFilterMode) {
+            $workflowReader->filter->andFilter($userUsergroupFilter);
+            $this->workflowCount->filter->andFilter($userUsergroupFilter);
+        }
 
 
+        // User Creator
+        if (sizeof($this->userCreatorIdFilterList) > 0) {
 
+            foreach ($this->userCreatorIdFilterList as $userId) {
+                $workflowReader->filter->andEqual($workflowReader->model->userId, $userId);
+            }
 
+        }
 
 
         if ($this->status == WorkflowStatus::SHOW_OPEN) {
             $workflowReader->filter->andEqual($workflowReader->model->closed, false);
+            $this->workflowCount->filter->andEqual($workflowReader->model->closed, false);
         }
 
         if ($this->status == WorkflowStatus::SHOW_CLOSED) {
             $workflowReader->filter->andEqual($workflowReader->model->closed, true);
+            $this->workflowCount->filter->andEqual($workflowReader->model->closed, true);
         }
 
-
-        //
-
-
-        //$workflowCount->filter->andEqual($workflowCount->model->closed, true);
-
-
-        /*
-        if ($processListBox->getValue() !== '') {
-            $workflowReader->filter->andEqual($workflowReader->model->processId, $processListBox->getValue());
-        }
-
-        if (($statusListBox->getValue() == 1) || ($statusListBox->getValue() == '')) {
-            $workflowReader->filter->andEqual($workflowReader->model->closed, false);
-        }
-
-        if ($statusListBox->getValue() == 2) {
-            $workflowReader->filter->andEqual($workflowReader->model->closed, true);
-        }*/
-
-
+        // Sorting
         switch ($this->sorting) {
 
             case WorkflowSorting::BY_NUMBER_DESC:
@@ -215,8 +207,22 @@ trait WorkflowInboxTrait
                 $workflowReader->addOrder($workflowReader->model->number);
                 break;
 
+            case WorkflowSorting::BY_ITEM_ORDER_DESC:
+                $workflowReader->addOrder($workflowReader->model->itemOrder, SortOrder::DESCENDING);
+                break;
+
+
         }
 
+
+    }
+
+
+    protected function getWorkflowCount()
+    {
+
+        $workflowCount = $this->workflowCount->getCount();
+        return $workflowCount;
 
     }
 

@@ -49,7 +49,7 @@ class WorkflowForm extends BootstrapModelForm
 
         } else {
 
-            $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
+            //$model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
 
             /*
             $data = new ModelData();
@@ -61,7 +61,10 @@ class WorkflowForm extends BootstrapModelForm
             $builder->process = $this->process;
             //$builder->workflowStatus = $this->workflowStatus;
             $builder->dataId =$workflowItemId; // $dataId;
-            $workflowId = $builder->createItem();
+            $builder->createItem();
+
+
+            //$workflowId = $builder->createItem();
 
             /*
             $data = new ModelUpdate();

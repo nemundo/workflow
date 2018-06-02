@@ -28,15 +28,10 @@ class WorkflowInboxReader extends AbstractDataSource
 
         $workflowReader->model->loadWorkflowStatus();
         $workflowReader->model->loadProcess();
-        //$workflowReader->paginationLimit = 30;
-        //$workflowReader->addOrder($workflowReader->model->itemOrder, SortOrder::DESCENDING);
-
-        //$workflowCount = new WorkflowCount();
 
         // Process Filter
         foreach ($this->processFilterList as $process) {
             $workflowReader->filter->andEqual($workflowReader->model->processId, $process->processId);
-            //$workflowCount->filter->andEqual($workflowReader->model->processId, $process->processId);
         }
 
         // User Filter
@@ -58,7 +53,6 @@ class WorkflowInboxReader extends AbstractDataSource
                 $filter->andEqual($userAssignmentModel->userId, $userId);
             }
             $workflowReader->filter->orFilter($filter);
-            //$workflowCount->filter->orFilter($filter);
 
         }
 
@@ -74,14 +68,12 @@ class WorkflowInboxReader extends AbstractDataSource
             $join->externalType = $usergroupAssignmentModel->workflowId;
 
             $workflowReader->addJoin($join);
-            //$workflowCount->addJoin($join);
 
             $filter = new Filter();
             foreach ($this->usergroupFilterList as $usergroup) {
                 $filter->andEqual($usergroupAssignmentModel->usergroupId, $usergroup->usergroupId);
             }
             $workflowReader->filter->orFilter($filter);
-            //$workflowCount->filter->orFilter($filter);
 
         }
 
@@ -95,28 +87,6 @@ class WorkflowInboxReader extends AbstractDataSource
             $workflowReader->filter->andEqual($workflowReader->model->closed, true);
         }
 
-
-        //
-
-
-        //$workflowCount->filter->andEqual($workflowCount->model->closed, true);
-
-
-        /*
-        if ($processListBox->getValue() !== '') {
-            $workflowReader->filter->andEqual($workflowReader->model->processId, $processListBox->getValue());
-        }
-
-        if (($statusListBox->getValue() == 1) || ($statusListBox->getValue() == '')) {
-            $workflowReader->filter->andEqual($workflowReader->model->closed, false);
-        }
-
-        if ($statusListBox->getValue() == 2) {
-            $workflowReader->filter->andEqual($workflowReader->model->closed, true);
-        }*/
-
-
-
         switch ($this->sorting) {
 
             case WorkflowSorting::BY_NUMBER_DESC:
@@ -129,14 +99,8 @@ class WorkflowInboxReader extends AbstractDataSource
 
         }
 
-
-
-
-
         foreach ($workflowReader->getData() as $workflowRow) {
-
             $this->addItem($workflowRow);
-
         }
 
     }
