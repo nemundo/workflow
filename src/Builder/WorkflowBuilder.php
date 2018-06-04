@@ -32,6 +32,13 @@ class WorkflowBuilder extends AbstractBase
      */
     public $dataId;
 
+
+    /**
+     * @var string
+     */
+    public $workflowItemId;
+
+
     /**
      * @var string
      */
@@ -51,8 +58,7 @@ class WorkflowBuilder extends AbstractBase
     /**
      * @var AbstractWorkflowStatus
      */
-   // public $workflowStatus;
-
+    // public $workflowStatus;
 
 
 //    abstract protected function loadApplication();
@@ -63,7 +69,7 @@ class WorkflowBuilder extends AbstractBase
     }
 
 
-  //  abstract public function createItem();
+    //  abstract public function createItem();
 
 
     protected function loadApplication()
@@ -76,8 +82,7 @@ class WorkflowBuilder extends AbstractBase
     {
 
 
-
-        if (!$this->checkObject('process', $this->process,AbstractProcess::class)) {
+        if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
             return;
         }
 
@@ -87,17 +92,16 @@ class WorkflowBuilder extends AbstractBase
         }*/
 
 
+        /*
         if (!$this->checkProperty(['dataId'])) {
             return;
-        }
+        }*/
 
 
         /** @var AbstractWorkflowBaseModel $baseModel */
         $baseModel = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
 
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
-
-
 
 
         if ($this->dataId == null) {
@@ -149,7 +153,8 @@ class WorkflowBuilder extends AbstractBase
 
         //$this->workflowStatus->runWorkflow($workflowId, $this->dataId);
 
-        $workflowStatus->runWorkflow($workflowId, $this->dataId);
+        //$workflowStatus->runWorkflow($workflowId, $this->dataId);
+        $workflowStatus->runWorkflow($workflowId, $this->workflowItemId);
 
 
         return $workflowId;

@@ -9,6 +9,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Form\WorkflowForm;
+use Nemundo\Workflow\Form\WorkflowStartForm;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 
 class WorkflowNewSite extends AbstractSite
@@ -37,7 +38,6 @@ class WorkflowNewSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-
         $processId = (new ProcessParameter())->getValue();
         $processRow = (new ProcessReader())->getRowById($processId);
 
@@ -46,7 +46,7 @@ class WorkflowNewSite extends AbstractSite
 
         $process = $processRow->getProcessClassObject();
 
-        $form = new WorkflowForm($page);
+        $form = new WorkflowStartForm($page);
         $form->process = $process;
         $form->workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($process->startWorkflowStatusClassName);
         $form->redirectSite = WorkflowSearchEngineSite::$site;

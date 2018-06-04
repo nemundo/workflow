@@ -2,6 +2,7 @@
 
 namespace Nemundo\Workflow\Site;
 
+use Nemundo\Com\Html\Basic\H2;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
@@ -50,6 +51,10 @@ class WorkflowStatusChangeSite extends AbstractSite
 
             $title = new WorkflowTitle($page);
             $title->workflowId = $workflowId;
+
+            $h2 = new H2($page);
+            $h2->content = $workflowStatus->workflowStatus;
+
 
             $form = null;
             if ($workflowStatus->formClassName !== null) {

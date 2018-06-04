@@ -13,6 +13,8 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Builder\WorkflowSubject;
+use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
+use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignment;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentDelete;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
@@ -92,14 +94,14 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var string
      */
-    public $workflowId;
+    protected $workflowId;
 // nur protected ???
 
 
     /**
      * @var string
      */
-    public $workflowItemId;
+    protected $workflowItemId;
 
     /**
      * @var AbstractWorkflowStatus[]
@@ -157,6 +159,27 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     {
 
         $delete = new UsergroupAssignmentDelete();
+        $delete->filter->andEqual($delete->model->workflowId, $this->workflowId);
+        $delete->delete();
+
+    }
+
+
+    protected function assignUser($userId)
+    {
+
+        $data = new UserAssignment();
+        $data->workflowId = $this->workflowId;
+        $data->userId = $userId;
+        $data->save();
+
+    }
+
+
+    protected function clearUserAssignment()
+    {
+
+        $delete = new UserAssignmentDelete();
         $delete->filter->andEqual($delete->model->workflowId, $this->workflowId);
         $delete->delete();
 

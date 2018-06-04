@@ -11,7 +11,6 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
-use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
 use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
@@ -24,8 +23,6 @@ use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
-use Nemundo\Com\Button\NemundoButton;
 
 
 class WorkflowItemList extends AbstractHtmlContainerList
@@ -140,8 +137,8 @@ class WorkflowItemList extends AbstractHtmlContainerList
         foreach ($changeReader->getData() as $changeRow) {
 
             $workflowStatus = $changeRow->workflowStatus->getWorkflowStatusClassObject();
-            $workflowStatus->workflowId = $changeRow->workflowId;
-            $workflowStatus->workflowItemId = $changeRow->workflowItemId;
+            //$workflowStatus->workflowId = $changeRow->workflowId;
+            //$workflowStatus->workflowItemId = $changeRow->workflowItemId;
 
             $statusLabel = $workflowStatus->workflowStatus;
             if ($changeRow->draft) {

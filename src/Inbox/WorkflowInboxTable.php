@@ -18,7 +18,6 @@ use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
 
-
 class WorkflowInboxTable extends AbstractHtmlContainerList
 {
 
@@ -49,15 +48,27 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
 
         $header = new TableHeader($table);
         $header->addEmpty();
-        $header->addText($model->processId->label);
-        $header->addText($model->workflowNumber->label);
-        $header->addText($model->subject->label);
-        $header->addText($model->workflowStatusId->label);
-        $header->addText($model->closed->label);
-        $header->addText($model->deadline->label);
-        $header->addText('Assign to (User)');
+        //$header->addText($model->processId->label);
+        //$header->addText($model->workflowNumber->label);
+        //$header->addText($model->subject->label);
+
+        $header->addText('Prozess');
+        $header->addText('Nr.');
+        $header->addText('Betreff');
+        $header->addText('Status');
+        $header->addText('Abgeschlossen');
+        $header->addText('Erledigen bis');
+        $header->addText('Zugewiesen an Benutzer');
+        $header->addText('Zugewiesen an Benutzergruppe');
+        $header->addText('Ersteller');
+
+
+        //$header->addText($model->workflowStatusId->label);
+        //$header->addText($model->closed->label);
+        //$header->addText($model->deadline->label);
+        /*$header->addText('Assign to (User)');
         $header->addText('Assign to (Usergroup)');
-        $header->addText('Creator');
+        $header->addText('Creator');*/
 
         $header->addEmpty();
 

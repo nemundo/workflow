@@ -42,7 +42,7 @@ class ProcessSite extends AbstractSite
 
             $btn = new BootstrapButton($page);
             $btn->content = 'Erfassen';
-            $btn->site = WorkflowNewSite::$site;
+            $btn->site =clone( WorkflowNewSite::$site);
             $btn->site->addParameter(new ProcessParameter($process->processId));
 
         }

@@ -36,7 +36,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
         $workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
-        $workflowStatus->workflowId = $this->workflowId;
+        //$workflowStatus->workflowId = $this->workflowId;
 
 
         foreach ($workflowStatus->getFollowingStatusClassList() as $className) {
