@@ -5,6 +5,8 @@ namespace Nemundo\Workflow\Inbox;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
+use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\Data\Workflow\WorkflowModel;
 use Nemundo\Core\Directory\TextDirectory;
@@ -16,6 +18,8 @@ use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
+use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 
 
 class WorkflowInboxTable extends AbstractHtmlContainerList
@@ -30,6 +34,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
         $this->loadReader($workflowReader);
 
         $workflowReader->model->loadUser();
+        $workflowReader->model->loadUserModified();
 
         $workflowReader->paginationLimit = 30;
 
@@ -61,6 +66,11 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
         $header->addText('Zugewiesen an Benutzer');
         $header->addText('Zugewiesen an Benutzergruppe');
         $header->addText('Ersteller');
+        $header->addText('Letzte Änderung');
+
+        if ((new UsergroupMembership())->isMemberOfUsergroup(new WorkflowAdministratorUsergroup())) {
+            $header->addEmpty();
+        }
 
 
         //$header->addText($model->workflowStatusId->label);
@@ -83,7 +93,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             $row->addText($workflowRow->process->process);
             $row->addText($workflowRow->workflowNumber);
             $row->addText($workflowRow->subject);
-            $row->addText($workflowRow->workflowStatus->workflowStatus);
+            $row->addText($workflowRow->workflowStatus->workflowStatus . ': ' . $workflowRow->workflowStatus->workflowStatusText);
             $row->addYesNo($workflowRow->closed);
 
             if ($workflowRow->deadline !== null) {
@@ -115,10 +125,18 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             $row->addText($usergroup->getTextWithSeperator());
 
             $row->addText($workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
+            $row->addText($workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
 
             $site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
             $site->addParameter(new WorkflowParameter($workflowRow->id));
+
             $row->addClickableSite($site);
+
+            if ((new UsergroupMembership())->isMemberOfUsergroup(new WorkflowAdministratorUsergroup())) {
+                $site = clone(WorkflowDeleteSite::$site);
+                $site->addParameter(new WorkflowParameter($workflowRow->id));
+                $row->addHyperlinkIcon(new DeleteIcon(), $site);
+            }
 
         }
 

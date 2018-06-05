@@ -7,8 +7,10 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Design\Bootstrap\Form\BootstrapForm;
+use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\User\Access\UserAccessTrait;
+use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
@@ -17,6 +19,7 @@ use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignment;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentDelete;
+use Nemundo\Workflow\Data\UserNotification\UserNotification;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
@@ -40,6 +43,11 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
      * @var string
      */
     public $workflowStatusId;
+
+    /**
+     * @var
+     */
+    public $workflowStatusText;
 
     /**
      * @var string
@@ -94,9 +102,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var string
      */
-    protected $workflowId;
-// nur protected ???
-
+    public $workflowId;
 
     /**
      * @var string
@@ -173,6 +179,8 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $data->userId = $userId;
         $data->save();
 
+        $this->sendMail($userId);
+
     }
 
 
@@ -182,6 +190,66 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $delete = new UserAssignmentDelete();
         $delete->filter->andEqual($delete->model->workflowId, $this->workflowId);
         $delete->delete();
+
+    }
+
+
+    protected function clearUsergroupUserAssignment()
+    {
+        $this->clearUsergroupAssignment();
+        $this->clearUserAssignment();
+    }
+
+
+    protected function notificateUser($userId)
+    {
+
+        $data = new UserNotification();
+        $data->workflowId = $this->workflowId;
+        $data->userId = $userId;
+        $data->save();
+
+        $this->sendMail($userId);
+
+    }
+
+    protected function notificateUsergroup(AbstractUsergroup $usergroup)
+    {
+
+        // eMail
+
+       // foreach ($usergroup)
+
+
+    }
+
+
+    protected function sendMail($userId)
+    {
+
+
+        // Class WorkflowMail
+
+        $userRow = (new UserReader())->getRowById($userId);
+
+        $workflowReader = new WorkflowReader();
+        $workflowReader->model->loadProcess();
+        $workflowRow = $workflowReader->getRowById($this->workflowId);
+
+        $process = $workflowRow->process->getProcessClassObject();
+
+        // WorkflowView aus baseModel
+
+
+        $mail = new ResponsiveActionMailMessage();
+        $mail->addTo($userRow->email);
+        $mail->subject = $workflowRow->workflowNumber . ': ' . $workflowRow->subject;
+        $mail->actionText = $this->workflowStatusText;
+        $mail->actionUrlSite = $process->getApplicationSite($this->workflowId);
+        $mail->sendMail();
+
+
+
 
     }
 

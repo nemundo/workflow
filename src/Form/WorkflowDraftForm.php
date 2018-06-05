@@ -11,7 +11,8 @@ use Nemundo\Design\Bootstrap\FormElement\BootstrapSubmitButton;
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
-use Nemundo\Com\Form\DraftParameter;
+use Nemundo\Workflow\Parameter\DraftParameter;
+
 
 class WorkflowDraftForm extends AbstractSubmitForm
 {
@@ -49,11 +50,9 @@ class WorkflowDraftForm extends AbstractSubmitForm
 
         }
 
-
         $btn = new BootstrapSubmitButton($this);
         $btn->name = (new DraftParameter())->getParameterName();
         $btn->content = 'Entwurf';
-
 
         $submitButton = new BootstrapSubmitButton($this);
         $submitButton->name = 'save_btn';

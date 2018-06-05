@@ -56,7 +56,7 @@ class LastChangeSite extends AbstractSite
             $row->addText($changeRow->workflow->process->process);
             $row->addText($changeRow->workflow->workflowNumber);
             $row->addText($changeRow->workflow->subject);
-            $row->addText($changeRow->workflowStatus->workflowStatus);
+            $row->addText($changeRow->workflowStatus->workflowStatus . ': ' . $changeRow->workflowStatus->workflowStatusText);
             $row->addText($changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat());
 
             $site = $changeRow->workflow->process->getProcessClassObject()->getApplicationSite();

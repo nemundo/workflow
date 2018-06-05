@@ -6,7 +6,9 @@ namespace Nemundo\Workflow\Site;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxCreatedSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
+use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
 use Nemundo\Workflow\Site\Process\ProcessSite;
+use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
 use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
 
 
@@ -39,6 +41,10 @@ class WorkflowSite extends AbstractSite
         new WorkflowFormUpdateSite($this);
         new WorkflowDraftFreigabeSite($this);
         new WorkflowNewSite($this);
+        new WorkflowDeleteSite($this);
+
+        new NotificationDeleteSite($this);
+
 
     }
 

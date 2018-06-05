@@ -81,6 +81,21 @@ public $user;
 */
 public $dateTime;
 
+/**
+* @var \Nemundo\Model\Type\User\ModifiedUserType
+*/
+public $userModifiedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $userModified;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\ModifiedDateTimeType
+*/
+public $dateTimeModified;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WorkflowModel::class;
@@ -177,6 +192,20 @@ $this->dateTime->aliasFieldName = $this->dateTime->tableName . "_" . $this->date
 $this->dateTime->label = "Date Time";
 $this->addType($this->dateTime);
 
+$this->userModifiedId = new \Nemundo\Model\Type\User\ModifiedUserType();
+$this->userModifiedId->fieldName = "user_modified";
+$this->userModifiedId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->userModifiedId->aliasFieldName = $this->userModifiedId->tableName ."_".$this->userModifiedId->fieldName;
+$this->userModifiedId->label = "User Modified";
+$this->addType($this->userModifiedId);
+
+$this->dateTimeModified = new \Nemundo\Model\Type\DateTime\ModifiedDateTimeType();
+$this->dateTimeModified->fieldName = "date_time_modified";
+$this->dateTimeModified->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dateTimeModified->aliasFieldName = $this->dateTimeModified->tableName . "_" . $this->dateTimeModified->fieldName;
+$this->dateTimeModified->label = "Date Time Modified";
+$this->addType($this->dateTimeModified);
+
 }
 public function loadProcess() {
 if ($this->process == null) {
@@ -208,6 +237,17 @@ $this->user->tableName = $this->parentFieldName . "_" . $this->externalTableName
 $this->user->aliasFieldName = $this->user->tableName ."_".$this->user->fieldName;
 $this->user->label = "User";
 $this->addType($this->user);
+}
+return $this;
+}
+public function loadUserModified() {
+if ($this->userModified == null) {
+$this->userModified = new \Nemundo\User\Data\User\UserExternalType(null, $this->parentFieldName . "_user_modified");
+$this->userModified->fieldName = "user_modified";
+$this->userModified->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->userModified->aliasFieldName = $this->userModified->tableName ."_".$this->userModified->fieldName;
+$this->userModified->label = "User Modified";
+$this->addType($this->userModified);
 }
 return $this;
 }

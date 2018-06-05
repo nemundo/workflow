@@ -16,6 +16,11 @@ public $workflowStatus;
 */
 public $workflowStatusClass;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $workflowStatusText;
+
 protected function loadModel() {
 $this->tableName = "workflow_workflow_status";
 $this->aliasTableName = "workflow_workflow_status";
@@ -49,6 +54,13 @@ $this->workflowStatusClass->aliasFieldName = "workflow_workflow_status_workflow_
 $this->workflowStatusClass->label = "Workflow Status Class";
 $this->workflowStatusClass->allowNullValue = "";
 $this->workflowStatusClass->phpClassName = Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus::class;
+
+$this->workflowStatusText = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->workflowStatusText->tableName = "workflow_workflow_status";
+$this->workflowStatusText->fieldName = "workflow_status_text";
+$this->workflowStatusText->aliasFieldName = "workflow_workflow_status_workflow_status_text";
+$this->workflowStatusText->label = "Workflow Status Text";
+$this->workflowStatusText->allowNullValue = "";
 
 }
 }

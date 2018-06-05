@@ -58,7 +58,9 @@ class WorkflowFormUpdateSite extends AbstractSite
         $model = (new ModelFactory())->getModelByClassName($status->modelClassName);
 
 
-        if ($status->formClassName !== '') {
+        (new Debug())->write('form class name:' . $status->formClassName);
+
+        if ($status->formClassName !== null) {   //} '') {
 
             $workflowId = $statusChangeRow->workflowId;
 

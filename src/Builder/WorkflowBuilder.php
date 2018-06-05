@@ -104,6 +104,12 @@ class WorkflowBuilder extends AbstractBase
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
 
 
+        if ($this->process->baseModelClassName == $workflowStatus->modelClassName) {
+            $this->dataId = $this->workflowItemId;
+        }
+
+
+
         if ($this->dataId == null) {
 
 

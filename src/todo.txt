@@ -1,10 +1,13 @@
 Workflow Inbox:
 (new Message) à la WhatsApp
 
-Workflow Inbox
+- user assign/usergroup assign ???
 
-- last change
 
+- clearUserAssign --> immer ausführen (active/log etc.)
+
+WorkflowSearchForm
+    -> getFilter
 
 Meine erstellten Workflows
 
@@ -18,7 +21,7 @@ User Notification
 
 Usergroup Notification
 
-Ampel System
+
 
 Testing Workflow:
 
@@ -32,7 +35,7 @@ Task
 
 Doodle
 
-
+Meeting
 
 
 

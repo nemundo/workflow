@@ -17,6 +17,11 @@ public $workflowStatus;
 */
 public $workflowStatusClass;
 
+/**
+* @var string
+*/
+public $workflowStatusText;
+
 public function __construct() {
 parent::__construct();
 $this->model = new WorkflowStatusModel();
@@ -24,6 +29,7 @@ $this->model = new WorkflowStatusModel();
 public function update() {
 $this->typeValueList->setModelValue($this->model->workflowStatus, $this->workflowStatus);
 $this->typeValueList->setModelValue($this->model->workflowStatusClass, $this->workflowStatusClass);
+$this->typeValueList->setModelValue($this->model->workflowStatusText, $this->workflowStatusText);
 parent::update();
 }
 }

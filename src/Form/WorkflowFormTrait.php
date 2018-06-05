@@ -47,8 +47,8 @@ trait WorkflowFormTrait
 
             $builder = new WorkflowBuilder();
             $builder->process = $this->process;
-            $builder->workflowStatus = $this->workflowStatus;
-            $builder->dataId = $workflowItemId;
+            //$builder->workflowStatus = $this->workflowStatus;
+            $builder->workflowItemId = $workflowItemId;
             $workflowId = $builder->createItem();
 
 
@@ -59,9 +59,8 @@ trait WorkflowFormTrait
             $dataId = $data->save();
             */
 
-            $this->workflowStatus->draftMode = false;
-
-            $this->workflowStatus->runWorkflow($workflowId, $workflowItemId);
+            //$this->workflowStatus->draftMode = false;
+            //$this->workflowStatus->runWorkflow($workflowId, $workflowItemId);
 
         }
 

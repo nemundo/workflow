@@ -81,6 +81,21 @@ public $user;
 */
 public $dateTime;
 
+/**
+* @var \Nemundo\Model\Type\User\ModifiedUserType
+*/
+public $userModifiedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $userModified;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\ModifiedDateTimeType
+*/
+public $dateTimeModified;
+
 protected function loadModel() {
 $this->tableName = "workflow_workflow";
 $this->aliasTableName = "workflow_workflow";
@@ -188,6 +203,20 @@ $this->dateTime->label = "Date Time";
 $this->dateTime->allowNullValue = "";
 $this->dateTime->visible->form = false;
 
+$this->userModifiedId = new \Nemundo\Model\Type\User\ModifiedUserType($this);
+$this->userModifiedId->tableName = "workflow_workflow";
+$this->userModifiedId->fieldName = "user_modified";
+$this->userModifiedId->aliasFieldName = "workflow_workflow_user_modified";
+$this->userModifiedId->label = "User Modified";
+
+$this->dateTimeModified = new \Nemundo\Model\Type\DateTime\ModifiedDateTimeType($this);
+$this->dateTimeModified->tableName = "workflow_workflow";
+$this->dateTimeModified->fieldName = "date_time_modified";
+$this->dateTimeModified->aliasFieldName = "workflow_workflow_date_time_modified";
+$this->dateTimeModified->label = "Date Time Modified";
+$this->dateTimeModified->allowNullValue = "";
+$this->dateTimeModified->visible->form = false;
+
 }
 public function loadProcess() {
 if ($this->process == null) {
@@ -215,6 +244,16 @@ $this->user->fieldName = "user";
 $this->user->aliasFieldName = "workflow_workflow_user";
 $this->user->label = "User";
 $this->user->visible->form = false;
+}
+}
+public function loadUserModified() {
+if ($this->userModified == null) {
+$this->userModified = new \Nemundo\User\Data\User\UserExternalType($this, "workflow_workflow_user_modified");
+$this->userModified->tableName = "workflow_workflow";
+$this->userModified->fieldName = "user_modified";
+$this->userModified->aliasFieldName = "workflow_workflow_user_modified";
+$this->userModified->label = "User Modified";
+$this->userModified->visible->form = false;
 }
 }
 }

@@ -87,37 +87,45 @@ class WorkflowItemList extends AbstractHtmlContainerList
         }
 
 
-        $h3 = new H5($this);
-        $h3->content = 'User Assignment';
-
-        $list = new UnorderedList($this);
-
         $assignmentReader = new UserAssignmentReader();
         $assignmentReader->model->loadUser();
         $assignmentReader->filter->andEqual($assignmentReader->model->workflowId, $this->workflowId);
 
+        if ($assignmentReader->getCount() > 0) {
 
-        foreach ($assignmentReader->getData() as $assignmentRow) {
-            $list->addText($assignmentRow->user->login);
+            $h3 = new H5($this);
+            $h3->content = 'Benutzer Zuweisung';
+            //$h3->content = 'User Assignment';
+
+            $list = new UnorderedList($this);
+
+
+            foreach ($assignmentReader->getData() as $assignmentRow) {
+                $list->addText($assignmentRow->user->login);
+            }
         }
 
-
-        $h3 = new H5($this);
-        $h3->content = 'Usergroup Assignment';
-
-        $list = new UnorderedList($this);
 
         $assignmentReader = new UsergroupAssignmentReader();
         $assignmentReader->model->loadUsergroup();
         $assignmentReader->filter->andEqual($assignmentReader->model->workflowId, $this->workflowId);
 
-        foreach ($assignmentReader->getData() as $assignmentRow) {
-            $list->addText($assignmentRow->usergroup->usergroup);
+        if ($assignmentReader->getCount() > 0) {
+
+            $h3 = new H5($this);
+            $h3->content = 'Benutzergruppe Zuweisung';
+            //$h3->content = 'Usergroup Assignment';
+
+            $list = new UnorderedList($this);
+
+            foreach ($assignmentReader->getData() as $assignmentRow) {
+                $list->addText($assignmentRow->usergroup->usergroup);
+            }
+
         }
 
-
         $h3 = new H5($this);
-        $h3->content = 'Workflow History';
+        $h3->content = 'Workflow Verlauf';
 
 
         $row = new BootstrapRow($this);

@@ -12,6 +12,7 @@ use Nemundo\Model\Form\AbstractModelForm;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowStartForm extends BootstrapModelForm
@@ -32,6 +33,7 @@ class WorkflowStartForm extends BootstrapModelForm
         //$workflowReader = new WorkflowReader();
         //$workflowReader->model->loadWorkflowStatus();
 
+        $this->workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
         $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
 
         return parent::getHtml();
@@ -50,8 +52,6 @@ class WorkflowStartForm extends BootstrapModelForm
         //$builder->workflowStatus = $this->workflowStatus;
         //$builder->dataId = $workflowItemId; // $dataId;
         $builder->createItem();
-
-
 
 
         return $workflowItemId;

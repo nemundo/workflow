@@ -69,6 +69,7 @@ abstract class AbstractProcess extends AbstractBaseClass
     public function getApplicationSite($dataId = null)
     {
 
+
         $site = clone($this->site);
         $site->addParameter($this->parameter->setValue($dataId));
 
