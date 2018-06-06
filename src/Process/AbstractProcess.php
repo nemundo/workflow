@@ -43,7 +43,7 @@ abstract class AbstractProcess extends AbstractBaseClass
     /**
      * @var string
      */
-    public $prefix;
+    public $prefix = '';
 
     /**
      * @var string

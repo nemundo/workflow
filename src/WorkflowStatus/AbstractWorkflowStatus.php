@@ -201,7 +201,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
-    protected function notificateUser($userId)
+    protected function notificateUser($userId, $sendMail = false)
     {
 
         $data = new UserNotification();
@@ -209,7 +209,9 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $data->userId = $userId;
         $data->save();
 
-        $this->sendMail($userId);
+        if ($sendMail) {
+            $this->sendMail($userId);
+        }
 
     }
 
@@ -218,7 +220,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
         // eMail
 
-       // foreach ($usergroup)
+        // foreach ($usergroup)
 
 
     }
@@ -247,8 +249,6 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $mail->actionText = $this->workflowStatusText;
         $mail->actionUrlSite = $process->getApplicationSite($this->workflowId);
         $mail->sendMail();
-
-
 
 
     }

@@ -38,13 +38,6 @@ class WorkflowBuilder extends AbstractBase
      */
     public $workflowItemId;
 
-
-    /**
-     * @var string
-     */
-    //public $subject;
-
-
     /**
      * @var string
      */
@@ -54,28 +47,6 @@ class WorkflowBuilder extends AbstractBase
      * @var string
      */
     public $subject;
-
-    /**
-     * @var AbstractWorkflowStatus
-     */
-    // public $workflowStatus;
-
-
-//    abstract protected function loadApplication();
-
-    public function __construct()
-    {
-        $this->loadApplication();
-    }
-
-
-    //  abstract public function createItem();
-
-
-    protected function loadApplication()
-    {
-
-    }
 
 
     public function createItem()
@@ -136,7 +107,7 @@ class WorkflowBuilder extends AbstractBase
 
             $number++;
 
-            $workflowNumber = $this->process->prefix . '-' . $number;
+            $workflowNumber = $this->process->prefix . $number;
 
         }
 
@@ -156,10 +127,6 @@ class WorkflowBuilder extends AbstractBase
         $update->typeValueList->setModelValue($baseModel->workflow, $workflowId);
         $update->updateById($this->dataId);
 
-
-        //$this->workflowStatus->runWorkflow($workflowId, $this->dataId);
-
-        //$workflowStatus->runWorkflow($workflowId, $this->dataId);
         $workflowStatus->runWorkflow($workflowId, $this->workflowItemId);
 
 

@@ -11,6 +11,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\WorkflowNewSite;
+use Nemundo\Workflow\Widget\ProcessOverviewWidget;
 
 class ProcessSite extends AbstractSite
 {
@@ -27,25 +28,8 @@ class ProcessSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $processReader = new ProcessReader();
-        $processReader->addOrder($processReader->model->process);
 
-        foreach ($processReader->getData() as $processRow) {
-
-            $process = $processRow->getProcessClassObject();
-
-            $title = new H3($page);
-            $title->content = $process->process;
-
-            $p = new Paragraph($page);
-            $p->content = $process->description;
-
-            $btn = new BootstrapButton($page);
-            $btn->content = 'Erfassen';
-            $btn->site =clone( WorkflowNewSite::$site);
-            $btn->site->addParameter(new ProcessParameter($process->processId));
-
-        }
+        new ProcessOverviewWidget($page);
 
         $page->render();
 
