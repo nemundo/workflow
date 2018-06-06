@@ -150,7 +150,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
-    protected function assignUsergroup(AbstractUsergroup $usergroup)
+    protected function assignUsergroup(AbstractUsergroup $usergroup, $sendMail = false)
     {
 
         $data = new UsergroupAssignment();
@@ -171,7 +171,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
-    protected function assignUser($userId)
+    protected function assignUser($userId, $sendMail = false)
     {
 
         $data = new UserAssignment();
@@ -179,7 +179,9 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $data->userId = $userId;
         $data->save();
 
-        $this->sendMail($userId);
+        if ($sendMail) {
+            $this->sendMail($userId);
+        }
 
     }
 
@@ -215,13 +217,25 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
     }
 
-    protected function notificateUsergroup(AbstractUsergroup $usergroup)
+
+    protected function notificateUsergroup(AbstractUsergroup $usergroup, $sendMail = false)
     {
 
-        // eMail
 
+        //$data = new UsergroupNot
+
+        // eMail
         // foreach ($usergroup)
 
+
+    }
+
+
+    protected function notificateCreator()
+    {
+
+        $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
+        $this->notificateUser($workflowRow->userId);
 
     }
 

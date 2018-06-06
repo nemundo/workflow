@@ -142,6 +142,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
         $changeReader->model->loadWorkflowStatus();
         $changeReader->model->loadUser();
         $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
+        $changeReader->addOrder($changeReader->model->itemOrder);
         foreach ($changeReader->getData() as $changeRow) {
 
             $workflowStatus = $changeRow->workflowStatus->getWorkflowStatusClassObject();
