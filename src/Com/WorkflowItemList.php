@@ -21,6 +21,7 @@ use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\Site\WorkflowActionPanelSite;
 use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
 
@@ -191,14 +192,23 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 $btn = new BootstrapButton($colRight);
                 $btn->content = 'Edit';
 
+                if ($workflowStatus->actionPanelClassName !== null) {
+                    $btn->site = clone(WorkflowActionPanelSite::$site);
+                    $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));
+                }
+
+
+
                 if ($workflowStatus->formSite !== null) {
                     $btn->site = clone($workflowStatus->formSite);
                     $btn->site->addParameter(new WorkflowParameter($changeRow->workflowId));
 
                 } else {
-                    $btn->site = clone(WorkflowFormUpdateSite::$site);
-                    $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));
+                //    $btn->site = clone(WorkflowFormUpdateSite::$site);
+                //    $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));
                 }
+
+
 
                 $btn = new BootstrapButton($colRight);
                 $btn->content = 'Entwurf freigeben';

@@ -1,7 +1,31 @@
+- keine uniqueId
+- speichern des class name
+
+Nachteil:
+- export der application
+- ändern des namespace
+- refactoring
+
+Workflow Search
+
+
+Notification Item
+ - bilder
+ - stream
+
+
+
+
+
+
 Workflow Inbox:
 (new Message) à la WhatsApp
 
 - user assign/usergroup assign ???
+
+
+notification/assign zusammenführen --> nein, da notification gelöscht werden kann
+
 
 
 - clearUserAssign --> immer ausführen (active/log etc.)
@@ -16,6 +40,8 @@ Process Category
 links/rechts mit Gruppierung der Prozesse
 
 
+Notification auf Status Change !!!
+
 
 User Notification
 
@@ -25,9 +51,12 @@ Usergroup Notification
 
 Testing Workflow:
 
+billing hours
+
 Flying Around (Pilot, Airport mit Active Model etc.)
 
 Intranet News Blog
+-gelesen
 
 Breaking News
 
@@ -37,8 +66,7 @@ Doodle
 
 Meeting
 
-
-
 Team Workflow
 
-
+Video (10vor10)
+--> geht das???

@@ -27,6 +27,9 @@ class WorkflowInboxSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+
+
+
         $table = new WorkflowInboxTable($page);
         $table->addUserIdFilter((new UserInformation())->getUserId());
 

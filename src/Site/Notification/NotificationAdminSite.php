@@ -1,8 +1,16 @@
 <?php
 
-namespace Nemundo\Workflow\Widget;
+namespace Nemundo\Workflow\Site\Notification;
 
 
+use Nemundo\Com\FormBuilder\SearchForm;
+use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\User\Data\User\UserListBox;
+use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Workflow\Data\UserNotification\UserNotificationDelete;
+use Nemundo\Workflow\Parameter\NotificationParameter;
 use Nemundo\Admin\Widget\AbstractAdminWidget;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -11,22 +19,55 @@ use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;
-use Nemundo\Workflow\Parameter\NotificationParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
+use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 
-class WorkflowNotificationWidget extends AbstractAdminWidget
+
+class NotificationAdminSite extends AbstractSite
 {
 
-    public function getHtml()
+    /**
+     * @var NotificationAdminSite
+     */
+    public static $site;
+
+    protected function loadSite()
     {
 
-        // Benachrichtigung
-        //$this->widgetTitle = 'Workflow Notification';
-        $this->widgetTitle = 'Benachrichtigungen';
+        $this->title = 'Notification (Admin)';
+        $this->url = 'notification-admin';
+        $this->restricted = true;
+        $this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
+
+    }
 
 
-        $table = new BootstrapClickableTable($this);
+    protected function registerSite()
+    {
+        NotificationAdminSite::$site = $this;
+    }
+
+
+    public function loadContent()
+    {
+
+        $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+
+
+        // User Search
+        // nur Workflow Admin
+
+        $form = new SearchForm($page);
+
+        $formRow = new BootstrapFormRow($form);
+
+        $userListBox = new UserListBox($formRow);
+        $userListBox->submitOnChange = true;
+        $userListBox->value = $userListBox->getValue();
+
+
+        $table = new BootstrapClickableTable($page);
 
 
         $header = new TableHeader($table);
@@ -39,11 +80,13 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
         $notificationReader->model->loadWorkflow();
         $notificationReader->model->workflow->loadProcess();
         $notificationReader->model->workflow->loadWorkflowStatus();
-        $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
+
+        //$notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
+        $notificationReader->filter->andEqual($notificationReader->model->userId, $userListBox->getValue());
+
+
         //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
         $notificationReader->addOrder($notificationReader->model->workflow->itemOrder, SortOrder::DESCENDING);
-
-        $notificationReader->limit = 10;
 
         foreach ($notificationReader->getData() as $notificationRow) {
 
@@ -67,9 +110,9 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
 
         }
 
-        return parent::getHtml();
+
+        $page->render();
 
     }
-
 
 }

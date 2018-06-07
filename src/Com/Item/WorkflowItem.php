@@ -82,7 +82,7 @@ class WorkflowItem extends Div
         }
 
 
-        $this->headerDiv->content = $this->title .$draftText. ': ' . $this->user . ' ' . $this->dateTime->getShortDateTimeLeadingZeroFormat();
+     //   $this->headerDiv->content = $this->title .$draftText. ': ' . $this->user . ' ' . $this->dateTime->getShortDateTimeLeadingZeroFormat();
 
         parent::addCom($this->headerDiv);
         parent::addCom($this->contentDiv);

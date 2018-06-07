@@ -12,6 +12,7 @@ use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Builder\WorkflowSubject;
@@ -23,9 +24,8 @@ use Nemundo\Workflow\Data\UserNotification\UserNotification;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
-use Nemundo\Workflow\Com\WorkflowItem;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Com\Form\DraftParameter;
+use Nemundo\Workflow\Com\Item\WorkflowItem;
+
 
 // Nemundo\App\Status\AbstractWorkflowStatus
 
@@ -68,6 +68,12 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
      * @var BootstrapForm
      */
     public $formClassName;
+
+    /**
+     * @var AbstractActionPanel
+     */
+    public $actionPanelClassName;
+
 
     /**
      * @var AbstractSite
@@ -206,6 +212,9 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function notificateUser($userId, $sendMail = false)
     {
 
+
+        // class WorkfowNotification
+
         $data = new UserNotification();
         $data->workflowId = $this->workflowId;
         $data->userId = $userId;
@@ -221,12 +230,23 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function notificateUsergroup(AbstractUsergroup $usergroup, $sendMail = false)
     {
 
+        // Notification kann gelöscht werden!!!
 
-        //$data = new UsergroupNot
+        foreach ($usergroup->getUserList() as $userRow) {
+            $this->notificateUser($userRow->id, $sendMail);
+        }
 
-        // eMail
-        // foreach ($usergroup)
+        /*
+        $data = new UsergroupNotification();
+        $data->workflowId = $this->workflowId;
+        $data->usergroupId = $usergroup->usergroupId;
+        $data->save();
 
+        if ($sendMail) {
+            foreach ($usergroup->getUserList() as $userRow) {
+                $this->sendMail($userRow->id);
+            }
+        }*/
 
     }
 
@@ -306,7 +326,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
         $draft = $this->draftMode;
         $data->draft = $draft;
-        $data->save();
+        $statusChangeId=$data->save();
 
 
         // Workflow
@@ -326,6 +346,9 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
 
         $this->onChange($workflowId, $workflowItemId);
+
+
+        return $statusChangeId;
 
     }
 

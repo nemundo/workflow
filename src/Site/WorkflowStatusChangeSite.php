@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site;
 
 use Nemundo\Com\Html\Basic\H2;
+use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
@@ -10,6 +11,7 @@ use Nemundo\Workflow\Com\WorkflowTitle;
 use Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 use Nemundo\Workflow\Form\WorkflowForm;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 
 class WorkflowStatusChangeSite extends AbstractSite
@@ -45,12 +47,34 @@ class WorkflowStatusChangeSite extends AbstractSite
         $workflowParameter = new WorkflowParameter();
         $workflowId = $workflowParameter->getValue();
 
+
+        // Action Panel Redirect
+        if ($workflowStatus->actionPanelClassName !== null) {
+
+            $workflowStatus->draftMode = true;
+            $statusChangeId = $workflowStatus->runWorkflow($workflowId);
+
+            $site = clone(WorkflowActionPanelSite::$site);
+            $site->addParameter(new WorkflowStatusChangeParameter($statusChangeId));
+            $site->redirect();
+
+        }
+
+
         if ($workflowStatus->modelClassName !== null) {
 
             $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
             $title = new WorkflowTitle($page);
             $title->workflowId = $workflowId;
+
+
+            /*
+            $link = new Hyperlink($page);
+            $link->content = 'Zum Workflow';
+            $link->site = clone(WorkflowItemSite::$site);
+            $link->site->addParameter($workflowParameter);*/
+
 
             $h2 = new H2($page);
             $h2->content = $workflowStatus->workflowStatus;
@@ -66,6 +90,7 @@ class WorkflowStatusChangeSite extends AbstractSite
                 $form->workflowId = $workflowId;
 
             } else {
+
                 $form = new WorkflowForm($page);
                 $form->workflowStatus = $workflowStatus;
                 $form->workflowId = $workflowId;

@@ -4,10 +4,12 @@ namespace Nemundo\Workflow\Install;
 
 use Nemundo\Dev\Application\Setup\ApplicationSetup;
 use Nemundo\Dev\Script\AbstractScript;
+use Nemundo\Dev\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Data\WorkflowCollection;
+use Nemundo\Workflow\Script\WorkflowClean;
 use Nemundo\Workflow\Setup\WorkflowStatusSetup;
 use Nemundo\Workflow\Template\WorkflowStatus\ApprovalWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\CommentWorkflowStatus;
@@ -41,6 +43,9 @@ class WorkflowInstall extends AbstractScript
         $setup = new UsergroupSetup();
         $setup->addUsergroup(new WorkflowUsergroup());
         $setup->addUsergroup(new WorkflowAdministratorUsergroup());
+
+        $setup = new ScriptSetup();
+        $setup->addScript(new WorkflowClean());
 
     }
 

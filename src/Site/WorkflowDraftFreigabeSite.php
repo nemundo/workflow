@@ -8,6 +8,7 @@ use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeUpdate;
+use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 
 class WorkflowDraftFreigabeSite extends AbstractSite
@@ -34,7 +35,13 @@ class WorkflowDraftFreigabeSite extends AbstractSite
     {
 
         $statusChangeId = (new WorkflowStatusChangeParameter())->getValue();
-        $row = (new WorkflowStatusChangeReader())->getRowById($statusChangeId);
+
+        $changeReader = new WorkflowStatusChangeReader();
+        $changeReader->model->loadWorkflow();
+        $changeReader->model->workflow->loadProcess();
+        $changeRow = $changeReader->getRowById($statusChangeId);
+
+        $process = $changeRow->workflow->process->getProcessClassObject();
 
         $update = new WorkflowStatusChangeUpdate();
         $update->draft = false;
@@ -42,9 +49,14 @@ class WorkflowDraftFreigabeSite extends AbstractSite
 
         $update = new WorkflowUpdate();
         $update->draft = false;
-        $update->updateById($row->workflowId);
+        $update->updateById($changeRow->workflowId);
 
-        (new UrlReferer())->redirect();
+        $site = clone($process->site);
+        $site->addParameter(new WorkflowParameter($changeRow->workflowId));
+        $site->redirect();
+
+
+        //(new UrlReferer())->redirect();
 
 
     }

@@ -34,6 +34,7 @@ abstract class AbstractProcess extends AbstractBaseClass
      * @var AbstractSite
      */
     public $site;
+    // itemSite
 
     /**
      * @var AbstractUrlParameter

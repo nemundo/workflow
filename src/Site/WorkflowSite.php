@@ -7,6 +7,8 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxCreatedSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
+use Nemundo\Workflow\Site\Notification\NotificationAdminSite;
+use Nemundo\Workflow\Site\Notification\NotificationSite;
 use Nemundo\Workflow\Site\Process\ProcessSite;
 use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
 use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
@@ -32,10 +34,12 @@ class WorkflowSite extends AbstractSite
         new WorkflowInboxSite($this);
         new WorkflowInboxCreatedSite($this);
         new WorkflowSearchEngineSite($this);
+        new NotificationSite($this);
         new ProcessSite($this);
         new LastChangeSite($this);
 
         new WorkflowStatusChangeSite($this);
+        new WorkflowActionPanelSite($this);
         new WorkflowSubscriptionSite($this);
         new WorkflowItemSite($this);
         new WorkflowFormUpdateSite($this);
@@ -43,7 +47,10 @@ class WorkflowSite extends AbstractSite
         new WorkflowNewSite($this);
         new WorkflowDeleteSite($this);
 
+        new NotificationAdminSite($this);
         new NotificationDeleteSite($this);
+
+        new UserAssignmentAdminSite($this);
 
 
     }
