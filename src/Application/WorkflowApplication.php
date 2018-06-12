@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Application;
 
 
-use Nemundo\Dev\Application\Type\AbstractApplication;
+use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\Workflow\Data\WorkflowCollection;
 
 class WorkflowApplication extends AbstractApplication

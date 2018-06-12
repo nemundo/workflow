@@ -9,22 +9,22 @@ public $id;
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
-public $workflowId;
-
-/**
-* @var \Nemundo\Workflow\Data\Workflow\WorkflowExternalType
-*/
-public $workflow;
-
-/**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
 public $userId;
 
 /**
 * @var \Nemundo\User\Data\User\UserExternalType
 */
 public $user;
+
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $statusChangeId;
+
+/**
+* @var \Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeExternalType
+*/
+public $statusChange;
 
 protected function loadType() {
 parent::loadType();
@@ -38,13 +38,6 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
-$this->workflowId = new \Nemundo\Model\Type\Id\IdType();
-$this->workflowId->fieldName = "workflow";
-$this->workflowId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->workflowId->aliasFieldName = $this->workflowId->tableName ."_".$this->workflowId->fieldName;
-$this->workflowId->label = "Workflow";
-$this->addType($this->workflowId);
-
 $this->userId = new \Nemundo\Model\Type\Id\IdType();
 $this->userId->fieldName = "user";
 $this->userId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -52,17 +45,13 @@ $this->userId->aliasFieldName = $this->userId->tableName ."_".$this->userId->fie
 $this->userId->label = "User";
 $this->addType($this->userId);
 
-}
-public function loadWorkflow() {
-if ($this->workflow == null) {
-$this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowExternalType(null, $this->parentFieldName . "_workflow");
-$this->workflow->fieldName = "workflow";
-$this->workflow->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->workflow->aliasFieldName = $this->workflow->tableName ."_".$this->workflow->fieldName;
-$this->workflow->label = "Workflow";
-$this->addType($this->workflow);
-}
-return $this;
+$this->statusChangeId = new \Nemundo\Model\Type\Id\IdType();
+$this->statusChangeId->fieldName = "status_change";
+$this->statusChangeId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->statusChangeId->aliasFieldName = $this->statusChangeId->tableName ."_".$this->statusChangeId->fieldName;
+$this->statusChangeId->label = "Status Change";
+$this->addType($this->statusChangeId);
+
 }
 public function loadUser() {
 if ($this->user == null) {
@@ -72,6 +61,17 @@ $this->user->tableName = $this->parentFieldName . "_" . $this->externalTableName
 $this->user->aliasFieldName = $this->user->tableName ."_".$this->user->fieldName;
 $this->user->label = "User";
 $this->addType($this->user);
+}
+return $this;
+}
+public function loadStatusChange() {
+if ($this->statusChange == null) {
+$this->statusChange = new \Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeExternalType(null, $this->parentFieldName . "_status_change");
+$this->statusChange->fieldName = "status_change";
+$this->statusChange->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->statusChange->aliasFieldName = $this->statusChange->tableName ."_".$this->statusChange->fieldName;
+$this->statusChange->label = "Status Change";
+$this->addType($this->statusChange);
 }
 return $this;
 }

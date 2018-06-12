@@ -46,8 +46,8 @@ class WorkflowItemSite extends AbstractSite
 
         $application = $workflowRow->process->getProcessClassObject();
 
-        $title = new H1($page);
-        $title->content = $application->process;
+        //$title = new H1($page);
+        //$title->content = $application->process;
 
         $workflow = new WorkflowItemList($page);
         $workflow->process = $application;

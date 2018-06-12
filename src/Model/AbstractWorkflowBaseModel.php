@@ -11,7 +11,7 @@ abstract class AbstractWorkflowBaseModel extends AbstractModel
 {
 
     /**
-     * @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+     * @var ExternalUniqueIdType
      */
     public $workflowId;
 
@@ -23,6 +23,7 @@ abstract class AbstractWorkflowBaseModel extends AbstractModel
 
     public function __construct()
     {
+
         parent::__construct();
 
         $fieldName = 'workflow';
@@ -32,28 +33,15 @@ abstract class AbstractWorkflowBaseModel extends AbstractModel
         $this->workflowId->tableName = $this->tableName;
         $this->workflowId->fieldName = $fieldName;
         $this->workflowId->aliasFieldName = $aliasFieldName;
-        //$this->workflowId->label = "Workflow";
-
 
         $this->workflow = new WorkflowExternalType($this, $aliasFieldName);
-        //$this->workflow->label = 'Workflow';
+        $this->workflow->label = 'Nr.';
         $this->workflow->tableName = $this->tableName;
         $this->workflow->fieldName = $fieldName;
         $this->workflow->aliasFieldName = $aliasFieldName;
         $this->workflow->visible->form = false;
         $this->workflow->visible->view = false;
 
-        /*
-                $this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowExternalType($this, "testapp_anmeldung_workflow_workfow");
-                $this->workflow->tableName = "testapp_anmeldung_workflow";
-                $this->workflow->fieldName = "workfow";
-                $this->workflow->aliasFieldName = "testapp_anmeldung_workflow_workfow";
-                $this->workflow->label = "";
-                $this->workflow->visible->form = false;
-                $this->workflow->visible->view = false;*/
-
-
     }
-
 
 }

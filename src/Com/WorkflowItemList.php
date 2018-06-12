@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\Com;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
@@ -11,12 +12,17 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Workflow\Com\Button\WorkflowActionButton;
+use Nemundo\Workflow\Com\Item\DataListWorkflowItem;
 use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
+use Nemundo\Workflow\Com\Item\WorkflowItem;
+use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
+use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
@@ -24,9 +30,12 @@ use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
 use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
+use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 
 
-class WorkflowItemList extends AbstractHtmlContainerList
+class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 {
 
     /**
@@ -37,7 +46,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
     /**
      * @var string
      */
-    public $workflowId;
+    //public $workflowId;
 
     /**
      * @var bool
@@ -53,13 +62,16 @@ class WorkflowItemList extends AbstractHtmlContainerList
     public function getHtml()
     {
 
+        $this->process = (new \Nemundo\Workflow\Builder\WorkflowItem($this->workflowId))->getProcess();
+
+
         if (!$this->checkProperty('workflowId')) {
             exit;
         }
 
-        if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
+        /*if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
             exit;
-        }
+        }*/
 
 
         $title = new WorkflowTitle($this);
@@ -155,22 +167,117 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 $statusLabel .= ' (Entwurf)';
             }
 
-
             $list->addHyperlink($statusLabel, '#' . $changeRow->id);
 
-            if ($workflowStatus->workflowItemClassName !== null) {
+
+            if ($workflowStatus->isObjectOfClass(AbstractChangeWorkflowStatus::class)) {
+
+                $div = new Div($colRight);
+                $div->addCssClass('card');
+                $div->addCssClass('mb-3');
+
+                $headerDiv = new Div($div);
+                $headerDiv->addCssClass('card-header');
+                $headerDiv->content = $workflowStatus->workflowStatus . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+
+                $contentDiv = new Div($div);
+                $contentDiv->addCssClass('card-body');
+
+                //$contentDiv->content = $workflowStatus->workflowStatusText;
+
 
                 /** @var WorkflowItem $item */
-                $item = new $workflowStatus->workflowItemClassName($colRight);
+                $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                $item->workflowItemId = $changeRow->workflowItemId;
+
+            }
+
+
+            if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)) {
+
+
+                $div = new Div($colRight);
+                $div->addCssClass('card');
+                $div->addCssClass('mb-3');
+
+                $headerDiv = new Div($div);
+                $headerDiv->addCssClass('card-header');
+                $headerDiv->content = $workflowStatus->workflowStatus . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+
+
+                $contentDiv = new Div($div);
+                $contentDiv->addCssClass('card-body');
+
+                //$contentDiv->content = $workflowStatus->workflowItemClassName;
+
+
+                /** @var WorkflowItem $item */
+                $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                $item->workflowItemId = $changeRow->workflowItemId;
+
+
+            }
+
+
+
+
+            if ($workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+
+
+                $div = new Div($colRight);
+                $div->addCssClass('card');
+                $div->addCssClass('mb-3');
+
+                $headerDiv = new Div($div);
+                $headerDiv->addCssClass('card-header');
+                $headerDiv->content = $workflowStatus->workflowStatus . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+
+                $contentDiv = new Div($div);
+                $contentDiv->addCssClass('card-body');
+
+                //$contentDiv->content = $workflowStatus->workflowItemClassName;
+
+                /** @var DataListWorkflowItem $item */
+                $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                $item->statusChangeId = $changeRow->id;
+
+            }
+
+
+
+            /*
+            if ($workflowStatus->workflowItemClassName !== null) {
+
+                $div = new Div($colRight);
+                $div->addCssClass('card');
+                $div->addCssClass('mb-3');
+
+                $headerDiv = new Div($div);
+                $headerDiv->addCssClass('card-header');
+                $headerDiv->content = $workflowStatus->workflowStatus. ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+
+
+                $contentDiv = new Div($div);
+                $contentDiv->addCssClass('card-body');
+
+
+                /** @var WorkflowItem $item */
+            /*    $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                $item->workflowItemId = $changeRow->workflowItemId;
+
+/*
                 $item->id = $changeRow->id;
                 $item->title = $workflowStatus->workflowStatus;
                 $item->workflowId = $changeRow->workflowId;
                 $item->workflowItemId = $changeRow->workflowItemId;
                 $item->user = $changeRow->user->displayName;
                 $item->dateTime = $changeRow->dateTime;
-                $item->draft = $changeRow->draft;
+                $item->draft = $changeRow->draft;*/
 
-            } else {
+
+            //}
+
+            /*else {
 
                 $item = new WorkflowDefaultWorkflowItem($colRight);
                 $item->id = $changeRow->id;
@@ -185,8 +292,10 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 $item->dateTime = $changeRow->dateTime;
                 $item->draft = $changeRow->draft;
 
-            }
+            }*/
 
+
+            /*
             if ($changeRow->draft) {
 
                 $btn = new BootstrapButton($colRight);
@@ -215,7 +324,7 @@ class WorkflowItemList extends AbstractHtmlContainerList
                 $btn->site = clone(WorkflowDraftFreigabeSite::$site);
                 $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));
 
-            }
+            }*/
 
         }
 

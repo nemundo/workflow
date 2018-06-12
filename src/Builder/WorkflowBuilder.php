@@ -9,9 +9,11 @@ use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\Data\Workflow\WorkflowValue;
+use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\Search\SearchIndexBuilder;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowBuilder extends AbstractBase
@@ -80,9 +82,7 @@ class WorkflowBuilder extends AbstractBase
         }
 
 
-
         if ($this->dataId == null) {
-
 
             $data = new ModelData();
             $data->model = $baseModel;
@@ -91,31 +91,37 @@ class WorkflowBuilder extends AbstractBase
         }
 
 
-        $workflowNumber = $this->workflowNumber;
-        $number = 0;
+        $data = new Workflow();
+        $data->processId = $this->process->processId;
 
-        if ($workflowNumber == null) {
+        $workflowNumber = null;
+        if ($this->process->createWorkflowNumber) {
+            $workflowNumber = $this->workflowNumber;
+            $number = 0;
 
-            $value = new WorkflowValue();
-            $value->field = $value->model->number;
-            $value->filter->andEqual($value->model->processId, $this->process->processId);
-            $number = $value->getMaxValue();
+            if ($workflowNumber == null) {
 
-            if ($number == 0) {
-                $number = 1000;
+                $value = new WorkflowValue();
+                $value->field = $value->model->number;
+                $value->filter->andEqual($value->model->processId, $this->process->processId);
+                $number = $value->getMaxValue();
+
+                if ($number == 0) {
+                    $number = 1000;
+                }
+
+                $number++;
+
+                $workflowNumber = $this->process->prefix . $number;
+
+
             }
 
-            $number++;
-
-            $workflowNumber = $this->process->prefix . $number;
+            $data->number = $number;
+            $data->workflowNumber = $workflowNumber;
 
         }
 
-
-        $data = new Workflow();
-        $data->processId = $this->process->processId;
-        $data->number = $number;
-        $data->workflowNumber = $workflowNumber;
         $data->subject = $this->subject;
         $data->workflowStatusId = $workflowStatus->workflowStatusId;
         $data->dataId = $this->dataId;
@@ -127,13 +133,23 @@ class WorkflowBuilder extends AbstractBase
         $update->typeValueList->setModelValue($baseModel->workflow, $workflowId);
         $update->updateById($this->dataId);
 
-        $workflowStatus->runWorkflow($workflowId, $this->workflowItemId);
+        //$workflowStatus->runWorkflow($workflowId, $this->workflowItemId);
+        $action = new WorkflowStatusChangeBuilder();
+        $action->workflowStatus = $workflowStatus;
+        $action->workflowId = $workflowId;
+        $action->workflowItemId = $this->workflowItemId;
+        $action->changeStatus();
 
+
+        if ($this->process->createWorkflowNumber) {
+            $searchIndex = new SearchIndexBuilder();
+            $searchIndex->process = $this->process;
+            $searchIndex->workflowId = $workflowId;
+            $searchIndex->addWord($workflowNumber);
+        }
 
         return $workflowId;
 
-
     }
-
 
 }

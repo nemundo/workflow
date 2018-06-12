@@ -11,6 +11,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\AbstractModelForm;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
+use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
@@ -45,7 +46,15 @@ class WorkflowForm extends BootstrapModelForm
         $workflowItemId = parent::onSubmit();
 
         if ($this->workflowId !== null) {
-            $this->workflowStatus->runWorkflow($this->workflowId, $workflowItemId);
+
+            $change = new WorkflowStatusChangeBuilder();
+            $change->workflowStatus = $this->workflowStatus;
+            $change->workflowId = $this->workflowId;
+            $change->workflowItemId= $workflowItemId;
+            $change->changeStatus();
+
+
+            //$this->workflowStatus->onChange($this->workflowId, $workflowItemId);
 
         } else {
 
@@ -61,6 +70,7 @@ class WorkflowForm extends BootstrapModelForm
             $builder->process = $this->process;
             //$builder->workflowStatus = $this->workflowStatus;
             $builder->dataId = $workflowItemId; // $dataId;
+            $builder->workflowItemId = $workflowItemId;
             $builder->createItem();
 
 

@@ -15,7 +15,11 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Builder\WorkflowSubject;
+use Nemundo\Workflow\Action\DeadlineAction;
+use Nemundo\Workflow\Action\UserAssignmentAction;
+use Nemundo\Workflow\Action\WorkflowSubject;
+use Nemundo\Workflow\Com\Item\AbstractWorkflowItem;
+use Nemundo\Workflow\Com\Item\DataWorkflowItem;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignment;
@@ -25,9 +29,9 @@ use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
 use Nemundo\Workflow\Com\Item\WorkflowItem;
+use Nemundo\Workflow\Notification\WorkflowNotification;
+use Nemundo\Workflow\Search\SearchIndexBuilder;
 
-
-// Nemundo\App\Status\AbstractWorkflowStatus
 
 abstract class AbstractWorkflowStatus extends AbstractBaseClass
 {
@@ -57,17 +61,17 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var AbstractModel
      */
-    public $modelClassName;
+    //public $modelClassName;
 
     /**
-     * @var WorkflowItem
+     * @var AbstractWorkflowItem
      */
-    public $workflowItemClassName;
+    public $workflowItemClassName;  // = ModelWorkflowItem::class;
 
     /**
      * @var BootstrapForm
      */
-    public $formClassName;
+    //public $formClassName;
 
     /**
      * @var AbstractActionPanel
@@ -78,7 +82,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var AbstractSite
      */
-    public $formSite;
+    //public $formSite;
 
     /**
      * @var bool
@@ -89,11 +93,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
      * @var bool
      */
     public $closingWorkflow = false;
-
-    /**
-     * @var AbstractUrlParameter
-     */
-    //public $parameter;
+// closeWorkflow
 
     /**
      * @var bool
@@ -103,12 +103,17 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var string
      */
-    public $notificationMessage = '';
+    //public $notificationMessage = '';
 
     /**
      * @var string
      */
     public $workflowId;
+
+    /**
+     * @var string
+     */
+    public $statusChangeId;
 
     /**
      * @var string
@@ -133,9 +138,15 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function changeSubject($subject)
     {
 
+        (new WorkflowSubject($this->workflowId))
+            ->changeSubject($subject);
+
+        /*
         $update = new WorkflowUpdate();
         $update->subject = $subject;
         $update->updateById($this->workflowId);
+
+        $this->addSearch($subject);*/
 
     }
 
@@ -143,9 +154,13 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function changeDeadline(Date $deadline)
     {
 
-        $update = new WorkflowUpdate();
+        (new DeadlineAction($this->workflowId))
+            ->changeDeadline($deadline);
+
+
+      /*  $update = new WorkflowUpdate();
         $update->deadline = $deadline;
-        $update->updateById($this->workflowId);
+        $update->updateById($this->workflowId);*/
 
     }
 
@@ -180,6 +195,11 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function assignUser($userId, $sendMail = false)
     {
 
+        (new UserAssignmentAction($this->workflowId))
+            ->assignUser($userId);
+
+
+        /*
         $data = new UserAssignment();
         $data->workflowId = $this->workflowId;
         $data->userId = $userId;
@@ -188,6 +208,8 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         if ($sendMail) {
             $this->sendMail($userId);
         }
+
+        $this->notificateUser($userId);*/
 
     }
 
@@ -212,17 +234,11 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function notificateUser($userId, $sendMail = false)
     {
 
-
-        // class WorkfowNotification
-
-        $data = new UserNotification();
-        $data->workflowId = $this->workflowId;
-        $data->userId = $userId;
-        $data->save();
-
-        if ($sendMail) {
-            $this->sendMail($userId);
-        }
+        $notification = new WorkflowNotification();
+        $notification->statusChangeId = $this->statusChangeId;
+        $notification->userId = $userId;
+        $notification->sendMail = $sendMail;
+        $notification->createNotification();
 
     }
 
@@ -230,23 +246,9 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     protected function notificateUsergroup(AbstractUsergroup $usergroup, $sendMail = false)
     {
 
-        // Notification kann gelöscht werden!!!
-
         foreach ($usergroup->getUserList() as $userRow) {
             $this->notificateUser($userRow->id, $sendMail);
         }
-
-        /*
-        $data = new UsergroupNotification();
-        $data->workflowId = $this->workflowId;
-        $data->usergroupId = $usergroup->usergroupId;
-        $data->save();
-
-        if ($sendMail) {
-            foreach ($usergroup->getUserList() as $userRow) {
-                $this->sendMail($userRow->id);
-            }
-        }*/
 
     }
 
@@ -288,6 +290,19 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
+    protected function addSearch($text)
+    {
+
+
+        $searchIndex = new SearchIndexBuilder();
+        //$searchIndex->process = $this->process;
+        $searchIndex->workflowId = $this->workflowId;
+        $searchIndex->addText($text);
+
+
+    }
+
+
     /**
      * @return AbstractWorkflowStatus[]
      */
@@ -304,6 +319,8 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
+
+    /*
     public function runWorkflow($workflowId, $workflowItemId = null)
     {
 
@@ -326,7 +343,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
         $draft = $this->draftMode;
         $data->draft = $draft;
-        $statusChangeId=$data->save();
+        $statusChangeId = $data->save();
 
 
         // Workflow
@@ -345,15 +362,17 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
         $update->updateById($workflowId);
 
 
+        $this->statusChangeId = $statusChangeId;
+
         $this->onChange($workflowId, $workflowItemId);
 
 
         return $statusChangeId;
 
-    }
+    }*/
 
 
-    protected function onChange($workflowId, $workflowItemId = null)
+    public function onChange($workflowId, $workflowItemId = null)
     {
 
     }

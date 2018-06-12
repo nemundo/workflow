@@ -12,7 +12,7 @@ class WorkflowNotification extends AbstractBase
     /**
      * @var string
      */
-    public $workflowId;
+    public $statusChangeId;
 
     /**
      * @var string
@@ -28,15 +28,13 @@ class WorkflowNotification extends AbstractBase
     public function createNotification() {
 
         $data = new UserNotification();
-        $data->workflowId = $this->workflowId;
+        $data->statusChangeId = $this->statusChangeId;
         $data->userId = $this->userId;
         $data->save();
 
         if ($this->sendMail) {
            // $this->sendMail($userId);
         }
-
-
 
     }
 

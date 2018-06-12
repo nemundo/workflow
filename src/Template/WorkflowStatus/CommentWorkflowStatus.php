@@ -3,10 +3,11 @@
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 
-use Nemundo\Workflow\Data\Comment\CommentModel;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
-class CommentWorkflowStatus extends AbstractWorkflowStatus
+class CommentWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadWorkflowStatus()

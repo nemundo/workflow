@@ -2,8 +2,9 @@
 
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
-use Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeModel;
-use Nemundo\Workflow\Data\DeadlineChange\DeadlineChangeReader;
+use Nemundo\Workflow\Action\DeadlineAction;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeModel;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
@@ -21,14 +22,18 @@ class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
     }
 
 
-    protected function onChange($workflowId, $workflowItemId = null)
+    public function onChange($workflowId, $workflowItemId = null)
     {
 
         $row = (new DeadlineChangeReader())->getRowById($workflowItemId);
 
+        (new DeadlineAction($workflowId))
+            ->changeDeadline($row->deadline);
+
+/*
         $update = new WorkflowUpdate();
         $update->deadline = $row->deadline;
-        $update->updateById($workflowId);
+        $update->updateById($workflowId);*/
 
     }
 

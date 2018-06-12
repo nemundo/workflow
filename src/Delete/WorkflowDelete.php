@@ -9,18 +9,17 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationDelete;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeDelete;
+use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Factory\WorkflowDataId;
 
+
+// extens Workflow
 class WorkflowDelete extends AbstractBase
 {
 
-    /**
-     * @var string
-     */
-   // public $workflowId;
 
-
-    public function deleteWorkflow($workflowId) {
+    public function deleteWorkflow($workflowId)
+    {
 
 
         $workflowReader = new WorkflowReader();
@@ -36,17 +35,21 @@ class WorkflowDelete extends AbstractBase
         $delete->model = $model;
         $delete->deleteById($dataId);
 
-        $delete = new WorkflowStatusChangeDelete();
-        $delete->filter->andEqual($delete->model->workflowId, $workflowId);
-        $delete->delete();
+        $statusChangeReader = new WorkflowStatusChangeReader();
+        $statusChangeReader->filter->andEqual($statusChangeReader->model->workflowId, $workflowId);
+        foreach ($statusChangeReader->getData() as $statusChangeRow) {
+            $delete = new UserNotificationDelete();
+            $delete->model->loadStatusChange();
+            $delete->filter->andEqual($delete->model->statusChangeId, $statusChangeRow->id);
+            $delete->delete();
+        }
 
-        $delete = new UserNotificationDelete();
+        $delete = new WorkflowStatusChangeDelete();
         $delete->filter->andEqual($delete->model->workflowId, $workflowId);
         $delete->delete();
 
         (new \Nemundo\Workflow\Data\Workflow\WorkflowDelete())->deleteById($workflowId);
 
     }
-
 
 }

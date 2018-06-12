@@ -12,6 +12,7 @@ use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Form\WorkflowForm;
 use Nemundo\Workflow\Form\WorkflowStartForm;
 use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
 
 class WorkflowNewSite extends AbstractSite
 {
@@ -50,13 +51,10 @@ class WorkflowNewSite extends AbstractSite
         $p = new Paragraph($page);
         $p->content = $process->description;
 
-
-
-
         $form = new WorkflowStartForm($page);
         $form->process = $process;
-        //$form->workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($process->startWorkflowStatusClassName);
-        $form->redirectSite = WorkflowSearchEngineSite::$site;
+        $form->redirectSite = clone(WorkflowInboxSite::$site);
+        $form->redirectSite->addParameter(new ProcessParameter($processId));
 
         $page->render();
 

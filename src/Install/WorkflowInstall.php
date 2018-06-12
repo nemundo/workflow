@@ -2,16 +2,18 @@
 
 namespace Nemundo\Workflow\Install;
 
-use Nemundo\Dev\Application\Setup\ApplicationSetup;
+use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\Dev\Script\AbstractScript;
 use Nemundo\Dev\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
+use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Data\WorkflowCollection;
 use Nemundo\Workflow\Script\WorkflowClean;
 use Nemundo\Workflow\Setup\WorkflowStatusSetup;
 use Nemundo\Workflow\Template\WorkflowStatus\ApprovalWorkflowStatus;
+use Nemundo\Workflow\Template\WorkflowStatus\ClosingWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\CommentWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\DeadlineChangeWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\DisapprovalWorkflowStatus;
@@ -31,6 +33,7 @@ class WorkflowInstall extends AbstractScript
 
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new WorkflowCollection());
+        $setup->addCollection(new SearchEngineCollection());
 
         $setup = new WorkflowStatusSetup();
         $setup->addWorkflowStatus(new ApprovalWorkflowStatus());
@@ -39,6 +42,7 @@ class WorkflowInstall extends AbstractScript
         $setup->addWorkflowStatus(new SubjectChangeWorkflowStatus());
         $setup->addWorkflowStatus(new UserAssignmentChangeWorkflowStatus());
         $setup->addWorkflowStatus(new CommentWorkflowStatus());
+        $setup->addWorkflowStatus(new ClosingWorkflowStatus());
 
         $setup = new UsergroupSetup();
         $setup->addUsergroup(new WorkflowUsergroup());

@@ -10,20 +10,20 @@ public $model;
 /**
 * @var string
 */
-public $workflowId;
+public $userId;
 
 /**
 * @var string
 */
-public $userId;
+public $statusChangeId;
 
 public function __construct() {
 parent::__construct();
 $this->model = new UserNotificationModel();
 }
 public function update() {
-$this->typeValueList->setModelValue($this->model->workflowId, $this->workflowId);
 $this->typeValueList->setModelValue($this->model->userId, $this->userId);
+$this->typeValueList->setModelValue($this->model->statusChangeId, $this->statusChangeId);
 parent::update();
 }
 }

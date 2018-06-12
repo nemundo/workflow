@@ -26,7 +26,7 @@ class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
     }
 
 
-    protected function onChange($workflowId, $workflowItemId = null)
+    public function onChange($workflowId, $workflowItemId = null)
     {
 
         $row = (new UserAssignmentChangeReader())->getRowById($workflowItemId);

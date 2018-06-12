@@ -3,7 +3,9 @@
 namespace Nemundo\Workflow\Site\Notification;
 
 
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\Html\Basic\H1;
+use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Table\Td;
 use Nemundo\Com\Html\Table\Tr;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -17,7 +19,9 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\User\Information\UserInformation;
+use Nemundo\Workflow\Com\Item\AbstractWorkflowItem;
 use Nemundo\Workflow\Com\Item\WorkflowItem;
+use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationCount;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationPaginationReader;
@@ -56,6 +60,10 @@ class NotificationSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+        $title = new AdminTitle($page);
+        $title->content = 'Benachrichtigungen';
+
+
         $processParameter = new  ProcessParameter();
         //$notificationTypeId = $notificationTypeParameter->getValue();
 
@@ -77,9 +85,10 @@ class NotificationSite extends AbstractSite
         foreach ($processReader->getData() as $processRow) {
 
             $count = new UserNotificationCount();
-            $count->model->loadWorkflow();
+            $count->model->loadStatusChange();
+            $count->model->statusChange->loadWorkflow();
             $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
-            $count->filter->andEqual($count->model->workflow->processId, $processRow->id);
+            $count->filter->andEqual($count->model->statusChange->workflow->processId, $processRow->id);
             //$count->filter->andNotEqual($count->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
 
             $totalCount = $count->getCount();
@@ -125,6 +134,7 @@ class NotificationSite extends AbstractSite
         }
 
 
+        $processId = null;
         if ($processParameter->exists()) {
 
 
@@ -132,64 +142,79 @@ class NotificationSite extends AbstractSite
 
             $processRow = (new ProcessReader())->getRowById($processId);
 
-            $title = new H1($colRight);
+            $title = new WorkflowTitle($colRight);
             $title->content = $processRow->process;
 
-            /*$table = new NotificationWorkflowTable($colRight);
-            $table->notificationReader->filter->andNotEqual($table->notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
-            $table->notificationReader->filter->andEqual($table->notificationReader->model->applicationTypeId, $processRow->id);
+
+        }
+
+        /*$table = new NotificationWorkflowTable($colRight);
+        $table->notificationReader->filter->andNotEqual($table->notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
+        $table->notificationReader->filter->andEqual($table->notificationReader->model->applicationTypeId, $processRow->id);
 */
 
-            $table = new BootstrapClickableTable($colRight);
+        $table = new BootstrapClickableTable($colRight);
 
 
-            $notificationReader = new UserNotificationPaginationReader();
-            $notificationReader->model->loadWorkflow();
-            $notificationReader->model->workflow->loadProcess();
-            $notificationReader->model->workflow->loadWorkflowStatus();
-            $notificationReader->filter->andEqual($notificationReader->model->workflow->processId, $processId);
-            $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
-
-            //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
-            $notificationReader->addOrder($notificationReader->model->workflow->itemOrder, SortOrder::DESCENDING);
-
-            foreach ($notificationReader->getData() as $notificationRow) {
-
-                $row = new BootstrapClickableTableRow($table);
-
-                $number = $notificationRow->workflow->workflowNumber . ' (' . $notificationRow->workflow->process->process . ')';
+        $notificationReader = new UserNotificationPaginationReader();
+        $notificationReader->model->loadStatusChange();  // loadWorkflow();
+        $notificationReader->model->statusChange->loadWorkflow();
+        $notificationReader->model->statusChange->workflow->loadProcess();
+        $notificationReader->model->statusChange->loadWorkflowStatus();
 
 
-                $row->addText($number);  // $notificationRow->workflow->workflowNumber);
-                $row->addText($notificationRow->workflow->subject);
-                $row->addText($notificationRow->workflow->workflowStatus->workflowStatusText);
-
-                $site = $notificationRow->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
-                $site->addParameter(new WorkflowParameter($notificationRow->workflowId));
-                $row->addClickableSite($site);
-
-                $site = clone(NotificationDeleteSite::$site);
-                $site->addParameter(new NotificationParameter($notificationRow->id));
-                $row->addHyperlinkIcon(new DeleteIcon(), $site);
+        //workflow->loadProcess();
+        //$notificationReader->model-> workflow->loadWorkflowStatus();
 
 
-                $workflowStatus = $notificationRow->workflow->workflowStatus->getWorkflowStatusClassObject();
-                if ($workflowStatus->workflowItemClassName !== null) {
+        if ($processId !== null) {
+            $notificationReader->filter->andEqual($notificationReader->model->statusChange->workflow->processId, $processId);
+        }
 
-                    $tr = new Tr($table);
-                    $td = new Td($tr);
-                    $td->colspan = 3;
+        $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
 
-                    /** @var WorkflowItem $item */
-                    $item = new $workflowStatus->workflowItemClassName($td);
-                    $item->workflowId = $notificationRow->workflowId;
-                    //$item->workflowItemId = $notificationRow->workflow-
+        //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
+        $notificationReader->addOrder($notificationReader->model->statusChange->workflow->itemOrder, SortOrder::DESCENDING);
+
+        foreach ($notificationReader->getData() as $notificationRow) {
+
+            $row = new BootstrapClickableTableRow($table);
+
+            $number = $notificationRow->statusChange->workflow->workflowNumber . ' (' . $notificationRow->statusChange->workflow->process->process . ')';
 
 
+            $row->addText($number);  // $notificationRow->workflow->workflowNumber);
+            $row->addText($notificationRow->statusChange->workflow->subject);
+            $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
 
-                }
+            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
+            $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
+            $row->addClickableSite($site);
+
+            $site = clone(NotificationDeleteSite::$site);
+            $site->addParameter(new NotificationParameter($notificationRow->id));
+            $row->addHyperlinkIcon(new DeleteIcon(), $site);
+
+
+            $workflowStatus = $notificationRow->statusChange->workflowStatus->getWorkflowStatusClassObject();
+            if ($workflowStatus->workflowItemClassName !== null) {
+
+                $tr = new Tr($table);
+                $td = new Td($tr);
+                $td->colspan = 3;
+
+                /** @var AbstractWorkflowItem $item */
+                $item = new $workflowStatus->workflowItemClassName($td);
+                $item->workflowItemId = $notificationRow->statusChange->workflowItemId;
+                //$item->workflowItemId = $notificationRow->workflow-
+
+                //$p = new Paragraph($td);
+                //$p->content = 'bla';
+
+
 
             }
+
 
             $pagination = new BootstrapModelPagination($colRight);
             $pagination->paginationReader = $notificationReader;

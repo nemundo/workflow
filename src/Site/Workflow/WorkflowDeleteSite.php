@@ -33,15 +33,10 @@ class WorkflowDeleteSite extends AbstractSite
     {
 
         $workflowId = (new WorkflowParameter())->getValue();
-
-        $delete = new WorkflowDelete();
-        $delete->workflowId = $workflowId;
-        $delete->deleteWorkflow();
+        (new WorkflowDelete())->deleteWorkflow($workflowId);
 
         (new UrlReferer())->redirect();
 
-
     }
-
 
 }

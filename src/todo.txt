@@ -1,3 +1,10 @@
+assign to (nur einaml pro workflow)
+
+Subscription:
+
+- WorkflowItemSubscription
+- ProcessSubscription
+
 - keine uniqueId
 - speichern des class name
 
@@ -13,7 +20,17 @@ Notification Item
  - bilder
  - stream
 
+Joke App
+(daily)
 
+
+Inbox wird zu Aufgaben
+
+
+Intranet Com --> Button, Widget etc.
+Nemundo\Intranet\Com
+Nemundo\Workflow\Intranet
+oder als AdminWidget etc.
 
 
 

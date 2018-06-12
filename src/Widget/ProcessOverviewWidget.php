@@ -3,13 +3,16 @@
 namespace Nemundo\Workflow\Widget;
 
 
-use Nemundo\Admin\Widget\AbstractAdminWidget;
+use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\Html\Basic\H3;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\Site\Process\ProcessDescriptionSite;
 use Nemundo\Workflow\Site\WorkflowNewSite;
+
 
 
 class ProcessOverviewWidget extends AbstractAdminWidget
@@ -33,9 +36,14 @@ class ProcessOverviewWidget extends AbstractAdminWidget
             $p = new Paragraph($this);
             $p->content = $process->description;
 
-            $btn = new BootstrapButton($this);
+            $btn = new AdminButton($this);
             $btn->content = 'Erfassen';
             $btn->site = clone(WorkflowNewSite::$site);
+            $btn->site->addParameter(new ProcessParameter($process->processId));
+
+            $btn = new AdminButton($this);
+            $btn->content = 'Beschreibung';
+            $btn->site = clone(ProcessDescriptionSite::$site);
             $btn->site->addParameter(new ProcessParameter($process->processId));
 
         }

@@ -2,9 +2,9 @@
 
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
-use Nemundo\Workflow\Data\SubjectChange\SubjectChangeModel;
-use Nemundo\Workflow\Data\SubjectChange\SubjectChangeReader;
-use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\Action\WorkflowSubject;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeModel;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeReader;
 use Nemundo\Workflow\WorkflowStatus\Form\SubjectChangeForm;
 use Nemundo\Workflow\WorkflowStatus\Item\SubjectChangeItem;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
@@ -32,10 +32,8 @@ class SubjectChangeWorkflowStatus extends AbstractWorkflowStatus
 
         $row = (new SubjectChangeReader())->getRowById($workflowItemId);
 
-        $update = new WorkflowUpdate();
-        $update->subject = $row->subject;
-        $update->updateById($workflowId);
-
+        (new WorkflowSubject($workflowId))
+            ->changeSubject($row->subject);
 
     }
 

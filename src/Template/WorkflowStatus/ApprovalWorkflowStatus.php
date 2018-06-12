@@ -3,9 +3,10 @@
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 
+use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
-class ApprovalWorkflowStatus extends AbstractWorkflowStatus
+class ApprovalWorkflowStatus extends AbstractChangeWorkflowStatus
 {
 
     protected function loadWorkflowStatus()

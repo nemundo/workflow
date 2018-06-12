@@ -18,8 +18,12 @@ class ProcessSite extends AbstractSite
 
     public function loadSite()
     {
+
         $this->title = 'Process';
         $this->url = 'process';
+
+        new ProcessDescriptionSite($this);
+
     }
 
 

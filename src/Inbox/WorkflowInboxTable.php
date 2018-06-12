@@ -18,6 +18,7 @@ use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\Site\Search\SearchItemSite;
 use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 
@@ -127,7 +128,11 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             $row->addText($workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
             $row->addText($workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
 
-            $site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
+            //$site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
+
+
+
+            $site = clone(SearchItemSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));
 
             $row->addClickableSite($site);

@@ -8,6 +8,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 trait WorkflowFormTrait
@@ -19,7 +20,7 @@ trait WorkflowFormTrait
     public $process;
 
     /**
-     * @var AbstractWorkflowStatus
+     * @var AbstractDataWorkflowStatus
      */
     public $workflowStatus;
 
@@ -34,7 +35,7 @@ trait WorkflowFormTrait
         //$workflowItemId = parent::onSubmit();
 
         if ($this->workflowId !== null) {
-            $this->workflowStatus->runWorkflow($this->workflowId, $workflowItemId);
+            $this->workflowStatus->onChange($this->workflowId, $workflowItemId);
 
         } else {
 

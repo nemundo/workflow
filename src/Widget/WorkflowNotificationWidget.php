@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Widget;
 
 
-use Nemundo\Admin\Widget\AbstractAdminWidget;
+use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTable;
@@ -14,16 +14,30 @@ use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;
 use Nemundo\Workflow\Parameter\NotificationParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
+use Nemundo\Workflow\Site\Notification\NotificationSite;
 
 class WorkflowNotificationWidget extends AbstractAdminWidget
 {
 
-    public function getHtml()
+    protected function loadCom()
     {
 
         // Benachrichtigung
         //$this->widgetTitle = 'Workflow Notification';
+
         $this->widgetTitle = 'Benachrichtigungen';
+        $this->widgetSite = NotificationSite::$site;
+
+
+        parent::loadCom();
+
+    }
+
+
+    public function getHtml()
+    {
+
+
 
 
         $table = new BootstrapClickableTable($this);
@@ -36,12 +50,18 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
         $header->addEmpty();
 
         $notificationReader = new UserNotificationReader();
-        $notificationReader->model->loadWorkflow();
-        $notificationReader->model->workflow->loadProcess();
-        $notificationReader->model->workflow->loadWorkflowStatus();
+        $notificationReader->model->loadStatusChange();
+        $notificationReader->model->statusChange->loadWorkflow();
+        $notificationReader->model->statusChange->workflow->loadProcess();
+        $notificationReader->model->statusChange->loadWorkflowStatus();
+
+
+        //$notificationReader->model->loadWorkflow();
+        //$notificationReader->model->workflow->loadProcess();
+        //$notificationReader->model->workflow->loadWorkflowStatus();
         $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
         //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
-        $notificationReader->addOrder($notificationReader->model->workflow->itemOrder, SortOrder::DESCENDING);
+        $notificationReader->addOrder($notificationReader->model->statusChange->workflow->itemOrder, SortOrder::DESCENDING);
 
         $notificationReader->limit = 10;
 
@@ -49,15 +69,14 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
 
             $row = new BootstrapClickableTableRow($table);
 
-            $number = $notificationRow->workflow->workflowNumber . ' (' . $notificationRow->workflow->process->process . ')';
-
+            $number = $notificationRow->statusChange->workflow->workflowNumber;  // . ' (' . $notificationRow->statusChange->workflow->process->process . ')';
 
             $row->addText($number);  // $notificationRow->workflow->workflowNumber);
-            $row->addText($notificationRow->workflow->subject);
-            $row->addText($notificationRow->workflow->workflowStatus->workflowStatusText);
+            $row->addText($notificationRow->statusChange->workflow->subject);
+            $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
 
-            $site = $notificationRow->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
-            $site->addParameter(new WorkflowParameter($notificationRow->workflowId));
+            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
+            $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
             $row->addClickableSite($site);
 
             $site = clone(NotificationDeleteSite::$site);
