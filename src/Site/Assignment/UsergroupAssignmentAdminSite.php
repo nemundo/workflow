@@ -3,8 +3,10 @@
 namespace Nemundo\Workflow\Site\Assignment;
 
 
+use Nemundo\User\Data\Usergroup\UsergroupListBox;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
+use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
@@ -49,9 +51,9 @@ class UsergroupAssignmentAdminSite extends AbstractSite
 
         $formRow = new BootstrapFormRow($form);
 
-        $userListBox = new UserListBox($formRow);
-        $userListBox->submitOnChange = true;
-        $userListBox->value = $userListBox->getValue();
+        $usergroupListBox = new UsergroupListBox($formRow);
+        $usergroupListBox->submitOnChange = true;
+        $usergroupListBox->value = $usergroupListBox->getValue();
 
 
         $table = new BootstrapClickableTable($page);
@@ -63,15 +65,11 @@ class UsergroupAssignmentAdminSite extends AbstractSite
         $header->addText('Status');
         $header->addEmpty();
 
-        $assignmentReader = new UserAssignmentReader();
+        $assignmentReader = new UsergroupAssignmentReader();
         $assignmentReader->model->loadWorkflow();
         $assignmentReader->model->workflow->loadProcess();
         $assignmentReader->model->workflow->loadWorkflowStatus();
-
-        //$notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
-        $assignmentReader->filter->andEqual($assignmentReader->model->userId, $userListBox->getValue());
-
-        //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
+        $assignmentReader->filter->andEqual($assignmentReader->model->usergroupId, $usergroupListBox->getValue());
         $assignmentReader->addOrder($assignmentReader->model->workflow->itemOrder, SortOrder::DESCENDING);
 
         foreach ($assignmentReader->getData() as $assignmentRow) {

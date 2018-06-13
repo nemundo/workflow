@@ -142,10 +142,12 @@ class WorkflowBuilder extends AbstractBase
 
 
         if ($this->process->createWorkflowNumber) {
-            $searchIndex = new SearchIndexBuilder();
+
+            /*
+            $searchIndex = new SearchIndexBuilder($workflowId);
             $searchIndex->process = $this->process;
-            $searchIndex->workflowId = $workflowId;
-            $searchIndex->addWord($workflowNumber);
+            //$searchIndex->workflowId = $workflowId;
+            $searchIndex->addWord($workflowNumber);*/
         }
 
         return $workflowId;

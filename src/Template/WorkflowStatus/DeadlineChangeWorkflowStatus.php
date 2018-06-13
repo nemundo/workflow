@@ -2,7 +2,7 @@
 
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
-use Nemundo\Workflow\Action\DeadlineAction;
+use Nemundo\Workflow\Action\DeadlineWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
@@ -27,7 +27,7 @@ class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
 
         $row = (new DeadlineChangeReader())->getRowById($workflowItemId);
 
-        (new DeadlineAction($workflowId))
+        (new DeadlineWorkflowAction($workflowId))
             ->changeDeadline($row->deadline);
 
 /*

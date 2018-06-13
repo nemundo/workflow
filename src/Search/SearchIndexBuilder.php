@@ -5,13 +5,14 @@ namespace Nemundo\Workflow\Search;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Text\Keyword;
+use Nemundo\Workflow\Action\AbstractWorkflowAction;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
 use Nemundo\Workflow\Process\AbstractProcess;
 
 
-class SearchIndexBuilder extends AbstractBase  // AbstractApplicationBuilder
+class SearchIndexBuilder extends AbstractWorkflowAction  // AbstractBase  // AbstractApplicationBuilder
 {
 
     /**
@@ -22,7 +23,7 @@ class SearchIndexBuilder extends AbstractBase  // AbstractApplicationBuilder
     /**
      * @var string
      */
-    public $workflowId;
+    //public $workflowId;
 
 
     /**
@@ -40,8 +41,6 @@ class SearchIndexBuilder extends AbstractBase  // AbstractApplicationBuilder
 
     private function prepareIndex()
     {
-
-
 
 
         /*
@@ -75,7 +74,7 @@ class SearchIndexBuilder extends AbstractBase  // AbstractApplicationBuilder
         $data->ignoreIfExists = true;
         //$data->processId = $this->process->processId;
         $data->wordId = $wordId;
-        $data->workflowId = $this->workflowId;
+        $data->workflowId = $this->changeEvent->workflowId;
         //$data->searchTextId = $this->searchTextId;
         $data->save();
 

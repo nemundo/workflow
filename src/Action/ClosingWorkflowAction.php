@@ -13,7 +13,7 @@ class ClosingWorkflowAction extends AbstractWorkflowAction
 
         $update = new WorkflowUpdate();
         $update->closed = true;
-        $update->updateById($this->workflowId);
+        $update->updateById($this->changeEvent->workflowId);
 
     }
 

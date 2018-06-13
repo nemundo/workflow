@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Builder;
 
 
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Workflow\Action\AbstractWorkflowAction;
 use Nemundo\Workflow\Action\UserAssignmentAction;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
@@ -10,8 +11,9 @@ use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
-class WorkflowItem extends AbstractWorkflowAction
+class WorkflowItem extends AbstractBase // AbstractWorkflowAction
 {
+
 
     /**
      * @var string
@@ -30,9 +32,13 @@ class WorkflowItem extends AbstractWorkflowAction
     public $workflowStatus;
 
 
+    private $workflowId;
+
     public function __construct($workflowId)
     {
-        parent::__construct($workflowId);
+        //parent::__construct($workflowId);
+
+        $this->workflowId = $workflowId;
 
 
         $reader = new WorkflowReader();

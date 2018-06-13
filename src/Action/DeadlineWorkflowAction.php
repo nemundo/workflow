@@ -7,7 +7,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 
-class DeadlineAction extends AbstractWorkflowAction
+class DeadlineWorkflowAction extends AbstractWorkflowAction
 {
 
     public function changeDeadline(Date $deadline)
@@ -15,7 +15,7 @@ class DeadlineAction extends AbstractWorkflowAction
 
         $update = new WorkflowUpdate();
         $update->deadline = $deadline;
-        $update->updateById($this->workflowId);
+        $update->updateById($this->changeEvent->workflowId);
 
     }
 
