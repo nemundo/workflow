@@ -88,8 +88,12 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
 
             $row = new BootstrapClickableTableRow($table);
 
-            $trafficLight = new DateTrafficLight($row);
-            $trafficLight->date = $workflowRow->deadline;
+            if ($workflowRow->deadline !== null) {
+                $trafficLight = new DateTrafficLight($row);
+                $trafficLight->date = $workflowRow->deadline;
+            } else {
+                $row->addEmpty();
+            }
 
             $row->addText($workflowRow->process->process);
             $row->addText($workflowRow->workflowNumber);
@@ -129,7 +133,6 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             $row->addText($workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
 
             //$site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
-
 
 
             $site = clone(SearchItemSite::$site);

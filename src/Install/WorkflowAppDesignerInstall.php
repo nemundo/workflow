@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Install;
 
 
 use Nemundo\Admin\AppDesigner\Setup\TemplateModelSetup;
-use Nemundo\Dev\Script\AbstractScript;
+use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Workflow\Model\WorkflowBaseOrmModel;
 
 class WorkflowAppDesignerInstall extends AbstractScript

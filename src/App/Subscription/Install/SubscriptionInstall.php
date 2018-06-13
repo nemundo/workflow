@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Subscription\Install;
-use Nemundo\Dev\Script\AbstractScript;
+use Nemundo\App\Script\Type\AbstractScript;
 class SubscriptionInstall extends AbstractScript {
 protected function loadScript() {
 $this->scriptName = "subscription-install";

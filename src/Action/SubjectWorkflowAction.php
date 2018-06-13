@@ -7,7 +7,7 @@ use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\Search\SearchIndexBuilder;
 
 
-class WorkflowSubject extends AbstractWorkflowAction
+class SubjectWorkflowAction extends AbstractWorkflowAction
 {
 
     // subject/deadline
@@ -22,11 +22,7 @@ class WorkflowSubject extends AbstractWorkflowAction
 
         $searchIndex = new SearchIndexBuilder($this->changeEvent);
         //$searchIndex->process = $this->process;
-        //$searchIndex->workflowId = $this->workflowId;
-        $searchIndex->addText($subject);
-
-        //$this->addSearch($subject);
-
+         $searchIndex->addText($subject);
 
     }
 

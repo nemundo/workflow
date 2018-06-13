@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Script;
 
 
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Dev\Script\AbstractScript;
+use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Delete\WorkflowDelete;
 

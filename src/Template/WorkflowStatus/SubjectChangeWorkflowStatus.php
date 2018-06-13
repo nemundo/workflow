@@ -2,9 +2,10 @@
 
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
-use Nemundo\Workflow\Action\WorkflowSubject;
+use Nemundo\Workflow\Action\SubjectWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeReader;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\WorkflowStatus\Form\SubjectChangeForm;
 use Nemundo\Workflow\WorkflowStatus\Item\SubjectChangeItem;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
@@ -19,20 +20,20 @@ class SubjectChangeWorkflowStatus extends AbstractWorkflowStatus
         $this->workflowStatusId = 'bea4e096-e356-4b07-886e-8c5533f052d5';
         $this->changeWorkflowStatus = false;
 
-        $this->modelClassName = SubjectChangeModel::class;
-        $this->formClassName = SubjectChangeForm::class;
+        //$this->modelClassName = SubjectChangeModel::class;
+        //$this->formClassName = SubjectChangeForm::class;
         $this->workflowItemClassName = SubjectChangeItem::class;
 
 
     }
 
 
-    public function onChange($workflowId, $workflowItemId = null)
+    public function onChange(StatusChangeEvent $changeEvent)
     {
 
-        $row = (new SubjectChangeReader())->getRowById($workflowItemId);
+        $row = (new SubjectChangeReader())->getRowById($changeEvent->workflowItemId);
 
-        (new WorkflowSubject($workflowId))
+        (new SubjectWorkflowAction($changeEvent))
             ->changeSubject($row->subject);
 
     }

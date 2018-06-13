@@ -55,12 +55,15 @@ class WorkflowInboxWidget extends AbstractAdminWidget
 
             $statusText = $workflowRow->workflowStatus->workflowStatusText;
 
-            // $workflowRow->workflowStatus->workflowStatus
-
             $row = new BootstrapClickableTableRow($table);
 
-            $trafficLight = new DateTrafficLight($row);
-            $trafficLight->date = $workflowRow->deadline;
+
+            if ($workflowRow->deadline !== null) {
+                $trafficLight = new DateTrafficLight($row);
+                $trafficLight->date = $workflowRow->deadline;
+            } else {
+                $row->addEmpty();
+            }
 
             $row->addText($number);
             $row->addText($workflowRow->subject);

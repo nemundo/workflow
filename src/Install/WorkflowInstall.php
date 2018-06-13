@@ -3,11 +3,12 @@
 namespace Nemundo\Workflow\Install;
 
 use Nemundo\App\Application\Setup\ApplicationSetup;
-use Nemundo\Dev\Script\AbstractScript;
-use Nemundo\Dev\Script\Setup\ScriptSetup;
+use Nemundo\App\Script\Type\AbstractScript;
+use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowTemplateCollection;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Data\WorkflowCollection;
 use Nemundo\Workflow\Script\WorkflowClean;
@@ -33,6 +34,7 @@ class WorkflowInstall extends AbstractScript
 
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new WorkflowCollection());
+        $setup->addCollection(new WorkflowTemplateCollection());
         $setup->addCollection(new SearchEngineCollection());
 
         $setup = new WorkflowStatusSetup();
@@ -45,10 +47,12 @@ class WorkflowInstall extends AbstractScript
         $setup->addWorkflowStatus(new ClosingWorkflowStatus());
 
         $setup = new UsergroupSetup();
+        $setup->application = new WorkflowApplication();
         $setup->addUsergroup(new WorkflowUsergroup());
         $setup->addUsergroup(new WorkflowAdministratorUsergroup());
 
         $setup = new ScriptSetup();
+        $setup->application = new WorkflowApplication();
         $setup->addScript(new WorkflowClean());
 
     }

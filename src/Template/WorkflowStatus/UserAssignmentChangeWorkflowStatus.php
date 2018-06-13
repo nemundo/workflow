@@ -19,13 +19,15 @@ class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
         $this->workflowStatusId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeWorkflowStatus = false;
 
-        $this->modelClassName = UserAssignmentChangeModel::class;
+        //$this->modelClassName = UserAssignmentChangeModel::class;
         //$this->formClassName = SubjectChangeForm::class;
         //$this->workflowItemClassName = SubjectChangeItem::class;
 
     }
 
 
+
+    /*
     public function onChange($workflowId, $workflowItemId = null)
     {
 
@@ -40,6 +42,6 @@ class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
         $data->userId = $row->userId;
         $data->save();
 
-    }
+    }*/
 
 }

@@ -61,6 +61,16 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     public $changeWorkflowStatus = true;
 
     /**
+     * @var string
+     */
+    public $changeContainerClass;
+
+    /**
+     * @var string
+     */
+    public $startContainerClass;
+
+    /**
      * @var AbstractWorkflowStatus[]
      */
     private $followingStatusClassList = [];
