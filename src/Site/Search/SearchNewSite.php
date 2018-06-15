@@ -3,10 +3,13 @@
 namespace Nemundo\Workflow\Site\Search;
 
 
+use Nemundo\Admin\Com\Title\AdminSubtitle;
+use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Workflow\Com\Title\ProcessTitle;
 use Nemundo\Workflow\Container\Start\WorkflowStartContainer;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
@@ -14,7 +17,6 @@ use Nemundo\Workflow\Form\WorkflowForm;
 use Nemundo\Workflow\Form\WorkflowStartForm;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
-
 
 class SearchNewSite extends AbstractSite
 {
@@ -49,28 +51,30 @@ class SearchNewSite extends AbstractSite
 
         $process = $processRow->getProcessClassObject();
 
-        $title = new H1($page);
+
+        $breadcrumb = new BootstrapBreadcrumb($page);
+        $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
+        $breadcrumb->addActiveItem($process->process);
+
+        $title = new ProcessTitle($page);
+        $title->process = $process;
+
+
+        /*
+        $title = new AdminSubtitle($page);
         $title->content = $processRow->process;
 
         $p = new Paragraph($page);
-        $p->content = $process->description;
+        $p->content = $process->description;*/
 
 
         $container = new WorkflowStartContainer($page);
         $container->process = $process;
-        $container->redirectSite = clone(WorkflowSearchEngineSite::$site);
-        $container->redirectSite->addParameter(new ProcessParameter($processId));
+        $container->redirectSite = SearchItemSite::$site;
+        $container->appendWorkflowParameter = true;
 
-
-        /*
-        $form = new WorkflowStartForm($page);
-        $form->process = $process;
-        $form->redirectSite = clone(WorkflowSearchEngineSite::$site);
-        $form->redirectSite->addParameter(new ProcessParameter($processId));
-*/
-
-
-
+        //$container->redirectSite = clone(WorkflowSearchEngineSite::$site);
+        //$container->redirectSite->addParameter(new ProcessParameter($processId));
 
         $page->render();
 

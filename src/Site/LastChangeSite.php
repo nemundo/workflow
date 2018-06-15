@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site;
 
 
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
@@ -31,15 +32,14 @@ class LastChangeSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $table = new BootstrapClickableTable($page);
+        $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
         $header->addText('Prozess');
         $header->addText('Nr.');
         $header->addText('Betreff');
         $header->addText('Status');
-        $header->addText('Ersteller');
-
+        $header->addText('Benutzer');
 
         $changeReader = new WorkflowStatusChangePaginationReader();
         $changeReader->model->loadWorkflow();

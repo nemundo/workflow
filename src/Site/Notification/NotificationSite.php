@@ -19,7 +19,7 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\User\Information\UserInformation;
-use Nemundo\Workflow\Com\Item\AbstractWorkflowItem;
+use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
 use Nemundo\Workflow\Com\Item\WorkflowItem;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Data\Process\ProcessReader;
@@ -142,8 +142,8 @@ class NotificationSite extends AbstractSite
 
             $processRow = (new ProcessReader())->getRowById($processId);
 
-            $title = new WorkflowTitle($colRight);
-            $title->content = $processRow->process;
+            //$title = new WorkflowTitle($colRight);
+            //$title->content = $processRow->process;
 
 
         }
@@ -196,24 +196,20 @@ class NotificationSite extends AbstractSite
             $row->addHyperlinkIcon(new DeleteIcon(), $site);
 
 
+            /*
             $workflowStatus = $notificationRow->statusChange->workflowStatus->getWorkflowStatusClassObject();
-            if ($workflowStatus->workflowItemClassName !== null) {
+            if ($workflowStatus->workflowItemViewClassName !== null) {
 
                 $tr = new Tr($table);
                 $td = new Td($tr);
                 $td->colspan = 3;
 
-                /** @var AbstractWorkflowItem $item */
-                $item = new $workflowStatus->workflowItemClassName($td);
+                /** @var AbstractWorkflowItemView $item */
+          /*      $item = new $workflowStatus->workflowItemViewClassName($td);
                 $item->workflowItemId = $notificationRow->statusChange->workflowItemId;
                 //$item->workflowItemId = $notificationRow->workflow-
 
-                //$p = new Paragraph($td);
-                //$p->content = 'bla';
-
-
-
-            }
+            }*/
 
 
             $pagination = new BootstrapModelPagination($colRight);

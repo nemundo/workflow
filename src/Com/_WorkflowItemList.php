@@ -3,17 +3,20 @@
 namespace Nemundo\Workflow\Com;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
+use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Workflow\Com\Button\DraftFreigabeButton;
 use Nemundo\Workflow\Com\Button\WorkflowActionButton;
-use Nemundo\Workflow\Com\Item\DataListWorkflowItem;
+use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
 use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
 use Nemundo\Workflow\Com\Item\WorkflowItem;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
@@ -26,6 +29,7 @@ use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
+use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
 use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
@@ -33,9 +37,12 @@ use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
 use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractDraftDataWorkflowStatus;
 
 
-class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
+
+// WorkflowViewList
+class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 {
 
     /**
@@ -153,6 +160,10 @@ class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 
         $list = new BootstrapHyperlinkList($colLeft);
 
+
+
+
+
         $changeReader = new WorkflowStatusChangeReader();
         $changeReader->model->loadWorkflowStatus();
         $changeReader->model->loadUser();
@@ -187,15 +198,14 @@ class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 
                 //$contentDiv->content = $workflowStatus->workflowStatusText;
 
-
                 /** @var WorkflowItem $item */
-                $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                $item = new $workflowStatus->workflowItemViewClassName($contentDiv);
                 $item->workflowItemId = $changeRow->workflowItemId;
 
             }
 
 
-            if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)) {
+            if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)||$workflowStatus->isObjectOfClass(AbstractDraftDataWorkflowStatus::class)) {
 
 
                 $div = new Div($colRight);
@@ -214,8 +224,25 @@ class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 
 
                 /** @var WorkflowItem $item */
-                $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                $item = new $workflowStatus->workflowItemViewClassName($contentDiv);
                 $item->workflowItemId = $changeRow->workflowItemId;
+
+
+                if ($changeRow->draft) {
+
+                    $btn = new AdminButton($contentDiv);
+                    $btn->content = 'Bearbeiten';
+                    $btn->site = clone($this->statusChangeRedirectSite);
+                    $btn->site->addParameter(new WorkflowStatusParameter($changeRow->workflowStatusId));
+                    $btn->site->addParameter(new WorkflowParameter($this->workflowId));
+
+
+
+                    $btn = new DraftFreigabeButton($contentDiv);
+                    $btn->statusChangeId = $changeRow->id;
+
+
+                }
 
 
             }
@@ -239,9 +266,31 @@ class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 
                 //$contentDiv->content = $workflowStatus->workflowItemClassName;
 
-                /** @var DataListWorkflowItem $item */
-                $item = new $workflowStatus->workflowItemClassName($contentDiv);
+                /** @var DataListWorkflowItemView $item */
+                $item = new $workflowStatus->workflowItemViewClassName($contentDiv);
                 $item->statusChangeId = $changeRow->id;
+
+
+                if ($changeRow->draft) {
+
+                    $btn = new AdminButton($contentDiv);
+                    $btn->content = 'Bearbeiten';
+                    $btn->site = clone($this->statusChangeRedirectSite);
+                    $btn->site->addParameter(new WorkflowStatusParameter($changeRow->workflowStatusId));
+                    $btn->site->addParameter(new WorkflowParameter($this->workflowId));
+
+                    $btn = new DraftFreigabeButton($contentDiv);
+                    $btn->statusChangeId = $changeRow->id;
+
+
+                    /*
+                    $btn = new AdminButton($contentDiv);
+                    $btn->content = 'Freigeben';
+                    $btn->site = clone(WorkflowDraftFreigabeSite::$site);
+                    $btn->site->addParameter(new WorkflowStatusChangeParameter($changeRow->id));
+*/
+
+                }
 
             }
 
@@ -337,6 +386,7 @@ class WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerList
 
             $actionButton = new WorkflowActionButton($colRight);
             $actionButton->workflowId = $this->workflowId;
+            $actionButton->statusChangeRedirectSite = $this->statusChangeRedirectSite;
 
         }
 

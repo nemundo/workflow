@@ -98,7 +98,15 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             $row->addText($workflowRow->process->process);
             $row->addText($workflowRow->workflowNumber);
             $row->addText($workflowRow->subject);
-            $row->addText($workflowRow->workflowStatus->workflowStatus . ': ' . $workflowRow->workflowStatus->workflowStatusText);
+
+
+            $draft = '';
+            if ($workflowRow->draft) {
+                $draft = ' (Entwurf)';
+            }
+
+
+            $row->addText($workflowRow->workflowStatus->workflowStatus . $draft . ': ' . $workflowRow->workflowStatus->workflowStatusText);
             $row->addYesNo($workflowRow->closed);
 
             if ($workflowRow->deadline !== null) {

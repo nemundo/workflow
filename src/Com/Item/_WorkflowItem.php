@@ -8,6 +8,7 @@ use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Workflow\Com\WorkflowIdTrait;
 
+// WorkflowItemView
 class WorkflowItem extends Div
 {
 

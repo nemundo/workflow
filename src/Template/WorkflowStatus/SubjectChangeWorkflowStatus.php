@@ -22,7 +22,7 @@ class SubjectChangeWorkflowStatus extends AbstractWorkflowStatus
 
         //$this->modelClassName = SubjectChangeModel::class;
         //$this->formClassName = SubjectChangeForm::class;
-        $this->workflowItemClassName = SubjectChangeItem::class;
+        $this->workflowItemViewClassName = SubjectChangeItem::class;
 
 
     }

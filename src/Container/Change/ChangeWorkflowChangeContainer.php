@@ -15,12 +15,13 @@ class ChangeWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $builder = new WorkflowStatusChangeBuilder();
         $builder->workflowStatus = $this->workflowStatus;
         $builder->workflowId = $this->workflowId;
+        $builder->draft = true;
         $builder->changeStatus();
 
-        //(new UrlReferer())->redirect();
         if ($this->redirectSite !== null) {
             $this->redirectSite->redirect();
         }
+
         return parent::getHtml();
 
     }

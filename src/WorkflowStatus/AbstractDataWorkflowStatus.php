@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\WorkflowStatus;
 
 
 use Nemundo\Model\Definition\Model\AbstractModel;
-use Nemundo\Workflow\Com\Item\DataWorkflowItem;
+use Nemundo\Workflow\Com\Item\DataWorkflowItemView;
 use Nemundo\Workflow\Container\Change\DataWorkflowChangeContainer;
 use Nemundo\Workflow\Container\Start\DataWorkflowStartContainer;
 
@@ -22,12 +22,13 @@ abstract class AbstractDataWorkflowStatus extends AbstractWorkflowStatus
     public function __construct()
     {
 
-        $this->workflowItemClassName = DataWorkflowItem::class;
+        $this->workflowItemViewClassName = DataWorkflowItemView::class;
 
         $this->startContainerClass = DataWorkflowStartContainer::class;
-        $this->changeContainerClass= DataWorkflowChangeContainer::class;
+        $this->changeContainerClass = DataWorkflowChangeContainer::class;
 
         parent::__construct();
+
 
     }
 

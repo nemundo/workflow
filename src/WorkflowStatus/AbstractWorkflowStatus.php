@@ -6,7 +6,7 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\Com\Item\AbstractWorkflowItem;
+use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
 
 
 abstract class AbstractWorkflowStatus extends AbstractBaseClass
@@ -35,9 +35,13 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     public $actionLabel;
 
     /**
-     * @var AbstractWorkflowItem
+     * @var AbstractWorkflowItemView
      */
-    public $workflowItemClassName;
+    public $workflowItemViewClassName;
+
+
+    public $notificationViewClass;
+
 
     /**
      * @var AbstractActionPanel
@@ -47,7 +51,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var bool
      */
-    public $draftMode = false;
+    //public $draftMode = false;
 
     /**
      * @var bool

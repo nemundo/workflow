@@ -5,11 +5,13 @@ namespace Nemundo\Workflow\Site\Search;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
+use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\Com\Title\ProcessTitle;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Form\WorkflowForm;
@@ -52,21 +54,35 @@ class SearchItemSite extends AbstractSite
         $workflowId = (new WorkflowParameter())->getValue();
 
 
-        $link = new Hyperlink($page);
+        /*$link = new Hyperlink($page);
         $link->content = 'Back';
-        $link->site = clone(WorkflowSearchEngineSite::$site);
+        $link->site = clone(WorkflowSearchEngineSite::$site);*/
+
+
+
 
         $item = new WorkflowItem($workflowId);
         $process = $item->getProcess();
 
+        $breadcrumb = new BootstrapBreadcrumb($page);
+        $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
+        $breadcrumb->addActiveItem($process->process);
 
-        $title = new AdminTitle($page);
-        $title->content = $process->process;
+
+        //$title = new ProcessTitle($page);
+        //$title->process = $process;
+
+
+        //$title = new AdminTitle($page);
+        //$title->content = $process->process;
+
+
 
 
         /** @var AbstractProcessItem $item */
         $item = new $process->processItemClassName($page);
         $item->workflowId = $workflowId;
+        $item->statusChangeRedirectSite = SearchStatusChangeSite::$site;
 
 
         $page->render();

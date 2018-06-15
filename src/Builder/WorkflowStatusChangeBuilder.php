@@ -25,20 +25,21 @@ class WorkflowStatusChangeBuilder
      */
     public $workflowStatus;
 
+    /**
+     * @var bool
+     */
+    public $draft = false;
+
 
     public function changeStatus()
     {
 
         // Status Change
         $data = new WorkflowStatusChange();
-        $data->workflowStatusId = $this->workflowStatus->workflowStatusId;  // $this->workflowStatusId;
+        $data->workflowStatusId = $this->workflowStatus->workflowStatusId;
         $data->workflowId = $this->workflowId;
-
-        // nur bei data
         $data->workflowItemId = $this->workflowItemId;
-
-        //$draft = $this->draftMode;
-        //$data->draft = $draft;
+        $data->draft = $this->draft;
         $statusChangeId = $data->save();
 
 
@@ -53,15 +54,9 @@ class WorkflowStatusChangeBuilder
             $update->closed = true;
         }
 
-        //$update->draft = $draft;
+        $update->draft = $this->draft;
 
         $update->updateById($this->workflowId);
-        //$this->statusChangeId = $statusChangeId;
-
-
-
-        //$this->workflowStatus->statusChangeId = $statusChangeId;
-        //$this->workflowStatus->onChange($this->workflowId, $this->workflowItemId, $statusChangeId);
 
         $changeEvent = new StatusChangeEvent();
         $changeEvent->workflowId = $this->workflowId;
@@ -69,7 +64,6 @@ class WorkflowStatusChangeBuilder
         $changeEvent->statusChangeId = $statusChangeId;
 
         $this->workflowStatus->onChange($changeEvent);
-
 
 
         return $statusChangeId;

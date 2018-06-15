@@ -3,9 +3,11 @@
 namespace Nemundo\Workflow\Com\Button;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
+use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
@@ -17,14 +19,14 @@ class WorkflowActionButton extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractWorkflowStatus
-     */
-    //public $workflowStatus;
-
-    /**
      * @var string
      */
     public $workflowId;
+
+    /**
+     * @var AbstractSite
+     */
+    public $statusChangeRedirectSite;
 
 
     public function getHtml()
@@ -36,8 +38,6 @@ class WorkflowActionButton extends AbstractHtmlContainerList
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
         $workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
-        //$workflowStatus->workflowId = $this->workflowId;
-
 
         foreach ($workflowStatus->getFollowingStatusClassList() as $className) {
 
@@ -50,12 +50,12 @@ class WorkflowActionButton extends AbstractHtmlContainerList
                 $label = $followingStatusClass->workflowStatus;
             }
 
-            $btn = new BootstrapButton($this);
+            $btn = new AdminButton($this);
             $btn->content = $label;
 
-            $site = null;
+            //$site = null;
 
-            $site = clone(StatusChangeSite::$site);
+            //$site = clone(StatusChangeSite::$site);
 
             /*
             if ($followingStatusClass->formSite == null) {
@@ -64,10 +64,12 @@ class WorkflowActionButton extends AbstractHtmlContainerList
                 $site = clone($followingStatusClass->formSite);
             }*/
 
-            $site->addParameter(new WorkflowStatusParameter($followingStatusClass->workflowStatusId));
-            $site->addParameter(new WorkflowParameter($this->workflowId));
 
-            $btn->site = $site;
+            //$btn->site = $site;
+            $btn->site = clone($this->statusChangeRedirectSite);
+            $btn->site->addParameter(new WorkflowStatusParameter($followingStatusClass->workflowStatusId));
+            $btn->site->addParameter(new WorkflowParameter($this->workflowId));
+
 
             $btn->restricted = $followingStatusClass->restricted;
             foreach ($followingStatusClass->getRestrictedUsergroupList() as $usergroup) {

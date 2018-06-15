@@ -27,7 +27,7 @@ $this->comment = new \Nemundo\Model\Type\Text\LargeTextType();
 $this->comment->fieldName = "comment";
 $this->comment->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->comment->aliasFieldName = $this->comment->tableName . "_" . $this->comment->fieldName;
-$this->comment->label = "Comment";
+$this->comment->label = "Kommentar";
 $this->addType($this->comment);
 
 }

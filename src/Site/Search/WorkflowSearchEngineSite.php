@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\Site\Search;
 
 
 use Nemundo\Com\FormBuilder\SearchForm;
+use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
@@ -33,6 +34,7 @@ class WorkflowSearchEngineSite extends AbstractSite
 
         new SearchNewSite($this);
         new SearchItemSite($this);
+        new SearchStatusChangeSite($this);
 
     }
 
@@ -47,6 +49,13 @@ class WorkflowSearchEngineSite extends AbstractSite
     {
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+
+
+        $breadcrumb = new BootstrapBreadcrumb($page);
+        $breadcrumb->addActiveItem('Workflow Search');
+
+
+
 
         $dropdown =  new ProcessDropdown($page);
         $dropdown->redirectSite = SearchNewSite::$site;

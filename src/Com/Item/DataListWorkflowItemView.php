@@ -12,7 +12,7 @@ use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
 
-class DataListWorkflowItem extends AbstractWorkflowItem
+class DataListWorkflowItemView extends AbstractWorkflowItemView
 {
 
     /**

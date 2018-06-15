@@ -33,7 +33,7 @@ $this->comment = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->comment->tableName = "workflow_template_comment";
 $this->comment->fieldName = "comment";
 $this->comment->aliasFieldName = "workflow_template_comment_comment";
-$this->comment->label = "Comment";
+$this->comment->label = "Kommentar";
 $this->comment->validation = true;
 $this->comment->allowNullValue = "";
 

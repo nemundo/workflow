@@ -45,17 +45,18 @@ class WorkflowForm extends BootstrapModelForm
 
         $workflowItemId = parent::onSubmit();
 
-        if ($this->workflowId !== null) {
+        //if ($this->workflowId !== null) {
 
-            $change = new WorkflowStatusChangeBuilder();
-            $change->workflowStatus = $this->workflowStatus;
-            $change->workflowId = $this->workflowId;
-            $change->workflowItemId= $workflowItemId;
-            $change->changeStatus();
+        $change = new WorkflowStatusChangeBuilder();
+        $change->workflowStatus = $this->workflowStatus;
+        $change->workflowId = $this->workflowId;
+        $change->workflowItemId = $workflowItemId;
+        $change->changeStatus();
 
 
-            //$this->workflowStatus->onChange($this->workflowId, $workflowItemId);
+        //$this->workflowStatus->onChange($this->workflowId, $workflowItemId);
 
+        /*
         } else {
 
             //$model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
@@ -66,26 +67,26 @@ class WorkflowForm extends BootstrapModelForm
             $dataId = $data->save();*/
 
 
-            $builder = new WorkflowBuilder();
-            $builder->process = $this->process;
-            //$builder->workflowStatus = $this->workflowStatus;
-            $builder->dataId = $workflowItemId; // $dataId;
-            $builder->workflowItemId = $workflowItemId;
-            $builder->createItem();
+        /*   $builder = new WorkflowBuilder();
+           $builder->process = $this->process;
+           //$builder->workflowStatus = $this->workflowStatus;
+           $builder->dataId = $workflowItemId; // $dataId;
+           $builder->workflowItemId = $workflowItemId;
+           $builder->createItem();
 
 
-            //$workflowId = $builder->createItem();
+           //$workflowId = $builder->createItem();
 
-            /*
-            $data = new ModelUpdate();
-            $data->model = $model;
-            $data->typeValueList->setModelValue($model->wor)
-            $dataId = $data->save();
-            */
+           /*
+           $data = new ModelUpdate();
+           $data->model = $model;
+           $data->typeValueList->setModelValue($model->wor)
+           $dataId = $data->save();
+           */
 
-            //$this->workflowStatus->runWorkflow($workflowId, $workflowItemId);
+        //$this->workflowStatus->runWorkflow($workflowId, $workflowItemId);
 
-        }
+        // }
 
 
         return $workflowItemId;

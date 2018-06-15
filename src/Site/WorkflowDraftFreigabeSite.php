@@ -38,10 +38,10 @@ class WorkflowDraftFreigabeSite extends AbstractSite
 
         $changeReader = new WorkflowStatusChangeReader();
         $changeReader->model->loadWorkflow();
-        $changeReader->model->workflow->loadProcess();
+        //$changeReader->model->workflow->loadProcess();
         $changeRow = $changeReader->getRowById($statusChangeId);
 
-        $process = $changeRow->workflow->process->getProcessClassObject();
+        //$process = $changeRow->workflow->process->getProcessClassObject();
 
         $update = new WorkflowStatusChangeUpdate();
         $update->draft = false;
@@ -51,12 +51,13 @@ class WorkflowDraftFreigabeSite extends AbstractSite
         $update->draft = false;
         $update->updateById($changeRow->workflowId);
 
+        /*
         $site = clone($process->site);
         $site->addParameter(new WorkflowParameter($changeRow->workflowId));
-        $site->redirect();
+        $site->redirect();*/
 
 
-        //(new UrlReferer())->redirect();
+        (new UrlReferer())->redirect();
 
 
     }

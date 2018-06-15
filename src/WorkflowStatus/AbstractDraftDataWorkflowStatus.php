@@ -4,10 +4,11 @@ namespace Nemundo\Workflow\WorkflowStatus;
 
 
 use Nemundo\Model\Definition\Model\AbstractModel;
-use Nemundo\Workflow\Com\Item\DataWorkflowItem;
+use Nemundo\Workflow\Com\Item\DataWorkflowItemView;
+use Nemundo\Workflow\Container\Change\DraftDataWorkflowChangeContainer;
 
 
-// AbstractModelWorkflowStatus
+// AbstractDraftDataModelWorkflowStatus
 abstract class AbstractDraftDataWorkflowStatus extends AbstractWorkflowStatus
 {
 
@@ -20,10 +21,11 @@ abstract class AbstractDraftDataWorkflowStatus extends AbstractWorkflowStatus
     public function __construct()
     {
 
-        $this->workflowItemClassName = DataWorkflowItem::class;
+        $this->workflowItemViewClassName = DataWorkflowItemView::class;
+        $this->changeContainerClass = DraftDataWorkflowChangeContainer::class;
+
         parent::__construct();
 
     }
-
 
 }

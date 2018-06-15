@@ -4,16 +4,13 @@ namespace Nemundo\Workflow\Builder;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Workflow\Action\AbstractWorkflowAction;
 use Nemundo\Workflow\Action\UserAssignmentAction;
-use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
-class WorkflowItem extends AbstractBase // AbstractWorkflowAction
+class WorkflowItem extends AbstractBase
 {
-
 
     /**
      * @var string
@@ -25,21 +22,20 @@ class WorkflowItem extends AbstractBase // AbstractWorkflowAction
      */
     public $subject;
 
-
     /**
      * @var AbstractWorkflowStatus
      */
     public $workflowStatus;
 
-
+    /**
+     * @var string
+     */
     private $workflowId;
 
     public function __construct($workflowId)
     {
-        //parent::__construct($workflowId);
 
         $this->workflowId = $workflowId;
-
 
         $reader = new WorkflowReader();
         $reader->model->loadWorkflowStatus();
@@ -47,7 +43,6 @@ class WorkflowItem extends AbstractBase // AbstractWorkflowAction
 
         $this->workflowNumber = $workflowRow->workflowNumber;
         $this->subject = $workflowRow->subject;
-
         $this->workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
 
     }
@@ -55,7 +50,6 @@ class WorkflowItem extends AbstractBase // AbstractWorkflowAction
 
     public function getProcess()
     {
-
 
         $reader = new WorkflowReader();
         $reader->model->loadProcess();
@@ -77,19 +71,19 @@ class WorkflowItem extends AbstractBase // AbstractWorkflowAction
 
     }
 
+    public function getDataId() {
+
+        $row = (new WorkflowReader())->getRowById($this->workflowId);
+        return $row->dataId;
+
+    }
+
 
     public function assignUser($userId)
     {
 
         (new UserAssignmentAction($this->workflowId))
             ->assignUser($userId);
-
-        /*
-        $data = new UserAssignment();
-        $data->ignoreIfExists = true;
-        $data->workflowId = $this->workflowId;
-        $data->userId = $userId;
-        $data->save();*/
 
     }
 

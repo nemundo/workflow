@@ -5,9 +5,10 @@ namespace Nemundo\Workflow\Com\Item;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 
-class AbstractWorkflowItem extends AbstractHtmlContainerList
-{
 
+// AbstractWorkflowView
+class AbstractWorkflowItemView extends AbstractHtmlContainerList
+{
 
     /**
      * @var string

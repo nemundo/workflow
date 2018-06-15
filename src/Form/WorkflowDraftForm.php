@@ -10,7 +10,9 @@ use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Design\Bootstrap\FormElement\BootstrapSubmitButton;
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Definition\Model\AbstractModel;
+use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
+use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\Parameter\DraftParameter;
 
 
@@ -24,7 +26,7 @@ class WorkflowDraftForm extends AbstractSubmitForm
     /**
      * @var AbstractModel
      */
-    public $model;
+    private $model;
 
     /**
      * @var string
@@ -35,6 +37,8 @@ class WorkflowDraftForm extends AbstractSubmitForm
     {
 
         $this->loadConnection();
+
+        $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
 
         foreach ($this->model->getTypeList() as $type) {
 
@@ -65,13 +69,28 @@ class WorkflowDraftForm extends AbstractSubmitForm
     }
 
 
+    protected function getDraft()
+    {
+
+        $draft = false;
+        $draftParameter = new DraftParameter();
+
+        if ($draftParameter->exists()) {
+            $draft = true;
+        }
+
+        return $draft;
+
+    }
+
+
     protected function onValidate()
     {
 
         $draftParameter = new DraftParameter();
 
         if ($draftParameter->exists()) {
-             return true;
+            return true;
         }
 
         return parent::onValidate();
@@ -81,7 +100,6 @@ class WorkflowDraftForm extends AbstractSubmitForm
 
     protected function onSubmit()
     {
-
 
         $data = new ModelData();
         $data->model = $this->model;
@@ -112,9 +130,12 @@ class WorkflowDraftForm extends AbstractSubmitForm
 
         $itemId = $data->save();
 
-        $this->saveWorkflow($itemId);
-
-
+        $builder = new WorkflowStatusChangeBuilder();
+        $builder->workflowId = $this->workflowId;
+        $builder->workflowItemId = $itemId;
+        $builder->workflowStatus = $this->workflowStatus;
+        $builder->draft = $this->getDraft();
+        $builder->changeStatus();
 
     }
 

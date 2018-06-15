@@ -29,6 +29,13 @@ trait WorkflowFormTrait
      */
     public $workflowId;
 
+    /**
+     * @var bool
+     */
+    public $appendWorkflowParameter = false;
+
+
+
 
     protected function saveWorkflow($workflowItemId) {
 

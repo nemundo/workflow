@@ -14,6 +14,7 @@ class DataWorkflowStartContainer extends AbstractWorkflowStartContainer
         $form = new WorkflowStartForm($this);
         $form->process = $this->process;
         $form->redirectSite = $this->redirectSite;
+        $form->appendWorkflowParameter= $this->appendWorkflowParameter;
 
         return parent::getHtml();
 

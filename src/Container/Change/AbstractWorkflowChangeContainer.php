@@ -25,5 +25,9 @@ class AbstractWorkflowChangeContainer extends AbstractHtmlContainerList
      */
     public $redirectSite;
 
+    /**
+     * @var bool
+     */
+    public $appendWorkflowParameter = false;
 
 }

@@ -38,9 +38,7 @@ $this->workflowStatusText = $this->getModelValue($model->workflowStatusText);
 * @return \Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus
 */
 public function getWorkflowStatusClassObject() {
-
-$object = new $this->workflowStatusClass();
+$object = (new \Nemundo\Core\System\ObjectBuilder)->getObject($this->workflowStatusClass);
 return $object;
-
 }
 }

@@ -3,17 +3,12 @@
 namespace Nemundo\Workflow\Form;
 
 
-use Nemundo\Core\Log\LogMessage;
 use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
-use Nemundo\Model\Data\ModelData;
-use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
-use Nemundo\Model\Form\AbstractModelForm;
-use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
-use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\Parameter\WorkflowParameter;
+
 
 class WorkflowStartForm extends BootstrapModelForm
 {
@@ -51,12 +46,14 @@ class WorkflowStartForm extends BootstrapModelForm
         $builder->workflowItemId = $workflowItemId;
         //$builder->workflowStatus = $this->workflowStatus;
         //$builder->dataId = $workflowItemId; // $dataId;
-        $builder->createItem();
+        $workflowId = $builder->createItem();
 
+        if ($this->appendWorkflowParameter) {
+            $this->redirectSite->addParameter(new WorkflowParameter($workflowId));
+        }
 
         return $workflowItemId;
 
     }
-
 
 }
