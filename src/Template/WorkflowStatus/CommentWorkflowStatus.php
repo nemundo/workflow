@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 
-use Nemundo\Workflow\Action\NotificationAction;
+use Nemundo\Workflow\Action\NotificationWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
 use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Template\View\CommentWorkflowItemView;
@@ -30,7 +30,7 @@ class CommentWorkflowStatus extends AbstractDataWorkflowStatus
     {
 
 
-        (new NotificationAction($changeEvent))
+        (new NotificationWorkflowAction($changeEvent))
             ->notificateUsergroup(new BetaUsergroup());
 
 

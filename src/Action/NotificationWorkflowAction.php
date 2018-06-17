@@ -9,7 +9,7 @@ use Nemundo\Workflow\Data\UserNotification\UserNotification;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Notification\WorkflowNotification;
 
-class NotificationAction extends AbstractWorkflowAction
+class NotificationWorkflowAction extends AbstractWorkflowAction
 {
 
     /**

@@ -38,7 +38,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
      * @var AbstractWorkflowItemView
      */
     public $workflowItemViewClassName;
-
+// viewClassName
 
     public $notificationViewClass;
 
