@@ -88,7 +88,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
 
             $row = new BootstrapClickableTableRow($table);
 
-            if ($workflowRow->deadline !== null) {
+            if (($workflowRow->deadline !== null) && (!$workflowRow->closed)) {
                 $trafficLight = new DateTrafficLight($row);
                 $trafficLight->date = $workflowRow->deadline;
             } else {
