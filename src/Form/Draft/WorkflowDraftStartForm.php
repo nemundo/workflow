@@ -1,24 +1,37 @@
 <?php
 
-namespace Nemundo\Workflow\Form;
+namespace Nemundo\Workflow\Form\Draft;
 
 
+use Nemundo\Com\Html\Form\AbstractSubmitForm;
+use Nemundo\Core\Debug\Debug;
+use Nemundo\Db\Base\ConnectionTrait;
 use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
+use Nemundo\Design\Bootstrap\FormElement\BootstrapSubmitButton;
+use Nemundo\Model\Data\ModelData;
+use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Workflow\Builder\WorkflowBuilder;
+use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
 
-class WorkflowStartForm extends BootstrapModelForm
+class WorkflowDraftStartForm extends AbstractWorkflowDraftForm
 {
 
-    use WorkflowFormTrait;
+    /**
+     * @var AbstractModel
+     */
+    private $model;
 
     /**
-     * @var bool
+     * @var string
      */
-    public $draft = false;
+    public $dataId;
+
 
     public function getHtml()
     {
@@ -27,26 +40,23 @@ class WorkflowStartForm extends BootstrapModelForm
         $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
 
         return parent::getHtml();
-
     }
 
 
     protected function onSubmit()
     {
 
-        $workflowItemId = parent::onSubmit();
+        $itemId = $this->saveData();
 
         $builder = new WorkflowBuilder();
         $builder->process = $this->process;
-        $builder->workflowItemId = $workflowItemId;
-        $builder->draft = $this->draft;
+        $builder->workflowItemId = $itemId;
+        $builder->draft = $this->getDraft();
         $workflowId = $builder->createItem();
 
         if ($this->appendWorkflowParameter) {
             $this->redirectSite->addParameter(new WorkflowParameter($workflowId));
         }
-
-        return $workflowItemId;
 
     }
 

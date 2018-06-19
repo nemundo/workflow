@@ -4,8 +4,10 @@ namespace Nemundo\Workflow\Builder;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\Action\UserAssignmentAction;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\Data\Workflow\WorkflowRow;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
@@ -32,6 +34,11 @@ class WorkflowItem extends AbstractBase
      */
     private $workflowId;
 
+    /**
+     * @var WorkflowRow
+     */
+    private $workflowRow;
+
     public function __construct($workflowId)
     {
 
@@ -39,11 +46,11 @@ class WorkflowItem extends AbstractBase
 
         $reader = new WorkflowReader();
         $reader->model->loadWorkflowStatus();
-        $workflowRow = $reader->getRowById($workflowId);
+        $this->workflowRow = $reader->getRowById($workflowId);
 
-        $this->workflowNumber = $workflowRow->workflowNumber;
-        $this->subject = $workflowRow->subject;
-        $this->workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
+        $this->workflowNumber = $this->workflowRow->workflowNumber;
+        $this->subject = $this->workflowRow->subject;
+        $this->workflowStatus = $this->workflowRow->workflowStatus->getWorkflowStatusClassObject();
 
     }
 
@@ -71,10 +78,32 @@ class WorkflowItem extends AbstractBase
 
     }
 
-    public function getDataId() {
+    public function getDataId()
+    {
 
         $row = (new WorkflowReader())->getRowById($this->workflowId);
         return $row->dataId;
+
+    }
+
+
+    public function getStatus()
+    {
+
+        $status = $this->workflowStatus->workflowStatus;
+
+        if ($this->isDraft()) {
+            $status .= ' (Entwurf)';
+        }
+
+        return $status;
+    }
+
+
+    public function isDraft()
+    {
+
+        return $this->workflowRow->draft;
 
     }
 
@@ -132,6 +161,20 @@ class WorkflowItem extends AbstractBase
         $changeReader->addOrder($changeReader->model->itemOrder);
 
         return $changeReader->getData();
+
+    }
+
+
+    public function getLastWorkflowItemId()
+    {
+
+        $changeReader = new WorkflowStatusChangeReader();
+        $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
+        $changeReader->addOrder($changeReader->model->itemOrder, SortOrder::DESCENDING);
+        $row = $changeReader->getRow();
+
+        return $row->workflowItemId;
+
 
     }
 

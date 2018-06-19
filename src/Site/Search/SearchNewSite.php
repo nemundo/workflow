@@ -46,6 +46,9 @@ class SearchNewSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+
+        $processParameter = new ProcessParameter();
+
         $processId = (new ProcessParameter())->getValue();
         $processRow = (new ProcessReader())->getRowById($processId);
 
@@ -54,7 +57,14 @@ class SearchNewSite extends AbstractSite
 
         $breadcrumb = new BootstrapBreadcrumb($page);
         $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
-        $breadcrumb->addActiveItem($process->process);
+
+        $site = clone(WorkflowSearchEngineSite::$site);
+        $site->title = $process->process;
+        $site->addParameter($processParameter);
+        $breadcrumb->addSite($site);
+        //$breadcrumb->addActiveItem($process->process);
+
+        $breadcrumb->addActiveItem('Neu');
 
         $title = new ProcessTitle($page);
         $title->process = $process;

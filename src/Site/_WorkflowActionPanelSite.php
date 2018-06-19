@@ -66,7 +66,7 @@ class WorkflowActionPanelSite extends AbstractSite
 
         $btn = new BootstrapButton($page);
         $btn->content = 'Freigabe (Weiter)';
-        $btn->site = clone(WorkflowDraftFreigabeSite::$site);
+        $btn->site = clone(DraftReleaseSite::$site);
         $btn->site->addParameter(new WorkflowStatusChangeParameter($statusChangeId));
 
         $page->render();

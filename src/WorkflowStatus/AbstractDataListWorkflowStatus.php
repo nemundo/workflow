@@ -20,7 +20,6 @@ abstract class AbstractDataListWorkflowStatus extends AbstractWorkflowStatus
     {
 
         $this->workflowItemViewClassName = DataListWorkflowItemView::class;
-
         $this->startContainerClass = DataListWorkflowStartContainer::class;
         $this->changeContainerClass = DataListWorkflowChangeContainer::class;
 

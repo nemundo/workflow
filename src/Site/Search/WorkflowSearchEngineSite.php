@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site\Search;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
@@ -13,9 +14,11 @@ use Nemundo\User\Data\User\UserListBox;
 use Nemundo\User\Data\Usergroup\UsergroupListBox;
 use Nemundo\Workflow\Com\Process\ProcessDropdown;
 use Nemundo\Workflow\Data\Process\ProcessListBox;
+use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Workflow\Inbox\WorkflowSorting;
 use Nemundo\Workflow\Inbox\WorkflowStatus;
+use Nemundo\Workflow\Parameter\ProcessParameter;
 
 
 class WorkflowSearchEngineSite extends AbstractSite
@@ -52,19 +55,42 @@ class WorkflowSearchEngineSite extends AbstractSite
 
 
         $breadcrumb = new BootstrapBreadcrumb($page);
-        $breadcrumb->addActiveItem('Workflow Search');
 
 
+        $processParameter = new ProcessParameter();
+
+        if ($processParameter->exists()) {
+
+            $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
+
+            $processRow = (new ProcessReader())->getRowById($processParameter->getValue());
+            $breadcrumb->addActiveItem($processRow->process);
+
+            //$site = clone(WorkflowSearchEngineSite::$site);
+
+            $btn = new AdminButton($page);
+            $btn->content = 'Neu (' . $processRow->process . ')';
+            $btn->site = clone(SearchNewSite::$site);
+            $btn->site->addParameter($processParameter);
 
 
-        $dropdown =  new ProcessDropdown($page);
-        $dropdown->redirectSite = SearchNewSite::$site;
+        } else {
+
+            $breadcrumb->addActiveItem('Workflow Search');
+
+            $dropdown = new ProcessDropdown($page);
+            $dropdown->redirectSite = SearchNewSite::$site;
+
+
+        }
+
 
         $searchForm = new SearchForm($page);
 
         $row = new BootstrapFormRow($searchForm);
 
         $processListBox = new ProcessListBox($row);
+        $processListBox->name = (new ProcessParameter())->getParameterName();
         $processListBox->submitOnChange = true;
         $processListBox->value = $processListBox->getValue();
 

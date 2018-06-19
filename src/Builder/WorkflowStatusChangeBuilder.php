@@ -58,13 +58,16 @@ class WorkflowStatusChangeBuilder
 
         $update->updateById($this->workflowId);
 
-        $changeEvent = new StatusChangeEvent();
-        $changeEvent->workflowId = $this->workflowId;
-        $changeEvent->workflowItemId = $this->workflowItemId;
-        $changeEvent->statusChangeId = $statusChangeId;
 
-        $this->workflowStatus->onChange($changeEvent);
+        if (!$this->draft) {
 
+            $changeEvent = new StatusChangeEvent();
+            $changeEvent->workflowId = $this->workflowId;
+            $changeEvent->workflowItemId = $this->workflowItemId;
+            $changeEvent->statusChangeId = $statusChangeId;
+
+            $this->workflowStatus->onChange($changeEvent);
+        }
 
         return $statusChangeId;
 

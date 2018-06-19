@@ -21,8 +21,6 @@ class WorkflowProject extends AbstractProject
             ->addPath('workflow.db')
             ->getFilename();
 
-            //__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'db' . DIRECTORY_SEPARATOR . 'config.db';
-
     }
 
 }

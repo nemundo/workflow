@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Com\Button;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
@@ -31,6 +32,12 @@ class WorkflowActionButton extends AbstractHtmlContainerList
 
     public function getHtml()
     {
+
+        if ($this->statusChangeRedirectSite == null) {
+            LogMessage::writeError('WorkflowActionButton: No site defined.');
+            return parent::getHtml();
+        }
+
 
         $workflowReader = new WorkflowReader();
         $workflowReader->model->loadWorkflowStatus();

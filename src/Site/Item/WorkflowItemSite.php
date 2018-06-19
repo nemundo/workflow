@@ -1,13 +1,11 @@
 <?php
 
-namespace Nemundo\Workflow\Site;
+namespace Nemundo\Workflow\Site\Item;
 
 
-use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\View\WorkflowViewList;
-use Nemundo\Workflow\Com\WorkflowItemList;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
@@ -47,9 +45,6 @@ class WorkflowItemSite extends AbstractSite
         $workflowRow = $workflowReader->getRowById($workflowId);
 
         $application = $workflowRow->process->getProcessClassObject();
-
-        //$title = new H1($page);
-        //$title->content = $application->process;
 
         $workflow = new WorkflowViewList($page);
         $workflow->process = $application;

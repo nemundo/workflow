@@ -46,10 +46,13 @@ class WorkflowStatusChangeItemReader extends AbstractDataSource
         foreach ($changeReader->getData() as $changeRow) {
 
             $item = new WorkflowStatusChangeItem();
+            $item->workflowId = $this->workflowId;
             $item->workflowItemId = $changeRow->workflowItemId;
+            $item->statusChangeId = $changeRow->id;
             $item->workflowStatus = $changeRow->workflowStatus->getWorkflowStatusClassObject();
             $item->dateTime = $changeRow->dateTime;
             $item->userRow = $changeRow->user;
+            $item->draft = $changeRow->draft;
 
             $this->addItem($item);
 

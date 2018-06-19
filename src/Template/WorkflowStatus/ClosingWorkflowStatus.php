@@ -3,7 +3,9 @@
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 
+use Nemundo\Workflow\Action\AssignmentWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 
 class ClosingWorkflowStatus extends AbstractDataWorkflowStatus
@@ -17,6 +19,15 @@ class ClosingWorkflowStatus extends AbstractDataWorkflowStatus
         $this->workflowStatusId = '0f5475a0-70a5-420e-957a-e6714fe5b85e';
         $this->modelClassName = CommentModel::class;
         $this->closingWorkflow = true;
+
+    }
+
+
+    public function onChange(StatusChangeEvent $changeEvent)
+    {
+
+        (new AssignmentWorkflowAction($changeEvent))
+            ->clearUsergroupUserAssignment();
 
     }
 

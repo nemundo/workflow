@@ -6,14 +6,16 @@ namespace Nemundo\Workflow\Site;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Site\Assignment\UserAssignmentAdminSite;
 use Nemundo\Workflow\Site\Assignment\UsergroupAssignmentAdminSite;
+use Nemundo\Workflow\Site\Config\WorkflowMailConfigSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxCreatedSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
-use Nemundo\Workflow\Site\Item\WorkflowItem2Site;
+use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
 use Nemundo\Workflow\Site\Notification\NotificationAdminSite;
 use Nemundo\Workflow\Site\Notification\NotificationSite;
 use Nemundo\Workflow\Site\Process\ProcessSite;
 use Nemundo\Workflow\Site\Json\SearchEngineJsonSite;
+use Nemundo\Workflow\Site\Release\DraftReleaseSite;
 use Nemundo\Workflow\Site\Search\WorkflowSearchEngineSite;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
@@ -43,18 +45,16 @@ class WorkflowSite extends AbstractSite
         new NotificationSite($this);
         new ProcessSite($this);
         new LastChangeSite($this);
+        new WorkflowMailConfigSite($this);
 
         new StatusChangeSite($this);
 
-
-        new WorkflowActionPanelSite($this);
+        //new WorkflowActionPanelSite($this);
         new WorkflowSubscriptionSite($this);
 
         new WorkflowItemSite($this);
-        new WorkflowItem2Site($this);
-
-        new WorkflowFormUpdateSite($this);
-        new WorkflowDraftFreigabeSite($this);
+        //new WorkflowFormUpdateSite($this);
+        new DraftReleaseSite($this);
         new WorkflowNewSite($this);
         new WorkflowDeleteSite($this);
 
@@ -63,7 +63,6 @@ class WorkflowSite extends AbstractSite
 
         new UserAssignmentAdminSite($this);
         new UsergroupAssignmentAdminSite($this);
-
 
         new SearchEngineJsonSite($this);
 

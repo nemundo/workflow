@@ -54,19 +54,16 @@ class SearchItemSite extends AbstractSite
         $workflowId = (new WorkflowParameter())->getValue();
 
 
-        /*$link = new Hyperlink($page);
-        $link->content = 'Back';
-        $link->site = clone(WorkflowSearchEngineSite::$site);*/
-
-
-
-
         $item = new WorkflowItem($workflowId);
         $process = $item->getProcess();
 
         $breadcrumb = new BootstrapBreadcrumb($page);
         $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
-        $breadcrumb->addActiveItem($process->process);
+
+        $site = clone(WorkflowSearchEngineSite::$site);
+        $site->title = $process->process;
+        $site->addParameter(new ProcessParameter($process->processId));
+        $breadcrumb->addItem($site);
 
 
         //$title = new ProcessTitle($page);
@@ -75,8 +72,6 @@ class SearchItemSite extends AbstractSite
 
         //$title = new AdminTitle($page);
         //$title->content = $process->process;
-
-
 
 
         /** @var AbstractProcessItem $item */

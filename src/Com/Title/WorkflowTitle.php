@@ -9,6 +9,7 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
+use Nemundo\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
@@ -25,6 +26,9 @@ class WorkflowTitle extends AbstractHtmlContainerList
 
     public function getHtml()
     {
+
+        $workflowItem = new WorkflowItem($this->workflowId);
+
 
         $workflowReader = new WorkflowReader();
         $workflowReader->model->loadWorkflowStatus();
@@ -60,7 +64,9 @@ class WorkflowTitle extends AbstractHtmlContainerList
 
         $table->addLabelValue('Ersteller', $workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
         $table->addLabelValue('Letzte Änderung', $workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
-        $table->addLabelValue('Status', $workflowRow->workflowStatus->workflowStatusText);
+        //$table->addLabelValue('Status', $workflowRow->workflowStatus->workflowStatus);
+        $table->addLabelValue('Status', $workflowItem->getStatus());
+        $table->addLabelValue('Status Text', $workflowRow->workflowStatus->workflowStatusText);
 
 
         return parent::getHtml();

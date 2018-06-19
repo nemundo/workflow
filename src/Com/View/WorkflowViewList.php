@@ -9,12 +9,13 @@ use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
-use Nemundo\Workflow\Com\Button\DraftFreigabeButton;
+use Nemundo\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
 use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
@@ -27,13 +28,16 @@ use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
+use Nemundo\Workflow\Parameter\DraftEditParameter;
+use Nemundo\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Reader\WorkflowStatusChangeItemReader;
+use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
-use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
+use Nemundo\Workflow\Site\DraftReleaseSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
 use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
@@ -64,6 +68,18 @@ class WorkflowViewList extends AbstractProcessItem
      */
     public $showBaseData = true;
 
+    /**
+     * @var SortOrder
+     */
+    public $sortOrder = SortOrder::ASCENDING;
+
+    protected function loadCom()
+    {
+        parent::loadCom();
+
+        $this->statusChangeRedirectSite = StatusChangeSite::$site;
+
+    }
 
     public function getHtml()
     {
@@ -160,12 +176,11 @@ class WorkflowViewList extends AbstractProcessItem
 
         $statusChangeReader = new WorkflowStatusChangeItemReader();
         $statusChangeReader->workflowId = $this->workflowId;
+        $statusChangeReader->sortOrder = $this->sortOrder;
 
         foreach ($statusChangeReader->getData() as $statusChangeItem) {
 
-
-            $list->addHyperlink($statusChangeItem->workflowStatus->workflowStatus, '#' . $statusChangeItem->workflowItemId);
-
+            $list->addHyperlink($statusChangeItem->getStatus(), '#' . $statusChangeItem->workflowItemId);
 
             $div = new Div($colRight);
             $div->addCssClass('card');
@@ -173,15 +188,28 @@ class WorkflowViewList extends AbstractProcessItem
 
             $headerDiv = new Div($div);
             $headerDiv->addCssClass('card-header');
-            $headerDiv->content = $statusChangeItem->workflowStatus->workflowStatus . ': ' . $statusChangeItem->userRow->displayName . ' ' . $statusChangeItem->dateTime->getShortDateTimeLeadingZeroFormat();
+            $headerDiv->content = $statusChangeItem->getStatus() . ': ' . $statusChangeItem->userRow->displayName . ' ' . $statusChangeItem->dateTime->getShortDateTimeLeadingZeroFormat();
 
             $contentDiv = new Div($div);
             $contentDiv->addCssClass('card-body');
 
             $statusChangeItem->getView($contentDiv);
 
-        }
+            if ($statusChangeItem->draft) {
 
+                $btn = new AdminButton($contentDiv);
+                $btn->content = 'Bearbeiten';
+                $btn->site = clone($this->statusChangeRedirectSite);
+                $btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->workflowStatusId));
+                $btn->site->addParameter(new WorkflowParameter($this->workflowId));
+                $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
+
+                /*$btn = new DraftReleaseButton($contentDiv);
+                $btn->workflowId = $this->workflowId;*/
+
+            }
+
+        }
 
         $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
 

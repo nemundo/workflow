@@ -5,13 +5,14 @@ namespace Nemundo\Workflow\Container\Change;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class AbstractWorkflowChangeContainer extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractWorkflowStatus
+     * @var AbstractWorkflowStatus|AbstractDataListWorkflowStatus
      */
     public $workflowStatus;
 

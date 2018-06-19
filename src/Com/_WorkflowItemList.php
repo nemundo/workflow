@@ -14,7 +14,7 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
-use Nemundo\Workflow\Com\Button\DraftFreigabeButton;
+use Nemundo\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
 use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
@@ -32,7 +32,7 @@ use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
-use Nemundo\Workflow\Site\WorkflowDraftFreigabeSite;
+use Nemundo\Workflow\Site\DraftReleaseSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
 use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
@@ -238,7 +238,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
 
 
-                    $btn = new DraftFreigabeButton($contentDiv);
+                    $btn = new DraftReleaseButton($contentDiv);
                     $btn->statusChangeId = $changeRow->id;
 
 
@@ -279,7 +279,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
                     $btn->site->addParameter(new WorkflowStatusParameter($changeRow->workflowStatusId));
                     $btn->site->addParameter(new WorkflowParameter($this->workflowId));
 
-                    $btn = new DraftFreigabeButton($contentDiv);
+                    $btn = new DraftReleaseButton($contentDiv);
                     $btn->statusChangeId = $changeRow->id;
 
 

@@ -9,12 +9,11 @@ use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\Data\Workflow\WorkflowValue;
-use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Search\SearchIndexBuilder;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
+
 
 class WorkflowBuilder extends AbstractBase
 {
@@ -34,7 +33,6 @@ class WorkflowBuilder extends AbstractBase
      */
     public $dataId;
 
-
     /**
      * @var string
      */
@@ -50,25 +48,17 @@ class WorkflowBuilder extends AbstractBase
      */
     public $subject;
 
+    /**
+     * @var bool
+     */
+    public $draft = false;
 
     public function createItem()
     {
 
-
         if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
             return;
         }
-
-        /*
-        if (!$this->checkObject('workflowStatus', $this->workflowStatus, AbstractWorkflowStatus::class)) {
-            return;
-        }*/
-
-
-        /*
-        if (!$this->checkProperty(['dataId'])) {
-            return;
-        }*/
 
 
         /** @var AbstractWorkflowBaseModel $baseModel */
@@ -77,8 +67,10 @@ class WorkflowBuilder extends AbstractBase
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
 
 
-        if ($this->process->baseModelClassName == $workflowStatus->modelClassName) {
-            $this->dataId = $this->workflowItemId;
+        if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)) {
+            if ($this->process->baseModelClassName == $workflowStatus->modelClassName) {
+                $this->dataId = $this->workflowItemId;
+            }
         }
 
 
@@ -133,11 +125,11 @@ class WorkflowBuilder extends AbstractBase
         $update->typeValueList->setModelValue($baseModel->workflow, $workflowId);
         $update->updateById($this->dataId);
 
-        //$workflowStatus->runWorkflow($workflowId, $this->workflowItemId);
         $action = new WorkflowStatusChangeBuilder();
         $action->workflowStatus = $workflowStatus;
         $action->workflowId = $workflowId;
         $action->workflowItemId = $this->workflowItemId;
+        $action->draft = $this->draft;
         $action->changeStatus();
 
 
@@ -149,6 +141,7 @@ class WorkflowBuilder extends AbstractBase
             //$searchIndex->workflowId = $workflowId;
             $searchIndex->addWord($workflowNumber);*/
         }
+
 
         return $workflowId;
 

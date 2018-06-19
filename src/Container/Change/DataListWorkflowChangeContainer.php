@@ -2,14 +2,13 @@
 
 namespace Nemundo\Workflow\Container\Change;
 
-
 use Nemundo\Model\Admin\ModelAdmin;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Web\Action\ActionUrlParameter;
 use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeCount;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
-
-
 
 class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
 {
@@ -30,6 +29,7 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         }
 
         $admin = new ModelAdmin($this);
+        $admin->showViewButton = false;
 
         /** @var AbstractWorkflowBaseModel $model */
         $model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelListClassName);
@@ -38,8 +38,10 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $admin->filter->andEqual($model->workflowId, $this->workflowId);
         $admin->model->workflowId->defaultValue = $this->workflowId;
 
-
-        //$this->workflowStatus
+        if ((new ActionUrlParameter())->getValue() == 'index') {
+            $btn = new DraftReleaseButton($this);
+            $btn->workflowId = $this->workflowId;
+        }
 
 
         return parent::getHtml();

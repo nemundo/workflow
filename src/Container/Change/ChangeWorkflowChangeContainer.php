@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\Container\Change;
 
 
 use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
-use Nemundo\Workflow\Form\WorkflowForm;
 
 class ChangeWorkflowChangeContainer extends AbstractWorkflowChangeContainer
 {
@@ -15,7 +14,6 @@ class ChangeWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $builder = new WorkflowStatusChangeBuilder();
         $builder->workflowStatus = $this->workflowStatus;
         $builder->workflowId = $this->workflowId;
-        $builder->draft = true;
         $builder->changeStatus();
 
         if ($this->redirectSite !== null) {
@@ -25,6 +23,5 @@ class ChangeWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         return parent::getHtml();
 
     }
-
 
 }
