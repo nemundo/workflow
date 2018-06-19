@@ -37,11 +37,7 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
     public function getHtml()
     {
 
-
-
-
         $table = new BootstrapClickableTable($this);
-
 
         $header = new TableHeader($table);
         $header->addText('Nr.');
@@ -54,41 +50,37 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
         $notificationReader->model->statusChange->loadWorkflow();
         $notificationReader->model->statusChange->workflow->loadProcess();
         $notificationReader->model->statusChange->loadWorkflowStatus();
-
-
-        //$notificationReader->model->loadWorkflow();
-        //$notificationReader->model->workflow->loadProcess();
-        //$notificationReader->model->workflow->loadWorkflowStatus();
         $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
-        //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
         $notificationReader->addOrder($notificationReader->model->statusChange->workflow->itemOrder, SortOrder::DESCENDING);
 
-        $notificationReader->limit = 10;
+        //$notificationReader->limit = 10;
 
         foreach ($notificationReader->getData() as $notificationRow) {
 
             $row = new BootstrapClickableTableRow($table);
 
-            $number = $notificationRow->statusChange->workflow->workflowNumber;  // . ' (' . $notificationRow->statusChange->workflow->process->process . ')';
+            $number = $notificationRow->statusChange->workflow->workflowNumber;
 
-            $row->addText($number);  // $notificationRow->workflow->workflowNumber);
+            $row->addText($number);
             $row->addText($notificationRow->statusChange->workflow->subject);
             $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
 
-            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
-            $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
-            $row->addClickableSite($site);
+            $process = $notificationRow->statusChange->workflow->process->getProcessClassObject();
+
+            if ($process !== null) {
+                $site = $process->getApplicationSite();
+                $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
+                $row->addClickableSite($site);
+            }
 
             $site = clone(NotificationDeleteSite::$site);
             $site->addParameter(new NotificationParameter($notificationRow->id));
             $row->addHyperlinkIcon(new DeleteIcon(), $site);
-
 
         }
 
         return parent::getHtml();
 
     }
-
 
 }
