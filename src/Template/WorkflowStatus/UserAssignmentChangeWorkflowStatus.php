@@ -3,13 +3,14 @@
 namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 
-use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
-use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
-use Nemundo\Workflow\Data\UserAssignmentChange\UserAssignmentChangeModel;
-use Nemundo\Workflow\Data\UserAssignmentChange\UserAssignmentChangeReader;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\Action\AssignmentWorkflowAction;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeReader;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 
-class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
+
+class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadWorkflowStatus()
@@ -18,30 +19,21 @@ class UserAssignmentChangeWorkflowStatus extends AbstractWorkflowStatus
         $this->workflowStatus = 'User Assignment';
         $this->workflowStatusId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeWorkflowStatus = false;
-
-        //$this->modelClassName = UserAssignmentChangeModel::class;
-        //$this->formClassName = SubjectChangeForm::class;
-        //$this->workflowItemClassName = SubjectChangeItem::class;
+        $this->modelClassName = UserAssignmentChangeModel::class;
 
     }
 
 
 
-    /*
-    public function onChange($workflowId, $workflowItemId = null)
+    public function onChange(StatusChangeEvent $changeEvent)
     {
 
-        $row = (new UserAssignmentChangeReader())->getRowById($workflowItemId);
+        $row = (new UserAssignmentChangeReader())->getRowById($changeEvent->workflowItemId);
 
-        $delete = new UserAssignmentDelete();
-        $delete->filter->andEqual($delete->model->workflowId, $workflowId);
-        $delete->delete();
+        (new AssignmentWorkflowAction($changeEvent))
+            ->clearUsergroupUserAssignment()
+            ->assignUser($row->userId);
 
-        $data = new UserAssignment();
-        $data->workflowId = $workflowId;
-        $data->userId = $row->userId;
-        $data->save();
-
-    }*/
+    }
 
 }

@@ -6,9 +6,9 @@ use Nemundo\Workflow\Action\DeadlineWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeReader;
 use Nemundo\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 
-class DeadlineChangeWorkflowStatus extends AbstractWorkflowStatus
+class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadWorkflowStatus()

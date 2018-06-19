@@ -40,6 +40,7 @@ class SubjectChangeForm extends WorkflowCustomForm
     protected function onSubmit()
     {
 
+        /*
         $data = new SubjectChange();
         $data->subject = $this->subject->getValue();
         $itemId = $data->save();
@@ -47,7 +48,7 @@ class SubjectChangeForm extends WorkflowCustomForm
         (new SubjectChangeWorkflowStatus())->runWorkflow($this->workflowId, $itemId);
 
         $this->redirectSite = clone(WorkflowItemSite::$site);
-        $this->redirectSite->addParameter(new WorkflowParameter($this->workflowId));
+        $this->redirectSite->addParameter(new WorkflowParameter($this->workflowId));*/
 
     }
 
