@@ -32,9 +32,7 @@ $this->processClass = $this->getModelValue($model->processClass);
 * @return \Nemundo\Workflow\Process\AbstractProcess
 */
 public function getProcessClassObject() {
-
-$object = new $this->processClass();
+$object = (new \Nemundo\Core\System\ObjectBuilder)->getObject($this->processClass);
 return $object;
-
 }
 }
