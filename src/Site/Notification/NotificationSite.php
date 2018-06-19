@@ -42,7 +42,8 @@ class NotificationSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Notification';
+        //$this->title = 'Notification';
+        $this->title = 'Benachrichtigungen';
         $this->url = 'notification';
 
     }

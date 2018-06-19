@@ -8,6 +8,7 @@ use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
+use Nemundo\Workflow\App\SearchEngine\Install\SearchEngineInstall;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowTemplateCollection;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Data\WorkflowCollection;
@@ -54,6 +55,9 @@ class WorkflowInstall extends AbstractScript
         $setup = new ScriptSetup();
         $setup->application = new WorkflowApplication();
         $setup->addScript(new WorkflowClean());
+
+        (new SearchEngineInstall())->run();
+
 
     }
 

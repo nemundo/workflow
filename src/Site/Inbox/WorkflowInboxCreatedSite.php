@@ -14,7 +14,7 @@ class WorkflowInboxCreatedSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Inbox (Created)';
+        $this->title = 'Erstellte Aufgaben';
         $this->url = 'inbox-created';
 
     }

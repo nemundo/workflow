@@ -1,11 +1,19 @@
 <?php
+
 namespace Nemundo\Workflow\App\SearchEngine\Install;
+
+use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Script\Type\AbstractScript;
-class SearchEngineInstall extends AbstractScript {
-protected function loadScript() {
-$this->scriptName = "searchengine-install";
-$this->consoleScript= true;
-}
-public function run() {
-}
+use Nemundo\Workflow\App\SearchEngine\Application\WorkflowSearchEngineApplication;
+
+class SearchEngineInstall extends AbstractScript
+{
+
+    public function run()
+    {
+
+        $setup = new ApplicationSetup();
+        $setup->addApplication(new WorkflowSearchEngineApplication());
+
+    }
 }

@@ -14,6 +14,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangePaginationReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 
 class LastChangeSite extends AbstractSite
 {
@@ -21,8 +22,10 @@ class LastChangeSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Last Changes';
+        $this->title = 'Last Workflow Changes';
         $this->url = 'last-change';
+        $this->restricted=true;
+        $this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
 
     }
 
@@ -58,7 +61,6 @@ class LastChangeSite extends AbstractSite
             $row->addText($changeRow->workflow->subject);
             //$row->addText($changeRow->workflowStatus->workflowStatus . ': ' . $changeRow->workflowStatus->workflowStatusText);
             $row->addText($changeRow->workflowStatus->workflowStatusText);
-
 
             $row->addText($changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat());
 

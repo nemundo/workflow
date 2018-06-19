@@ -32,7 +32,7 @@ class WorkflowSearchEngineSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Workflow Search';
+        $this->title = 'Workflow Suche';
         $this->url = 'workflow-search';
 
         new SearchNewSite($this);
@@ -76,7 +76,7 @@ class WorkflowSearchEngineSite extends AbstractSite
 
         } else {
 
-            $breadcrumb->addActiveItem('Workflow Search');
+            $breadcrumb->addActiveItem(WorkflowSearchEngineSite::$site->title);  //'Workflow Suche');
 
             $dropdown = new ProcessDropdown($page);
             $dropdown->redirectSite = SearchNewSite::$site;
@@ -91,18 +91,21 @@ class WorkflowSearchEngineSite extends AbstractSite
 
         $processListBox = new ProcessListBox($row);
         $processListBox->name = (new ProcessParameter())->getParameterName();
+        $processListBox->label = 'Prozess';
         $processListBox->submitOnChange = true;
         $processListBox->value = $processListBox->getValue();
 
         $statusListBox = new OpenClosedWorkflowListBox($row);
 
         $userListBox = new UserListBox($row);
-        $userListBox->label = 'User Assignment';
+        //$userListBox->label = 'User Assignment';
+        $userListBox->label = 'Benutzer Zuweisung';
         $userListBox->submitOnChange = true;
         $userListBox->value = $userListBox->getValue();
 
         $usergroupListBox = new UsergroupListBox($row);
-        $usergroupListBox->label = 'Usergroup Assignment';
+        //$usergroupListBox->label = 'Usergroup Assignment';
+        $usergroupListBox->label = 'Benutzergruppe Zuweisung';
         $usergroupListBox->submitOnChange = true;
         $usergroupListBox->value = $usergroupListBox->getValue();
 

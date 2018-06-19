@@ -21,7 +21,7 @@ class ProcessOverviewWidget extends AbstractAdminWidget
     public function getHtml()
     {
 
-        $this->widgetTitle = 'Process Overview';
+        $this->widgetTitle = 'Prozess Übersicht';
 
         $processReader = new ProcessReader();
         $processReader->addOrder($processReader->model->process);
