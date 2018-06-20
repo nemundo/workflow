@@ -125,7 +125,7 @@ $this->workflowNumber = new \Nemundo\Model\Type\Text\TextType($this);
 $this->workflowNumber->tableName = "workflow_workflow";
 $this->workflowNumber->fieldName = "workflow_number";
 $this->workflowNumber->aliasFieldName = "workflow_workflow_workflow_number";
-$this->workflowNumber->label = "Workflow Number";
+$this->workflowNumber->label = "Nr.";
 $this->workflowNumber->allowNullValue = "";
 $this->workflowNumber->length = 20;
 
@@ -165,7 +165,7 @@ $this->closed = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->closed->tableName = "workflow_workflow";
 $this->closed->fieldName = "closed";
 $this->closed->aliasFieldName = "workflow_workflow_closed";
-$this->closed->label = "Closed";
+$this->closed->label = "Abgeschlossen";
 $this->closed->allowNullValue = "";
 
 $this->itemOrder = new \Nemundo\Model\Type\Number\ItemOrderType($this);

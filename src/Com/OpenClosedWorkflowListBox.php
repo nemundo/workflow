@@ -26,7 +26,6 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
             $this->value = $this->getValue();
         }
 
-
         return parent::getHtml();
 
     }
