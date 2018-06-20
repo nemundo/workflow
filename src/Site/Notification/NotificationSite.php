@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site\Notification;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Basic\Paragraph;
@@ -45,6 +46,8 @@ class NotificationSite extends AbstractSite
         //$this->title = 'Notification';
         $this->title = 'Benachrichtigungen';
         $this->url = 'notification';
+
+        new UserNotificationDeleteSite($this);
 
     }
 
@@ -188,7 +191,7 @@ class NotificationSite extends AbstractSite
             $row->addText($notificationRow->statusChange->workflow->subject);
             $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
 
-            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
+            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getItemSite();  //$workflowRow->dataId);
             $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
             $row->addClickableSite($site);
 
@@ -217,6 +220,11 @@ class NotificationSite extends AbstractSite
             $pagination->paginationReader = $notificationReader;
 
         }
+
+
+        $btn = new AdminButton($colRight);
+        $btn->content = 'Alle Benachrichtigungen löschen';
+        $btn->site = UserNotificationDeleteSite::$site;
 
         $page->render();
 

@@ -101,7 +101,7 @@ class NotificationAdminSite extends AbstractSite
             $row->addText($notificationRow->statusChange->workflow->subject);
             $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
 
-            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
+            $site = $notificationRow->statusChange->workflow->process->getProcessClassObject()->getItemSite();  //$workflowRow->dataId);
             $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
             $row->addClickableSite($site);
 

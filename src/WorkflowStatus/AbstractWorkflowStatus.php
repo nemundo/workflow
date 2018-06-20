@@ -95,20 +95,32 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
+
+    //public function getFollowingStatusClassList(ChangeEvent $event)
+
     /**
      * @return AbstractWorkflowStatus[]
      */
-    public function getFollowingStatusClassList()
+    public function getFollowingStatusClassList($workflowId = null)
     {
 
         $list = [];
-
         foreach ($this->followingStatusClassList as $className) {
             $list[] = new $className();
         }
 
         return $list;
     }
+
+
+
+    // getStatusText(ChangeEvent $event)
+    public function getStatusText() {
+
+        return $this->workflowStatusText;
+
+    }
+
 
 
     public function onChange(StatusChangeEvent $changeEvent)

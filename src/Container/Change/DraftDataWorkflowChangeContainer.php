@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\Container\Change;
 
 
-use Nemundo\Workflow\Form\Draft\WorkflowDraftForm;
-use Nemundo\Workflow\Form\WorkflowForm;
+use Nemundo\Workflow\Form\Draft\WorkflowDraftChangeForm;
+use Nemundo\Workflow\Form\WorkflowChangeForm;
 
 class DraftDataWorkflowChangeContainer extends AbstractWorkflowChangeContainer
 {
@@ -12,7 +12,7 @@ class DraftDataWorkflowChangeContainer extends AbstractWorkflowChangeContainer
     public function getHtml()
     {
 
-        $form = new WorkflowDraftForm($this);
+        $form = new WorkflowDraftChangeForm($this);
         $form->workflowStatus = $this->workflowStatus;
         $form->workflowId = $this->workflowId;
         $form->redirectSite = $this->redirectSite;

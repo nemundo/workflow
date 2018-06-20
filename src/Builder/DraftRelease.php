@@ -16,7 +16,6 @@ class DraftRelease extends AbstractBase
     public function releaseDraft($workflowId)
     {
 
-
         $update = new WorkflowStatusChangeUpdate();
         $update->filter->andEqual($update->model->workflowId, $workflowId);
         $update->draft = false;
@@ -25,11 +24,6 @@ class DraftRelease extends AbstractBase
         $update = new WorkflowUpdate();
         $update->draft = false;
         $update->updateById($workflowId);
-
-
-        //$workflowItem = new WorkflowItem($workflowId);
-        //$workflowItem->getLastWorkflowItemId();
-
 
         $changeReader = new WorkflowStatusChangeReader();
         $changeReader->model->loadWorkflowStatus();
@@ -43,7 +37,6 @@ class DraftRelease extends AbstractBase
         $changeEvent->statusChangeId = $changeRow->id;
 
         $workflowStatus = $changeRow->workflowStatus->getWorkflowStatusClassObject();
-
 
         $workflowStatus->onChange($changeEvent);
 

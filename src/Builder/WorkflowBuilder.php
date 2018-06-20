@@ -4,15 +4,18 @@ namespace Nemundo\Workflow\Builder;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Workflow\Action\SearchIndexWorkflowAction;
 use Nemundo\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
 
 
 class WorkflowBuilder extends AbstractBase
@@ -67,11 +70,17 @@ class WorkflowBuilder extends AbstractBase
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
 
 
-        if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)) {
+        if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)||$workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
             if ($this->process->baseModelClassName == $workflowStatus->modelClassName) {
                 $this->dataId = $this->workflowItemId;
+                (new Debug())->write('same');
             }
         }
+
+        //(new Debug())->write($this->process->baseModelClassName. $workflowStatus->modelClassName);
+
+
+
 
 
         if ($this->dataId == null) {
@@ -80,8 +89,10 @@ class WorkflowBuilder extends AbstractBase
             $data->model = $baseModel;
             $this->dataId = $data->save();
 
-        }
+          //  (new Debug())->write('data');
 
+        }
+        //exit;
 
         $data = new Workflow();
         $data->processId = $this->process->processId;
@@ -135,13 +146,13 @@ class WorkflowBuilder extends AbstractBase
 
         if ($this->process->createWorkflowNumber) {
 
-            /*
-            $searchIndex = new SearchIndexBuilder($workflowId);
-            $searchIndex->process = $this->process;
-            //$searchIndex->workflowId = $workflowId;
-            $searchIndex->addWord($workflowNumber);*/
-        }
+            $event = new StatusChangeEvent();
+            $event->workflowId = $workflowId;
 
+            $action = new SearchIndexWorkflowAction($event);
+            $action->addWord($workflowNumber);
+
+        }
 
         return $workflowId;
 

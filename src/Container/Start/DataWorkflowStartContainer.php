@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Container\Start;
 
 
-use Nemundo\Workflow\Form\WorkflowStartForm;
+use Nemundo\Workflow\Form\Start\WorkflowStartForm;
 
 class DataWorkflowStartContainer extends AbstractWorkflowStartContainer
 {

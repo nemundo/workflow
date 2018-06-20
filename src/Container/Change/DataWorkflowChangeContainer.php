@@ -3,28 +3,24 @@
 namespace Nemundo\Workflow\Container\Change;
 
 
+use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Workflow\Form\WorkflowForm;
+use Nemundo\Workflow\Form\Change\WorkflowChangeForm;
 
 class DataWorkflowChangeContainer extends AbstractWorkflowChangeContainer
 {
 
     public function getHtml()
     {
-        /*(new Debug())->write('was');
-        (new Debug())->write($this->redirectSite);
-        exit;*/
 
-        $form = new WorkflowForm($this);
+        $subtitle = new AdminSubtitle($this);
+        $subtitle->content = $this->workflowStatus->workflowStatus;
+
+
+        $form = new WorkflowChangeForm($this);
         $form->workflowStatus = $this->workflowStatus;
         $form->workflowId = $this->workflowId;
         $form->redirectSite = $this->redirectSite;
-        //$form->appendWorkflowParameter = $this->appendWorkflowParameter;
-        //$form->redirectSite->addParameter($workflowParameter);
-
-
-
-
 
         return parent::getHtml();
 

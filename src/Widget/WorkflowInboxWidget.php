@@ -75,7 +75,7 @@ class WorkflowInboxWidget extends AbstractAdminWidget
                 $row->addEmpty();
             }
 
-            $site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
+            $site = $workflowRow->process->getProcessClassObject()->getItemSite();
             $site->addParameter(new WorkflowParameter($workflowRow->id));
             $row->addClickableSite($site);
 

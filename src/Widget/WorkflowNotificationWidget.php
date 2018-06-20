@@ -68,7 +68,7 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
             $process = $notificationRow->statusChange->workflow->process->getProcessClassObject();
 
             if ($process !== null) {
-                $site = $process->getApplicationSite();
+                $site = $process->getItemSite();
                 $site->addParameter(new WorkflowParameter($notificationRow->statusChange->workflowId));
                 $row->addClickableSite($site);
             }

@@ -3,7 +3,12 @@
 namespace Nemundo\Workflow\Action;
 
 
+use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
+use Nemundo\User\Data\User\UserReader;
+use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignment;
@@ -22,6 +27,8 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
         $data->userId = $userId;
         $data->save();
 
+        $this->sendMail($userId);
+
         return $this;
 
     }
@@ -35,6 +42,10 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
         $data->workflowId = $this->changeEvent->workflowId;
         $data->usergroupId = $usergroup->usergroupId;
         $data->save();
+
+        foreach ($usergroup->getUserList() as $userRow) {
+            $this->sendMail($userRow->id);
+        }
 
         return $this;
 
@@ -71,6 +82,40 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
         $this->clearUserAssignment();
 
         return $this;
+
+    }
+
+
+    protected function sendMail($userId)
+    {
+
+        $count = new MailConfigValue();
+        $count->field = $count->model->assignmentMail;  // notificationMail;
+        $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
+        $value = $count->getValue();
+
+        if (($value) || ($value == '')) {
+
+
+            // Class WorkflowMail
+            // Item
+
+            $userRow = (new UserReader())->getRowById($userId);
+
+
+            $workflowItem = new WorkflowItem($this->changeEvent->workflowId);
+
+            $process = $workflowItem->getProcess();
+
+            $mail = new ResponsiveActionMailMessage();
+            $mail->addTo($userRow->email);
+            $mail->subject = $workflowItem->getTitle();
+            $mail->actionText = $workflowItem->workflowStatus->getStatusText();
+            $mail->actionLabel = 'Ansehen';
+            $mail->actionUrlSite = $process->getItemSite($this->changeEvent->workflowId);
+            $mail->sendMail();
+
+        }
 
     }
 

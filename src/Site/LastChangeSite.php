@@ -64,7 +64,7 @@ class LastChangeSite extends AbstractSite
 
             $row->addText($changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat());
 
-            $site = $changeRow->workflow->process->getProcessClassObject()->getApplicationSite();
+            $site = $changeRow->workflow->process->getProcessClassObject()->getItemSite();
             $site->addParameter(new WorkflowParameter($changeRow->workflowId));
             $row->addClickableSite($site);
 

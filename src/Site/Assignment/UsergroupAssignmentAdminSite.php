@@ -83,7 +83,7 @@ class UsergroupAssignmentAdminSite extends AbstractSite
             $row->addText($assignmentRow->workflow->subject);
             $row->addText($assignmentRow->workflow->workflowStatus->workflowStatusText);
 
-            $site = $assignmentRow->workflow->process->getProcessClassObject()->getApplicationSite();  //$workflowRow->dataId);
+            $site = $assignmentRow->workflow->process->getProcessClassObject()->getItemSite();  //$workflowRow->dataId);
             $site->addParameter(new WorkflowParameter($assignmentRow->workflowId));
             $row->addClickableSite($site);
 

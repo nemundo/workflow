@@ -11,6 +11,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\WorkflowNewSite;
+use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 use Nemundo\Workflow\Widget\ProcessOverviewWidget;
 
 class ProcessSite extends AbstractSite
@@ -21,6 +22,8 @@ class ProcessSite extends AbstractSite
 
         $this->title = 'Prozess Übersicht';
         $this->url = 'process';
+        $this->restricted=true;
+        $this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
 
         new ProcessDescriptionSite($this);
 

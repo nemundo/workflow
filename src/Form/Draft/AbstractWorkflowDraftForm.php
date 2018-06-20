@@ -26,7 +26,7 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
     use ConnectionTrait;
 
-    use WorkflowFormTrait;
+    //use WorkflowFormTrait;
 
     /**
      * @var AbstractModel

@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Delete;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Model\Delete\ModelDelete;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexDelete;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationDelete;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeDelete;
@@ -49,6 +50,14 @@ class WorkflowDelete extends AbstractBase
         $delete->delete();
 
         (new \Nemundo\Workflow\Data\Workflow\WorkflowDelete())->deleteById($workflowId);
+
+
+        // Search Index
+        $delete = new SearchIndexDelete();
+        $delete->filter->andEqual($delete->model->workflowId, $workflowId);
+        $delete->delete();
+
+
 
     }
 

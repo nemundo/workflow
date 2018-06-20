@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\Action;
 
 
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
-use Nemundo\Workflow\Search\SearchIndexBuilder;
 
 
 class SubjectWorkflowAction extends AbstractWorkflowAction
@@ -20,9 +19,9 @@ class SubjectWorkflowAction extends AbstractWorkflowAction
         $update->subject = $subject;
         $update->updateById($this->changeEvent->workflowId);
 
-        $searchIndex = new SearchIndexBuilder($this->changeEvent);
+        $searchIndex = new SearchIndexWorkflowAction($this->changeEvent);
         //$searchIndex->process = $this->process;
-         $searchIndex->addText($subject);
+        $searchIndex->addText($subject);
 
     }
 

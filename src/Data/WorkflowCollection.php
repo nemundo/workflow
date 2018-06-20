@@ -3,6 +3,7 @@ namespace Nemundo\Workflow\Data;
 use Nemundo\Model\Collection\AbstractModelCollection;
 class WorkflowCollection extends AbstractModelCollection {
 protected function loadCollection() {
+$this->addModel(new \Nemundo\Workflow\Data\MailConfig\MailConfigModel());
 $this->addModel(new \Nemundo\Workflow\Data\Process\ProcessModel());
 $this->addModel(new \Nemundo\Workflow\Data\UserAssignment\UserAssignmentModel());
 $this->addModel(new \Nemundo\Workflow\Data\UserNotification\UserNotificationModel());

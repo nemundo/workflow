@@ -41,6 +41,8 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         if ((new ActionUrlParameter())->getValue() == 'index') {
             $btn = new DraftReleaseButton($this);
             $btn->workflowId = $this->workflowId;
+            $btn->redirectSite = $this->redirectSite;
+
         }
 
 

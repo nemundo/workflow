@@ -83,9 +83,8 @@ abstract class AbstractProcess extends AbstractBaseClass
     }
 
 
-    public function getApplicationSite($workflowId = null)
+    public function getItemSite($workflowId = null)
     {
-
 
         $site = clone($this->site);
         $site->addParameter($this->parameter->setValue($workflowId));

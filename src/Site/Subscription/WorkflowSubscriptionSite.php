@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Site;
+namespace Nemundo\Workflow\Site\Subscription;
 
 
 use Nemundo\User\Information\UserInformation;
@@ -12,6 +12,7 @@ use Nemundo\App\Kvp\Parameter\KvpParameter;
 use Nemundo\App\Notification\Data\Subscription\Subscription;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
+// SubscriptionSite
 class WorkflowSubscriptionSite extends AbstractSite
 {
 

@@ -9,6 +9,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
@@ -39,18 +40,20 @@ class WorkflowActionButton extends AbstractHtmlContainerList
         }
 
 
-        $workflowReader = new WorkflowReader();
-        $workflowReader->model->loadWorkflowStatus();
+        $workflowItem = new WorkflowItem($this->workflowId);
 
-        $workflowRow = $workflowReader->getRowById($this->workflowId);
+        //$workflowReader = new WorkflowReader();
+        //$workflowReader->model->loadWorkflowStatus();
 
-        $workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
+        //$workflowRow = $workflowReader->getRowById($this->workflowId);
 
-        foreach ($workflowStatus->getFollowingStatusClassList() as $className) {
+        //$workflowStatus = $workflowRow->workflowStatus->getWorkflowStatusClassObject();
+
+        //foreach ($workflowStatus->getFollowingStatusClassList() as $className) {
+        foreach ($workflowItem->workflowStatus->getFollowingStatusClassList($this->workflowId) as $className) {
 
             /** @var AbstractWorkflowStatus $followingStatusClass */
             $followingStatusClass = new $className();
-
 
             $label = $followingStatusClass->actionLabel;
             if ($label == null) {

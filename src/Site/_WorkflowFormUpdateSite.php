@@ -10,7 +10,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\WorkflowTitle;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
-use Nemundo\Workflow\Form\WorkflowForm;
+use Nemundo\Workflow\Form\WorkflowChangeForm;
 use Nemundo\Workflow\Form\WorkflowFormUpdate;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;

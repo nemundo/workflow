@@ -73,7 +73,12 @@ class WorkflowItem extends AbstractBase
     public function getTitle()
     {
 
-        $title = $this->workflowNumber . ' ' . $this->subject;
+        $title = $this->subject;
+
+        if ($this->workflowNumber !== null) {
+            $title = $this->workflowNumber . ': ' . $this->subject;
+        }
+
         return $title;
 
     }

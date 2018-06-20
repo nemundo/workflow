@@ -59,7 +59,7 @@ class WorkflowSearchEngineSite extends AbstractSite
 
         $processParameter = new ProcessParameter();
 
-        if ($processParameter->exists()) {
+        if ($processParameter->getValue() !== '') {
 
             $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
 
@@ -130,7 +130,6 @@ class WorkflowSearchEngineSite extends AbstractSite
         if ($userListBox->getValue() !== '') {
             $table->addUserIdFilter($userListBox->getValue());
         }
-
 
         $table->sorting = WorkflowSorting::BY_ITEM_ORDER_DESC;
 

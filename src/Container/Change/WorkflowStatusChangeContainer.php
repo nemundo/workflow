@@ -28,17 +28,12 @@ class WorkflowStatusChangeContainer extends AbstractWorkflowChangeContainer
     public function getHtml()
     {
 
-        //(new Debug())->write($this->workflowStatus->changeContainerClass);
-        //(new Debug())->write($this->redirectSite);
-
         /** @var AbstractWorkflowChangeContainer $container */
         $container = new $this->workflowStatus->changeContainerClass($this);
         $container->workflowStatus = $this->workflowStatus;
         $container->workflowId = $this->workflowId;
 
         if ($this->redirectSite !== null) {
-
-           // (new Debug())->write('clone');
 
             $container->redirectSite = clone($this->redirectSite);
 
@@ -47,10 +42,6 @@ class WorkflowStatusChangeContainer extends AbstractWorkflowChangeContainer
             }
 
         }
-
-
-       // (new Debug())->write($container->redirectSite);
-
 
         return parent::getHtml();
 

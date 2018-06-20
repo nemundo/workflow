@@ -3,7 +3,8 @@
 namespace Nemundo\Workflow\Container\Change;
 
 
-use Nemundo\Workflow\Form\WorkflowForm;
+use Nemundo\Admin\Com\Title\AdminSubtitle;
+use Nemundo\Com\Html\Form\AbstractSubmitForm;
 use Nemundo\Workflow\Form\WorkflowFormTrait;
 use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
 
@@ -18,13 +19,16 @@ class FormWorkflowChangeContainer extends AbstractWorkflowChangeContainer
     public function getHtml()
     {
 
+        $subtitle = new AdminSubtitle($this);
+        $subtitle->content = $this->workflowStatus->workflowStatus;
+
         $className = $this->workflowStatus->formClassName;
 
-        /** @var WorkflowFormTrait $form */
+        /** @var AbstractSubmitForm|WorkflowFormTrait $form */
         $form = new $className($this);
         $form->workflowStatus = $this->workflowStatus;
         $form->workflowId = $this->workflowId;
-        //$form->redirectSite = clone(WorkflowItemSite::$site);
+        $form->redirectSite = $this->redirectSite;
         //$form->redirectSite->addParameter($workflowParameter);*/
 
         return parent::getHtml();

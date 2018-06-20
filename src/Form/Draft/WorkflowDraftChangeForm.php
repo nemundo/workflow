@@ -13,13 +13,16 @@ use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\Form\Change\WorkflowChangeFormTrait;
 use Nemundo\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\Parameter\DraftParameter;
 
 
-class WorkflowDraftForm extends AbstractWorkflowDraftForm
+class WorkflowDraftChangeForm extends AbstractWorkflowDraftForm
 {
 
+
+    use WorkflowChangeFormTrait;
 
     /**
      * @var AbstractModel

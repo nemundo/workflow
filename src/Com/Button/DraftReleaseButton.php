@@ -4,6 +4,8 @@ namespace Nemundo\Workflow\Com\Button;
 
 
 use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\Parameter\RedirectParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Site\Release\DraftReleaseSite;
@@ -16,6 +18,10 @@ class DraftReleaseButton extends AdminButton
      */
     public $workflowId;
 
+    /**
+     * @var AbstractSite
+     */
+    public $redirectSite;
 
     public function getHtml()
     {
@@ -23,6 +29,10 @@ class DraftReleaseButton extends AdminButton
         $this->content = 'Entwurf freigeben';
         $this->site = clone(DraftReleaseSite::$site);
         $this->site->addParameter(new WorkflowParameter($this->workflowId));
+
+        if ($this->redirectSite !== null) {
+            $this->site->addParameter(new RedirectParameter($this->redirectSite->getUrl()));
+        }
 
         return parent::getHtml();
 

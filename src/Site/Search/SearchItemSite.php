@@ -14,7 +14,7 @@ use Nemundo\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Com\Title\ProcessTitle;
 use Nemundo\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
-use Nemundo\Workflow\Form\WorkflowForm;
+use Nemundo\Workflow\Form\WorkflowChangeForm;
 use Nemundo\Workflow\Form\WorkflowStartForm;
 use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Parameter\ProcessParameter;

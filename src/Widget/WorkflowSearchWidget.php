@@ -67,7 +67,7 @@ class WorkflowSearchWidget extends AbstractAdminWidget
                 $row->addText($indexRow->workflow->subject);
 
                 $process = $indexRow->workflow->process->getProcessClassObject();
-                $site = $process->getApplicationSite($indexRow->workflowId);
+                $site = $process->getItemSite($indexRow->workflowId);
                 $row->addClickableSite($site);
 
                 /*$row->addText($indexRow->applicationType->applicationType);
