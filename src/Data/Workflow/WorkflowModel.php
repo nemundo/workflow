@@ -186,7 +186,7 @@ $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "workflow_workflow";
 $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "workflow_workflow_deadline";
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Erledigen bis";
 $this->deadline->allowNullValue = "";
 
 $this->userId = new \Nemundo\Model\Type\User\CreatedUserType($this);

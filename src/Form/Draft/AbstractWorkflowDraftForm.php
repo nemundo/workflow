@@ -26,7 +26,6 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
     use ConnectionTrait;
 
-    //use WorkflowFormTrait;
 
     /**
      * @var AbstractModel
@@ -89,11 +88,11 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
         $btn = new BootstrapSubmitButton($this);
         $btn->name = (new DraftParameter())->getParameterName();
-        $btn->content = 'Entwurf';
+        $btn->content = 'Entwurf speichern';
 
         $submitButton = new BootstrapSubmitButton($this);
         $submitButton->name = 'save_btn';
-        $submitButton->content = 'Speichern';
+        $submitButton->content = 'Freigeben';
         $submitButton->addCssClass('btn btn-primary');
 
 
