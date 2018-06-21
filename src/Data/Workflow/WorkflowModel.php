@@ -180,7 +180,7 @@ $this->workflowStatusId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdTy
 $this->workflowStatusId->tableName = "workflow_workflow";
 $this->workflowStatusId->fieldName = "workflow_status";
 $this->workflowStatusId->aliasFieldName = "workflow_workflow_workflow_status";
-$this->workflowStatusId->label = "Workflow Status";
+$this->workflowStatusId->label = "Status";
 
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "workflow_workflow";
@@ -233,7 +233,7 @@ $this->workflowStatus = new \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatus
 $this->workflowStatus->tableName = "workflow_workflow";
 $this->workflowStatus->fieldName = "workflow_status";
 $this->workflowStatus->aliasFieldName = "workflow_workflow_workflow_status";
-$this->workflowStatus->label = "Workflow Status";
+$this->workflowStatus->label = "Status";
 }
 }
 public function loadUser() {

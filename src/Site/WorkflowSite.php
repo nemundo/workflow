@@ -7,6 +7,8 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Site\Assignment\UserAssignmentAdminSite;
 use Nemundo\Workflow\Site\Assignment\UsergroupAssignmentAdminSite;
 use Nemundo\Workflow\Site\Config\MailConfigSite;
+use Nemundo\Workflow\Site\Config\TeamConfigSite;
+use Nemundo\Workflow\Site\Inbox\TeamInboxSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxCreatedSite;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
@@ -41,12 +43,16 @@ class WorkflowSite extends AbstractSite
         $this->addRestrictedUsergroup(new WorkflowUsergroup());
 
         new WorkflowInboxSite($this);
+        new TeamInboxSite($this);
         new WorkflowInboxCreatedSite($this);
         new WorkflowSearchEngineSite($this);
         new NotificationSite($this);
         new ProcessSite($this);
         new LastChangeSite($this);
+
+        new TeamConfigSite($this);
         new MailConfigSite($this);
+
 
         new StatusChangeSite($this);
 

@@ -35,7 +35,7 @@ class WorkflowInboxSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Workflow Inbox (Aufgaben)';
+        $this->title = 'Inbox';
         $this->url = 'inbox';
 
     }
@@ -53,7 +53,7 @@ class WorkflowInboxSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $title = new AdminTitle($page);
-        $title->content = 'Inbox (Aufgaben)';
+        $title->content = $this->title;  //'Inbox (Aufgaben)';
 
 
         $dropdown = new ProcessDropdown($page);

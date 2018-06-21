@@ -168,7 +168,7 @@ $this->workflowStatusId = new \Nemundo\Model\Type\Id\IdType();
 $this->workflowStatusId->fieldName = "workflow_status";
 $this->workflowStatusId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->workflowStatusId->aliasFieldName = $this->workflowStatusId->tableName ."_".$this->workflowStatusId->fieldName;
-$this->workflowStatusId->label = "Workflow Status";
+$this->workflowStatusId->label = "Status";
 $this->addType($this->workflowStatusId);
 
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType();
@@ -224,7 +224,7 @@ $this->workflowStatus = new \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatus
 $this->workflowStatus->fieldName = "workflow_status";
 $this->workflowStatus->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->workflowStatus->aliasFieldName = $this->workflowStatus->tableName ."_".$this->workflowStatus->fieldName;
-$this->workflowStatus->label = "Workflow Status";
+$this->workflowStatus->label = "Status";
 $this->addType($this->workflowStatus);
 }
 return $this;

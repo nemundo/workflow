@@ -54,11 +54,6 @@ class WorkflowViewList extends AbstractProcessItem
     public $process;
 
     /**
-     * @var string
-     */
-    //public $workflowId;
-
-    /**
      * @var bool
      */
     public $showSubscription = false;
@@ -111,7 +106,7 @@ class WorkflowViewList extends AbstractProcessItem
         if ($this->showBaseData) {
 
             $h3 = new H5($this);
-            $h3->content = 'Workflow Data';
+            $h3->content = 'Stammdaten';
 
             /** @var AbstractWorkflowBaseModel $model */
             $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
@@ -160,7 +155,7 @@ class WorkflowViewList extends AbstractProcessItem
         }
 
         $h3 = new H5($this);
-        $h3->content = 'Workflow Verlauf';
+        $h3->content = 'Verlauf';
 
 
         $row = new BootstrapRow($this);
@@ -221,8 +216,8 @@ class WorkflowViewList extends AbstractProcessItem
 
         }
 
-
         return parent::getHtml();
+
     }
 
 }
