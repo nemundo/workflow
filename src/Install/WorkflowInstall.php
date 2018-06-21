@@ -9,6 +9,7 @@ use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
 use Nemundo\Workflow\App\SearchEngine\Install\SearchEngineInstall;
+use Nemundo\Workflow\App\TeamInbox\Data\TeamInboxCollection;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowTemplateCollection;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Data\WorkflowCollection;
@@ -37,6 +38,7 @@ class WorkflowInstall extends AbstractScript
         $setup->addCollection(new WorkflowCollection());
         $setup->addCollection(new WorkflowTemplateCollection());
         $setup->addCollection(new SearchEngineCollection());
+        $setup->addCollection(new TeamInboxCollection());
 
         $setup = new WorkflowStatusSetup();
         $setup->addWorkflowStatus(new ApprovalWorkflowStatus());
