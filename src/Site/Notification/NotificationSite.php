@@ -215,11 +215,10 @@ class NotificationSite extends AbstractSite
 
             }*/
 
-
-            $pagination = new BootstrapModelPagination($colRight);
-            $pagination->paginationReader = $notificationReader;
-
         }
+
+        $pagination = new BootstrapModelPagination($colRight);
+        $pagination->paginationReader = $notificationReader;
 
 
         $btn = new AdminButton($colRight);

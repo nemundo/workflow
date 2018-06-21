@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site\Assignment;
 
 
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
@@ -44,6 +45,10 @@ class UserAssignmentAdminSite extends AbstractSite
 
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+
+        $title = new AdminTitle($page);
+        $title->content = $this->title;
+
 
         $form = new SearchForm($page);
 
@@ -92,7 +97,6 @@ class UserAssignmentAdminSite extends AbstractSite
             /*$site = clone(NotificationDeleteSite::$site);
             $site->addParameter(new NotificationParameter($assignmentRow->id));
             $row->addHyperlinkIcon(new DeleteIcon(), $site);*/
-
 
         }
 
