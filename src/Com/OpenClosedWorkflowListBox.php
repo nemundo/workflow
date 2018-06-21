@@ -12,7 +12,6 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     public function getHtml()
     {
 
-
         $this->label = 'Status';
         $this->submitOnChange = true;
         $this->emptyValueAsDefault = false;

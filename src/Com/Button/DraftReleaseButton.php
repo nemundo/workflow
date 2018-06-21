@@ -30,9 +30,10 @@ class DraftReleaseButton extends AdminButton
         $this->site = clone(DraftReleaseSite::$site);
         $this->site->addParameter(new WorkflowParameter($this->workflowId));
 
+        /*
         if ($this->redirectSite !== null) {
             $this->site->addParameter(new RedirectParameter($this->redirectSite->getUrl()));
-        }
+        }*/
 
         return parent::getHtml();
 

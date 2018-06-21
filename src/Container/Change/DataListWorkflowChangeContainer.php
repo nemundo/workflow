@@ -38,12 +38,13 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $admin->filter->andEqual($model->workflowId, $this->workflowId);
         $admin->model->workflowId->defaultValue = $this->workflowId;
 
+        /*
         if ((new ActionUrlParameter())->getValue() == 'index') {
             $btn = new DraftReleaseButton($this);
             $btn->workflowId = $this->workflowId;
             $btn->redirectSite = $this->redirectSite;
 
-        }
+        }*/
 
 
         return parent::getHtml();

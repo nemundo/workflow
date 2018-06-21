@@ -42,14 +42,14 @@ class DraftReleaseSite extends AbstractSite
         (new DraftRelease())->releaseDraft($workflowId);
 
 
+        /*
         $url = (new RedirectParameter())->getValue();
-
         (new Url($url))->redirect();
-
+*/
         //(new Debug())->write($url);
 
 
-        //(new UrlReferer())->redirect();
+        (new UrlReferer())->redirect();
 
 
     }

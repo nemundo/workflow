@@ -199,9 +199,11 @@ class WorkflowViewList extends AbstractProcessItem
                 $btn->site->addParameter(new WorkflowParameter($this->workflowId));
                 $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
 
-                /*$btn = new DraftReleaseButton($contentDiv);
-                $btn->workflowId = $this->workflowId;*/
 
+                if ($statusChangeItem->workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+                    $btn = new DraftReleaseButton($contentDiv);
+                    $btn->workflowId = $this->workflowId;
+                }
             }
 
         }

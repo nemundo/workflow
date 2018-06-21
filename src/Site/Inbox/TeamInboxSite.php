@@ -35,7 +35,7 @@ class TeamInboxSite extends AbstractSite
 {
 
     /**
-     * @var WorkflowInboxSite
+     * @var TeamInboxSite
      */
     public static $site;
 
@@ -50,7 +50,7 @@ class TeamInboxSite extends AbstractSite
 
     protected function registerSite()
     {
-        WorkflowInboxSite::$site = $this;
+        TeamInboxSite::$site = $this;
     }
 
 
