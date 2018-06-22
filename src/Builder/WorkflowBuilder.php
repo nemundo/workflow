@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\Builder;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
@@ -63,6 +64,16 @@ class WorkflowBuilder extends AbstractBase
             return;
         }
 
+        if ($this->process->baseModelClassName == null) {
+            LogMessage::writeError($this->process->process . ': No BaseModelClassName defined');
+        }
+
+
+        if (!$this->process->checkUserVisibility()) {
+            LogMessage::writeError('No access');
+            exit;
+        }
+
 
         /** @var AbstractWorkflowBaseModel $baseModel */
         $baseModel = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
@@ -70,28 +81,18 @@ class WorkflowBuilder extends AbstractBase
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
 
 
-        if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class)||$workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
+        if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class) || $workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
+
             if ($this->process->baseModelClassName == $workflowStatus->modelClassName) {
                 $this->dataId = $this->workflowItemId;
             }
         }
 
-        //(new Debug())->write($this->process->baseModelClassName. $workflowStatus->modelClassName);
-
-
-
-
-
         if ($this->dataId == null) {
-
             $data = new ModelData();
             $data->model = $baseModel;
             $this->dataId = $data->save();
-
-          //  (new Debug())->write('data');
-
         }
-        //exit;
 
         $data = new Workflow();
         $data->processId = $this->process->processId;
@@ -140,6 +141,7 @@ class WorkflowBuilder extends AbstractBase
         $action->workflowId = $workflowId;
         $action->workflowItemId = $this->workflowItemId;
         $action->draft = $this->draft;
+        $action->checkFollowingStatus = false;
         $action->changeStatus();
 
 

@@ -3,6 +3,8 @@
 namespace Nemundo\Workflow\Builder;
 
 
+use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
@@ -30,9 +32,37 @@ class WorkflowStatusChangeBuilder
      */
     public $draft = false;
 
+    /**
+     * @var bool
+     */
+    public $checkFollowingStatus = true;
+
 
     public function changeStatus()
     {
+
+        if (!$this->workflowStatus->checkUserVisibility()) {
+            LogMessage::writeError('No access');
+        }
+
+        if ($this->checkFollowingStatus) {
+
+            $workflowItem = (new WorkflowItem($this->workflowId));
+
+            $valid = false;
+            foreach ($workflowItem->workflowStatus->getFollowingStatusClassList() as $followingStausClass) {
+                if ($followingStausClass !== $this->workflowStatus->getClassName()) {
+                    $valid = true;
+                }
+            }
+
+            if (!$valid) {
+                LogMessage::writeError('Workflow and Status are not valid');
+                exit;
+            }
+
+        }
+
 
         // Status Change
         $data = new WorkflowStatusChange();

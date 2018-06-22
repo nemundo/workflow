@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Container\Start;
 
 
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Process\AbstractProcess;
 
@@ -18,6 +19,11 @@ class WorkflowStartContainer extends AbstractWorkflowStartContainer
 
 
         $status = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
+
+        if ($status == null) {
+            LogMessage::writeError($this->process->process . ': StartWorkflowStatus is null');
+        }
+
 
         /** @var AbstractWorkflowStartContainer $container */
         $container = new  $status->startContainerClass($this);

@@ -26,14 +26,4 @@ class CommentWorkflowStatus extends AbstractDataWorkflowStatus
     }
 
 
-    public function onChange(StatusChangeEvent $changeEvent)
-    {
-
-
-        (new NotificationWorkflowAction($changeEvent))
-            ->notificateUsergroup(new BetaUsergroup());
-
-
-    }
-
 }
