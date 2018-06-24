@@ -56,6 +56,11 @@ public $itemOrder;
 */
 public $draft;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $message;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WorkflowStatusChangeModel::class;
@@ -116,6 +121,13 @@ $this->draft->tableName = $this->parentFieldName . "_" . $this->externalTableNam
 $this->draft->aliasFieldName = $this->draft->tableName . "_" . $this->draft->fieldName;
 $this->draft->label = "Draft";
 $this->addType($this->draft);
+
+$this->message = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->message->fieldName = "message";
+$this->message->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->message->aliasFieldName = $this->message->tableName . "_" . $this->message->fieldName;
+$this->message->label = "Message";
+$this->addType($this->message);
 
 }
 public function loadWorkflow() {

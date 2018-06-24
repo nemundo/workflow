@@ -56,6 +56,11 @@ public $itemOrder;
 */
 public $draft;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $message;
+
 protected function loadModel() {
 $this->tableName = "workflow_workflow_status_change";
 $this->aliasTableName = "workflow_workflow_status_change";
@@ -125,6 +130,13 @@ $this->draft->fieldName = "draft";
 $this->draft->aliasFieldName = "workflow_workflow_status_change_draft";
 $this->draft->label = "Draft";
 $this->draft->allowNullValue = "";
+
+$this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->message->tableName = "workflow_workflow_status_change";
+$this->message->fieldName = "message";
+$this->message->aliasFieldName = "workflow_workflow_status_change_message";
+$this->message->label = "Message";
+$this->message->allowNullValue = "";
 
 }
 public function loadWorkflow() {

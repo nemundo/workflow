@@ -27,6 +27,11 @@ public $workflowItemId;
 */
 public $draft;
 
+/**
+* @var string
+*/
+public $message;
+
 public function __construct() {
 parent::__construct();
 $this->model = new WorkflowStatusChangeModel();
@@ -36,6 +41,7 @@ $this->typeValueList->setModelValue($this->model->workflowId, $this->workflowId)
 $this->typeValueList->setModelValue($this->model->workflowStatusId, $this->workflowStatusId);
 $this->typeValueList->setModelValue($this->model->workflowItemId, $this->workflowItemId);
 $this->typeValueList->setModelValue($this->model->draft, $this->draft);
+$this->typeValueList->setModelValue($this->model->message, $this->message);
 parent::update();
 }
 }

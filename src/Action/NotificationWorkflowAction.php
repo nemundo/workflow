@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\Action;
 
 
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Data\UserNotification\UserNotification;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
@@ -70,7 +71,7 @@ class NotificationWorkflowAction extends AbstractWorkflowAction
             $mail = new ResponsiveActionMailMessage();
             $mail->addTo($userRow->email);
             $mail->subject = $workflowItem->getTitle();
-            $mail->actionText = $workflowItem->workflowStatus->getStatusText();
+            $mail->actionText = $workflowItem->workflowStatus->getStatusText($this->changeEvent);
             $mail->actionLabel = 'Ansehen';
             $mail->actionUrlSite = $process->getItemSite($this->changeEvent->workflowId);
             $mail->sendMail();

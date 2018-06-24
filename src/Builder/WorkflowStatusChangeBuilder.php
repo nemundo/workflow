@@ -64,13 +64,22 @@ class WorkflowStatusChangeBuilder
         }
 
 
+        $changeEvent = new StatusChangeEvent();
+        $changeEvent->workflowId = $this->workflowId;
+        $changeEvent->workflowItemId = $this->workflowItemId;
+
         // Status Change
         $data = new WorkflowStatusChange();
         $data->workflowStatusId = $this->workflowStatus->workflowStatusId;
         $data->workflowId = $this->workflowId;
         $data->workflowItemId = $this->workflowItemId;
         $data->draft = $this->draft;
+        $data->message = $this->workflowStatus->getStatusText($changeEvent);
         $statusChangeId = $data->save();
+
+
+        $changeEvent->statusChangeId = $statusChangeId;
+
 
 
         // Workflow
@@ -91,10 +100,11 @@ class WorkflowStatusChangeBuilder
 
         if (!$this->draft) {
 
+            /*
             $changeEvent = new StatusChangeEvent();
             $changeEvent->workflowId = $this->workflowId;
             $changeEvent->workflowItemId = $this->workflowItemId;
-            $changeEvent->statusChangeId = $statusChangeId;
+            $changeEvent->statusChangeId = $statusChangeId;*/
 
             $this->workflowStatus->onChange($changeEvent);
         }

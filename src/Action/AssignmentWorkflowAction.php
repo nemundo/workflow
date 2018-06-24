@@ -7,6 +7,7 @@ use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
@@ -110,7 +111,7 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
             $mail = new ResponsiveActionMailMessage();
             $mail->addTo($userRow->email);
             $mail->subject = $workflowItem->getTitle();
-            $mail->actionText = $workflowItem->workflowStatus->getStatusText();
+            $mail->actionText = $workflowItem->workflowStatus->getStatusText($this->changeEvent);
             $mail->actionLabel = 'Ansehen';
             $mail->actionUrlSite = $process->getItemSite($this->changeEvent->workflowId);
             $mail->sendMail();

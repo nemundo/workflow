@@ -61,6 +61,11 @@ public $itemOrder;
 */
 public $draft;
 
+/**
+* @var string
+*/
+public $message;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -81,6 +86,7 @@ $this->loadNemundoUserDataUserUseruserRow($model->user);
 $this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTime));
 $this->itemOrder = $this->getModelValue($model->itemOrder);
 $this->draft = $this->getModelValue($model->draft);
+$this->message = $this->getModelValue($model->message);
 }
 private function loadNemundoWorkflowDataWorkflowWorkflowworkflowRow($model) {
 $this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowRow($this->row, $model);

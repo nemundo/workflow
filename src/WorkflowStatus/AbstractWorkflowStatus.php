@@ -27,7 +27,7 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var
      */
-    public $workflowStatusText;
+    protected $workflowStatusText;
 
     /**
      * @var string
@@ -115,7 +115,8 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
 
 
     // getStatusText(ChangeEvent $event)
-    public function getStatusText() {
+    // getMessage
+    public function getStatusText(StatusChangeEvent $changeEvent) {
 
         return $this->workflowStatusText;
 

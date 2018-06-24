@@ -29,15 +29,9 @@ class StatusChangeEvent extends AbstractBase
     public function getDataId()
     {
 
-        //$dataId = (new WorkflowDataId())->getDataId($this->workflowId);
-
         $row = (new WorkflowReader())->getRowById($this->workflowId);
         return $row->dataId;
 
-
-        //return $dataId;
-
     }
-
 
 }

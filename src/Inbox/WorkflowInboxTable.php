@@ -7,6 +7,7 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\Data\Workflow\WorkflowModel;
 use Nemundo\Core\Directory\TextDirectory;
@@ -62,6 +63,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
         $header->addText('Nr.');
         $header->addText('Betreff');
         $header->addText('Status');
+        $header->addText('Text');
         $header->addText('Abgeschlossen');
         $header->addText('Erledigen bis');
         $header->addText('Zugewiesen an Benutzer');
@@ -106,7 +108,16 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             }
 
 
-            $row->addText($workflowRow->workflowStatus->workflowStatus . $draft . ': ' . $workflowRow->workflowStatus->workflowStatusText);
+            $row->addText($workflowRow->workflowStatus->workflowStatus . $draft);
+
+            //$row->addText($workflowRow->workflowStatus->workflowStatusText);
+
+
+            $changeEvent = new StatusChangeEvent();
+            $changeEvent->workflowId = $workflowRow->id;
+
+
+            $row->addText($workflowRow->workflowStatus->getWorkflowStatusClassObject()->getStatusText($changeEvent));
             $row->addYesNo($workflowRow->closed);
 
             if ($workflowRow->deadline !== null) {

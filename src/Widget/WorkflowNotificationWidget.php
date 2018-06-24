@@ -40,9 +40,10 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
         $table = new BootstrapClickableTable($this);
 
         $header = new TableHeader($table);
-        $header->addText('Nr.');
+        //$header->addText('Nr.');
+        //$header->addText('Status');
         $header->addText('Betreff');
-        $header->addText('Status');
+        $header->addText('Nachricht');
         $header->addEmpty();
 
         $notificationReader = new UserNotificationReader();
@@ -61,9 +62,19 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
 
             $number = $notificationRow->statusChange->workflow->workflowNumber;
 
-            $row->addText($number);
-            $row->addText($notificationRow->statusChange->workflow->subject);
-            $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
+            if ($number !== '') {
+                $number .= ': ';
+            }
+
+            //$row->addText($number);
+
+            //      $row->addText($notificationRow->statusChange->workflowStatus->workflowStatusText);
+            //$row->addText($notificationRow->statusChange->workflowStatus->workflowStatus);
+
+            //$row->addText($notificationRow->statusChange->workflow->subject);
+            $row->addText($number . $notificationRow->statusChange->workflow->subject);
+
+            $row->addText($notificationRow->statusChange->message);
 
             $process = $notificationRow->statusChange->workflow->process->getProcessClassObject();
 

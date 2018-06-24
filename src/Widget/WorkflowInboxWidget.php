@@ -5,6 +5,8 @@ namespace Nemundo\Workflow\Widget;
 
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
+use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\Inbox\WorkflowInboxReader;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -43,9 +45,10 @@ class WorkflowInboxWidget extends AbstractAdminWidget
 
         $header = new TableHeader($table);
         $header->addEmpty();
-        $header->addText('Nr.');
+        //$header->addText('Nr.');
         $header->addText('Betreff');
         $header->addText('Status');
+        $header->addText('Nachricht');
         $header->addText('Erledigen bis');
 
 
@@ -53,7 +56,9 @@ class WorkflowInboxWidget extends AbstractAdminWidget
 
             $number = $workflowRow->workflowNumber . ' (' . $workflowRow->process->process . ')';
 
-            $statusText = $workflowRow->workflowStatus->workflowStatusText;
+            //$statusText = $workflowRow->workflowStatus->workflowStatusText;
+            $statusText = $workflowRow->workflowStatus->workflowStatus;
+
 
             $row = new BootstrapClickableTableRow($table);
 
@@ -65,9 +70,19 @@ class WorkflowInboxWidget extends AbstractAdminWidget
                 $row->addEmpty();
             }
 
-            $row->addText($number);
-            $row->addText($workflowRow->subject);
+            $workflowItem = new WorkflowItem($workflowRow->id);
+
+
+            $row->addText($workflowItem->getTitle());
+            //$row->addText($number);
+            //$row->addText($workflowRow->subject);
             $row->addText($statusText);
+
+
+            $changeEvent = new StatusChangeEvent();
+            $changeEvent->workflowId = $workflowRow->id;
+
+            $row->addText($workflowItem->workflowStatus->getStatusText($changeEvent));
 
             if ($workflowRow->deadline !== null) {
                 $row->addText($workflowRow->deadline->getShortDateLeadingZeroFormat());

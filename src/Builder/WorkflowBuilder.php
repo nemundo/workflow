@@ -110,7 +110,7 @@ class WorkflowBuilder extends AbstractBase
                 $number = $value->getMaxValue();
 
                 if ($number == 0) {
-                    $number = 1000;
+                    $number = $this->process->startNumber - 1;  // 1000;
                 }
 
                 $number++;

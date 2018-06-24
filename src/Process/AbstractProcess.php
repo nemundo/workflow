@@ -57,6 +57,11 @@ abstract class AbstractProcess extends AbstractBaseClass
     public $prefix = '';
 
     /**
+     * @var int
+     */
+    public $startNumber = 1000;
+
+    /**
      * @var string
      */
     public $baseModelClassName;

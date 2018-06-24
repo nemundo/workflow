@@ -18,7 +18,7 @@ class WorkflowStatusSetup extends AbstractBase
         $data->id = $workflowStatus->workflowStatusId;
         $data->workflowStatus = $workflowStatus->workflowStatus;
         $data->workflowStatusClass = $workflowStatus->getClassName();
-        $data->workflowStatusText = $workflowStatus->workflowStatusText;
+        //$data->workflowStatusText = $workflowStatus->workflowStatusText;
         $data->save();
 
     }
