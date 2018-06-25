@@ -35,7 +35,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
     {
 
         if ($this->statusChangeRedirectSite == null) {
-            LogMessage::writeError('WorkflowActionButton: No site defined.');
+            (new LogMessage())->writeError('WorkflowActionButton: No site defined.');
             return parent::getHtml();
         }
 

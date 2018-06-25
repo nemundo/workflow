@@ -41,7 +41,7 @@ class WorkflowFormUpdate extends ModelFormUpdate
     {
 
         if (is_null($this->workflowStatus->modelClassName)) {
-            LogMessage::writeError('Workflow Form: No Model Class Name');
+            (new LogMessage())->writeError('Workflow Form: No Model Class Name');
             return;
         }
 

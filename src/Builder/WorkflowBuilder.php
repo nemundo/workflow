@@ -65,12 +65,12 @@ class WorkflowBuilder extends AbstractBase
         }
 
         if ($this->process->baseModelClassName == null) {
-            LogMessage::writeError($this->process->process . ': No BaseModelClassName defined');
+            (new LogMessage())->writeError($this->process->process . ': No BaseModelClassName defined');
         }
 
 
         if (!$this->process->checkUserVisibility()) {
-            LogMessage::writeError('No access');
+            (new LogMessage())->writeError('No access');
             exit;
         }
 

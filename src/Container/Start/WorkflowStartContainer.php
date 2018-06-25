@@ -21,7 +21,7 @@ class WorkflowStartContainer extends AbstractWorkflowStartContainer
         $status = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
 
         if ($status == null) {
-            LogMessage::writeError($this->process->process . ': StartWorkflowStatus is null');
+            (new LogMessage())->writeError($this->process->process . ': StartWorkflowStatus is null');
         }
 
 

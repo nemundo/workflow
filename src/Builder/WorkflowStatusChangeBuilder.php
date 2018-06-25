@@ -42,7 +42,7 @@ class WorkflowStatusChangeBuilder
     {
 
         if (!$this->workflowStatus->checkUserVisibility()) {
-            LogMessage::writeError('No access');
+            (new LogMessage())->writeError('No access');
         }
 
         if ($this->checkFollowingStatus) {
@@ -57,7 +57,7 @@ class WorkflowStatusChangeBuilder
             }
 
             if (!$valid) {
-                LogMessage::writeError('Workflow and Status are not valid');
+                (new LogMessage())->writeError('Workflow and Status are not valid');
                 exit;
             }
 
