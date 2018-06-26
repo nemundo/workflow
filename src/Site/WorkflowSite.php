@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Site;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Site\Assignment\UserAssignmentAdminSite;
 use Nemundo\Workflow\Site\Assignment\UsergroupAssignmentAdminSite;
+use Nemundo\Workflow\Site\Assignment\UsergroupAssignmentSite;
 use Nemundo\Workflow\Site\Config\MailConfigSite;
 use Nemundo\Workflow\Site\Config\TeamConfigSite;
 use Nemundo\Workflow\Site\Inbox\TeamInboxSite;
@@ -47,6 +48,9 @@ class WorkflowSite extends AbstractSite
         new WorkflowInboxCreatedSite($this);
         new WorkflowSearchEngineSite($this);
         new NotificationSite($this);
+
+        new UsergroupAssignmentSite($this);
+
         new ProcessSite($this);
         new LastChangeSite($this);
 

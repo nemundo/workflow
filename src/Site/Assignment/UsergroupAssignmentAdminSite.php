@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site\Assignment;
 
 
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\User\Data\Usergroup\UsergroupListBox;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
@@ -56,8 +57,7 @@ class UsergroupAssignmentAdminSite extends AbstractSite
         $usergroupListBox->value = $usergroupListBox->getValue();
 
 
-        $table = new BootstrapClickableTable($page);
-
+        $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
         $header->addText('Nr.');
