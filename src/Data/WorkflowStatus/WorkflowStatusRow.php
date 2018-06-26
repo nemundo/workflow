@@ -21,18 +21,12 @@ public $workflowStatus;
 */
 public $workflowStatusClass;
 
-/**
-* @var string
-*/
-public $workflowStatusText;
-
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->workflowStatus = $this->getModelValue($model->workflowStatus);
 $this->workflowStatusClass = $this->getModelValue($model->workflowStatusClass);
-$this->workflowStatusText = $this->getModelValue($model->workflowStatusText);
 }
 /**
 * @return \Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus

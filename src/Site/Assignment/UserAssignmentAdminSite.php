@@ -65,18 +65,24 @@ class UserAssignmentAdminSite extends AbstractSite
         $header = new TableHeader($table);
         $header->addText('Nr.');
         $header->addText('Betreff');
-        $header->addText('Status');
+        $header->addText('User');
+        //$header->addText('Status');
         $header->addEmpty();
 
         $assignmentReader = new UserAssignmentReader();
         $assignmentReader->model->loadWorkflow();
+        $assignmentReader->model->loadUser();
         $assignmentReader->model->workflow->loadProcess();
         $assignmentReader->model->workflow->loadWorkflowStatus();
 
         //$notificationReader->filter->andEqual($notificationReader->model->userId, (new UserInformation())->getUserId());
-        $assignmentReader->filter->andEqual($assignmentReader->model->userId, $userListBox->getValue());
 
+        if ($userListBox->getValue() !== '') {
+            $assignmentReader->filter->andEqual($assignmentReader->model->userId, $userListBox->getValue());
+        }
         //$notificationReader->filter->andNotEqual($notificationReader->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
+
+        $assignmentReader->addOrder($assignmentReader->model->delete);
         $assignmentReader->addOrder($assignmentReader->model->workflow->itemOrder, SortOrder::DESCENDING);
 
         foreach ($assignmentReader->getData() as $assignmentRow) {
@@ -85,10 +91,11 @@ class UserAssignmentAdminSite extends AbstractSite
 
             $number = $assignmentRow->workflow->workflowNumber . ' (' . $assignmentRow->workflow->process->process . ')';
 
-
             $row->addText($number);  // $notificationRow->workflow->workflowNumber);
             $row->addText($assignmentRow->workflow->subject);
-            $row->addText($assignmentRow->workflow->workflowStatus->workflowStatusText);
+            $row->addText($assignmentRow->user->displayName);
+            //$row->addText($assignmentRow->workflow->workflowStatus->workflowStatusText);
+            $row->addYesNo($assignmentRow->delete);
 
             $site = $assignmentRow->workflow->process->getProcessClassObject()->getItemSite();  //$workflowRow->dataId);
             $site->addParameter(new WorkflowParameter($assignmentRow->workflowId));

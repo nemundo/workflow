@@ -20,7 +20,7 @@ class PasswordResetProcess extends AbstractProcess
         $this->baseModelClassName = PasswordResetRequestModel::class;
         $this->startWorkflowStatusClassName = PasswordResetStartWorkflowStatus::class;
 
-        $this->site = PasswordChangeSite::$site;
+        $this->itemSite = PasswordChangeSite::$site;
 
         //$this->restricted=true;
         //$this->addRestrictedUsergroup(new WorkflowUsergroup());

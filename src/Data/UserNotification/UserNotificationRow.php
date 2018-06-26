@@ -31,6 +31,11 @@ public $statusChangeId;
 */
 public $statusChange;
 
+/**
+* @var bool
+*/
+public $delete;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -43,6 +48,7 @@ $this->statusChangeId = $this->getModelValue($model->statusChangeId);
 if ($model->statusChange !== null) {
 $this->loadNemundoWorkflowDataWorkflowStatusChangeWorkflowStatusChangestatusChangeRow($model->statusChange);
 }
+$this->delete = $this->getModelValue($model->delete);
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

@@ -26,6 +26,11 @@ public $usergroupId;
 */
 public $usergroup;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
 protected function loadModel() {
 $this->tableName = "workflow_usergroup_assignment";
 $this->aliasTableName = "workflow_usergroup_assignment";
@@ -55,6 +60,13 @@ $this->usergroupId->tableName = "workflow_usergroup_assignment";
 $this->usergroupId->fieldName = "usergroup";
 $this->usergroupId->aliasFieldName = "workflow_usergroup_assignment_usergroup";
 $this->usergroupId->label = "Usergroup";
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->delete->tableName = "workflow_usergroup_assignment";
+$this->delete->fieldName = "delete";
+$this->delete->aliasFieldName = "workflow_usergroup_assignment_delete";
+$this->delete->label = "Delete";
+$this->delete->allowNullValue = "";
 
 }
 public function loadWorkflow() {

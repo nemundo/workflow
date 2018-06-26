@@ -113,15 +113,11 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     }
 
 
-
-    // getStatusText(ChangeEvent $event)
-    // getMessage
     public function getStatusText(StatusChangeEvent $changeEvent) {
 
         return $this->workflowStatusText;
 
     }
-
 
 
     public function onChange(StatusChangeEvent $changeEvent)

@@ -16,11 +16,6 @@ public $workflowStatus;
 */
 public $workflowStatusClass;
 
-/**
-* @var \Nemundo\Model\Type\Text\LargeTextType
-*/
-public $workflowStatusText;
-
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WorkflowStatusModel::class;
@@ -46,13 +41,6 @@ $this->workflowStatusClass->tableName = $this->parentFieldName . "_" . $this->ex
 $this->workflowStatusClass->aliasFieldName = $this->workflowStatusClass->tableName . "_" . $this->workflowStatusClass->fieldName;
 $this->workflowStatusClass->label = "Workflow Status Class";
 $this->addType($this->workflowStatusClass);
-
-$this->workflowStatusText = new \Nemundo\Model\Type\Text\LargeTextType();
-$this->workflowStatusText->fieldName = "workflow_status_text";
-$this->workflowStatusText->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->workflowStatusText->aliasFieldName = $this->workflowStatusText->tableName . "_" . $this->workflowStatusText->fieldName;
-$this->workflowStatusText->label = "Workflow Status Text";
-$this->addType($this->workflowStatusText);
 
 }
 }

@@ -66,7 +66,7 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $table->addLabelValue('Letzte Änderung', $workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
         //$table->addLabelValue('Status', $workflowRow->workflowStatus->workflowStatus);
         $table->addLabelValue('Status', $workflowItem->getStatus());
-        $table->addLabelValue('Status Text', $workflowRow->workflowStatus->workflowStatusText);
+        //$table->addLabelValue('Status Text', $workflowRow->workflowStatus->workflowStatusText);
 
 
         return parent::getHtml();

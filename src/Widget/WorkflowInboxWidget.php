@@ -24,7 +24,7 @@ class WorkflowInboxWidget extends AbstractAdminWidget
     {
 
         //$this->widgetTitle = 'Workflow Inbox';
-        $this->widgetTitle = 'Aufgaben';
+        $this->widgetTitle = 'Workflow Inbox/Aufgaben';
         $this->widgetSite = WorkflowInboxSite::$site;
 
         parent::loadCom();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Reader;
+namespace Nemundo\Workflow\Reader\Workflow;
 
 
 use Nemundo\Core\Base\DataSource\AbstractDataSource;

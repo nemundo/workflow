@@ -37,7 +37,6 @@ class WorkflowStatusChangeItemReader extends AbstractDataSource
     protected function loadData()
     {
 
-
         $changeReader = new WorkflowStatusChangeReader();
         $changeReader->model->loadWorkflowStatus();
         $changeReader->model->loadUser();
@@ -56,9 +55,7 @@ class WorkflowStatusChangeItemReader extends AbstractDataSource
 
             $this->addItem($item);
 
-
         }
-
 
     }
 

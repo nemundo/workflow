@@ -26,6 +26,11 @@ public $statusChangeId;
 */
 public $statusChange;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = UserNotificationModel::class;
@@ -51,6 +56,13 @@ $this->statusChangeId->tableName = $this->parentFieldName . "_" . $this->externa
 $this->statusChangeId->aliasFieldName = $this->statusChangeId->tableName ."_".$this->statusChangeId->fieldName;
 $this->statusChangeId->label = "Status Change";
 $this->addType($this->statusChangeId);
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType();
+$this->delete->fieldName = "delete";
+$this->delete->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->delete->aliasFieldName = $this->delete->tableName . "_" . $this->delete->fieldName;
+$this->delete->label = "Delete";
+$this->addType($this->delete);
 
 }
 public function loadUser() {

@@ -26,6 +26,11 @@ public $statusChangeId;
 */
 public $statusChange;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
 protected function loadModel() {
 $this->tableName = "workflow_user_notification";
 $this->aliasTableName = "workflow_user_notification";
@@ -55,6 +60,13 @@ $this->statusChangeId->tableName = "workflow_user_notification";
 $this->statusChangeId->fieldName = "status_change";
 $this->statusChangeId->aliasFieldName = "workflow_user_notification_status_change";
 $this->statusChangeId->label = "Status Change";
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->delete->tableName = "workflow_user_notification";
+$this->delete->fieldName = "delete";
+$this->delete->aliasFieldName = "workflow_user_notification_delete";
+$this->delete->label = "Delete";
+$this->delete->allowNullValue = "";
 
 }
 public function loadUser() {

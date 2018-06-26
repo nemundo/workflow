@@ -31,6 +31,11 @@ public $usergroupId;
 */
 public $usergroup;
 
+/**
+* @var bool
+*/
+public $delete;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -43,6 +48,7 @@ $this->usergroupId = $this->getModelValue($model->usergroupId);
 if ($model->usergroup !== null) {
 $this->loadNemundoUserDataUsergroupUsergroupusergroupRow($model->usergroup);
 }
+$this->delete = $this->getModelValue($model->delete);
 }
 private function loadNemundoWorkflowDataWorkflowWorkflowworkflowRow($model) {
 $this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowRow($this->row, $model);

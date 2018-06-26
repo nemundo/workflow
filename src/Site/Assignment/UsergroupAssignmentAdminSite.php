@@ -62,15 +62,24 @@ class UsergroupAssignmentAdminSite extends AbstractSite
         $header = new TableHeader($table);
         $header->addText('Nr.');
         $header->addText('Betreff');
-        $header->addText('Status');
+        //$header->addText('Status');
+        $header->addText('Usergroup');
+        $header->addText('Deleted');
         $header->addEmpty();
 
         $assignmentReader = new UsergroupAssignmentReader();
         $assignmentReader->model->loadWorkflow();
         $assignmentReader->model->workflow->loadProcess();
         $assignmentReader->model->workflow->loadWorkflowStatus();
-        $assignmentReader->filter->andEqual($assignmentReader->model->usergroupId, $usergroupListBox->getValue());
+        $assignmentReader->model->loadUsergroup();
+
+        if ($usergroupListBox->getValue() !== '') {
+            $assignmentReader->filter->andEqual($assignmentReader->model->usergroupId, $usergroupListBox->getValue());
+        }
+
+        $assignmentReader->addOrder($assignmentReader->model->delete);
         $assignmentReader->addOrder($assignmentReader->model->workflow->itemOrder, SortOrder::DESCENDING);
+
 
         foreach ($assignmentReader->getData() as $assignmentRow) {
 
@@ -81,7 +90,11 @@ class UsergroupAssignmentAdminSite extends AbstractSite
 
             $row->addText($number);  // $notificationRow->workflow->workflowNumber);
             $row->addText($assignmentRow->workflow->subject);
-            $row->addText($assignmentRow->workflow->workflowStatus->workflowStatusText);
+            //$row->addText($assignmentRow->workflow->workflowStatus->workflowStatusText);
+            $row->addText($assignmentRow->usergroup->usergroup);
+
+            $row->addYesNo($assignmentRow->delete);
+
 
             $site = $assignmentRow->workflow->process->getProcessClassObject()->getItemSite();  //$workflowRow->dataId);
             $site->addParameter(new WorkflowParameter($assignmentRow->workflowId));

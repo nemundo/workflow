@@ -26,6 +26,11 @@ public $usergroupId;
 */
 public $usergroup;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = UsergroupAssignmentModel::class;
@@ -51,6 +56,13 @@ $this->usergroupId->tableName = $this->parentFieldName . "_" . $this->externalTa
 $this->usergroupId->aliasFieldName = $this->usergroupId->tableName ."_".$this->usergroupId->fieldName;
 $this->usergroupId->label = "Usergroup";
 $this->addType($this->usergroupId);
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType();
+$this->delete->fieldName = "delete";
+$this->delete->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->delete->aliasFieldName = $this->delete->tableName . "_" . $this->delete->fieldName;
+$this->delete->label = "Delete";
+$this->addType($this->delete);
 
 }
 public function loadWorkflow() {

@@ -120,6 +120,7 @@ class WorkflowViewList extends AbstractProcessItem
         $assignmentReader = new UserAssignmentReader();
         $assignmentReader->model->loadUser();
         $assignmentReader->filter->andEqual($assignmentReader->model->workflowId, $this->workflowId);
+        $assignmentReader->filter->andEqual($assignmentReader->model->delete, false);
 
         if ($assignmentReader->getCount() > 0) {
 
@@ -139,6 +140,7 @@ class WorkflowViewList extends AbstractProcessItem
         $assignmentReader = new UsergroupAssignmentReader();
         $assignmentReader->model->loadUsergroup();
         $assignmentReader->filter->andEqual($assignmentReader->model->workflowId, $this->workflowId);
+        $assignmentReader->filter->andEqual($assignmentReader->model->delete, false);
 
         if ($assignmentReader->getCount() > 0) {
 

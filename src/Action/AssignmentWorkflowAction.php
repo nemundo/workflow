@@ -12,8 +12,10 @@ use Nemundo\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignment;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentDelete;
+use Nemundo\Workflow\Data\UserAssignment\UserAssignmentUpdate;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignment;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentDelete;
+use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentUpdate;
 
 class AssignmentWorkflowAction extends AbstractWorkflowAction
 {
@@ -56,9 +58,15 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
     public function clearUserAssignment()
     {
 
+        /*
         $delete = new UserAssignmentDelete();
         $delete->filter->andEqual($delete->model->workflowId, $this->changeEvent->workflowId);
-        $delete->delete();
+        $delete->delete();*/
+
+        $update = new UserAssignmentUpdate();
+        $update->delete = true;
+        $update->filter->andEqual($update->model->workflowId, $this->changeEvent->workflowId);
+        $update->update();
 
         return $this;
 
@@ -68,9 +76,15 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
     public function clearUsergroupAssignment()
     {
 
+        /*
         $delete = new UsergroupAssignmentDelete();
         $delete->filter->andEqual($delete->model->workflowId, $this->changeEvent->workflowId);
-        $delete->delete();
+        $delete->delete();*/
+
+        $update = new UsergroupAssignmentUpdate();
+        $update->delete = true;
+        $update->filter->andEqual($update->model->workflowId, $this->changeEvent->workflowId);
+        $update->update();
 
         return $this;
 

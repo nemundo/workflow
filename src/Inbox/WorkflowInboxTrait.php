@@ -130,6 +130,8 @@ trait WorkflowInboxTrait
             $workflowReader->addJoin($join);
             $this->workflowCount->addJoin($join);
 
+            //$workflowReader->filter->andEqual($userAssignmentModel->delete, false);
+
 
             $filter = new Filter();
             foreach ($this->userIdFilterList as $userId) {
@@ -158,8 +160,11 @@ trait WorkflowInboxTrait
             $join->externalModel = $usergroupAssignmentModel;
             $join->externalType = $usergroupAssignmentModel->workflowId;
 
+
             $workflowReader->addJoin($join);
             $this->workflowCount->addJoin($join);
+
+            $workflowReader->filter->andEqual($usergroupAssignmentModel->delete, false);
 
             $filter = new Filter();
             foreach ($usergroupIdList as $usergroupId) {
@@ -195,6 +200,10 @@ trait WorkflowInboxTrait
             $workflowReader->filter->andEqual($workflowReader->model->closed, true);
             $this->workflowCount->filter->andEqual($workflowReader->model->closed, true);
         }
+
+
+
+
 
         // Sorting
         switch ($this->sorting) {

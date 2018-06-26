@@ -17,6 +17,11 @@ public $userId;
 */
 public $statusChangeId;
 
+/**
+* @var bool
+*/
+public $delete;
+
 public function __construct() {
 parent::__construct();
 $this->model = new UserNotificationModel();
@@ -24,6 +29,7 @@ $this->model = new UserNotificationModel();
 public function update() {
 $this->typeValueList->setModelValue($this->model->userId, $this->userId);
 $this->typeValueList->setModelValue($this->model->statusChangeId, $this->statusChangeId);
+$this->typeValueList->setModelValue($this->model->delete, $this->delete);
 parent::update();
 }
 }

@@ -34,8 +34,7 @@ abstract class AbstractProcess extends AbstractBaseClass
     /**
      * @var AbstractSite
      */
-    public $site;
-    // itemSite
+    public $itemSite;
 
 
     // processViewClassName
@@ -81,7 +80,7 @@ abstract class AbstractProcess extends AbstractBaseClass
 
     public function __construct()
     {
-        $this->site = WorkflowItemSite::$site;
+        $this->itemSite = WorkflowItemSite::$site;
         $this->processItemClassName = WorkflowViewList::class;
         $this->parameter = new WorkflowParameter();
         $this->loadProcess();
@@ -91,7 +90,7 @@ abstract class AbstractProcess extends AbstractBaseClass
     public function getItemSite($workflowId = null)
     {
 
-        $site = clone($this->site);
+        $site = clone($this->itemSite);
         $site->addParameter($this->parameter->setValue($workflowId));
 
         return $site;

@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Site\Notification;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationDelete;
+use Nemundo\Workflow\Data\UserNotification\UserNotificationUpdate;
 use Nemundo\Workflow\Parameter\NotificationParameter;
 
 class NotificationDeleteSite extends AbstractSite
@@ -33,7 +34,11 @@ class NotificationDeleteSite extends AbstractSite
     {
 
         $notificationId = (new NotificationParameter())->getValue();
-        (new UserNotificationDelete())->deleteById($notificationId);
+        //(new UserNotificationDelete())->deleteById($notificationId);
+
+        $update = new UserNotificationUpdate();
+        $update->delete = true;
+        $update->updateById($notificationId);
 
         (new UrlReferer())->redirect();
 
