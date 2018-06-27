@@ -15,6 +15,7 @@ use Nemundo\Workflow\Parameter\NotificationParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Reader\Notification\NotificationItemReader;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
+use Nemundo\Workflow\Site\Notification\NotificationRedirectSite;
 use Nemundo\Workflow\Site\Notification\NotificationSite;
 
 class WorkflowNotificationWidget extends AbstractAdminWidget
@@ -28,7 +29,6 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
 
         $this->widgetTitle = 'Benachrichtigungen';
         $this->widgetSite = NotificationSite::$site;
-
 
         parent::loadCom();
 
@@ -92,8 +92,10 @@ class WorkflowNotificationWidget extends AbstractAdminWidget
                         }*/
 
 
-            $site = $notificationItem->getItemSite();
-            $row->addClickableSite($site);
+            //$site = $notificationItem->getItemSite();
+
+
+            $row->addClickableSite($notificationItem->getItemSite());
 
             //$site = clone(NotificationDeleteSite::$site);
             //$site->addParameter(new NotificationParameter($notificationRow->id));

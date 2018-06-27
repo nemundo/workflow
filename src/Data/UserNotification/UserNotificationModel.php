@@ -29,6 +29,11 @@ public $statusChange;
 /**
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
+public $read;
+
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
 public $delete;
 
 protected function loadModel() {
@@ -60,6 +65,13 @@ $this->statusChangeId->tableName = "workflow_user_notification";
 $this->statusChangeId->fieldName = "status_change";
 $this->statusChangeId->aliasFieldName = "workflow_user_notification_status_change";
 $this->statusChangeId->label = "Status Change";
+
+$this->read = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->read->tableName = "workflow_user_notification";
+$this->read->fieldName = "read";
+$this->read->aliasFieldName = "workflow_user_notification_read";
+$this->read->label = "Read";
+$this->read->allowNullValue = "";
 
 $this->delete = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->delete->tableName = "workflow_user_notification";

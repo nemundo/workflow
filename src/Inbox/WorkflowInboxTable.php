@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Inbox;
 
 
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
@@ -46,12 +47,9 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
         $p = new Paragraph($this);
         $p->content = 'Total Workflow: ' . $workflowCount;
 
-        $table = new BootstrapClickableTable($this);
-        $table->smallTable = true;
-        $table->hover = true;
+        $table = new AdminClickableTable($this);
 
-
-        $model = new WorkflowModel();
+        //$model = new WorkflowModel();
 
         $header = new TableHeader($table);
         $header->addEmpty();
@@ -106,7 +104,6 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             if ($workflowRow->draft) {
                 $draft = ' (Entwurf)';
             }
-
 
             $row->addText($workflowRow->workflowStatus->workflowStatus . $draft);
 

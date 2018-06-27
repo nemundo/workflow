@@ -78,19 +78,21 @@ class WorkflowInboxSite extends AbstractSite
 
         foreach ($processReader->getData() as $processRow) {
 
-            /*$count = new UserAssignmentCount();
+            $count = new UserAssignmentCount();
             $count->model->loadWorkflow();
             $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
             $count->filter->andEqual($count->model->workflow->processId, $processRow->id);
+            $count->filter->andEqual($count->model->delete, false);
+
             //$count->filter->andNotEqual($count->model->notificationStatusId, (new ArchiveNotificationStatus())->uniqueId);
 
             $totalCount = $count->getCount();
 
-            if ($totalCount > 0) {*/
+            // if ($totalCount > 0) {*/
 
             $site = clone(WorkflowInboxSite::$site);
 
-            $site->title = $processRow->process;  // . ' (' . $totalCount . ')';  // $title;
+            $site->title = $processRow->process . ' (' . $totalCount . ')';  // $title;
             $site->addParameter(new ProcessParameter($processRow->id));  // NotificationTypeParameter($processRow->id));
 
             $list->addSite($site);

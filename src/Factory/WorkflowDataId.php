@@ -19,7 +19,7 @@ class WorkflowDataId extends AbstractBase
     }
 
 
-    public function getDataIdFromParameter()
+    public function getDataIdFromWorkflowParameter()
     {
 
         $workflowId = (new WorkflowParameter())->getValue();

@@ -29,6 +29,11 @@ public $statusChange;
 /**
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
+public $read;
+
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
 public $delete;
 
 protected function loadType() {
@@ -56,6 +61,13 @@ $this->statusChangeId->tableName = $this->parentFieldName . "_" . $this->externa
 $this->statusChangeId->aliasFieldName = $this->statusChangeId->tableName ."_".$this->statusChangeId->fieldName;
 $this->statusChangeId->label = "Status Change";
 $this->addType($this->statusChangeId);
+
+$this->read = new \Nemundo\Model\Type\Number\YesNoType();
+$this->read->fieldName = "read";
+$this->read->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->read->aliasFieldName = $this->read->tableName . "_" . $this->read->fieldName;
+$this->read->label = "Read";
+$this->addType($this->read);
 
 $this->delete = new \Nemundo\Model\Type\Number\YesNoType();
 $this->delete->fieldName = "delete";

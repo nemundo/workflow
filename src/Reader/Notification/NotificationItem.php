@@ -3,11 +3,13 @@
 namespace Nemundo\Workflow\Reader\Notification;
 
 
+use Nemundo\Com\Html\Basic\Bold;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationRow;
 use Nemundo\Workflow\Parameter\NotificationParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
+use Nemundo\Workflow\Site\Notification\NotificationRedirectSite;
 
 class NotificationItem extends AbstractBase
 {
@@ -59,6 +61,16 @@ class NotificationItem extends AbstractBase
 
         $title = $number . $this->subject;
 
+        if ($this->userNotificationRow->read == 0) {
+
+            $bold = new Bold();
+            $bold->content = $title;
+
+            $title = $bold->getHtmlString();
+
+        }
+
+
         return $title;
 
     }
@@ -67,11 +79,16 @@ class NotificationItem extends AbstractBase
     public function getItemSite()
     {
 
-        $process = $this->userNotificationRow->statusChange->workflow->process->getProcessClassObject();
+        //$process = $this->userNotificationRow->statusChange->workflow->process->getProcessClassObject();
 
         //if ($process !== null) {
-        $site = $process->getItemSite();
-        $site->addParameter(new WorkflowParameter($this->userNotificationRow->statusChange->workflowId));
+        //$site = $process->getItemSite();
+        //$site->addParameter(new WorkflowParameter($this->userNotificationRow->statusChange->workflowId));
+
+
+        $site = clone(NotificationRedirectSite::$site);
+        $site->addParameter(new NotificationParameter($this->userNotificationRow->id));
+
         return $site;
 
     }

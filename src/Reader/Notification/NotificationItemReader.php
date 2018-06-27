@@ -34,7 +34,7 @@ class NotificationItemReader extends AbstractDataSource
         $notificationReader->addOrder($notificationReader->model->statusChange->workflow->itemOrder, SortOrder::DESCENDING);
 
 
-        //$notificationReader->limit = 10;
+        $notificationReader->limit = 10;
 
         foreach ($notificationReader->getData() as $notificationRow) {
 
