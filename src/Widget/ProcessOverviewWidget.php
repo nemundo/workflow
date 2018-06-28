@@ -31,7 +31,7 @@ class ProcessOverviewWidget extends AbstractAdminWidget
             $process = $processRow->getProcessClassObject();
 
             $title = new H3($this);
-            $title->content = $process->process;
+            $title->content = $process->name;
 
             $p = new Paragraph($this);
             $p->content = $process->description;
@@ -39,12 +39,12 @@ class ProcessOverviewWidget extends AbstractAdminWidget
             $btn = new AdminButton($this);
             $btn->content = 'Erfassen';
             $btn->site = clone(WorkflowNewSite::$site);
-            $btn->site->addParameter(new ProcessParameter($process->processId));
+            $btn->site->addParameter(new ProcessParameter($process->id));
 
             $btn = new AdminButton($this);
             $btn->content = 'Beschreibung';
             $btn->site = clone(ProcessDescriptionSite::$site);
-            $btn->site->addParameter(new ProcessParameter($process->processId));
+            $btn->site->addParameter(new ProcessParameter($process->id));
 
         }
 

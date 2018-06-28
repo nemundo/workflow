@@ -20,7 +20,7 @@ class ProcessTitle extends AbstractHtmlContainerList
     {
 
         $title = new AdminSubtitle($this);
-        $title->content = $this->process->process;
+        $title->content = $this->process->name;
 
         $p = new Paragraph($this);
         $p->content = $this->process->description;

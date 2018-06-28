@@ -52,8 +52,8 @@ class SearchItemSite extends AbstractSite
         $breadcrumb->addItem(WorkflowSearchEngineSite::$site);
 
         $site = clone(WorkflowSearchEngineSite::$site);
-        $site->title = $process->process;
-        $site->addParameter(new ProcessParameter($process->processId));
+        $site->title = $process->name;
+        $site->addParameter(new ProcessParameter($process->id));
         $breadcrumb->addItem($site);
 
 

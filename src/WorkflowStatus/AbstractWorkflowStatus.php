@@ -7,9 +7,10 @@ use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
+use Nemundo\Workflow\Content\Type\AbstractContentType;
 
-
-abstract class AbstractWorkflowStatus extends AbstractBaseClass
+// WorkflowContentType
+abstract class AbstractWorkflowStatus extends AbstractContentType  // AbstractBaseClass
 {
 
     use UserAccessTrait;
@@ -17,12 +18,12 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     /**
      * @var string
      */
-    public $workflowStatus;
+    //public $name;
 
     /**
      * @var string
      */
-    public $workflowStatusId;
+    //public $id;
 
     /**
      * @var
@@ -80,13 +81,14 @@ abstract class AbstractWorkflowStatus extends AbstractBaseClass
     private $followingStatusClassList = [];
 
 
-    abstract protected function loadWorkflowStatus();
+    /*
+    abstract protected function loadType();
 
 
     public function __construct()
     {
-        $this->loadWorkflowStatus();
-    }
+        $this->loadType();
+    }*/
 
 
     protected function addFollowingStatusClassName($statusClassName)

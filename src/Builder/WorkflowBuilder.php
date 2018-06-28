@@ -10,6 +10,7 @@ use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Action\SearchIndexWorkflowAction;
+use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
@@ -19,13 +20,13 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
 
 
-class WorkflowBuilder extends AbstractBase
+class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
 {
 
     /**
      * @var AbstractProcess
      */
-    public $process;
+    public $contentType;
 
     /**
      * @var string
@@ -60,30 +61,33 @@ class WorkflowBuilder extends AbstractBase
     public function createItem()
     {
 
-        if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
+        /*
+        if (!$this->checkObject('process', $this->contentType, AbstractProcess::class)) {
             return;
         }
 
-        if ($this->process->baseModelClassName == null) {
-            (new LogMessage())->writeError($this->process->process . ': No BaseModelClassName defined');
-        }
+        if ($this->contentType->baseModelClassName == null) {
+            (new LogMessage())->writeError($this->contentType->name . ': No BaseModelClassName defined');
+        }*/
 
 
-        if (!$this->process->checkUserVisibility()) {
+        if (!$this->contentType->checkUserVisibility()) {
             (new LogMessage())->writeError('No access');
             exit;
         }
 
 
         /** @var AbstractWorkflowBaseModel $baseModel */
-        $baseModel = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
+        $baseModel = (new ModelFactory())->getModelByClassName($this->contentType->modelClass);
 
-        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
+
+
+        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->contentType->startWorkflowStatusClassName);
 
 
         if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class) || $workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
 
-            if ($this->process->baseModelClassName == $workflowStatus->modelClassName) {
+            if ($this->contentType->modelClass == $workflowStatus->modelClassName) {
                 $this->dataId = $this->workflowItemId;
             }
         }
@@ -95,10 +99,10 @@ class WorkflowBuilder extends AbstractBase
         }
 
         $data = new Workflow();
-        $data->processId = $this->process->processId;
+        $data->processId = $this->contentType->id;
 
         $workflowNumber = null;
-        if ($this->process->createWorkflowNumber) {
+        if ($this->contentType->createWorkflowNumber) {
             $workflowNumber = $this->workflowNumber;
             $number = 0;
 
@@ -106,16 +110,16 @@ class WorkflowBuilder extends AbstractBase
 
                 $value = new WorkflowValue();
                 $value->field = $value->model->number;
-                $value->filter->andEqual($value->model->processId, $this->process->processId);
+                $value->filter->andEqual($value->model->processId, $this->contentType->id);
                 $number = $value->getMaxValue();
 
                 if ($number == 0) {
-                    $number = $this->process->startNumber - 1;  // 1000;
+                    $number = $this->contentType->startNumber - 1;  // 1000;
                 }
 
                 $number++;
 
-                $workflowNumber = $this->process->prefix . $number;
+                $workflowNumber = $this->contentType->prefix . $number;
 
 
             }
@@ -126,7 +130,7 @@ class WorkflowBuilder extends AbstractBase
         }
 
         $data->subject = $this->subject;
-        $data->workflowStatusId = $workflowStatus->workflowStatusId;
+        $data->workflowStatusId = $this->contentType->id;  // $workflowStatus->id;
         $data->dataId = $this->dataId;
         $workflowId = $data->save();
 
@@ -137,7 +141,7 @@ class WorkflowBuilder extends AbstractBase
         $update->updateById($this->dataId);
 
         $action = new WorkflowStatusChangeBuilder();
-        $action->workflowStatus = $workflowStatus;
+        $action->workflowStatus =  $workflowStatus;
         $action->workflowId = $workflowId;
         $action->workflowItemId = $this->workflowItemId;
         $action->draft = $this->draft;
@@ -145,7 +149,7 @@ class WorkflowBuilder extends AbstractBase
         $action->changeStatus();
 
 
-        if ($this->process->createWorkflowNumber) {
+        if ($this->contentType->createWorkflowNumber) {
 
             $event = new StatusChangeEvent();
             $event->workflowId = $workflowId;

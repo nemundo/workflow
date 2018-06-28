@@ -49,7 +49,7 @@ class WorkflowDraftStartForm extends AbstractWorkflowDraftForm
         $itemId = $this->saveData();
 
         $builder = new WorkflowBuilder();
-        $builder->process = $this->process;
+        $builder->contentType = $this->process;
         $builder->workflowItemId = $itemId;
         $builder->draft = $this->getDraft();
         $workflowId = $builder->createItem();

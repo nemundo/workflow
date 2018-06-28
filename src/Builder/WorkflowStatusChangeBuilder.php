@@ -70,7 +70,7 @@ class WorkflowStatusChangeBuilder
 
         // Status Change
         $data = new WorkflowStatusChange();
-        $data->workflowStatusId = $this->workflowStatus->workflowStatusId;
+        $data->workflowStatusId = $this->workflowStatus->id;
         $data->workflowId = $this->workflowId;
         $data->workflowItemId = $this->workflowItemId;
         $data->draft = $this->draft;
@@ -86,7 +86,7 @@ class WorkflowStatusChangeBuilder
         $update = new WorkflowUpdate();
 
         if ($this->workflowStatus->changeWorkflowStatus) {
-            $update->workflowStatusId = $this->workflowStatus->workflowStatusId;
+            $update->workflowStatusId = $this->workflowStatus->id;
         }
 
         if ($this->workflowStatus->closingWorkflow) {

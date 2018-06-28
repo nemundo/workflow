@@ -14,7 +14,7 @@ class ChangeWorkflowStartContainer extends AbstractWorkflowStartContainer
     {
 
         $builder = new WorkflowBuilder();
-        $builder->process = $this->process;
+        $builder->contentType = $this->process;
         $workflowId = $builder->createItem();
 
         if ($this->redirectSite !== null) {

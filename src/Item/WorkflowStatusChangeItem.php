@@ -54,7 +54,7 @@ class WorkflowStatusChangeItem extends AbstractBase
     public function getStatus()
     {
 
-        $status = $this->workflowStatus->workflowStatus;
+        $status = $this->workflowStatus->name;
         if ($this->draft) {
             $status .= ' (Entwurf)';
         }

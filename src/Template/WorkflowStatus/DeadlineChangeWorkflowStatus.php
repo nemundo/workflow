@@ -11,11 +11,11 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadWorkflowStatus()
+    protected function loadType()
     {
 
-        $this->workflowStatus = 'Deadline Change';
-        $this->workflowStatusId = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
+        $this->name = 'Deadline Change';
+        $this->id = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
         $this->modelClassName = DeadlineChangeModel::class;
         $this->changeWorkflowStatus = false;
 

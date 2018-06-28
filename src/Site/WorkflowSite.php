@@ -21,6 +21,7 @@ use Nemundo\Workflow\Site\Json\SearchEngineJsonSite;
 use Nemundo\Workflow\Site\Release\DraftReleaseSite;
 use Nemundo\Workflow\Site\Search\WorkflowSearchEngineSite;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
+use Nemundo\Workflow\Site\Stream\StreamSite;
 use Nemundo\Workflow\Site\Subscription\WorkflowSubscriptionSite;
 use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
 use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
@@ -76,6 +77,9 @@ class WorkflowSite extends AbstractSite
         new UsergroupAssignmentAdminSite($this);
 
         new SearchEngineJsonSite($this);
+
+
+        new StreamSite($this);
 
 
     }

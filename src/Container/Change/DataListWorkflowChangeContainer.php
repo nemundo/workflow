@@ -17,7 +17,7 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
     {
 
         $count = new WorkflowStatusChangeCount();
-        $count->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->workflowStatusId);
+        $count->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->id);
         $count->filter->andEqual($count->model->workflowId, $this->workflowId);
 
         if ($count->getCount() == 0) {

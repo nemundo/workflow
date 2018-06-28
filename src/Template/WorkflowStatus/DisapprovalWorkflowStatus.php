@@ -8,10 +8,10 @@ use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 class DisapprovalWorkflowStatus extends AbstractChangeWorkflowStatus
 {
 
-    protected function loadWorkflowStatus()
+    protected function loadType()
     {
-        $this->workflowStatus = 'Disapproval';
-        $this->workflowStatusId = 'f78645ea-e4a8-4f99-9748-13b6d63153d2';
+        $this->name = 'Disapproval';
+        $this->id = 'f78645ea-e4a8-4f99-9748-13b6d63153d2';
     }
 
 }

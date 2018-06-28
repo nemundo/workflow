@@ -4,12 +4,13 @@ namespace Nemundo\Workflow\Com\Item;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Workflow\Content\Item\AbstractContentItem;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 
 // AbstractWorkflowView
-class AbstractWorkflowItemView extends AbstractHtmlContainerList
+class AbstractWorkflowItemView extends AbstractContentItem  // AbstractHtmlContainerList
 {
 
     /**

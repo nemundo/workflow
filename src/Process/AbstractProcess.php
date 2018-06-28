@@ -7,11 +7,13 @@ use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\View\WorkflowViewList;
+use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\Workflow\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 
 
-abstract class AbstractProcess extends AbstractBaseClass
+abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseClass
 {
 
     use UserAccessTrait;
@@ -19,12 +21,12 @@ abstract class AbstractProcess extends AbstractBaseClass
     /**
      * @var string
      */
-    public $process;
+    public $name;
 
     /**
      * @var string
      */
-    public $processId;
+    public $id;
 
     /**
      * @var string
@@ -63,7 +65,7 @@ abstract class AbstractProcess extends AbstractBaseClass
     /**
      * @var string
      */
-    public $baseModelClassName;
+    //public $modelClass;
 
     /**
      * @var string
@@ -76,14 +78,18 @@ abstract class AbstractProcess extends AbstractBaseClass
     public $createWorkflowNumber = true;
 
 
-    abstract protected function loadProcess();
+    //abstract protected function loadType();
 
     public function __construct()
     {
+
         $this->itemSite = WorkflowItemSite::$site;
         $this->processItemClassName = WorkflowViewList::class;
         $this->parameter = new WorkflowParameter();
-        $this->loadProcess();
+
+        parent::__construct();
+
+        //$this->loadType();
     }
 
 

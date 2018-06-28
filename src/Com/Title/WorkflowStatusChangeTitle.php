@@ -30,7 +30,7 @@ class WorkflowStatusChangeTitle extends AbstractHtmlContainerList
         $workflowItem = new WorkflowItem($this->workflowId);
 
         $subtitle = new AdminSubtitle($this);
-        $subtitle->content = $workflowItem->getProcess()->process;
+        $subtitle->content = $workflowItem->getProcess()->name;
 
 
         $workflowTitle = $workflowItem->subject;

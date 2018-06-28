@@ -101,7 +101,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
             $h3->content = 'Workflow Data';
 
             /** @var AbstractWorkflowBaseModel $model */
-            $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
+            $model = (new ModelFactory())->getModelByClassName($this->process->modelClass);
 
             $view = new WorkflowModelView($this);
             $view->model = $model;
@@ -175,7 +175,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
             //$workflowStatus->workflowId = $changeRow->workflowId;
             //$workflowStatus->workflowItemId = $changeRow->workflowItemId;
 
-            $statusLabel = $workflowStatus->workflowStatus;
+            $statusLabel = $workflowStatus->name;
             if ($changeRow->draft) {
                 $statusLabel .= ' (Entwurf)';
             }
@@ -191,7 +191,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
                 $headerDiv = new Div($div);
                 $headerDiv->addCssClass('card-header');
-                $headerDiv->content = $workflowStatus->workflowStatus . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+                $headerDiv->content = $workflowStatus->name . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
                 $contentDiv = new Div($div);
                 $contentDiv->addCssClass('card-body');
@@ -214,7 +214,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
                 $headerDiv = new Div($div);
                 $headerDiv->addCssClass('card-header');
-                $headerDiv->content = $workflowStatus->workflowStatus . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+                $headerDiv->content = $workflowStatus->name . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
 
                 $contentDiv = new Div($div);
@@ -259,7 +259,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
                 $headerDiv = new Div($div);
                 $headerDiv->addCssClass('card-header');
-                $headerDiv->content = $workflowStatus->workflowStatus . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
+                $headerDiv->content = $workflowStatus->name . ': ' . $changeRow->user->displayName . ' ' . $changeRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
                 $contentDiv = new Div($div);
                 $contentDiv->addCssClass('card-body');

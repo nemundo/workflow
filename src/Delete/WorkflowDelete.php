@@ -30,7 +30,7 @@ class WorkflowDelete extends AbstractBase
 
         $dataId = (new WorkflowDataId())->getDataId($workflowId);
 
-        $model = (new ModelFactory())->getModelByClassName($process->baseModelClassName);
+        $model = (new ModelFactory())->getModelByClassName($process->modelClass);
 
         $delete = new ModelDelete();
         $delete->model = $model;

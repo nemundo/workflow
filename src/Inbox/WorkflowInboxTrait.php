@@ -102,8 +102,8 @@ trait WorkflowInboxTrait
 
         // Process Filter
         foreach ($this->processFilterList as $process) {
-            $workflowReader->filter->andEqual($workflowReader->model->processId, $process->processId);
-            $this->workflowCount->filter->andEqual($workflowReader->model->processId, $process->processId);
+            $workflowReader->filter->andEqual($workflowReader->model->processId, $process->id);
+            $this->workflowCount->filter->andEqual($workflowReader->model->processId, $process->id);
         }
 
         foreach ($this->processIdList as $processId) {

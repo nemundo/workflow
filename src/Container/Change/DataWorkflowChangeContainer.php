@@ -14,7 +14,7 @@ class DataWorkflowChangeContainer extends AbstractWorkflowChangeContainer
     {
 
         $subtitle = new AdminSubtitle($this);
-        $subtitle->content = $this->workflowStatus->workflowStatus;
+        $subtitle->content = $this->workflowStatus->name;
 
 
         $form = new WorkflowChangeForm($this);

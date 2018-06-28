@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\Setup;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Workflow\Content\Setup\ContentTypeSetup;
 use Nemundo\Workflow\Data\Process\Process;
 use Nemundo\Workflow\Data\Process\ProcessDelete;
 use Nemundo\Workflow\Delete\WorkflowDelete;
@@ -19,10 +20,14 @@ class ProcessSetup extends AbstractBase
 
         $data = new Process();
         $data->updateOnDuplicate = true;
-        $data->id = $process->processId;
-        $data->process = $process->process;
+        $data->id = $process->id;
+        $data->process = $process->name;
         $data->processClass = $process->getClassName();
         $data->save();
+
+        $setup = new ContentTypeSetup();
+        $setup->addContentType($process);
+
 
     }
 
@@ -38,7 +43,7 @@ class ProcessSetup extends AbstractBase
         }
 
         $delete = new ProcessDelete();
-        $delete->deleteById($process->processId);
+        $delete->deleteById($process->id);
 
     }
 }

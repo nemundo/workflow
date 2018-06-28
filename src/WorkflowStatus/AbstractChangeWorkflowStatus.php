@@ -13,7 +13,14 @@ abstract class AbstractChangeWorkflowStatus extends AbstractWorkflowStatus
     public function __construct()
     {
 
+
+        $this->itemClass = ChangeWorkflowItemView::class;
+
         $this->workflowItemViewClassName = ChangeWorkflowItemView::class;
+
+
+
+
         $this->startContainerClass = ChangeWorkflowStartContainer::class;
         $this->changeContainerClass = ChangeWorkflowChangeContainer::class;
         parent::__construct();

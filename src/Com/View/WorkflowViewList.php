@@ -109,7 +109,7 @@ class WorkflowViewList extends AbstractProcessItem
             $h3->content = 'Stammdaten';
 
             /** @var AbstractWorkflowBaseModel $model */
-            $model = (new ModelFactory())->getModelByClassName($this->process->baseModelClassName);
+            $model = (new ModelFactory())->getModelByClassName($this->process->modelClass);
 
             $view = new WorkflowModelView($this);
             $view->model = $model;
@@ -197,7 +197,7 @@ class WorkflowViewList extends AbstractProcessItem
                 $btn = new AdminButton($contentDiv);
                 $btn->content = 'Bearbeiten';
                 $btn->site = clone($this->statusChangeRedirectSite);
-                $btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->workflowStatusId));
+                $btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->id));
                 $btn->site->addParameter(new WorkflowParameter($this->workflowId));
                 $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
 

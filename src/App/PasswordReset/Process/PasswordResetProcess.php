@@ -12,12 +12,12 @@ use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
 class PasswordResetProcess extends AbstractProcess
 {
 
-    protected function loadProcess()
+    protected function loadType()
     {
 
-        $this->process = 'Passoword Reset';
-        $this->processId = '087867de-bef4-4a08-8922-0367057481ae';
-        $this->baseModelClassName = PasswordResetRequestModel::class;
+        $this->name = 'Passoword Reset';
+        $this->id = '087867de-bef4-4a08-8922-0367057481ae';
+        $this->modelClass = PasswordResetRequestModel::class;
         $this->startWorkflowStatusClassName = PasswordResetStartWorkflowStatus::class;
 
         $this->itemSite = PasswordChangeSite::$site;

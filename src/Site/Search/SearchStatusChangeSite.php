@@ -77,7 +77,7 @@ class SearchStatusChangeSite extends AbstractSite
         $site->addParameter($workflowParameter);
         $breadcrumb->addItem($site);
 
-        $breadcrumb->addActiveItem($workflowStatus->workflowStatus);
+        $breadcrumb->addActiveItem($workflowStatus->name);
 
 
         $title = new WorkflowTitle($page);

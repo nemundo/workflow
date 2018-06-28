@@ -30,7 +30,7 @@ class ProcessListBox extends BootstrapListBox
         }
 
         foreach ($this->processCollection->getProcessList() as $process) {
-            $this->addItem($process->processId, $process->process);
+            $this->addItem($process->id, $process->name);
         }
 
         return parent::getHtml();

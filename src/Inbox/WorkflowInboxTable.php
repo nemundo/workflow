@@ -114,7 +114,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             $changeEvent->workflowId = $workflowRow->id;
 
 
-            $row->addText($workflowRow->workflowStatus->getWorkflowStatusClassObject()->getStatusText($changeEvent));
+            //$row->addText($workflowRow->workflowStatus->getWorkflowStatusClassObject()->getStatusText($changeEvent));
             $row->addYesNo($workflowRow->closed);
 
             if ($workflowRow->deadline !== null) {
