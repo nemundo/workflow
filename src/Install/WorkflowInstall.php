@@ -7,10 +7,17 @@ use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
+use Nemundo\Workflow\App\Calendar\Data\CalendarCollection;
+use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
+use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendarCollection;
+use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
 use Nemundo\Workflow\App\SearchEngine\Install\SearchEngineInstall;
 use Nemundo\Workflow\App\Stream\Data\StreamCollection;
+use Nemundo\Workflow\App\Task\Install\TaskInstall;
 use Nemundo\Workflow\App\TeamInbox\Data\TeamInboxCollection;
+use Nemundo\Workflow\App\ToDo\Install\ToDoInstall;
+use Nemundo\Workflow\App\Widget\Install\WidgetInstall;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowTemplateCollection;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Content\Data\ContentCollection;
@@ -43,6 +50,8 @@ class WorkflowInstall extends AbstractScript
         $setup->addCollection(new TeamInboxCollection());
         $setup->addCollection(new ContentCollection());
         $setup->addCollection(new StreamCollection());
+        $setup->addCollection(new CalendarCollection());
+        //$setup->addCollection(new PersonalCalendarCollection());
 
         $setup = new WorkflowStatusSetup();
         $setup->addWorkflowStatus(new ApprovalWorkflowStatus());
@@ -63,6 +72,14 @@ class WorkflowInstall extends AbstractScript
         $setup->addScript(new WorkflowClean());
 
         (new SearchEngineInstall())->run();
+        (new PersonalCalendarInstall())->run();
+        (new IdentificationInstall())->run();
+
+
+        (new WidgetInstall())->run();
+        (new ToDoInstall())->run();
+
+        (new TaskInstall())->run();
 
 
     }

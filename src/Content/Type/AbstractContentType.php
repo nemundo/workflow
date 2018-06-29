@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Content\Type;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Content\Item\AbstractContentItem;
+use Nemundo\Workflow\Parameter\DataIdParameter;
 
 abstract class AbstractContentType extends AbstractBaseClass
 {
@@ -39,7 +40,8 @@ abstract class AbstractContentType extends AbstractBaseClass
     }
 
 
-    public function getItem($parentItem = null) {
+    public function getItem($parentItem = null)
+    {
 
         /** @var AbstractContentItem $item */
         $item = new $this->itemClass($parentItem);
@@ -50,8 +52,18 @@ abstract class AbstractContentType extends AbstractBaseClass
     }
 
 
+    public function getItemSite($dataId)
+    {
 
-    public function onCreate() {
+        $site = clone($this->itemSite);
+        $site->addParameter(new DataIdParameter($dataId));
+        return $site;
+
+    }
+
+
+    public function onCreate()
+    {
 
     }
 

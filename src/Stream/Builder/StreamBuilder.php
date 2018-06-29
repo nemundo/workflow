@@ -18,6 +18,7 @@ class StreamBuilder extends AbstractContentBuilder
 
     public function createItem() {
 
+        $this->check();
 
         $data = new Stream();
         $data->ignoreIfExists = true;

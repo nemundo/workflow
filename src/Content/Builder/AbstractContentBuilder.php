@@ -22,4 +22,20 @@ abstract class AbstractContentBuilder extends AbstractBase
 
     abstract public function createItem();
 
+
+    protected function check()
+    {
+
+        if (!$this->checkProperty('dataId')) {
+            exit;
+        }
+
+        if (!$this->checkObject('contentType', $this->contentType, AbstractContentType::class)) {
+            exit;
+        }
+
+
+    }
+
+
 }
