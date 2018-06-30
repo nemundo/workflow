@@ -5,7 +5,9 @@ namespace Nemundo\Workflow\Site;
 
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Calendar\Site\CalendarSite;
+use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoItemSite;
+use Nemundo\Workflow\App\Widget\Site\DashboardSite;
 use Nemundo\Workflow\Site\Assignment\UserAssignmentAdminSite;
 use Nemundo\Workflow\Site\Assignment\UsergroupAssignmentAdminSite;
 use Nemundo\Workflow\Site\Assignment\UsergroupAssignmentSite;
@@ -85,6 +87,9 @@ class WorkflowSite extends AbstractSite
         new CalendarSite($this);
 
         new ToDoItemSite($this);
+
+        new TaskSite($this);
+        new DashboardSite($this);
 
 
     }

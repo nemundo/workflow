@@ -1,5 +1,5 @@
 <?php
-namespace Nemundo\Workflow\App\Widget\Data\WidgetType;
+namespace Nemundo\Workflow\App\Widget\Data\Widget;
 use Nemundo\Design\Bootstrap\Admin\BootstrapModelAdmin;
 use Nemundo\Web\Action\ActionUrl;
 use Nemundo\Com\Html\Basic\H3;
@@ -7,14 +7,14 @@ use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Model\Admin\Redirect\ModelDeleteRedirect;
 use Nemundo\Model\Admin\Redirect\ModelEditRedirect;
 use Nemundo\Web\Http\HttpRequest;
-class WidgetTypeAdmin extends \Nemundo\Model\Admin\AbstractModelAdmin {
+class WidgetAdmin extends \Nemundo\Model\Admin\AbstractModelAdmin {
 /**
-* @var WidgetTypeModel
+* @var WidgetModel
 */
 public $model;
 
 protected function loadCom() {
 parent::loadCom();
-$this->model = new  WidgetTypeModel();
+$this->model = new  WidgetModel();
 }
 }

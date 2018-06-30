@@ -14,6 +14,14 @@ use Nemundo\Workflow\App\PersonalCalendar\Form\PersonalCalendarBuilderForm;
 class PersonalCalendarWidget extends AbstractAdminWidget
 {
 
+
+    protected function loadWidget()
+    {
+        $this->widgetTitle = 'Personal Calendar';
+        $this->widgetId = '';
+    }
+
+
     public function getHtml()
     {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Widget;
+namespace Nemundo\Workflow\App\SearchEngine\Widget;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
@@ -14,7 +14,7 @@ use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
 use Nemundo\Workflow\Site\Json\SearchEngineJsonSite;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 
-class WorkflowSearchWidget extends AbstractAdminWidget
+class SearchEngineWidget extends AbstractAdminWidget
 {
 
     protected function loadWidget()
@@ -49,7 +49,7 @@ class WorkflowSearchWidget extends AbstractAdminWidget
 
             $indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
-            $indexReader->model->workflow->loadProcess();
+            //$indexReader->model->workflow->loadProcess();
 
             //$indexReader->model->loadApplicationType();
             //$indexReader->model->loadSearchText();

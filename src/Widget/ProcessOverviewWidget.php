@@ -18,6 +18,12 @@ use Nemundo\Workflow\Site\WorkflowNewSite;
 class ProcessOverviewWidget extends AbstractAdminWidget
 {
 
+    protected function loadWidget()
+    {
+        $this->widgetTitle = 'Process Overview';
+        $this->widgetId = '';
+    }
+
     public function getHtml()
     {
 

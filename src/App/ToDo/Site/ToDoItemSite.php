@@ -21,6 +21,9 @@ class ToDoItemSite extends AbstractSite
     {
         $this->url = 'to-do-item';
         $this->menuActive = false;
+
+        new ToDoDoneSite($this);
+
     }
 
 

@@ -62,6 +62,7 @@ abstract class AbstractContentType extends AbstractBaseClass
     }
 
 
+
     public function onCreate()
     {
 

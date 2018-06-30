@@ -1,16 +1,17 @@
 <?php
 
-namespace Nemundo\Workflow\Action;
+namespace Nemundo\Workflow\App\SearchEngine\Builder;
 
 
 use Nemundo\Core\Text\Keyword;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
+use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\Process\AbstractProcess;
 
 
-class SearchIndexWorkflowAction extends AbstractWorkflowAction
+class SearchIndexWorkflowAction extends AbstractContentBuilder
 {
 
     /**
@@ -39,8 +40,6 @@ class SearchIndexWorkflowAction extends AbstractWorkflowAction
     public function addWord($word)
     {
 
-        /*
-
         $this->prepareIndex();
 
         $data = new Word();
@@ -56,9 +55,10 @@ class SearchIndexWorkflowAction extends AbstractWorkflowAction
         $data->ignoreIfExists = true;
         //$data->processId = $this->process->processId;
         $data->wordId = $wordId;
-        $data->workflowId = $this->changeEvent->workflowId;
+        $data->contentTypeId = $this->contentType->id;
+        //$data->workflowId = $this->changeEvent->workflowId;
         //$data->searchTextId = $this->searchTextId;
-        $data->save();*/
+        $data->save();
 
     }
 
@@ -70,6 +70,12 @@ class SearchIndexWorkflowAction extends AbstractWorkflowAction
             $this->addWord($word);
         }
 
+    }
+
+
+    public function createItem()
+    {
+        // TODO: Implement createItem() method.
     }
 
 

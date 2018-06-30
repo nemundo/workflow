@@ -20,6 +20,13 @@ use Nemundo\Workflow\App\Calendar\Site\CalendarSite;
 class CalendarWidget extends AbstractAdminWidget
 {
 
+
+    protected function loadWidget()
+    {
+        $this->widgetTitle = 'Kalender';
+        $this->widgetId = '';
+    }
+
     protected function loadCom()
     {
         $this->widgetSite = CalendarSite::$site;

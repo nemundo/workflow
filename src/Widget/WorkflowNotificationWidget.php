@@ -21,6 +21,13 @@ use Nemundo\Workflow\Site\Notification\NotificationSite;
 class WorkflowNotificationWidget extends AbstractAdminWidget
 {
 
+
+    protected function loadWidget()
+    {
+        $this->widgetTitle = '';
+        $this->widgetId = '';
+    }
+
     protected function loadCom()
     {
 

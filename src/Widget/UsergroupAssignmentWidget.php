@@ -15,6 +15,13 @@ class UsergroupAssignmentWidget extends AbstractAdminWidget
     public $usergroup;
 
 
+    protected function loadWidget()
+    {
+        $this->widgetTitle = '';
+        $this->widgetId = '';
+    }
+
+
     public function getHtml()
     {
 

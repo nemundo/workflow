@@ -20,6 +20,12 @@ use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
 class WorkflowInboxWidget extends AbstractAdminWidget
 {
 
+    protected function loadWidget()
+    {
+        $this->widgetTitle = '';
+        $this->widgetId = '';
+    }
+
     protected function loadCom()
     {
 
