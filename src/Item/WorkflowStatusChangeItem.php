@@ -66,7 +66,7 @@ class WorkflowStatusChangeItem extends AbstractBase
     public function getView(AbstractContainer $parentCom = null)
     {
 
-        $className = $this->workflowStatus->workflowItemViewClassName;
+        $className = $this->workflowStatus->itemClass;
 
         /** @var  AbstractWorkflowItemView $view */
         $view = new $className($parentCom); // this->workflowStatus->workflowItemViewClassName();

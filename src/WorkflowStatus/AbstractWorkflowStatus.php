@@ -2,7 +2,6 @@
 
 namespace Nemundo\Workflow\WorkflowStatus;
 
-use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Workflow\Builder\StatusChangeEvent;
@@ -10,20 +9,10 @@ use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
 use Nemundo\Workflow\Content\Type\AbstractContentType;
 
 // WorkflowContentType
-abstract class AbstractWorkflowStatus extends AbstractContentType  // AbstractBaseClass
+abstract class AbstractWorkflowStatus extends AbstractContentType
 {
 
     use UserAccessTrait;
-
-    /**
-     * @var string
-     */
-    //public $name;
-
-    /**
-     * @var string
-     */
-    //public $id;
 
     /**
      * @var
@@ -38,21 +27,12 @@ abstract class AbstractWorkflowStatus extends AbstractContentType  // AbstractBa
     /**
      * @var AbstractWorkflowItemView
      */
-    public $workflowItemViewClassName;
-// viewClassName
-
-    public $notificationViewClass;
-
+    public $itemClass;
 
     /**
      * @var AbstractActionPanel
      */
     public $actionPanelClassName;
-
-    /**
-     * @var bool
-     */
-    //public $draftMode = false;
 
     /**
      * @var bool
@@ -81,24 +61,11 @@ abstract class AbstractWorkflowStatus extends AbstractContentType  // AbstractBa
     private $followingStatusClassList = [];
 
 
-    /*
-    abstract protected function loadType();
-
-
-    public function __construct()
-    {
-        $this->loadType();
-    }*/
-
-
     protected function addFollowingStatusClassName($statusClassName)
     {
         $this->followingStatusClassList[] = $statusClassName;
     }
 
-
-
-    //public function getFollowingStatusClassList(ChangeEvent $event)
 
     /**
      * @return AbstractWorkflowStatus[]
@@ -115,7 +82,9 @@ abstract class AbstractWorkflowStatus extends AbstractContentType  // AbstractBa
     }
 
 
-    public function getStatusText(StatusChangeEvent $changeEvent) {
+    // getSubject()
+    public function getStatusText(StatusChangeEvent $changeEvent)
+    {
 
         return $this->workflowStatusText;
 

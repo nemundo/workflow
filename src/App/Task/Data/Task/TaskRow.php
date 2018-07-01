@@ -61,6 +61,21 @@ public $dataId;
 */
 public $timeEffort;
 
+/**
+* @var string
+*/
+public $userCreatedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserRow
+*/
+public $userCreated;
+
+/**
+* @var \Nemundo\Core\Type\DateTime\DateTime
+*/
+public $dateTimeCreated;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -82,11 +97,19 @@ $this->loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model
 }
 $this->dataId = $this->getModelValue($model->dataId);
 $this->timeEffort = $this->getModelValue($model->timeEffort);
+$this->userCreatedId = $this->getModelValue($model->userCreatedId);
+if ($model->userCreated !== null) {
+$this->loadNemundoUserDataUserUseruserCreatedRow($model->userCreated);
+}
+$this->dateTimeCreated = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTimeCreated));
 }
 private function loadNemundoWorkflowAppIdentificationDataIdentificationTypeIdentificationTypeidentificationTypeRow($model) {
 $this->identificationType = new \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeRow($this->row, $model);
 }
 private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow($this->row, $model);
+}
+private function loadNemundoUserDataUserUseruserCreatedRow($model) {
+$this->userCreated = new \Nemundo\User\Data\User\UserRow($this->row, $model);
 }
 }

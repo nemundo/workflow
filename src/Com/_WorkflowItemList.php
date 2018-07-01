@@ -199,7 +199,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
                 //$contentDiv->content = $workflowStatus->workflowStatusText;
 
                 /** @var WorkflowItem $item */
-                $item = new $workflowStatus->workflowItemViewClassName($contentDiv);
+                $item = new $workflowStatus->itemClass($contentDiv);
                 $item->workflowItemId = $changeRow->workflowItemId;
 
             }
@@ -224,7 +224,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
 
                 /** @var WorkflowItem $item */
-                $item = new $workflowStatus->workflowItemViewClassName($contentDiv);
+                $item = new $workflowStatus->itemClass($contentDiv);
                 $item->workflowItemId = $changeRow->workflowItemId;
 
 
@@ -267,7 +267,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
                 //$contentDiv->content = $workflowStatus->workflowItemClassName;
 
                 /** @var DataListWorkflowItemView $item */
-                $item = new $workflowStatus->workflowItemViewClassName($contentDiv);
+                $item = new $workflowStatus->itemClass($contentDiv);
                 $item->statusChangeId = $changeRow->id;
 
 

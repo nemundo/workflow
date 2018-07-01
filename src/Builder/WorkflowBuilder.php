@@ -36,7 +36,7 @@ class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
     /**
      * @var string
      */
-    public $dataId;
+    //public $dataId;
 
     /**
      * @var string

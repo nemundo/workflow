@@ -22,7 +22,7 @@ abstract class AbstractDraftDataWorkflowStatus extends AbstractWorkflowStatus
     public function __construct()
     {
 
-        $this->workflowItemViewClassName = DataWorkflowItemView::class;
+        $this->itemClass = DataWorkflowItemView::class;
         $this->startContainerClass = DraftDataWorkflowStartContainer::class;
         $this->changeContainerClass = DraftDataWorkflowChangeContainer::class;
 

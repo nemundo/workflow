@@ -42,14 +42,26 @@ class WorkflowDraftChangeForm extends AbstractWorkflowDraftForm
 
         if (!$draftEditParameter->exists()) {
 
+        //if (!$this->isDraft()) {
+
             $itemId = $this->saveData();
+
+            (new Debug())->write('pre');
+
+            (new Debug())->write('pre'.$itemId);
+            (new Debug())->write('workflow id'.$this->workflowId);
 
             $builder = new WorkflowStatusChangeBuilder();
             $builder->workflowId = $this->workflowId;
             $builder->workflowItemId = $itemId;
             $builder->workflowStatus = $this->workflowStatus;
-            $builder->draft = $this->getDraft();
+            $builder->draft = true;  //$this->getDraft();
             $builder->changeStatus();
+
+
+            (new Debug())->write('pre');
+            //exit;
+
 
         } else {
 

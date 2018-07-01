@@ -21,7 +21,7 @@ class CommentWorkflowStatus extends AbstractDataWorkflowStatus
         $this->id = '267c76a7-7bbf-4546-a20b-9fe20beee15f';
         $this->modelClassName = CommentModel::class;
         $this->changeWorkflowStatus = false;
-        $this->workflowItemViewClassName = CommentWorkflowItemView::class;
+        $this->itemClass = CommentWorkflowItemView::class;
 
     }
 

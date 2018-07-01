@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Filter\Filter;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
@@ -43,12 +44,13 @@ class TaskWidget extends AbstractAdminWidget
         $header->addEmpty();
         $header->addText('Aufgabe');
         $header->addText('Erledigen bis');
-        $header->addText('Aufwand');
+        //$header->addText('Aufwand');
 
 
         $taskReader = new TaskReader();
         $taskReader->model->loadContentType();
         $taskReader->filter->andEqual($taskReader->model->archive, false);
+        $taskReader->addOrder($taskReader->model->dateTimeCreated, SortOrder::DESCENDING);
 
 
         $filter = new Filter();
@@ -83,7 +85,7 @@ class TaskWidget extends AbstractAdminWidget
                 $row->addEmpty();
             }
 
-            $row->addText($taskRow->timeEffort);
+            //$row->addText($taskRow->timeEffort);
 
 
             $contentType = $taskRow->contentType->getContentTypeClassObject();

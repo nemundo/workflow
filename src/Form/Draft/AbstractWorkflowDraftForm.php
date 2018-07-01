@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Form\Draft;
 
 
+use Nemundo\Admin\Com\Button\AdminSubmitButton;
 use Nemundo\Com\Html\Form\AbstractSubmitForm;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Base\ConnectionTrait;
@@ -86,14 +87,14 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
         }
 
-        $btn = new BootstrapSubmitButton($this);
-        $btn->name = (new DraftParameter())->getParameterName();
+        $btn = new AdminSubmitButton($this);
+        $btn->name = 'draft_button';  // (new DraftEditParameter())->getParameterName();
         $btn->content = 'Entwurf speichern';
 
-        $submitButton = new BootstrapSubmitButton($this);
+        $submitButton = new AdminSubmitButton($this);
         $submitButton->name = 'save_btn';
         $submitButton->content = 'Freigeben';
-        $submitButton->addCssClass('btn btn-primary');
+        //$submitButton->addCssClass('btn btn-primary');
 
 
         return parent::getHtml();
@@ -101,15 +102,19 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
     }
 
 
-    protected function getDraft()
+    protected function isDraft()
     {
 
         $draft = false;
-        $draftParameter = new DraftParameter();
+        //$draftParameter = new DraftEditParameter();  // new DraftParameter();
 
-        if ($draftParameter->exists()) {
+        if (isset($_POST['draft_button'])){
             $draft = true;
         }
+
+       /* if ($draftParameter->exists()) {
+            $draft = true;
+        }*/
 
         return $draft;
 
@@ -119,11 +124,16 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
     protected function onValidate()
     {
 
-        $draftParameter = new DraftParameter();
+        //$draftParameter = new DraftParameter();
+        //if ($draftParameter->exists()) {
 
-        if ($draftParameter->exists()) {
+        if ($this->isDraft()) {
             return true;
         }
+
+        /*if ((new DraftEditParameter())->exists()) {
+            return true;
+        }*/
 
         return parent::onValidate();
 
@@ -132,6 +142,8 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
     protected function saveData()
     {
+
+        (new Debug())->write('save data');
 
         $data = new ModelData();
         $data->model = $this->model;
@@ -159,6 +171,8 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
         $itemId = $data->save();
 
+        //exit;
+
         return $itemId;
 
     }
@@ -166,6 +180,9 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
     protected function updateData($workflowItemId)
     {
+
+        (new Debug())->write('update data');
+
 
         $update = new ModelUpdate();
         $update->model = $this->model;
@@ -188,7 +205,7 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
         $update->updateById($workflowItemId);
 
-        if (!$this->getDraft()) {
+        if (!$this->isDraft()) {
             (new DraftRelease())->releaseDraft($this->workflowId);
         }
 

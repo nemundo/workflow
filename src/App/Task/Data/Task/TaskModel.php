@@ -56,6 +56,21 @@ public $dataId;
 */
 public $timeEffort;
 
+/**
+* @var \Nemundo\Model\Type\User\CreatedUserType
+*/
+public $userCreatedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $userCreated;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
+*/
+public $dateTimeCreated;
+
 protected function loadModel() {
 $this->tableName = "task_task";
 $this->aliasTableName = "task_task";
@@ -137,6 +152,20 @@ $this->timeEffort->aliasFieldName = "task_task_time_effort";
 $this->timeEffort->label = "Time Effort";
 $this->timeEffort->allowNullValue = "";
 
+$this->userCreatedId = new \Nemundo\Model\Type\User\CreatedUserType($this);
+$this->userCreatedId->tableName = "task_task";
+$this->userCreatedId->fieldName = "user_created";
+$this->userCreatedId->aliasFieldName = "task_task_user_created";
+$this->userCreatedId->label = "User Created";
+
+$this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
+$this->dateTimeCreated->tableName = "task_task";
+$this->dateTimeCreated->fieldName = "date_time_created";
+$this->dateTimeCreated->aliasFieldName = "task_task_date_time_created";
+$this->dateTimeCreated->label = "Date Time Created";
+$this->dateTimeCreated->allowNullValue = "";
+$this->dateTimeCreated->visible->form = false;
+
 }
 public function loadIdentificationType() {
 if ($this->identificationType == null) {
@@ -154,6 +183,16 @@ $this->contentType->tableName = "task_task";
 $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "task_task_content_type";
 $this->contentType->label = "Content Type";
+}
+}
+public function loadUserCreated() {
+if ($this->userCreated == null) {
+$this->userCreated = new \Nemundo\User\Data\User\UserExternalType($this, "task_task_user_created");
+$this->userCreated->tableName = "task_task";
+$this->userCreated->fieldName = "user_created";
+$this->userCreated->aliasFieldName = "task_task_user_created";
+$this->userCreated->label = "User Created";
+$this->userCreated->visible->form = false;
 }
 }
 }

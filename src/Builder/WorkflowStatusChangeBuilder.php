@@ -45,9 +45,16 @@ class WorkflowStatusChangeBuilder
             (new LogMessage())->writeError('No access');
         }
 
+
+        $this->checkFollowingStatus = false;
+
         if ($this->checkFollowingStatus) {
 
+
             $workflowItem = (new WorkflowItem($this->workflowId));
+
+            (new Debug())->write($workflowItem->workflowStatus);
+
 
             $valid = false;
             foreach ($workflowItem->workflowStatus->getFollowingStatusClassList() as $followingStausClass) {
@@ -56,8 +63,9 @@ class WorkflowStatusChangeBuilder
                 }
             }
 
+
             if (!$valid) {
-                (new LogMessage())->writeError('Workflow and Status are not valid');
+                (new LogMessage())->writeError('Workflow and Status are not valid. Refresh Browser.');
                 exit;
             }
 
@@ -77,9 +85,7 @@ class WorkflowStatusChangeBuilder
         $data->message = $this->workflowStatus->getStatusText($changeEvent);
         $statusChangeId = $data->save();
 
-
         $changeEvent->statusChangeId = $statusChangeId;
-
 
 
         // Workflow
@@ -99,13 +105,6 @@ class WorkflowStatusChangeBuilder
 
 
         if (!$this->draft) {
-
-            /*
-            $changeEvent = new StatusChangeEvent();
-            $changeEvent->workflowId = $this->workflowId;
-            $changeEvent->workflowItemId = $this->workflowItemId;
-            $changeEvent->statusChangeId = $statusChangeId;*/
-
             $this->workflowStatus->onChange($changeEvent);
         }
 

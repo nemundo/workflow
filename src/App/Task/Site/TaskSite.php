@@ -6,9 +6,13 @@ namespace Nemundo\Workflow\App\Task\Site;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Db\Filter\Filter;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Task\Data\Task\TaskPaginationReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
@@ -57,20 +61,40 @@ class TaskSite extends AbstractSite
         $header->addText('Erledigen bis');
         $header->addText('Aufwand');
         $header->addText('Zuweisung an');
+        $header->addText('Ersteller');
         $header->addText('Archiviert');
 
 
         $taskReader = new TaskPaginationReader();
         $taskReader->model->loadContentType();
         $taskReader->model->loadIdentificationType();
+        $taskReader->model->loadUserCreated();
+        $taskReader->paginationLimit = 50;
+
+
+        $filter = new Filter();
+        $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
+        foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
+            $filter->orEqual($taskReader->model->identificationId, $usergroupId);
+        }
+
+        $taskReader->filter->andFilter($filter);
+
+        $taskReader->addOrder($taskReader->model->archive);
+        $taskReader->addOrder($taskReader->model->dateTimeCreated, SortOrder::DESCENDING);
+
 
         foreach ($taskReader->getData() as $taskRow) {
 
             $row = new BootstrapClickableTableRow($table);
 
-            if ($taskRow->deadline !== null) {
-                $trafficLight = new DateTrafficLight($row);
-                $trafficLight->date = $taskRow->deadline;
+            if (!$taskRow->archive) {
+                if ($taskRow->deadline !== null) {
+                    $trafficLight = new DateTrafficLight($row);
+                    $trafficLight->date = $taskRow->deadline;
+                } else {
+                    $row->addEmpty();
+                }
             } else {
                 $row->addEmpty();
             }
@@ -93,6 +117,10 @@ class TaskSite extends AbstractSite
 
             $row->addText($identificationType->getValue($taskRow->identificationId));
 
+
+            $row->addText($taskRow->userCreated->displayName . ' ' . $taskRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+
+
             $row->addYesNo($taskRow->archive);
 
             $row->addClickableSite($contentType->getItemSite($taskRow->dataId));
@@ -102,10 +130,6 @@ class TaskSite extends AbstractSite
 
         $pagination = new BootstrapModelPagination($page);
         $pagination->paginationReader = $taskReader;
-
-
-        //new TaskTable($page);
-
 
         $page->render();
 

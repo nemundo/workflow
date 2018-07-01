@@ -9,6 +9,7 @@ use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\App\Calendar\Data\CalendarCollection;
 use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
+use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendarCollection;
 use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
@@ -80,6 +81,7 @@ class WorkflowInstall extends AbstractScript
         (new ToDoInstall())->run();
 
         (new TaskInstall())->run();
+        (new InboxInstall())->run();
 
 
     }

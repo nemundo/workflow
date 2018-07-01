@@ -16,7 +16,7 @@ abstract class AbstractChangeWorkflowStatus extends AbstractWorkflowStatus
 
         $this->itemClass = ChangeWorkflowItemView::class;
 
-        $this->workflowItemViewClassName = ChangeWorkflowItemView::class;
+        $this->itemClass = ChangeWorkflowItemView::class;
 
 
 

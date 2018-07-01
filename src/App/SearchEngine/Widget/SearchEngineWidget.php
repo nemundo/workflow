@@ -11,7 +11,8 @@ use Nemundo\Design\Bootstrap\FormElement\BootstrapSubmitButton;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTable;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
-use Nemundo\Workflow\Site\Json\SearchEngineJsonSite;
+use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
+use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineJsonSite;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 
 class SearchEngineWidget extends AbstractAdminWidget
@@ -21,6 +22,8 @@ class SearchEngineWidget extends AbstractAdminWidget
     {
         $this->widgetTitle = 'Suchmaschine';
         $this->widgetId = '';
+        $this->widgetSite = SearchEngineSite::$site;
+
     }
 
 
@@ -85,7 +88,7 @@ class SearchEngineWidget extends AbstractAdminWidget
 
                 $site = $type->getApplicationSite($indexRow->dataId);
                 $row->addClickableSite($site);*/
-                
+
                 //$site->title = $indexRow->searchText->text;
                 //$row->addSite($site);
 

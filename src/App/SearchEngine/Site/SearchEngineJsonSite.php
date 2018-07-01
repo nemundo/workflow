@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Site\Json;
+namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 
 use Nemundo\Core\Json\Document\JsonResponse;
