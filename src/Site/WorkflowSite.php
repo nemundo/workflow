@@ -31,6 +31,7 @@ use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\Site\Stream\StreamSite;
 use Nemundo\Workflow\Site\Subscription\WorkflowSubscriptionSite;
 use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
+use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
 
 
@@ -49,7 +50,8 @@ class WorkflowSite extends AbstractSite
         $this->title = 'Workflow Admin';
         $this->url = 'workflow-admin';
         $this->restricted = true;
-        $this->addRestrictedUsergroup(new WorkflowUsergroup());
+        //$this->addRestrictedUsergroup(new WorkflowUsergroup());
+        $this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
 
         new WorkflowInboxSite($this);
         new TeamInboxSite($this);

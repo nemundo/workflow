@@ -86,7 +86,17 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     public function getStatusText(StatusChangeEvent $changeEvent)
     {
 
-        return $this->workflowStatusText;
+        $statusText = $this->workflowStatusText;
+
+        if ($statusText == null) {
+            $statusText = $this->name;
+        }
+
+        if ($statusText == null) {
+            $statusText = '-';
+        }
+
+        return $statusText;
 
     }
 

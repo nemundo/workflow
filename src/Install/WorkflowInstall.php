@@ -12,6 +12,7 @@ use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
 use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendarCollection;
 use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
+use Nemundo\Workflow\App\PersonalTask\Install\PersonalTaskInstall;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
 use Nemundo\Workflow\App\SearchEngine\Install\SearchEngineInstall;
 use Nemundo\Workflow\App\Stream\Data\StreamCollection;
@@ -82,6 +83,7 @@ class WorkflowInstall extends AbstractScript
 
         (new TaskInstall())->run();
         (new InboxInstall())->run();
+        (new PersonalTaskInstall())->run();
 
 
     }

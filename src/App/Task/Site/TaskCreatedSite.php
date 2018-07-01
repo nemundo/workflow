@@ -23,11 +23,11 @@ use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 
-class TaskSite extends AbstractSite
+class TaskCreatedSite extends AbstractSite
 {
 
     /**
-     * @var TaskSite
+     * @var TaskCreatedSite
      */
     public static $site;
 
@@ -35,10 +35,8 @@ class TaskSite extends AbstractSite
     {
         //$this->title = 'Task';
         //$this->url = 'task';
-        $this->title = 'Aufgaben';
-        $this->url = 'aufgaben';
-
-        new TaskCreatedSite($this);
+        $this->title = 'Erstellte Aufgaben';
+        $this->url = 'erstellte-aufgaben';
 
         new PersonalTaskItemSite($this);
         new PersonalTaskNewSite($this);
@@ -48,7 +46,7 @@ class TaskSite extends AbstractSite
 
     protected function registerSite()
     {
-        TaskSite::$site = $this;
+        TaskCreatedSite::$site = $this;
     }
 
 
@@ -71,7 +69,6 @@ class TaskSite extends AbstractSite
         $nav->site = TaskSite::$site;
 
 
-
         $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
@@ -91,13 +88,15 @@ class TaskSite extends AbstractSite
         $taskReader->model->loadUserCreated();
         $taskReader->paginationLimit = 50;
 
-        $filter = new Filter();
+        /*$filter = new Filter();
         $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
         foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
             $filter->orEqual($taskReader->model->identificationId, $usergroupId);
         }
 
-        $taskReader->filter->andFilter($filter);
+        $taskReader->filter->andFilter($filter);*/
+
+        $taskReader->filter->andEqual($taskReader->model->userCreatedId, (new UserInformation())->getUserId());
 
         $taskReader->addOrder($taskReader->model->archive);
         $taskReader->addOrder($taskReader->model->dateTimeCreated, SortOrder::DESCENDING);

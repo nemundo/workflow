@@ -53,9 +53,13 @@ class WorkflowDelete extends AbstractBase
 
 
         // Search Index
-        $delete = new SearchIndexDelete();
+        /*$delete = new SearchIndexDelete();
         $delete->filter->andEqual($delete->model->workflowId, $workflowId);
-        $delete->delete();
+        $delete->delete();*/
+
+        // Task Delete
+
+        // Inbox Delete
 
 
 

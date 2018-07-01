@@ -94,6 +94,7 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
         $submitButton = new AdminSubmitButton($this);
         $submitButton->name = 'save_btn';
         $submitButton->content = 'Freigeben';
+        //$submitButton->content = 'Speichern und Freigeben';
         //$submitButton->addCssClass('btn btn-primary');
 
 
