@@ -3,9 +3,13 @@
 namespace Nemundo\Workflow\App\Inbox\Builder;
 
 
+use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
+use Nemundo\User\Data\User\UserReader;
+use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
 use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
+use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
 
 abstract class AbstractInboxBuilder extends AbstractContentBuilder
 {
@@ -14,6 +18,11 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
      * @var string
      */
     public $subject;
+
+    /**
+     * @var string
+     */
+    public $message;
 
     /**
      * @var string
@@ -36,12 +45,15 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
     public function createItem()
     {
 
+        /*
         $data = new Inbox();
         $data->contentTypeId = $this->contentType->id;
         $data->dataId = $this->dataId;
         $data->subject = $this->subject;
         $data->userId = $this->userId;
-        $data->save();
+        $data->save();*/
+
+        $this->createUserInbox($this->userId);
 
 
     }
@@ -54,8 +66,11 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
         $data->contentTypeId = $this->contentType->id;
         $data->dataId = $this->dataId;
         $data->subject = $this->subject;
+        $data->message = $this->message;
         $data->userId = $userId;
         $data->save();
+
+        $this->sendMail($userId);
 
     }
 
@@ -69,5 +84,31 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
     }
 
+
+    protected function sendMail($userId)
+    {
+
+        /*
+        $count = new MailConfigValue();
+        $count->field = $count->model->notificationMail;
+        $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
+        $value = $count->getValue();
+
+        if (($value) || ($value == '')) {*/
+
+        $userRow = (new UserReader())->getRowById($userId);
+
+        $mail = new ResponsiveActionMailMessage();
+        $mail->addTo($userRow->email);
+        $mail->subject = $this->subject;
+        $mail->actionText = $this->message;
+        $mail->actionLabel = 'Ansehen';
+        $mail->actionUrlSite = $this->contentType->getItemSite($this->dataId);
+        $mail->sendMail();
+
+
+        //}
+
+    }
 
 }

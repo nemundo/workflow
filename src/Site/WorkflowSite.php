@@ -5,7 +5,9 @@ namespace Nemundo\Workflow\Site;
 
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Calendar\Site\CalendarSite;
+use Nemundo\Workflow\App\Inbox\Site\InboxAdminSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
+use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoItemSite;
@@ -49,9 +51,9 @@ class WorkflowSite extends AbstractSite
 
         $this->title = 'Workflow Admin';
         $this->url = 'workflow-admin';
-        $this->restricted = true;
+        //$this->restricted = true;
         //$this->addRestrictedUsergroup(new WorkflowUsergroup());
-        $this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
+        //$this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
 
         new WorkflowInboxSite($this);
         new TeamInboxSite($this);
@@ -85,7 +87,7 @@ class WorkflowSite extends AbstractSite
         new UserAssignmentAdminSite($this);
         new UsergroupAssignmentAdminSite($this);
 
-       // new SearchEngineJsonSite($this);
+        // new SearchEngineJsonSite($this);
 
 
         new StreamSite($this);
@@ -99,6 +101,13 @@ class WorkflowSite extends AbstractSite
 
         new InboxSite($this);
         new SearchEngineSite($this);
+
+        new WorkflowSearchEngineSite($this);
+
+        new InboxAdminSite($this);
+
+        new InboxStreamSite($this);
+
 
 
     }

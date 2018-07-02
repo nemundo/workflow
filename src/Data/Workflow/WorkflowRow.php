@@ -12,6 +12,16 @@ private $row;
 public $id;
 
 /**
+* @var string
+*/
+public $processId;
+
+/**
+* @var \Nemundo\Workflow\Data\Process\ProcessRow
+*/
+public $process;
+
+/**
 * @var int
 */
 public $number;
@@ -25,16 +35,6 @@ public $workflowNumber;
 * @var string
 */
 public $subject;
-
-/**
-* @var string
-*/
-public $processId;
-
-/**
-* @var \Nemundo\Workflow\Data\Process\ProcessRow
-*/
-public $process;
 
 /**
 * @var string
@@ -105,13 +105,13 @@ public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
-$this->number = $this->getModelValue($model->number);
-$this->workflowNumber = $this->getModelValue($model->workflowNumber);
-$this->subject = $this->getModelValue($model->subject);
 $this->processId = $this->getModelValue($model->processId);
 if ($model->process !== null) {
 $this->loadNemundoWorkflowDataProcessProcessprocessRow($model->process);
 }
+$this->number = $this->getModelValue($model->number);
+$this->workflowNumber = $this->getModelValue($model->workflowNumber);
+$this->subject = $this->getModelValue($model->subject);
 $this->dataId = $this->getModelValue($model->dataId);
 $this->draft = $this->getModelValue($model->draft);
 $this->closed = $this->getModelValue($model->closed);

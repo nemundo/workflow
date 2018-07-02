@@ -34,6 +34,11 @@ public $subject;
 /**
 * @var string
 */
+public $message;
+
+/**
+* @var string
+*/
 public $userId;
 
 /**
@@ -61,6 +66,7 @@ $this->loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model
 }
 $this->dataId = $this->getModelValue($model->dataId);
 $this->subject = $this->getModelValue($model->subject);
+$this->message = $this->getModelValue($model->message);
 $this->userId = $this->getModelValue($model->userId);
 if ($model->user !== null) {
 $this->loadNemundoUserDataUserUseruserRow($model->user);

@@ -38,6 +38,7 @@ class InboxSite extends AbstractSite
 
 
 
+
         $page->render();
 
 

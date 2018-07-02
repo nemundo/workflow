@@ -7,6 +7,16 @@ class WorkflowExternalType extends \Nemundo\Model\Type\External\ExternalType {
 public $id;
 
 /**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $processId;
+
+/**
+* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
+*/
+public $process;
+
+/**
 * @var \Nemundo\Model\Type\Number\NumberType
 */
 public $number;
@@ -20,16 +30,6 @@ public $workflowNumber;
 * @var \Nemundo\Model\Type\Text\TextType
 */
 public $subject;
-
-/**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
-public $processId;
-
-/**
-* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
-*/
-public $process;
 
 /**
 * @var \Nemundo\Model\Type\Id\UniqueIdType
@@ -108,6 +108,13 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
+$this->processId = new \Nemundo\Model\Type\Id\IdType();
+$this->processId->fieldName = "process";
+$this->processId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->processId->aliasFieldName = $this->processId->tableName ."_".$this->processId->fieldName;
+$this->processId->label = "Process";
+$this->addType($this->processId);
+
 $this->number = new \Nemundo\Model\Type\Number\NumberType();
 $this->number->fieldName = "number";
 $this->number->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -128,13 +135,6 @@ $this->subject->tableName = $this->parentFieldName . "_" . $this->externalTableN
 $this->subject->aliasFieldName = $this->subject->tableName . "_" . $this->subject->fieldName;
 $this->subject->label = "Subject";
 $this->addType($this->subject);
-
-$this->processId = new \Nemundo\Model\Type\Id\IdType();
-$this->processId->fieldName = "process";
-$this->processId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->processId->aliasFieldName = $this->processId->tableName ."_".$this->processId->fieldName;
-$this->processId->label = "Process";
-$this->addType($this->processId);
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
 $this->dataId->fieldName = "data_id";

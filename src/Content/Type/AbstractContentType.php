@@ -45,6 +45,7 @@ abstract class AbstractContentType extends AbstractBaseClass
 
         /** @var AbstractContentItem $item */
         $item = new $this->itemClass($parentItem);
+        $item->contentType = $this;
 
         return $item;
 

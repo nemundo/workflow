@@ -24,6 +24,11 @@ public $subject;
 /**
 * @var string
 */
+public $message;
+
+/**
+* @var string
+*/
 public $userId;
 
 /**
@@ -39,6 +44,7 @@ public function save() {
 $this->typeValueList->setModelValue($this->model->contentTypeId, $this->contentTypeId);
 $this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
 $this->typeValueList->setModelValue($this->model->subject, $this->subject);
+$this->typeValueList->setModelValue($this->model->message, $this->message);
 $this->typeValueList->setModelValue($this->model->userId, $this->userId);
 $this->typeValueList->setModelValue($this->model->archive, $this->archive);
 $id = parent::save();

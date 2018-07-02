@@ -7,6 +7,16 @@ class WorkflowModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 public $id;
 
 /**
+* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+*/
+public $processId;
+
+/**
+* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
+*/
+public $process;
+
+/**
 * @var \Nemundo\Model\Type\Number\NumberType
 */
 public $number;
@@ -20,16 +30,6 @@ public $workflowNumber;
 * @var \Nemundo\Model\Type\Text\TextType
 */
 public $subject;
-
-/**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
-*/
-public $processId;
-
-/**
-* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
-*/
-public $process;
 
 /**
 * @var \Nemundo\Model\Type\Id\UniqueIdType
@@ -114,6 +114,12 @@ $this->id->visible->table = false;
 $this->id->visible->view = false;
 $this->id->visible->form = false;
 
+$this->processId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->processId->tableName = "workflow_workflow";
+$this->processId->fieldName = "process";
+$this->processId->aliasFieldName = "workflow_workflow_process";
+$this->processId->label = "Process";
+
 $this->number = new \Nemundo\Model\Type\Number\NumberType($this);
 $this->number->tableName = "workflow_workflow";
 $this->number->fieldName = "number";
@@ -136,12 +142,6 @@ $this->subject->aliasFieldName = "workflow_workflow_subject";
 $this->subject->label = "Subject";
 $this->subject->allowNullValue = "";
 $this->subject->length = 255;
-
-$this->processId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->processId->tableName = "workflow_workflow";
-$this->processId->fieldName = "process";
-$this->processId->aliasFieldName = "workflow_workflow_process";
-$this->processId->label = "Process";
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->dataId->tableName = "workflow_workflow";

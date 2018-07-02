@@ -7,6 +7,11 @@ class Workflow extends \Nemundo\Model\Data\AbstractModelData {
 protected $model;
 
 /**
+* @var string
+*/
+public $processId;
+
+/**
 * @var int
 */
 public $number;
@@ -20,11 +25,6 @@ public $workflowNumber;
 * @var string
 */
 public $subject;
-
-/**
-* @var string
-*/
-public $processId;
 
 /**
 * @var string
@@ -57,10 +57,10 @@ $this->model = new WorkflowModel();
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
 }
 public function save() {
+$this->typeValueList->setModelValue($this->model->processId, $this->processId);
 $this->typeValueList->setModelValue($this->model->number, $this->number);
 $this->typeValueList->setModelValue($this->model->workflowNumber, $this->workflowNumber);
 $this->typeValueList->setModelValue($this->model->subject, $this->subject);
-$this->typeValueList->setModelValue($this->model->processId, $this->processId);
 $this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
 $this->typeValueList->setModelValue($this->model->draft, $this->draft);
 $this->typeValueList->setModelValue($this->model->closed, $this->closed);

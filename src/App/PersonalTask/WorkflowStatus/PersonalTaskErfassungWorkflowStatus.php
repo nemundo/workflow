@@ -3,23 +3,14 @@
 namespace Nemundo\Workflow\App\PersonalTask\WorkflowStatus;
 
 
-use Nemundo\Workflow\Action\AssignmentWorkflowAction;
-use Nemundo\Workflow\Action\DeadlineWorkflowAction;
-use Nemundo\Workflow\Action\NotificationWorkflowAction;
-use Nemundo\Workflow\Action\SubjectWorkflowAction;
+use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
 use Nemundo\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\Data\UserNotification\UserNotification;
-use Nemundo\Workflow\Template\WorkflowStatus\ClosingWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
-use Schleuniger\App\Task\Data\Task\TaskModel;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
-use Schleuniger\App\Task\Data\Task\TaskReader;
-use Schleuniger\App\Task\Form\TaskWorkflowForm;
+
 
 class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
 {
@@ -33,9 +24,9 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
         //$this->formClassName = TaskWorkflowForm::class;
         $this->modelClassName = PersonalTaskModel::class;
 
-
-        //$this->addFollowingStatusClassName(ProzesssteuerungTaskDoneWorkflowStatus::class);
         $this->addFollowingStatusClassName(PersonalTaskErledigtWorkflowStatus::class);
+
+
         //$this->addFollowingStatusClassName(KommentarTaskWorkflowStatus::class);
         //$this->addFollowingStatusClassName(ClosingWorkflowStatus::class);
         //$this->addFollowingStatusClassName(DeadlineChangeWorkflowStatus::class);
@@ -49,6 +40,20 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
         $personalTaskRow = (new PersonalTaskReader())->getRowById($changeEvent->workflowItemId);
 
 
+        $subject = $personalTaskRow->workflow->workflowNumber . ' ' . $personalTaskRow->task;
+
+
+        $builder = new InboxBuilder();
+        $builder->contentType = new PersonalTaskProcess();
+        $builder->dataId = $changeEvent->workflowItemId;
+        $builder->subject = $subject;
+        $builder->createUserInbox($personalTaskRow->responsibleUserId);
+
+
+
+
+
+        /*
         $builder = new TaskBuilder();
         $builder->contentType = new PersonalTaskProcess();
         $builder->task = $personalTaskRow->task;

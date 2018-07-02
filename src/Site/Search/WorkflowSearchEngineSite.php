@@ -21,6 +21,7 @@ use Nemundo\Workflow\Inbox\WorkflowStatus;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 
 
+// WorkflowAdminSite
 class WorkflowSearchEngineSite extends AbstractSite
 {
 
@@ -32,7 +33,7 @@ class WorkflowSearchEngineSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Workflow Suche';
+        $this->title = 'Workflow Admin';
         $this->url = 'workflow-search';
 
         new SearchNewSite($this);

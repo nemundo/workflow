@@ -27,6 +27,11 @@ public $dataId;
 public $subject;
 
 /**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $message;
+
+/**
 * @var \Nemundo\Model\Type\Id\IdType
 */
 public $userId;
@@ -78,6 +83,13 @@ $this->subject->tableName = $this->parentFieldName . "_" . $this->externalTableN
 $this->subject->aliasFieldName = $this->subject->tableName . "_" . $this->subject->fieldName;
 $this->subject->label = "Subject";
 $this->addType($this->subject);
+
+$this->message = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->message->fieldName = "message";
+$this->message->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->message->aliasFieldName = $this->message->tableName . "_" . $this->message->fieldName;
+$this->message->label = "Message";
+$this->addType($this->message);
 
 $this->userId = new \Nemundo\Model\Type\Id\IdType();
 $this->userId->fieldName = "user";

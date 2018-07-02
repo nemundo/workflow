@@ -27,6 +27,11 @@ public $dataId;
 public $subject;
 
 /**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $message;
+
+/**
 * @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
 */
 public $userId;
@@ -88,6 +93,13 @@ $this->subject->aliasFieldName = "inbox_inbox_subject";
 $this->subject->label = "Subject";
 $this->subject->allowNullValue = "";
 $this->subject->length = 255;
+
+$this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->message->tableName = "inbox_inbox";
+$this->message->fieldName = "message";
+$this->message->aliasFieldName = "inbox_inbox_message";
+$this->message->label = "Message";
+$this->message->allowNullValue = "";
 
 $this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userId->tableName = "inbox_inbox";

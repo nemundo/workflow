@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Inbox\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
+use Nemundo\Com\Html\Basic\Br;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
@@ -33,7 +34,7 @@ class InboxWidget extends AbstractAdminWidget
         $table = new AdminClickableTable($this);
 
         $header = new TableHeader($table);
-        $header->addText('Quelle');
+        //$header->addText('Quelle');
         $header->addText('Betreff');
         $header->addText('Datum/Zeit');
         $header->addEmpty();
@@ -49,8 +50,18 @@ class InboxWidget extends AbstractAdminWidget
         foreach ($inboxReader->getData() as $inboxRow) {
 
             $row = new BootstrapClickableTableRow($table);
-            $row->addText($inboxRow->contentType->contentType);
-            $row->addText($inboxRow->subject);
+            //$row->addText($inboxRow->contentType->contentType);
+
+            $text = $inboxRow->subject;
+
+            if ($inboxRow->message !== '') {
+                $text .= ':' . (new Br())->getHtmlString() . $inboxRow->message;
+            }
+
+            $row->addText($text);
+
+            //$row->addText($inboxRow->subject . ': ' . $inboxRow->message);
+
             $row->addText($inboxRow->dateTime->getShortDateTimeLeadingZeroFormat());
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
@@ -58,7 +69,6 @@ class InboxWidget extends AbstractAdminWidget
             $site = clone(InboxArchiveSite::$site);
             $site->addParameter(new InboxParameter($inboxRow->id));
             $row->addIconSite($site);
-
 
             $row->addClickableSite($contentType->getItemSite($inboxRow->dataId));
 
