@@ -37,7 +37,7 @@ class WorkflowDraftStartForm extends AbstractWorkflowDraftForm
     {
 
         $this->workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
-        $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
+        $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClass);
 
         return parent::getHtml();
     }

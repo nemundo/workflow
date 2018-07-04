@@ -10,12 +10,12 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 class PasswordResetStartWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Passwod Reset Start';
         $this->id = '582d6b76-c57f-437f-9ad4-1b785951beab';
-        $this->modelClassName = PasswordResetRequestModel::class;
+        $this->modelClass = PasswordResetRequestModel::class;
 
         //$this->restricted = true;
         //$this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());

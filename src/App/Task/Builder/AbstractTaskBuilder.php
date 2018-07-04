@@ -61,7 +61,7 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
             $usergroup = new UsergroupItem($this->identificationId);
 
             foreach ($usergroup->getUserList() as $user) {
-                $this->createInboxItem($user->id);
+                //$this->createInboxItem($user->id);
             }
 
 
@@ -97,7 +97,7 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
     {
 
         $this->identificationType = new UsergroupIdentificationType();
-        $this->identificationId = $usergroup->usergroupId;
+        $this->identificationId = $usergroup->id;
         $this->createItem();
 
     }

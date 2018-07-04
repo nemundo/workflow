@@ -146,7 +146,7 @@ trait WorkflowInboxTrait
         $usergroupIdList = $this->usergroupIdFilterList;
 
         foreach ($this->usergroupFilterList as $usergroup) {
-            $usergroupIdList[] = $usergroup->usergroupId;
+            $usergroupIdList[] = $usergroup->id;
         }
 
         if (sizeof($usergroupIdList) > 0) {

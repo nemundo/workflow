@@ -190,7 +190,9 @@ class WorkflowViewList extends AbstractProcessItem
             $contentDiv = new Div($div);
             $contentDiv->addCssClass('card-body');
 
-            $statusChangeItem->getView($contentDiv);
+            //$statusChangeItem->getView($contentDiv);
+
+
 
             if ($statusChangeItem->draft) {
 

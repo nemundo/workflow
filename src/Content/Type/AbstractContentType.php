@@ -3,23 +3,37 @@
 namespace Nemundo\Workflow\Content\Type;
 
 
+use Nemundo\Com\Html\Form\AbstractSubmitForm;
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Base\AbstractDataLoadObject;
+use Nemundo\Core\Base\AbstractDataType;
+use Nemundo\Core\Log\LogMessage;
+use Nemundo\Model\Definition\Model\AbstractModel;
+use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Content\Item\AbstractContentItem;
+use Nemundo\Workflow\Content\Item\DataContentItem;
 use Nemundo\Workflow\Parameter\DataIdParameter;
 
-abstract class AbstractContentType extends AbstractBaseClass
+abstract class AbstractContentType extends AbstractDataType   // AbstractTy AbstractDataLoadObject // AbstractBaseClass
 {
 
     /**
      * @var string
      */
-    public $name;
+    //public $name;
 
     /**
      * @var string
      */
-    public $id;
+    //public $id;
+
+    /**
+     * @var string
+     */
+    protected $formClass;
+
 
     /**
      * @var string
@@ -31,13 +45,43 @@ abstract class AbstractContentType extends AbstractBaseClass
      */
     public $itemSite;
 
+    /**
+     * @var string
+     */
+    public $parameterClass;
 
-    abstract protected function loadType();
+
+    //abstract protected function loadData();
 
     public function __construct()
     {
-        $this->loadType();
+
+        $this->parameterClass = DataIdParameter::class;
+        $this->itemClass = DataContentItem::class;
+
+        parent::__construct();
+
+        //$this->loadData();
+
     }
+
+
+
+    public function getForm($parentItem = null)
+    {
+
+
+        $form = null;
+
+
+        /** @var AbstractSubmitForm $item */
+        $form = new $this->formClass($parentItem);
+
+        return $form;
+
+
+    }
+
 
 
     public function getItem($parentItem = null)
@@ -53,18 +97,58 @@ abstract class AbstractContentType extends AbstractBaseClass
     }
 
 
+
+
+
+
+
     public function getItemSite($dataId)
     {
 
+
+        if ($this->itemSite == null) {
+            return null;
+        }
+
         $site = clone($this->itemSite);
-        $site->addParameter(new DataIdParameter($dataId));
+
+        /** @var AbstractUrlParameter $parameter */
+        $parameter = new $this->parameterClass($dataId);
+
+        $site->addParameter($parameter);
+
+        //$site->addParameter(new DataIdParameter($dataId));
         return $site;
 
     }
 
 
 
-    public function onCreate()
+
+    /**
+     * @var AbstractModel
+     */
+    public $modelClass;
+
+
+
+    public function getModel()
+    {
+
+        if ($this->modelClass == null) {
+            (new LogMessage())->writeError('No modelClass defined');
+            return;
+        }
+
+        $model = (new ModelFactory())->getModelByClassName($this->modelClass);
+        return $model;
+
+    }
+
+
+
+
+    public function onCreate($dataId)
     {
 
     }

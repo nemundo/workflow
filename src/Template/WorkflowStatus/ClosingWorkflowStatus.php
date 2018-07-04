@@ -11,7 +11,7 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 class ClosingWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         //$this->workflowStatus = 'Close Workflow';
@@ -20,7 +20,7 @@ class ClosingWorkflowStatus extends AbstractDataWorkflowStatus
         $this->workflowStatusText = 'Workflow wurde abgeschlossen';
 
         $this->id = '0f5475a0-70a5-420e-957a-e6714fe5b85e';
-        $this->modelClassName = CommentModel::class;
+        $this->modelClass = CommentModel::class;
         $this->closingWorkflow = true;
 
     }

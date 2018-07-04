@@ -16,7 +16,7 @@ class WorkflowChangeForm extends BootstrapModelForm
     public function getHtml()
     {
 
-        $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
+        $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClass);
 
         return parent::getHtml();
 

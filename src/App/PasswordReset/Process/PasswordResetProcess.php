@@ -12,7 +12,7 @@ use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
 class PasswordResetProcess extends AbstractProcess
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Passoword Reset';

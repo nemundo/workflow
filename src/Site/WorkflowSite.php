@@ -8,6 +8,7 @@ use Nemundo\Workflow\App\Calendar\Site\CalendarSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxAdminSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
+use Nemundo\Workflow\App\News\Site\NewsSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoItemSite;
@@ -58,7 +59,7 @@ class WorkflowSite extends AbstractSite
         new WorkflowInboxSite($this);
         new TeamInboxSite($this);
         new WorkflowInboxCreatedSite($this);
-        //new WorkflowSearchEngineSite($this);
+        new WorkflowSearchEngineSite($this);
         new NotificationSite($this);
 
         new UsergroupAssignmentSite($this);
@@ -107,6 +108,8 @@ class WorkflowSite extends AbstractSite
         new InboxAdminSite($this);
 
         new InboxStreamSite($this);
+
+        new NewsSite($this);
 
 
 

@@ -52,7 +52,7 @@ class SearchEngineWidget extends AbstractAdminWidget
 
             $indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
-            //$indexReader->model->workflow->loadProcess();
+            $indexReader->model->loadContentType();
 
             //$indexReader->model->loadApplicationType();
             //$indexReader->model->loadSearchText();
@@ -65,19 +65,22 @@ class SearchEngineWidget extends AbstractAdminWidget
 
             $table = new AdminClickableTable($this);
 
-            $header = new TableHeader($table);
+            //$header = new TableHeader($table);
             //$header->addText('App');
-            $header->addText('Nr.');
-            $header->addText('Betreff');
+            //$header->addText('Nr.');
+            //$header->addText('Betreff');
 
             foreach ($indexReader->getData() as $indexRow) {
 
                 $row = new BootstrapClickableTableRow($table);
-                $row->addText($indexRow->workflow->workflowNumber);
-                $row->addText($indexRow->workflow->subject);
+                //$row->addText($indexRow->workflow->workflowNumber);
+                //$row->addText($indexRow->workflow->subject);
 
-                $process = $indexRow->workflow->process->getProcessClassObject();
-                $site = $process->getItemSite($indexRow->workflowId);
+                $row->addText('result');
+
+
+                $contentType = $indexRow->contentType->getContentTypeClassObject();
+                $site = $contentType->getItemSite($indexRow->dataId);
                 $row->addClickableSite($site);
 
                 /*$row->addText($indexRow->applicationType->applicationType);

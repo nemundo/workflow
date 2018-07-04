@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Inbox\Site;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -10,9 +11,15 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;
+use Nemundo\Workflow\Parameter\DataIdParameter;
 
 class InboxStreamSite extends AbstractSite
 {
+
+    /**
+     * @var InboxStreamSite
+     */
+    public static $site;
 
     protected function loadSite()
     {
@@ -20,6 +27,12 @@ class InboxStreamSite extends AbstractSite
         $this->title = 'Inbox Stream';
         $this->url = 'inbox-stream';
 
+    }
+
+
+    protected function registerSite()
+    {
+        InboxStreamSite::$site = $this;
     }
 
 
@@ -44,13 +57,18 @@ class InboxStreamSite extends AbstractSite
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
 
-            (new Debug())->write($contentType->getClassName());
-
-
-            //(new Debug())->write($contentType->)
-
             $item = $contentType->getItem($widget);
             $item->dataId = $inboxRow->dataId;
+
+
+            if ($contentType->itemSite !== null) {
+
+                $btn = new AdminButton($widget);
+                $btn->content = 'Weiter';
+                $btn->site = $contentType->getItemSite($inboxRow->dataId);
+                //$btn->site->addParameter(new DataIdParameter($inboxRow->dataId));
+
+            }
 
 
             /*

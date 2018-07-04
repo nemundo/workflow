@@ -14,12 +14,12 @@ use Paranautik\Usergroup\BetaUsergroup;
 class CommentWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Kommentar';
         $this->id = '267c76a7-7bbf-4546-a20b-9fe20beee15f';
-        $this->modelClassName = CommentModel::class;
+        $this->modelClass = CommentModel::class;
         $this->changeWorkflowStatus = false;
         $this->itemClass = CommentWorkflowItemView::class;
 

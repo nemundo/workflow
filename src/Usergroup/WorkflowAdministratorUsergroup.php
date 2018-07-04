@@ -8,10 +8,10 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 class WorkflowAdministratorUsergroup extends AbstractUsergroup
 {
 
-    protected function loadUsergroup()
+    protected function loadData()
     {
-        $this->usergroup = 'Workflow Administrator';
-        $this->usergroupId = 'e473646b-fae1-4def-b24b-8d95dd297967';
+        $this->name = 'Workflow Administrator';
+        $this->id = 'e473646b-fae1-4def-b24b-8d95dd297967';
     }
 
 }

@@ -16,13 +16,13 @@ abstract class AbstractDataWorkflowStatus extends AbstractWorkflowStatus
     /**
      * @var AbstractModel
      */
-    public $modelClassName;
+    //public $modelClass;
 
 
     public function __construct()
     {
 
-        $this->itemClass = DataWorkflowItemView::class;
+        //$this->itemClass = DataWorkflowItemView::class;
 
         $this->startContainerClass = DataWorkflowStartContainer::class;
         $this->changeContainerClass = DataWorkflowChangeContainer::class;

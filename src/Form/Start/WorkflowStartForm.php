@@ -7,6 +7,7 @@ use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 
 class WorkflowStartForm extends BootstrapModelForm
@@ -22,8 +23,10 @@ class WorkflowStartForm extends BootstrapModelForm
     public function getHtml()
     {
 
+        /** @var AbstractWorkflowStatus $workflowStatus */
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
-        $this->model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClassName);
+
+        $this->model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClass);
 
         return parent::getHtml();
 

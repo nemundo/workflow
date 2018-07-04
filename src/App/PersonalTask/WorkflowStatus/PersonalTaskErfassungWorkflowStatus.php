@@ -15,14 +15,14 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Aufgabe Erfassung';
         $this->workflowStatusText = 'Aufgabe wurde erfasst';
         $this->id = 'f2736f64-d659-4d2f-b73c-7a16b77c28ee';
         //$this->formClassName = TaskWorkflowForm::class;
-        $this->modelClassName = PersonalTaskModel::class;
+        $this->modelClass = PersonalTaskModel::class;
 
         $this->addFollowingStatusClassName(PersonalTaskErledigtWorkflowStatus::class);
 

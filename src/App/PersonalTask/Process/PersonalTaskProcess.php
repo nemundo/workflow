@@ -12,7 +12,7 @@ use Nemundo\Workflow\Process\AbstractProcess;
 class PersonalTaskProcess extends AbstractProcess
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Aufgaben';

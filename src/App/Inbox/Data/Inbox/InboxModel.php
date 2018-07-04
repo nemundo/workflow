@@ -22,6 +22,11 @@ public $contentType;
 public $dataId;
 
 /**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $bookmarkId;
+
+/**
 * @var \Nemundo\Model\Type\Text\TextType
 */
 public $subject;
@@ -50,6 +55,11 @@ public $dateTime;
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
 public $archive;
+
+/**
+* @var \Nemundo\Model\Type\Php\PhpClassType
+*/
+public $contentRedirect;
 
 protected function loadModel() {
 $this->tableName = "inbox_inbox";
@@ -84,6 +94,17 @@ $this->dataId->allowNullValue = "";
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
+$this->id->visible->form = false;
+
+$this->bookmarkId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
+$this->bookmarkId->tableName = "inbox_inbox";
+$this->bookmarkId->fieldName = "bookmark_id";
+$this->bookmarkId->aliasFieldName = "inbox_inbox_bookmark_id";
+$this->bookmarkId->label = "Bookmark Id";
+$this->bookmarkId->allowNullValue = "";
+$this->bookmarkId->visible->form = false;
+$this->bookmarkId->visible->table = false;
+$this->bookmarkId->visible->view = false;
 $this->id->visible->form = false;
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType($this);
@@ -121,6 +142,14 @@ $this->archive->fieldName = "archive";
 $this->archive->aliasFieldName = "inbox_inbox_archive";
 $this->archive->label = "Archive";
 $this->archive->allowNullValue = "";
+
+$this->contentRedirect = new \Nemundo\Model\Type\Php\PhpClassType($this);
+$this->contentRedirect->tableName = "inbox_inbox";
+$this->contentRedirect->fieldName = "content_redirect";
+$this->contentRedirect->aliasFieldName = "inbox_inbox_content_redirect";
+$this->contentRedirect->label = "Content Redirect";
+$this->contentRedirect->allowNullValue = "";
+$this->contentRedirect->phpClassName = Nemundo\Workflow\Content\Redirect\AbstractContentRedirect::class;
 
 }
 public function loadContentType() {

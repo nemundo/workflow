@@ -10,6 +10,7 @@ use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\App\Calendar\Data\CalendarCollection;
 use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
 use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
+use Nemundo\Workflow\App\News\Install\NewsInstall;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendarCollection;
 use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
 use Nemundo\Workflow\App\PersonalTask\Install\PersonalTaskInstall;
@@ -20,6 +21,7 @@ use Nemundo\Workflow\App\Task\Install\TaskInstall;
 use Nemundo\Workflow\App\TeamInbox\Data\TeamInboxCollection;
 use Nemundo\Workflow\App\ToDo\Install\ToDoInstall;
 use Nemundo\Workflow\App\Widget\Install\WidgetInstall;
+use Nemundo\Workflow\App\Wiki\Install\WikiInstall;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowTemplateCollection;
 use Nemundo\Workflow\Application\WorkflowApplication;
 use Nemundo\Workflow\Content\Data\ContentCollection;
@@ -84,6 +86,8 @@ class WorkflowInstall extends AbstractScript
         (new TaskInstall())->run();
         (new InboxInstall())->run();
         (new PersonalTaskInstall())->run();
+        (new NewsInstall())->run();
+        (new WikiInstall())->run();
 
 
     }

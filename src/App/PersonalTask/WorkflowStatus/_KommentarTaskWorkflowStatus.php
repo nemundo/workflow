@@ -14,13 +14,13 @@ use Schleuniger\App\Task\Data\TaskComment\TaskCommentModel;
 class KommentarTaskWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Kommentar';
         $this->workflowStatusText = 'Aufgabe wurde kommentiert';
         $this->id = '6ad1ddc1-04ff-47d6-bfaa-2677238c7de4';
-        $this->modelClassName = TaskCommentModel::class;
+        $this->modelClass = TaskCommentModel::class;
         //$this->workflowItemClassName = WorkflowItem::class;
 
         $this->addFollowingStatusClassName(ProzesssteuerungTaskDoneWorkflowStatus::class);

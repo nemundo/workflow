@@ -9,7 +9,7 @@ use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 class PasswordChangeWorkflowStatus extends AbstractChangeWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Password Change';

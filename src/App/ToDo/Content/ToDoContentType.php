@@ -9,7 +9,7 @@ use Nemundo\Workflow\Content\Type\AbstractContentType;
 class ToDoContentType extends AbstractContentType
 {
 
-    protected function loadType()
+    protected function loadData()
     {
         $this->name = 'To Do';
         $this->id = 'c9c9f07f-7608-49be-99b4-95c1aa07c69b';

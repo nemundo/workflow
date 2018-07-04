@@ -13,13 +13,13 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'User Assignment';
         $this->id = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeWorkflowStatus = false;
-        $this->modelClassName = UserAssignmentChangeModel::class;
+        $this->modelClass = UserAssignmentChangeModel::class;
 
     }
 

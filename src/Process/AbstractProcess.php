@@ -93,6 +93,7 @@ abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseC
     }
 
 
+    /*
     public function getItemSite($workflowId = null)
     {
 
@@ -101,7 +102,7 @@ abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseC
 
         return $site;
 
-    }
+    }*/
 
 
 }

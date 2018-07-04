@@ -16,7 +16,7 @@ use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 class PersonalTaskErledigtWorkflowStatus extends AbstractChangeWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Erledigt';

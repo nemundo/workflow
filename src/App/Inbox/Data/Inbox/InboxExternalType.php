@@ -22,6 +22,11 @@ public $contentType;
 public $dataId;
 
 /**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $bookmarkId;
+
+/**
 * @var \Nemundo\Model\Type\Text\TextType
 */
 public $subject;
@@ -51,6 +56,11 @@ public $dateTime;
 */
 public $archive;
 
+/**
+* @var \Nemundo\Model\Type\Php\PhpClassType
+*/
+public $contentRedirect;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = InboxModel::class;
@@ -76,6 +86,13 @@ $this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableNa
 $this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
 $this->dataId->label = "Data Id";
 $this->addType($this->dataId);
+
+$this->bookmarkId = new \Nemundo\Model\Type\Id\UniqueIdType();
+$this->bookmarkId->fieldName = "bookmark_id";
+$this->bookmarkId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->bookmarkId->aliasFieldName = $this->bookmarkId->tableName . "_" . $this->bookmarkId->fieldName;
+$this->bookmarkId->label = "Bookmark Id";
+$this->addType($this->bookmarkId);
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType();
 $this->subject->fieldName = "subject";
@@ -111,6 +128,13 @@ $this->archive->tableName = $this->parentFieldName . "_" . $this->externalTableN
 $this->archive->aliasFieldName = $this->archive->tableName . "_" . $this->archive->fieldName;
 $this->archive->label = "Archive";
 $this->addType($this->archive);
+
+$this->contentRedirect = new \Nemundo\Model\Type\Php\PhpClassType();
+$this->contentRedirect->fieldName = "content_redirect";
+$this->contentRedirect->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->contentRedirect->aliasFieldName = $this->contentRedirect->tableName . "_" . $this->contentRedirect->fieldName;
+$this->contentRedirect->label = "Content Redirect";
+$this->addType($this->contentRedirect);
 
 }
 public function loadContentType() {

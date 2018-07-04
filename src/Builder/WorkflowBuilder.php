@@ -87,7 +87,7 @@ class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
 
         if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class) || $workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
 
-            if ($this->contentType->modelClass == $workflowStatus->modelClassName) {
+            if ($this->contentType->modelClass == $workflowStatus->modelClass) {
                 $this->dataId = $this->workflowItemId;
             }
         }

@@ -9,6 +9,7 @@ use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
 use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
+use Nemundo\Workflow\Content\Redirect\AbstractContentRedirect;
 use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
 
 abstract class AbstractInboxBuilder extends AbstractContentBuilder
@@ -28,6 +29,16 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
      * @var string
      */
     public $userId;
+
+    /**
+     * @var AbstractContentRedirect
+     */
+    //public $contentRedirect;
+
+    /**
+     * @var string
+     */
+    //public $bookmarkId;
 
 
     public function __construct()
@@ -62,9 +73,13 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
     public function createUserInbox($userId)
     {
 
+        $this->check();
+
         $data = new Inbox();
         $data->contentTypeId = $this->contentType->id;
+        //$data->contentRedirect = $this->contentRedirect->getClassName();
         $data->dataId = $this->dataId;
+        //$data->bookmarkId = $this->bookmarkId;
         $data->subject = $this->subject;
         $data->message = $this->message;
         $data->userId = $userId;

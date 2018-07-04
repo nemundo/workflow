@@ -30,9 +30,9 @@ class DataWorkflowItemView extends AbstractWorkflowItemView
         //$p = new Paragraph($this);
         //$p->content = $workflowStatus->modelClassName;
 
-        if ($workflowStatus->modelClassName !== null) {
+        if ($workflowStatus->modelClass !== null) {
 
-            $model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClassName);
+            $model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClass);
 
             $view = new WorkflowModelView($this);
             $view->model = $model;

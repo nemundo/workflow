@@ -29,6 +29,11 @@ public $dataId;
 /**
 * @var string
 */
+public $bookmarkId;
+
+/**
+* @var string
+*/
 public $subject;
 
 /**
@@ -56,6 +61,11 @@ public $dateTime;
 */
 public $archive;
 
+/**
+* @var string
+*/
+public $contentRedirect;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -65,6 +75,7 @@ if ($model->contentType !== null) {
 $this->loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
 $this->dataId = $this->getModelValue($model->dataId);
+$this->bookmarkId = $this->getModelValue($model->bookmarkId);
 $this->subject = $this->getModelValue($model->subject);
 $this->message = $this->getModelValue($model->message);
 $this->userId = $this->getModelValue($model->userId);
@@ -73,11 +84,19 @@ $this->loadNemundoUserDataUserUseruserRow($model->user);
 }
 $this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTime));
 $this->archive = $this->getModelValue($model->archive);
+$this->contentRedirect = $this->getModelValue($model->contentRedirect);
 }
 private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);
+}
+/**
+* @return \Nemundo\Workflow\Content\Redirect\AbstractContentRedirect
+*/
+public function getContentRedirectObject() {
+$object = (new \Nemundo\Core\System\ObjectBuilder)->getObject($this->contentRedirect);
+return $object;
 }
 }

@@ -13,7 +13,7 @@ use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 class SubjectChangeWorkflowStatus extends AbstractWorkflowStatus
 {
 
-    protected function loadType()
+    protected function loadData()
     {
 
         $this->name = 'Change Subject';

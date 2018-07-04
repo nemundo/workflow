@@ -30,7 +30,7 @@ class UsergroupAssignmentWidget extends AbstractAdminWidget
         }
 
 
-        $this->widgetTitle = 'Aufgaben für ' . $this->usergroup->usergroup;
+        $this->widgetTitle = 'Aufgaben für ' . $this->usergroup->name;
 
 
 

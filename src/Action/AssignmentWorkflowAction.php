@@ -43,7 +43,7 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
         $data = new UsergroupAssignment();
         $data->ignoreIfExists = true;
         $data->workflowId = $this->changeEvent->workflowId;
-        $data->usergroupId = $usergroup->usergroupId;
+        $data->usergroupId = $usergroup->id;
         $data->save();
 
         foreach ($usergroup->getUserList() as $userRow) {

@@ -14,6 +14,7 @@ use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;
 use Nemundo\Workflow\App\Inbox\Parameter\InboxParameter;
 use Nemundo\Workflow\App\Inbox\Site\InboxArchiveSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
+use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
 
 class InboxWidget extends AbstractAdminWidget
 {
@@ -22,7 +23,7 @@ class InboxWidget extends AbstractAdminWidget
     {
 
         $this->widgetTitle = 'Inbox';
-        $this->widgetSite = InboxSite::$site;
+        $this->widgetSite = InboxStreamSite::$site;
 
     }
 
@@ -65,12 +66,22 @@ class InboxWidget extends AbstractAdminWidget
             $row->addText($inboxRow->dateTime->getShortDateTimeLeadingZeroFormat());
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
+            //$contentRedirect = $inboxRow->getContentRedirectObject();
 
             $site = clone(InboxArchiveSite::$site);
             $site->addParameter(new InboxParameter($inboxRow->id));
             $row->addIconSite($site);
 
-            $row->addClickableSite($contentType->getItemSite($inboxRow->dataId));
+
+            $site = $contentType->getItemSite($inboxRow->dataId);
+            if ($site !== null) {
+                $row->addClickableSite($site);
+            }
+
+            /*$site = $contentRedirect->getSite($inboxRow->dataId);
+            if ($site !== null) {
+                $row->addClickableSite($site);
+            }*/
 
         }
 

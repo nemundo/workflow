@@ -11,17 +11,18 @@ use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\Process\AbstractProcess;
 
 
-class SearchIndexWorkflowAction extends AbstractContentBuilder
+class SearchIndexBuilder extends AbstractContentBuilder
 {
 
     /**
-     * @var AbstractProcess
+     * @var string
      */
-    public $process;
-
+    public $subject;
 
     private function prepareIndex()
     {
+
+        $this->check();
 
 
         /*
@@ -53,9 +54,11 @@ class SearchIndexWorkflowAction extends AbstractContentBuilder
 
         $data = new SearchIndex();
         $data->ignoreIfExists = true;
+
         //$data->processId = $this->process->processId;
         $data->wordId = $wordId;
         $data->contentTypeId = $this->contentType->id;
+        $data->dataId = $this->dataId;
         //$data->workflowId = $this->changeEvent->workflowId;
         //$data->searchTextId = $this->searchTextId;
         $data->save();
