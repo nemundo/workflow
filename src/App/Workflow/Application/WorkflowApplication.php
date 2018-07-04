@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Application;
+namespace Nemundo\Workflow\App\Workflow\Application;
 
 
 use Nemundo\App\Application\Type\AbstractApplication;

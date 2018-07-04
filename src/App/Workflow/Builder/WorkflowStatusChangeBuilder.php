@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Builder;
+namespace Nemundo\Workflow\App\Workflow\Builder;
 
 
 use Nemundo\Core\Debug\Debug;

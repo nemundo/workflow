@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Process;
+namespace Nemundo\Workflow\App\Workflow\Process;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\User\Access\UserAccessTrait;
