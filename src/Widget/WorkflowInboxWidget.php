@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\Widget;
 
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\Inbox\WorkflowInboxReader;
 use Nemundo\Com\TableBuilder\TableHeader;

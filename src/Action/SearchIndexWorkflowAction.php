@@ -7,7 +7,7 @@ use Nemundo\Core\Text\Keyword;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
-use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 
 
 class SearchIndexWorkflowAction extends AbstractWorkflowAction

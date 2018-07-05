@@ -4,8 +4,8 @@ namespace Nemundo\Workflow\WorkflowStatus;
 
 
 use Nemundo\Workflow\Com\Item\ChangeWorkflowItemView;
-use Nemundo\Workflow\Container\Change\ChangeWorkflowChangeContainer;
-use Nemundo\Workflow\Container\Start\ChangeWorkflowStartContainer;
+use Nemundo\Workflow\App\Workflow\Container\Change\ChangeWorkflowChangeContainer;
+use Nemundo\Workflow\App\Workflow\Container\Start\ChangeWorkflowStartContainer;
 
 abstract class AbstractChangeWorkflowStatus extends AbstractWorkflowStatus
 {

@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Calendar\Builder;
 
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Workflow\App\Calendar\Data\Calendar\Calendar;
-use Nemundo\Workflow\Content\Builder\AbstractIdentificationBuilder;
+use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
 
 class CalendarBuilder extends AbstractIdentificationBuilder
 {

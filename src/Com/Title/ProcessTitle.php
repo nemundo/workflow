@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\Com\Title;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 
 class ProcessTitle extends AbstractHtmlContainerList
 {

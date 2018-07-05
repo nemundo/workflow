@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Template\WorkflowStatus;
 
 use Nemundo\Workflow\Action\NotificationWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Template\View\CommentWorkflowItemView;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;

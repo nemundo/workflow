@@ -8,7 +8,7 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\Data\Workflow\WorkflowCount;
 use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Model\Join\ModelJoin;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentModel;

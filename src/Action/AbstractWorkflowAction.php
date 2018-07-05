@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Action;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 
 
 // WorkflowAction

@@ -19,11 +19,11 @@ class ToDoAction extends AbstractToDoAction
 
         $todoRow = $this->getRow();
 
-        $builder = new StreamBuilder();
+        /*$builder = new StreamBuilder();
         $builder->contentType = new ToDoContentType();
         $builder->dataId = $this->id;
         $builder->subject = $todoRow->todo;
-        $builder->createItem();
+        $builder->createItem();*/
 
         $builder = new TaskBuilder();
         $builder->contentType = new ToDoContentType();

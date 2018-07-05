@@ -7,7 +7,7 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
-use Nemundo\Workflow\Content\Item\AbstractContentItem;
+use Nemundo\App\Content\Item\AbstractContentItem;
 
 class CommentContentItem extends AbstractContentItem
 {

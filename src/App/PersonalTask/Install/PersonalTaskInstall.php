@@ -9,8 +9,8 @@ use Nemundo\Workflow\App\PersonalTask\Data\PersonalTaskCollection;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskErfassungWorkflowStatus;
 use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskErledigtWorkflowStatus;
-use Nemundo\Workflow\Setup\ProcessSetup;
-use Nemundo\Workflow\Setup\WorkflowStatusSetup;
+use Nemundo\Workflow\App\Workflow\Setup\ProcessSetup;
+use Nemundo\Workflow\App\Workflow\Setup\WorkflowStatusSetup;
 
 class PersonalTaskInstall extends AbstractScript
 {

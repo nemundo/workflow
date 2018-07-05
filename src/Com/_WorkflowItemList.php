@@ -30,7 +30,7 @@ use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
-use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
 use Nemundo\Workflow\Site\DraftReleaseSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;

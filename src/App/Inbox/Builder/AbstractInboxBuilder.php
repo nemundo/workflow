@@ -8,8 +8,8 @@ use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
-use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
-use Nemundo\Workflow\Content\Redirect\AbstractContentRedirect;
+use Nemundo\App\Content\Builder\AbstractContentBuilder;
+use Nemundo\App\Content\Redirect\AbstractContentRedirect;
 use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
 
 abstract class AbstractInboxBuilder extends AbstractContentBuilder

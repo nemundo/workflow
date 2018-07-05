@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\WorkflowStatus;
 
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Workflow\Com\Item\DataWorkflowItemView;
-use Nemundo\Workflow\Container\Change\DataWorkflowChangeContainer;
-use Nemundo\Workflow\Container\Start\DataWorkflowStartContainer;
+use Nemundo\Workflow\App\Workflow\Container\Change\DataWorkflowChangeContainer;
+use Nemundo\Workflow\App\Workflow\Container\Start\DataWorkflowStartContainer;
 
 
 // AbstractModelWorkflowStatus

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Com\Title;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;

@@ -17,7 +17,7 @@ public $id;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeRow
 */
 public $contentType;
 
@@ -49,6 +49,6 @@ $this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue(
 $this->subject = $this->getModelValue($model->subject);
 }
 private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow($this->row, $model);
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 }

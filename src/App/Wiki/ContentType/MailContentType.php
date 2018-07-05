@@ -7,7 +7,9 @@ use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\Workflow\App\Wiki\ContentItem\MailContentItem;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailModel;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailReader;
-use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
+use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
 
 class MailContentType extends AbstractContentType
 {
@@ -19,6 +21,7 @@ class MailContentType extends AbstractContentType
         $this->id = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
         $this->modelClass = MailModel::class;
         $this->itemClass = MailContentItem::class;
+        $this->itemSite = WikiRedirectSite::$site;
 
     }
 

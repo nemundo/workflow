@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
 use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Task\Data\Task\Task;
-use Nemundo\Workflow\Content\Builder\AbstractIdentificationBuilder;
+use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
 
 
 abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
@@ -51,10 +51,11 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
         $data->identificationId = $this->identificationId;
         $data->save();
 
+
+        /*
         if ($this->identificationType->isObjectOfClass(UserIdentificationType::class)) {
             $this->createInboxItem($this->identificationId);
         }
-
 
         if ($this->identificationType->isObjectOfClass(UsergroupIdentificationType::class)) {
 
@@ -65,7 +66,7 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
             }
 
 
-        }
+        }*/
 
     }
 

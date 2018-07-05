@@ -7,7 +7,7 @@ use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\PersonalCalendar\Content\PersonalCalendarContentType;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendarCollection;
-use Nemundo\Workflow\Content\Setup\ContentTypeSetup;
+use Nemundo\App\Content\Setup\ContentTypeSetup;
 
 class PersonalCalendarInstall extends AbstractScript
 {

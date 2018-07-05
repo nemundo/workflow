@@ -10,12 +10,12 @@ use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Action\SearchIndexWorkflowAction;
-use Nemundo\Workflow\Content\Builder\AbstractContentBuilder;
+use Nemundo\App\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
-use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
 
@@ -37,6 +37,12 @@ class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
      * @var string
      */
     //public $dataId;
+
+    /**
+     * @var string
+     */
+    public $baseId;
+
 
     /**
      * @var string
@@ -78,7 +84,11 @@ class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
 
 
         /** @var AbstractWorkflowBaseModel $baseModel */
-        $baseModel = (new ModelFactory())->getModelByClassName($this->contentType->modelClass);
+        //$baseModel = (new ModelFactory())->getModelByClassName($this->contentType->modelClass);
+
+        $baseModel = $this->contentType->getModel();
+
+
 
 
 
@@ -162,5 +172,54 @@ class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
         return $workflowId;
 
     }
+
+
+    public function getWorkflowId() {
+
+
+
+        $data = new Workflow();
+        $data->processId = $this->contentType->id;
+        $data->dataId = $this->baseId;
+
+        $workflowNumber = null;
+        if ($this->contentType->createWorkflowNumber) {
+            $workflowNumber = $this->workflowNumber;
+            $number = 0;
+
+            if ($workflowNumber == null) {
+
+                $value = new WorkflowValue();
+                $value->field = $value->model->number;
+                $value->filter->andEqual($value->model->processId, $this->contentType->id);
+                $number = $value->getMaxValue();
+
+                if ($number == 0) {
+                    $number = $this->contentType->startNumber - 1;  // 1000;
+                }
+
+                $number++;
+
+                $workflowNumber = $this->contentType->prefix . $number;
+
+
+            }
+
+            $data->number = $number;
+            $data->workflowNumber = $workflowNumber;
+
+        }
+
+        $data->subject = $this->subject;
+        $data->workflowStatusId = $this->contentType->id;  // $workflowStatus->id;
+        //$data->dataId = $this->dataId;
+        $workflowId = $data->save();
+
+        return $workflowId;
+
+
+
+    }
+
 
 }

@@ -16,7 +16,7 @@ use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageForm;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
 use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
-use Nemundo\Workflow\Content\Parameter\ContentTypeParameter;
+use Nemundo\App\Content\Parameter\ContentTypeParameter;
 
 class WikiSite extends AbstractSite
 {

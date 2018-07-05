@@ -8,7 +8,7 @@ use Nemundo\Workflow\App\ToDo\Content\ToDoContentType;
 use Nemundo\Workflow\App\ToDo\Data\ToDoCollection;
 use Nemundo\Workflow\App\ToDo\Widget\ToDoWidget;
 use Nemundo\Workflow\App\Widget\Setup\WidgetSetup;
-use Nemundo\Workflow\Content\Setup\ContentTypeSetup;
+use Nemundo\App\Content\Setup\ContentTypeSetup;
 
 class ToDoInstall extends AbstractScript
 {

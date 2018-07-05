@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\PersonalTask\WorkflowStatus;
 
 
 use Nemundo\Workflow\Action\NotificationWorkflowAction;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Com\Item\WorkflowItem;
 use Nemundo\Workflow\Factory\WorkflowDataId;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;

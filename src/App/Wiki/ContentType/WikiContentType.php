@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Wiki\ContentType;
 use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentItem;
 use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
 use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
-use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
 
 class WikiContentType extends AbstractContentType
 {

@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\News\Content;
 
 use Nemundo\Workflow\App\News\Site\CommentRedirectSite;
 use Nemundo\Workflow\App\News\Site\NewsItemSite;
-use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
 
 class CommentContentType extends AbstractContentType
 {

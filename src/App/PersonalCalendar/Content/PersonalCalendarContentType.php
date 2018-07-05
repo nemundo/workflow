@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\PersonalCalendar\Content;
 
 
-use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
 
 class PersonalCalendarContentType extends AbstractContentType
 {

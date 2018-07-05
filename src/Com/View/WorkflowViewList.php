@@ -33,7 +33,7 @@ use Nemundo\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
-use Nemundo\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Reader\WorkflowStatusChangeItemReader;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
@@ -79,7 +79,7 @@ class WorkflowViewList extends AbstractProcessItem
     public function getHtml()
     {
 
-        $this->process = (new \Nemundo\Workflow\Builder\WorkflowItem($this->workflowId))->getProcess();
+        $this->process = (new \Nemundo\Workflow\App\Workflow\Builder\WorkflowItem($this->workflowId))->getProcess();
 
 
         if (!$this->checkProperty('workflowId')) {

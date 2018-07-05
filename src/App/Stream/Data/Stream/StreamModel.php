@@ -12,7 +12,7 @@ public $id;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
 public $contentType;
 
@@ -89,7 +89,7 @@ $index->addType($this->dataId);
 }
 public function loadContentType() {
 if ($this->contentType == null) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType($this, "stream_stream_content_type");
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "stream_stream_content_type");
 $this->contentType->tableName = "stream_stream";
 $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "stream_stream_content_type";

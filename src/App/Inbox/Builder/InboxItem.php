@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Inbox\Builder;
 
 
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxUpdate;
-use Nemundo\Workflow\Content\Builder\AbstractBuilderItem;
+use Nemundo\App\Content\Builder\AbstractBuilderItem;
 
 class InboxItem extends AbstractBuilderItem
 {

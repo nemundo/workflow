@@ -9,7 +9,7 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
-use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 

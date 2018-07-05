@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\Site\StatusChange;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
-use Nemundo\Workflow\Container\Change\WorkflowStatusChangeContainer;
+use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\Site\Search\WorkflowSearchEngineSite;

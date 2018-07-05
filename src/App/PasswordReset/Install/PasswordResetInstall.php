@@ -8,8 +8,8 @@ use Nemundo\Workflow\App\PasswordReset\Data\PasswordResetCollection;
 use Nemundo\Workflow\App\PasswordReset\Process\PasswordResetProcess;
 use Nemundo\Workflow\App\PasswordReset\WorkflowStatus\PasswordChangeWorkflowStatus;
 use Nemundo\Workflow\App\PasswordReset\WorkflowStatus\PasswordResetStartWorkflowStatus;
-use Nemundo\Workflow\Setup\ProcessSetup;
-use Nemundo\Workflow\Setup\WorkflowStatusSetup;
+use Nemundo\Workflow\App\Workflow\Setup\ProcessSetup;
+use Nemundo\Workflow\App\Workflow\Setup\WorkflowStatusSetup;
 
 class PasswordResetInstall extends AbstractScript
 {

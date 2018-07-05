@@ -20,6 +20,7 @@ class HyperlinkContentForm extends BootstrapForm
 
         $this->url = new BootstrapTextBox($this);
         $this->url->label = 'Url';
+        $this->url->autofocus = true;
 
         return parent::getHtml();
     }
@@ -28,11 +29,12 @@ class HyperlinkContentForm extends BootstrapForm
     protected function onSubmit()
     {
 
-
         $data = new Hyperlink();
         $data->url = $this->url->getValue();
         $data->title = 'title of url';
         $id = $data->save();
+
+        $this->runAfterSubmitEvent($id);
 
         return $id;
 

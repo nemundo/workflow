@@ -27,7 +27,7 @@ public $page;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeRow
 */
 public $contentType;
 
@@ -46,14 +46,14 @@ $this->loadNemundoWorkflowAppWikiDataWikiPageWikiPagepageRow($model->page);
 }
 $this->contentTypeId = $this->getModelValue($model->contentTypeId);
 if ($model->contentType !== null) {
-$this->loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model->contentType);
+$this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
 $this->dataId = $this->getModelValue($model->dataId);
 }
 private function loadNemundoWorkflowAppWikiDataWikiPageWikiPagepageRow($model) {
 $this->page = new \Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageRow($this->row, $model);
 }
-private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow($this->row, $model);
+private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 }

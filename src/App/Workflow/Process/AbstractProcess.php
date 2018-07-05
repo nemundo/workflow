@@ -6,9 +6,10 @@ use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowContentItem;
 use Nemundo\Workflow\Com\View\WorkflowViewList;
-use Nemundo\Workflow\Content\Type\AbstractContentType;
-use Nemundo\Workflow\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 
@@ -84,7 +85,11 @@ abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseC
     {
 
         $this->itemSite = WorkflowItemSite::$site;
-        $this->processItemClassName = WorkflowViewList::class;
+
+        //$this->processItemClassName = WorkflowViewList::class;
+
+        $this->itemClass = WorkflowContentItem::class;
+
         $this->parameter = new WorkflowParameter();
 
         parent::__construct();

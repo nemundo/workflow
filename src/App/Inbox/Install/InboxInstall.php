@@ -16,8 +16,8 @@ class InboxInstall extends AbstractScript
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new InboxCollection());
 
-        $setup = new WidgetSetup();
-        $setup->addWidget(new InboxWidget());
+        //$setup = new WidgetSetup();
+        //$setup->addWidget(new InboxWidget());
 
     }
 }

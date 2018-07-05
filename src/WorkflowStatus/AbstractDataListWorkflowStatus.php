@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\WorkflowStatus;
 
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
-use Nemundo\Workflow\Container\Change\DataListWorkflowChangeContainer;
-use Nemundo\Workflow\Container\Start\DataListWorkflowStartContainer;
+use Nemundo\Workflow\App\Workflow\Container\Change\DataListWorkflowChangeContainer;
+use Nemundo\Workflow\App\Workflow\Container\Start\DataListWorkflowStartContainer;
 
 abstract class AbstractDataListWorkflowStatus extends AbstractWorkflowStatus
 {

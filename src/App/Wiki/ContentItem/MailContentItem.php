@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Wiki\ContentItem;
 use Nemundo\Com\Html\Basic\Bold;
 use Nemundo\Com\Html\Hyperlink\EmailHyperlink;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailReader;
-use Nemundo\Workflow\Content\Item\AbstractContentItem;
+use Nemundo\App\Content\Item\AbstractContentItem;
 
 class MailContentItem extends AbstractContentItem
 {

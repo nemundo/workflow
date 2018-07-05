@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\News\Content;
 use Nemundo\Workflow\App\News\Data\News\NewsModel;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
 use Nemundo\Workflow\App\News\Site\NewsItemSite;
-use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
 
 class NewsContentType extends AbstractContentType
 {

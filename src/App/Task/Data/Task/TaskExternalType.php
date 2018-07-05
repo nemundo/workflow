@@ -42,7 +42,7 @@ public $identificationId;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
 public $contentType;
 
@@ -167,7 +167,7 @@ return $this;
 }
 public function loadContentType() {
 if ($this->contentType == null) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
 $this->contentType->fieldName = "content_type";
 $this->contentType->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->contentType->aliasFieldName = $this->contentType->tableName ."_".$this->contentType->fieldName;

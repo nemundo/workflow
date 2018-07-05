@@ -20,6 +20,7 @@ class InboxSite extends AbstractSite
         $this->title = 'Inbox';
         $this->url = 'app-inbox';
 
+        new InboxRedirectSite($this);
         new InboxArchiveSite($this);
 
     }

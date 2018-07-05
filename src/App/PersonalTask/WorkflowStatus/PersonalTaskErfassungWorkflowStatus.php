@@ -8,7 +8,7 @@ use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 
 

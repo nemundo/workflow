@@ -8,7 +8,7 @@ use Nemundo\Workflow\Action\ClosingWorkflowAction;
 use Nemundo\Workflow\Action\NotificationWorkflowAction;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskUpdate;
 use Nemundo\Workflow\App\Task\Item\TaskItem;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Template\WorkflowStatus\ClosingWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 

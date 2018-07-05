@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\Template\WorkflowStatus;
 use Nemundo\Workflow\Action\AssignmentWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeReader;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 
 

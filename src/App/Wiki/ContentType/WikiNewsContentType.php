@@ -23,17 +23,30 @@ class WikiNewsContentType extends NewsContentType
     }
 
 
+    /*
     public function onCreate($dataId)
     {
 
-        $newsRow = (new NewsReader())->getRowById($dataId);
 
+        $newsRow = (new NewsReader())->getRowById($dataId);
 
         $builder = new InboxBuilder();
         $builder->contentType = $this;
         $builder->dataId = $dataId;
         $builder->subject = 'Neu: ' . $newsRow->title;
         $builder->createUsergroupInbox(new SchleunigerUsergroup());
+
+
+    }*/
+
+
+    public function getSubject($dataId)
+    {
+        $newsRow = (new NewsReader())->getRowById($dataId);
+        $subject = $newsRow->title;
+
+        return $subject;
+
 
 
     }

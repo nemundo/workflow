@@ -4,9 +4,9 @@ namespace Nemundo\Workflow\WorkflowStatus;
 
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
-use Nemundo\Workflow\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractContentType;
 
 // WorkflowContentType
 abstract class AbstractWorkflowStatus extends AbstractContentType

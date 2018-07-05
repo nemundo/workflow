@@ -9,7 +9,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;

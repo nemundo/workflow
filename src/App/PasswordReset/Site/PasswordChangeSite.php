@@ -7,7 +7,7 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest\PasswordResetRequestReader;
-use Nemundo\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
 class PasswordChangeSite extends AbstractSite

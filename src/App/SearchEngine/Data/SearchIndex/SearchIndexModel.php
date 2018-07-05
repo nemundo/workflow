@@ -12,7 +12,7 @@ public $id;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
 public $contentType;
 
@@ -79,7 +79,7 @@ $index->addType($this->dataId);
 }
 public function loadContentType() {
 if ($this->contentType == null) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType($this, "searchengine_search_index_content_type");
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "searchengine_search_index_content_type");
 $this->contentType->tableName = "searchengine_search_index";
 $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "searchengine_search_index_content_type";

@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Com\Item;
 
 
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 
 class ChangeWorkflowItemView extends AbstractWorkflowItemView
 {

@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\ToDo\Content;
 
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
-use Nemundo\Workflow\Content\Item\AbstractContentItem;
+use Nemundo\App\Content\Item\AbstractContentItem;
 
 class ToDoContentItem extends AbstractContentItem
 {

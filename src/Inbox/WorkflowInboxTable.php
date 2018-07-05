@@ -8,7 +8,7 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
-use Nemundo\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\Data\Workflow\WorkflowModel;
 use Nemundo\Core\Directory\TextDirectory;
@@ -19,9 +19,10 @@ use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
 use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
+use Nemundo\Workflow\Parameter\DataIdParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\Site\Search\SearchItemSite;
-use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
+use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
+use Nemundo\Workflow\App\Workflow\Site\WorkflowDeleteSite;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 
 
@@ -151,8 +152,10 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             //$site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
 
 
-            $site = clone(SearchItemSite::$site);
+            $site = clone(WorkflowItemSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));
+            $site->addParameter(new DataIdParameter($workflowRow->dataId));
+
 
             $row->addClickableSite($site);
 

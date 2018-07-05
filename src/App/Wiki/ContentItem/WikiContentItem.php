@@ -4,9 +4,10 @@ namespace Nemundo\Workflow\App\Wiki\ContentItem;
 
 
 use Nemundo\Com\Html\Basic\Hr;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Workflow\Content\Item\AbstractContentItem;
+use Nemundo\App\Content\Item\AbstractContentItem;
 
 class WikiContentItem extends AbstractContentItem
 {
@@ -20,6 +21,9 @@ class WikiContentItem extends AbstractContentItem
         $wikiReader->addOrder($wikiReader->model->id, SortOrder::DESCENDING);
 
         foreach ($wikiReader->getData() as $wikiRow) {
+
+
+            (new Debug())->write($wikiRow->dataId);
 
             $contentType = $wikiRow->contentType->getContentTypeClassObject();
 

@@ -57,19 +57,23 @@ class InboxStreamSite extends AbstractSite
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
 
-            $item = $contentType->getItem($widget);
-            $item->dataId = $inboxRow->dataId;
+            //(new Debug())->write($contentType->getClassName());
+
+            if ($contentType !== null) {
+
+                $item = $contentType->getItem($widget);
+                $item->dataId = $inboxRow->dataId;
 
 
-            if ($contentType->itemSite !== null) {
+                if ($contentType->itemSite !== null) {
 
-                $btn = new AdminButton($widget);
-                $btn->content = 'Weiter';
-                $btn->site = $contentType->getItemSite($inboxRow->dataId);
-                //$btn->site->addParameter(new DataIdParameter($inboxRow->dataId));
+                    $btn = new AdminButton($widget);
+                    $btn->content = 'Weiter';
+                    $btn->site = $contentType->getItemSite($inboxRow->dataId);
+                    //$btn->site->addParameter(new DataIdParameter($inboxRow->dataId));
 
+                }
             }
-
 
             /*
               $text =

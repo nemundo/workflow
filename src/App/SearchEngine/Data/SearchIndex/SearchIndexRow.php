@@ -17,7 +17,7 @@ public $id;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeRow
 */
 public $contentType;
 
@@ -51,7 +51,7 @@ $this->loadNemundoWorkflowAppSearchEngineDataWordWordwordRow($model->word);
 $this->dataId = $this->getModelValue($model->dataId);
 }
 private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow($this->row, $model);
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 private function loadNemundoWorkflowAppSearchEngineDataWordWordwordRow($model) {
 $this->word = new \Nemundo\Workflow\App\SearchEngine\Data\Word\WordRow($this->row, $model);

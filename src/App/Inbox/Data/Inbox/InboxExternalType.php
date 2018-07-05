@@ -12,7 +12,7 @@ public $id;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
 public $contentType;
 
@@ -20,11 +20,6 @@ public $contentType;
 * @var \Nemundo\Model\Type\Id\UniqueIdType
 */
 public $dataId;
-
-/**
-* @var \Nemundo\Model\Type\Id\UniqueIdType
-*/
-public $bookmarkId;
 
 /**
 * @var \Nemundo\Model\Type\Text\TextType
@@ -54,12 +49,12 @@ public $dateTime;
 /**
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
-public $archive;
+public $read;
 
 /**
-* @var \Nemundo\Model\Type\Php\PhpClassType
+* @var \Nemundo\Model\Type\Number\YesNoType
 */
-public $contentRedirect;
+public $archive;
 
 protected function loadType() {
 parent::loadType();
@@ -86,13 +81,6 @@ $this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableNa
 $this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
 $this->dataId->label = "Data Id";
 $this->addType($this->dataId);
-
-$this->bookmarkId = new \Nemundo\Model\Type\Id\UniqueIdType();
-$this->bookmarkId->fieldName = "bookmark_id";
-$this->bookmarkId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->bookmarkId->aliasFieldName = $this->bookmarkId->tableName . "_" . $this->bookmarkId->fieldName;
-$this->bookmarkId->label = "Bookmark Id";
-$this->addType($this->bookmarkId);
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType();
 $this->subject->fieldName = "subject";
@@ -122,6 +110,13 @@ $this->dateTime->aliasFieldName = $this->dateTime->tableName . "_" . $this->date
 $this->dateTime->label = "Date Time";
 $this->addType($this->dateTime);
 
+$this->read = new \Nemundo\Model\Type\Number\YesNoType();
+$this->read->fieldName = "read";
+$this->read->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->read->aliasFieldName = $this->read->tableName . "_" . $this->read->fieldName;
+$this->read->label = "Read";
+$this->addType($this->read);
+
 $this->archive = new \Nemundo\Model\Type\Number\YesNoType();
 $this->archive->fieldName = "archive";
 $this->archive->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -129,17 +124,10 @@ $this->archive->aliasFieldName = $this->archive->tableName . "_" . $this->archiv
 $this->archive->label = "Archive";
 $this->addType($this->archive);
 
-$this->contentRedirect = new \Nemundo\Model\Type\Php\PhpClassType();
-$this->contentRedirect->fieldName = "content_redirect";
-$this->contentRedirect->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->contentRedirect->aliasFieldName = $this->contentRedirect->tableName . "_" . $this->contentRedirect->fieldName;
-$this->contentRedirect->label = "Content Redirect";
-$this->addType($this->contentRedirect);
-
 }
 public function loadContentType() {
 if ($this->contentType == null) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
 $this->contentType->fieldName = "content_type";
 $this->contentType->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->contentType->aliasFieldName = $this->contentType->tableName ."_".$this->contentType->fieldName;

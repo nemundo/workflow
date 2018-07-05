@@ -22,7 +22,7 @@ public $page;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
 public $contentType;
 
@@ -85,7 +85,7 @@ $this->page->label = "Page";
 }
 public function loadContentType() {
 if ($this->contentType == null) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeExternalType($this, "wiki_wiki_content_type");
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "wiki_wiki_content_type");
 $this->contentType->tableName = "wiki_wiki";
 $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "wiki_wiki_content_type";

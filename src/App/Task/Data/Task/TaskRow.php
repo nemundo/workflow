@@ -47,7 +47,7 @@ public $identificationId;
 public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeRow
 */
 public $contentType;
 
@@ -107,7 +107,7 @@ private function loadNemundoWorkflowAppIdentificationDataIdentificationTypeIdent
 $this->identificationType = new \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeRow($this->row, $model);
 }
 private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
-$this->contentType = new \Nemundo\Workflow\Content\Data\ContentType\ContentTypeRow($this->row, $model);
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 private function loadNemundoUserDataUserUseruserCreatedRow($model) {
 $this->userCreated = new \Nemundo\User\Data\User\UserRow($this->row, $model);

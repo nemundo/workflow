@@ -7,8 +7,8 @@ use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\News\Content\CommentContentType;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\News\Data\NewsCollection;
-use Nemundo\Workflow\Content\Setup\ContentTypeSetup;
-use Nemundo\Workflow\Setup\WorkflowStatusSetup;
+use Nemundo\App\Content\Setup\ContentTypeSetup;
+use Nemundo\Workflow\App\Workflow\Setup\WorkflowStatusSetup;
 
 class NewsInstall extends AbstractScript
 {

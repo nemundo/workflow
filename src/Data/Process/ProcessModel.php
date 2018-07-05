@@ -48,7 +48,7 @@ $this->processClass->fieldName = "process_class";
 $this->processClass->aliasFieldName = "workflow_process_process_class";
 $this->processClass->label = "Process Class";
 $this->processClass->allowNullValue = "";
-$this->processClass->phpClassName = Nemundo\Workflow\Process\AbstractProcess::class;
+$this->processClass->phpClassName = Nemundo\Workflow\App\Workflow\Process\AbstractProcess::class;
 
 $this->addDefaultType($this->process);
 $this->addDefaultOrderType($this->process);

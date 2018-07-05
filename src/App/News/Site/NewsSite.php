@@ -7,6 +7,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Action\NewsAction;
 use Nemundo\Workflow\App\News\Data\News\NewsForm;
+use Nemundo\Workflow\App\News\Data\News\NewsTable;
 
 class NewsSite extends AbstractSite
 {
@@ -26,6 +27,10 @@ class NewsSite extends AbstractSite
     {
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
+
+
+        new NewsTable($page);
+
 
         $form = new NewsForm($page);
         $form->model->action->addInsertAction(new NewsAction());
