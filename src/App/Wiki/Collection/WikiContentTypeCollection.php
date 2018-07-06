@@ -3,6 +3,8 @@
 namespace Nemundo\Workflow\App\Wiki\Collection;
 
 
+use Nemundo\Workflow\App\Message\ContentType\ImageContentType;
+use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\ToDo\Content\ToDoContentType;
@@ -27,6 +29,8 @@ class WikiContentTypeCollection extends AbstractContentTypeCollection
         $this->addContentType(new KvpProcess());
         $this->addContentType(new ToDoContentType());
         $this->addContentType(new PersonalTaskProcess());
+        $this->addContentType(new TextContentType());
+        $this->addContentType(new ImageContentType());
 
 
     }

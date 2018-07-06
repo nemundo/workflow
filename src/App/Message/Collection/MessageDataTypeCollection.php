@@ -7,6 +7,7 @@ use Nemundo\App\Content\Collection\AbstractContentTypeCollection;
 use Nemundo\Workflow\App\Message\ContentType\ImageContentType;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
+use Schleuniger\App\Kvp\Process\KvpProcess;
 
 class MessageDataTypeCollection extends AbstractContentTypeCollection
 {
@@ -17,6 +18,7 @@ class MessageDataTypeCollection extends AbstractContentTypeCollection
         $this->addContentType(new TextContentType());
         $this->addContentType(new ImageContentType());
         $this->addContentType(new PersonalTaskProcess());
+        $this->addContentType(new KvpProcess());
 
     }
 

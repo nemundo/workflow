@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\PersonalTask\Process;
 
 
+use Nemundo\Workflow\App\PersonalTask\ContentItem\PersonalTaskContentItem;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
 use Nemundo\Workflow\App\PersonalTask\Form\PersonalTaskStartForm;
 use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskItemSite;
@@ -20,6 +21,7 @@ class PersonalTaskProcess extends AbstractProcess
         $this->description = 'Aufgabenvewaltung';
         $this->id = 'f340fd8d-3bb4-455e-ae1d-118e6ec7c654';
 
+        $this->itemClass = PersonalTaskContentItem::class;
         $this->itemSite = PersonalTaskItemSite::$site;
         $this->prefix = 'T-';
         $this->modelClass = PersonalTaskModel::class;

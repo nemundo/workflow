@@ -3,14 +3,18 @@
 namespace Nemundo\Workflow\App\Message\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Com\Html\Basic\Bold;
 use Nemundo\Com\Html\Basic\Hr;
+use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Message\Collection\MessageDataTypeCollection;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemReader;
+use Nemundo\Workflow\App\Message\Data\MessageTo\MessageToReader;
 use Nemundo\Workflow\App\Message\Event\MessageEvent;
 use Nemundo\Workflow\App\Message\Form\MessageImageForm;
 use Nemundo\Workflow\App\Message\Form\MessageReplyForm;
@@ -52,6 +56,20 @@ class MessageItemSite extends AbstractSite
         $title = new AdminTitle($page);
         $title->content = $messageRow->subject . ' (' . $messageRow->count . ')';
 
+        $text = 'To: ';
+
+        $reader = new MessageToReader();
+        $reader->model->loadTo();
+
+        $list = new TextDirectory();
+        foreach ($reader->getData() as $row) {
+            $list->addValue($row->to->displayName);
+            //$text .= ;
+        }
+
+        $p = new Paragraph($page);
+        $p->content = 'To: ' . $list->getTextWithSeperator(', ');
+
 
         $reader = new MessageItemReader();
         $reader->model->loadContentType();
@@ -76,7 +94,11 @@ class MessageItemSite extends AbstractSite
         //$contentType = new TextContentType();
 
         foreach ((new MessageDataTypeCollection())->getContentTypeList() as $contentType) {
-            $form = $contentType->getForm($page);
+
+            $widget = new AdminWidget($page);
+            $widget->widgetTitle = $contentType->name;
+
+            $form = $contentType->getForm($widget);
             $form->afterSubmitEvent = new MessageEvent();
             $form->afterSubmitEvent->contentType = $contentType;
             $form->afterSubmitEvent->messageId = $messageId;

@@ -7,10 +7,14 @@ use Nemundo\Design\Bootstrap\Form\BootstrapForm;
 use Nemundo\Design\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Design\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\User\Data\User\UserListBox;
+use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\Message\Data\Message\Message;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageText;
+use Nemundo\Workflow\App\Message\Data\MessageTo\MessageTo;
+use Nemundo\Workflow\App\Message\Parameter\MessageParameter;
+use Nemundo\Workflow\App\Message\Site\MessageItemSite;
 
 class MessageContentForm extends BootstrapForm
 {
@@ -36,9 +40,12 @@ class MessageContentForm extends BootstrapForm
 
         $this->to = new UserListBox($this);
         $this->to->label = 'To';
+        $this->to->validation = true;
 
         $this->subject = new BootstrapTextBox($this);
         $this->subject->label = 'Subject';
+        $this->subject->validation = true;
+        $this->subject->autofocus = true;
 
         $this->text = new BootstrapLargeTextBox($this);
         $this->text->label = 'Message';
@@ -54,15 +61,36 @@ class MessageContentForm extends BootstrapForm
         $data->subject = $this->subject->getValue();
         $messageId = $data->save();
 
-        $data = new MessageText();
-        $data->text = $this->text->getValue();
-        $textId = $data->save();
+        if ($this->text->getValue() !== '') {
 
-        $data = new MessageItem();
+            $data = new MessageText();
+            $data->text = $this->text->getValue();
+            $textId = $data->save();
+
+            $data = new MessageItem();
+            $data->messageId = $messageId;
+            $data->dataId = $textId;
+            $data->contentTypeId = (new TextContentType())->id;
+            $data->save();
+
+        }
+
+
+        $data = new MessageTo();
         $data->messageId = $messageId;
-        $data->dataId = $textId;
-        $data->contentTypeId = (new TextContentType())->id;
+        $data->toId = (new UserInformation())->getUserId();
         $data->save();
+
+        $data = new MessageTo();
+        $data->messageId = $messageId;
+        $data->toId = $this->to->getValue();
+        $data->save();
+
+
+
+        $site = clone(MessageItemSite::$site);
+        $site->addParameter(new MessageParameter($messageId));
+        $site->redirect();
 
 
     }

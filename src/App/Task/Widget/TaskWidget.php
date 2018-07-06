@@ -42,6 +42,7 @@ class TaskWidget extends AbstractAdminWidget
 
         $header = new TableHeader($table);
         $header->addEmpty();
+        $header->addText('Quelle');
         $header->addText('Aufgabe');
         $header->addText('Erledigen bis');
         //$header->addText('Aufwand');
@@ -74,6 +75,7 @@ class TaskWidget extends AbstractAdminWidget
             }
 
 
+            $row->addText($taskRow->contentType->contentType);
             $row->addText($taskRow->task);
 
             if ($taskRow->deadline !== null) {
