@@ -1,13 +1,14 @@
 <?php
 
-namespace Nemundo\Workflow\Com\View;
+namespace Nemundo\Workflow\App\Workflow\ContentItem;
 
 
-use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Design\Bootstrap\Table\BootstrapLabelValueTable;
+use Nemundo\Admin\Com\Table\AdminLabelValueTable;
+use Nemundo\App\Content\Item\AbstractContentItem;
 use Nemundo\Model\View\ModelViewTrait;
 
-class WorkflowModelView extends AbstractHtmlContainerList
+
+class WorkflowItemContentItem extends AbstractContentItem  // AbstractHtmlContainerList
 {
 
     use ModelViewTrait;
@@ -21,7 +22,7 @@ class WorkflowModelView extends AbstractHtmlContainerList
     public function getHtml()
     {
 
-        $table = new BootstrapLabelValueTable($this);
+        $table = new AdminLabelValueTable($this);
         $table->labelCellWidth = 200;
         $table->smallTable = true;
 

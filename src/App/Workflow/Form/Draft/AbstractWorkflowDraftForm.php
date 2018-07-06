@@ -15,11 +15,12 @@ use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Model\Reader\ModelDataReader;
-use Nemundo\Workflow\Builder\DraftRelease;
-use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
-use Nemundo\Workflow\Form\WorkflowFormTrait;
+use Nemundo\Workflow\App\Workflow\Builder\DraftRelease;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Form\WorkflowFormTrait;
 use Nemundo\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\Parameter\DraftParameter;
+use Schleuniger\App\Abweichungsreport\Data\Massnahmendefinition\MassnahmendefinitionModel;
 
 
 abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
@@ -50,7 +51,13 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
         $this->loadConnection();
 
-        $this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
+        //$this->model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
+        //$this->model = $this->
+        //(new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
+
+        $this->model = new MassnahmendefinitionModel();
+
+
         $count = 0;
 
         $row = null;
@@ -109,13 +116,13 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
         $draft = false;
         //$draftParameter = new DraftEditParameter();  // new DraftParameter();
 
-        if (isset($_POST['draft_button'])){
+        if (isset($_POST['draft_button'])) {
             $draft = true;
         }
 
-       /* if ($draftParameter->exists()) {
-            $draft = true;
-        }*/
+        /* if ($draftParameter->exists()) {
+             $draft = true;
+         }*/
 
         return $draft;
 

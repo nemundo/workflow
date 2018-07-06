@@ -62,9 +62,6 @@ class TaskWidget extends AbstractAdminWidget
         $taskReader->filter->andFilter($filter);
 
 
-
-
-
         foreach ($taskReader->getData() as $taskRow) {
 
             $row = new BootstrapClickableTableRow($table);
@@ -90,8 +87,10 @@ class TaskWidget extends AbstractAdminWidget
 
             $contentType = $taskRow->contentType->getContentTypeClassObject();
 
-            $row->addClickableSite($contentType->getItemSite($taskRow->dataId));
-
+            $site = $contentType->getItemSite($taskRow->dataId);
+            if ($site !== null) {
+                $row->addClickableSite($site);
+            }
 
         }
 

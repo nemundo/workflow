@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Change;
 
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Com\Html\Form\AbstractSubmitForm;
-use Nemundo\Workflow\Form\WorkflowFormTrait;
+use Nemundo\Workflow\App\Workflow\Form\WorkflowFormTrait;
 use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
 
 class FormWorkflowChangeContainer extends AbstractWorkflowChangeContainer
@@ -22,7 +22,7 @@ class FormWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $subtitle = new AdminSubtitle($this);
         $subtitle->content = $this->workflowStatus->name;
 
-        $className = $this->workflowStatus->formClassName;
+        $className = $this->workflowStatus->formClass;
 
         /** @var AbstractSubmitForm|WorkflowFormTrait $form */
         $form = new $className($this);

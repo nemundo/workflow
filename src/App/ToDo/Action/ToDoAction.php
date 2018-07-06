@@ -29,11 +29,11 @@ class ToDoAction extends AbstractToDoAction
         $builder->contentType = new ToDoContentType();
         $builder->dataId = $this->id;
         $builder->task = $todoRow->todo;
-        $builder->deadline = (new Date())->setNow()->minusDay(1);
-        $builder->timeEffort = 1.5;
-        $builder->identificationType = new UserIdentificationType();
-        $builder->identificationId = (new UserInformation())->getUserId();
-        $builder->createItem();
+        //$builder->deadline = (new Date())->setNow()->addDay(2)minusDay(1);
+        //$builder->timeEffort = 1.5;
+        //$builder->identificationType = new UserIdentificationType();
+        //$builder->identificationId = ;
+        $builder->createUserTask((new UserInformation())->getUserId());
 
 
     }

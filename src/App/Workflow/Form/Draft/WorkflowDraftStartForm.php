@@ -13,7 +13,7 @@ use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
-use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;

@@ -22,8 +22,7 @@ class WikiContentItem extends AbstractContentItem
 
         foreach ($wikiReader->getData() as $wikiRow) {
 
-
-            (new Debug())->write($wikiRow->dataId);
+            //(new Debug())->write($wikiRow->dataId);
 
             $contentType = $wikiRow->contentType->getContentTypeClassObject();
 

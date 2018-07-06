@@ -4,8 +4,8 @@ namespace Nemundo\Workflow\App\Workflow\Form\Draft;
 
 
 use Nemundo\Model\Definition\Model\AbstractModel;
-use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
-use Nemundo\Workflow\Form\Change\WorkflowChangeFormTrait;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Form\Change\WorkflowChangeFormTrait;
 use Nemundo\Workflow\Parameter\DraftEditParameter;
 
 

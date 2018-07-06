@@ -5,10 +5,13 @@ namespace Nemundo\Workflow\App\Message\Event;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Com\Html\Form\Event\AbstractAfterSubmitEvent;
+use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Message\ContentType\AbstractMessageContentType;
+use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\Message\MessageUpdate;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemCount;
+use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 class MessageEvent extends AbstractAfterSubmitEvent
 {
@@ -32,8 +35,19 @@ class MessageEvent extends AbstractAfterSubmitEvent
         $data->contentTypeId = $this->contentType->id;
         $data->save();
 
+        $messageRow = (new MessageReader())->getRowById($this->messageId);
+
+
+        $builder = new InboxBuilder();
+        $builder->contentType = $this->contentType;  // new MessageContentType();
+        $builder->dataId = $id;
+        $builder->subject = $messageRow->subject;
+        $builder->message = $this->contentType->getSubject($id);
+        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+
+
         //$this->contentType->onCreate($id);
-        $this->contentType->onMessageCreate($this->messageId, $id);
+        //$this->contentType->onMessageCreate($this->messageId, $id);
 
         /*
         $count = new MessageItemCount();
@@ -43,8 +57,6 @@ class MessageEvent extends AbstractAfterSubmitEvent
         $update = new MessageUpdate();
         $update->count = $messageCount;
         $update->updateById($this->messageId);*/
-
-
 
 
     }

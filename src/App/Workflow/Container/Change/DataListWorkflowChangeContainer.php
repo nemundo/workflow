@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Change;
 use Nemundo\Model\Admin\ModelAdmin;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Action\ActionUrlParameter;
-use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeCount;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;

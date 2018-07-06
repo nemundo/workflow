@@ -27,7 +27,7 @@ class InboxWidget extends AbstractAdminWidget
     {
 
         $this->widgetTitle = 'Inbox';
-        $this->widgetSite = InboxStreamSite::$site;
+        //$this->widgetSite = InboxStreamSite::$site;
 
     }
 

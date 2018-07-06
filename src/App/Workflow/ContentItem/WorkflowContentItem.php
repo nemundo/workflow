@@ -16,6 +16,7 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
+use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
@@ -44,10 +45,23 @@ use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDraftDataWorkflowStatus;
+use Schleuniger\App\Abweichungsreport\Data\Abweichungsreport\AbweichungsreportReader;
 
 
 class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
 {
+
+
+    /**
+     * @var string
+     */
+    public $workflowId;
+
+    /**
+     * @var AbstractSite
+     */
+    public $statusChangeRedirectSite;
+
 
     /**
      * @var AbstractProcess
@@ -81,10 +95,14 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
     {
 
 
+        //$abweichungsreportRow = (new AbweichungsreportReader())->getRowById($this->dataId);
+        //$workflowId = $abweichungsreportRow->workflowId;
 
-        //$title = new WorkflowTitle($this);
-        //$title->workflowId = $this->workflowId;
+        $workflowRow = (new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader())->getRowById($this->workflowId);
 
+
+        $title = new WorkflowTitle($this);
+        $title->workflowId = $this->workflowId;
 
 
         if ($this->showBaseData) {
@@ -95,12 +113,11 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
             /** @var AbstractWorkflowBaseModel $model */
             $model = (new ModelFactory())->getModelByClassName($this->contentType->modelClass);
 
-            $view = new WorkflowModelView($this);
+            $view = new WorkflowItemContentItem($this);
             $view->model = $model;
-            $view->filter->andEqual($model->workflowId, $this->dataId);
+            $view->dataId = $this->dataId;
+            //$view->filter->andEqual($model->workflowId, $this->dataId);
         }
-
-
 
 
         $h3 = new H5($this);
@@ -119,29 +136,35 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
 
 
         $statusChangeReader = new WorkflowStatusChangeReader();  // new WorkflowStatusChangeItemReader();
+        $statusChangeReader->model->loadWorkflowStatus();
+        $statusChangeReader->model->loadUser();
+        $statusChangeReader->filter->andEqual($statusChangeReader->model->workflowId, $this->workflowId);
         //$statusChangeReader->workflowId = $this->dataId;  //workflowId;
         //$statusChangeReader->sortOrder = $this->sortOrder;
 
         foreach ($statusChangeReader->getData() as $statusChangeItem) {
 
 
-
-            /*
-            $list->addHyperlink($statusChangeItem->getStatus(), '#' . $statusChangeItem->workflowItemId);
+            $list->addHyperlink($statusChangeItem->workflowStatus->workflowStatus, '#' . $statusChangeItem->workflowItemId);
 
             $div = new Div($colRight);
             $div->addCssClass('card');
             $div->addCssClass('mb-3');
 
+
             $headerDiv = new Div($div);
             $headerDiv->addCssClass('card-header');
-            $headerDiv->content = $statusChangeItem->getStatus() . ': ' . $statusChangeItem->userRow->displayName . ' ' . $statusChangeItem->dateTime->getShortDateTimeLeadingZeroFormat();
+            $headerDiv->content = $statusChangeItem->workflowStatus->workflowStatus . ': ' . $statusChangeItem->user->displayName . ' ' . $statusChangeItem->dateTime->getShortDateTimeLeadingZeroFormat();
 
             $contentDiv = new Div($div);
             $contentDiv->addCssClass('card-body');
 
-            //$statusChangeItem->getView($contentDiv);
+            $workflowStatus = $statusChangeItem->workflowStatus->getWorkflowStatusClassObject();
+            $item = $workflowStatus->getItem($contentDiv);
+            $item->dataId = $statusChangeItem->workflowItemId;
 
+
+            //$statusChangeItem->getView($contentDiv);
 
 
             if ($statusChangeItem->draft) {
@@ -158,12 +181,9 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
                     $btn = new DraftReleaseButton($contentDiv);
                     $btn->workflowId = $this->workflowId;
                 }
-            }*/
+            }
 
         }
-
-
-        /*
 
         if (!$workflowRow->draft) {
 
@@ -171,7 +191,7 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
             $actionButton->workflowId = $this->workflowId;
             $actionButton->statusChangeRedirectSite = $this->statusChangeRedirectSite;
 
-        }*/
+        }
 
         return parent::getHtml();
 

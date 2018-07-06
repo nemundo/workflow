@@ -48,7 +48,8 @@ $this->todo = new \Nemundo\Model\Type\Text\TextType($this);
 $this->todo->tableName = "todo_todo";
 $this->todo->fieldName = "todo";
 $this->todo->aliasFieldName = "todo_todo_todo";
-$this->todo->label = "ToDo";
+$this->todo->label = "To Do";
+$this->todo->validation = true;
 $this->todo->allowNullValue = "";
 $this->todo->length = 255;
 

@@ -7,6 +7,8 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Navigation\AdminNavigation;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Com\Html\Basic\Bold;
+use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -21,6 +23,7 @@ use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskNewSite;
 use Nemundo\Workflow\App\Task\Data\Task\TaskPaginationReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
+use Nemundo\Workflow\App\Task\Data\Task\TaskValue;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 
 class TaskSite extends AbstractSite
@@ -71,7 +74,6 @@ class TaskSite extends AbstractSite
         $nav->site = TaskSite::$site;
 
 
-
         $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
@@ -91,13 +93,13 @@ class TaskSite extends AbstractSite
         $taskReader->model->loadUserCreated();
         $taskReader->paginationLimit = 50;
 
-        $filter = new Filter();
-        $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
+        $taskFilter = new Filter();
+        $taskFilter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
         foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
-            $filter->orEqual($taskReader->model->identificationId, $usergroupId);
+            $taskFilter->orEqual($taskReader->model->identificationId, $usergroupId);
         }
 
-        $taskReader->filter->andFilter($filter);
+        $taskReader->filter->andFilter($taskFilter);
 
         $taskReader->addOrder($taskReader->model->archive);
         $taskReader->addOrder($taskReader->model->dateTimeCreated, SortOrder::DESCENDING);
@@ -142,13 +144,30 @@ class TaskSite extends AbstractSite
 
             $row->addYesNo($taskRow->archive);
 
-            $row->addClickableSite($contentType->getItemSite($taskRow->dataId));
+            $site = $contentType->getItemSite($taskRow->dataId);
+            if ($site !== null) {
+                $row->addClickableSite($site);
+            }
 
         }
 
 
         $pagination = new BootstrapModelPagination($page);
         $pagination->paginationReader = $taskReader;
+
+
+        $taskValue = new TaskValue();
+        $taskValue->filter = $taskFilter;
+        $taskValue->field = $taskValue->model->timeEffort;
+        $timeEffortSum = $taskValue->getSumValue();
+
+
+        $bold = new Bold();
+        $bold->content = $timeEffortSum.' h';
+
+        $p = new Paragraph($page);
+        $p->content = 'Total Aufwand: '.$bold->getHtmlString();
+
 
         $page->render();
 

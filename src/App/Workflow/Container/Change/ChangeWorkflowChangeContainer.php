@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Container\Change;
 
 
-use Nemundo\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
 
 class ChangeWorkflowChangeContainer extends AbstractWorkflowChangeContainer
 {

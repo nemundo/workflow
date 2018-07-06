@@ -15,12 +15,12 @@ abstract class AbstractFormWorkflowStatus extends AbstractWorkflowStatus
     /**
      * @var BootstrapForm
      */
-    public $formClassName;
+    //public $formClass;
 
     /**
      * @var AbstractModel
      */
-    public $modelClass;
+    //public $modelClass;
 
 
     public function __construct()

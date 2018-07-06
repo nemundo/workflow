@@ -42,7 +42,7 @@ $this->todo = new \Nemundo\Model\Type\Text\TextType();
 $this->todo->fieldName = "todo";
 $this->todo->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->todo->aliasFieldName = $this->todo->tableName . "_" . $this->todo->fieldName;
-$this->todo->label = "ToDo";
+$this->todo->label = "To Do";
 $this->addType($this->todo);
 
 $this->done = new \Nemundo\Model\Type\Number\YesNoType();
