@@ -74,7 +74,6 @@ class TaskWidget extends AbstractAdminWidget
                 $row->addEmpty();
             }
 
-
             $row->addText($taskRow->contentType->contentType);
             $row->addText($taskRow->task);
 
