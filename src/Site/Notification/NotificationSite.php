@@ -25,7 +25,7 @@ use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
 use Nemundo\Workflow\Com\Item\WorkflowItem;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
-use Nemundo\Workflow\Data\Process\ProcessReader;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationCount;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationPaginationReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;

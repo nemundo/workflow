@@ -11,8 +11,8 @@ use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Action\SearchIndexWorkflowAction;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
-use Nemundo\Workflow\Data\Workflow\Workflow;
-use Nemundo\Workflow\Data\Workflow\WorkflowValue;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
@@ -20,7 +20,7 @@ use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
 
 
-class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
+class WorkflowBuilder extends AbstractContentBuilder
 {
 
     /**
@@ -36,13 +36,7 @@ class WorkflowBuilder extends AbstractContentBuilder  // AbstractBase
     /**
      * @var string
      */
-    //public $dataId;
-
-    /**
-     * @var string
-     */
     public $baseId;
-
 
     /**
      * @var string

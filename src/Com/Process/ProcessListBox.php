@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Com\Process;
 
 
+use Nemundo\App\Content\Collection\AbstractContentTypeCollection;
 use Nemundo\Design\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Workflow\Process\AbstractProcessCollection;
 
@@ -10,7 +11,7 @@ class ProcessListBox extends BootstrapListBox
 {
 
     /**
-     * @var AbstractProcessCollection
+     * @var AbstractContentTypeCollection
      */
     public $processCollection;
 
@@ -25,11 +26,11 @@ class ProcessListBox extends BootstrapListBox
     public function getHtml()
     {
 
-        if (!$this->checkObject('processCollection', $this->processCollection, AbstractProcessCollection::class)) {
+       /* if (!$this->checkObject('processCollection', $this->processCollection, AbstractProcessCollection::class)) {
             return parent::getHtml();
-        }
+        }*/
 
-        foreach ($this->processCollection->getProcessList() as $process) {
+        foreach ($this->processCollection->getContentTypeList() as $process) {
             $this->addItem($process->id, $process->name);
         }
 

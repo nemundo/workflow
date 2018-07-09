@@ -15,7 +15,7 @@ use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
-use Nemundo\Workflow\Data\Process\ProcessReader;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationCount;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationPaginationReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;

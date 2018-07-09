@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\App\Workflow\Builder;
 
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
-use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
 class WorkflowStatusChangeBuilder

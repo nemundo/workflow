@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Action;
 
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\Date;
-use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
 class DeadlineWorkflowAction extends AbstractWorkflowAction
 {

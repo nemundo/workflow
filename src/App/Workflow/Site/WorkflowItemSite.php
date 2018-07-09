@@ -9,10 +9,10 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
-
 
 
 class WorkflowItemSite extends AbstractSite
@@ -46,11 +46,15 @@ class WorkflowItemSite extends AbstractSite
 
         $workflowId = (new WorkflowParameter())->getValue();
 
+        $workflowReader = new WorkflowReader();
+        $workflowReader->model->loadProcess();
+        $workflowRow = $workflowReader->getRowById($workflowId);
 
-        $workflowRow = (new WorkflowReader())->getRowById($workflowId);
+        //$item = new WorkflowItem($workflowId);
+        //$process = $item->getProcess();
 
-        $item = new WorkflowItem($workflowId);
-        $process = $item->getProcess();
+        $process = $workflowRow->process->getProcessClassObject();
+
 
         $breadcrumb = new BootstrapBreadcrumb($page);
         $breadcrumb->addItem(WorkflowSearchSite::$site);
@@ -72,9 +76,13 @@ class WorkflowItemSite extends AbstractSite
         $item->dataId = $workflowRow->dataId;
 
 
+        $btn = new WorkflowActionButton($page);
+        $btn->workflowId = $workflowRow->id;
+        $btn->statusChangeRedirectSite = SearchStatusChangeSite::$site;
+
 
         /** @var AbstractProcessItem $item */
-       /* $item = new $process->processItemClassName($page);
+        /*$item = new $process->processItemClassName($page);
         $item->workflowId = $workflowId;
         $item->statusChangeRedirectSite = SearchStatusChangeSite::$site;*/
 

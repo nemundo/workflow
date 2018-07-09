@@ -5,9 +5,9 @@ namespace Nemundo\Workflow\Inbox;
 
 
 use Nemundo\User\Usergroup\AbstractUsergroup;
-use Nemundo\Workflow\Data\Workflow\WorkflowCount;
-use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
-use Nemundo\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowCount;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Model\Join\ModelJoin;

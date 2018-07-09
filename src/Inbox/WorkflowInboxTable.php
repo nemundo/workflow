@@ -9,16 +9,13 @@ use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
-use Nemundo\Workflow\Data\Workflow\WorkflowModel;
 use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTable;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
-use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
-use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
-use Nemundo\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\Parameter\DataIdParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
@@ -36,6 +33,8 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
 
         $workflowReader = new WorkflowPaginationReader();
         $this->loadReader($workflowReader);
+
+
 
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
@@ -125,7 +124,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             }
 
             // User
-            $reader = new UserAssignmentReader();
+           /* $reader = new UserAssignmentReader();
             $reader->model->loadUser();
             $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
 
@@ -144,7 +143,7 @@ class WorkflowInboxTable extends AbstractHtmlContainerList
             foreach ($reader->getData() as $assignmentRow) {
                 $usergroup->addValue($assignmentRow->usergroup->usergroup);
             }
-            $row->addText($usergroup->getTextWithSeperator());
+            $row->addText($usergroup->getTextWithSeperator());*/
 
             $row->addText($workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
             $row->addText($workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());

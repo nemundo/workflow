@@ -13,15 +13,14 @@ use Nemundo\Workflow\Com\OpenClosedWorkflowListBox;
 use Nemundo\User\Data\User\UserListBox;
 use Nemundo\User\Data\Usergroup\UsergroupListBox;
 use Nemundo\Workflow\Com\Process\ProcessDropdown;
-use Nemundo\Workflow\Data\Process\ProcessListBox;
-use Nemundo\Workflow\Data\Process\ProcessReader;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Workflow\Inbox\WorkflowSorting;
 use Nemundo\Workflow\Inbox\WorkflowStatus;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 
 
-// WorkflowAdminSite
 class WorkflowSearchSite extends AbstractSite
 {
 

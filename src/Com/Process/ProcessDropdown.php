@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Com\Process;
 
 use Nemundo\Design\Bootstrap\Dropdown\BootstrapDropdown;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Data\Process\ProcessReader;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\WorkflowNewSite;
 

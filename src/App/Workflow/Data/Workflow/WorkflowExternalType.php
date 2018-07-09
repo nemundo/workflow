@@ -12,7 +12,7 @@ public $id;
 public $processId;
 
 /**
-* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
+* @var \Nemundo\Workflow\App\Workflow\Data\Process\ProcessExternalType
 */
 public $process;
 
@@ -57,7 +57,7 @@ public $itemOrder;
 public $workflowStatusId;
 
 /**
-* @var \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType
+* @var \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType
 */
 public $workflowStatus;
 
@@ -209,7 +209,7 @@ $this->addType($this->dateTimeModified);
 }
 public function loadProcess() {
 if ($this->process == null) {
-$this->process = new \Nemundo\Workflow\Data\Process\ProcessExternalType(null, $this->parentFieldName . "_process");
+$this->process = new \Nemundo\Workflow\App\Workflow\Data\Process\ProcessExternalType(null, $this->parentFieldName . "_process");
 $this->process->fieldName = "process";
 $this->process->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->process->aliasFieldName = $this->process->tableName ."_".$this->process->fieldName;
@@ -220,7 +220,7 @@ return $this;
 }
 public function loadWorkflowStatus() {
 if ($this->workflowStatus == null) {
-$this->workflowStatus = new \Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType(null, $this->parentFieldName . "_workflow_status");
+$this->workflowStatus = new \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType(null, $this->parentFieldName . "_workflow_status");
 $this->workflowStatus->fieldName = "workflow_status";
 $this->workflowStatus->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->workflowStatus->aliasFieldName = $this->workflowStatus->tableName ."_".$this->workflowStatus->fieldName;

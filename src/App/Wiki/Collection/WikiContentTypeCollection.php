@@ -26,7 +26,7 @@ class WikiContentTypeCollection extends AbstractContentTypeCollection
         $this->addContentType(new HyperlinkContentType());
         //$this->addContentType(new KvpErfassungWorkflowStatus());
         $this->addContentType(new WikiNewsContentType());
-        $this->addContentType(new KvpProcess());
+        //$this->addContentType(new KvpProcess());
         $this->addContentType(new ToDoContentType());
         $this->addContentType(new PersonalTaskProcess());
         $this->addContentType(new TextContentType());

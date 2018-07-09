@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Action;
 
 
-use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
 
 class SubjectWorkflowAction extends AbstractWorkflowAction
