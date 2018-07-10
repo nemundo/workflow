@@ -18,7 +18,7 @@ class MessageDataTypeCollection extends AbstractContentTypeCollection
         $this->addContentType(new TextContentType());
         $this->addContentType(new ImageContentType());
         $this->addContentType(new PersonalTaskProcess());
-        $this->addContentType(new KvpProcess());
+        //$this->addContentType(new KvpProcess());
 
     }
 

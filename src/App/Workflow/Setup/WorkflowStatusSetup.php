@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\App\Workflow\Setup;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\App\Content\Data\ContentType\ContentType;
 use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
@@ -26,8 +25,6 @@ class WorkflowStatusSetup extends AbstractBase
         $setup = new ContentTypeSetup();
         $setup->addContentType($workflowStatus);
 
-
     }
-
 
 }

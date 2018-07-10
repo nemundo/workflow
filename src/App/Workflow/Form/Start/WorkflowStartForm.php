@@ -25,7 +25,7 @@ class WorkflowStartForm extends BootstrapModelForm
     {
 
         /** @var AbstractWorkflowStatus $workflowStatus */
-        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
+        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClass);
 
         $this->model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClass);
 
@@ -47,8 +47,6 @@ class WorkflowStartForm extends BootstrapModelForm
             $parameter = new $this->process->parameterClass();
             $parameter->setValue($workflowItemId);
             $this->redirectSite->addParameter($parameter);
-
-
 
         }
 

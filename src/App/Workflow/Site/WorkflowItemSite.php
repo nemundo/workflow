@@ -50,9 +50,6 @@ class WorkflowItemSite extends AbstractSite
         $workflowReader->model->loadProcess();
         $workflowRow = $workflowReader->getRowById($workflowId);
 
-        //$item = new WorkflowItem($workflowId);
-        //$process = $item->getProcess();
-
         $process = $workflowRow->process->getProcessClassObject();
 
 
@@ -72,7 +69,7 @@ class WorkflowItemSite extends AbstractSite
         $title = new AdminTitle($page);
         $title->content = $process->name;
 
-        $item = $process->getItem($page);  // getItem($page);
+        $item = $process->getItem($page);
         $item->dataId = $workflowRow->dataId;
 
 

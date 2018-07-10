@@ -47,12 +47,13 @@ class MessageEvent extends AbstractAfterSubmitEvent
                 $builder->createUsergroupInbox(new SchleunigerUsergroup());*/
 
 
+        /*
         $builder = new InboxBuilder();
         $builder->contentType = new MessageContentType();
         $builder->dataId = $this->messageId;
         $builder->subject = $messageRow->subject;
         $builder->message = $this->contentType->getSubject($id);
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        $builder->createUsergroupInbox(new SchleunigerUsergroup());*/
 
 
         //$this->contentType->onCreate($id);

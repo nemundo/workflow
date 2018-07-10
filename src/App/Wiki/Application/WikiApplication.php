@@ -13,7 +13,7 @@ class WikiApplication extends AbstractApplication
     {
         $this->application = 'Wiki';
         $this->applicationId = 'c1a566c0-6618-4184-9fcd-f55d4b031095';
-        $this->modelCollectionClassName = WikiCollection::class;
+        $this->modelCollectionClass = WikiCollection::class;
     }
 
 }

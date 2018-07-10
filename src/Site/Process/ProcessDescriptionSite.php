@@ -48,7 +48,7 @@ class ProcessDescriptionSite extends AbstractSite
         $title->content = $processRow->process;
 
         $table = new AdminLabelValueTable($page);
-        $table->addLabelValue('Start Status', $process->startWorkflowStatusClassName);
+        $table->addLabelValue('Start Status', $process->startWorkflowStatusClass);
 
 
         $subtitle = new AdminSubtitle($page);

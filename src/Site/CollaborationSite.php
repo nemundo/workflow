@@ -12,6 +12,7 @@ use Nemundo\Workflow\App\News\Site\NewsSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoDoneSite;
+use Nemundo\Workflow\App\Widget\Site\WidgetSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
 
@@ -37,6 +38,7 @@ class CollaborationSite extends AbstractSite
         new WikiSite($this);
         new ContentTypeSite($this);
         new SearchEngineSite($this);
+        new WidgetSite($this);
 
     }
 

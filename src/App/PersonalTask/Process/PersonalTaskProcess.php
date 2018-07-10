@@ -25,7 +25,7 @@ class PersonalTaskProcess extends AbstractProcess
         $this->itemSite = PersonalTaskItemSite::$site;
         $this->prefix = 'T-';
         $this->modelClass = PersonalTaskModel::class;
-        $this->startWorkflowStatusClassName = PersonalTaskErfassungWorkflowStatus::class;
+        $this->startWorkflowStatusClass = PersonalTaskErfassungWorkflowStatus::class;
         $this->formClass = PersonalTaskStartForm::class;
 
 

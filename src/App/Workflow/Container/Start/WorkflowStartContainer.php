@@ -17,13 +17,11 @@ class WorkflowStartContainer extends AbstractWorkflowStartContainer
             return parent::getHtml();
         }
 
-
-        $status = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
+        $status = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClass);
 
         if ($status == null) {
             (new LogMessage())->writeError($this->process->name . ': StartWorkflowStatus is null');
         }
-
 
         /** @var AbstractWorkflowStartContainer $container */
         $container = new  $status->startContainerClass($this);

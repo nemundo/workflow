@@ -2,19 +2,18 @@
 
 namespace Nemundo\Workflow\App\Workflow\Process;
 
-use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Container\Start\WorkflowStartContainer;
 use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowContentItem;
-use Nemundo\Workflow\Com\View\WorkflowViewList;
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\Workflow\App\Workflow\Form\Start\WorkflowStartForm;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 
 
-abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseClass
+abstract class AbstractProcess extends AbstractDataContentType
 {
 
     use UserAccessTrait;
@@ -39,19 +38,15 @@ abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseC
      */
     public $itemSite;
 
-
-    // processViewClassName
-
     /**
      * @var string
      */
     public $processItemClassName;
 
-
     /**
      * @var AbstractUrlParameter
      */
-    public $parameter;
+    //public $parameter;
 
     /**
      * @var string
@@ -66,20 +61,13 @@ abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseC
     /**
      * @var string
      */
-    //public $modelClass;
-
-    /**
-     * @var string
-     */
-    public $startWorkflowStatusClassName;
+    public $startWorkflowStatusClass;
 
     /**
      * @var bool
      */
     public $createWorkflowNumber = true;
 
-
-    //abstract protected function loadType();
 
     public function __construct()
     {
@@ -94,20 +82,23 @@ abstract class AbstractProcess extends AbstractDataContentType  // AbstractBaseC
 
         parent::__construct();
 
-        //$this->loadType();
     }
 
 
-    /*
-    public function getItemSite($workflowId = null)
+    public function getForm($parentItem = null)
     {
 
-        $site = clone($this->itemSite);
-        $site->addParameter($this->parameter->setValue($workflowId));
+        //$container = new WorkflowStartContainer($parentItem);
+        //$container->process = $this;
+        //return $container;
 
-        return $site;
 
-    }*/
+        $form = new WorkflowStartForm($parentItem);
+        $form->process = $this;
+        return $form;
+
+
+    }
 
 
 }

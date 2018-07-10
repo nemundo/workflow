@@ -16,7 +16,7 @@ class FormWorkflowStartContainer extends AbstractWorkflowStartContainer
     public function getHtml()
     {
 
-        $status = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClassName);
+        $status = (new WorkflowStatusFactory())->getWorkflowStatus($this->process->startWorkflowStatusClass);
 
         /** @var AbstractSubmitForm|WorkflowFormTrait $form */
         $form = new $status->formClass($this);
