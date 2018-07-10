@@ -25,7 +25,7 @@ use Nemundo\Workflow\App\Wiki\Install\WikiInstall;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowTemplateCollection;
 use Nemundo\Workflow\App\Workflow\Application\WorkflowApplication;
 use Nemundo\App\Content\Data\ContentCollection;
-use Nemundo\Workflow\Data\WorkflowCollection;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowCollection;
 use Nemundo\Workflow\Script\WorkflowClean;
 use Nemundo\Workflow\App\Workflow\Setup\WorkflowStatusSetup;
 use Nemundo\Workflow\Template\WorkflowStatus\ApprovalWorkflowStatus;

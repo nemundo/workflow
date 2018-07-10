@@ -4,10 +4,9 @@ namespace Nemundo\Workflow\App\Workflow\Setup;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\App\Content\Setup\ContentTypeSetup;
-use Nemundo\Workflow\Data\Process\Process;
-use Nemundo\Workflow\Data\Process\ProcessDelete;
+use Nemundo\Workflow\App\Workflow\Data\Process\Process;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessDelete;
 use Nemundo\Workflow\Delete\WorkflowDelete;
 use Nemundo\Workflow\Inbox\WorkflowInboxReader;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
