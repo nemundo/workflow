@@ -17,11 +17,11 @@ class WikiPageAction extends AbstractWikiPageAction
 
         $pageRow = $this->getRow();
 
-        $builder = new InboxBuilder();
-        $builder->contentType = new WikiContentType();
-        $builder->dataId = $pageRow->id;
-        $builder->subject = 'Wiki Eintrag: ' . $pageRow->title;
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        /*  $builder = new InboxBuilder();
+          $builder->contentType = new WikiContentType();
+          $builder->dataId = $pageRow->id;
+          $builder->subject = 'Wiki Eintrag: ' . $pageRow->title;
+          $builder->createUsergroupInbox(new SchleunigerUsergroup());*/
 
     }
 

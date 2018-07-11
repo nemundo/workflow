@@ -4,6 +4,8 @@ namespace Nemundo\Workflow\App\Widget\Site;
 
 
 use Nemundo\Com\FormBuilder\SearchForm;
+use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Widget\Data\Widget\WidgetListBox;
@@ -31,7 +33,12 @@ class WidgetSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
-        $form = new SearchForm($page);
+        $row = new BootstrapRow($page);
+        $col = new BootstrapColumn($row);
+        $col->columnWidth = 4;
+
+
+        $form = new SearchForm($col);
 
         $widgetListBox = new WidgetListBox($form);
         $widgetListBox->name = (new WidgetParameter())->getParameterName();
@@ -45,8 +52,7 @@ class WidgetSite extends AbstractSite
             $widgetRow = (new WidgetReader())->getRowById($widgetListBox->getValue());
 
             $widget = $widgetRow->getWidgetClassObject();
-            $page->addCom($widget);
-
+            $col->addCom($widget);
 
         }
 
