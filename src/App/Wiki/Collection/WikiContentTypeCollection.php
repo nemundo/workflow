@@ -12,6 +12,8 @@ use Nemundo\Workflow\App\Wiki\ContentType\HyperlinkContentType;
 use Nemundo\Workflow\App\Wiki\ContentType\MailContentType;
 use Nemundo\Workflow\App\Wiki\ContentType\WikiNewsContentType;
 use Nemundo\App\Content\Collection\AbstractContentTypeCollection;
+use Paranautik\App\Meteoschweiz\Content\AllgemeineLageContentType;
+use Paranautik\App\Sat24\Content\Type\Sat24ContentType;
 use Schleuniger\App\Kvp\Process\KvpProcess;
 use Schleuniger\App\Kvp\WorkflowStatus\VmErfassung\KvpErfassungWorkflowStatus;
 
@@ -22,16 +24,26 @@ class WikiContentTypeCollection extends AbstractContentTypeCollection
     protected function loadCollection()
     {
 
-        $this->addContentType(new MailContentType());
-        $this->addContentType(new HyperlinkContentType());
+
+        //$this->addContentType(new ToDoContentType());
+
+
+        $this->addContentType(new PersonalTaskProcess());
+
+        //$this->addContentType(new MailContentType());
+
+        /* $this->addContentType(new HyperlinkContentType());
         //$this->addContentType(new KvpErfassungWorkflowStatus());
         $this->addContentType(new WikiNewsContentType());
         //$this->addContentType(new KvpProcess());
-        $this->addContentType(new ToDoContentType());
-        $this->addContentType(new PersonalTaskProcess());
+
+
         $this->addContentType(new TextContentType());
         $this->addContentType(new ImageContentType());
 
+        $this->addContentType(new AllgemeineLageContentType());
+        $this->addContentType(new \Paranautik\App\News\Content\NewsContentType());*/
+        $this->addContentType(new Sat24ContentType());
 
     }
 

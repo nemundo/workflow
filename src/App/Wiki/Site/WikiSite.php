@@ -34,6 +34,9 @@ class WikiSite extends AbstractSite
         new WikiNewSite($this);
         new WikiPageSite($this);
         new WikiRedirectSite($this);
+        new WikiEditSite($this);
+        new WikiItemDeleteSite($this);
+
 
     }
 
@@ -49,9 +52,8 @@ class WikiSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-
         $form = new WikiPageForm($page);
-        $form->model->action->addInsertAction(new WikiPageAction());
+        //$form->model->action->addInsertAction(new WikiPageAction());
 
 
         $list = new BootstrapHyperlinkList($page);

@@ -78,7 +78,7 @@ abstract class AbstractProcess extends AbstractDataContentType
 
         $this->itemClass = WorkflowContentItem::class;
 
-        $this->parameter = new WorkflowParameter();
+        $this->parameterClass = WorkflowParameter::class;
 
         parent::__construct();
 

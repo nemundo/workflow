@@ -9,6 +9,7 @@ use Nemundo\Workflow\App\Message\ContentItem\ImageContentItem;
 use Nemundo\Workflow\App\Message\ContentItem\TextContentItem;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\MessageImage\MessageImageForm;
+use Nemundo\Workflow\App\Message\Data\MessageImage\MessageImageModel;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextReader;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
@@ -21,7 +22,10 @@ class ImageContentType extends AbstractMessageContentType
         $this->subject = 'Neues Bild';
         $this->id = '54944a0b-58c3-466b-99f2-4cd5431c91e5';
         $this->itemClass = ImageContentItem::class;
-        $this->formClass = MessageImageForm::class;
+        //$this->formClass = MessageImageForm::class;
+
+        $this->modelClass = MessageImageModel::class;
+
     }
 
 

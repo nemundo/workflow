@@ -14,6 +14,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
 use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentItem;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
+use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentTypeReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
 use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
@@ -63,6 +64,19 @@ class WikiPageSite extends AbstractSite
 
 
         $dropdown = new BootstrapDropdown($page);
+
+        $reader = new WikiContentTypeReader();
+        foreach ($reader->getData() as $typeRow) {
+            $site = clone(WikiNewSite::$site);
+            $site->title = $typeRow->contentType;
+            $site->addParameter(new ContentTypeParameter($typeRow->id));
+            $site->addParameter($pageParameter);
+
+            $dropdown->addSite($site);
+
+        }
+
+/*
         foreach ((new WikiContentTypeCollection())->getContentTypeList() as $contentType) {
 
             $site = clone(WikiNewSite::$site);
@@ -73,31 +87,11 @@ class WikiPageSite extends AbstractSite
 
             $dropdown->addSite($site);
 
-        }
+        }*/
 
 
         $item = new WikiContentItem($page);
         $item->dataId = $pageId;
-
-
-        /*
-        $wikiReader = new WikiReader();
-        $wikiReader->filter->andEqual($wikiReader->model->pageId, $pageId);
-        $wikiReader->addOrder($wikiReader->model->id, SortOrder::DESCENDING);
-
-        foreach ($wikiReader->getData() as $wikiRow) {
-
-            $contentType = $wikiRow->contentType->getContentTypeClassObject();
-
-            $item = $contentType->getItem($page);
-            $item->dataId = $wikiRow->dataId;
-
-            (new Hr($page));
-
-        }*/
-
-
-
 
         $page->render();
 

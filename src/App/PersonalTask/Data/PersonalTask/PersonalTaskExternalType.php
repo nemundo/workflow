@@ -12,7 +12,7 @@ public $id;
 public $workflowId;
 
 /**
-* @var \Nemundo\Workflow\Data\Workflow\WorkflowExternalType
+* @var \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType
 */
 public $workflow;
 
@@ -103,7 +103,7 @@ $this->addType($this->done);
 }
 public function loadWorkflow() {
 if ($this->workflow == null) {
-$this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowExternalType(null, $this->parentFieldName . "_workflow");
+$this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType(null, $this->parentFieldName . "_workflow");
 $this->workflow->fieldName = "workflow";
 $this->workflow->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->workflow->aliasFieldName = $this->workflow->tableName ."_".$this->workflow->fieldName;

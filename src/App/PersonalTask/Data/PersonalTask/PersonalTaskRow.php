@@ -17,7 +17,7 @@ public $id;
 public $workflowId;
 
 /**
-* @var \Nemundo\Workflow\Data\Workflow\WorkflowRow
+* @var \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow
 */
 public $workflow;
 
@@ -57,7 +57,7 @@ $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->workflowId = $this->getModelValue($model->workflowId);
 if ($model->workflow !== null) {
-$this->loadNemundoWorkflowDataWorkflowWorkflowworkflowRow($model->workflow);
+$this->loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model->workflow);
 }
 $this->task = $this->getModelValue($model->task);
 $value = $this->getModelValue($model->deadline);
@@ -71,8 +71,8 @@ $this->loadNemundoUserDataUserUserresponsibleUserRow($model->responsibleUser);
 $this->timeEffort = $this->getModelValue($model->timeEffort);
 $this->done = $this->getModelValue($model->done);
 }
-private function loadNemundoWorkflowDataWorkflowWorkflowworkflowRow($model) {
-$this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowRow($this->row, $model);
+private function loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model) {
+$this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow($this->row, $model);
 }
 private function loadNemundoUserDataUserUserresponsibleUserRow($model) {
 $this->responsibleUser = new \Nemundo\User\Data\User\UserRow($this->row, $model);

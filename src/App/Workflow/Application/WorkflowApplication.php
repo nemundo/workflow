@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Application;
 
 
 use Nemundo\App\Application\Type\AbstractApplication;
-use Nemundo\Workflow\Data\WorkflowCollection;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowCollection;
 
 class WorkflowApplication extends AbstractApplication
 {

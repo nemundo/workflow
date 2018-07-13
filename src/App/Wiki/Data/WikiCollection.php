@@ -6,6 +6,7 @@ protected function loadCollection() {
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\Hyperlink\HyperlinkModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\Mail\MailModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\Wiki\WikiModel());
+$this->addModel(new \Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentTypeModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel());
 }
 }

@@ -13,6 +13,7 @@ use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
 use Nemundo\Workflow\App\PersonalTask\Install\PersonalTaskInstall;
 use Nemundo\Workflow\App\SearchEngine\Install\SearchEngineInstall;
 use Nemundo\Workflow\App\Task\Install\TaskInstall;
+use Nemundo\Workflow\App\ToDo\Install\ToDoInstall;
 use Nemundo\Workflow\App\Widget\Install\WidgetInstall;
 use Nemundo\Workflow\App\Wiki\Install\WikiInstall;
 
@@ -36,6 +37,7 @@ class CollaborationInstall extends AbstractScript
         (new PersonalCalendarInstall())->run();
         (new SearchEngineInstall())->run();
         (new WidgetInstall())->run();
+        (new ToDoInstall())->run();
 
     }
 

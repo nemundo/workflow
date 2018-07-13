@@ -9,6 +9,7 @@ use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\Message\MessageUpdate;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemCount;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextForm;
+use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextModel;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextReader;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
@@ -20,10 +21,15 @@ class TextContentType extends AbstractMessageContentType
         $this->name = 'Text';
         $this->id = 'be649b42-4818-4c9e-b778-212c71aa90f0';
         $this->itemClass = TextContentItem::class;
-        $this->formClass = MessageTextForm::class;
+        //$this->formClass = MessageTextForm::class;
+
+        $this->modelClass = MessageTextModel::class;
+
     }
 
 
+
+    /*
     public function onMessageCreate($messageId, $dataId)
     {
 
@@ -48,11 +54,11 @@ class TextContentType extends AbstractMessageContentType
         $builder->createUsergroupInbox(new SchleunigerUsergroup());
 
 
-    }
+    }*/
 
 
-    public function onCreate($dataId)
-    {
+    //public function onCreate($dataId)
+   // {
 
         /*
         $reader = new MessageItemReader();
@@ -69,6 +75,6 @@ class TextContentType extends AbstractMessageContentType
         $update->updateById($this->messageId);*/
 
 
-    }
+    //}
 
 }

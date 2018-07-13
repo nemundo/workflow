@@ -54,11 +54,19 @@ class WikiNewSite extends AbstractSite
         $event->pageId = (new PageParameter())->getValue();
         $event->contentType = $contentType;
 
-        $form = $contentType->getForm($page);
-        $form->afterSubmitEvent = $event;
-        $form->redirectSite = clone(WikiPageSite::$site);
-        $form->redirectSite->addParameter($pageParameter);
+        $redirectSite = clone(WikiPageSite::$site);
+        $redirectSite->addParameter($pageParameter);
 
+        $form = $contentType->getForm($page);
+
+        if ($form !== null) {
+
+            $form->afterSubmitEvent = $event;
+            $form->redirectSite = $redirectSite;
+        } else {
+            $event->run(null);
+            $redirectSite->redirect();
+        }
 
 
         /*
@@ -67,7 +75,6 @@ class WikiNewSite extends AbstractSite
         $form->pageId = (new PageParameter())->getValue();
         $form->redirectSite = clone(WikiPageSite::$site);*/
         //$form->redirectSite->addParameter($pageParameter);
-
 
 
         $page->render();

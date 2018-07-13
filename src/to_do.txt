@@ -4,10 +4,6 @@
 Nemundo\Collaboration\Calendar
 Nemundo\Collaboration\Inbox
 
-
-
-
-
 Inbox
  - InboxGroup (à la Gmail) - same Subject
  - SubjectId

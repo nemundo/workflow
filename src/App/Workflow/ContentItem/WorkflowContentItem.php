@@ -19,15 +19,8 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\Com\Button\WorkflowActionButton;
-use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
-use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
-use Nemundo\Workflow\Com\Item\WorkflowItem;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
-use Nemundo\Workflow\Com\View\WorkflowModelView;
-use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
-use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;
-use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\Parameter\DraftEditParameter;
@@ -36,16 +29,8 @@ use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Reader\WorkflowStatusChangeItemReader;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
-use Nemundo\Workflow\Site\WorkflowActionPanelSite;
-use Nemundo\Workflow\Site\DraftReleaseSite;
-use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
-use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractDraftDataWorkflowStatus;
-use Schleuniger\App\Abweichungsreport\Data\Abweichungsreport\AbweichungsreportReader;
 
 
 class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem

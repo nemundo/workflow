@@ -8,7 +8,7 @@ use Nemundo\App\Content\Item\AbstractContentItem;
 use Nemundo\Model\View\ModelViewTrait;
 
 
-class WorkflowItemContentItem extends AbstractContentItem  // AbstractHtmlContainerList
+class WorkflowItemContentItem extends AbstractContentItem
 {
 
     use ModelViewTrait;

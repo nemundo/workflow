@@ -13,7 +13,6 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class WikiEvent extends AbstractAfterSubmitEvent
 {
 
-
     /**
      * @var string
      */
@@ -28,22 +27,21 @@ class WikiEvent extends AbstractAfterSubmitEvent
     public function run($id)
     {
 
-        //(new Debug())->write('event');
-        //exit;
-
-        //$this->contentType->onCreate($id);
-
         $data = new Wiki();
         $data->pageId = $this->pageId;
         $data->contentTypeId = $this->contentType->id;
         $data->dataId = $id;
         $data->save();
 
+        $this->contentType->onCreate($id);
+
+        /*
         $builder = new InboxBuilder();
         $builder->contentType = $this->contentType;
         $builder->dataId = $id;
         $builder->subject = $this->contentType->getSubject($id);
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        $builder->createUsergroupInbox(new SchleunigerUsergroup());*/
+
 
     }
 
