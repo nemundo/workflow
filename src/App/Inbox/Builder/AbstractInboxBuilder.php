@@ -85,7 +85,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
         $data->userId = $userId;
         $data->save();
 
-        $this->sendMail($userId);
+        //$this->sendMail($userId);
 
     }
 

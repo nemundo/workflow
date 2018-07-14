@@ -32,7 +32,6 @@ class MessageNewSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-
         $form = new MessageContentForm($page);
         $form->redirectSite = MessageSite::$site;
 
