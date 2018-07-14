@@ -8,7 +8,7 @@ use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
 use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
 use Nemundo\App\Content\Type\AbstractContentType;
 
-class WikiContentType extends AbstractContentType
+class WikiPageContainer extends AbstractContentType
 {
 
     protected function loadData()

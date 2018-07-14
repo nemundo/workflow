@@ -107,6 +107,10 @@ class WorkflowStatusChangeBuilder
         if (!$this->draft) {
             $this->workflowStatus->onChange($changeEvent);
             //$this->workflowStatus->onCreate($this->workflowItemId);
+
+            $this->workflowStatus->onContainerCreate($this->workflowId, $this->workflowItemId);
+
+
         }
 
         return $statusChangeId;

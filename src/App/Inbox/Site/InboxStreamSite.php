@@ -65,7 +65,7 @@ class InboxStreamSite extends AbstractSite
                 $item->dataId = $inboxRow->dataId;
 
 
-                if ($contentType->itemSite !== null) {
+                if ($contentType->getItemSite($inboxRow->dataId) !== null) {
 
                     $btn = new AdminButton($widget);
                     $btn->content = 'Weiter';

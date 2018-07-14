@@ -2,6 +2,7 @@
 
 namespace Nemundo\Workflow\App\Workflow\Process;
 
+use Nemundo\App\Content\Type\AbstractContentTypeContainer;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
@@ -13,7 +14,7 @@ use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 
 
-abstract class AbstractProcess extends AbstractDataContentType
+abstract class AbstractProcess extends AbstractContentTypeContainer  // AbstractDataContentType
 {
 
     use UserAccessTrait;

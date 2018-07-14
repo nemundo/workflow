@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\Wiki\Application\WikiApplication;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
 use Nemundo\Workflow\App\Wiki\ContentType\HyperlinkContentType;
 use Nemundo\Workflow\App\Wiki\ContentType\MailContentType;
-use Nemundo\Workflow\App\Wiki\ContentType\WikiContentType;
+use Nemundo\Workflow\App\Wiki\ContentType\WikiPageContainer;
 use Nemundo\Workflow\App\Wiki\ContentType\WikiNewsContentType;
 use Nemundo\Workflow\App\Wiki\Data\WikiCollection;
 use Nemundo\App\Content\Setup\ContentTypeSetup;
@@ -29,8 +29,8 @@ class WikiInstall extends AbstractScript
         $setup->addApplication(new WikiApplication());
 
         $setup = new ContentTypeSetup();
-        $setup->addContentType(new WikiContentType());
-        $setup->addContentTypeCollection(new WikiContentTypeCollection());
+        //$setup->addContentType(new WikiPageContainer());
+        //$setup->addContentTypeCollection(new WikiContentTypeCollection());
 
         $setup = new WikiContentTypeSetup();
         $setup->addContentType(new TextContentType());

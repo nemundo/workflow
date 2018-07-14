@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Inbox\Site;
 
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Inbox\Widget\InboxWidget;
 
 class InboxSite extends AbstractSite
 {
@@ -38,6 +39,7 @@ class InboxSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+        new InboxWidget($page);
 
 
         $page->render();
