@@ -11,8 +11,10 @@ use Nemundo\Com\TableBuilder\TableCell;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Information\UserInformation;
+use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxPaginationReader;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;
 use Nemundo\Workflow\App\Inbox\Parameter\InboxParameter;
 use Nemundo\Workflow\App\Inbox\Site\InboxArchiveSite;
@@ -45,7 +47,7 @@ class InboxWidget extends AbstractAdminWidget
         $header->addEmpty();
 
 
-        $inboxReader = new InboxReader();
+        $inboxReader = new InboxPaginationReader();
         $inboxReader->model->loadContentType();
         $inboxReader->filter->andEqual($inboxReader->model->userId, (new UserInformation())->getUserId());
         $inboxReader->filter->andEqual($inboxReader->model->archive, false);
@@ -58,7 +60,7 @@ class InboxWidget extends AbstractAdminWidget
             //$row->addText($inboxRow->contentType->contentType);
 
             $text = $inboxRow->subject;
-            $message =  $inboxRow->message;
+            $message = $inboxRow->message;
             /*if ($inboxRow->message !== '') {
                 $text .= ':' . (new Br())->getHtmlString() . $inboxRow->message;
             }*/
@@ -82,14 +84,7 @@ class InboxWidget extends AbstractAdminWidget
             }
 
 
-
-
-
-
-
             //$row->addText($inboxRow->subject . ': ' . $inboxRow->message);
-
-
 
 
             //$row->addText($contentType->name);
@@ -120,9 +115,11 @@ class InboxWidget extends AbstractAdminWidget
 
         }
 
+        $pagination = new BootstrapModelPagination($this);
+        $pagination->paginationReader = $inboxReader;
 
         return parent::getHtml();
-    }
 
+    }
 
 }

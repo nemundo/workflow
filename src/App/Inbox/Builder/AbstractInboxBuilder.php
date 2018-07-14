@@ -18,7 +18,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
     /**
      * @var string
      */
-    public $subject;
+    //public $subject;
 
     /**
      * @var string
@@ -80,7 +80,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
         //$data->contentRedirect = $this->contentRedirect->getClassName();
         $data->dataId = $this->dataId;
         //$data->bookmarkId = $this->bookmarkId;
-        $data->subject = $this->subject;
+        $data->subject = $this->contentType->getSubject($this->dataId);  // $this->subject;
         $data->message = $this->message;
         $data->userId = $userId;
         $data->save();

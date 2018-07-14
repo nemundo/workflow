@@ -7,9 +7,11 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxPaginationReader;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;
 use Nemundo\Workflow\Parameter\DataIdParameter;
 
@@ -42,7 +44,7 @@ class InboxStreamSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
-        $inboxReader = new InboxReader();
+        $inboxReader = new InboxPaginationReader();
         $inboxReader->model->loadContentType();
         $inboxReader->filter->andEqual($inboxReader->model->userId, (new UserInformation())->getUserId());
         $inboxReader->filter->andEqual($inboxReader->model->archive, false);
@@ -97,6 +99,10 @@ class InboxStreamSite extends AbstractSite
               $row->addClickableSite($contentType->getItemSite($inboxRow->dataId));*/
 
         }
+
+        $pagination = new BootstrapModelPagination($page);
+        $pagination->paginationReader = $inboxReader;
+
 
         $page->render();
 
