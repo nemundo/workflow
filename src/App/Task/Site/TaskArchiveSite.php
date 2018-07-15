@@ -7,8 +7,6 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Navigation\AdminNavigation;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Com\Html\Basic\Bold;
-use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -23,14 +21,13 @@ use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskNewSite;
 use Nemundo\Workflow\App\Task\Data\Task\TaskPaginationReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
-use Nemundo\Workflow\App\Task\Data\Task\TaskValue;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 
-class TaskSite extends AbstractSite
+class TaskArchiveSite extends AbstractSite
 {
 
     /**
-     * @var TaskSite
+     * @var TaskCreatedSite
      */
     public static $site;
 
@@ -38,22 +35,19 @@ class TaskSite extends AbstractSite
     {
         //$this->title = 'Task';
         //$this->url = 'task';
-        $this->title = 'Aufgaben';
-        $this->url = 'aufgaben';
+        $this->title = 'Archivierte Aufgaben';
+        $this->url = 'task-archive';
 
-        new TaskCreatedSite($this);
-        new TaskArchiveSite($this);
-
-        new PersonalTaskItemSite($this);
-        new PersonalTaskNewSite($this);
+        //new PersonalTaskItemSite($this);
+        //new PersonalTaskNewSite($this);
 
     }
 
-
+/*
     protected function registerSite()
     {
-        TaskSite::$site = $this;
-    }
+        TaskCreatedSite::$site = $this;
+    }*/
 
 
     public function loadContent()
@@ -94,16 +88,16 @@ class TaskSite extends AbstractSite
         $taskReader->model->loadUserCreated();
         $taskReader->paginationLimit = 50;
 
-        $taskFilter = new Filter();
-        $taskFilter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
+        /*$filter = new Filter();
+        $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
         foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
-            $taskFilter->orEqual($taskReader->model->identificationId, $usergroupId);
+            $filter->orEqual($taskReader->model->identificationId, $usergroupId);
         }
 
-        $taskReader->filter->andFilter($taskFilter);
+        $taskReader->filter->andFilter($filter);*/
 
-        $taskReader->filter->andEqual($taskReader->model->archive, false);
-
+        $taskReader->filter->andEqual($taskReader->model->userCreatedId, (new UserInformation())->getUserId());
+        $taskReader->filter->andEqual($taskReader->model->archive, true);
 
         //$taskReader->addOrder($taskReader->model->archive);
         $taskReader->addOrder($taskReader->model->dateTimeCreated, SortOrder::DESCENDING);
@@ -158,20 +152,6 @@ class TaskSite extends AbstractSite
 
         $pagination = new BootstrapModelPagination($page);
         $pagination->paginationReader = $taskReader;
-
-
-        $taskValue = new TaskValue();
-        $taskValue->filter = $taskFilter;
-        $taskValue->field = $taskValue->model->timeEffort;
-        $timeEffortSum = $taskValue->getSumValue();
-
-
-        $bold = new Bold();
-        $bold->content = $timeEffortSum.' h';
-
-        $p = new Paragraph($page);
-        $p->content = 'Total Aufwand: '.$bold->getHtmlString();
-
 
         $page->render();
 

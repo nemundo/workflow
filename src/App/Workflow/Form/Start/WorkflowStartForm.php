@@ -44,11 +44,15 @@ class WorkflowStartForm extends BootstrapModelForm
             //$this->redirectSite->addParameter(new WorkflowParameter($workflowId));
 
             /** @var AbstractUrlParameter $parameter */
-            $parameter = new $this->process->parameterClass();
+          /*  $parameter = new $this->process->parameterClass();
             $parameter->setValue($workflowItemId);
-            $this->redirectSite->addParameter($parameter);
+            $this->redirectSite->addParameter($parameter);*/
 
         }
+
+
+        $this->process->onCreate($workflowItemId);
+
 
         return $workflowItemId;
 

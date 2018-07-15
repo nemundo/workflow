@@ -4,9 +4,11 @@ namespace Nemundo\Workflow\App\Task\Item;
 
 
 // AbstractItem
+use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
 
-class TaskItem
+
+class TaskItem extends AbstractBaseClass
 {
 
 

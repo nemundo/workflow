@@ -29,7 +29,7 @@ class InboxWidget extends AbstractAdminWidget
     {
 
         $this->widgetTitle = 'Inbox';
-        //$this->widgetSite = InboxStreamSite::$site;
+        $this->widgetSite = InboxSite::$site;  // InboxStreamSite::$site;
 
     }
 
@@ -47,12 +47,12 @@ class InboxWidget extends AbstractAdminWidget
         $header->addEmpty();
 
 
-        $inboxReader = new InboxPaginationReader();
+        $inboxReader = new InboxReader();  // InboxPaginationReader();
         $inboxReader->model->loadContentType();
         $inboxReader->filter->andEqual($inboxReader->model->userId, (new UserInformation())->getUserId());
         $inboxReader->filter->andEqual($inboxReader->model->archive, false);
-
         $inboxReader->addOrder($inboxReader->model->dateTime, SortOrder::DESCENDING);
+        $inboxReader->limit = 20;  // paginationLimit = 50;
 
         foreach ($inboxReader->getData() as $inboxRow) {
 
@@ -115,8 +115,8 @@ class InboxWidget extends AbstractAdminWidget
 
         }
 
-        $pagination = new BootstrapModelPagination($this);
-        $pagination->paginationReader = $inboxReader;
+        //$pagination = new BootstrapModelPagination($this);
+        //$pagination->paginationReader = $inboxReader;
 
         return parent::getHtml();
 

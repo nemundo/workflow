@@ -5,12 +5,16 @@ namespace Nemundo\Workflow\App\Inbox\Site;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
+use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Inbox\Com\ContentTypeHyperlinkList;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxPaginationReader;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;
 use Nemundo\Workflow\Parameter\DataIdParameter;
@@ -44,22 +48,37 @@ class InboxStreamSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+        $row = new BootstrapRow($page);
+
+        $col1 = new BootstrapColumn($row);
+        $col1->columnWidth = 4;
+
+        $col2 = new BootstrapColumn($row);
+        $col2->columnWidth = 8;
+
+        $contentTypeList = new ContentTypeHyperlinkList($col1);
+        $contentTypeList->redirectSite = InboxStreamSite::$site;
+
         $inboxReader = new InboxPaginationReader();
         $inboxReader->model->loadContentType();
         $inboxReader->filter->andEqual($inboxReader->model->userId, (new UserInformation())->getUserId());
         $inboxReader->filter->andEqual($inboxReader->model->archive, false);
+
+        $contentTypeParameter = new ContentTypeParameter();
+        if ($contentTypeParameter->exists()) {
+            $inboxReader->filter->andEqual($inboxReader->model->contentTypeId, $contentTypeParameter->getValue());
+        }
+
 
         $inboxReader->addOrder($inboxReader->model->dateTime, SortOrder::DESCENDING);
 
         foreach ($inboxReader->getData() as $inboxRow) {
 
 
-            $widget = new AdminWidget($page);
+            $widget = new AdminWidget($col2);
             $widget->widgetTitle = $inboxRow->subject;
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
-
-            //(new Debug())->write($contentType->getClassName());
 
             if ($contentType !== null) {
 
@@ -100,7 +119,7 @@ class InboxStreamSite extends AbstractSite
 
         }
 
-        $pagination = new BootstrapModelPagination($page);
+        $pagination = new BootstrapModelPagination($col2);
         $pagination->paginationReader = $inboxReader;
 
 

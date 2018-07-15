@@ -38,8 +38,8 @@ class TaskCreatedSite extends AbstractSite
         $this->title = 'Erstellte Aufgaben';
         $this->url = 'erstellte-aufgaben';
 
-        new PersonalTaskItemSite($this);
-        new PersonalTaskNewSite($this);
+        //new PersonalTaskItemSite($this);
+        //new PersonalTaskNewSite($this);
 
     }
 

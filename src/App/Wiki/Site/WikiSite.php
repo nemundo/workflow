@@ -3,8 +3,10 @@
 namespace Nemundo\Workflow\App\Wiki\Site;
 
 use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\App\Content\Data\ContentTree\ContentTreeReader;
 use Nemundo\Com\Html\Basic\Br;
 use Nemundo\Com\Html\Basic\Hr;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Dropdown\BootstrapDropdown;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
@@ -12,6 +14,8 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
+use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentForm;
+use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageForm;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
@@ -52,8 +56,10 @@ class WikiSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $form = new WikiPageForm($page);
+        //$form = new WikiPageForm($page);
         //$form->model->action->addInsertAction(new WikiPageAction());
+
+        $form = new WikiPageContentForm($page);
 
 
         $list = new BootstrapHyperlinkList($page);
@@ -66,6 +72,23 @@ class WikiSite extends AbstractSite
             $site->addParameter(new PageParameter($pageRow->id));
             $list->addSite($site);
         }
+
+
+
+        $treeReader = new ContentTreeReader();
+        $treeReader->filter->andEqual($treeReader->model->contentTypeId, (new WikiPageContentType())->id);
+
+        foreach ($treeReader->getData() as $treeRow) {
+            (new Debug())->write($treeRow->dataId);
+
+            $item = (new WikiPageContentType())->getItem($page);
+            $item->dataId = $treeRow->dataId;
+
+
+        }
+
+
+
 
 
         $page->render();
