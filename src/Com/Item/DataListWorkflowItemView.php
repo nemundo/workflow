@@ -23,10 +23,12 @@ class DataListWorkflowItemView extends AbstractWorkflowItemView
         //$model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelListClass);
 
 
-        $model->workflow->visible->table = false;
+        //$model->workflow->visible->table = false;
 
         $table = new BootstrapModelTable($this);
         $table->model = $model;
+        $table->filter->andEqual($model->dataId, $this->dataId);
+
         //$table->filter->andEqual($model->workflowId, $this->workflowId);
 
         //(new Debug())->write('workflowid' . $this->workflowId);
