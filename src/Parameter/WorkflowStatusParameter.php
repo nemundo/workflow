@@ -3,14 +3,14 @@
 namespace Nemundo\Workflow\Parameter;
 
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
-use Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 
 class WorkflowStatusParameter extends AbstractUrlParameter
 {
 
     protected function loadParameter()
     {
-        $this->parameterName = 'workflowstatus';
+        $this->parameterName = 'workflow-status';
     }
 
 

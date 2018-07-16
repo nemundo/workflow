@@ -14,7 +14,7 @@ abstract class AbstractDataListWorkflowStatus extends AbstractWorkflowStatus
     /**
      * @var AbstractModel
      */
-    public $modelListClassName;
+    public $modelListClass;
 
     public function __construct()
     {

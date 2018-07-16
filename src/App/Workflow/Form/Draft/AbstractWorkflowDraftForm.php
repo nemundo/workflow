@@ -189,7 +189,7 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
     protected function updateData($workflowItemId)
     {
 
-        (new Debug())->write('update data');
+        //(new Debug())->write('update data');
 
 
         $update = new ModelUpdate();

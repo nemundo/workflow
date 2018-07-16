@@ -10,6 +10,7 @@ use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
@@ -145,11 +146,15 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
             $contentDiv->addCssClass('card-body');
 
             $workflowStatus = $statusChangeItem->workflowStatus->getWorkflowStatusClassObject();
-            $item = $workflowStatus->getItem($contentDiv);
-            $item->dataId = $statusChangeItem->workflowItemId;
 
+            $item = $workflowStatus->getItem($contentDiv);
+            //$item->workflowStatus = $workflowStatus;
+            $item->dataId = $statusChangeItem->workflowItemId;
+//$item->workflowId = $statusChangeItem->workflowId;
 
             //$statusChangeItem->getView($contentDiv);
+
+            //(new Debug())->write($item->getClassName());
 
 
             if ($statusChangeItem->draft) {
@@ -162,7 +167,8 @@ class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem
                 $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
 
 
-                if ($statusChangeItem->workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+                //if ($statusChangeItem->workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+                if ($workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
                     $btn = new DraftReleaseButton($contentDiv);
                     $btn->workflowId = $this->workflowId;
                 }

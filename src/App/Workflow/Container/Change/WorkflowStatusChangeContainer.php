@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Change;
 
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
 
@@ -24,7 +25,7 @@ class WorkflowStatusChangeContainer extends AbstractWorkflowChangeContainer
     /**
      * @var bool
      */
-    public $appendWorkflowParameter = false;
+    public $redirectToItemSite = false;
 
     /**
      * @var AbstractUrlParameter
@@ -40,11 +41,21 @@ class WorkflowStatusChangeContainer extends AbstractWorkflowChangeContainer
         $container->workflowStatus = $this->workflowStatus;
         $container->workflowId = $this->workflowId;
 
-        if ($this->redirectSite !== null) {
+        //if ($this->redirectSite !== null) {
 
-            $container->redirectSite = clone($this->redirectSite);
+        //    $container->redirectSite = clone($this->redirectSite);
 
-            if ($this->appendWorkflowParameter) {
+            if ($this->redirectToItemSite) {
+
+
+                $workflowReader = new WorkflowReader();
+                $workflowReader->model->loadProcess();
+                $workflowRow = $workflowReader->getRowById($this->workflowId);
+
+                $process = $workflowRow->process->getProcessClassObject();
+                $container->redirectSite = $process->getItemSite($workflowRow->dataId);
+                //$site->redirect();
+
 
                 //$container->redirectSite->addParameter(new WorkflowParameter($this->workflowId));
 
@@ -55,7 +66,7 @@ class WorkflowStatusChangeContainer extends AbstractWorkflowChangeContainer
 
             }
 
-        }
+        //}
 
         return parent::getHtml();
 

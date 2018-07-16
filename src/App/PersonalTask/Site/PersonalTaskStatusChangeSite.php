@@ -8,7 +8,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer;
-use Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 
@@ -22,8 +22,8 @@ class PersonalTaskStatusChangeSite extends AbstractSite
 
     protected function loadSite()
     {
-   $this->url = 'status-change';
-   $this->menuActive = false;
+        $this->url = 'status-change';
+        $this->menuActive = false;
     }
 
 
@@ -50,7 +50,6 @@ class PersonalTaskStatusChangeSite extends AbstractSite
         $container->workflowId = $workflowId;
         $container->workflowStatus = $workflowStatus;
         $container->redirectSite = TaskSite::$site;
-
 
 
         $page->render();

@@ -7,7 +7,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Action\ActionUrlParameter;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\Com\Button\DraftReleaseButton;
-use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeCount;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeCount;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 
 class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
@@ -32,7 +32,7 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $admin->showViewButton = false;
 
         /** @var AbstractWorkflowBaseModel $model */
-        $model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelListClassName);
+        $model = (new ModelFactory())->getModelByClassName($this->workflowStatus->modelListClass);
 
         $admin->model = $model;
         $admin->filter->andEqual($model->workflowId, $this->workflowId);

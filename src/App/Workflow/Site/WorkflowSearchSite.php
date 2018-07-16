@@ -39,6 +39,7 @@ class WorkflowSearchSite extends AbstractSite
         new WorkflowItemSite($this);
         new SearchStatusChangeSite($this);
         new WorkflowDeleteSite($this);
+        new DraftReleaseSite($this);
 
     }
 

@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\PersonalTask\WorkflowStatus;
 
 
+use Nemundo\Workflow\Action\SubjectWorkflowAction;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
@@ -67,12 +68,10 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
         $builder->dataId = $changeEvent->getDataId();
         $builder->addText($personalTaskRow->task);
 
-
+        (new SubjectWorkflowAction($changeEvent))
+            ->changeSubject($personalTaskRow->task);
 
         /*
-        (new SubjectWorkflowAction($changeEvent))
-            ->changeSubject($taskRow->task);
-
         (new AssignmentWorkflowAction($changeEvent))
             ->assignUser($taskRow->verantwortlicherId);
 

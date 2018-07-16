@@ -88,7 +88,7 @@ class SearchStatusChangeSite extends AbstractSite
         $container->workflowId = $workflowId;
         //$container->redirectSite = WorkflowSearchEngineSite::$site;
         $container->redirectSite = WorkflowItemSite::$site;
-        $container->appendWorkflowParameter = true;
+        $container->redirectToItemSite = true;
 
         $page->render();
 

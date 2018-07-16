@@ -24,13 +24,14 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
     public function assignUser($userId)
     {
 
+        /*
         $data = new UserAssignment();
         $data->ignoreIfExists = true;
         $data->workflowId = $this->changeEvent->workflowId;
         $data->userId = $userId;
         $data->save();
 
-        $this->sendMail($userId);
+        $this->sendMail($userId);*/
 
         return $this;
 
@@ -40,7 +41,7 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
     public function assignUsergroup(AbstractUsergroup $usergroup)
     {
 
-        $data = new UsergroupAssignment();
+       /* $data = new UsergroupAssignment();
         $data->ignoreIfExists = true;
         $data->workflowId = $this->changeEvent->workflowId;
         $data->usergroupId = $usergroup->id;
@@ -48,7 +49,7 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
 
         foreach ($usergroup->getUserList() as $userRow) {
             $this->sendMail($userRow->id);
-        }
+        }*/
 
         return $this;
 
@@ -63,10 +64,11 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
         $delete->filter->andEqual($delete->model->workflowId, $this->changeEvent->workflowId);
         $delete->delete();*/
 
+        /*
         $update = new UserAssignmentUpdate();
         $update->delete = true;
         $update->filter->andEqual($update->model->workflowId, $this->changeEvent->workflowId);
-        $update->update();
+        $update->update();*/
 
         return $this;
 
@@ -81,10 +83,10 @@ class AssignmentWorkflowAction extends AbstractWorkflowAction
         $delete->filter->andEqual($delete->model->workflowId, $this->changeEvent->workflowId);
         $delete->delete();*/
 
-        $update = new UsergroupAssignmentUpdate();
+     /*   $update = new UsergroupAssignmentUpdate();
         $update->delete = true;
         $update->filter->andEqual($update->model->workflowId, $this->changeEvent->workflowId);
-        $update->update();
+        $update->update();*/
 
         return $this;
 

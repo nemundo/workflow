@@ -5,9 +5,9 @@ namespace Nemundo\Workflow\App\Workflow\Builder;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Workflow\Data\Workflow\WorkflowUpdate;
-use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
-use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeUpdate;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
+use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeUpdate;
 
 class DraftRelease extends AbstractBase
 {
