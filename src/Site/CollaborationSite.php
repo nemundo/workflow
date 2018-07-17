@@ -11,6 +11,8 @@ use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
 use Nemundo\Workflow\App\Message\Site\MessageSite;
 use Nemundo\Workflow\App\News\Site\NewsSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
+use Nemundo\Workflow\App\Subscription\Site\MySubscriptionSite;
+use Nemundo\Workflow\App\Subscription\Site\SubscriptionSite;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoDoneSite;
 use Nemundo\Workflow\App\Widget\Site\WidgetSite;
@@ -43,6 +45,9 @@ class CollaborationSite extends AbstractSite
 
         new SearchEngineSite($this);
         new WidgetSite($this);
+
+        new SubscriptionSite($this);
+        new MySubscriptionSite($this);
 
     }
 
