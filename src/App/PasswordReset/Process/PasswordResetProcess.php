@@ -7,7 +7,7 @@ use Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest\PasswordResetRe
 use Nemundo\Workflow\App\PasswordReset\Site\PasswordChangeSite;
 use Nemundo\Workflow\App\PasswordReset\WorkflowStatus\PasswordResetStartWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
+use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 class PasswordResetProcess extends AbstractProcess
 {

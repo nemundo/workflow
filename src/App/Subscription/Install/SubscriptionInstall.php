@@ -10,7 +10,6 @@ use Nemundo\Workflow\App\Subscription\Data\SubscriptionCollection;
 class SubscriptionInstall extends AbstractScript
 {
 
-
     public function run()
     {
 

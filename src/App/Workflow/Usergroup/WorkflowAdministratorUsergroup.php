@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\Usergroup;
+namespace Nemundo\Workflow\App\Workflow\Usergroup;
 
 
 use Nemundo\User\Usergroup\AbstractUsergroup;

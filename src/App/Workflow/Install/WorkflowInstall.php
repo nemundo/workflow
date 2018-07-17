@@ -35,8 +35,8 @@ use Nemundo\Workflow\Template\WorkflowStatus\DeadlineChangeWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\DisapprovalWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\SubjectChangeWorkflowStatus;
 use Nemundo\Workflow\Template\WorkflowStatus\UserAssignmentChangeWorkflowStatus;
-use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
-use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
+use Nemundo\Workflow\App\Workflow\Usergroup\WorkflowAdministratorUsergroup;
+use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 class WorkflowInstall extends AbstractScript
 {
@@ -61,8 +61,8 @@ class WorkflowInstall extends AbstractScript
         $setup->addWorkflowStatus(new ClosingWorkflowStatus());*/
 
         $setup = new UsergroupSetup();
-        //$setup->application = new WorkflowApplication();
-        $setup->addUsergroup(new WorkflowUsergroup());
+        $setup->application = new WorkflowApplication();
+        //$setup->addUsergroup(new CollaborationUsergroup());
         $setup->addUsergroup(new WorkflowAdministratorUsergroup());
 
 

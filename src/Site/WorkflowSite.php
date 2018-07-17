@@ -35,7 +35,7 @@ use Nemundo\Workflow\Site\Stream\StreamSite;
 use Nemundo\Workflow\Site\Subscription\WorkflowSubscriptionSite;
 use Nemundo\Workflow\Site\Workflow\WorkflowDeleteSite;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
-use Nemundo\Workflow\Usergroup\WorkflowUsergroup;
+use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 
 class WorkflowSite extends AbstractSite

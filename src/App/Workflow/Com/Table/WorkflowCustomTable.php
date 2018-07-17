@@ -41,7 +41,6 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
         //$this->workflowCount = new WorkflowCount();
 
 
-
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
 
@@ -133,26 +132,26 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             }
 
             // User
-           /* $reader = new UserAssignmentReader();
-            $reader->model->loadUser();
-            $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
+            /* $reader = new UserAssignmentReader();
+             $reader->model->loadUser();
+             $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
 
-            $user = new TextDirectory();
-            foreach ($reader->getData() as $assignmentRow) {
-                $user->addValue($assignmentRow->user->displayName);
-            }
-            $row->addText($user->getTextWithSeperator());
+             $user = new TextDirectory();
+             foreach ($reader->getData() as $assignmentRow) {
+                 $user->addValue($assignmentRow->user->displayName);
+             }
+             $row->addText($user->getTextWithSeperator());
 
-            // Usergroup
-            $reader = new UsergroupAssignmentReader();
-            $reader->model->loadUsergroup();
-            $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
+             // Usergroup
+             $reader = new UsergroupAssignmentReader();
+             $reader->model->loadUsergroup();
+             $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
 
-            $usergroup = new TextDirectory();
-            foreach ($reader->getData() as $assignmentRow) {
-                $usergroup->addValue($assignmentRow->usergroup->usergroup);
-            }
-            $row->addText($usergroup->getTextWithSeperator());*/
+             $usergroup = new TextDirectory();
+             foreach ($reader->getData() as $assignmentRow) {
+                 $usergroup->addValue($assignmentRow->usergroup->usergroup);
+             }
+             $row->addText($usergroup->getTextWithSeperator());*/
 
             $row->addText($workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
             $row->addText($workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
@@ -174,9 +173,12 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             }
 
 
-            $site =$process->getItemSite($workflowRow->dataId);
-            $site->title = 'Direkt';
-            $row->addSite($site);
+            $site = $process->getItemSite($workflowRow->dataId);
+            if ($site !== null) {
+                $site->title = 'Direkt';
+                $row->addSite($site);
+            }
+
 
             $site = clone(WorkflowItemAdminSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));

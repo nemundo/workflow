@@ -18,6 +18,7 @@ use Nemundo\Workflow\App\ToDo\Site\ToDoDoneSite;
 use Nemundo\Workflow\App\Widget\Site\WidgetSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
+use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 class CollaborationSite extends AbstractSite
 {
@@ -26,7 +27,8 @@ class CollaborationSite extends AbstractSite
     {
         $this->title = 'Collaboration';
         $this->url = 'collaboration';
-
+        $this->restricted = true;
+        $this->addRestrictedUsergroup(new CollaborationUsergroup());
 
         new InboxSite($this);
         new InboxStreamSite($this);
