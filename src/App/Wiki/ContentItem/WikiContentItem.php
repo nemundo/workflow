@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Wiki\ContentItem;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\Html\Basic\Hr;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -25,6 +26,8 @@ class WikiContentItem extends AbstractContentItem
 
         $wikiReader = new WikiReader();
         $wikiReader->filter->andEqual($wikiReader->model->pageId, $this->dataId);
+        $wikiReader->filter->andEqual($wikiReader->model->delete, false);
+
         $wikiReader->addOrder($wikiReader->model->id, SortOrder::DESCENDING);
 
         foreach ($wikiReader->getData() as $wikiRow) {
@@ -63,6 +66,38 @@ class WikiContentItem extends AbstractContentItem
             (new Hr($this));
 
         }
+
+
+
+        $title = new AdminTitle($this);
+        $title->content = 'Gelöschte Objekte';
+
+
+
+        $wikiReader = new WikiReader();
+        $wikiReader->filter->andEqual($wikiReader->model->pageId, $this->dataId);
+        $wikiReader->filter->andEqual($wikiReader->model->delete, true);
+
+        $wikiReader->addOrder($wikiReader->model->id, SortOrder::DESCENDING);
+
+        foreach ($wikiReader->getData() as $wikiRow) {
+
+            $contentType = $wikiRow->contentType->getContentTypeClassObject();
+
+            $title = new AdminSubtitle($this);
+            $title->content = $contentType->name;
+
+
+            $item = $contentType->getItem($this);
+            $item->dataId = $wikiRow->dataId;
+            $item->id = $wikiRow->dataId;
+            $item->tagName = 'div';
+
+            (new Hr($this));
+
+        }
+
+
 
 
         return parent::getHtml();

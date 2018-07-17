@@ -68,27 +68,23 @@ class WikiSite extends AbstractSite
         $pageReader->addOrder($pageReader->model->title);
         foreach ($pageReader->getData() as $pageRow) {
             $site = clone(WikiPageSite::$site);
-            $site->title = $pageRow->title;
+            $site->title = $pageRow->title . ' (' . $pageRow->count . ')';
             $site->addParameter(new PageParameter($pageRow->id));
             $list->addSite($site);
         }
-
 
 
         $treeReader = new ContentTreeReader();
         $treeReader->filter->andEqual($treeReader->model->contentTypeId, (new WikiPageContentType())->id);
 
         foreach ($treeReader->getData() as $treeRow) {
-            (new Debug())->write($treeRow->dataId);
+            //(new Debug())->write($treeRow->dataId);
 
             $item = (new WikiPageContentType())->getItem($page);
             $item->dataId = $treeRow->dataId;
 
 
         }
-
-
-
 
 
         $page->render();

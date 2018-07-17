@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site;
 
 
+use Nemundo\App\Content\Site\ContentTreeSite;
 use Nemundo\App\Content\Site\ContentTypeSite;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
@@ -36,7 +37,10 @@ class CollaborationSite extends AbstractSite
 
         new MessageSite($this);
         new WikiSite($this);
+
         new ContentTypeSite($this);
+        new ContentTreeSite($this);
+
         new SearchEngineSite($this);
         new WidgetSite($this);
 

@@ -31,6 +31,16 @@ public $contentType;
 */
 public $dataId;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $itemOrder;
+
 protected function loadModel() {
 $this->tableName = "wiki_wiki";
 $this->aliasTableName = "wiki_wiki";
@@ -72,6 +82,20 @@ $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
 $this->id->visible->form = false;
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->delete->tableName = "wiki_wiki";
+$this->delete->fieldName = "delete";
+$this->delete->aliasFieldName = "wiki_wiki_delete";
+$this->delete->label = "Delete";
+$this->delete->allowNullValue = "";
+
+$this->itemOrder = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->itemOrder->tableName = "wiki_wiki";
+$this->itemOrder->fieldName = "item_order";
+$this->itemOrder->aliasFieldName = "wiki_wiki_item_order";
+$this->itemOrder->label = "Item Order";
+$this->itemOrder->allowNullValue = "";
 
 }
 public function loadPage() {

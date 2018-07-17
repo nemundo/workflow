@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Setup;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusSetup extends AbstractBase
 {

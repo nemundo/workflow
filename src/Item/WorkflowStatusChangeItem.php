@@ -8,9 +8,9 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\User\Data\User\UserRow;
-use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
-use Nemundo\Workflow\Com\Item\WorkflowItem;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
+use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusChangeItem extends AbstractBase
 {

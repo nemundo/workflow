@@ -41,7 +41,7 @@ $this->tableName = "personal_task_personal_task";
 $this->aliasTableName = "personal_task_personal_task";
 $this->label = "Personal Task";
 
-$this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
+$this->primaryIndex = new \Nemundo\Db\Index\UniqueIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "personal_task_personal_task";

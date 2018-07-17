@@ -12,12 +12,18 @@ public $model;
 */
 public $title;
 
+/**
+* @var int
+*/
+public $count;
+
 public function __construct() {
 parent::__construct();
 $this->model = new WikiPageModel();
 }
 public function update() {
 $this->typeValueList->setModelValue($this->model->title, $this->title);
+$this->typeValueList->setModelValue($this->model->count, $this->count);
 parent::update();
 }
 }

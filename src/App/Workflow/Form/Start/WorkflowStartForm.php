@@ -8,7 +8,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 
 class WorkflowStartForm extends BootstrapModelForm

@@ -9,7 +9,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Com\Button\WorkflowActionButton;
+use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;

@@ -11,12 +11,17 @@ public $id;
 */
 public $title;
 
+/**
+* @var \Nemundo\Model\Type\Number\NumberType
+*/
+public $count;
+
 protected function loadModel() {
 $this->tableName = "wiki_wiki_page";
 $this->aliasTableName = "wiki_wiki_page";
 $this->label = "Wiki Page";
 
-$this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
+$this->primaryIndex = new \Nemundo\Db\Index\UniqueIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "wiki_wiki_page";
@@ -37,6 +42,14 @@ $this->title->label = "Title";
 $this->title->validation = true;
 $this->title->allowNullValue = "";
 $this->title->length = 255;
+
+$this->count = new \Nemundo\Model\Type\Number\NumberType($this);
+$this->count->tableName = "wiki_wiki_page";
+$this->count->fieldName = "count";
+$this->count->aliasFieldName = "wiki_wiki_page_count";
+$this->count->label = "Count";
+$this->count->allowNullValue = "";
+$this->count->visible->form = false;
 
 }
 }

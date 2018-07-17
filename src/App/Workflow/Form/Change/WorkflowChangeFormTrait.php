@@ -8,7 +8,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 trait WorkflowChangeFormTrait
 {

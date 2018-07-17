@@ -11,8 +11,8 @@ use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskUpdate;
 use Nemundo\Workflow\App\Task\Item\TaskItem;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Template\WorkflowStatus\ClosingWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 
 class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus  // AbstractChangeWorkflowStatus

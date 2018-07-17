@@ -8,7 +8,7 @@ use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Com\Item\WorkflowItemTrait;
+use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItemTrait;
 use Nemundo\Workflow\Com\WorkflowTitle;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;

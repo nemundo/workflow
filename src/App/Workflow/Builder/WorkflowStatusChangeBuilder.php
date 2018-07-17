@@ -5,9 +5,10 @@ namespace Nemundo\Workflow\App\Workflow\Builder;
 
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChange;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusChangeBuilder
 {
@@ -108,7 +109,12 @@ class WorkflowStatusChangeBuilder
             $this->workflowStatus->onChange($changeEvent);
             //$this->workflowStatus->onCreate($this->workflowItemId);
 
-            $this->workflowStatus->onContainerCreate($this->workflowId, $this->workflowItemId);
+
+            $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
+
+
+            $this->workflowStatus->onCreate($this->workflowItemId, $workflowRow->dataId);
+            //$this->workflowStatus->onContainerCreate($this->workflowId, $this->workflowItemId);
 
 
         }

@@ -9,6 +9,7 @@ use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowCustomTable;
 use Nemundo\Workflow\Com\OpenClosedWorkflowListBox;
 use Nemundo\User\Data\User\UserListBox;
 use Nemundo\User\Data\Usergroup\UsergroupListBox;
@@ -37,6 +38,7 @@ class WorkflowSearchSite extends AbstractSite
 
         new WorkflowNewSite($this);
         new WorkflowItemSite($this);
+        new WorkflowItemAdminSite($this);
         new SearchStatusChangeSite($this);
         new WorkflowDeleteSite($this);
         new DraftReleaseSite($this);
@@ -111,6 +113,11 @@ class WorkflowSearchSite extends AbstractSite
         $usergroupListBox->submitOnChange = true;
         $usergroupListBox->value = $usergroupListBox->getValue();
 
+
+        $table  = new WorkflowCustomTable($page);
+
+
+        /*
         $table = new WorkflowInboxTable($page);
 
         if ($statusListBox->getValue() == 1) {
@@ -133,7 +140,7 @@ class WorkflowSearchSite extends AbstractSite
             $table->addUserIdFilter($userListBox->getValue());
         }
 
-        $table->sorting = WorkflowSorting::BY_ITEM_ORDER_DESC;
+        $table->sorting = WorkflowSorting::BY_ITEM_ORDER_DESC;*/
 
         $page->render();
 

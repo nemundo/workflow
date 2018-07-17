@@ -6,9 +6,9 @@ use Nemundo\Workflow\Action\SubjectWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeReader;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\WorkflowStatus\Form\SubjectChangeForm;
-use Nemundo\Workflow\WorkflowStatus\Item\SubjectChangeItem;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\Form\SubjectChangeForm;
+use Nemundo\Workflow\App\Workflow\Content\Type\Item\SubjectChangeItem;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class SubjectChangeWorkflowStatus extends AbstractWorkflowStatus
 {

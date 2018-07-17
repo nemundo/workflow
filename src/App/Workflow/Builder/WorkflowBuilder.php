@@ -16,8 +16,8 @@ use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
 
 
 class WorkflowBuilder extends AbstractContentBuilder

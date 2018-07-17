@@ -4,6 +4,8 @@ namespace Nemundo\Workflow\App\Wiki\Site;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Design\Bootstrap\Navbar\BootstrapNavbar;
+use Nemundo\Design\Bootstrap\Navigation\BootstrapNavigation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\Html\Basic\Br;
@@ -56,6 +58,11 @@ class WikiPageSite extends AbstractSite
         $pageId = $pageParameter->getValue();
 
         $pageRow = (new WikiPageReader())->getRowById($pageId);
+
+        $nav = new BootstrapNavigation($page);
+        $nav->site = WikiSite::$site;
+
+
 
         $title = new AdminTitle($page);
         $title->content = $pageRow->title;

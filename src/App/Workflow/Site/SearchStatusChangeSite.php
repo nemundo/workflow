@@ -14,9 +14,9 @@ use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 
 class SearchStatusChangeSite extends AbstractSite

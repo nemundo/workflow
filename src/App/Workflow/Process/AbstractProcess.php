@@ -89,15 +89,9 @@ abstract class AbstractProcess extends AbstractContentTypeContainer  // Abstract
     public function getForm($parentItem = null)
     {
 
-        //$container = new WorkflowStartContainer($parentItem);
-        //$container->process = $this;
-        //return $container;
-
-
         $form = new WorkflowStartForm($parentItem);
         $form->process = $this;
         return $form;
-
 
     }
 

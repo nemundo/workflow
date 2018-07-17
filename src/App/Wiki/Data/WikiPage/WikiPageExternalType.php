@@ -11,6 +11,11 @@ public $id;
 */
 public $title;
 
+/**
+* @var \Nemundo\Model\Type\Number\NumberType
+*/
+public $count;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WikiPageModel::class;
@@ -29,6 +34,13 @@ $this->title->tableName = $this->parentFieldName . "_" . $this->externalTableNam
 $this->title->aliasFieldName = $this->title->tableName . "_" . $this->title->fieldName;
 $this->title->label = "Title";
 $this->addType($this->title);
+
+$this->count = new \Nemundo\Model\Type\Number\NumberType();
+$this->count->fieldName = "count";
+$this->count->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->count->aliasFieldName = $this->count->tableName . "_" . $this->count->fieldName;
+$this->count->label = "Count";
+$this->addType($this->count);
 
 }
 }

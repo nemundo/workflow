@@ -18,8 +18,8 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Com\Button\DraftReleaseButton;
-use Nemundo\Workflow\Com\Button\WorkflowActionButton;
+use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
+use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Item\AbstractProcessItem;
@@ -31,7 +31,7 @@ use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
 
 
 class WorkflowContentItem extends AbstractContentItem // AbstractProcessItem

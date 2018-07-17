@@ -8,6 +8,8 @@ use Nemundo\Com\Html\Form\Event\AbstractAfterSubmitEvent;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\Wiki;
+use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiCount;
+use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 class WikiEvent extends AbstractAfterSubmitEvent
@@ -33,7 +35,18 @@ class WikiEvent extends AbstractAfterSubmitEvent
         $data->dataId = $id;
         $data->save();
 
-        $this->contentType->onCreate($id);
+
+        $count = new WikiCount();
+        $count->filter->andEqual($count->model->pageId, $this->pageId);
+        $count->filter->andEqual($count->model->delete, false);
+        $itemCount = $count->getCount();
+
+        $update = new WikiPageUpdate();
+        $update->count = $itemCount;
+        $update->updateById($this->pageId);
+
+
+        //$this->contentType->onCreate($id);
 
         /*
         $builder = new InboxBuilder();

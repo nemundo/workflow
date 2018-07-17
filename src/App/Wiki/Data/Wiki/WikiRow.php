@@ -36,6 +36,16 @@ public $contentType;
 */
 public $dataId;
 
+/**
+* @var bool
+*/
+public $delete;
+
+/**
+* @var bool
+*/
+public $itemOrder;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -49,6 +59,8 @@ if ($model->contentType !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
 $this->dataId = $this->getModelValue($model->dataId);
+$this->delete = $this->getModelValue($model->delete);
+$this->itemOrder = $this->getModelValue($model->itemOrder);
 }
 private function loadNemundoWorkflowAppWikiDataWikiPageWikiPagepageRow($model) {
 $this->page = new \Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageRow($this->row, $model);

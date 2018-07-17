@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Template\View;
 
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentReader;
-use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
+use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
 
 class CommentWorkflowItemView extends AbstractWorkflowItemView
 {

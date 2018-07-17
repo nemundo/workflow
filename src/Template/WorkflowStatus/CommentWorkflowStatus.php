@@ -7,8 +7,8 @@ use Nemundo\Workflow\Action\NotificationWorkflowAction;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Template\View\CommentWorkflowItemView;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Paranautik\Usergroup\BetaUsergroup;
 
 class CommentWorkflowStatus extends AbstractDataWorkflowStatus

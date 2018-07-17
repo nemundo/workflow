@@ -15,11 +15,11 @@ use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
-use Nemundo\Workflow\Com\Button\DraftReleaseButton;
-use Nemundo\Workflow\Com\Button\WorkflowActionButton;
-use Nemundo\Workflow\Com\Item\DataListWorkflowItemView;
-use Nemundo\Workflow\Com\Item\WorkflowDefaultWorkflowItem;
-use Nemundo\Workflow\Com\Item\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
+use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
+use Nemundo\Workflow\App\Workflow\Content\Item\DataListWorkflowItemView;
+use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowDefaultWorkflowItem;
+use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItem;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
@@ -39,10 +39,10 @@ use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
 use Nemundo\Workflow\Site\DraftReleaseSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
-use Nemundo\Workflow\WorkflowStatus\AbstractChangeWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataListWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractDraftDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 
 
 class WorkflowViewList extends AbstractProcessItem

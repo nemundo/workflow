@@ -31,6 +31,16 @@ public $contentType;
 */
 public $dataId;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $itemOrder;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WikiModel::class;
@@ -63,6 +73,20 @@ $this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableNa
 $this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
 $this->dataId->label = "Data Id";
 $this->addType($this->dataId);
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType();
+$this->delete->fieldName = "delete";
+$this->delete->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->delete->aliasFieldName = $this->delete->tableName . "_" . $this->delete->fieldName;
+$this->delete->label = "Delete";
+$this->addType($this->delete);
+
+$this->itemOrder = new \Nemundo\Model\Type\Number\YesNoType();
+$this->itemOrder->fieldName = "item_order";
+$this->itemOrder->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->itemOrder->aliasFieldName = $this->itemOrder->tableName . "_" . $this->itemOrder->fieldName;
+$this->itemOrder->label = "Item Order";
+$this->addType($this->itemOrder);
 
 }
 public function loadPage() {

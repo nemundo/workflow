@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Wiki\Site;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiDelete;
+use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiUpdate;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiItemParameter;
 
 class WikiItemDeleteSite extends AbstractSite
@@ -31,8 +32,13 @@ class WikiItemDeleteSite extends AbstractSite
     public function loadContent()
     {
 
-        $delete = new WikiDelete();
-        $delete->deleteById((new WikiItemParameter())->getValue());
+//        $delete = new WikiDelete();
+//        $delete->deleteById((new WikiItemParameter())->getValue());
+
+
+        $update = new WikiUpdate();
+        $update->delete = true;
+        $update->updateById((new WikiItemParameter())->getValue());
 
         (new UrlReferer())->redirect();
 

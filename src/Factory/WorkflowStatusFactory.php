@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\Factory;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\System\ObjectBuilder;
-use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusFactory extends AbstractBase
 {

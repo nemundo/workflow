@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Change;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Com\Html\Form\AbstractSubmitForm;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowFormTrait;
-use Nemundo\Workflow\WorkflowStatus\AbstractFormWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
 
 class FormWorkflowChangeContainer extends AbstractWorkflowChangeContainer
 {

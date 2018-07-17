@@ -11,12 +11,18 @@ protected $model;
 */
 public $title;
 
+/**
+* @var int
+*/
+public $count;
+
 public function __construct() {
 parent::__construct();
 $this->model = new WikiPageModel();
 }
 public function save() {
 $this->typeValueList->setModelValue($this->model->title, $this->title);
+$this->typeValueList->setModelValue($this->model->count, $this->count);
 $id = parent::save();
 return $id;
 }

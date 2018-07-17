@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchIndexBuilder;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\WorkflowStatus\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 
 class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
@@ -54,6 +54,8 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
         $builder->dataId = $changeEvent->workflowItemId;
         $builder->subject = $subject;
         $builder->createUserInbox($personalTaskRow->responsibleUserId);*/
+
+
 
         $builder = new TaskBuilder();
         $builder->contentType = new PersonalTaskProcess();
