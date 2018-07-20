@@ -62,13 +62,8 @@ class WikiPageSite extends AbstractSite
         $nav = new BootstrapNavigation($page);
         $nav->site = WikiSite::$site;
 
-
-
         $title = new AdminTitle($page);
         $title->content = $pageRow->title;
-
-
-
 
         $dropdown = new BootstrapDropdown($page);
 
@@ -83,7 +78,10 @@ class WikiPageSite extends AbstractSite
 
         }
 
-/*
+
+        $dropdown = new BootstrapDropdown($page);
+
+        //$reader = new WikiContentTypeReader();
         foreach ((new WikiContentTypeCollection())->getContentTypeList() as $contentType) {
 
             $site = clone(WikiNewSite::$site);
@@ -91,10 +89,11 @@ class WikiPageSite extends AbstractSite
             $site->addParameter(new ContentTypeParameter($contentType->id));
             $site->addParameter($pageParameter);
 
-
             $dropdown->addSite($site);
 
-        }*/
+        }
+
+
 
 
         $item = new WikiContentItem($page);

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Form\Draft;
 
 
 use Nemundo\Model\Definition\Model\AbstractModel;
-use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
 use Nemundo\Workflow\App\Workflow\Form\Change\WorkflowChangeFormTrait;
 use Nemundo\Workflow\Parameter\DraftEditParameter;
 
@@ -34,7 +34,7 @@ class WorkflowDraftChangeForm extends AbstractWorkflowDraftForm
 
             $itemId = $this->saveData();
 
-            $builder = new WorkflowStatusChangeBuilder();
+            $builder = new StatusChangeBuilder();
             $builder->workflowId = $this->workflowId;
             $builder->workflowItemId = $itemId;
             $builder->workflowStatus = $this->workflowStatus;

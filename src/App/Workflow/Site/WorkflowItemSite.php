@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Item\AbstractProcessItem;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 
 
@@ -71,11 +71,11 @@ class WorkflowItemSite extends AbstractSite
 
         $item = $process->getItem($page);
         $item->dataId = $workflowRow->dataId;
-
+        //$item->workflowId = $workflowId;
 
         $btn = new WorkflowActionButton($page);
         $btn->workflowId = $workflowRow->id;
-        $btn->statusChangeRedirectSite = SearchStatusChangeSite::$site;
+        $btn->statusChangeRedirectSite = StatusChangeSite::$site;
 
 
         /** @var AbstractProcessItem $item */

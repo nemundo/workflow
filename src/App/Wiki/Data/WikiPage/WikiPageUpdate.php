@@ -17,6 +17,11 @@ public $title;
 */
 public $count;
 
+/**
+* @var string
+*/
+public $url;
+
 public function __construct() {
 parent::__construct();
 $this->model = new WikiPageModel();
@@ -24,6 +29,7 @@ $this->model = new WikiPageModel();
 public function update() {
 $this->typeValueList->setModelValue($this->model->title, $this->title);
 $this->typeValueList->setModelValue($this->model->count, $this->count);
+$this->typeValueList->setModelValue($this->model->url, $this->url);
 parent::update();
 }
 }

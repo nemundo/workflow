@@ -37,16 +37,20 @@ class WikiContentItem extends AbstractContentItem
             $title = new AdminSubtitle($this);
             $title->content = $contentType->name;
 
-
             $item = $contentType->getItem($this);
             $item->dataId = $wikiRow->dataId;
             $item->id = $wikiRow->dataId;
             $item->tagName = 'div';
 
-            $btn = new AdminButton($this);
-            $btn->site = clone(WikiEditSite::$site);
-            $btn->site->addParameter(new WikiItemParameter($wikiRow->id));
-            new EditIcon($btn);
+
+            $formUpdate = $contentType->getFormUpdate();
+            if ($formUpdate !== null) {
+                $btn = new AdminButton($this);
+                $btn->site = clone(WikiEditSite::$site);
+                $btn->site->addParameter(new WikiItemParameter($wikiRow->id));
+                new EditIcon($btn);
+            }
+
 
             $btn = new AdminButton($this);
             $btn->site = clone(WikiItemDeleteSite::$site);
@@ -68,6 +72,7 @@ class WikiContentItem extends AbstractContentItem
         }
 
 
+        /*
 
         $title = new AdminTitle($this);
         $title->content = 'Gelöschte Objekte';
@@ -96,8 +101,7 @@ class WikiContentItem extends AbstractContentItem
             (new Hr($this));
 
         }
-
-
+*/
 
 
         return parent::getHtml();

@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowModel;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowView;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
@@ -50,18 +51,17 @@ class WorkflowItemAdminSite extends AbstractSite
         $view->dataId = $workflowId;
 
 
-        $statusChangeReader = new WorkflowStatusChangeReader();
+        $statusChangeReader = new StatusChangeReader();
         $statusChangeReader->model->loadWorkflowStatus();
         $statusChangeReader->model->loadUser();
         $statusChangeReader->filter->andEqual($statusChangeReader->model->workflowId, $workflowId);
 
         foreach ($statusChangeReader->getData() as $statusChangeRow) {
 
-
             $title = new AdminSubtitle($page);
-            $title->content = $statusChangeRow->workflowStatus->workflowStatus;
+            $title->content = $statusChangeRow->workflowStatus->contentType;
 
-            $contentType = $statusChangeRow->workflowStatus->getWorkflowStatusClassObject();
+            $contentType = $statusChangeRow->workflowStatus->getContentTypeClassObject();
 
             $item = $contentType->getItem($page);
             $item->dataId = $statusChangeRow->workflowItemId;

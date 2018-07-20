@@ -59,7 +59,9 @@ class WikiSite extends AbstractSite
         //$form = new WikiPageForm($page);
         //$form->model->action->addInsertAction(new WikiPageAction());
 
-        $form = new WikiPageContentForm($page);
+        //$form = new WikiPageContentForm($page);
+
+        (new WikiPageContentType())->getForm($page);
 
 
         $list = new BootstrapHyperlinkList($page);
@@ -68,12 +70,13 @@ class WikiSite extends AbstractSite
         $pageReader->addOrder($pageReader->model->title);
         foreach ($pageReader->getData() as $pageRow) {
             $site = clone(WikiPageSite::$site);
-            $site->title = $pageRow->title . ' (' . $pageRow->count . ')';
+            $site->title = $pageRow->title . ' (' . $pageRow->count . ') ' . $pageRow->url;
             $site->addParameter(new PageParameter($pageRow->id));
             $list->addSite($site);
         }
 
 
+        /*
         $treeReader = new ContentTreeReader();
         $treeReader->filter->andEqual($treeReader->model->contentTypeId, (new WikiPageContentType())->id);
 
@@ -84,7 +87,7 @@ class WikiSite extends AbstractSite
             $item->dataId = $treeRow->dataId;
 
 
-        }
+        }*/
 
 
         $page->render();

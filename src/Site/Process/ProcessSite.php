@@ -9,7 +9,7 @@ use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\WorkflowNewSite;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 use Nemundo\Workflow\Widget\ProcessOverviewWidget;

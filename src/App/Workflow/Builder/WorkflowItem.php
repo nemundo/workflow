@@ -50,7 +50,7 @@ class WorkflowItem extends AbstractBase
 
         $this->workflowNumber = $this->workflowRow->workflowNumber;
         $this->subject = $this->workflowRow->subject;
-        $this->workflowStatus = $this->workflowRow->workflowStatus->getWorkflowStatusClassObject();
+        $this->workflowStatus = $this->workflowRow->workflowStatus->getContentTypeClassObject();
 
     }
 

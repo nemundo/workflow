@@ -7,14 +7,15 @@ use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Container\Start\WorkflowStartContainer;
-use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowContentItem;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\Workflow\Form\Start\WorkflowStartForm;
+use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 
 
-abstract class AbstractProcess extends AbstractContentTypeContainer  // AbstractDataContentType
+abstract class AbstractProcess extends AbstractDataContentType
 {
 
     use UserAccessTrait;
@@ -77,7 +78,7 @@ abstract class AbstractProcess extends AbstractContentTypeContainer  // Abstract
 
         //$this->processItemClassName = WorkflowViewList::class;
 
-        $this->itemClass = WorkflowContentItem::class;
+        $this->itemClass = ProcessContentItem::class;
 
         $this->parameterClass = WorkflowParameter::class;
 
@@ -89,8 +90,19 @@ abstract class AbstractProcess extends AbstractContentTypeContainer  // Abstract
     public function getForm($parentItem = null)
     {
 
-        $form = new WorkflowStartForm($parentItem);
-        $form->process = $this;
+        //$form = new WorkflowStartForm($parentItem);
+        //$form->process = $this;
+
+        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        $form = $workflowStatus->getForm($parentItem);
+
+
+
+
+
+//        $this->model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClass);
+
+
         return $form;
 
     }

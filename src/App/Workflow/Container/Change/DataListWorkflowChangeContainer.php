@@ -6,7 +6,7 @@ use Nemundo\Core\Random\RandomUniqueId;
 use Nemundo\Model\Admin\ModelAdmin;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Action\ActionUrlParameter;
-use Nemundo\Workflow\App\Workflow\Builder\WorkflowStatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeValue;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeCount;
@@ -23,7 +23,7 @@ class DataListWorkflowChangeContainer extends AbstractWorkflowChangeContainer
         $count->filter->andEqual($count->model->workflowId, $this->workflowId);
 
         if ($count->getCount() == 0) {
-            $change = new WorkflowStatusChangeBuilder();
+            $change = new StatusChangeBuilder();
             $change->workflowStatus = $this->workflowStatus;
             $change->workflowId = $this->workflowId;
             $change->workflowItemId = (new RandomUniqueId())->getUniqueId();

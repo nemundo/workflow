@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\Com\Process;
 use Nemundo\Design\Bootstrap\Dropdown\BootstrapDropdown;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\WorkflowNewSite;
 
 class ProcessDropdown extends BootstrapDropdown
@@ -28,8 +28,6 @@ class ProcessDropdown extends BootstrapDropdown
             $process = $processRow->getProcessClassObject();
 
             if ($process->checkUserVisibility()) {
-
-                //$site = clone(WorkflowNewSite::$site);
 
                 $site = clone($this->redirectSite);
                 $site->title = $processRow->process;

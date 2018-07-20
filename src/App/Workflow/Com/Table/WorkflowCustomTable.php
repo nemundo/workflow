@@ -10,6 +10,7 @@ use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemAdminSite;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Core\Directory\TextDirectory;
@@ -21,7 +22,7 @@ use Nemundo\Workflow\Parameter\DataIdParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowDeleteSite;
-use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
+use Nemundo\Workflow\App\Workflow\Usergroup\WorkflowAdministratorUsergroup;
 
 
 class WorkflowCustomTable extends AbstractHtmlContainerList
@@ -43,6 +44,12 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
 
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
+
+        $processParameter = new ProcessParameter();
+        if ($processParameter->exists()) {
+            $workflowReader->filter->andEqual($workflowReader->model->processId, $processParameter->getValue());
+        }
+
 
         $workflowReader->paginationLimit = 30;
 
@@ -113,7 +120,7 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
                 $draft = ' (Entwurf)';
             }
 
-            $row->addText($workflowRow->workflowStatus->workflowStatus . $draft);
+            $row->addText($workflowRow->workflowStatus->contentType . $draft);
 
             //$row->addText($workflowRow->workflowStatus->workflowStatusText);
 

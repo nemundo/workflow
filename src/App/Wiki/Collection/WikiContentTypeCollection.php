@@ -1,22 +1,24 @@
 <?php
 
-namespace Nemundo\Workflow\App\Wiki\Container;
+namespace Nemundo\Workflow\App\Wiki\Collection;
 
 
+use Nemundo\App\Content\Collection\AbstractContentTypeCollection;
 use Nemundo\App\Content\Type\AbstractContentTypeContainer;
+use Nemundo\Workflow\App\ContentTemplate\Content\Type\ImageTemplateContentType;
+use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel;
 
 
-class WikiContainer extends AbstractContentTypeContainer
+class WikiContentTypeCollection extends AbstractContentTypeCollection
 {
 
 
-    protected function loadData()
+    protected function loadCollection()
     {
 
-        $this->name = 'Wiki';
-        $this->id = '6b6a055b-6e6c-46ca-832c-3a91a0833848';
-        $this->modelClass = WikiPageModel::class;
+        $this->addContentType(new LargeTextTemplateContentType());
+        $this->addContentType(new ImageTemplateContentType());
 
 
     }

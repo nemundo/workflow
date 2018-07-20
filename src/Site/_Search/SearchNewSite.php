@@ -15,7 +15,7 @@ use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Form\WorkflowChangeForm;
 use Nemundo\Workflow\Form\WorkflowStartForm;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Site\Inbox\WorkflowInboxSite;
 
 class SearchNewSite extends AbstractSite

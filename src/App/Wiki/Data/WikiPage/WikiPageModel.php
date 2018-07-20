@@ -16,6 +16,11 @@ public $title;
 */
 public $count;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $url;
+
 protected function loadModel() {
 $this->tableName = "wiki_wiki_page";
 $this->aliasTableName = "wiki_wiki_page";
@@ -50,6 +55,15 @@ $this->count->aliasFieldName = "wiki_wiki_page_count";
 $this->count->label = "Count";
 $this->count->allowNullValue = "";
 $this->count->visible->form = false;
+
+$this->url = new \Nemundo\Model\Type\Text\TextType($this);
+$this->url->tableName = "wiki_wiki_page";
+$this->url->fieldName = "url";
+$this->url->aliasFieldName = "wiki_wiki_page_url";
+$this->url->label = "Url";
+$this->url->allowNullValue = "";
+$this->url->visible->form = false;
+$this->url->length = 255;
 
 }
 }

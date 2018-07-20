@@ -7,6 +7,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Com\Html\Form\Event\AbstractAfterSubmitEvent;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Wiki\Content\Type\AbstractWikiContentType;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\Wiki;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiCount;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
@@ -21,7 +22,7 @@ class WikiEvent extends AbstractAfterSubmitEvent
     public $pageId;
 
     /**
-     * @var AbstractContentType
+     * @var AbstractContentType|AbstractWikiContentType
      */
     public $contentType;
 
@@ -36,6 +37,9 @@ class WikiEvent extends AbstractAfterSubmitEvent
         $data->save();
 
 
+        //(new Debug())->write($this->pageId);
+        //exit;
+
         $count = new WikiCount();
         $count->filter->andEqual($count->model->pageId, $this->pageId);
         $count->filter->andEqual($count->model->delete, false);
@@ -44,6 +48,11 @@ class WikiEvent extends AbstractAfterSubmitEvent
         $update = new WikiPageUpdate();
         $update->count = $itemCount;
         $update->updateById($this->pageId);
+
+        if ($this->contentType->isObjectOfClass(AbstractWikiContentType::class)) {
+            $this->contentType->onWikiCreate($this->pageId, $id);
+            $this->contentType->onCreate($id);
+        }
 
 
         //$this->contentType->onCreate($id);

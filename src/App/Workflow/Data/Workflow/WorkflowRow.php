@@ -62,7 +62,7 @@ public $itemOrder;
 public $workflowStatusId;
 
 /**
-* @var \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusRow
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeRow
 */
 public $workflowStatus;
 
@@ -118,7 +118,7 @@ $this->closed = $this->getModelValue($model->closed);
 $this->itemOrder = $this->getModelValue($model->itemOrder);
 $this->workflowStatusId = $this->getModelValue($model->workflowStatusId);
 if ($model->workflowStatus !== null) {
-$this->loadNemundoWorkflowAppWorkflowDataWorkflowStatusWorkflowStatusworkflowStatusRow($model->workflowStatus);
+$this->loadNemundoAppContentDataContentTypeContentTypeworkflowStatusRow($model->workflowStatus);
 }
 $value = $this->getModelValue($model->deadline);
 if ($value !== "0000-00-00") {
@@ -138,8 +138,8 @@ $this->dateTimeModified = new \Nemundo\Core\Type\DateTime\DateTime($this->getMod
 private function loadNemundoWorkflowAppWorkflowDataProcessProcessprocessRow($model) {
 $this->process = new \Nemundo\Workflow\App\Workflow\Data\Process\ProcessRow($this->row, $model);
 }
-private function loadNemundoWorkflowAppWorkflowDataWorkflowStatusWorkflowStatusworkflowStatusRow($model) {
-$this->workflowStatus = new \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusRow($this->row, $model);
+private function loadNemundoAppContentDataContentTypeContentTypeworkflowStatusRow($model) {
+$this->workflowStatus = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

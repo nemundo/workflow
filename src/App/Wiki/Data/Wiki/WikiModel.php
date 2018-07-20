@@ -7,7 +7,7 @@ class WikiModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalIdType
+* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
 */
 public $pageId;
 
@@ -46,7 +46,7 @@ $this->tableName = "wiki_wiki";
 $this->aliasTableName = "wiki_wiki";
 $this->label = "Wiki";
 
-$this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
+$this->primaryIndex = new \Nemundo\Db\Index\UniqueIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "wiki_wiki";
@@ -59,7 +59,7 @@ $this->id->visible->table = false;
 $this->id->visible->view = false;
 $this->id->visible->form = false;
 
-$this->pageId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
+$this->pageId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->pageId->tableName = "wiki_wiki";
 $this->pageId->fieldName = "page";
 $this->pageId->aliasFieldName = "wiki_wiki_page";

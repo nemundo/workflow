@@ -6,7 +6,7 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
-use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowContentItem;
+use Nemundo\Workflow\App\Workflow\ContentItem\ProcessContentItem;
 use Nemundo\Workflow\Parameter\DataIdParameter;
 use Schleuniger\App\Kvp\Site\KvpWorkflowStatusChangeSite;
 use Schleuniger\App\Task\Template\TaskTemplate;
@@ -61,7 +61,7 @@ class PersonalTaskItemSite extends AbstractSite
         $personalTaskRow = (new PersonalTaskReader())->getRowById($dataId);
 
 
-        $workflow = new WorkflowContentItem($page);
+        $workflow = new ProcessContentItem($page);
         $workflow->showBaseData = false;
         $workflow->workflowId = $personalTaskRow->workflowId;
         $workflow->statusChangeRedirectSite = PersonalTaskStatusChangeSite::$site;

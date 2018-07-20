@@ -19,7 +19,7 @@ use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Workflow\Inbox\WorkflowSorting;
 use Nemundo\Workflow\Inbox\WorkflowStatus;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 
 
 class WorkflowSearchSite extends AbstractSite
@@ -33,13 +33,13 @@ class WorkflowSearchSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Workflow Search';
+        $this->title = 'Workflow';
         $this->url = 'workflow-search';
 
         new WorkflowNewSite($this);
         new WorkflowItemSite($this);
         new WorkflowItemAdminSite($this);
-        new SearchStatusChangeSite($this);
+        new StatusChangeSite($this);
         new WorkflowDeleteSite($this);
         new DraftReleaseSite($this);
 

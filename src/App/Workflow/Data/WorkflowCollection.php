@@ -5,8 +5,7 @@ class WorkflowCollection extends AbstractModelCollection {
 protected function loadCollection() {
 $this->addModel(new \Nemundo\Workflow\App\Workflow\Data\MailConfig\MailConfigModel());
 $this->addModel(new \Nemundo\Workflow\App\Workflow\Data\Process\ProcessModel());
+$this->addModel(new \Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeModel());
 $this->addModel(new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowModel());
-$this->addModel(new \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusModel());
-$this->addModel(new \Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeModel());
 }
 }

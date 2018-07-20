@@ -21,11 +21,17 @@ public $title;
 */
 public $count;
 
+/**
+* @var string
+*/
+public $url;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->title = $this->getModelValue($model->title);
 $this->count = $this->getModelValue($model->count);
+$this->url = $this->getModelValue($model->url);
 }
 }

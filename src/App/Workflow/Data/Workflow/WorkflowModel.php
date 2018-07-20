@@ -57,7 +57,7 @@ public $itemOrder;
 public $workflowStatusId;
 
 /**
-* @var \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
 public $workflowStatus;
 
@@ -229,7 +229,7 @@ $this->process->label = "Process";
 }
 public function loadWorkflowStatus() {
 if ($this->workflowStatus == null) {
-$this->workflowStatus = new \Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusExternalType($this, "workflow_workflow_workflow_status");
+$this->workflowStatus = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "workflow_workflow_workflow_status");
 $this->workflowStatus->tableName = "workflow_workflow";
 $this->workflowStatus->fieldName = "workflow_status";
 $this->workflowStatus->aliasFieldName = "workflow_workflow_workflow_status";

@@ -27,7 +27,7 @@ use Nemundo\Workflow\Data\UserNotification\UserNotificationCount;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationPaginationReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;
 use Nemundo\Workflow\Parameter\NotificationParameter;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\WorkflowNewSite;
 

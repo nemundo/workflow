@@ -16,6 +16,11 @@ public $title;
 */
 public $count;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $url;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = WikiPageModel::class;
@@ -41,6 +46,13 @@ $this->count->tableName = $this->parentFieldName . "_" . $this->externalTableNam
 $this->count->aliasFieldName = $this->count->tableName . "_" . $this->count->fieldName;
 $this->count->label = "Count";
 $this->addType($this->count);
+
+$this->url = new \Nemundo\Model\Type\Text\TextType();
+$this->url->fieldName = "url";
+$this->url->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->url->aliasFieldName = $this->url->tableName . "_" . $this->url->fieldName;
+$this->url->label = "Url";
+$this->addType($this->url);
 
 }
 }

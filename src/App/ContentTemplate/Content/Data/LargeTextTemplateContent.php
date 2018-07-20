@@ -12,7 +12,7 @@ class LargeTextTemplateContent extends LargeText
     /**
      * @var string
      */
-    public $parentId;
+    //public $parentId;
 
     public function save()
     {
@@ -20,7 +20,8 @@ class LargeTextTemplateContent extends LargeText
 
         $dataId = parent::save();
 
-        (new LargeTextTemplateContentType())->onCreate($dataId, $this->parentId);
+        //(new LargeTextTemplateContentType())->onCreate($dataId, $this->parentId);
+        (new LargeTextTemplateContentType())->onCreate($dataId);
 
         return $dataId;
 

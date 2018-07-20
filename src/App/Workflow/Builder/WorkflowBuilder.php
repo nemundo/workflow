@@ -86,6 +86,7 @@ class WorkflowBuilder extends AbstractContentBuilder
 
 
 
+
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->contentType->startWorkflowStatusClass);
 
 
@@ -144,7 +145,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         $update->typeValueList->setModelValue($baseModel->workflow, $workflowId);
         $update->updateById($this->dataId);
 
-        $action = new WorkflowStatusChangeBuilder();
+        $action = new StatusChangeBuilder();
         $action->workflowStatus =  $workflowStatus;
         $action->workflowId = $workflowId;
         $action->workflowItemId = $this->workflowItemId;

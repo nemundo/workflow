@@ -18,7 +18,7 @@ use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Workflow\Inbox\WorkflowSorting;
 use Nemundo\Workflow\Inbox\WorkflowStatus;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 
 
 // WorkflowAdminSite

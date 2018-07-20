@@ -9,7 +9,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Container\Start\WorkflowStartContainer;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
-use Nemundo\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 
 
 class WorkflowNewSite extends AbstractSite
