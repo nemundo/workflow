@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Message\Event;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Com\Html\Form\Event\AbstractAfterSubmitEvent;
+use Nemundo\Com\Html\Form\Event\AbstractEvent;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Message\ContentType\AbstractMessageContentType;
 use Nemundo\Workflow\App\Message\ContentType\MessageContentType;
@@ -14,7 +14,7 @@ use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemCount;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
-class MessageEvent extends AbstractAfterSubmitEvent
+class MessageEvent extends AbstractEvent
 {
 
     /**

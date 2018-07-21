@@ -7,7 +7,7 @@ use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 class WikiNewsContentType extends NewsContentType

@@ -3,9 +3,9 @@
 namespace Nemundo\Workflow\App\Survey\Type;
 
 
-use Nemundo\App\Content\Type\AbstractContentTypeSequence;
+use Nemundo\App\Content\Type\AbstractSequenceContentType;
 
-class SurveyType extends AbstractContentTypeSequence
+class SurveyTypeContentType extends AbstractSequenceContentType
 {
 
     protected function loadData()

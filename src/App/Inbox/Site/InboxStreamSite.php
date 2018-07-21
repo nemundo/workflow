@@ -17,7 +17,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Inbox\Com\ContentTypeHyperlinkList;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxPaginationReader;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class InboxStreamSite extends AbstractSite
 {

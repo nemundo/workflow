@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\News\Site;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class CommentRedirectSite extends AbstractSite
 {

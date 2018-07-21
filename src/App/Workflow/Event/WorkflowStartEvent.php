@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Com\Html\Form\Event\AbstractAfterSubmitEvent;
+use Nemundo\Com\Html\Form\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 
-class WorkflowStartEvent extends AbstractAfterSubmitEvent
+class WorkflowStartEvent extends AbstractEvent
 {
 
     /**

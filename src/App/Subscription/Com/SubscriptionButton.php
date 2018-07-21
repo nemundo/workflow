@@ -10,8 +10,10 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionCount;
+use Nemundo\Workflow\App\Subscription\Parameter\SubscriptionParameter;
+use Nemundo\Workflow\App\Subscription\Site\SubscriptionDeleteSite;
 use Nemundo\Workflow\App\Subscription\Site\SubscriptionSite;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 
 
 class SubscriptionButton extends AbstractHtmlContainerList
@@ -50,6 +52,14 @@ class SubscriptionButton extends AbstractHtmlContainerList
         } else {
             $p = new Paragraph($this);
             $p->content = 'Du bist Abonnent';
+
+            $button = new AdminButton($this);
+            $button->content = 'Abo löschen';
+            $button->site = SubscriptionDeleteSite::$site;
+            //$button->site->addParameter(new SubscriptionParameter())
+            $button->site->addParameter(new DataIdParameter($this->dataId));
+            $button->site->addParameter(new ContentTypeParameter($this->contentType->id));
+
         }
 
         return parent::getHtml();

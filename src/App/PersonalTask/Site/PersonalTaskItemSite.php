@@ -7,7 +7,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\Workflow\ContentItem\ProcessContentItem;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Schleuniger\App\Kvp\Site\KvpWorkflowStatusChangeSite;
 use Schleuniger\App\Task\Template\TaskTemplate;
 use Schleuniger\Usergroup\SchleunigerUsergroup;

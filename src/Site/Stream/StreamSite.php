@@ -11,7 +11,7 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Stream\Data\Stream\StreamReader;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Paranautik\App\Meteoschweiz\Content\AllgemeineLageContentItem;
 
 class StreamSite extends AbstractSite

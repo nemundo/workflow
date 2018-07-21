@@ -7,7 +7,7 @@ use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\Subscription;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class SubscriptionSite extends AbstractSite
 {
@@ -22,6 +22,8 @@ class SubscriptionSite extends AbstractSite
         $this->title = 'Subscription';
         $this->url = 'subscription';
         $this->menuActive = false;
+
+        new SubscriptionDeleteSite($this);
     }
 
 

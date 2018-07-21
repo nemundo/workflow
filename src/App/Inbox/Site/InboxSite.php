@@ -45,6 +45,7 @@ class InboxSite extends AbstractSite
 
         new InboxRedirectSite($this);
         new InboxArchiveSite($this);
+        new ContentTypeArchiveSite($this);
 
     }
 
@@ -81,6 +82,17 @@ class InboxSite extends AbstractSite
 
         $contentTypeList = new ContentTypeHyperlinkList($col1);
         $contentTypeList->redirectSite = InboxSite::$site;
+
+
+        if ($contentTypeParameter->exists()) {
+
+            $btn = new AdminButton($col2);
+            $btn->content = 'alle löschen';
+            $btn->site = ContentTypeArchiveSite::$site;
+            $btn->site->addParameter($contentTypeParameter);
+
+        }
+
 
 
         /*
@@ -205,7 +217,8 @@ class InboxSite extends AbstractSite
         $pagination->paginationReader = $inboxReader;
 
 
-        //new InboxWidget($col2);
+
+
 
 
         $page->render();

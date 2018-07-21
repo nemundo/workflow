@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Wiki\Redirect;
 
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\App\Content\Redirect\AbstractContentRedirect;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class WikiContentRedirect extends AbstractContentRedirect
 {

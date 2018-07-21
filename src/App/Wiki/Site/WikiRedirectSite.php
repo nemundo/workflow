@@ -9,7 +9,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlRedirect;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
-use Nemundo\Workflow\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class WikiRedirectSite extends AbstractSite
 {

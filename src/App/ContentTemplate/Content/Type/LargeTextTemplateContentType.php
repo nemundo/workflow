@@ -16,7 +16,7 @@ class LargeTextTemplateContentType extends AbstractContentType
         $this->name = 'Large Text (Template)';
         $this->id = '46e84be8-7173-41ff-8c7a-b7f91f33a0fb';
         $this->modelClass = LargeTextModel::class;
-        $this->formClass = LargeTextContentTemplateForm::class;
+        //$this->formClass = LargeTextContentTemplateForm::class;
 
     }
 
