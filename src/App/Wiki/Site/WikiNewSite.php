@@ -3,8 +3,11 @@
 namespace Nemundo\Workflow\App\Wiki\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\Factory\ContentTypeFactory;
+use Nemundo\App\Content\Form\ContentModelForm;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Model\Form\ModelForm;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
@@ -44,12 +47,31 @@ class WikiNewSite extends AbstractSite
 
         $pageParameter = new PageParameter();
 
-        $contentTypeRow = (new ContentTypeReader())->getRowById($contentTypeId);
-        $contentType = $contentTypeRow->getContentTypeClassObject();
+        //$contentTypeRow = (new ContentTypeReader())->getRowById($contentTypeId);
+
+
+        //$contentType = $contentTypeRow->getContentTypeClassObject();
+
+
+        $contentType = (new ContentTypeFactory())->getContentTypeByParameter();
+
 
         $title = new AdminTitle($page);
         $title->content = $contentType->name;
 
+
+        $redirectSite = clone(WikiPageSite::$site);
+        $redirectSite->addParameter($pageParameter);
+
+        $event = new WikiEvent();
+        $event->pageId = (new PageParameter())->getValue();
+        $event->contentType = $contentType;
+
+        $form = $contentType->getForm($page);
+        $form->afterSubmitEvent->addEvent($event);
+        $form->redirectSite = $redirectSite;
+
+        /*
         $event = new WikiEvent();
         $event->pageId = (new PageParameter())->getValue();
         $event->contentType = $contentType;
@@ -61,13 +83,14 @@ class WikiNewSite extends AbstractSite
 
         if ($form !== null) {
 
-            $form->afterSubmitEvent = $event;
+            $form->afterSubmitEvent->addEvent($event);
             $form->redirectSite = $redirectSite;
+
         } else {
             $event->run(null);
             $redirectSite->redirect();
         }
-
+*/
 
         /*
         $form = new WikiForm($page);

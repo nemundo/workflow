@@ -78,7 +78,7 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
     {
 
         parent::loadCom();
-        $this->statusChangeRedirectSite = StatusChangeSite::$site;
+
 
     }
 
@@ -86,16 +86,21 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
     public function getHtml()
     {
 
+
+        $this->statusChangeRedirectSite = StatusChangeSite::$site;
+
+
         /** @var AbstractWorkflowBaseModel $model */
         $model = $this->contentType->getModel();
 
+       /*
         $reader = new ModelDataReader();
         $reader->model = $model;
         $reader->addFieldByModel($model);
         $row = $reader->getRowById($this->dataId);
-        $workflowId = $row->getModelValue($model->workflow);
+        $workflowId = $row->getModelValue($model->workflow);*/
 
-
+$workflowId = $this->dataId;
 
         $workflowRow = (new WorkflowReader())->getRowById($workflowId);
 
@@ -176,13 +181,13 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
 
         }
 
-        if (!$workflowRow->draft) {
+       /* if (!$workflowRow->draft) {
 
             $actionButton = new WorkflowActionButton($colRight);
             $actionButton->workflowId = $workflowId;
             $actionButton->statusChangeRedirectSite = $this->statusChangeRedirectSite;
 
-        }
+        }*/
 
         return parent::getHtml();
 

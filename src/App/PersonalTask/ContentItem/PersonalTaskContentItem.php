@@ -5,7 +5,8 @@ namespace Nemundo\Workflow\App\PersonalTask\ContentItem;
 
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskStatusChangeSite;
-use Nemundo\Workflow\App\Workflow\ContentItem\ProcessContentItem;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
+
 
 class PersonalTaskContentItem extends ProcessContentItem
 {
@@ -18,10 +19,11 @@ class PersonalTaskContentItem extends ProcessContentItem
 
         $personalTaskRow = (new PersonalTaskReader())->getRowById($this->dataId);
 
-        $this->workflowId = $personalTaskRow->workflowId;
+        //$this->workflowId = $personalTaskRow->workflowId;
         $this->statusChangeRedirectSite = PersonalTaskStatusChangeSite::$site;
 
         return parent::getHtml();
+
     }
 
 

@@ -65,13 +65,14 @@ class WorkflowItemSite extends AbstractSite
         //$title = new ProcessTitle($page);
         //$title->process = $process;
 
-
         $title = new AdminTitle($page);
         $title->content = $process->name;
 
         $item = $process->getItem($page);
         $item->dataId = $workflowRow->dataId;
+
         //$item->workflowId = $workflowId;
+
 
         $btn = new WorkflowActionButton($page);
         $btn->workflowId = $workflowRow->id;

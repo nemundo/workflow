@@ -5,10 +5,12 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Form\AcceptFileType;
+use Nemundo\Design\Bootstrap\Form\BootstrapForm;
 use Nemundo\Design\Bootstrap\FormElement\BootstrapFileUpload;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\TemplateImageContent;
+use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImage;
 
-class ImageContentTemplateForm extends ContentTreeForm
+class ImageContentTemplateForm extends BootstrapForm  // ContentTreeForm
 {
 
     /**
@@ -31,12 +33,14 @@ class ImageContentTemplateForm extends ContentTreeForm
     protected function onSubmit()
     {
 
-        $content = new TemplateImageContent();
-        $content->parentId = $this->parentId;
+        $content = new ContentTemplateImage();  // TemplateImageContent();
+        //$content->parentId = $this->parentId;
         $content->image->fromFileRequest($this->image->getFileRequest());
         $dataId = $content->save();
 
-        $this->runAfterSubmitEvent($dataId);
+        $this->afterSubmitEvent->run($dataId);  // runAfterSubmitEvent-> ($dataId);
+
+        //return parent::onSubmit();
 
     }
 

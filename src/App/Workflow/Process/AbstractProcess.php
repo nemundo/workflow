@@ -7,6 +7,7 @@ use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Container\Start\WorkflowStartContainer;
+use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\Workflow\Form\Start\WorkflowStartForm;
@@ -94,10 +95,12 @@ abstract class AbstractProcess extends AbstractDataContentType
         //$form->process = $this;
 
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+
+        $event = new WorkflowStartEvent();
+        $event->process = $this;
+
         $form = $workflowStatus->getForm($parentItem);
-
-
-
+        $form->afterSubmitEvent->addEvent($event);
 
 
 //        $this->model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClass);

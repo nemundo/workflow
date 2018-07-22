@@ -71,16 +71,18 @@ class WorkflowNewSite extends AbstractSite
 
 
         $form = $process->getForm($page);
+        //$form->redirectToItemSite = true;
 
-        $event = new WorkflowStartEvent();
-        $event->process = $process;
 
-        $form->afterSubmitEvent = $event;
+
+//        $event = new WorkflowStartEvent();
+//        $event->process = $process;
+
+//        $form->afterSubmitEvent->addEvent( $event);
 
 
         $form->redirectSite = clone(WorkflowSearchSite::$site);
         $form->redirectSite->addParameter(new ProcessParameter($processId));
-
 
 
         /*

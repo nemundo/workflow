@@ -82,11 +82,6 @@ class WorkflowBuilder extends AbstractContentBuilder
 
         $baseModel = $this->contentType->getModel();
 
-
-
-
-
-
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->contentType->startWorkflowStatusClass);
 
 

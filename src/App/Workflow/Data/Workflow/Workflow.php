@@ -9,6 +9,11 @@ protected $model;
 /**
 * @var string
 */
+public $id;
+
+/**
+* @var string
+*/
 public $processId;
 
 /**
@@ -57,6 +62,8 @@ $this->model = new WorkflowModel();
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
 }
 public function save() {
+$id = $this->id;
+$this->typeValueList->setModelValue($this->model->id, $id);
 $this->typeValueList->setModelValue($this->model->processId, $this->processId);
 $this->typeValueList->setModelValue($this->model->number, $this->number);
 $this->typeValueList->setModelValue($this->model->workflowNumber, $this->workflowNumber);

@@ -11,7 +11,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
-use Nemundo\Workflow\App\Workflow\Event\WorkflowItemEvent;
+use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
@@ -86,19 +86,31 @@ class StatusChangeSite extends AbstractSite
         $title->workflowId = $workflowId;
 
 
-        $event = new WorkflowItemEvent();
+        $redirectSite = WorkflowItemSite::$site;
+        $redirectSite->addParameter(new WorkflowParameter($workflowId));
+
+        $event = new WorkflowEvent();
         $event->workflowStatus = $workflowStatus;
         $event->workflowId = $workflowId;
-
 
         $form = $workflowStatus->getForm();
 
         if ($form == null) {
             $event->run(null);
+            $redirectSite->redirect();
         } else {
             $page->addCom($form);
-            $form->afterSubmitEvent = $event;
+            //$form->afterSubmitEvent = $event;
+
+            $form->afterSubmitEvent->addEvent($event);
+            $form->redirectSite = $redirectSite;
+
+
         }
+
+
+        /*
+
 
         /*
         $container = new WorkflowStatusChangeContainer($page);

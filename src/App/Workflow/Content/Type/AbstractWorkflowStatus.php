@@ -106,4 +106,9 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
 
     }
 
+
+    public function onWorkflowCreate($dataId, $workflowId) {
+
+    }
+
 }

@@ -73,7 +73,7 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
         $header->addText('Nr.');
         $header->addText('Betreff');
         $header->addText('Status');
-        $header->addText('Text');
+        //$header->addText('Text');
         $header->addText('Abgeschlossen');
         $header->addText('Erledigen bis');
         $header->addText('Zugewiesen an Benutzer');
