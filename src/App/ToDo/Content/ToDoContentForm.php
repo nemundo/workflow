@@ -20,8 +20,10 @@ class ToDoContentForm extends BootstrapModelForm
 
     protected function onSubmit()
     {
+
         $id = parent::onSubmit();
-        $this->runAfterSubmitEvent($id);
+        $this->afterSubmitEvent->run($id);
+
     }
 
 }

@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Com\Button;
 
 
 use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
@@ -77,7 +78,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
 
             //$btn->site = $site;
             $btn->site = clone($this->statusChangeRedirectSite);
-            $btn->site->addParameter(new WorkflowStatusParameter($followingStatusClass->id));
+            $btn->site->addParameter(new ContentTypeParameter($followingStatusClass->id));
             $btn->site->addParameter(new WorkflowParameter($this->workflowId));
 
 

@@ -12,7 +12,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 use Nemundo\Workflow\App\Wiki\Form\WikiForm;
-use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\App\Content\Data\ContentType\ContentTypeReader;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 
@@ -45,7 +45,7 @@ class WikiNewSite extends AbstractSite
 
         $contentTypeId = (new ContentTypeParameter())->getValue();
 
-        $pageParameter = new PageParameter();
+        $pageParameter = new WikiPageParameter();
 
         //$contentTypeRow = (new ContentTypeReader())->getRowById($contentTypeId);
 
@@ -64,7 +64,7 @@ class WikiNewSite extends AbstractSite
         $redirectSite->addParameter($pageParameter);
 
         $event = new WikiEvent();
-        $event->pageId = (new PageParameter())->getValue();
+        $event->pageId = (new WikiPageParameter())->getValue();
         $event->contentType = $contentType;
 
         $form = $contentType->getForm($page);

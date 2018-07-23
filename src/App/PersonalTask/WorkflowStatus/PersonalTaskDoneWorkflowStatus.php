@@ -30,15 +30,15 @@ class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus  // Abst
     }
 
 
-    public function onChange(StatusChangeEvent $changeEvent)
+    public function onWorkflowCreate($dataId, $workflowId)
     {
 
         $update = new PersonalTaskUpdate();
         $update->done = true;
-        $update->updateById($changeEvent->getDataId());
+        $update->updateById($workflowId);
 
 
-        (new TaskItem($changeEvent->getDataId()))
+        (new TaskItem($workflowId))
             ->archiveTask();
 
 

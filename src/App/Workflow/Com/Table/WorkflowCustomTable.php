@@ -6,6 +6,9 @@ namespace Nemundo\Workflow\App\Workflow\Com\Table;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Log\LogMessage;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
@@ -23,6 +26,7 @@ use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowDeleteSite;
 use Nemundo\Workflow\App\Workflow\Usergroup\WorkflowAdministratorUsergroup;
+use Schleuniger\App\ChangeOrder\Site\Task\ChangeOrderTaskItemSite;
 
 
 class WorkflowCustomTable extends AbstractHtmlContainerList
@@ -50,6 +54,7 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             $workflowReader->filter->andEqual($workflowReader->model->processId, $processParameter->getValue());
         }
 
+        $workflowReader->addOrder($workflowReader->model->dateTime, SortOrder::DESCENDING);
 
         $workflowReader->paginationLimit = 30;
 
@@ -101,6 +106,11 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             $row = new BootstrapClickableTableRow($table);
 
             $process = $workflowRow->process->getProcessClassObject();
+
+            if ($process == null) {
+                (new LogMessage())->writeError('no process object');
+                exit;
+            }
 
 
             if (($workflowRow->deadline !== null) && (!$workflowRow->closed)) {
@@ -169,7 +179,6 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             $site = clone(WorkflowItemSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));
             $site->addParameter(new DataIdParameter($workflowRow->dataId));
-
 
             $row->addClickableSite($site);
 

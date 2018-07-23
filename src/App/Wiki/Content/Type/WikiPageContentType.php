@@ -7,9 +7,10 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\File\TextFile;
 use Nemundo\Project\ProjectConfig;
 use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentForm;
+use Nemundo\Workflow\App\Wiki\Content\Item\WikiPageContentItem;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
-use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
 
 class WikiPageContentType extends AbstractWikiContentType  // AbstractContentType
@@ -23,11 +24,14 @@ class WikiPageContentType extends AbstractWikiContentType  // AbstractContentTyp
 
         $this->formClass = WikiPageContentForm::class;
 
+        $this->itemClass = WikiPageContentItem::class;
         $this->itemSite = WikiPageSite::$site;
-        $this->parameterClass = PageParameter::class;
+        $this->parameterClass = WikiPageParameter::class;
     }
 
 
+
+    /*
     public function onCreate($dataId)
     {
 
@@ -38,7 +42,7 @@ class WikiPageContentType extends AbstractWikiContentType  // AbstractContentTyp
         $file->filename = ProjectConfig::$tmpPath . $row->title . '.txt';
         $file->saveFile();
 
-    }
+    }*/
 
 
 }

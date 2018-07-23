@@ -31,7 +31,7 @@ class SubjectChangeWorkflowStatus extends AbstractWorkflowStatus
     public function onChange(StatusChangeEvent $changeEvent)
     {
 
-        $row = (new SubjectChangeReader())->getRowById($changeEvent->workflowItemId);
+        $row = (new SubjectChangeReader())->getRowById($changeEvent->dataId);
 
         (new SubjectWorkflowAction($changeEvent))
             ->changeSubject($row->subject);

@@ -51,10 +51,11 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $title = new AdminTitle($this);
         $title->content = $workflowTitle;  // $workflowRow->workflowNumber . ': ' . $workflowRow->subject;
 
-        /*$link = new Hyperlink($this);
+        $link = new Hyperlink($this);
         $link->content = 'Zum Workflow';
-        $link->site = clone($process->site);
-        $link->site->addParameter(new WorkflowParameter($this->workflowId));*/
+        $link->site = $process->getItemSite($this->workflowId);
+        //clone($process->site);
+        //$link->site->addParameter(new WorkflowParameter($this->workflowId));*/
 
         $table = new AdminLabelValueTable($this);
 

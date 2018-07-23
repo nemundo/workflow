@@ -18,7 +18,7 @@ use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentItem;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentTypeReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
-use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 
 
@@ -54,7 +54,7 @@ class WikiPageSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
-        $pageParameter = new PageParameter();
+        $pageParameter = new WikiPageParameter();
         $pageId = $pageParameter->getValue();
 
         $pageRow = (new WikiPageReader())->getRowById($pageId);

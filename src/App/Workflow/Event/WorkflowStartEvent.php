@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
@@ -62,6 +63,8 @@ class WorkflowStartEvent extends AbstractEvent
         $data->dataId = $id;
         $data->save();
 
+
+        //(new Debug())->write('id'.$id);
 
         $event = new WorkflowEvent();
         $event->workflowStatus = $startWorkflowStatus;

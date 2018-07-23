@@ -5,8 +5,10 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 
 use Nemundo\App\Content\Event\AbstractContentEvent;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
+use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChange;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
@@ -24,11 +26,16 @@ class WorkflowEvent extends AbstractEvent
      */
     public $workflowId;
 
+    /**
+     * @var bool
+     */
+    public $draft = false;
+
 
     public function run($id)
     {
 
-
+        //(new Debug())->write('workflow event');
         // StatusLog
         // dataId
 
@@ -36,7 +43,7 @@ class WorkflowEvent extends AbstractEvent
         $data->workflowStatusId = $this->workflowStatus->id;
         $data->workflowId = $this->workflowId;
         $data->workflowItemId = $id;
-        //$data->draft = $this->draft;
+        $data->draft = $this->draft;
         $statusChangeId = $data->save();
 
 
@@ -45,16 +52,24 @@ class WorkflowEvent extends AbstractEvent
 
             if ($this->workflowStatus->changeWorkflowStatus) {
                 $update = new WorkflowUpdate();
+                $update->draft = $this->draft;
                 $update->workflowStatusId = $this->workflowStatus->id;
                 $update->updateById($this->workflowId);
             }
 
+            /* $changeEvent = new StatusChangeEvent();
+             $changeEvent->workflowId = $this->workflowId;
+             $changeEvent->dataId = $id;
+             $changeEvent->statusChangeId = $statusChangeId;*/
+
+            //$this->workflowStatus->workflowId = $this->workflowId;
+
+            //(new Debug())->write('work1'.$this->workflowId);
+
             $this->workflowStatus->onWorkflowCreate($id, $this->workflowId);
+            //$this->workflowStatus->onChange($changeEvent);
 
         }
-
-
-        //$changeEvent->statusChangeId = $statusChangeId;
 
 
         // Workflow

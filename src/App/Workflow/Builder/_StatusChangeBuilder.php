@@ -78,7 +78,7 @@ class StatusChangeBuilder extends AbstractBaseClass
 
         $changeEvent = new StatusChangeEvent();
         $changeEvent->workflowId = $this->workflowId;
-        $changeEvent->workflowItemId = $this->workflowItemId;
+        $changeEvent->dataId = $this->workflowItemId;
 
         // Status Change
         $data = new StatusChange();

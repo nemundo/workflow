@@ -73,7 +73,7 @@ class WorkflowItemSite extends AbstractSite
 
         //$item->workflowId = $workflowId;
 
-
+/*
         $btn = new WorkflowActionButton($page);
         $btn->workflowId = $workflowRow->id;
         $btn->statusChangeRedirectSite = StatusChangeSite::$site;

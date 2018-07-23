@@ -64,7 +64,7 @@ class WikiPageContentForm extends BootstrapForm  // WikiPageForm
         $event->run($id);
 
 
-
+        $this->afterSubmitEvent->run($pageId);
 
 
         return $pageId;

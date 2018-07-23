@@ -46,9 +46,12 @@ class PersonalTaskNewSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
-        $form = new WorkflowStartForm($page);
-        $form->process = new PersonalTaskProcess();
+        $form = (new PersonalTaskProcess())->getForm($page);
         $form->redirectSite = TaskSite::$site;
+
+        /*$form = new WorkflowStartForm($page);
+        $form->process = new PersonalTaskProcess();
+        $form->redirectSite = TaskSite::$site;*/
 
         $page->render();
 

@@ -8,7 +8,7 @@ use Nemundo\Web\Http\Parameter\UrlParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlRedirect;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class WikiRedirectSite extends AbstractSite
@@ -44,7 +44,7 @@ class WikiRedirectSite extends AbstractSite
         $row = $reader->getRow();
 
         $site = clone(WikiPageSite::$site);
-        $site->addParameter(new PageParameter($row->pageId));
+        $site->addParameter(new WikiPageParameter($row->pageId));
         $site->anchor = $row->dataId;
 
         $site->redirect();

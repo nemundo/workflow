@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
+use Nemundo\Workflow\App\Workflow\Com\Container\StatusChangeContainer;
 use Nemundo\Workflow\App\Workflow\Content\Item\ChangeWorkflowItemView;
 use Nemundo\Workflow\App\Workflow\Container\Change\ChangeWorkflowChangeContainer;
 use Nemundo\Workflow\App\Workflow\Container\Start\ChangeWorkflowStartContainer;
@@ -21,5 +22,15 @@ abstract class AbstractChangeWorkflowStatus extends AbstractWorkflowStatus
         $this->itemClass = ChangeWorkflowItemView::class;
 
     }
+
+
+    public function getForm($parentItem = null)
+    {
+
+        $form = new StatusChangeContainer($parentItem);
+        return $form;
+
+    }
+
 
 }

@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 use Nemundo\Workflow\App\Wiki\Form\WikiForm;
-use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\App\Content\Data\ContentType\ContentTypeReader;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiItemParameter;
@@ -58,7 +58,7 @@ class WikiEditSite extends AbstractSite
         $form = $contentType->getFormUpdate($page);
         $form->updateId = $wikiRow->dataId;
 $form->redirectSite = clone(WikiPageSite::$site);
-$form->redirectSite->addParameter(new PageParameter($wikiRow->pageId));
+$form->redirectSite->addParameter(new WikiPageParameter($wikiRow->pageId));
 
 
 

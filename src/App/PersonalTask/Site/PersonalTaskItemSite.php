@@ -2,21 +2,12 @@
 
 namespace Nemundo\Workflow\App\PersonalTask\Site;
 
-use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
-use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
-use Nemundo\Workflow\App\Workflow\ContentItem\ProcessContentItem;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Schleuniger\App\Kvp\Site\KvpWorkflowStatusChangeSite;
-use Schleuniger\App\Task\Template\TaskTemplate;
-use Schleuniger\Usergroup\SchleunigerUsergroup;
 use Nemundo\Web\Site\AbstractSite;
-use Schleuniger\App\Task\Page\TaskItemPage;
-use Schleuniger\App\Task\Page\TaskNewPage;
-use Nemundo\Workflow\Com\View\WorkflowViewList;
-use Schleuniger\App\Task\Process\TaskProcess;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 
 class PersonalTaskItemSite extends AbstractSite
 {
@@ -40,41 +31,25 @@ class PersonalTaskItemSite extends AbstractSite
 
     protected function registerSite()
     {
-       PersonalTaskItemSite::$site = $this;
+        PersonalTaskItemSite::$site = $this;
     }
 
 
     public function loadContent()
     {
-        //(new TaskItemPage())->render();
-
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
-
-        //TaskSite::$site->showMenuAsActive = true;
-
-        //$workflowId = (new WorkflowParameter())->getValue();
 
         $dataId = (new DataIdParameter())->getValue();
 
 
-        $personalTaskRow = (new PersonalTaskReader())->getRowById($dataId);
-
+        //$personalTaskRow = (new PersonalTaskReader())->getRowById($dataId);
 
         $workflow = new ProcessContentItem($page);
+        $workflow->contentType= new PersonalTaskProcess();
         $workflow->showBaseData = false;
-        $workflow->workflowId = $personalTaskRow->workflowId;
+        $workflow->dataId = $dataId;  // $personalTaskRow->workflowId;
         $workflow->statusChangeRedirectSite = PersonalTaskStatusChangeSite::$site;
-
-            //KvpWorkflowStatusChangeSite::$site;  // TaskStatusChangeSite::$site;
-
-        /*
-                $workflow = new WorkflowViewList($page);
-                $workflow->process = new PersonalTaskProcess();
-                $workflow->showSubscription = false;
-                $workflow->workflowId = $workflowId;
-                //$workflow->statusChangeRedirectSite = TaskStatusChangeSite::$site;
-                $workflow->sortOrder = SortOrder::DESCENDING;*/
 
         $page->render();
 

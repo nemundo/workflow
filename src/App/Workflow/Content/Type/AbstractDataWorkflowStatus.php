@@ -39,11 +39,17 @@ abstract class AbstractDataWorkflowStatus extends AbstractWorkflowStatus
 
         $form = parent::getForm($parentItem);
 
-       // $event = new WorkflowEvent();
-       // $event->workflowId =
+        if ($this->createWorkflowEvent) {
+
+            //$event = new WorkflowEvent();
+            //$event->workflowStatus = $this;
+            //$event->workflowId = $this->workflowId;
+
+            //$form->afterSubmitEvent->addEvent($event);
+
+        }
 
         return $form;
-
 
 
     }

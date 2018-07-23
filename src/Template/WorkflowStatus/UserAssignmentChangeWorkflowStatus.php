@@ -28,7 +28,7 @@ class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
     public function onChange(StatusChangeEvent $changeEvent)
     {
 
-        $row = (new UserAssignmentChangeReader())->getRowById($changeEvent->workflowItemId);
+        $row = (new UserAssignmentChangeReader())->getRowById($changeEvent->dataId);
 
         (new AssignmentWorkflowAction($changeEvent))
             ->clearUsergroupUserAssignment()

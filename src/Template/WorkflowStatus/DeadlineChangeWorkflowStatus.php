@@ -25,7 +25,7 @@ class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
     public function onChange(StatusChangeEvent $changeEvent)
     {
 
-        $row = (new DeadlineChangeReader())->getRowById($changeEvent->workflowItemId);
+        $row = (new DeadlineChangeReader())->getRowById($changeEvent->dataId);
 
         (new DeadlineWorkflowAction($changeEvent))
             ->changeDeadline($row->deadline);

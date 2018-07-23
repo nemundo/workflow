@@ -19,7 +19,7 @@ use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageForm;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
-use Nemundo\Workflow\App\Wiki\Parameter\PageParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 
 class WikiSite extends AbstractSite
@@ -71,7 +71,7 @@ class WikiSite extends AbstractSite
         foreach ($pageReader->getData() as $pageRow) {
             $site = clone(WikiPageSite::$site);
             $site->title = $pageRow->title . ' (' . $pageRow->count . ') ' . $pageRow->url;
-            $site->addParameter(new PageParameter($pageRow->id));
+            $site->addParameter(new WikiPageParameter($pageRow->id));
             $list->addSite($site);
         }
 

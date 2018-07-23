@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Task\Widget;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
@@ -87,6 +88,8 @@ class TaskWidget extends AbstractAdminWidget
 
 
             $contentType = $taskRow->contentType->getContentTypeClassObject();
+
+            //(new Debug())->write($contentType);
 
             $site = $contentType->getItemSite($taskRow->dataId);
             if ($site !== null) {

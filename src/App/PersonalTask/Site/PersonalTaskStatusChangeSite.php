@@ -3,12 +3,16 @@
 namespace Nemundo\Workflow\App\PersonalTask\Site;
 
 
+use Nemundo\App\Content\Factory\ContentTypeFactory;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
+use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
+use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
 
@@ -41,15 +45,32 @@ class PersonalTaskStatusChangeSite extends AbstractSite
         $workflowStatusId = (new WorkflowStatusParameter())->getValue();
 
 
+        $title = new WorkflowTitle($page);
+        $title->workflowId = $workflowId;
+
+
+        $contentType = (new ContentTypeFactory())->getContentTypeByParameter();
+
+        $event = new WorkflowEvent();
+        $event->workflowStatus = $contentType;
+        $event->workflowId = $workflowId;
+
+
+        $form = $contentType->getForm($page);
+        $form->afterSubmitEvent->addEvent($event);
+        $form->redirectSite = PersonalTaskItemSite::$site;
+        $form->redirectSite->addParameter(new DataIdParameter($workflowId));
+
+
         //$personalTaskRow = (new PersonalTaskReader())->getRowById()
-        $workflowStatusRow = (new WorkflowStatusReader())->getRowById($workflowStatusId);
+        /*$workflowStatusRow = (new WorkflowStatusReader())->getRowById($workflowStatusId);
         $workflowStatus = $workflowStatusRow->getWorkflowStatusClassObject();
 
 
         $container = new WorkflowStatusChangeContainer($page);
         $container->workflowId = $workflowId;
         $container->workflowStatus = $workflowStatus;
-        $container->redirectSite = TaskSite::$site;
+        $container->redirectSite = TaskSite::$site;*/
 
 
         $page->render();

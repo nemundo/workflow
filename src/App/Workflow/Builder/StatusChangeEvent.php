@@ -18,12 +18,13 @@ class StatusChangeEvent extends AbstractBase
     /**
      * @var string
      */
-    public $workflowItemId;
+    public $dataId;
 
     /**
      * @var string
      */
     public $statusChangeId;
+
 
 
     public function getDataId()

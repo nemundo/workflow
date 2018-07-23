@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Process\Item;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Item\AbstractContentItem;
+use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
@@ -86,21 +87,20 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
     public function getHtml()
     {
 
-
-        $this->statusChangeRedirectSite = StatusChangeSite::$site;
+//$this->statusChangeRedirectSite = StatusChangeSite::$site;
 
 
         /** @var AbstractWorkflowBaseModel $model */
         $model = $this->contentType->getModel();
 
-       /*
-        $reader = new ModelDataReader();
-        $reader->model = $model;
-        $reader->addFieldByModel($model);
-        $row = $reader->getRowById($this->dataId);
-        $workflowId = $row->getModelValue($model->workflow);*/
+        /*
+         $reader = new ModelDataReader();
+         $reader->model = $model;
+         $reader->addFieldByModel($model);
+         $row = $reader->getRowById($this->dataId);
+         $workflowId = $row->getModelValue($model->workflow);*/
 
-$workflowId = $this->dataId;
+        $workflowId = $this->dataId;
 
         $workflowRow = (new WorkflowReader())->getRowById($workflowId);
 
@@ -121,7 +121,6 @@ $workflowId = $this->dataId;
             $view->dataId = $this->dataId;
 
         }
-
 
 
         $h3 = new H5($this);
@@ -169,7 +168,8 @@ $workflowId = $this->dataId;
                 $btn = new AdminButton($contentDiv);
                 $btn->content = 'Bearbeiten';
                 $btn->site = clone($this->statusChangeRedirectSite);
-                $btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->id));
+                //$btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->id));
+                $btn->site->addParameter(new ContentTypeParameter($statusChangeItem->workflowStatus->id));
                 $btn->site->addParameter(new WorkflowParameter($workflowId));
                 $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
 
@@ -181,13 +181,14 @@ $workflowId = $this->dataId;
 
         }
 
-       /* if (!$workflowRow->draft) {
+        if (!$workflowRow->draft) {
+
 
             $actionButton = new WorkflowActionButton($colRight);
             $actionButton->workflowId = $workflowId;
             $actionButton->statusChangeRedirectSite = $this->statusChangeRedirectSite;
 
-        }*/
+        }
 
         return parent::getHtml();
 
