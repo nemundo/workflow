@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Change;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusChangeContainer extends AbstractWorkflowChangeContainer

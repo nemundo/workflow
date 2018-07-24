@@ -22,7 +22,7 @@ use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Notification\NotificationDeleteSite;
 
 

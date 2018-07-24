@@ -7,7 +7,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\View\WorkflowViewList;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 
 class WorkflowItemSite extends AbstractSite

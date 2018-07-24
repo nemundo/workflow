@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Site;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowDelete;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class WorkflowDeleteSite extends AbstractSite
 {

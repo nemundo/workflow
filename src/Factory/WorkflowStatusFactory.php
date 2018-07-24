@@ -8,7 +8,7 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\System\ObjectBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
-use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
 
 class WorkflowStatusFactory extends AbstractBase
 {

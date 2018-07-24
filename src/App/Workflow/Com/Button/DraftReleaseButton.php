@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Com\Button;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Parameter\RedirectParameter;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\App\Workflow\Site\DraftReleaseSite;
 

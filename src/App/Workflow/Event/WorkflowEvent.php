@@ -57,17 +57,19 @@ class WorkflowEvent extends AbstractEvent
                 $update->updateById($this->workflowId);
             }
 
-            /* $changeEvent = new StatusChangeEvent();
+             $changeEvent = new StatusChangeEvent();
              $changeEvent->workflowId = $this->workflowId;
              $changeEvent->dataId = $id;
-             $changeEvent->statusChangeId = $statusChangeId;*/
+             $changeEvent->statusChangeId = $statusChangeId;
 
             //$this->workflowStatus->workflowId = $this->workflowId;
 
             //(new Debug())->write('work1'.$this->workflowId);
 
+            $this->workflowStatus->workflowId = $this->workflowId;
+
             $this->workflowStatus->onWorkflowCreate($id, $this->workflowId);
-            //$this->workflowStatus->onChange($changeEvent);
+            $this->workflowStatus->onChange($changeEvent);
 
         }
 

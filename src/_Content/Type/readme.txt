@@ -1,6 +1,0 @@
-
-RedirectContentType
-
-EventContentType
-
-

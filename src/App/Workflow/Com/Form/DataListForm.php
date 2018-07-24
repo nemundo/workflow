@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\App\Workflow\Com\Container;
+namespace Nemundo\Workflow\App\Workflow\Com\Form;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Event\EventTrait;
@@ -19,7 +19,7 @@ use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Schleuniger\App\ChangeRequest\Parameter\ChangeRequestParameter;
 
-class DataListContainer extends AbstractHtmlContainerList
+class DataListForm extends AbstractHtmlContainerList
 {
 
     use EventTrait;

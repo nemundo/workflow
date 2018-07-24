@@ -9,7 +9,7 @@ use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
 class WorkflowStatusChangeTitle extends AbstractHtmlContainerList

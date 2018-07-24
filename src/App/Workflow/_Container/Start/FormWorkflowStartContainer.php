@@ -7,7 +7,7 @@ use Nemundo\Com\Html\Form\AbstractSubmitForm;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowFormTrait;
 use Nemundo\Workflow\Form\WorkflowStartForm;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
 
 class FormWorkflowStartContainer extends AbstractWorkflowStartContainer

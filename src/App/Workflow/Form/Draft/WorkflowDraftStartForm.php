@@ -15,8 +15,8 @@ use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
-use Nemundo\Workflow\Parameter\DraftParameter;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\DraftParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
 class WorkflowDraftStartForm extends AbstractWorkflowDraftForm

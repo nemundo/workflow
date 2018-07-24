@@ -14,7 +14,7 @@ use Schleuniger\App\Task\Page\TaskItemPage;
 use Schleuniger\App\Task\Page\TaskNewPage;
 use Nemundo\Workflow\Com\View\WorkflowViewList;
 use Schleuniger\App\Task\Process\TaskProcess;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class PersonalTaskNewSite extends AbstractSite
 {

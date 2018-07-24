@@ -22,7 +22,7 @@ use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTable;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowDeleteSite;
 use Nemundo\Workflow\App\Workflow\Usergroup\WorkflowAdministratorUsergroup;

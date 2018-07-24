@@ -7,7 +7,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationUpdate;
 use Nemundo\Workflow\Parameter\NotificationParameter;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class NotificationRedirectSite extends AbstractSite
 {

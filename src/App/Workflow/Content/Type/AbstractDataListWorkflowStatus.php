@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
 use Nemundo\Model\Definition\Model\AbstractModel;
-use Nemundo\Workflow\App\Workflow\Com\Container\DataListContainer;
+use Nemundo\Workflow\App\Workflow\Com\Form\DataListForm;
 use Nemundo\Workflow\App\Workflow\Content\Item\DataListWorkflowItemView;
 use Nemundo\Workflow\App\Workflow\Container\Change\DataListWorkflowChangeContainer;
 use Nemundo\Workflow\App\Workflow\Container\Start\DataListWorkflowStartContainer;
@@ -33,7 +33,7 @@ abstract class AbstractDataListWorkflowStatus extends AbstractWorkflowStatus
     public function getForm($parentItem = null)
     {
 
-        $form = new DataListContainer($parentItem);
+        $form = new DataListForm($parentItem);
         $form->workflowStatus = $this;
 
 

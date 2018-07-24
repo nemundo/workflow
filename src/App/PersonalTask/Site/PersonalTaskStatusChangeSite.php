@@ -7,14 +7,10 @@ use Nemundo\App\Content\Factory\ContentTypeFactory;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
-use Nemundo\Workflow\App\Task\Site\TaskSite;
-use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer;
-use Nemundo\Workflow\App\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
 
 class PersonalTaskStatusChangeSite extends AbstractSite
 {

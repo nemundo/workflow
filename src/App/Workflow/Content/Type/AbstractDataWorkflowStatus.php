@@ -25,8 +25,8 @@ abstract class AbstractDataWorkflowStatus extends AbstractWorkflowStatus
 
         $this->itemClass = DataWorkflowItemView::class;
 
-        $this->startContainerClass = DataWorkflowStartContainer::class;
-        $this->changeContainerClass = DataWorkflowChangeContainer::class;
+        //$this->startContainerClass = DataWorkflowStartContainer::class;
+        //$this->changeContainerClass = DataWorkflowChangeContainer::class;
 
         parent::__construct();
 
@@ -34,6 +34,8 @@ abstract class AbstractDataWorkflowStatus extends AbstractWorkflowStatus
     }
 
 
+
+/*
     public function getForm($parentItem = null)
     {
 
@@ -52,7 +54,7 @@ abstract class AbstractDataWorkflowStatus extends AbstractWorkflowStatus
         return $form;
 
 
-    }
+    }*/
 
 
 }

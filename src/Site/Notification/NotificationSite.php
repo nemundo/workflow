@@ -32,7 +32,7 @@ use Nemundo\Workflow\Data\UserNotification\UserNotificationReader;
 use Nemundo\Workflow\Parameter\NotificationParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\Parameter\TrashParameter;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
 class NotificationSite extends AbstractSite

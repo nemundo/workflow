@@ -8,6 +8,7 @@ use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
+use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
 
 // WorkflowContentType
 abstract class AbstractWorkflowStatus extends AbstractContentType
@@ -29,7 +30,7 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     /**
      * @var string
      */
-    //public $workflowId;
+    public $workflowId;
 
 
     /**
@@ -74,6 +75,20 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     private $followingStatusClassList = [];
 
 
+    public function getForm($parentItem = null)
+    {
+
+        /** @var WorkflowContentForm $form */
+        $form = parent::getForm($parentItem);
+
+        if ($form->isObjectOfClass(WorkflowContentForm::class)) {
+            $form->workflowId = $this->workflowId;
+       }
+
+        return $form;
+
+    }
+
     //abstract public function getForm($parentItem = null);
 
 
@@ -98,9 +113,6 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     }
 
 
-
-
-
     // getSubject()
     public function getStatusText(StatusChangeEvent $changeEvent)
     {
@@ -120,28 +132,27 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     }
 
 
-
     public function onChange(StatusChangeEvent $changeEvent)
     {
 
     }
 
 
-    public function onWorkflowCreate($dataId, $workflowId) {
+    // change to onCreate($dataId)
+    public function onWorkflowCreate($dataId, $workflowId)
+    {
 
     }
 
 
+    protected function changeSubject($subject)
+    {
 
-    protected function changeSubject($subject) {
-
-        /*
         $update = new WorkflowUpdate();
         $update->subject = $subject;
-        $update->updateById($this->workflowId);*/
+        $update->updateById($this->workflowId);
 
     }
-
 
 
 }

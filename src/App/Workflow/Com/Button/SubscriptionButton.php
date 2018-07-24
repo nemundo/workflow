@@ -10,7 +10,7 @@ use Nemundo\User\Information\UserInformation;
 use Nemundo\App\Application\Parameter\ApplicationTypeParameter;
 use Nemundo\App\Application\Type\AbstractWorkflowApplication;
 use Nemundo\App\Notification\Data\Subscription\SubscriptionCount;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\WorkflowSubscriptionSite;
 use Nemundo\Com\Button\NemundoButton;
 

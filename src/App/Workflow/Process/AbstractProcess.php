@@ -2,17 +2,13 @@
 
 namespace Nemundo\Workflow\App\Workflow\Process;
 
-use Nemundo\App\Content\Type\AbstractContentTypeContainer;
 use Nemundo\User\Access\UserAccessTrait;
-use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Workflow\Container\Start\WorkflowStartContainer;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 use Nemundo\App\Content\Type\AbstractDataContentType;
-use Nemundo\Workflow\App\Workflow\Form\Start\WorkflowStartForm;
 use Nemundo\Workflow\Factory\WorkflowStatusFactory;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\Item\WorkflowItemSite;
 
 
@@ -47,11 +43,6 @@ abstract class AbstractProcess extends AbstractDataContentType
     public $processItemClassName;
 
     /**
-     * @var AbstractUrlParameter
-     */
-    //public $parameter;
-
-    /**
      * @var string
      */
     public $prefix = '';
@@ -71,16 +62,16 @@ abstract class AbstractProcess extends AbstractDataContentType
      */
     public $createWorkflowNumber = true;
 
+    /**
+     * @var string
+     */
+    public $workflowId;
 
     public function __construct()
     {
 
         $this->itemSite = WorkflowItemSite::$site;
-
-        //$this->processItemClassName = WorkflowViewList::class;
-
         $this->itemClass = ProcessContentItem::class;
-
         $this->parameterClass = WorkflowParameter::class;
 
         parent::__construct();
@@ -91,9 +82,6 @@ abstract class AbstractProcess extends AbstractDataContentType
     public function getForm($parentItem = null)
     {
 
-        //$form = new WorkflowStartForm($parentItem);
-        //$form->process = $this;
-
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
 
         $event = new WorkflowStartEvent();
@@ -102,13 +90,8 @@ abstract class AbstractProcess extends AbstractDataContentType
         $form = $workflowStatus->getForm($parentItem);
         $form->afterSubmitEvent->addEvent($event);
 
-
-//        $this->model = (new ModelFactory())->getModelByClassName($workflowStatus->modelClass);
-
-
         return $form;
 
     }
-
 
 }

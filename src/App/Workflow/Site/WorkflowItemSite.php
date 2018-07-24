@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Item\AbstractProcessItem;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
 class WorkflowItemSite extends AbstractSite

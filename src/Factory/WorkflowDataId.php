@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Factory;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class WorkflowDataId extends AbstractBase
 {

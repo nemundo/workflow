@@ -12,8 +12,8 @@ use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\Parameter\WorkflowStatusParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;

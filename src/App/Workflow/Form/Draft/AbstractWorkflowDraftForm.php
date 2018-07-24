@@ -18,8 +18,8 @@ use Nemundo\Model\Reader\ModelDataReader;
 use Nemundo\Workflow\App\Workflow\Builder\DraftRelease;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowFormTrait;
-use Nemundo\Workflow\Parameter\DraftEditParameter;
-use Nemundo\Workflow\Parameter\DraftParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\DraftParameter;
 use Schleuniger\App\Abweichungsreport\Data\Massnahmendefinition\MassnahmendefinitionModel;
 
 

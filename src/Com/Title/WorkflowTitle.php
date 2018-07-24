@@ -11,7 +11,7 @@ use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
 // WorkflowHeader

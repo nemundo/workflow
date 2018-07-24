@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Start;
 
 
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class ChangeWorkflowStartContainer extends AbstractWorkflowStartContainer
 {

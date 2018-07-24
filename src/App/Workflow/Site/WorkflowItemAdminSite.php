@@ -13,7 +13,7 @@ use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowView;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Parameter\StatusChangeParameter;
 use Nemundo\Workflow\App\Workflow\Site\Delete\StatusChangeDeleteSite;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class WorkflowItemAdminSite extends AbstractSite
 {

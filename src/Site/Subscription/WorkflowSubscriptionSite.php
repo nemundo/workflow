@@ -10,7 +10,7 @@ use Nemundo\App\Application\Parameter\ApplicationTypeParameter;
 use Nemundo\App\Kvp\Notification\KvpApplicationType;
 use Nemundo\App\Kvp\Parameter\KvpParameter;
 use Nemundo\App\Notification\Data\Subscription\Subscription;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 // SubscriptionSite
 class WorkflowSubscriptionSite extends AbstractSite
