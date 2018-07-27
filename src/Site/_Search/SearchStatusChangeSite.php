@@ -10,7 +10,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Container\Change\WorkflowStatusChangeContainer;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Data\WorkflowStatus\WorkflowStatusReader;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;

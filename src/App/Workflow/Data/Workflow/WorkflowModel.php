@@ -96,6 +96,21 @@ public $userModified;
 */
 public $dateTimeModified;
 
+/**
+* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+*/
+public $identificationTypeId;
+
+/**
+* @var \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeExternalType
+*/
+public $identificationType;
+
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $identificationId;
+
 protected function loadModel() {
 $this->tableName = "workflow_workflow";
 $this->aliasTableName = "workflow_workflow";
@@ -217,6 +232,23 @@ $this->dateTimeModified->label = "Date Time Modified";
 $this->dateTimeModified->allowNullValue = "";
 $this->dateTimeModified->visible->form = false;
 
+$this->identificationTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->identificationTypeId->tableName = "workflow_workflow";
+$this->identificationTypeId->fieldName = "identification_type";
+$this->identificationTypeId->aliasFieldName = "workflow_workflow_identification_type";
+$this->identificationTypeId->label = "Identification Type";
+
+$this->identificationId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
+$this->identificationId->tableName = "workflow_workflow";
+$this->identificationId->fieldName = "identification_id";
+$this->identificationId->aliasFieldName = "workflow_workflow_identification_id";
+$this->identificationId->label = "Identification Id";
+$this->identificationId->allowNullValue = "";
+$this->identificationId->visible->form = false;
+$this->identificationId->visible->table = false;
+$this->identificationId->visible->view = false;
+$this->id->visible->form = false;
+
 }
 public function loadProcess() {
 if ($this->process == null) {
@@ -254,6 +286,15 @@ $this->userModified->fieldName = "user_modified";
 $this->userModified->aliasFieldName = "workflow_workflow_user_modified";
 $this->userModified->label = "User Modified";
 $this->userModified->visible->form = false;
+}
+}
+public function loadIdentificationType() {
+if ($this->identificationType == null) {
+$this->identificationType = new \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeExternalType($this, "workflow_workflow_identification_type");
+$this->identificationType->tableName = "workflow_workflow";
+$this->identificationType->fieldName = "identification_type";
+$this->identificationType->aliasFieldName = "workflow_workflow_identification_type";
+$this->identificationType->label = "Identification Type";
 }
 }
 }

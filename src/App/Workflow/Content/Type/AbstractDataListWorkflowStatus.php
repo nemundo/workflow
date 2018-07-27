@@ -39,11 +39,6 @@ abstract class AbstractDataListWorkflowStatus extends AbstractWorkflowStatus
 
         return $form;
 
-
-
-
-
-
     }
 
 

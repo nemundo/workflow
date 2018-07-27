@@ -11,9 +11,11 @@ class ChangeWorkflowItemView extends AbstractWorkflowItemView
     public function getHtml()
     {
 
+
+        /*
         $changeEvent = new StatusChangeEvent();
         $changeEvent->workflowId = $this->workflowId;
-        $changeEvent->dataId = $this->workflowItemId;
+        $changeEvent->dataId = $this->workflowItemId;*/
 
         //$this->addHtml($this->workflowStatus->getStatusText($changeEvent));
         return parent::getHtml();

@@ -8,7 +8,7 @@ use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
 

@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Process;
 
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 use Nemundo\App\Content\Type\AbstractDataContentType;
@@ -91,6 +92,16 @@ abstract class AbstractProcess extends AbstractDataContentType
         $form->afterSubmitEvent->addEvent($event);
 
         return $form;
+
+    }
+
+
+    public function getSubject($dataId)
+    {
+
+        $row = (new WorkflowReader())->getRowById($dataId);
+        $subject = $row->workflowNumber . ' ' . $row->subject;
+        return $subject;
 
     }
 

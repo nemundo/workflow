@@ -33,7 +33,7 @@ class NewsSite extends AbstractSite
 
 
         $form = new NewsForm($page);
-        $form->model->action->addInsertAction(new NewsAction());
+        //$form->model->action->addInsertAction(new NewsAction());
 
 
         $page->render();

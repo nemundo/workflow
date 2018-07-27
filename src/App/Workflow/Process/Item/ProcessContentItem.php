@@ -6,39 +6,26 @@ namespace Nemundo\Workflow\App\Workflow\Process\Item;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Item\AbstractContentItem;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
-use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Com\Html\Listing\UnorderedList;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Button\BootstrapButton;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
-use Nemundo\Model\Reader\ModelDataReader;
-use Nemundo\Model\View\ModelView;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowItemContentItem;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
-use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
-use Nemundo\Workflow\Item\AbstractProcessItem;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
-use Nemundo\Workflow\App\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
-use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
-use Paranautik\App\Beta\Data\BetaTest\BetaTestReader;
+
 
 
 class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
@@ -87,21 +74,10 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
     public function getHtml()
     {
 
-//$this->statusChangeRedirectSite = StatusChangeSite::$site;
-
-
         /** @var AbstractWorkflowBaseModel $model */
         $model = $this->contentType->getModel();
 
-        /*
-         $reader = new ModelDataReader();
-         $reader->model = $model;
-         $reader->addFieldByModel($model);
-         $row = $reader->getRowById($this->dataId);
-         $workflowId = $row->getModelValue($model->workflow);*/
-
         $workflowId = $this->dataId;
-
         $workflowRow = (new WorkflowReader())->getRowById($workflowId);
 
         $title = new WorkflowTitle($this);

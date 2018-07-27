@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Subscription\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
@@ -22,11 +23,15 @@ class MySubscriptionSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+        $title = new AdminTitle($page);
+        $title->content = $this->title;
+
+
         $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
         $header->addText('Content Type');
-        $header->addText('Data Id');
+        $header->addText('Subject');
         $header->addText('User');
 
 
@@ -39,9 +44,11 @@ class MySubscriptionSite extends AbstractSite
             $row = new BootstrapClickableTableRow($table);
             $row->addText($subscriptionRow->contentType->contentType);
 
-            $row->addText($subscriptionRow->dataId);
+            //$row->addText($subscriptionRow->dataId);
 
             $contentType = $subscriptionRow->contentType->getContentTypeClassObject();
+
+
 
             $subject = $contentType->name;
             if ($subscriptionRow->dataId !== '0') {
@@ -51,6 +58,8 @@ class MySubscriptionSite extends AbstractSite
 
 
             $row->addText($subscriptionRow->user->displayName);
+
+            $row->addClickableSite($contentType->getItemSite($subscriptionRow->dataId));
 
 
         }

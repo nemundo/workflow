@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Builder;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\Action\UserAssignmentAction;
+use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
@@ -14,46 +15,73 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 class WorkflowItem extends AbstractBase
 {
 
-    /**
-     * @var string
-     */
-    public $workflowNumber;
+    use WorkflowIdTrait;
 
     /**
      * @var string
      */
-    public $subject;
+    /*public $workflowNumber;
+
+    /**
+     * @var string
+     */
+    //public $subject;
 
     /**
      * @var AbstractWorkflowStatus
      */
-    public $workflowStatus;
+    //public $workflowStatus;
 
     /**
      * @var string
      */
-    private $workflowId;
+    //private $workflowId;
 
     /**
      * @var WorkflowRow
      */
-    private $workflowRow;
+    //private $workflowRow;
 
     public function __construct($workflowId)
     {
 
         $this->workflowId = $workflowId;
 
+        /*
         $reader = new WorkflowReader();
         $reader->model->loadWorkflowStatus();
         $this->workflowRow = $reader->getRowById($workflowId);
 
         $this->workflowNumber = $this->workflowRow->workflowNumber;
         $this->subject = $this->workflowRow->subject;
-        $this->workflowStatus = $this->workflowRow->workflowStatus->getContentTypeClassObject();
+        $this->workflowStatus = $this->workflowRow->workflowStatus->getContentTypeClassObject();*/
 
     }
 
+
+
+    public function getSubject() {
+
+//        $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
+
+        $reader = new WorkflowReader();
+        $reader->model->loadProcess();
+        $workflowRow = $reader->getRowById($this->workflowId);
+
+        $process = $workflowRow->process->getProcessClassObject();
+        $subject = $process->getSubject($this->workflowId);
+
+        return $subject;
+
+
+
+
+    }
+
+
+
+
+    /*
 
     public function getProcess()
     {
@@ -132,7 +160,7 @@ class WorkflowItem extends AbstractBase
     /**
      * @return AbstractWorkflowStatus[]
      */
-    public function getFollowingStatus()
+    /*public function getFollowingStatus()
     {
 
         $list = [];
@@ -140,7 +168,7 @@ class WorkflowItem extends AbstractBase
         foreach ($this->workflowStatus->getFollowingStatusClassList() as $className) {
 
             /** @var AbstractWorkflowStatus $status */
-            $status = new $className();
+   /*         $status = new $className();
 
             $list[] = $status;
 
@@ -156,7 +184,7 @@ class WorkflowItem extends AbstractBase
     /**
      * @return \Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeRow[]
      */
-    public function getStatusChange()
+   /* public function getStatusChange()
     {
 
         $changeReader = new WorkflowStatusChangeReader();
@@ -181,7 +209,7 @@ class WorkflowItem extends AbstractBase
         return $row->workflowItemId;
 
 
-    }
+    }*/
 
 
 }

@@ -12,7 +12,6 @@ use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 class DataListWorkflowItemView extends AbstractWorkflowItemView
 {
 
-
     public function getHtml()
     {
 
@@ -28,6 +27,7 @@ class DataListWorkflowItemView extends AbstractWorkflowItemView
         $table = new BootstrapModelTable($this);
         $table->model = $model;
         $table->filter->andEqual($model->dataId, $this->dataId);
+        //$table->filter->andEqual($model->dataId, $this->workflowId);
 
         //$table->filter->andEqual($model->workflowId, $this->workflowId);
 

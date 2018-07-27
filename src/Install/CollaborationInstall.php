@@ -8,6 +8,7 @@ use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Workflow\App\Calendar\Install\CalendarInstall;
 use Nemundo\Workflow\App\ContentTemplate\Install\ContentTemplateInstall;
+use Nemundo\Workflow\App\Favorite\Install\FavoriteInstall;
 use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
 use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
 use Nemundo\Workflow\App\Message\Install\MessageInstall;
@@ -45,6 +46,7 @@ class CollaborationInstall extends AbstractScript
         (new ToDoInstall())->run();
         (new ContentTemplateInstall())->run();
         (new SubscriptionInstall())->run();
+        (new FavoriteInstall())->run();
 
         $setup = new UsergroupSetup();
         $setup->addUsergroup(new CollaborationUsergroup());

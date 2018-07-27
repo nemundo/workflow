@@ -19,7 +19,7 @@ use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\App\Workflow\Content\Item\DataListWorkflowItemView;
 use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowDefaultWorkflowItem;
 use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItem;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentReader;
 use Nemundo\Workflow\Data\UsergroupAssignment\UsergroupAssignmentReader;

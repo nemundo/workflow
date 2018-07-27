@@ -5,11 +5,13 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 
 use Nemundo\App\Content\Event\AbstractContentEvent;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\Sequence\AbstractSequenceContentType;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChange;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
@@ -35,7 +37,7 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
-        //(new Debug())->write('workflow event');
+        //(new Debug())->write('workflow event' . $this->workflowId);
         // StatusLog
         // dataId
 
@@ -45,6 +47,15 @@ class WorkflowEvent extends AbstractEvent
         $data->workflowItemId = $id;
         $data->draft = $this->draft;
         $statusChangeId = $data->save();
+
+        //(new Debug())->write($this->workflowStatus->getClassName());
+
+
+        if ($this->workflowStatus->isObjectOfClass(AbstractSequenceContentType::class)) {
+            $update = new WorkflowUpdate();
+            $update->workflowStatusId = $this->workflowStatus->id;
+            $update->updateById($this->workflowId);
+        }
 
 
         if ($this->workflowStatus->isObjectOfClass(AbstractWorkflowStatus::class)) {
@@ -57,21 +68,30 @@ class WorkflowEvent extends AbstractEvent
                 $update->updateById($this->workflowId);
             }
 
-             $changeEvent = new StatusChangeEvent();
+            /* $changeEvent = new StatusChangeEvent();
              $changeEvent->workflowId = $this->workflowId;
              $changeEvent->dataId = $id;
              $changeEvent->statusChangeId = $statusChangeId;
+             $this->workflowStatus->onChange($changeEvent);*/
 
             //$this->workflowStatus->workflowId = $this->workflowId;
 
             //(new Debug())->write('work1'.$this->workflowId);
 
-            $this->workflowStatus->workflowId = $this->workflowId;
+            //$this->workflowStatus->workflowId = $this->workflowId;
 
             $this->workflowStatus->onWorkflowCreate($id, $this->workflowId);
-            $this->workflowStatus->onChange($changeEvent);
+
 
         }
+
+
+        if ($this->workflowStatus->isObjectOfTrait(WorkflowIdTrait::class)) {
+            $this->workflowStatus->workflowId = $this->workflowId;
+            //  (new Debug())->write('weitergabe');
+        }
+
+        $this->workflowStatus->onCreate($id);
 
 
         // Workflow

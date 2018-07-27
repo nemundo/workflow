@@ -24,7 +24,7 @@ use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
 use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItem;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationCount;
 use Nemundo\Workflow\Data\UserNotification\UserNotificationPaginationReader;

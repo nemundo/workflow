@@ -7,9 +7,12 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\ImageContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\Item\TemplateImageItem;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImageModel;
+use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 
 class ImageTemplateContentType extends AbstractContentType
 {
+
+    use WorkflowIdTrait;
 
     protected function loadData()
     {

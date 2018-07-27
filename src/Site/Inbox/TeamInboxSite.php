@@ -16,7 +16,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\TeamInbox\Data\TeamUser\TeamUserCount;
 use Nemundo\Workflow\App\TeamInbox\Data\TeamUser\TeamUserReader;
 use Nemundo\Workflow\Com\Process\ProcessDropdown;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentCount;
 use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;

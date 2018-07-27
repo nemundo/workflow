@@ -9,15 +9,11 @@ use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Com\OpenClosedWorkflowListBox;
+use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
 use Nemundo\User\Data\User\UserListBox;
 use Nemundo\User\Data\Usergroup\UsergroupListBox;
 use Nemundo\Workflow\Com\Process\ProcessDropdown;
-use Nemundo\Workflow\Data\Process\ProcessListBox;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
-use Nemundo\Workflow\Inbox\WorkflowInboxTable;
-use Nemundo\Workflow\Inbox\WorkflowSorting;
-use Nemundo\Workflow\Inbox\WorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 
 

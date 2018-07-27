@@ -8,6 +8,7 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
+use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
@@ -32,7 +33,12 @@ use Schleuniger\App\ChangeOrder\Site\Task\ChangeOrderTaskItemSite;
 class WorkflowCustomTable extends AbstractHtmlContainerList
 {
 
-    //use WorkflowInboxTrait;
+
+    /**
+     * @var Filter
+     */
+    public $filter;
+
 
     public function getHtml()
     {
@@ -42,17 +48,21 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
 
         $workflowReader->model->loadWorkflowStatus();
         $workflowReader->model->loadProcess();
+        $workflowReader->model->loadIdentificationType();
 
         //$this->workflowCount = new WorkflowCount();
-
 
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
 
+        $workflowReader->filter = $this->filter;
+
+
+        /*
         $processParameter = new ProcessParameter();
         if ($processParameter->exists()) {
             $workflowReader->filter->andEqual($workflowReader->model->processId, $processParameter->getValue());
-        }
+        }*/
 
         $workflowReader->addOrder($workflowReader->model->dateTime, SortOrder::DESCENDING);
 
@@ -80,13 +90,15 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
         $header->addText('Status');
         //$header->addText('Text');
         $header->addText('Abgeschlossen');
+        $header->addText('Verantworlticher');
         $header->addText('Erledigen bis');
-        $header->addText('Zugewiesen an Benutzer');
-        $header->addText('Zugewiesen an Benutzergruppe');
+
+        //$header->addText('Zugewiesen an Benutzergruppe');
         $header->addText('Ersteller');
         $header->addText('Letzte Änderung');
 
         if ((new UsergroupMembership())->isMemberOfUsergroup(new WorkflowAdministratorUsergroup())) {
+            $header->addEmpty();
             $header->addEmpty();
         }
 
@@ -134,13 +146,22 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
 
             //$row->addText($workflowRow->workflowStatus->workflowStatusText);
 
-
-            $changeEvent = new StatusChangeEvent();
-            $changeEvent->workflowId = $workflowRow->id;
+            //$changeEvent = new StatusChangeEvent();
+            //$changeEvent->workflowId = $workflowRow->id;
 
 
             //$row->addText($workflowRow->workflowStatus->getWorkflowStatusClassObject()->getStatusText($changeEvent));
             $row->addYesNo($workflowRow->closed);
+
+            //(new Debug())->write($workflowRow->identificationTypeId);
+
+            if ($workflowRow->identificationTypeId !== '') {
+                $identificationType = $workflowRow->identificationType->getIdentificationTypeClassObject();
+                $row->addText($identificationType->getValue($workflowRow->identificationId));
+            } else {
+                $row->addEmpty();
+            }
+
 
             if ($workflowRow->deadline !== null) {
                 $row->addText($workflowRow->deadline->getShortDateLeadingZeroFormat());
@@ -148,33 +169,8 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
                 $row->addEmpty();
             }
 
-            // User
-            /* $reader = new UserAssignmentReader();
-             $reader->model->loadUser();
-             $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
-
-             $user = new TextDirectory();
-             foreach ($reader->getData() as $assignmentRow) {
-                 $user->addValue($assignmentRow->user->displayName);
-             }
-             $row->addText($user->getTextWithSeperator());
-
-             // Usergroup
-             $reader = new UsergroupAssignmentReader();
-             $reader->model->loadUsergroup();
-             $reader->filter->andEqual($reader->model->workflowId, $workflowRow->id);
-
-             $usergroup = new TextDirectory();
-             foreach ($reader->getData() as $assignmentRow) {
-                 $usergroup->addValue($assignmentRow->usergroup->usergroup);
-             }
-             $row->addText($usergroup->getTextWithSeperator());*/
-
             $row->addText($workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
             $row->addText($workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
-
-            //$site = $workflowRow->process->getProcessClassObject()->getApplicationSite();
-
 
             $site = clone(WorkflowItemSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));

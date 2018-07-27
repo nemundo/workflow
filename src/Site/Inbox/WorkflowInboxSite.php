@@ -9,7 +9,7 @@ use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\Com\Process\ProcessDropdown;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\Data\UserAssignment\UserAssignmentCount;
 use Nemundo\Workflow\Inbox\WorkflowInboxTable;
 use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;

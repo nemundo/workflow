@@ -7,7 +7,7 @@ use Nemundo\App\Content\Factory\ContentTypeFactory;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class StatusChangeContainer extends AbstractHtmlContainerList

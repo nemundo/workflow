@@ -9,16 +9,10 @@ use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Com\Dropdown\ProcessRedirectDropdown;
 use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowCustomTable;
-use Nemundo\Workflow\Com\OpenClosedWorkflowListBox;
-use Nemundo\User\Data\User\UserListBox;
-use Nemundo\User\Data\Usergroup\UsergroupListBox;
-use Nemundo\Workflow\Com\Process\ProcessDropdown;
-use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
+use Nemundo\Workflow\App\Workflow\Form\WorkflowSearchForm;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
-use Nemundo\Workflow\Inbox\WorkflowInboxTable;
-use Nemundo\Workflow\Inbox\WorkflowSorting;
-use Nemundo\Workflow\Inbox\WorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 
 
@@ -80,15 +74,21 @@ class WorkflowSearchSite extends AbstractSite
 
         } else {
 
-            $breadcrumb->addActiveItem(WorkflowSearchSite::$site->title);  //'Workflow Suche');
+            $breadcrumb->addItem(WorkflowSearchSite::$site);  //'Workflow Suche');
 
-            $dropdown = new ProcessDropdown($page);
+
+            //$breadcrumb->addActiveItem(WorkflowSearchSite::$site->title);  //'Workflow Suche');
+
+            $dropdown = new ProcessRedirectDropdown($page);
             $dropdown->redirectSite = WorkflowNewSite::$site;
 
 
         }
 
 
+        $searchForm = new WorkflowSearchForm($page);
+
+        /*
         $searchForm = new SearchForm($page);
 
         $row = new BootstrapFormRow($searchForm);
@@ -111,10 +111,11 @@ class WorkflowSearchSite extends AbstractSite
         //$usergroupListBox->label = 'Usergroup Assignment';
         $usergroupListBox->label = 'Benutzergruppe Zuweisung';
         $usergroupListBox->submitOnChange = true;
-        $usergroupListBox->value = $usergroupListBox->getValue();
+        $usergroupListBox->value = $usergroupListBox->getValue();*/
 
 
         $table  = new WorkflowCustomTable($page);
+        $table->filter = $searchForm->getFilter();
 
 
         /*

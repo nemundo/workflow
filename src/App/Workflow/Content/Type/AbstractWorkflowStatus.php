@@ -7,14 +7,16 @@ use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
+
 
 // WorkflowContentType
 abstract class AbstractWorkflowStatus extends AbstractContentType
 {
 
     use UserAccessTrait;
+
+    use WorkflowIdTrait;
 
     /**
      * @var
@@ -30,7 +32,7 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     /**
      * @var string
      */
-    public $workflowId;
+    //public $workflowId;
 
 
     /**
@@ -83,7 +85,7 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
 
         if ($form->isObjectOfClass(WorkflowContentForm::class)) {
             $form->workflowId = $this->workflowId;
-       }
+        }
 
         return $form;
 
@@ -145,14 +147,8 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     }
 
 
-    protected function changeSubject($subject)
-    {
+    // alles unter WorkflowIdTrait
 
-        $update = new WorkflowUpdate();
-        $update->subject = $subject;
-        $update->updateById($this->workflowId);
-
-    }
 
 
 }
