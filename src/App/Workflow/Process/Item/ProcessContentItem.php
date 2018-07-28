@@ -16,6 +16,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
+use Nemundo\Workflow\App\Workflow\Com\WorkflowLogContainer;
 use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowItemContentItem;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
@@ -28,24 +29,13 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
 
 
 
-class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
+class ProcessContentItem extends AbstractContentItem
 {
-
-    /**
-     * @var string
-     */
-    //public $workflowId;
 
     /**
      * @var AbstractSite
      */
     public $statusChangeRedirectSite;
-
-
-    /**
-     * @var AbstractProcess
-     */
-    //public $process;
 
     /**
      * @var bool
@@ -62,13 +52,6 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
      */
     public $sortOrder = SortOrder::ASCENDING;
 
-    protected function loadCom()
-    {
-
-        parent::loadCom();
-
-
-    }
 
 
     public function getHtml()
@@ -102,65 +85,13 @@ class ProcessContentItem extends AbstractContentItem // AbstractProcessItem
         $h3 = new H5($this);
         $h3->content = 'Verlauf';
 
-
-        $row = new BootstrapRow($this);
-
-        $colLeft = new BootstrapColumn($row);
-        $colLeft->columnWidth = 2;
-
-        $colRight = new BootstrapColumn($row);
-        $colRight->columnWidth = 10;
-
-        $list = new BootstrapHyperlinkList($colLeft);
-
-        $statusChangeReader = new StatusChangeReader();
-        $statusChangeReader->model->loadWorkflowStatus();
-        $statusChangeReader->model->loadUser();
-        $statusChangeReader->filter->andEqual($statusChangeReader->model->workflowId, $workflowId);
-
-        foreach ($statusChangeReader->getData() as $statusChangeItem) {
-
-            $list->addHyperlink($statusChangeItem->workflowStatus->contentType, '#' . $statusChangeItem->workflowItemId);
-
-            $div = new Div($colRight);
-            $div->addCssClass('card');
-            $div->addCssClass('mb-3');
-
-
-            $headerDiv = new Div($div);
-            $headerDiv->addCssClass('card-header');
-            $headerDiv->content = $statusChangeItem->workflowStatus->contentType . ': ' . $statusChangeItem->user->displayName . ' ' . $statusChangeItem->dateTime->getShortDateTimeLeadingZeroFormat();
-
-            $contentDiv = new Div($div);
-            $contentDiv->addCssClass('card-body');
-
-            $workflowStatus = $statusChangeItem->workflowStatus->getContentTypeClassObject();
-
-            $item = $workflowStatus->getItem($contentDiv);
-            $item->dataId = $statusChangeItem->workflowItemId;
-
-            if ($statusChangeItem->draft) {
-
-                $btn = new AdminButton($contentDiv);
-                $btn->content = 'Bearbeiten';
-                $btn->site = clone($this->statusChangeRedirectSite);
-                //$btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->id));
-                $btn->site->addParameter(new ContentTypeParameter($statusChangeItem->workflowStatus->id));
-                $btn->site->addParameter(new WorkflowParameter($workflowId));
-                $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
-
-                if ($workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
-                    $btn = new DraftReleaseButton($contentDiv);
-                    $btn->workflowId = $workflowId;
-                }
-            }
-
-        }
+        $workflowLog = new WorkflowLogContainer($this);
+        $workflowLog->workflowId = $this->dataId;
 
         if (!$workflowRow->draft) {
 
 
-            $actionButton = new WorkflowActionButton($colRight);
+            $actionButton = new WorkflowActionButton($this);
             $actionButton->workflowId = $workflowId;
             $actionButton->statusChangeRedirectSite = $this->statusChangeRedirectSite;
 
