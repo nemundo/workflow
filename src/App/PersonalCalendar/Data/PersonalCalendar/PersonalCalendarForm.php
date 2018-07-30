@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendar;
-class PersonalCalendarForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class PersonalCalendarForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var PersonalCalendarModel
 */

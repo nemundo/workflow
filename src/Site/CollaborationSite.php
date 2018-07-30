@@ -14,10 +14,12 @@ use Nemundo\Workflow\App\News\Site\NewsSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Subscription\Site\MySubscriptionSite;
 use Nemundo\Workflow\App\Subscription\Site\SubscriptionSite;
+use Nemundo\Workflow\App\Task\Site\Admin\TaskAdminSite;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoDoneSite;
 use Nemundo\Workflow\App\Widget\Site\WidgetSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
+use Nemundo\Workflow\App\Workflow\Site\Process\ProcessSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
@@ -34,8 +36,10 @@ class CollaborationSite extends AbstractSite
         new InboxSite($this);
         new InboxStreamSite($this);
         new WorkflowSearchSite($this);
+        new ProcessSite($this);
 
         new TaskSite($this);
+        new TaskAdminSite($this);
 
         new ToDoDoneSite($this);
         new NewsSite($this);

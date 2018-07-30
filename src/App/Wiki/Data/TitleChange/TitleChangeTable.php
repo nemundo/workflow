@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Wiki\Data\TitleChange;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class TitleChangeTable extends BootstrapModelTable {
 /**
 * @var TitleChangeModel

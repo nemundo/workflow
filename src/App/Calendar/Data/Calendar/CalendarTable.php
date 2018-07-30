@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Calendar\Data\Calendar;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class CalendarTable extends BootstrapModelTable {
 /**
 * @var CalendarModel

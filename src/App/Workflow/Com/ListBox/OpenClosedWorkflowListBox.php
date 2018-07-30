@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Com\ListBox;
 
 
-use Nemundo\Design\Bootstrap\FormElement\BootstrapListBox;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 
 class OpenClosedWorkflowListBox extends BootstrapListBox
 {

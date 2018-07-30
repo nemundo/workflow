@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\News\Data\Comment;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class CommentTable extends BootstrapModelTable {
 /**
 * @var CommentModel

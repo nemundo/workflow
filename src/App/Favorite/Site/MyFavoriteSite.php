@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Favorite\Site;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;

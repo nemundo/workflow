@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\Workflow;
-class WorkflowListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class WorkflowListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var WorkflowModel
 */

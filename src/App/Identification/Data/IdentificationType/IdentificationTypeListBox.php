@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Identification\Data\IdentificationType;
-class IdentificationTypeListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class IdentificationTypeListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var IdentificationTypeModel
 */

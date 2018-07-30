@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Inbox\Data\Inbox;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class InboxTable extends BootstrapModelTable {
 /**
 * @var InboxModel

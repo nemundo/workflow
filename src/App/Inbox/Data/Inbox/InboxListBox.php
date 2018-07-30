@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Inbox\Data\Inbox;
-class InboxListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class InboxListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var InboxModel
 */

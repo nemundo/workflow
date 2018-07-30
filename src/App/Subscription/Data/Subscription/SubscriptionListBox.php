@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Subscription\Data\Subscription;
-class SubscriptionListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class SubscriptionListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var SubscriptionModel
 */

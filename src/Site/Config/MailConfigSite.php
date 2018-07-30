@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\Site\Config;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;

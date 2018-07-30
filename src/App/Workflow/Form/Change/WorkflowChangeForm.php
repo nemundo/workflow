@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Form\Change;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Model\Factory\ModelFactory;
 
 

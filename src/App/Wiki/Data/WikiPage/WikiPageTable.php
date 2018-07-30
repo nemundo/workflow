@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Wiki\Data\WikiPage;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class WikiPageTable extends BootstrapModelTable {
 /**
 * @var WikiPageModel

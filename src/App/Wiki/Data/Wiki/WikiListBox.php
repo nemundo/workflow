@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
-class WikiListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class WikiListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var WikiModel
 */

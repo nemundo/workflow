@@ -7,7 +7,7 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\Data\UserNotification\UserNotification;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
+use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;

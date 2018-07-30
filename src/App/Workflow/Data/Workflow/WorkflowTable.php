@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\Workflow;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class WorkflowTable extends BootstrapModelTable {
 /**
 * @var WorkflowModel

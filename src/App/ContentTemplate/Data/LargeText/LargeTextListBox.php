@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ContentTemplate\Data\LargeText;
-class LargeTextListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class LargeTextListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var LargeTextModel
 */

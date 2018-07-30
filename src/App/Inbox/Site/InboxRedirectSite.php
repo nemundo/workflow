@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\App\Inbox\Site;
 
 
-use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
-use Nemundo\Design\FontAwesome\Site\AbstractIconSite;
+use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
+use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlRedirect;

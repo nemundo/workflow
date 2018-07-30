@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Message\Data\MessageImage;
-class MessageImageListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class MessageImageListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var MessageImageModel
 */

@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Form\AcceptFileType;
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapFileUpload;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapFileUpload;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\TemplateImageContent;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImage;
 

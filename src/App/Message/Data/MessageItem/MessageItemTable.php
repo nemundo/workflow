@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Message\Data\MessageItem;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class MessageItemTable extends BootstrapModelTable {
 /**
 * @var MessageItemModel

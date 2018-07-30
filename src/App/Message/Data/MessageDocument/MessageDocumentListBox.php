@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Message\Data\MessageDocument;
-class MessageDocumentListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class MessageDocumentListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var MessageDocumentModel
 */

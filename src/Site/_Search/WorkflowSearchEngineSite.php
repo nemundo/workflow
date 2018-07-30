@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\Site\Search;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
-use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
+use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;

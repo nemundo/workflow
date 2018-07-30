@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\News\Data\News;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class NewsTable extends BootstrapModelTable {
 /**
 * @var NewsModel

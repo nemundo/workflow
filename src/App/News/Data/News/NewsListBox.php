@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\News\Data\News;
-class NewsListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class NewsListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var NewsModel
 */

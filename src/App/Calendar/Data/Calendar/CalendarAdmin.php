@@ -1,9 +1,9 @@
 <?php
 namespace Nemundo\Workflow\App\Calendar\Data\Calendar;
-use Nemundo\Design\Bootstrap\Admin\BootstrapModelAdmin;
+use Nemundo\Package\Bootstrap\Admin\BootstrapModelAdmin;
 use Nemundo\Web\Action\ActionUrl;
 use Nemundo\Com\Html\Basic\H3;
-use Nemundo\Design\Bootstrap\Button\BootstrapButton;
+use Nemundo\Package\Bootstrap\Button\BootstrapButton;
 use Nemundo\Model\Admin\Redirect\ModelDeleteRedirect;
 use Nemundo\Model\Admin\Redirect\ModelEditRedirect;
 use Nemundo\Web\Http\HttpRequest;

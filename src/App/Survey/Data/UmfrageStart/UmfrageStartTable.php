@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Survey\Data\UmfrageStart;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class UmfrageStartTable extends BootstrapModelTable {
 /**
 * @var UmfrageStartModel

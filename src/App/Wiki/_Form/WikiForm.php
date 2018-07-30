@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Wiki\Form;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\Wiki;
 use Nemundo\Workflow\App\Wiki\Redirect\WikiContentRedirect;

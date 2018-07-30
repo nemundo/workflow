@@ -8,7 +8,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Design\Bootstrap\Button\BootstrapButton;
+use Nemundo\Package\Bootstrap\Button\BootstrapButton;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;

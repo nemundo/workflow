@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\MailConfig;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class MailConfigTable extends BootstrapModelTable {
 /**
 * @var MailConfigModel

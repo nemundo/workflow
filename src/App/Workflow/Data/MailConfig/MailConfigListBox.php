@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\MailConfig;
-class MailConfigListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class MailConfigListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var MailConfigModel
 */

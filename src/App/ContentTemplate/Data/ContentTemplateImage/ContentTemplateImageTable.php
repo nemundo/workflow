@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class ContentTemplateImageTable extends BootstrapModelTable {
 /**
 * @var ContentTemplateImageModel

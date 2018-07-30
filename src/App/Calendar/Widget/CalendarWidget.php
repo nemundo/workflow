@@ -11,8 +11,8 @@ use Nemundo\Com\Html\Basic\Strike;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTable;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Calendar\Reader\CalendarIdentificationReader;
 use Nemundo\Workflow\App\Calendar\Site\CalendarSite;
 

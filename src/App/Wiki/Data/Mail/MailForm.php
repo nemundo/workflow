@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Wiki\Data\Mail;
-class MailForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class MailForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var MailModel
 */

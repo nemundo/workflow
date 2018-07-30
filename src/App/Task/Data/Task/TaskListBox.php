@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Task\Data\Task;
-class TaskListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class TaskListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var TaskModel
 */

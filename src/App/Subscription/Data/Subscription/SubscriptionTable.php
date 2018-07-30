@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Subscription\Data\Subscription;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class SubscriptionTable extends BootstrapModelTable {
 /**
 * @var SubscriptionModel

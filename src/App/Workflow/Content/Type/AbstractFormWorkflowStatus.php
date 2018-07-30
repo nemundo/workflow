@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Workflow\App\Workflow\Content\Item\DataWorkflowItemView;
 use Nemundo\Workflow\App\Workflow\Container\Change\FormWorkflowChangeContainer;
@@ -28,8 +28,8 @@ abstract class AbstractFormWorkflowStatus extends AbstractWorkflowStatus
 
         $this->itemClass = DataWorkflowItemView::class;
 
-        $this->startContainerClass = FormWorkflowStartContainer::class;
-        $this->changeContainerClass = FormWorkflowChangeContainer::class;
+        //$this->startContainerClass = FormWorkflowStartContainer::class;
+        //$this->changeContainerClass = FormWorkflowChangeContainer::class;
 
         parent::__construct();
 

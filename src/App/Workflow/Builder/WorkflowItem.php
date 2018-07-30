@@ -40,18 +40,20 @@ class WorkflowItem extends AbstractBase
     /**
      * @var WorkflowRow
      */
-    //private $workflowRow;
+    private $workflowRow;
 
     public function __construct($workflowId)
     {
 
         $this->workflowId = $workflowId;
 
-        /*
+
         $reader = new WorkflowReader();
+        $reader->model->loadProcess();
         $reader->model->loadWorkflowStatus();
         $this->workflowRow = $reader->getRowById($workflowId);
 
+        /*
         $this->workflowNumber = $this->workflowRow->workflowNumber;
         $this->subject = $this->workflowRow->subject;
         $this->workflowStatus = $this->workflowRow->workflowStatus->getContentTypeClassObject();*/
@@ -59,8 +61,8 @@ class WorkflowItem extends AbstractBase
     }
 
 
-
-    public function getSubject() {
+    public function getSubject()
+    {
 
 //        $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
 
@@ -74,23 +76,26 @@ class WorkflowItem extends AbstractBase
         return $subject;
 
 
+    }
 
+
+    public function getWorkflowNumber()
+    {
+
+        $workflowNumber = $this->workflowRow->workflowNumber;
+        return $workflowNumber;
 
     }
 
 
-
-
-    /*
-
     public function getProcess()
     {
 
-        $reader = new WorkflowReader();
+        /*$reader = new WorkflowReader();
         $reader->model->loadProcess();
-        $workflowRow = $reader->getRowById($this->workflowId);
+        $workflowRow = $reader->getRowById($this->workflowId);*/
 
-        $process = $workflowRow->process->getProcessClassObject();
+        $process = $this->workflowRow->process->getProcessClassObject();
 
         return $process;
 
@@ -101,11 +106,14 @@ class WorkflowItem extends AbstractBase
     public function getTitle()
     {
 
-        $title = $this->subject;
+        $title = $this->getWorkflowNumber() . ' ' . $this->getSubject();
 
-        if ($this->workflowNumber !== null) {
-            $title = $this->workflowNumber . ': ' . $this->subject;
-        }
+        /*
+                $title = $this->subject;
+
+                if ($this->workflowNumber !== null) {
+                    $title = $this->workflowNumber . ': ' . $this->subject;
+                }*/
 
         return $title;
 
@@ -168,48 +176,48 @@ class WorkflowItem extends AbstractBase
         foreach ($this->workflowStatus->getFollowingStatusClassList() as $className) {
 
             /** @var AbstractWorkflowStatus $status */
-   /*         $status = new $className();
+    /*         $status = new $className();
 
-            $list[] = $status;
+             $list[] = $status;
 
-        }
-
-
-        return $list;
+         }
 
 
-    }
+         return $list;
 
 
-    /**
-     * @return \Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeRow[]
-     */
-   /* public function getStatusChange()
-    {
-
-        $changeReader = new WorkflowStatusChangeReader();
-        $changeReader->model->loadWorkflowStatus();
-        $changeReader->model->loadUser();
-        $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
-        $changeReader->addOrder($changeReader->model->itemOrder);
-
-        return $changeReader->getData();
-
-    }
+     }
 
 
-    public function getLastWorkflowItemId()
-    {
+     /**
+      * @return \Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeRow[]
+      */
+    /* public function getStatusChange()
+     {
 
-        $changeReader = new WorkflowStatusChangeReader();
-        $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
-        $changeReader->addOrder($changeReader->model->itemOrder, SortOrder::DESCENDING);
-        $row = $changeReader->getRow();
+         $changeReader = new WorkflowStatusChangeReader();
+         $changeReader->model->loadWorkflowStatus();
+         $changeReader->model->loadUser();
+         $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
+         $changeReader->addOrder($changeReader->model->itemOrder);
 
-        return $row->workflowItemId;
+         return $changeReader->getData();
+
+     }
 
 
-    }*/
+     public function getLastWorkflowItemId()
+     {
+
+         $changeReader = new WorkflowStatusChangeReader();
+         $changeReader->filter->andEqual($changeReader->model->workflowId, $this->workflowId);
+         $changeReader->addOrder($changeReader->model->itemOrder, SortOrder::DESCENDING);
+         $row = $changeReader->getRow();
+
+         return $row->workflowItemId;
+
+
+     }*/
 
 
 }

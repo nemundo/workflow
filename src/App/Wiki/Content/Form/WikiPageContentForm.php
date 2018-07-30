@@ -4,9 +4,9 @@ namespace Nemundo\Workflow\App\Wiki\Content\Form;
 
 
 use Nemundo\App\Content\Form\ContentFormTrait;
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapLargeTextBox;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;

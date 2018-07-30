@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Wiki\Data\Hyperlink;
-class HyperlinkListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class HyperlinkListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var HyperlinkModel
 */

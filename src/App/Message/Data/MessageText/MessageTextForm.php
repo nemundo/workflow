@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Message\Data\MessageText;
-class MessageTextForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class MessageTextForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var MessageTextModel
 */

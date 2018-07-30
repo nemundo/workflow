@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Favorite\Data\Favorite;
-class FavoriteListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class FavoriteListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var FavoriteModel
 */

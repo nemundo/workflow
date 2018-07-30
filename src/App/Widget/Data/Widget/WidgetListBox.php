@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Widget\Data\Widget;
-class WidgetListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class WidgetListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var WidgetModel
 */

@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\Process;
-class ProcessListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class ProcessListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var ProcessModel
 */

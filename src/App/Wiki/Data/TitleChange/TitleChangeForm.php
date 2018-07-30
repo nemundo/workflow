@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Wiki\Data\TitleChange;
-class TitleChangeForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class TitleChangeForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var TitleChangeModel
 */

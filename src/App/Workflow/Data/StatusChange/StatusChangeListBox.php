@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\StatusChange;
-class StatusChangeListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class StatusChangeListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var StatusChangeModel
 */

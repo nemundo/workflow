@@ -9,7 +9,7 @@ use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxReader;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 
 

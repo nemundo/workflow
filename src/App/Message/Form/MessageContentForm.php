@@ -3,9 +3,9 @@
 namespace Nemundo\Workflow\App\Message\Form;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapLargeTextBox;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\User\Data\User\UserListBox;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;

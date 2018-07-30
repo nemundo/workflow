@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest;
-class PasswordResetRequestListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class PasswordResetRequestListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var PasswordResetRequestModel
 */

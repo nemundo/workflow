@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Task\Data\Task;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class TaskTable extends BootstrapModelTable {
 /**
 * @var TaskModel

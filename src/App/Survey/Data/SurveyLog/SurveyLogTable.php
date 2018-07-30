@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Survey\Data\SurveyLog;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class SurveyLogTable extends BootstrapModelTable {
 /**
 * @var SurveyLogModel

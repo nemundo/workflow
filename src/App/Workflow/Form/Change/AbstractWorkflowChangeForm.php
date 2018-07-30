@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Form\Change;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 
 
 class AbstractWorkflowChangeForm extends BootstrapForm

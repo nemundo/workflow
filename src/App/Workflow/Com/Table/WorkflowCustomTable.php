@@ -6,33 +6,27 @@ namespace Nemundo\Workflow\App\Workflow\Com\Table;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
+use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\User\Usergroup\UsergroupMembership;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowCount;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
-use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemAdminSite;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
-use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTable;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowDeleteSite;
 use Nemundo\Workflow\App\Workflow\Usergroup\WorkflowAdministratorUsergroup;
-use Schleuniger\App\ChangeOrder\Site\Task\ChangeOrderTaskItemSite;
 
 
 class WorkflowCustomTable extends AbstractHtmlContainerList
 {
-
 
     /**
      * @var Filter
@@ -44,53 +38,31 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
     {
 
         $workflowReader = new WorkflowPaginationReader();
-        //$this->loadReader($workflowReader);
-
         $workflowReader->model->loadWorkflowStatus();
         $workflowReader->model->loadProcess();
         $workflowReader->model->loadIdentificationType();
-
-        //$this->workflowCount = new WorkflowCount();
-
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
-
         $workflowReader->filter = $this->filter;
-
-
-        /*
-        $processParameter = new ProcessParameter();
-        if ($processParameter->exists()) {
-            $workflowReader->filter->andEqual($workflowReader->model->processId, $processParameter->getValue());
-        }*/
-
         $workflowReader->addOrder($workflowReader->model->dateTime, SortOrder::DESCENDING);
-
         $workflowReader->paginationLimit = 30;
 
-        //$workflowCount = $this->getWorkflowCount();
-        //$workflowReader->count = $workflowCount;
+        $workflowCount = new WorkflowCount();
+        $workflowCount->filter = $this->filter;
 
         $p = new Paragraph($this);
-        //$p->content = 'Total Workflow: ' . $workflowCount;
+        $p->content = 'Total Workflow: ' . $workflowCount->getCount();
 
         $table = new AdminClickableTable($this);
 
-        //$model = new WorkflowModel();
-
         $header = new TableHeader($table);
         $header->addEmpty();
-        //$header->addText($model->processId->label);
-        //$header->addText($model->workflowNumber->label);
-        //$header->addText($model->subject->label);
-
         $header->addText('Prozess');
         $header->addText('Nr.');
         $header->addText('Betreff');
         $header->addText('Status');
-        //$header->addText('Text');
         $header->addText('Abgeschlossen');
-        $header->addText('Verantworlticher');
+        $header->addText('Verantwortlicher');
         $header->addText('Erledigen bis');
 
         //$header->addText('Zugewiesen an Benutzergruppe');
@@ -102,16 +74,7 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             $header->addEmpty();
         }
 
-
-        //$header->addText($model->workflowStatusId->label);
-        //$header->addText($model->closed->label);
-        //$header->addText($model->deadline->label);
-        /*$header->addText('Assign to (User)');
-        $header->addText('Assign to (Usergroup)');
-        $header->addText('Creator');*/
-
         $header->addEmpty();
-
 
         foreach ($workflowReader->getData() as $workflowRow) {
 
@@ -143,17 +106,7 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             }
 
             $row->addText($workflowRow->workflowStatus->contentType . $draft);
-
-            //$row->addText($workflowRow->workflowStatus->workflowStatusText);
-
-            //$changeEvent = new StatusChangeEvent();
-            //$changeEvent->workflowId = $workflowRow->id;
-
-
-            //$row->addText($workflowRow->workflowStatus->getWorkflowStatusClassObject()->getStatusText($changeEvent));
             $row->addYesNo($workflowRow->closed);
-
-            //(new Debug())->write($workflowRow->identificationTypeId);
 
             if ($workflowRow->identificationTypeId !== '') {
                 $identificationType = $workflowRow->identificationType->getIdentificationTypeClassObject();
@@ -161,7 +114,6 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             } else {
                 $row->addEmpty();
             }
-
 
             if ($workflowRow->deadline !== null) {
                 $row->addText($workflowRow->deadline->getShortDateLeadingZeroFormat());
@@ -184,19 +136,16 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
                 $row->addHyperlinkIcon(new DeleteIcon(), $site);
             }
 
-
             $site = $process->getItemSite($workflowRow->dataId);
             if ($site !== null) {
                 $site->title = 'Direkt';
                 $row->addSite($site);
             }
 
-
             $site = clone(WorkflowItemAdminSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));
             $site->title = 'Item';
             $row->addSite($site);
-
 
         }
 

@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ContentTemplate\Data\LargeText;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class LargeTextTable extends BootstrapModelTable {
 /**
 * @var LargeTextModel

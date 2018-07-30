@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\PersonalTask\Data\Comment;
-class CommentListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class CommentListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var CommentModel
 */

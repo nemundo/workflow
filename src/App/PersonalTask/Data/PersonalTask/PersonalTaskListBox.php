@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\PersonalTask\Data\PersonalTask;
-class PersonalTaskListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class PersonalTaskListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var PersonalTaskModel
 */

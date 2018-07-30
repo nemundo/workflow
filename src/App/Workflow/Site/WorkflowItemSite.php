@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Site;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
+use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
@@ -46,6 +46,9 @@ class WorkflowItemSite extends AbstractSite
 
         $workflowId = (new WorkflowParameter())->getValue();
 
+        $workflowItem = new WorkflowItem($workflowId);
+
+
         $workflowReader = new WorkflowReader();
         $workflowReader->model->loadProcess();
         $workflowRow = $workflowReader->getRowById($workflowId);
@@ -61,6 +64,13 @@ class WorkflowItemSite extends AbstractSite
         $site->addParameter(new ProcessParameter($process->id));
         $breadcrumb->addItem($site);
 
+        $breadcrumb->addActiveItem($workflowItem->getTitle());
+
+
+        $title = new AdminTitle($page);
+        $title->content = $workflowItem->getTitle();
+        //$workflowItem->getWorkflowNumber().' '.$workflowItem->getSubject();
+
 
         //$title = new ProcessTitle($page);
         //$title->process = $process;
@@ -71,18 +81,12 @@ class WorkflowItemSite extends AbstractSite
         $item = $process->getItem($page);
         $item->dataId = $workflowRow->dataId;
 
-        //$item->workflowId = $workflowId;
 
-/*
-        $btn = new WorkflowActionButton($page);
-        $btn->workflowId = $workflowRow->id;
-        $btn->statusChangeRedirectSite = StatusChangeSite::$site;
-
-
-        /** @var AbstractProcessItem $item */
-        /*$item = new $process->processItemClassName($page);
-        $item->workflowId = $workflowId;
-        $item->statusChangeRedirectSite = SearchStatusChangeSite::$site;*/
+        if (!$workflowRow->draft) {
+            $actionButton = new WorkflowActionButton($page);
+            $actionButton->workflowId = $workflowId;
+            $actionButton->statusChangeRedirectSite = StatusChangeSite::$site;
+        }
 
 
         $page->render();

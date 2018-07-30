@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Item;
 
 use Nemundo\App\Content\Item\AbstractContentItem;
 use Nemundo\Com\Html\Basic\Div;
-use Nemundo\Design\Bootstrap\Image\BootstrapResponsiveImage;
+use Nemundo\Package\Bootstrap\Image\BootstrapResponsiveImage;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImageReader;
 
 class TemplateImageItem extends AbstractContentItem

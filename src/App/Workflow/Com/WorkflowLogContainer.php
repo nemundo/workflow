@@ -10,9 +10,9 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
-use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
@@ -38,8 +38,8 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
     public function getHtml()
     {
 
-        $h3 = new H5($this);
-        $h3->content = 'Verlauf';
+        //$h3 = new H5($this);
+        //$h3->content = 'Verlauf';
 
 
         $row = new BootstrapRow($this);

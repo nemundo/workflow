@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\SearchEngine\Data\SearchIndex;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class SearchIndexTable extends BootstrapModelTable {
 /**
 * @var SearchIndexModel

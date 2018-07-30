@@ -4,14 +4,14 @@ namespace Nemundo\Workflow\App\Wiki\Site;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Design\Bootstrap\Navbar\BootstrapNavbar;
-use Nemundo\Design\Bootstrap\Navigation\BootstrapNavigation;
+use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbar;
+use Nemundo\Package\Bootstrap\Navigation\BootstrapNavigation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\Html\Basic\Br;
 use Nemundo\Com\Html\Basic\Hr;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Dropdown\BootstrapDropdown;
+use Nemundo\Package\Bootstrap\Dropdown\BootstrapDropdown;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
 use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentItem;

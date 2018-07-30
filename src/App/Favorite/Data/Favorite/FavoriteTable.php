@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Favorite\Data\Favorite;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class FavoriteTable extends BootstrapModelTable {
 /**
 * @var FavoriteModel

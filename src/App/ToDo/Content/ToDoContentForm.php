@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\ToDo\Content;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoModel;
 
 class ToDoContentForm extends BootstrapModelForm

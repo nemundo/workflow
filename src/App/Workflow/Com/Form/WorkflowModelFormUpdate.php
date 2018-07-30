@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Com\Form;
 
 
 use Nemundo\Db\Base\ConnectionTrait;
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Model\Data\ModelData;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;

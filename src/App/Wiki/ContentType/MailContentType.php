@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Wiki\ContentType;
 
 
-use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
+use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\Workflow\App\Wiki\ContentItem\MailContentItem;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailModel;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailReader;

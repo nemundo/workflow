@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Com\Process;
 
 
 use Nemundo\App\Content\Collection\AbstractContentTypeCollection;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapListBox;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Workflow\Process\AbstractProcessCollection;
 
 class ProcessListBox extends BootstrapListBox

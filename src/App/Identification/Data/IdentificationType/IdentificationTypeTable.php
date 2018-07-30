@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Identification\Data\IdentificationType;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class IdentificationTypeTable extends BootstrapModelTable {
 /**
 * @var IdentificationTypeModel

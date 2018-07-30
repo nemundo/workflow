@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ToDo\Data\ToDo;
-class ToDoListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class ToDoListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var ToDoModel
 */

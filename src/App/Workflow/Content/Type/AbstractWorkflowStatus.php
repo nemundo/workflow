@@ -64,12 +64,12 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     /**
      * @var string
      */
-    public $changeContainerClass;
+    //public $changeContainerClass;
 
     /**
      * @var string
      */
-    public $startContainerClass;
+    //public $startContainerClass;
 
     /**
      * @var AbstractWorkflowStatus[]
@@ -116,7 +116,7 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
 
 
     // getSubject()
-    public function getStatusText(StatusChangeEvent $changeEvent)
+ /*   public function getStatusText(StatusChangeEvent $changeEvent)
     {
 
         $statusText = $this->workflowStatusText;
@@ -134,6 +134,8 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     }
 
 
+
+    /*
     public function onChange(StatusChangeEvent $changeEvent)
     {
 
@@ -144,7 +146,7 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
     public function onWorkflowCreate($dataId, $workflowId)
     {
 
-    }
+    }*/
 
 
     // alles unter WorkflowIdTrait

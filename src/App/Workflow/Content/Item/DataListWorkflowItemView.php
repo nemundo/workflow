@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Item;
 
 
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 

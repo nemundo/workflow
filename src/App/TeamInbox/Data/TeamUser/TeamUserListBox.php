@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\TeamInbox\Data\TeamUser;
-class TeamUserListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class TeamUserListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var TeamUserModel
 */

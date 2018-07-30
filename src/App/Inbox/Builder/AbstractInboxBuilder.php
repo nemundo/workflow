@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Inbox\Builder;
 
 
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
+use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;

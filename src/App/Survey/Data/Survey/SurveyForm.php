@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Survey\Data\Survey;
-class SurveyForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class SurveyForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var SurveyModel
 */

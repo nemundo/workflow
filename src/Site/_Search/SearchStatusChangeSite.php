@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Site\Search;
 
 
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
+use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;

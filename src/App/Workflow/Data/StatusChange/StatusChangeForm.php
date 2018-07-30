@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Workflow\Data\StatusChange;
-class StatusChangeForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class StatusChangeForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var StatusChangeModel
 */

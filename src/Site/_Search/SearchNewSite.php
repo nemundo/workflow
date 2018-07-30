@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\Site\Search;
 
 
 use Nemundo\Admin\Com\Title\AdminSubtitle;
-use Nemundo\Design\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
+use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Basic\Paragraph;

@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ToDo\Data\ToDo;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class ToDoTable extends BootstrapModelTable {
 /**
 * @var ToDoModel

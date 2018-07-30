@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\PersonalCalendar\Widget;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendar\PersonalCalendarReader;
 use Nemundo\Workflow\App\PersonalCalendar\Form\PersonalCalendarBuilderForm;

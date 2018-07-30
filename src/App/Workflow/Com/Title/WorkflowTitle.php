@@ -38,6 +38,7 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
         $process = $workflowRow->process->getProcessClassObject();
+        $contentType = $workflowRow->workflowStatus->getContentTypeClassObject();
 
         $subtitle = new AdminSubtitle($this);
         $subtitle->content = $process->name;
@@ -65,7 +66,10 @@ class WorkflowTitle extends AbstractHtmlContainerList
 
         $table->addLabelValue('Ersteller', $workflowRow->user->displayName . ' ' . $workflowRow->dateTime->getShortDateTimeLeadingZeroFormat());
         $table->addLabelValue('Letzte Änderung', $workflowRow->userModified->displayName . ' ' . $workflowRow->dateTimeModified->getShortDateTimeLeadingZeroFormat());
-        //$table->addLabelValue('Status', $workflowRow->workflowStatus->workflowStatus);
+        $table->addLabelValue('Status', $workflowRow->workflowStatus->contentType);
+        $table->addLabelValue('Subject', $process->getSubject($workflowRow->id));
+
+
         //$table->addLabelValue('Status', $workflowItem->getStatus());
         //$table->addLabelValue('Status Text', $workflowRow->workflowStatus->workflowStatusText);
 

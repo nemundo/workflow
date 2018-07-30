@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Message\Form;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapModelForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Workflow\App\Message\ContentType\ImageContentType;
 use Nemundo\Workflow\App\Message\Data\MessageImage\MessageImageModel;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;

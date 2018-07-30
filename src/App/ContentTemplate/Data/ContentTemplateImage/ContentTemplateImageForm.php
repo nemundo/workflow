@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage;
-class ContentTemplateImageForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class ContentTemplateImageForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var ContentTemplateImageModel
 */

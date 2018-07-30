@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class PasswordResetRequestTable extends BootstrapModelTable {
 /**
 * @var PasswordResetRequestModel

@@ -4,8 +4,8 @@ namespace Nemundo\Workflow\App\Widget\Site;
 
 
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Widget\Data\Widget\WidgetListBox;

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
 use Nemundo\App\Content\Form\ContentTreeForm;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapLargeTextBox;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
 
 class LargeTextContentTemplateForm extends ContentTreeForm

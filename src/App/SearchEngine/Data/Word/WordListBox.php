@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\SearchEngine\Data\Word;
-class WordListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class WordListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var WordModel
 */

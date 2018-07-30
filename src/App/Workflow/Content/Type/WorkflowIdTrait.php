@@ -52,13 +52,14 @@ trait WorkflowIdTrait
     }
 
 
-    protected function changeDeadline(Date $deadline)
+    protected function changeDeadline(Date $deadline = null)
     {
 
-
-        $update = new WorkflowUpdate();
-        $update->deadline = $deadline;
-        $update->updateById($this->workflowId);
+        if ($deadline !== null) {
+            $update = new WorkflowUpdate();
+            $update->deadline = $deadline;
+            $update->updateById($this->workflowId);
+        }
 
     }
 
@@ -116,6 +117,17 @@ trait WorkflowIdTrait
     }
 
 
+    protected function clearAssignment()
+    {
+
+        $update = new WorkflowUpdate();
+        $update->identificationTypeId = '';
+        $update->identificationId = '';
+        $update->updateById($this->workflowId);
+
+    }
+
+
     protected function createUserTask($userId, Date $deadline = null)
     {
 
@@ -129,15 +141,12 @@ trait WorkflowIdTrait
         $builder->createUserTask($userId);
 
         $this->assignUser($userId);
-
-        if ($deadline !== null) {
-            $this->changeDeadline($deadline);
-        }
+        $this->changeDeadline($deadline);
 
     }
 
 
-    protected function createUsergroupTask(AbstractUsergroup $usergroup, Date $deadline)
+    protected function createUsergroupTask(AbstractUsergroup $usergroup, Date $deadline = null)
     {
 
         $process = $this->getProcess();
@@ -164,6 +173,8 @@ trait WorkflowIdTrait
         //$update->filter->andEqual($update->model->contentTypeId, (new Task))
         $update->filter->andEqual($update->model->dataId, $this->workflowId);
         $update->update();
+
+        $this->clearAssignment();
 
     }
 

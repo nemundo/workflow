@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Site\Process;
 
 use Nemundo\Com\Html\Basic\H3;
 use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Design\Bootstrap\Button\BootstrapButton;
+use Nemundo\Package\Bootstrap\Button\BootstrapButton;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;

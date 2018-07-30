@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\App\Wiki\ContentForm;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\Wiki\Data\Hyperlink\Hyperlink;
 
 class HyperlinkContentForm extends BootstrapForm

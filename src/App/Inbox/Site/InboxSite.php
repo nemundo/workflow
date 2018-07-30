@@ -5,9 +5,9 @@ namespace Nemundo\Workflow\App\Inbox\Site;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
-use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
@@ -22,8 +22,8 @@ use Nemundo\Com\TableBuilder\TableCell;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Pagination\BootstrapModelPagination;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxPaginationReader;
 use Nemundo\Workflow\App\Inbox\Parameter\InboxParameter;
 

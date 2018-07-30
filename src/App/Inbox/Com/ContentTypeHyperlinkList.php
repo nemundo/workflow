@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Inbox\Com;
 
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxReader;

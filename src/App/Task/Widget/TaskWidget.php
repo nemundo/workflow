@@ -9,7 +9,7 @@ use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;

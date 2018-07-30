@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Task\Data\Task;
-class TaskForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class TaskForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var TaskModel
 */

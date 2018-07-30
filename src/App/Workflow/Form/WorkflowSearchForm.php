@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\App\Workflow\Form;
 
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Db\Filter\Filter;
-use Nemundo\Design\Bootstrap\Form\BootstrapFormRow;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapListBox;
+use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\User\Data\User\UserListBox;
 use Nemundo\User\Data\Usergroup\UsergroupListBox;
 use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;

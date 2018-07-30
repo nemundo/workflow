@@ -9,9 +9,9 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Com\Html\Basic\H5;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Design\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Design\Bootstrap\Layout\BootstrapRow;
-use Nemundo\Design\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
+use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
+use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
@@ -58,10 +58,10 @@ class ProcessContentItem extends AbstractContentItem
     {
 
         /** @var AbstractWorkflowBaseModel $model */
-        $model = $this->contentType->getModel();
+        //$model = $this->contentType->getModel();
 
         $workflowId = $this->dataId;
-        $workflowRow = (new WorkflowReader())->getRowById($workflowId);
+        //$workflowRow = (new WorkflowReader())->getRowById($workflowId);
 
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
@@ -88,6 +88,8 @@ class ProcessContentItem extends AbstractContentItem
         $workflowLog = new WorkflowLogContainer($this);
         $workflowLog->workflowId = $this->dataId;
 
+
+        /*
         if (!$workflowRow->draft) {
 
 
@@ -95,7 +97,7 @@ class ProcessContentItem extends AbstractContentItem
             $actionButton->workflowId = $workflowId;
             $actionButton->statusChangeRedirectSite = $this->statusChangeRedirectSite;
 
-        }
+        }*/
 
         return parent::getHtml();
 

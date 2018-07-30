@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Identification\Data\IdentificationType;
-class IdentificationTypeForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class IdentificationTypeForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var IdentificationTypeModel
 */

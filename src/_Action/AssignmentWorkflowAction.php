@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Action;
 
 
-use Nemundo\Design\ResponsiveMail\ResponsiveActionMailMessage;
+use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;

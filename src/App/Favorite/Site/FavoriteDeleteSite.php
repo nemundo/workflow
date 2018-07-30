@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\App\Favorite\Site;
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Design\FontAwesome\Icon\DeleteIcon;
-use Nemundo\Design\FontAwesome\Site\AbstractIconSite;
+use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
+use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;

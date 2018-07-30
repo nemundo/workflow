@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Calendar\Data\Calendar;
-class CalendarListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class CalendarListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var CalendarModel
 */
