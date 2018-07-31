@@ -16,6 +16,11 @@ public $process;
 */
 public $processClass;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $setupStatus;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = ProcessModel::class;
@@ -41,6 +46,13 @@ $this->processClass->tableName = $this->parentFieldName . "_" . $this->externalT
 $this->processClass->aliasFieldName = $this->processClass->tableName . "_" . $this->processClass->fieldName;
 $this->processClass->label = "Process Class";
 $this->addType($this->processClass);
+
+$this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType();
+$this->setupStatus->fieldName = "setup_status";
+$this->setupStatus->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->setupStatus->aliasFieldName = $this->setupStatus->tableName . "_" . $this->setupStatus->fieldName;
+$this->setupStatus->label = "Setup Status";
+$this->addType($this->setupStatus);
 
 }
 }

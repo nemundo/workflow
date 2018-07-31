@@ -17,6 +17,11 @@ public $process;
 */
 public $processClass;
 
+/**
+* @var bool
+*/
+public $setupStatus;
+
 public function __construct() {
 parent::__construct();
 $this->model = new ProcessModel();
@@ -24,6 +29,7 @@ $this->model = new ProcessModel();
 public function update() {
 $this->typeValueList->setModelValue($this->model->process, $this->process);
 $this->typeValueList->setModelValue($this->model->processClass, $this->processClass);
+$this->typeValueList->setModelValue($this->model->setupStatus, $this->setupStatus);
 parent::update();
 }
 }

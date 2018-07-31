@@ -16,6 +16,11 @@ public $process;
 */
 public $processClass;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $setupStatus;
+
 protected function loadModel() {
 $this->tableName = "workflow_process";
 $this->aliasTableName = "workflow_process";
@@ -49,6 +54,13 @@ $this->processClass->aliasFieldName = "workflow_process_process_class";
 $this->processClass->label = "Process Class";
 $this->processClass->allowNullValue = "";
 $this->processClass->phpClassName = Nemundo\Workflow\App\Workflow\Process\AbstractProcess::class;
+
+$this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->setupStatus->tableName = "workflow_process";
+$this->setupStatus->fieldName = "setup_status";
+$this->setupStatus->aliasFieldName = "workflow_process_setup_status";
+$this->setupStatus->label = "Setup Status";
+$this->setupStatus->allowNullValue = "";
 
 $this->addDefaultType($this->process);
 $this->addDefaultOrderType($this->process);

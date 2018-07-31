@@ -21,12 +21,18 @@ public $process;
 */
 public $processClass;
 
+/**
+* @var bool
+*/
+public $setupStatus;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->process = $this->getModelValue($model->process);
 $this->processClass = $this->getModelValue($model->processClass);
+$this->setupStatus = $this->getModelValue($model->setupStatus);
 }
 /**
 * @return \Nemundo\Workflow\App\Workflow\Process\AbstractProcess
