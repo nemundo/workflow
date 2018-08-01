@@ -4,16 +4,17 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\LargeTextContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeTextModel;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeTextReader;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
-class LargeTextTemplateContentType extends AbstractContentType
+class LargeTextTemplateContentType extends AbstractDataContentType  // AbstractContentType
 {
 
-    use WorkflowIdTrait;
+    //use WorkflowIdTrait;
 
     protected function loadData()
     {
@@ -26,15 +27,6 @@ class LargeTextTemplateContentType extends AbstractContentType
     }
 
 
-    public function onCreate($dataId)
-    {
-
-        $row = (new LargeTextReader())->getRowById($dataId);
-
-        $this->createUsergroupInbox(new SchleunigerUsergroup(), $row->text);
-
-
-    }
 
 
 }

@@ -65,7 +65,7 @@ class WikiPageSite extends AbstractSite
         $title = new AdminTitle($page);
         $title->content = $pageRow->title;
 
-        $dropdown = new BootstrapDropdown($page);
+    /*    $dropdown = new BootstrapDropdown($page);
 
         $reader = new WikiContentTypeReader();
         foreach ($reader->getData() as $typeRow) {
@@ -76,7 +76,7 @@ class WikiPageSite extends AbstractSite
 
             $dropdown->addSite($site);
 
-        }
+        }*/
 
 
         $dropdown = new BootstrapDropdown($page);

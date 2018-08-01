@@ -8,6 +8,8 @@ use Nemundo\App\Content\Type\AbstractContentTypeContainer;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\ImageTemplateContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel;
+use Paranautik\App\Meteoschweiz\Content\Type\AllgemeineLageAktuellContentType;
+use Paranautik\App\TestApp\Content\LandContentType;
 
 
 class WikiContentTypeCollection extends AbstractContentTypeCollection
@@ -19,6 +21,8 @@ class WikiContentTypeCollection extends AbstractContentTypeCollection
 
         $this->addContentType(new LargeTextTemplateContentType());
         $this->addContentType(new ImageTemplateContentType());
+        $this->addContentType(new AllgemeineLageAktuellContentType());
+        $this->addContentType(new LandContentType());
 
 
     }
