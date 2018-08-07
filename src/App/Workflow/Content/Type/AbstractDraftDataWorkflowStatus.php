@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Workflow\Container\Start\DraftDataWorkflowStartContaine
 
 
 // AbstractDraftDataModelWorkflowStatus
-abstract class AbstractDraftDataWorkflowStatus extends AbstractWorkflowStatus
+abstract class AbstractDraftDataWorkflowStatus extends AbstractDataWorkflowStatus  // AbstractWorkflowStatus
 {
 
     /**

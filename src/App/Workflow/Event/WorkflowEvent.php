@@ -6,12 +6,14 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 use Nemundo\App\Content\Event\AbstractContentEvent;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractSequenceContentType;
+use Nemundo\App\Content\Type\Sequence\MultiSequenceTrait;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
+use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChange;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
@@ -44,6 +46,22 @@ class WorkflowEvent extends AbstractEvent
         $data->draft = $this->draft;
         $data->save();
 
+
+        if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
+
+            if ($this->workflowStatus->changeWorkflowStatus) {
+                $update = new WorkflowUpdate();
+                $update->draft = $this->draft;
+                $update->workflowStatusId = $this->workflowStatus->id;
+                $update->updateById($this->workflowId);
+            }
+
+
+
+        }
+
+
+        /*
         if ($this->workflowStatus->isObjectOfClass(AbstractSequenceContentType::class)) {
             $update = new WorkflowUpdate();
             $update->workflowStatusId = $this->workflowStatus->id;
@@ -59,7 +77,10 @@ class WorkflowEvent extends AbstractEvent
                 $update->updateById($this->workflowId);
             }
 
-        }
+        }*/
+
+
+        $this->workflowStatus->workflowId = $this->workflowId;
 
 
         if ($this->workflowStatus->isObjectOfTrait(WorkflowIdTrait::class)) {
@@ -77,6 +98,8 @@ class WorkflowEvent extends AbstractEvent
             $this->workflowStatus->onCreate($id);
 
         }
+
+
 
     }
 

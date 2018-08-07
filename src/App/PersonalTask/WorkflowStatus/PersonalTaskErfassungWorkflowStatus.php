@@ -29,13 +29,13 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
 
 
 
-        $this->addFollowingStatusClassName(CommentTaskWorkflowStatus::class);
-        $this->addFollowingStatusClassName(PersonalTaskDoneWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(CommentTaskWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(PersonalTaskDoneWorkflowStatus::class);
 
 
-        //$this->addFollowingStatusClassName(ClosingWorkflowStatus::class);
-        //$this->addFollowingStatusClassName(DeadlineChangeWorkflowStatus::class);
-        //$this->addFollowingStatusClassName(UserAssignmentChangeWorkflowStatus::class);
+        //$this->addFollowingContentTypeClass(ClosingWorkflowStatus::class);
+        //$this->addFollowingContentTypeClass(DeadlineChangeWorkflowStatus::class);
+        //$this->addFollowingContentTypeClass(UserAssignmentChangeWorkflowStatus::class);
 
     }
 

@@ -22,8 +22,8 @@ class CommentTaskWorkflowStatus extends AbstractDataWorkflowStatus
         $this->changeWorkflowStatus = false;
         //$this->workflowItemClassName = WorkflowItem::class;
 
-        //$this->addFollowingStatusClassName(ProzesssteuerungTaskDoneWorkflowStatus::class);
-        $this->addFollowingStatusClassName(CommentTaskWorkflowStatus::class);
+        //$this->addFollowingContentTypeClass(ProzesssteuerungTaskDoneWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(CommentTaskWorkflowStatus::class);
 
 
     }

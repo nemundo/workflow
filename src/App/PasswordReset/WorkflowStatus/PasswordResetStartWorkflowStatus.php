@@ -20,8 +20,8 @@ class PasswordResetStartWorkflowStatus extends AbstractDataWorkflowStatus
         //$this->restricted = true;
         //$this->addRestrictedUsergroup(new WorkflowAdministratorUsergroup());
 
-        $this->addFollowingStatusClassName(CommentWorkflowStatus::class);
-        $this->addFollowingStatusClassName(PasswordChangeWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(CommentWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(PasswordChangeWorkflowStatus::class);
 
     }
 

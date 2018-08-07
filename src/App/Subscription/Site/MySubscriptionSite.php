@@ -14,7 +14,7 @@ class MySubscriptionSite extends AbstractSite
 {
     protected function loadSite()
     {
-        $this->title = 'MySubscription';
+        $this->title = 'My Subscription';
         $this->url = 'my-subscription';
     }
 
@@ -41,14 +41,15 @@ class MySubscriptionSite extends AbstractSite
 
         foreach ($reader->getData() as $subscriptionRow) {
 
+
+
             $row = new BootstrapClickableTableRow($table);
             $row->addText($subscriptionRow->contentType->contentType);
+            //$row->addText($subscriptionRow->contentType->contentTypeClass);
 
             //$row->addText($subscriptionRow->dataId);
 
             $contentType = $subscriptionRow->contentType->getContentTypeClassObject();
-
-
 
             $subject = $contentType->name;
             if ($subscriptionRow->dataId !== '0') {

@@ -11,6 +11,7 @@ use Nemundo\Core\Log\LogMessage;
 use Nemundo\Package\Bootstrap\Button\BootstrapButton;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
@@ -47,10 +48,10 @@ class WorkflowActionButton extends AbstractHtmlContainerList
         $workflowReader->model->loadWorkflowStatus();
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
-        /** @var AbstractWorkflowStatus $workflowStatus */
+        /** @var WorkflowStatusTrait $workflowStatus */
         $workflowStatus = $workflowRow->workflowStatus->getContentTypeClassObject();
 
-        foreach ($workflowStatus->getFollowingStatusClassList() as $className) {
+        foreach ($workflowStatus->getFollowingContentTypeList() as $className) {
         //foreach ($workflowItem->workflowStatus->getFollowingStatusClassList($this->workflowId) as $className) {
 
             /** @var AbstractWorkflowStatus $followingStatusClass */
