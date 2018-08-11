@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\SearchEngine\Data\SearchIndex;
-class SearchIndexListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class SearchIndexListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var SearchIndexModel
 */

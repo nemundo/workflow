@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\SearchEngine\Data\Word;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class WordTable extends BootstrapModelTable {
 /**
 * @var WordModel

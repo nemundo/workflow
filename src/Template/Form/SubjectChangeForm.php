@@ -3,12 +3,12 @@
 namespace Nemundo\Workflow\WorkflowStatus\Form;
 
 
-use Nemundo\Design\Bootstrap\Form\BootstrapForm;
-use Nemundo\Design\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\Data\SubjectChange\SubjectChange;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Form\WorkflowCustomForm;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\Status\SubjectChangeWorkflowStatus;
 

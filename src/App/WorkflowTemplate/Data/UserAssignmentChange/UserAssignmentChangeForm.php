@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange;
-class UserAssignmentChangeForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class UserAssignmentChangeForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var UserAssignmentChangeModel
 */

@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest;
-class PasswordResetRequestForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class PasswordResetRequestForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var PasswordResetRequestModel
 */

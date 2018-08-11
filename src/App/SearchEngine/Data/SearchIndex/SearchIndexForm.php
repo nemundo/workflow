@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\SearchEngine\Data\SearchIndex;
-class SearchIndexForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class SearchIndexForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var SearchIndexModel
 */

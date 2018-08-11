@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange;
-class DeadlineChangeForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class DeadlineChangeForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var DeadlineChangeModel
 */

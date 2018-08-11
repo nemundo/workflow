@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\Model;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Orm\Model\AbstractOrmModel;
 use Nemundo\Orm\Type\External\ExternalOrmType;
-use Nemundo\Workflow\Data\Workflow\WorkflowExternalType;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType;
 
 class WorkflowBaseOrmModel extends AbstractOrmModel
 {

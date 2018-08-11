@@ -4,9 +4,8 @@ namespace Nemundo\Workflow\Com\View;
 
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Design\Bootstrap\Table\BootstrapLabelValueTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapLabelValueTable;
 use Nemundo\Model\View\ModelViewTrait;
-use Nemundo\Com\Table\NemundoLabelValueTable;
 
 class WorkflowModelView extends AbstractHtmlContainerList
 {

@@ -8,9 +8,9 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\User\Data\User\UserRow;
-use Nemundo\Workflow\Com\Item\AbstractWorkflowItemView;
-use Nemundo\Workflow\Com\Item\WorkflowItem;
-use Nemundo\Workflow\WorkflowStatus\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
+use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusChangeItem extends AbstractBase
 {
@@ -54,7 +54,7 @@ class WorkflowStatusChangeItem extends AbstractBase
     public function getStatus()
     {
 
-        $status = $this->workflowStatus->workflowStatus;
+        $status = $this->workflowStatus->name;
         if ($this->draft) {
             $status .= ' (Entwurf)';
         }
@@ -66,10 +66,12 @@ class WorkflowStatusChangeItem extends AbstractBase
     public function getView(AbstractContainer $parentCom = null)
     {
 
-        $className = $this->workflowStatus->workflowItemViewClassName;
+        $className = $this->workflowStatus->itemClass;
 
         /** @var  AbstractWorkflowItemView $view */
         $view = new $className($parentCom); // this->workflowStatus->workflowItemViewClassName();
+        //$view->dataId =
+
         $view->workflowId = $this->workflowId;
         $view->workflowItemId = $this->workflowItemId;
         $view->workflowStatus = $this->workflowStatus;

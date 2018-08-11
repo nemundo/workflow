@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange;
-use Nemundo\Design\Bootstrap\Table\BootstrapModelTable;
+use Nemundo\Package\Bootstrap\Table\BootstrapModelTable;
 class UserAssignmentChangeTable extends BootstrapModelTable {
 /**
 * @var UserAssignmentChangeModel

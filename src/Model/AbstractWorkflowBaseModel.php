@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\Model;
 
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Model\Type\External\Id\ExternalUniqueIdType;
-use Nemundo\Workflow\Data\Workflow\WorkflowExternalType;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType;
 
 abstract class AbstractWorkflowBaseModel extends AbstractModel
 {

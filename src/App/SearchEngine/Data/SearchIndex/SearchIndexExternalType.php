@@ -9,22 +9,12 @@ public $id;
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
-public $processId;
+public $contentTypeId;
 
 /**
-* @var \Nemundo\Workflow\Data\Process\ProcessExternalType
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
 */
-public $process;
-
-/**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
-public $workflowId;
-
-/**
-* @var \Nemundo\Workflow\Data\Workflow\WorkflowExternalType
-*/
-public $workflow;
+public $contentType;
 
 /**
 * @var \Nemundo\Model\Type\Id\IdType
@@ -35,6 +25,11 @@ public $wordId;
 * @var \Nemundo\Workflow\App\SearchEngine\Data\Word\WordExternalType
 */
 public $word;
+
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $dataId;
 
 protected function loadType() {
 parent::loadType();
@@ -48,19 +43,12 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
-$this->processId = new \Nemundo\Model\Type\Id\IdType();
-$this->processId->fieldName = "process";
-$this->processId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->processId->aliasFieldName = $this->processId->tableName ."_".$this->processId->fieldName;
-$this->processId->label = "Process";
-$this->addType($this->processId);
-
-$this->workflowId = new \Nemundo\Model\Type\Id\IdType();
-$this->workflowId->fieldName = "workflow";
-$this->workflowId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->workflowId->aliasFieldName = $this->workflowId->tableName ."_".$this->workflowId->fieldName;
-$this->workflowId->label = "Workflow";
-$this->addType($this->workflowId);
+$this->contentTypeId = new \Nemundo\Model\Type\Id\IdType();
+$this->contentTypeId->fieldName = "content_type";
+$this->contentTypeId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->contentTypeId->aliasFieldName = $this->contentTypeId->tableName ."_".$this->contentTypeId->fieldName;
+$this->contentTypeId->label = "Content Type";
+$this->addType($this->contentTypeId);
 
 $this->wordId = new \Nemundo\Model\Type\Id\IdType();
 $this->wordId->fieldName = "word";
@@ -69,26 +57,22 @@ $this->wordId->aliasFieldName = $this->wordId->tableName ."_".$this->wordId->fie
 $this->wordId->label = "Word";
 $this->addType($this->wordId);
 
+$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
+$this->dataId->fieldName = "data_id";
+$this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
+$this->dataId->label = "Data Id";
+$this->addType($this->dataId);
+
 }
-public function loadProcess() {
-if ($this->process == null) {
-$this->process = new \Nemundo\Workflow\Data\Process\ProcessExternalType(null, $this->parentFieldName . "_process");
-$this->process->fieldName = "process";
-$this->process->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->process->aliasFieldName = $this->process->tableName ."_".$this->process->fieldName;
-$this->process->label = "Process";
-$this->addType($this->process);
-}
-return $this;
-}
-public function loadWorkflow() {
-if ($this->workflow == null) {
-$this->workflow = new \Nemundo\Workflow\Data\Workflow\WorkflowExternalType(null, $this->parentFieldName . "_workflow");
-$this->workflow->fieldName = "workflow";
-$this->workflow->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->workflow->aliasFieldName = $this->workflow->tableName ."_".$this->workflow->fieldName;
-$this->workflow->label = "Workflow";
-$this->addType($this->workflow);
+public function loadContentType() {
+if ($this->contentType == null) {
+$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
+$this->contentType->fieldName = "content_type";
+$this->contentType->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->contentType->aliasFieldName = $this->contentType->tableName ."_".$this->contentType->fieldName;
+$this->contentType->label = "Content Type";
+$this->addType($this->contentType);
 }
 return $this;
 }

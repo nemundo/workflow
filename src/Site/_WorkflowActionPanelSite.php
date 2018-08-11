@@ -4,17 +4,17 @@ namespace Nemundo\Workflow\Site;
 
 
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Design\Bootstrap\Button\BootstrapButton;
+use Nemundo\Package\Bootstrap\Button\BootstrapButton;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\Com\Item\WorkflowItemTrait;
+use Nemundo\Workflow\App\Workflow\Content\Item\WorkflowItemTrait;
 use Nemundo\Workflow\Com\WorkflowTitle;
 use Nemundo\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\Form\WorkflowChangeForm;
 use Nemundo\Workflow\Form\WorkflowFormUpdate;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 
 

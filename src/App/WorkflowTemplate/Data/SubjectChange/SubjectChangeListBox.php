@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange;
-class SubjectChangeListBox extends \Nemundo\Design\Bootstrap\FormElement\BootstrapModelListBox {
+class SubjectChangeListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapModelListBox {
 /**
 * @var SubjectChangeModel
 */

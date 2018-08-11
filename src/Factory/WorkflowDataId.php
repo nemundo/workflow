@@ -4,8 +4,8 @@ namespace Nemundo\Workflow\Factory;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 class WorkflowDataId extends AbstractBase
 {
@@ -19,7 +19,7 @@ class WorkflowDataId extends AbstractBase
     }
 
 
-    public function getDataIdFromParameter()
+    public function getDataIdFromWorkflowParameter()
     {
 
         $workflowId = (new WorkflowParameter())->getValue();

@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\WorkflowTemplate\Data\Comment;
-class CommentForm extends \Nemundo\Design\Bootstrap\Form\BootstrapModelForm {
+class CommentForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 /**
 * @var CommentModel
 */

@@ -14,7 +14,7 @@ class WorkflowSearchEngineApplication extends AbstractApplication
 
         $this->application = 'Workflow Search Engine';
         $this->applicationId = 'b6118004-a674-4bdc-99e5-c5aac62bc898';
-        $this->modelCollectionClassName = SearchEngineCollection::class;
+        $this->modelCollectionClass = SearchEngineCollection::class;
 
     }
 

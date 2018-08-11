@@ -13,7 +13,7 @@ class WorkflowOrmModel extends AbstractOrmModel
 
         $this->label = 'Workflow';
         $this->className = 'Workflow';
-        $this->namespace = 'Nemundo\Workflow\Data\Workflow';
+        $this->namespace = 'Nemundo\Workflow\App\Workflow\Data\Workflow';
 
     }
 
