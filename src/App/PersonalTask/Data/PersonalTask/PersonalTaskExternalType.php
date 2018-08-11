@@ -46,6 +46,16 @@ public $timeEffort;
 */
 public $done;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $description;
+
+/**
+* @var \Nemundo\Model\Type\File\MultiRedirectFilenameType
+*/
+public $file;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = PersonalTaskModel::class;
@@ -99,6 +109,20 @@ $this->done->tableName = $this->parentFieldName . "_" . $this->externalTableName
 $this->done->aliasFieldName = $this->done->tableName . "_" . $this->done->fieldName;
 $this->done->label = "Erledigt";
 $this->addType($this->done);
+
+$this->description = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->description->fieldName = "description";
+$this->description->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->description->aliasFieldName = $this->description->tableName . "_" . $this->description->fieldName;
+$this->description->label = "Description";
+$this->addType($this->description);
+
+$this->file = new \Nemundo\Model\Type\File\MultiRedirectFilenameType();
+$this->file->fieldName = "file";
+$this->file->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->file->aliasFieldName = $this->file->tableName . "_" . $this->file->fieldName;
+$this->file->label = "File";
+$this->addType($this->file);
 
 }
 public function loadWorkflow() {

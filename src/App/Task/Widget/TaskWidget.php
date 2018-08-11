@@ -12,6 +12,9 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
+use Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeReader;
+use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
@@ -56,10 +59,28 @@ class TaskWidget extends AbstractAdminWidget
 
 
         $filter = new Filter();
-        $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
-        foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
-            $filter->orEqual($taskReader->model->identificationId, $usergroupId);
+
+        $identificationTypeReader = new IdentificationTypeReader();
+        foreach ($identificationTypeReader->getData() as $identificationTypeRow) {
+
+            $identificationType = $identificationTypeRow->getIdentificationTypeClassObject();
+            foreach ($identificationType->getIdentificationIdList() as $value) {
+                $filter->orEqual($taskReader->model->identificationId, $value);
+            }
+
         }
+
+
+        // (new UsergroupIdentificationType())
+        //(new UserIdentificationType())->getFilter()
+
+
+        /*   $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
+
+           foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
+               $filter->orEqual($taskReader->model->identificationId, $usergroupId);
+           }*/
+
 
         $taskReader->filter->andFilter($filter);
 

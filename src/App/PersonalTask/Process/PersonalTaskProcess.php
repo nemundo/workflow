@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\PersonalTask\Process;
 
 use Nemundo\Workflow\App\PersonalTask\ContentItem\PersonalTaskContentItem;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
-use Nemundo\Workflow\App\PersonalTask\Form\PersonalTaskStartForm;
+use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskItemSite;
 use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskErfassungWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
@@ -26,8 +26,17 @@ class PersonalTaskProcess extends AbstractProcess
         $this->prefix = 'T-';
         $this->modelClass = PersonalTaskModel::class;
         $this->startWorkflowStatusClass = PersonalTaskErfassungWorkflowStatus::class;
-        //$this->formClass = PersonalTaskStartForm::class;
 
+    }
+
+
+    public function getSubject($dataId)
+    {
+
+        $personalTaskRow = (new PersonalTaskReader())->getRowById($dataId);
+        $subject = $personalTaskRow->workflow->workflowNumber . ' ' . $personalTaskRow->task;
+
+        return $subject;
 
     }
 

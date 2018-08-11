@@ -34,16 +34,6 @@ class StatusChangeContainer extends AbstractHtmlContainerList
         $factory->redirect = $this->process->getItemSite($workflowId);
         $factory->getForm($this);
 
-
-        /*
-        $event = new WorkflowEvent();
-        $event->workflowStatus = $workflowStatus;
-        $event->workflowId = $workflowId;
-
-        $form = $workflowStatus->getForm($this);
-        $form->afterSubmitEvent->addEvent($event);
-        $form->redirectSite = $this->process->getItemSite($workflowId);*/
-
         return parent::getHtml();
 
     }

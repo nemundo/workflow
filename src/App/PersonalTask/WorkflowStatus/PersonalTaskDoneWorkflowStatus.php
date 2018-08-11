@@ -3,19 +3,13 @@
 namespace Nemundo\Workflow\App\PersonalTask\WorkflowStatus;
 
 
-use Nemundo\Workflow\Action\AssignmentWorkflowAction;
-use Nemundo\Workflow\Action\ClosingWorkflowAction;
-use Nemundo\Workflow\Action\NotificationWorkflowAction;
 use Nemundo\Workflow\App\PersonalTask\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskUpdate;
 use Nemundo\Workflow\App\Task\Item\TaskItem;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\Template\WorkflowStatus\ClosingWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 
-class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus  // AbstractChangeWorkflowStatus
+class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadData()
@@ -30,24 +24,16 @@ class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus  // Abst
     }
 
 
-    public function onWorkflowCreate($dataId, $workflowId)
+    public function onCreate($dataId)
     {
 
         $update = new PersonalTaskUpdate();
         $update->done = true;
-        $update->updateById($workflowId);
+        $update->updateById($this->workflowId);
 
 
-        (new TaskItem($workflowId))
+        (new TaskItem($this->workflowId))
             ->archiveTask();
-
-
-        /*
-        (new AssignmentWorkflowAction($changeEvent))
-            ->clearUsergroupUserAssignment();
-
-        (new NotificationWorkflowAction($changeEvent))
-            ->notificateCreator();*/
 
     }
 

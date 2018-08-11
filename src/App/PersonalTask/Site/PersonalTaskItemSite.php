@@ -6,7 +6,9 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\Redirect\PersonalTaskFileRedirectSite;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
+use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 
 class PersonalTaskItemSite extends AbstractSite
@@ -26,6 +28,7 @@ class PersonalTaskItemSite extends AbstractSite
         //$this->addRestrictedUsergroup(new SchleunigerUsergroup());
 
         new PersonalTaskStatusChangeSite($this);
+        new PersonalTaskFileRedirectSite($this);
 
     }
 
@@ -43,13 +46,17 @@ class PersonalTaskItemSite extends AbstractSite
         $dataId = (new DataIdParameter())->getValue();
 
 
-        //$personalTaskRow = (new PersonalTaskReader())->getRowById($dataId);
-
         $workflow = new ProcessContentItem($page);
         $workflow->contentType= new PersonalTaskProcess();
         $workflow->showBaseData = false;
-        $workflow->dataId = $dataId;  // $personalTaskRow->workflowId;
+        $workflow->dataId = $dataId;
         $workflow->statusChangeRedirectSite = PersonalTaskStatusChangeSite::$site;
+
+
+        $btn = new WorkflowActionButton($page);
+        $btn->workflowId = $dataId;
+        $btn->statusChangeRedirectSite = PersonalTaskStatusChangeSite::$site;
+
 
         $page->render();
 

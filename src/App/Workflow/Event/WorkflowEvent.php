@@ -39,6 +39,32 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
+/*
+        if ($this->checkFollowingStatus) {
+
+
+            $workflowItem = (new WorkflowItem($this->workflowId));
+
+            (new Debug())->write($workflowItem->workflowStatus);
+
+
+            $valid = false;
+            foreach ($workflowItem->workflowStatus->getFollowingStatusClassList() as $followingStausClass) {
+                if ($followingStausClass !== $this->workflowStatus->getClassName()) {
+                    $valid = true;
+                }
+            }
+
+
+            if (!$valid) {
+                (new LogMessage())->writeError('Workflow and Status are not valid. Refresh Browser.');
+                exit;
+            }
+
+        }*/
+
+
+
         $data = new StatusChange();
         $data->workflowStatusId = $this->workflowStatus->id;
         $data->workflowId = $this->workflowId;
@@ -55,8 +81,6 @@ class WorkflowEvent extends AbstractEvent
                 $update->workflowStatusId = $this->workflowStatus->id;
                 $update->updateById($this->workflowId);
             }
-
-
 
         }
 
@@ -80,12 +104,18 @@ class WorkflowEvent extends AbstractEvent
         }*/
 
 
-        $this->workflowStatus->workflowId = $this->workflowId;
+        //$this->workflowStatus->workflowId = $this->workflowId;
 
 
         if ($this->workflowStatus->isObjectOfTrait(WorkflowIdTrait::class)) {
             $this->workflowStatus->workflowId = $this->workflowId;
         }
+
+
+        if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
+            $this->workflowStatus->workflowId = $this->workflowId;
+        }
+
 
         if (!$this->draft) {
 

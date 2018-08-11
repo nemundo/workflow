@@ -51,6 +51,16 @@ public $timeEffort;
 */
 public $done;
 
+/**
+* @var string
+*/
+public $description;
+
+/**
+* @var \Nemundo\Model\Reader\Property\File\MultiRedirectFilenameReaderProperty
+*/
+public $file;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -70,6 +80,8 @@ $this->loadNemundoUserDataUserUserresponsibleUserRow($model->responsibleUser);
 }
 $this->timeEffort = $this->getModelValue($model->timeEffort);
 $this->done = $this->getModelValue($model->done);
+$this->description = $this->getModelValue($model->description);
+$this->file = new \Nemundo\Model\Reader\Property\File\MultiRedirectFilenameReaderProperty($row, $model->file);
 }
 private function loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model) {
 $this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow($this->row, $model);

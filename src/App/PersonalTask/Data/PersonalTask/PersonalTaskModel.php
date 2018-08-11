@@ -36,6 +36,16 @@ public $timeEffort;
 */
 public $done;
 
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $description;
+
+/**
+* @var \Nemundo\Model\Type\File\MultiRedirectFilenameType
+*/
+public $file;
+
 protected function loadModel() {
 $this->tableName = "personal_task_personal_task";
 $this->aliasTableName = "personal_task_personal_task";
@@ -93,6 +103,21 @@ $this->done->aliasFieldName = "personal_task_personal_task_done";
 $this->done->label = "Erledigt";
 $this->done->allowNullValue = "";
 $this->done->visible->form = false;
+
+$this->description = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->description->tableName = "personal_task_personal_task";
+$this->description->fieldName = "description";
+$this->description->aliasFieldName = "personal_task_personal_task_description";
+$this->description->label = "Description";
+$this->description->allowNullValue = "";
+
+$this->file = new \Nemundo\Model\Type\File\MultiRedirectFilenameType($this);
+$this->file->tableName = "personal_task_personal_task";
+$this->file->fieldName = "file";
+$this->file->aliasFieldName = "personal_task_personal_task_file";
+$this->file->label = "File";
+$this->file->allowNullValue = "";
+$this->file->redirectSite = \Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\Redirect\PersonalTaskRedirectConfig::$redirectPersonalTaskFileSite;
 
 }
 public function loadResponsibleUser() {
