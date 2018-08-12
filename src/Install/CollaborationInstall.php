@@ -21,6 +21,7 @@ use Nemundo\Workflow\App\ToDo\Install\ToDoInstall;
 use Nemundo\Workflow\App\Widget\Install\WidgetInstall;
 use Nemundo\Workflow\App\Wiki\Install\WikiInstall;
 use Nemundo\Workflow\App\Workflow\Install\WorkflowInstall;
+use Nemundo\Workflow\App\WorkflowTemplate\Install\WorkflowTemplateInstall;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 class CollaborationInstall extends AbstractScript
@@ -31,13 +32,17 @@ class CollaborationInstall extends AbstractScript
 
         (new ContentInstall())->run();
 
+
         (new WorkflowInstall())->run();
+        (new WorkflowTemplateInstall())->run();
         (new CalendarInstall())->run();
         (new InboxInstall())->run();
         (new TaskInstall())->run();
         (new WikiInstall())->run();
         (new MessageInstall())->run();
         (new IdentificationInstall())->run();
+
+
         (new WidgetInstall())->run();
         (new PersonalTaskInstall())->run();
         (new PersonalCalendarInstall())->run();

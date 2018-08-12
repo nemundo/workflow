@@ -3,14 +3,8 @@
 namespace Nemundo\Workflow\App\Workflow\Event;
 
 
-use Nemundo\App\Content\Event\AbstractContentEvent;
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\Sequence\AbstractSequenceContentType;
-use Nemundo\App\Content\Type\Sequence\MultiSequenceTrait;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
@@ -39,30 +33,29 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
-/*
-        if ($this->checkFollowingStatus) {
+        /*
+                if ($this->checkFollowingStatus) {
 
 
-            $workflowItem = (new WorkflowItem($this->workflowId));
+                    $workflowItem = (new WorkflowItem($this->workflowId));
 
-            (new Debug())->write($workflowItem->workflowStatus);
-
-
-            $valid = false;
-            foreach ($workflowItem->workflowStatus->getFollowingStatusClassList() as $followingStausClass) {
-                if ($followingStausClass !== $this->workflowStatus->getClassName()) {
-                    $valid = true;
-                }
-            }
+                    (new Debug())->write($workflowItem->workflowStatus);
 
 
-            if (!$valid) {
-                (new LogMessage())->writeError('Workflow and Status are not valid. Refresh Browser.');
-                exit;
-            }
+                    $valid = false;
+                    foreach ($workflowItem->workflowStatus->getFollowingStatusClassList() as $followingStausClass) {
+                        if ($followingStausClass !== $this->workflowStatus->getClassName()) {
+                            $valid = true;
+                        }
+                    }
 
-        }*/
 
+                    if (!$valid) {
+                        (new LogMessage())->writeError('Workflow and Status are not valid. Refresh Browser.');
+                        exit;
+                    }
+
+                }*/
 
 
         $data = new StatusChange();
@@ -114,6 +107,13 @@ class WorkflowEvent extends AbstractEvent
 
         if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
             $this->workflowStatus->workflowId = $this->workflowId;
+
+            if ($this->workflowStatus->closingWorkflow) {
+                $update = new WorkflowUpdate();
+                $update->closed = true;
+                $update->updateById($this->workflowId);
+            }
+
         }
 
 
@@ -128,7 +128,6 @@ class WorkflowEvent extends AbstractEvent
             $this->workflowStatus->onCreate($id);
 
         }
-
 
 
     }
