@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Item;
 
 use Nemundo\Com\Html\Basic\Paragraph;
 
-class TextWorkflowItem extends WorkflowItem
+class TextWorkflowItem //extends WorkflowItem
 {
 
     /**

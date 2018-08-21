@@ -25,7 +25,7 @@ class WorkflowDraftStartForm extends AbstractWorkflowDraftForm
     /**
      * @var AbstractModel
      */
-    private $model;
+    public $model;
 
     /**
      * @var string

@@ -170,6 +170,7 @@ trait WorkflowIdTrait
         $builder->contentType = $process;
         $builder->dataId = $this->workflowId;
         $builder->task = $process->getSubject($this->workflowId);
+
         $builder->deadline = $deadline;
         $builder->createUsergroupTask($usergroup);
 

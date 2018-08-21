@@ -13,6 +13,7 @@ use Nemundo\Com\Html\Basic\Div;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
@@ -25,6 +26,11 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
      * @var string
      */
     public $workflowId;
+
+    /**
+     * @var AbstractSite
+     */
+    public $statusChangeSite;
 
     public function getHtml()
     {
@@ -86,7 +92,8 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
 
                 $btn = new AdminButton($contentDiv);
                 $btn->content = 'Draft Edit';
-                $btn->site = clone(IssueStatusChangeSite::$site);
+                $btn->site = clone($this->statusChangeSite);
+                //$btn->site = clone(IssueStatusChangeSite::$site);
                 $btn->site->addParameter(new ContentTypeParameter($statusChangeRow->workflowStatusId));
                 $btn->site->addParameter(new DataIdParameter($statusChangeRow->dataId));
                 $btn->site->addParameter(new DraftEditParameter());

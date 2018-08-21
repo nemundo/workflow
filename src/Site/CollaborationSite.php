@@ -11,6 +11,7 @@ use Nemundo\Workflow\App\Inbox\Site\InboxSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
 use Nemundo\Workflow\App\Message\Site\MessageSite;
 use Nemundo\Workflow\App\News\Site\NewsSite;
+use Nemundo\Workflow\App\RepeatingTask\Site\RepeatingTaskSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Stream\Site\StreamSite;
 use Nemundo\Workflow\App\Subscription\Site\MySubscriptionSite;
@@ -42,6 +43,7 @@ class CollaborationSite extends AbstractSite
 
         new TaskSite($this);
         new TaskAdminSite($this);
+        new RepeatingTaskSite($this);
 
         new ToDoDoneSite($this);
         new NewsSite($this);

@@ -12,7 +12,7 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class WikiPageAction extends AbstractWikiPageAction
 {
 
-    public function run()
+    public function run($id)
     {
 
         $pageRow = $this->getRow();

@@ -13,7 +13,7 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class CommentAction extends AbstractCommentAction
 {
 
-    public function run()
+    public function run($id)
     {
 
         $commentRow = $this->getRow();

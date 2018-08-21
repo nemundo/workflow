@@ -46,6 +46,7 @@ class TaskWidget extends AbstractAdminWidget
 
         $header = new TableHeader($table);
         $header->addEmpty();
+        $header->addText('Typ');
         $header->addText('Quelle');
         $header->addText('Aufgabe');
         $header->addText('Erledigen bis');
@@ -71,19 +72,7 @@ class TaskWidget extends AbstractAdminWidget
         }
 
 
-        // (new UsergroupIdentificationType())
-        //(new UserIdentificationType())->getFilter()
-
-
-        /*   $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
-
-           foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
-               $filter->orEqual($taskReader->model->identificationId, $usergroupId);
-           }*/
-
-
         $taskReader->filter->andFilter($filter);
-
 
         foreach ($taskReader->getData() as $taskRow) {
 
@@ -97,6 +86,7 @@ class TaskWidget extends AbstractAdminWidget
             }
 
             $row->addText($taskRow->contentType->contentType);
+            $row->addText($taskRow->source);
             $row->addText($taskRow->task);
 
             if ($taskRow->deadline !== null) {

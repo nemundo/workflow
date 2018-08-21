@@ -6,6 +6,7 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
+use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Form\Start\WorkflowStartForm;
 use Schleuniger\App\Task\Template\TaskTemplate;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
@@ -48,6 +49,12 @@ class PersonalTaskNewSite extends AbstractSite
 
         $form = (new PersonalTaskProcess())->getForm($page);
         $form->redirectSite = TaskSite::$site;
+
+        $event = new WorkflowStartEvent();
+        $event->process = new PersonalTaskProcess();
+
+        $form->afterSubmitEvent->addEvent($event);
+
 
         /*$form = new WorkflowStartForm($page);
         $form->process = new PersonalTaskProcess();

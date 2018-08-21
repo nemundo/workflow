@@ -7,6 +7,16 @@ class TaskExternalType extends \Nemundo\Model\Type\External\ExternalType {
 public $id;
 
 /**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $workflowId;
+
+/**
+* @var \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType
+*/
+public $workflow;
+
+/**
 * @var \Nemundo\Model\Type\Text\TextType
 */
 public $task;
@@ -71,6 +81,16 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $sourceId;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $source;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = TaskModel::class;
@@ -82,6 +102,13 @@ $this->id->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
+
+$this->workflowId = new \Nemundo\Model\Type\Id\IdType();
+$this->workflowId->fieldName = "workflow";
+$this->workflowId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->workflowId->aliasFieldName = $this->workflowId->tableName ."_".$this->workflowId->fieldName;
+$this->workflowId->label = "";
+$this->addType($this->workflowId);
 
 $this->task = new \Nemundo\Model\Type\Text\TextType();
 $this->task->fieldName = "task";
@@ -153,6 +180,31 @@ $this->dateTimeCreated->aliasFieldName = $this->dateTimeCreated->tableName . "_"
 $this->dateTimeCreated->label = "Date Time Created";
 $this->addType($this->dateTimeCreated);
 
+$this->sourceId = new \Nemundo\Model\Type\Id\UniqueIdType();
+$this->sourceId->fieldName = "source_id";
+$this->sourceId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->sourceId->aliasFieldName = $this->sourceId->tableName . "_" . $this->sourceId->fieldName;
+$this->sourceId->label = "Source Id";
+$this->addType($this->sourceId);
+
+$this->source = new \Nemundo\Model\Type\Text\TextType();
+$this->source->fieldName = "source";
+$this->source->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->source->aliasFieldName = $this->source->tableName . "_" . $this->source->fieldName;
+$this->source->label = "Source";
+$this->addType($this->source);
+
+}
+public function loadWorkflow() {
+if ($this->workflow == null) {
+$this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType(null, $this->parentFieldName . "_workflow");
+$this->workflow->fieldName = "workflow";
+$this->workflow->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->workflow->aliasFieldName = $this->workflow->tableName ."_".$this->workflow->fieldName;
+$this->workflow->label = "";
+$this->addType($this->workflow);
+}
+return $this;
 }
 public function loadIdentificationType() {
 if ($this->identificationType == null) {

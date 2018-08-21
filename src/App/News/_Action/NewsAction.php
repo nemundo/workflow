@@ -12,7 +12,7 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class NewsAction extends AbstractNewsAction
 {
 
-    public function run()
+    public function run($id)
     {
 
         $newsRow = $this->getRow();

@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
-class WikiNewsContentType extends NewsContentType
+class WikiNewsContentType //extends NewsContentType
 {
 
     protected function loadData()

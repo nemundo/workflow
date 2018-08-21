@@ -83,6 +83,7 @@ class ProcessContentItem extends AbstractContentItem
 
         $workflowLog = new WorkflowLogContainer($this);
         $workflowLog->workflowId = $this->dataId;
+        $workflowLog->statusChangeSite = $this->statusChangeRedirectSite;
 
 
         /*

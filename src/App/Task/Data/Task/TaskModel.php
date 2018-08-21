@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Task\Data\Task;
-class TaskModel extends \Nemundo\Model\Definition\Model\AbstractModel {
+class TaskModel extends \Nemundo\Workflow\Model\AbstractWorkflowBaseModel {
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
@@ -71,12 +71,22 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $sourceId;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $source;
+
 protected function loadModel() {
 $this->tableName = "task_task";
 $this->aliasTableName = "task_task";
 $this->label = "Task";
 
-$this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
+$this->primaryIndex = new \Nemundo\Db\Index\UniqueIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "task_task";
@@ -88,6 +98,7 @@ $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
 $this->id->visible->form = false;
+
 
 $this->task = new \Nemundo\Model\Type\Text\TextType($this);
 $this->task->tableName = "task_task";
@@ -166,6 +177,26 @@ $this->dateTimeCreated->label = "Date Time Created";
 $this->dateTimeCreated->allowNullValue = "";
 $this->dateTimeCreated->visible->form = false;
 
+$this->sourceId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
+$this->sourceId->tableName = "task_task";
+$this->sourceId->fieldName = "source_id";
+$this->sourceId->aliasFieldName = "task_task_source_id";
+$this->sourceId->label = "Source Id";
+$this->sourceId->allowNullValue = "";
+$this->sourceId->visible->form = false;
+$this->sourceId->visible->table = false;
+$this->sourceId->visible->view = false;
+$this->id->visible->form = false;
+
+$this->source = new \Nemundo\Model\Type\Text\TextType($this);
+$this->source->tableName = "task_task";
+$this->source->fieldName = "source";
+$this->source->aliasFieldName = "task_task_source";
+$this->source->label = "Source";
+$this->source->allowNullValue = "";
+$this->source->length = 255;
+
+$this->action->addInsertAction(new \Nemundo\Workflow\App\Task\Action\TaskAction());
 }
 public function loadIdentificationType() {
 if ($this->identificationType == null) {

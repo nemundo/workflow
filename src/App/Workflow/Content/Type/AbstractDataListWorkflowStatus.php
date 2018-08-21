@@ -9,4 +9,14 @@ abstract class AbstractDataListWorkflowStatus extends AbstractDataListContentTyp
 
     use WorkflowStatusTrait;
 
+
+    public function __construct()
+    {
+
+        $this->draftMode = true;
+        parent::__construct();
+
+    }
+
+
 }

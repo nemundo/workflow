@@ -11,6 +11,8 @@ use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Task\Data\Task\Task;
 use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
+use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
+use Nemundo\Workflow\App\Task\Process\TaskProcess;
 
 
 abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
@@ -31,6 +33,15 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
      */
     public $timeEffort = 0;
 
+    /**
+     * @var string
+     */
+    public $sourceId;
+
+    /**
+     * @var string
+     */
+    public $source;
 
     public function createItem()
     {
@@ -49,24 +60,19 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
         $data->timeEffort = $this->timeEffort;
         $data->identificationTypeId = $this->identificationType->id;
         $data->identificationId = $this->identificationId;
-        $data->save();
+        $data->source = $this->source;
+        $data->sourceId = $this->sourceId;
+        $id = $data->save();
 
 
-        /*
-        if ($this->identificationType->isObjectOfClass(UserIdentificationType::class)) {
-            $this->createInboxItem($this->identificationId);
+        if ($this->contentType->isObjectOfClass(TaskProcess::class)) {
+
+            $update = new TaskUpdate();
+            $update->dataId = $id;
+            $update->updateById($id);
+
         }
 
-        if ($this->identificationType->isObjectOfClass(UsergroupIdentificationType::class)) {
-
-            $usergroup = new UsergroupItem($this->identificationId);
-
-            foreach ($usergroup->getUserList() as $user) {
-                //$this->createInboxItem($user->id);
-            }
-
-
-        }*/
 
     }
 

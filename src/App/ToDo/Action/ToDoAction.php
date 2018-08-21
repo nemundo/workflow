@@ -14,7 +14,7 @@ use Nemundo\Workflow\Stream\Builder\StreamBuilder;
 class ToDoAction extends AbstractToDoAction
 {
 
-    public function run()
+    public function run($id)
     {
 
         $todoRow = $this->getRow();

@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Item;
 use Nemundo\Model\Definition\Model\AbstractModel;
 use Nemundo\Workflow\Com\View\WorkflowModelView;
 
-class WorkflowDefaultWorkflowItem extends WorkflowItem
+class WorkflowDefaultWorkflowItem //extends //WorkflowItem
 {
 
     /**

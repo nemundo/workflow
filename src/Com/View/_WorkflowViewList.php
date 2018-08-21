@@ -45,7 +45,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 
 
-class WorkflowViewList extends AbstractProcessItem
+class WorkflowViewList //extends AbstractProcessItem
 {
 
     /**

@@ -46,4 +46,9 @@ trait WorkflowStatusTrait
      */
     public $changeWorkflowStatus = true;
 
+    /**
+     * @var bool
+     */
+    public $draftMode = false;
+
 }

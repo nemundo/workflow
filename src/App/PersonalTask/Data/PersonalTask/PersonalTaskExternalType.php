@@ -114,14 +114,14 @@ $this->description = new \Nemundo\Model\Type\Text\LargeTextType();
 $this->description->fieldName = "description";
 $this->description->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->description->aliasFieldName = $this->description->tableName . "_" . $this->description->fieldName;
-$this->description->label = "Description";
+$this->description->label = "Beschreibung";
 $this->addType($this->description);
 
 $this->file = new \Nemundo\Model\Type\File\MultiRedirectFilenameType();
 $this->file->fieldName = "file";
 $this->file->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->file->aliasFieldName = $this->file->tableName . "_" . $this->file->fieldName;
-$this->file->label = "File";
+$this->file->label = "Datei";
 $this->addType($this->file);
 
 }

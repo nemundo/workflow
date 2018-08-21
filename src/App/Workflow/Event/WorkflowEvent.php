@@ -34,6 +34,12 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
+        if ($this->workflowStatus->draftMode) {
+            $this->draft = true;
+        }
+
+
+
         /*
                 if ($this->checkFollowingStatus) {
 
@@ -132,11 +138,6 @@ class WorkflowEvent extends AbstractEvent
             }
 
         }
-
-
-
-
-
 
         if (!$this->draft) {
 

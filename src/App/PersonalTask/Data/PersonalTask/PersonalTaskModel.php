@@ -108,14 +108,14 @@ $this->description = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->description->tableName = "personal_task_personal_task";
 $this->description->fieldName = "description";
 $this->description->aliasFieldName = "personal_task_personal_task_description";
-$this->description->label = "Description";
+$this->description->label = "Beschreibung";
 $this->description->allowNullValue = "";
 
 $this->file = new \Nemundo\Model\Type\File\MultiRedirectFilenameType($this);
 $this->file->tableName = "personal_task_personal_task";
 $this->file->fieldName = "file";
 $this->file->aliasFieldName = "personal_task_personal_task_file";
-$this->file->label = "File";
+$this->file->label = "Datei";
 $this->file->allowNullValue = "";
 $this->file->redirectSite = \Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\Redirect\PersonalTaskRedirectConfig::$redirectPersonalTaskFileSite;
 

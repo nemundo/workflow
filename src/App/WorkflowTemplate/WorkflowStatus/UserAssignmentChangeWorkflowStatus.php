@@ -8,12 +8,14 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignme
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 
+
+// UserAssignmentTemplateWorkflowStatus
 class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadData()
     {
-
+// Nemundo\Workflow\Template\WorkflowStatus\UserAssignmentChangeWorkflowStatus
         $this->name = 'User Assignment';
         $this->id = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeWorkflowStatus = false;
@@ -26,10 +28,6 @@ class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
     {
 
         $row = (new UserAssignmentChangeReader())->getRowById($dataId);
-
-
-        //(new Debug())->write($this->workflowId);
-
 
         $this->createUserTask($row->userId);
         //$this->assignUser($row->userId);
