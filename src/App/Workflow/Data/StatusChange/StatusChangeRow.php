@@ -34,7 +34,7 @@ public $workflowStatus;
 /**
 * @var string
 */
-public $workflowItemId;
+public $dataId;
 
 /**
 * @var string
@@ -78,7 +78,7 @@ $this->workflowStatusId = $this->getModelValue($model->workflowStatusId);
 if ($model->workflowStatus !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypeworkflowStatusRow($model->workflowStatus);
 }
-$this->workflowItemId = $this->getModelValue($model->workflowItemId);
+$this->dataId = $this->getModelValue($model->dataId);
 $this->userId = $this->getModelValue($model->userId);
 if ($model->user !== null) {
 $this->loadNemundoUserDataUserUseruserRow($model->user);

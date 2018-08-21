@@ -67,6 +67,19 @@ trait WorkflowIdTrait
     protected function createUserInbox($userId, $message = '')
     {
 
+        $workflowReader = new WorkflowReader();
+        $workflowReader->model->loadProcess();
+        $workflowRow = $workflowReader->getRowById($this->workflowId);
+
+        $process = $workflowRow->process->getProcessClassObject();
+
+        $builder = new InboxBuilder();
+        $builder->contentType = $process;
+        $builder->dataId = $this->workflowId;
+        $builder->subject = $process->getSubject($this->workflowId);
+        $builder->message = $message;
+        $builder->createUserInbox($userId);
+
     }
 
 
@@ -78,11 +91,6 @@ trait WorkflowIdTrait
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
         $process = $workflowRow->process->getProcessClassObject();
-
-
-        //(new Debug())->write($this->workflowId);
-        //(new Debug())->write($process);
-
 
         $builder = new InboxBuilder();
         $builder->contentType = $process;
@@ -131,7 +139,13 @@ trait WorkflowIdTrait
     protected function createUserTask($userId, Date $deadline = null)
     {
 
+        //(new Debug())->write('createUserTAsk'.$this->workflowId);
+
         $process = $this->getProcess();
+
+        //(new Debug())->write($this->workflowId);
+        //(new Debug())->write($process->getSubject($this->workflowId));
+
 
         $builder = new TaskBuilder();
         $builder->contentType = $process;
@@ -142,6 +156,7 @@ trait WorkflowIdTrait
 
         $this->assignUser($userId);
         $this->changeDeadline($deadline);
+
 
     }
 

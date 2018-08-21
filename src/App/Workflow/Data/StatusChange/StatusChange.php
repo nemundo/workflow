@@ -19,7 +19,7 @@ public $workflowStatusId;
 /**
 * @var string
 */
-public $workflowItemId;
+public $dataId;
 
 /**
 * @var bool
@@ -38,7 +38,7 @@ $this->model = new StatusChangeModel();
 public function save() {
 $this->typeValueList->setModelValue($this->model->workflowId, $this->workflowId);
 $this->typeValueList->setModelValue($this->model->workflowStatusId, $this->workflowStatusId);
-$this->typeValueList->setModelValue($this->model->workflowItemId, $this->workflowItemId);
+$this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
 $this->typeValueList->setModelValue($this->model->draft, $this->draft);
 $this->typeValueList->setModelValue($this->model->message, $this->message);
 $id = parent::save();

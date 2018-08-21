@@ -57,11 +57,7 @@ class ProcessContentItem extends AbstractContentItem
     public function getHtml()
     {
 
-        /** @var AbstractWorkflowBaseModel $model */
-        //$model = $this->contentType->getModel();
-
         $workflowId = $this->dataId;
-        //$workflowRow = (new WorkflowReader())->getRowById($workflowId);
 
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
@@ -91,7 +87,6 @@ class ProcessContentItem extends AbstractContentItem
 
         /*
         if (!$workflowRow->draft) {
-
 
             $actionButton = new WorkflowActionButton($this);
             $actionButton->workflowId = $workflowId;

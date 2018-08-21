@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Event\AbstractEvent;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
@@ -61,16 +62,22 @@ class WorkflowEvent extends AbstractEvent
         $data = new StatusChange();
         $data->workflowStatusId = $this->workflowStatus->id;
         $data->workflowId = $this->workflowId;
-        $data->workflowItemId = $id;
+        $data->dataId = $id;
         $data->draft = $this->draft;
         $data->save();
+
+
+        $update = new WorkflowUpdate();
+        $update->draft = $this->draft;
+        $update->updateById($this->workflowId);
+
 
 
         if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
 
             if ($this->workflowStatus->changeWorkflowStatus) {
                 $update = new WorkflowUpdate();
-                $update->draft = $this->draft;
+                //$update->draft = $this->draft;
                 $update->workflowStatusId = $this->workflowStatus->id;
                 $update->updateById($this->workflowId);
             }
@@ -105,6 +112,16 @@ class WorkflowEvent extends AbstractEvent
         }
 
 
+        /*
+        if ($this->workflowStatus->isObjectOfClass(AbstractDraftDataWorkflowStatus::class)) {
+
+            $update = new WorkflowUpdate();
+            $update->draft = true;
+            $update->updateById($this->workflowId);
+
+        }*/
+
+
         if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
             $this->workflowStatus->workflowId = $this->workflowId;
 
@@ -115,6 +132,10 @@ class WorkflowEvent extends AbstractEvent
             }
 
         }
+
+
+
+
 
 
         if (!$this->draft) {

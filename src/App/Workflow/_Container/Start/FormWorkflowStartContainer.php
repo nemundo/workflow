@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Start;
 
 
 use Nemundo\Com\Html\Form\AbstractSubmitForm;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowFormTrait;
 use Nemundo\Workflow\Form\WorkflowStartForm;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;

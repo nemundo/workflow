@@ -20,7 +20,7 @@ public $wordId;
 /**
 * @var string
 */
-public $dataId;
+public $resultId;
 
 public function __construct() {
 parent::__construct();
@@ -29,7 +29,7 @@ $this->model = new SearchIndexModel();
 public function update() {
 $this->typeValueList->setModelValue($this->model->contentTypeId, $this->contentTypeId);
 $this->typeValueList->setModelValue($this->model->wordId, $this->wordId);
-$this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
+$this->typeValueList->setModelValue($this->model->resultId, $this->resultId);
 parent::update();
 }
 }

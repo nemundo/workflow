@@ -26,6 +26,11 @@ public $contentTypeId;
 */
 public $contentType;
 
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $dataId;
+
 protected function loadModel() {
 $this->tableName = "survey_survey_log";
 $this->aliasTableName = "survey_survey_log";
@@ -55,6 +60,17 @@ $this->contentTypeId->tableName = "survey_survey_log";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "survey_survey_log_content_type";
 $this->contentTypeId->label = "Content Type";
+
+$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
+$this->dataId->tableName = "survey_survey_log";
+$this->dataId->fieldName = "data_id";
+$this->dataId->aliasFieldName = "survey_survey_log_data_id";
+$this->dataId->label = "Data Id";
+$this->dataId->allowNullValue = "";
+$this->dataId->visible->form = false;
+$this->dataId->visible->table = false;
+$this->dataId->visible->view = false;
+$this->id->visible->form = false;
 
 }
 public function loadSurvey() {

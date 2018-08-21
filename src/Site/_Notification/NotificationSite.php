@@ -253,8 +253,8 @@ class NotificationSite extends AbstractSite
 
                 /** @var AbstractWorkflowItemView $item */
             /*      $item = new $workflowStatus->workflowItemViewClassName($td);
-                  $item->workflowItemId = $notificationRow->statusChange->workflowItemId;
-                  //$item->workflowItemId = $notificationRow->workflow-
+                  $item->dataId = $notificationRow->statusChange->dataId;
+                  //$item->dataId = $notificationRow->workflow-
 
               }*/
 

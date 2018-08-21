@@ -18,7 +18,7 @@ class DataWorkflowItemView extends AbstractWorkflowItemView
 
         $reader = new WorkflowStatusChangeReader();
         $reader->model->loadWorkflowStatus();
-        $reader->filter->andEqual($reader->model->workflowItemId, $this->workflowItemId);
+        $reader->filter->andEqual($reader->model->dataId, $this->dataId);
 
         $row = $reader->getRow();
 
@@ -36,7 +36,7 @@ class DataWorkflowItemView extends AbstractWorkflowItemView
 
             $view = new WorkflowModelView($this);
             $view->model = $model;
-            $view->dataId = $this->workflowItemId;
+            $view->dataId = $this->dataId;
 
         }
 

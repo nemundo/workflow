@@ -214,7 +214,7 @@ class WorkflowItem extends AbstractBase
          $changeReader->addOrder($changeReader->model->itemOrder, SortOrder::DESCENDING);
          $row = $changeReader->getRow();
 
-         return $row->workflowItemId;
+         return $row->dataId;
 
 
      }*/

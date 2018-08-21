@@ -74,7 +74,7 @@ class DataListForm extends AbstractHtmlContainerList
             $change = new StatusChangeBuilder();
             $change->workflowStatus = $this->workflowStatus;
             $change->workflowId = $this->workflowId;
-            $change->workflowItemId = (new RandomUniqueId())->getUniqueId();
+            $change->dataId = (new RandomUniqueId())->getUniqueId();
             $change->draft = true;
             $change->changeStatus();*/
 
@@ -86,7 +86,7 @@ class DataListForm extends AbstractHtmlContainerList
         $value = new StatusChangeValue();
         $value->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->id);
         $value->filter->andEqual($count->model->workflowId, $workflowId);
-        $value->field = $value->model->workflowItemId;
+        $value->field = $value->model->dataId;
         $dataId = $value->getValue();
 
 

@@ -64,7 +64,7 @@ class WorkflowItemAdminSite extends AbstractSite
             $contentType = $statusChangeRow->workflowStatus->getContentTypeClassObject();
 
             $item = $contentType->getItem($page);
-            $item->dataId = $statusChangeRow->workflowItemId;
+            $item->dataId = $statusChangeRow->dataId;
 
 
             $btn = new AdminButton($page);
@@ -74,7 +74,7 @@ class WorkflowItemAdminSite extends AbstractSite
 
 
             /*
-            $list->addHyperlink($statusChangeItem->workflowStatus->workflowStatus, '#' . $statusChangeItem->workflowItemId);
+            $list->addHyperlink($statusChangeItem->workflowStatus->workflowStatus, '#' . $statusChangeItem->dataId);
 
             $div = new Div($colRight);
             $div->addCssClass('card');
@@ -92,7 +92,7 @@ class WorkflowItemAdminSite extends AbstractSite
 
             $item = $workflowStatus->getItem($contentDiv);
             //$item->workflowStatus = $workflowStatus;
-            $item->dataId = $statusChangeItem->workflowItemId;
+            $item->dataId = $statusChangeItem->dataId;
 //$item->workflowId = $statusChangeItem->workflowId;
 
             //$statusChangeItem->getView($contentDiv);
@@ -107,7 +107,7 @@ class WorkflowItemAdminSite extends AbstractSite
                 $btn->site = clone($this->statusChangeRedirectSite);
                 $btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->id));
                 $btn->site->addParameter(new WorkflowParameter($this->workflowId));
-                $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
+                $btn->site->addParameter(new DraftEditParameter($statusChangeItem->dataId));
 
 
                 //if ($statusChangeItem->workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {

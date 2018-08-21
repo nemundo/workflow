@@ -21,7 +21,7 @@ class WorkflowDefaultWorkflowItem extends WorkflowItem
 
             $view = new WorkflowModelView($this);
             $view->model = $this->model;
-            $view->dataId = $this->workflowItemId;
+            $view->dataId = $this->dataId;
 
         }
 

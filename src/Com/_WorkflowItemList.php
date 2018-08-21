@@ -173,7 +173,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
             $workflowStatus = $changeRow->workflowStatus->getWorkflowStatusClassObject();
             //$workflowStatus->workflowId = $changeRow->workflowId;
-            //$workflowStatus->workflowItemId = $changeRow->workflowItemId;
+            //$workflowStatus->dataId = $changeRow->dataId;
 
             $statusLabel = $workflowStatus->name;
             if ($changeRow->draft) {
@@ -200,7 +200,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
                 /** @var WorkflowItem $item */
                 $item = new $workflowStatus->itemClass($contentDiv);
-                $item->workflowItemId = $changeRow->workflowItemId;
+                $item->dataId = $changeRow->dataId;
 
             }
 
@@ -225,7 +225,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
                 /** @var WorkflowItem $item */
                 $item = new $workflowStatus->itemClass($contentDiv);
-                $item->workflowItemId = $changeRow->workflowItemId;
+                $item->dataId = $changeRow->dataId;
 
 
                 if ($changeRow->draft) {
@@ -314,13 +314,13 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
 
                 /** @var WorkflowItem $item */
             /*    $item = new $workflowStatus->workflowItemClassName($contentDiv);
-                $item->workflowItemId = $changeRow->workflowItemId;
+                $item->dataId = $changeRow->dataId;
 
 /*
                 $item->id = $changeRow->id;
                 $item->title = $workflowStatus->workflowStatus;
                 $item->workflowId = $changeRow->workflowId;
-                $item->workflowItemId = $changeRow->workflowItemId;
+                $item->dataId = $changeRow->dataId;
                 $item->user = $changeRow->user->displayName;
                 $item->dateTime = $changeRow->dateTime;
                 $item->draft = $changeRow->draft;*/
@@ -338,7 +338,7 @@ class _WorkflowItemList extends AbstractProcessItem  // AbstractHtmlContainerLis
                     $item->model = new $workflowStatus->modelClassName();
                 }
 
-                $item->workflowItemId = $changeRow->workflowItemId;
+                $item->dataId = $changeRow->dataId;
                 $item->user = $changeRow->user->displayName;
                 $item->dateTime = $changeRow->dateTime;
                 $item->draft = $changeRow->draft;

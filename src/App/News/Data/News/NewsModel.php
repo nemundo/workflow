@@ -16,6 +16,11 @@ public $title;
 */
 public $text;
 
+/**
+* @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
+*/
+public $dateTime;
+
 protected function loadModel() {
 $this->tableName = "news_news";
 $this->aliasTableName = "news_news";
@@ -49,6 +54,14 @@ $this->text->fieldName = "text";
 $this->text->aliasFieldName = "news_news_text";
 $this->text->label = "Text";
 $this->text->allowNullValue = "";
+
+$this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
+$this->dateTime->tableName = "news_news";
+$this->dateTime->fieldName = "date_time";
+$this->dateTime->aliasFieldName = "news_news_date_time";
+$this->dateTime->label = "Date Time";
+$this->dateTime->allowNullValue = "";
+$this->dateTime->visible->form = false;
 
 }
 }

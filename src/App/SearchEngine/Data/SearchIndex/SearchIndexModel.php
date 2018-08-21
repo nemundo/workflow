@@ -27,9 +27,14 @@ public $wordId;
 public $word;
 
 /**
-* @var \Nemundo\Model\Type\Id\UniqueIdType
+* @var \Nemundo\Model\Type\External\Id\ExternalIdType
 */
-public $dataId;
+public $resultId;
+
+/**
+* @var \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType
+*/
+public $result;
 
 protected function loadModel() {
 $this->tableName = "searchengine_search_index";
@@ -61,20 +66,15 @@ $this->wordId->fieldName = "word";
 $this->wordId->aliasFieldName = "searchengine_search_index_word";
 $this->wordId->label = "Word";
 
-$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
-$this->dataId->tableName = "searchengine_search_index";
-$this->dataId->fieldName = "data_id";
-$this->dataId->aliasFieldName = "searchengine_search_index_data_id";
-$this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
-$this->dataId->visible->form = false;
-$this->dataId->visible->table = false;
-$this->dataId->visible->view = false;
-$this->id->visible->form = false;
+$this->resultId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
+$this->resultId->tableName = "searchengine_search_index";
+$this->resultId->fieldName = "result";
+$this->resultId->aliasFieldName = "searchengine_search_index_result";
+$this->resultId->label = "Result";
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->addType($this->wordId);
-$index->addType($this->dataId);
+$index->addType($this->resultId);
 
 }
 public function loadContentType() {
@@ -93,6 +93,15 @@ $this->word->tableName = "searchengine_search_index";
 $this->word->fieldName = "word";
 $this->word->aliasFieldName = "searchengine_search_index_word";
 $this->word->label = "Word";
+}
+}
+public function loadResult() {
+if ($this->result == null) {
+$this->result = new \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType($this, "searchengine_search_index_result");
+$this->result->tableName = "searchengine_search_index";
+$this->result->fieldName = "result";
+$this->result->aliasFieldName = "searchengine_search_index_result";
+$this->result->label = "Result";
 }
 }
 }

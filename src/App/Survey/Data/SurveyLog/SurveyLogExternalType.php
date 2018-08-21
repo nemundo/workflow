@@ -26,6 +26,11 @@ public $contentTypeId;
 */
 public $contentType;
 
+/**
+* @var \Nemundo\Model\Type\Id\UniqueIdType
+*/
+public $dataId;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = SurveyLogModel::class;
@@ -51,6 +56,13 @@ $this->contentTypeId->tableName = $this->parentFieldName . "_" . $this->external
 $this->contentTypeId->aliasFieldName = $this->contentTypeId->tableName ."_".$this->contentTypeId->fieldName;
 $this->contentTypeId->label = "Content Type";
 $this->addType($this->contentTypeId);
+
+$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
+$this->dataId->fieldName = "data_id";
+$this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
+$this->dataId->label = "Data Id";
+$this->addType($this->dataId);
 
 }
 public function loadSurvey() {

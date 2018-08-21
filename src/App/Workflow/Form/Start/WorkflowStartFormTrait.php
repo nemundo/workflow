@@ -26,7 +26,7 @@ trait WorkflowStartFormTrait
         $builder = new WorkflowBuilder();
         $builder->contentType = $this->process;
         //$builder->dataId = $dataId;
-        $builder->workflowItemId = $workflowItemId;
+        $builder->dataId = $workflowItemId;
         //$builder->draft = $this->draft;
         $workflowId = $builder->createItem();
 

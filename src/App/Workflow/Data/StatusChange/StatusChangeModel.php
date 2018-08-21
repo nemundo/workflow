@@ -29,7 +29,7 @@ public $workflowStatus;
 /**
 * @var \Nemundo\Model\Type\Id\UniqueIdType
 */
-public $workflowItemId;
+public $dataId;
 
 /**
 * @var \Nemundo\Model\Type\User\CreatedUserType
@@ -91,15 +91,15 @@ $this->workflowStatusId->fieldName = "workflow_status";
 $this->workflowStatusId->aliasFieldName = "workflow_status_change_workflow_status";
 $this->workflowStatusId->label = "Workflow Status";
 
-$this->workflowItemId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
-$this->workflowItemId->tableName = "workflow_status_change";
-$this->workflowItemId->fieldName = "workflow_item_id";
-$this->workflowItemId->aliasFieldName = "workflow_status_change_workflow_item_id";
-$this->workflowItemId->label = "Workflow Item Id";
-$this->workflowItemId->allowNullValue = "";
-$this->workflowItemId->visible->form = false;
-$this->workflowItemId->visible->table = false;
-$this->workflowItemId->visible->view = false;
+$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
+$this->dataId->tableName = "workflow_status_change";
+$this->dataId->fieldName = "data_id";
+$this->dataId->aliasFieldName = "workflow_status_change_data_id";
+$this->dataId->label = "Data Id";
+$this->dataId->allowNullValue = "";
+$this->dataId->visible->form = false;
+$this->dataId->visible->table = false;
+$this->dataId->visible->view = false;
 $this->id->visible->form = false;
 
 $this->userId = new \Nemundo\Model\Type\User\CreatedUserType($this);

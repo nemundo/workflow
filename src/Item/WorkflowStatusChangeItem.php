@@ -73,7 +73,7 @@ class WorkflowStatusChangeItem extends AbstractBase
         //$view->dataId =
 
         $view->workflowId = $this->workflowId;
-        $view->workflowItemId = $this->workflowItemId;
+        $view->dataId = $this->dataId;
         $view->workflowStatus = $this->workflowStatus;
 
         /* if ($parentCom !== null) {

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Start;
 
 
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 
 class WorkflowStartContainer extends AbstractWorkflowStartContainer

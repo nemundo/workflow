@@ -9,7 +9,4 @@ public $model;
 protected function loadCom() {
 $this->model = new StatusChangeModel();
 }
-protected function onSubmit() {
-return parent::onSubmit();
-}
 }

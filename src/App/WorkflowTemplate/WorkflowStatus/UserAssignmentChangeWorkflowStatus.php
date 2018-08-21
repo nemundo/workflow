@@ -2,6 +2,7 @@
 
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeReader;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
@@ -25,7 +26,15 @@ class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
     {
 
         $row = (new UserAssignmentChangeReader())->getRowById($dataId);
-        $this->assignUser($row->userId);
+
+
+        //(new Debug())->write($this->workflowId);
+
+
+        $this->createUserTask($row->userId);
+        //$this->assignUser($row->userId);
+
+
 
     }
 

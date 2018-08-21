@@ -49,6 +49,11 @@ class WorkflowTitle extends AbstractHtmlContainerList
             $workflowTitle = $workflowRow->workflowNumber . ': ' . $workflowTitle;
         }
 
+        if ($workflowRow->draft) {
+            $workflowTitle .= ' (Entwurf)';
+        }
+
+
         $title = new AdminTitle($this);
         $title->content = $workflowTitle;
 

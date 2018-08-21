@@ -3,13 +3,10 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 
-use Nemundo\Workflow\Action\NotificationWorkflowAction;
+use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\Template\View\CommentWorkflowItemView;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
-use Paranautik\Usergroup\BetaUsergroup;
+
 
 class CommentWorkflowStatus extends AbstractDataWorkflowStatus
 {
@@ -22,6 +19,15 @@ class CommentWorkflowStatus extends AbstractDataWorkflowStatus
         $this->modelClass = CommentModel::class;
         $this->changeWorkflowStatus = false;
         //$this->itemClass = CommentWorkflowItemView::class;
+
+    }
+
+
+    public function onCreate($dataId)
+    {
+
+        $this->createUserInbox((new UserInformation())->getUserId(), 'Neuer Kommentar');
+
 
     }
 

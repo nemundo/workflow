@@ -14,7 +14,7 @@ class DraftDataWorkflowStartContainer extends AbstractWorkflowStartContainer
 
         $form = new WorkflowDraftStartForm($this);
         $form->process = $this->process;
-        //$form->workflowItemId = $this->da
+        //$form->dataId = $this->da
         $form->redirectSite = $this->redirectSite;
         $form->appendWorkflowParameter = $this->appendWorkflowParameter;
 

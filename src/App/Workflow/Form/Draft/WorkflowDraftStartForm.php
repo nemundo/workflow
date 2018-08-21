@@ -14,7 +14,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Form\Item\AbstractModelFormItem;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
@@ -50,7 +50,7 @@ class WorkflowDraftStartForm extends AbstractWorkflowDraftForm
 
         $builder = new WorkflowBuilder();
         $builder->contentType = $this->process;
-        $builder->workflowItemId = $itemId;
+        $builder->dataId = $itemId;
         $builder->draft = $this->isDraft();
         $workflowId = $builder->createItem();
 

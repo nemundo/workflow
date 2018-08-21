@@ -16,6 +16,11 @@ public $title;
 */
 public $text;
 
+/**
+* @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
+*/
+public $dateTime;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = NewsModel::class;
@@ -41,6 +46,13 @@ $this->text->tableName = $this->parentFieldName . "_" . $this->externalTableName
 $this->text->aliasFieldName = $this->text->tableName . "_" . $this->text->fieldName;
 $this->text->label = "Text";
 $this->addType($this->text);
+
+$this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType();
+$this->dateTime->fieldName = "date_time";
+$this->dateTime->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dateTime->aliasFieldName = $this->dateTime->tableName . "_" . $this->dateTime->fieldName;
+$this->dateTime->label = "Date Time";
+$this->addType($this->dateTime);
 
 }
 }

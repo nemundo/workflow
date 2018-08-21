@@ -5,6 +5,9 @@ namespace Nemundo\Workflow\App\Workflow\Com\Container;
 
 use Nemundo\App\Content\Factory\ContentTypeFactory;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
@@ -23,6 +26,8 @@ class StatusChangeContainer extends AbstractHtmlContainerList
 
         $workflowId = (new WorkflowParameter())->getValue();
 
+        $workflowRow = (new WorkflowReader())->getRowById($workflowId);
+
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
 
@@ -33,6 +38,13 @@ class StatusChangeContainer extends AbstractHtmlContainerList
         $factory->workflowId = $workflowId;
         $factory->redirect = $this->process->getItemSite($workflowId);
         $factory->getForm($this);
+
+        if ($workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+            if ($workflowRow->draft) {
+                $btn = new DraftReleaseButton($this);
+                $btn->workflowId = $workflowId;
+            }
+        }
 
         return parent::getHtml();
 

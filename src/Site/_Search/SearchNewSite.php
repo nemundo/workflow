@@ -12,7 +12,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\Com\Title\ProcessTitle;
 use Nemundo\Workflow\Container\Start\WorkflowStartContainer;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Form\WorkflowChangeForm;
 use Nemundo\Workflow\Form\WorkflowStartForm;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;

@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskUpdate;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
-use Nemundo\Workflow\App\SearchEngine\Builder\SearchIndexBuilder;
+use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;

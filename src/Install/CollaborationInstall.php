@@ -12,10 +12,13 @@ use Nemundo\Workflow\App\Favorite\Install\FavoriteInstall;
 use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
 use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
 use Nemundo\Workflow\App\Message\Install\MessageInstall;
+use Nemundo\Workflow\App\News\Install\NewsInstall;
 use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
 use Nemundo\Workflow\App\PersonalTask\Install\PersonalTaskInstall;
 use Nemundo\Workflow\App\SearchEngine\Install\SearchEngineInstall;
+use Nemundo\Workflow\App\Stream\Install\StreamInstall;
 use Nemundo\Workflow\App\Subscription\Install\SubscriptionInstall;
+use Nemundo\Workflow\App\Survey\Install\SurveyInstall;
 use Nemundo\Workflow\App\Task\Install\TaskInstall;
 use Nemundo\Workflow\App\ToDo\Install\ToDoInstall;
 use Nemundo\Workflow\App\Widget\Install\WidgetInstall;
@@ -42,6 +45,7 @@ class CollaborationInstall extends AbstractScript
         (new MessageInstall())->run();
         (new IdentificationInstall())->run();
 
+        (new NewsInstall())->run();
 
         (new WidgetInstall())->run();
         (new PersonalTaskInstall())->run();
@@ -52,6 +56,9 @@ class CollaborationInstall extends AbstractScript
         (new ContentTemplateInstall())->run();
         (new SubscriptionInstall())->run();
         (new FavoriteInstall())->run();
+
+        (new SurveyInstall())->run();
+        (new StreamInstall())->run();
 
         $setup = new UsergroupSetup();
         $setup->addUsergroup(new CollaborationUsergroup());

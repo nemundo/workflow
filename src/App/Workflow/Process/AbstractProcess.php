@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
@@ -85,21 +85,21 @@ abstract class AbstractProcess extends AbstractDataContentType
 
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
 
-        $event = new WorkflowStartEvent();
-        $event->process = $this;
+        //$event = new WorkflowStartEvent();
+        //$event->process = $this;
 
         $form = $workflowStatus->getForm($parentItem);
-        $form->afterSubmitEvent->addEvent($event);
+        //$form->afterSubmitEvent->addEvent($event);
 
         return $form;
 
     }
 
 
-    public function getSubject($dataId)
+    public function getSubject($workflowId)
     {
 
-        $row = (new WorkflowReader())->getRowById($dataId);
+        $row = (new WorkflowReader())->getRowById($workflowId);
         $subject = $row->workflowNumber . ' ' . $row->subject;
         return $subject;
 

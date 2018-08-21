@@ -8,7 +8,7 @@ use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 
 class WorkflowDoc extends AbstractHtmlContainerList
 {

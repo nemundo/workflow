@@ -75,7 +75,7 @@ class WorkflowFormUpdateSite extends AbstractSite
 
             $form = new WorkflowFormUpdate($page);
             $form->model = $model;
-            $form->updateId = $statusChangeRow->workflowItemId;
+            $form->updateId = $statusChangeRow->dataId;
             $form->redirectSite = clone(WorkflowItemSite::$site);
             $form->redirectSite->addParameter(new WorkflowParameter($statusChangeRow->workflowId));
 
