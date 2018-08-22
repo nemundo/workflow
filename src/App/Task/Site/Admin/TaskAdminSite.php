@@ -39,6 +39,8 @@ class TaskAdminSite extends AbstractSite
         $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
+        $header->addText('Type');
+        $header->addText('Source');
         $header->addText('Task');
         $header->addText('Assign to');
         $header->addText('Deadline');
@@ -46,6 +48,7 @@ class TaskAdminSite extends AbstractSite
         $header->addText('Date/Time');
 
         $taskReader = new TaskPaginationReader();
+        $taskReader->model->loadContentType();
         $taskReader->model->loadIdentificationType();
         $taskReader->model->loadUserCreated();
         $taskReader->addOrder($taskReader->model->dateTimeCreated, SortOrder::DESCENDING);
@@ -54,10 +57,16 @@ class TaskAdminSite extends AbstractSite
         foreach ($taskReader->getData() as $taskRow) {
 
             $row = new BootstrapClickableTableRow($table);
+            $row->addText($taskRow->contentType->contentType);
+            $row->addText($taskRow->source);
             $row->addText($taskRow->task);
 
             $identificationType = $taskRow->identificationType->getIdentificationTypeClassObject();
-            $row->addText($identificationType->getValue($taskRow->identificationId));
+
+            if ($identificationType !== null) {
+                $row->addText($identificationType->getValue($taskRow->identificationId));
+            }
+
 
             if ($taskRow->deadline !== null) {
                 $row->addText($taskRow->deadline->getShortDateLeadingZeroFormat());

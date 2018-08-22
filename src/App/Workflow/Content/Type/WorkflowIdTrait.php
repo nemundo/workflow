@@ -139,18 +139,13 @@ trait WorkflowIdTrait
     protected function createUserTask($userId, Date $deadline = null)
     {
 
-        //(new Debug())->write('createUserTAsk'.$this->workflowId);
-
         $process = $this->getProcess();
-
-        //(new Debug())->write($this->workflowId);
-        //(new Debug())->write($process->getSubject($this->workflowId));
-
 
         $builder = new TaskBuilder();
         $builder->contentType = $process;
         $builder->dataId = $this->workflowId;
-        $builder->task = $process->getSubject($this->workflowId);
+        $builder->source = $process->getSubject($this->workflowId);
+        $builder->task = $this->name;
         $builder->deadline = $deadline;
         $builder->createUserTask($userId);
 
