@@ -9,6 +9,7 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\H1;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
@@ -32,6 +33,7 @@ class WorkflowTitle extends AbstractHtmlContainerList
 
         $workflowReader = new WorkflowReader();
         $workflowReader->model->loadWorkflowStatus();
+        $workflowReader->model->loadIdentificationType();
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
         $workflowReader->model->loadProcess();
@@ -74,6 +76,13 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $table->addLabelValue('Status', $workflowRow->workflowStatus->contentType);
         $table->addLabelValue('Subject', $process->getSubject($workflowRow->id));
 
+        $identificationType = $workflowRow->identificationType->getIdentificationTypeClassObject();
+        $verantwortlicher = '';
+        if ($identificationType !== null) {
+            $verantwortlicher = $identificationType->getValue($workflowRow->identificationId);
+        }
+
+        $table->addLabelValue('Verantwortlicher', $verantwortlicher);
 
         //$table->addLabelValue('Status', $workflowItem->getStatus());
         //$table->addLabelValue('Status Text', $workflowRow->workflowStatus->workflowStatusText);

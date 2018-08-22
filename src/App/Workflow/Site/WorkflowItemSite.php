@@ -7,6 +7,8 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
+use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
@@ -87,6 +89,12 @@ class WorkflowItemSite extends AbstractSite
             $actionButton->workflowId = $workflowId;
             $actionButton->statusChangeRedirectSite = StatusChangeSite::$site;
         }
+
+
+
+        $table = new TaskTable($page);
+        $table->filter->andEqual($table->model->sourceId, $workflowId);
+
 
 
         $page->render();

@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Container;
 
 
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Factory\ContentTypeFactory;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
@@ -34,6 +35,9 @@ class StatusChangeContainer extends AbstractHtmlContainerList
 
         /** @var AbstractWorkflowStatus $workflowStatus */
         $workflowStatus = (new ContentTypeFactory())->getContentTypeByParameter();
+
+        $title = new AdminTitle($this);
+        $title->content = $workflowStatus->name;
 
         $factory = new StatusChangeFormFactory();
         $factory->worklfowStatus = $workflowStatus;

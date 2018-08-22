@@ -156,7 +156,7 @@ trait WorkflowIdTrait
     }
 
 
-    protected function createUsergroupTask(AbstractUsergroup $usergroup, Date $deadline = null)
+    protected function createUsergroupTask(AbstractUsergroup $usergroup, Date $deadline = null, $task = '')
     {
 
         $process = $this->getProcess();
@@ -164,8 +164,11 @@ trait WorkflowIdTrait
         $builder = new TaskBuilder();
         $builder->contentType = $process;
         $builder->dataId = $this->workflowId;
-        $builder->task = $process->getSubject($this->workflowId);
 
+        $builder->source = $process->getSubject($this->workflowId);
+        $builder->sourceId = $this->workflowId;
+
+        $builder->task = $task;  // $this->actionLabel;
         $builder->deadline = $deadline;
         $builder->createUsergroupTask($usergroup);
 

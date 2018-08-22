@@ -8,6 +8,11 @@ use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 class OpenClosedWorkflowListBox extends BootstrapListBox
 {
 
+    /**
+     * @var int
+     */
+    public $defaultValue = 1;
+
 
     public function getHtml()
     {
@@ -20,7 +25,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
         $this->addItem(1, 'Offene');
         $this->addItem(2, 'Abgeschlossene');
         if ($this->getValue() == '') {
-            $this->value = 0;
+            $this->value = $this->defaultValue;  // 0;
         } else {
             $this->value = $this->getValue();
         }
