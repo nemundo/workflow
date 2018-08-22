@@ -13,7 +13,7 @@ class TaskProcess extends AbstractProcess
 
     protected function loadData()
     {
-        $this->name = 'Task';
+        $this->name = 'Aufgabe';
         $this->id = 'a480102a-6e69-4233-986d-f37db267e5aa';
 
         //$this->itemClass = PersonalTaskContentItem::class;
@@ -21,7 +21,6 @@ class TaskProcess extends AbstractProcess
         $this->prefix = 'T-';
         $this->modelClass = TaskModel::class;
         $this->startWorkflowStatusClass = TaskErfassungWorkflowStatus::class;
-
 
     }
 

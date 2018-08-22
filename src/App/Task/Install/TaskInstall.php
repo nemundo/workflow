@@ -11,6 +11,7 @@ use Nemundo\Workflow\App\Task\Data\TaskCollection;
 use Nemundo\Workflow\App\Task\Process\TaskProcess;
 use Nemundo\Workflow\App\Task\Widget\TaskWidget;
 use Nemundo\Workflow\App\Task\WorkflowStatus\TaskErfassungWorkflowStatus;
+use Nemundo\Workflow\App\Task\WorkflowStatus\TaskListWorkflowStatus;
 use Nemundo\Workflow\App\Widget\Setup\WidgetSetup;
 use Nemundo\Workflow\App\Workflow\Setup\ProcessSetup;
 
@@ -33,6 +34,7 @@ class TaskInstall extends AbstractScript
 
         $setup = new ContentTypeSetup();
         $setup->addContentType(new TaskErfassungWorkflowStatus());
+        $setup->addContentType(new TaskListWorkflowStatus());
 
 
     }

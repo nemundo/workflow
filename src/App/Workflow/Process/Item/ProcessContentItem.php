@@ -16,6 +16,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
+use Nemundo\Workflow\App\Workflow\Com\Doc\WorkflowDoc;
 use Nemundo\Workflow\App\Workflow\Com\WorkflowLogContainer;
 use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowItemContentItem;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
@@ -84,6 +85,8 @@ class ProcessContentItem extends AbstractContentItem
         $workflowLog = new WorkflowLogContainer($this);
         $workflowLog->workflowId = $this->dataId;
         $workflowLog->statusChangeSite = $this->statusChangeRedirectSite;
+
+
 
 
         /*
