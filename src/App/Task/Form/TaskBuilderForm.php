@@ -42,6 +42,12 @@ class TaskBuilderForm extends BootstrapForm
      */
     //public $workflowPrefix;
 
+
+    /**
+     * @var AbstractContentType
+     */
+    public $sourceType;
+
     /**
      * @var string
      */
@@ -140,13 +146,14 @@ class TaskBuilderForm extends BootstrapForm
         //$builder->application = $this->applicationType;  // new ToDoApplicationType();
         //$builder->userId = $this->verantwortlicher->getValue();
         //$builder->workflowNumber = '';
+        $builder->sourceType=$this->sourceType;
         $builder->source = $this->source;
         $builder->sourceId = $this->sourceId;
         //$builder->workflowNumber = $todoRow->workflowNumber->prefixAutoNumber;
         $builder->task = $this->task->getValue();
         $builder->deadline = $deadline;
         $builder->timeEffort = $this->aufwand->getValue();
-        $builder->dataId = 0;  //$todoId;
+        $builder->dataId =$this->dataId;  // 0;  //$todoId;
         $builder->createUserTask($this->verantwortlicher->getValue());
 
         //$builder->createItem();

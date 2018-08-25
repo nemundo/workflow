@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Task\Builder;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\User\Usergroup\UsergroupItem;
@@ -24,6 +25,11 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
     public $task;
 
     /**
+     * @var string
+     */
+    public $description;
+
+    /**
      * @var Date
      */
     public $deadline;
@@ -32,6 +38,11 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
      * @var int
      */
     public $timeEffort = 0;
+
+    /**
+     * @var AbstractContentType
+     */
+    public $sourceType;
 
     /**
      * @var string
@@ -46,7 +57,7 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
     public function createItem()
     {
 
-        $this->check();
+        //$this->check();
 
         if (!$this->checkProperty('task')) {
             return;
@@ -54,12 +65,17 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
 
         $data = new Task();
         $data->task = $this->task;
+        $data->description = $this->description;
         $data->deadline = $this->deadline;
         $data->contentTypeId = $this->contentType->id;
         $data->dataId = $this->dataId;
         $data->timeEffort = $this->timeEffort;
         $data->identificationTypeId = $this->identificationType->id;
         $data->identificationId = $this->identificationId;
+
+        if ($this->sourceType !== null) {
+            $data->sourceTypeId = $this->sourceType->id;
+        }
         $data->source = $this->source;
         $data->sourceId = $this->sourceId;
         $id = $data->save();

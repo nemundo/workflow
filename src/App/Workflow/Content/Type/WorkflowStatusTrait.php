@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 use Nemundo\App\Content\Type\Sequence\MultiSequenceTrait;
+use Nemundo\App\Content\Type\Sequence\SequenceTrait;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
 
@@ -13,6 +14,8 @@ trait WorkflowStatusTrait
     use UserAccessTrait;
 
     use WorkflowIdTrait;
+
+    use SequenceTrait;
 
     use MultiSequenceTrait;
 

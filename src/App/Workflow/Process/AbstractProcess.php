@@ -83,7 +83,8 @@ abstract class AbstractProcess extends AbstractDataContentType
     public function getForm($parentItem = null)
     {
 
-        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        //$workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        $workflowStatus = $this->getStartWorkflowStatus();
 
         //$event = new WorkflowStartEvent();
         //$event->process = $this;
@@ -96,10 +97,20 @@ abstract class AbstractProcess extends AbstractDataContentType
     }
 
 
-    public function getSubject($workflowId)
+    public function getStartWorkflowStatus()
     {
 
-        $row = (new WorkflowReader())->getRowById($workflowId);
+
+        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        return $workflowStatus;
+
+    }
+
+
+    public function getSubject($dataId)
+    {
+
+        $row = (new WorkflowReader())->getRowById($dataId);
         $subject = $row->workflowNumber . ' ' . $row->subject;
         return $subject;
 

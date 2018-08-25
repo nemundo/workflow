@@ -3,13 +3,11 @@
 namespace Nemundo\Workflow\App\Task\WorkflowStatus;
 
 
-use Nemundo\Workflow\App\Task\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
-use Nemundo\Workflow\App\Task\Item\TaskItem;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
 
 
-class TaskDoneWorkflowStatus extends AbstractDataWorkflowStatus
+class TaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
 {
 
     protected function loadData()
@@ -17,9 +15,8 @@ class TaskDoneWorkflowStatus extends AbstractDataWorkflowStatus
 
         $this->name = 'Erledigt';
         $this->workflowStatusText = 'Aufgabe wurde erledigt';
-        $this->id = '4eb59f4f-0a08-42e4-98a3-c8b9922552b7';
+        $this->id = '0ecf9bad-c73a-4c53-85c6-19cbdc5d8f87';
         $this->closingWorkflow = true;
-        $this->modelClass = CommentModel::class;
 
     }
 
@@ -28,14 +25,11 @@ class TaskDoneWorkflowStatus extends AbstractDataWorkflowStatus
     {
 
         $update = new TaskUpdate();
-        $update->done = true;
+        $update->archive = true;
         $update->updateById($this->workflowId);
 
-
-        (new TaskItem($this->workflowId))
-            ->archiveTask();
+        $this->archiveTask();
 
     }
-
 
 }

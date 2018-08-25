@@ -10,4 +10,5 @@ abstract class AbstractWorkflowStatus extends AbstractContentType
 
     use WorkflowStatusTrait;
 
+
 }

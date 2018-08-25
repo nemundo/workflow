@@ -27,7 +27,7 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
         $this->id = 'f2736f64-d659-4d2f-b73c-7a16b77c28ee';
         $this->modelClass = PersonalTaskModel::class;
 
-        $this->addFollowingContentTypeClass(CommentTaskWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(PersonalTaskCommentWorkflowStatus::class);
         $this->addFollowingContentTypeClass(PersonalTaskDoneWorkflowStatus::class);
 
     }

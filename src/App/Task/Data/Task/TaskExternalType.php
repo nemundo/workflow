@@ -22,6 +22,11 @@ public $workflow;
 public $task;
 
 /**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $description;
+
+/**
 * @var \Nemundo\Model\Type\DateTime\DateType
 */
 public $deadline;
@@ -91,6 +96,16 @@ public $sourceId;
 */
 public $source;
 
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $sourceTypeId;
+
+/**
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
+*/
+public $sourceType;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = TaskModel::class;
@@ -114,21 +129,28 @@ $this->task = new \Nemundo\Model\Type\Text\TextType();
 $this->task->fieldName = "task";
 $this->task->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->task->aliasFieldName = $this->task->tableName . "_" . $this->task->fieldName;
-$this->task->label = "Task";
+$this->task->label = "Aufgabe";
 $this->addType($this->task);
+
+$this->description = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->description->fieldName = "description";
+$this->description->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->description->aliasFieldName = $this->description->tableName . "_" . $this->description->fieldName;
+$this->description->label = "Beschreibung";
+$this->addType($this->description);
 
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType();
 $this->deadline->fieldName = "deadline";
 $this->deadline->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->deadline->aliasFieldName = $this->deadline->tableName . "_" . $this->deadline->fieldName;
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Erledigen bis";
 $this->addType($this->deadline);
 
 $this->archive = new \Nemundo\Model\Type\Number\YesNoType();
 $this->archive->fieldName = "archive";
 $this->archive->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->archive->aliasFieldName = $this->archive->tableName . "_" . $this->archive->fieldName;
-$this->archive->label = "Archive";
+$this->archive->label = "Erledigt";
 $this->addType($this->archive);
 
 $this->identificationTypeId = new \Nemundo\Model\Type\Id\IdType();
@@ -142,7 +164,7 @@ $this->identificationId = new \Nemundo\Model\Type\Id\UniqueIdType();
 $this->identificationId->fieldName = "identification_id";
 $this->identificationId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->identificationId->aliasFieldName = $this->identificationId->tableName . "_" . $this->identificationId->fieldName;
-$this->identificationId->label = "Identification Id";
+$this->identificationId->label = "Verantwortlicher";
 $this->addType($this->identificationId);
 
 $this->contentTypeId = new \Nemundo\Model\Type\Id\IdType();
@@ -163,14 +185,14 @@ $this->timeEffort = new \Nemundo\Model\Type\Number\DecimalNumberType();
 $this->timeEffort->fieldName = "time_effort";
 $this->timeEffort->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->timeEffort->aliasFieldName = $this->timeEffort->tableName . "_" . $this->timeEffort->fieldName;
-$this->timeEffort->label = "Time Effort";
+$this->timeEffort->label = "Aufwand";
 $this->addType($this->timeEffort);
 
 $this->userCreatedId = new \Nemundo\Model\Type\User\CreatedUserType();
 $this->userCreatedId->fieldName = "user_created";
 $this->userCreatedId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->userCreatedId->aliasFieldName = $this->userCreatedId->tableName ."_".$this->userCreatedId->fieldName;
-$this->userCreatedId->label = "User Created";
+$this->userCreatedId->label = "Ersteller";
 $this->addType($this->userCreatedId);
 
 $this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType();
@@ -193,6 +215,13 @@ $this->source->tableName = $this->parentFieldName . "_" . $this->externalTableNa
 $this->source->aliasFieldName = $this->source->tableName . "_" . $this->source->fieldName;
 $this->source->label = "Source";
 $this->addType($this->source);
+
+$this->sourceTypeId = new \Nemundo\Model\Type\Id\IdType();
+$this->sourceTypeId->fieldName = "source_type";
+$this->sourceTypeId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->sourceTypeId->aliasFieldName = $this->sourceTypeId->tableName ."_".$this->sourceTypeId->fieldName;
+$this->sourceTypeId->label = "Source Type";
+$this->addType($this->sourceTypeId);
 
 }
 public function loadWorkflow() {
@@ -234,8 +263,19 @@ $this->userCreated = new \Nemundo\User\Data\User\UserExternalType(null, $this->p
 $this->userCreated->fieldName = "user_created";
 $this->userCreated->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->userCreated->aliasFieldName = $this->userCreated->tableName ."_".$this->userCreated->fieldName;
-$this->userCreated->label = "User Created";
+$this->userCreated->label = "Ersteller";
 $this->addType($this->userCreated);
+}
+return $this;
+}
+public function loadSourceType() {
+if ($this->sourceType == null) {
+$this->sourceType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_source_type");
+$this->sourceType->fieldName = "source_type";
+$this->sourceType->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->sourceType->aliasFieldName = $this->sourceType->tableName ."_".$this->sourceType->fieldName;
+$this->sourceType->label = "Source Type";
+$this->addType($this->sourceType);
 }
 return $this;
 }

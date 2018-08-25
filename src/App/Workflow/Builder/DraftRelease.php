@@ -20,7 +20,6 @@ class DraftRelease extends AbstractBase
     public function releaseDraft($workflowId)
     {
 
-        (new Debug())->write('workflowid'.$workflowId);
 
         $update = new StatusChangeUpdate();
         $update->filter->andEqual($update->model->workflowId, $workflowId);
@@ -39,7 +38,7 @@ class DraftRelease extends AbstractBase
 
         /** @var AbstractWorkflowStatus $workflowStatus */
         $workflowStatus = $changeRow->workflowStatus->getContentTypeClassObject();
-        //$workflowStatus->onCreate($changeRow->dataId);
+        $workflowStatus->onCreate($changeRow->dataId);
 
     }
 

@@ -58,6 +58,7 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
             $list->addHyperlink($statusChangeRow->workflowStatus->contentType, '#' . $statusChangeRow->dataId);
 
             $div = new Div($colRight);
+            $div->id = $statusChangeRow->dataId;
             $div->addCssClass('card');
             $div->addCssClass('mb-3');
 

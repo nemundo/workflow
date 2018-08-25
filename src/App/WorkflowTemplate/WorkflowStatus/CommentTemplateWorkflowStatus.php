@@ -8,7 +8,7 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 
-class CommentWorkflowStatus extends AbstractDataWorkflowStatus
+class CommentTemplateWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadData()

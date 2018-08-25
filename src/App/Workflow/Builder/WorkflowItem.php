@@ -66,11 +66,11 @@ class WorkflowItem extends AbstractBase
 
 //        $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
 
-        $reader = new WorkflowReader();
+      /*  $reader = new WorkflowReader();
         $reader->model->loadProcess();
-        $workflowRow = $reader->getRowById($this->workflowId);
+        $workflowRow = $reader->getRowById($this->workflowId);*/
 
-        $process = $workflowRow->process->getProcessClassObject();
+        $process = $this->workflowRow->process->getProcessClassObject();
         $subject = $process->getSubject($this->workflowId);
 
         return $subject;

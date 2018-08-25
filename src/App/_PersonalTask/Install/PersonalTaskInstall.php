@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\PersonalTask\Application\PersonalTaskApplication;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTaskCollection;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\PersonalTask\Test\PersonalTaskTest;
-use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\CommentTaskWorkflowStatus;
+use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskCommentWorkflowStatus;
 use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskErfassungWorkflowStatus;
 use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskDoneWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Setup\ProcessSetup;
@@ -38,7 +38,7 @@ class PersonalTaskInstall extends AbstractScript
         $setup = new WorkflowStatusSetup();
         $setup->addWorkflowStatus(new PersonalTaskErfassungWorkflowStatus());
         $setup->addWorkflowStatus(new PersonalTaskDoneWorkflowStatus());
-        $setup->addWorkflowStatus(new CommentTaskWorkflowStatus());
+        $setup->addWorkflowStatus(new PersonalTaskCommentWorkflowStatus());
 
 
     }

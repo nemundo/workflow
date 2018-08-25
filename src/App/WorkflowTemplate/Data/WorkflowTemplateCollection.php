@@ -7,5 +7,6 @@ $this->addModel(new \Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentM
 $this->addModel(new \Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeModel());
 $this->addModel(new \Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeModel());
 $this->addModel(new \Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel());
+$this->addModel(new \Nemundo\Workflow\App\WorkflowTemplate\Data\UserDeadlineAssignment\UserDeadlineAssignmentModel());
 }
 }

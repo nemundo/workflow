@@ -12,6 +12,11 @@ public $id;
 public $task;
 
 /**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $description;
+
+/**
 * @var \Nemundo\Model\Type\DateTime\DateType
 */
 public $deadline;
@@ -81,6 +86,16 @@ public $sourceId;
 */
 public $source;
 
+/**
+* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+*/
+public $sourceTypeId;
+
+/**
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
+*/
+public $sourceType;
+
 protected function loadModel() {
 $this->tableName = "task_task";
 $this->aliasTableName = "task_task";
@@ -104,22 +119,29 @@ $this->task = new \Nemundo\Model\Type\Text\TextType($this);
 $this->task->tableName = "task_task";
 $this->task->fieldName = "task";
 $this->task->aliasFieldName = "task_task_task";
-$this->task->label = "Task";
+$this->task->label = "Aufgabe";
 $this->task->allowNullValue = "";
 $this->task->length = 255;
+
+$this->description = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->description->tableName = "task_task";
+$this->description->fieldName = "description";
+$this->description->aliasFieldName = "task_task_description";
+$this->description->label = "Beschreibung";
+$this->description->allowNullValue = "";
 
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "task_task";
 $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "task_task_deadline";
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Erledigen bis";
 $this->deadline->allowNullValue = "";
 
 $this->archive = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->archive->tableName = "task_task";
 $this->archive->fieldName = "archive";
 $this->archive->aliasFieldName = "task_task_archive";
-$this->archive->label = "Archive";
+$this->archive->label = "Erledigt";
 $this->archive->allowNullValue = "";
 
 $this->identificationTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
@@ -132,7 +154,7 @@ $this->identificationId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->identificationId->tableName = "task_task";
 $this->identificationId->fieldName = "identification_id";
 $this->identificationId->aliasFieldName = "task_task_identification_id";
-$this->identificationId->label = "Identification Id";
+$this->identificationId->label = "Verantwortlicher";
 $this->identificationId->allowNullValue = "";
 $this->identificationId->visible->form = false;
 $this->identificationId->visible->table = false;
@@ -160,14 +182,14 @@ $this->timeEffort = new \Nemundo\Model\Type\Number\DecimalNumberType($this);
 $this->timeEffort->tableName = "task_task";
 $this->timeEffort->fieldName = "time_effort";
 $this->timeEffort->aliasFieldName = "task_task_time_effort";
-$this->timeEffort->label = "Time Effort";
+$this->timeEffort->label = "Aufwand";
 $this->timeEffort->allowNullValue = "";
 
 $this->userCreatedId = new \Nemundo\Model\Type\User\CreatedUserType($this);
 $this->userCreatedId->tableName = "task_task";
 $this->userCreatedId->fieldName = "user_created";
 $this->userCreatedId->aliasFieldName = "task_task_user_created";
-$this->userCreatedId->label = "User Created";
+$this->userCreatedId->label = "Ersteller";
 
 $this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
 $this->dateTimeCreated->tableName = "task_task";
@@ -196,6 +218,12 @@ $this->source->label = "Source";
 $this->source->allowNullValue = "";
 $this->source->length = 255;
 
+$this->sourceTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->sourceTypeId->tableName = "task_task";
+$this->sourceTypeId->fieldName = "source_type";
+$this->sourceTypeId->aliasFieldName = "task_task_source_type";
+$this->sourceTypeId->label = "Source Type";
+
 $this->action->addInsertAction(new \Nemundo\Workflow\App\Task\Action\TaskAction());
 }
 public function loadIdentificationType() {
@@ -222,8 +250,17 @@ $this->userCreated = new \Nemundo\User\Data\User\UserExternalType($this, "task_t
 $this->userCreated->tableName = "task_task";
 $this->userCreated->fieldName = "user_created";
 $this->userCreated->aliasFieldName = "task_task_user_created";
-$this->userCreated->label = "User Created";
+$this->userCreated->label = "Ersteller";
 $this->userCreated->visible->form = false;
+}
+}
+public function loadSourceType() {
+if ($this->sourceType == null) {
+$this->sourceType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "task_task_source_type");
+$this->sourceType->tableName = "task_task";
+$this->sourceType->fieldName = "source_type";
+$this->sourceType->aliasFieldName = "task_task_source_type";
+$this->sourceType->label = "Source Type";
 }
 }
 }

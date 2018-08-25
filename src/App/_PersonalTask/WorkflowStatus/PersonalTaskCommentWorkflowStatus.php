@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
 
-class CommentTaskWorkflowStatus extends AbstractDataWorkflowStatus
+class PersonalTaskCommentWorkflowStatus extends AbstractDataWorkflowStatus
 {
 
     protected function loadData()
@@ -23,7 +23,7 @@ class CommentTaskWorkflowStatus extends AbstractDataWorkflowStatus
         //$this->workflowItemClassName = WorkflowItem::class;
 
         //$this->addFollowingContentTypeClass(ProzesssteuerungTaskDoneWorkflowStatus::class);
-        $this->addFollowingContentTypeClass(CommentTaskWorkflowStatus::class);
+        $this->addFollowingContentTypeClass(PersonalTaskCommentWorkflowStatus::class);
 
 
     }

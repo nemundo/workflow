@@ -30,10 +30,10 @@ class PersonalTaskProcess extends AbstractProcess
     }
 
 
-    public function getSubject($workflowId)
+    public function getSubject($dataId)
     {
 
-        $personalTaskRow = (new PersonalTaskReader())->getRowById($workflowId);
+        $personalTaskRow = (new PersonalTaskReader())->getRowById($dataId);
         $subject = $personalTaskRow->workflow->workflowNumber . ' ' . $personalTaskRow->task;
 
         return $subject;

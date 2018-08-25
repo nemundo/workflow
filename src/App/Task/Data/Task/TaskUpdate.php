@@ -18,6 +18,11 @@ public $workflowId;
 public $task;
 
 /**
+* @var string
+*/
+public $description;
+
+/**
 * @var \Nemundo\Core\Type\DateTime\Date
 */
 public $deadline;
@@ -62,6 +67,11 @@ public $sourceId;
 */
 public $source;
 
+/**
+* @var string
+*/
+public $sourceTypeId;
+
 public function __construct() {
 parent::__construct();
 $this->model = new TaskModel();
@@ -70,6 +80,7 @@ $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
 public function update() {
 $this->typeValueList->setModelValue($this->model->workflowId, $this->workflowId);
 $this->typeValueList->setModelValue($this->model->task, $this->task);
+$this->typeValueList->setModelValue($this->model->description, $this->description);
 $property = new \Nemundo\Model\Data\Property\DateTime\DateDataProperty($this->model->deadline, $this->typeValueList);
 $property->setValue($this->deadline);
 $this->typeValueList->setModelValue($this->model->archive, $this->archive);
@@ -81,6 +92,7 @@ $value = (new \Nemundo\Core\Type\Text\Text($this->timeEffort))->replace(",", "."
 $this->typeValueList->setModelValue($this->model->timeEffort, $value);
 $this->typeValueList->setModelValue($this->model->sourceId, $this->sourceId);
 $this->typeValueList->setModelValue($this->model->source, $this->source);
+$this->typeValueList->setModelValue($this->model->sourceTypeId, $this->sourceTypeId);
 parent::update();
 }
 }

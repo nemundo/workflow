@@ -10,6 +10,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
+use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
 
 
 class StatusChangeFormFactory extends AbstractBaseClass
@@ -54,9 +55,15 @@ class StatusChangeFormFactory extends AbstractBaseClass
         }
 
 
+        /** @var WorkflowContentForm $form */
         $form = $contentType->getForm($parentItem);
         $form->afterSubmitEvent->addEvent($event);
         $form->redirectSite = $this->redirect;
+
+        if ($form->isObjectOfClass(WorkflowContentForm::class) ) {
+            $form->workflowId = $this->workflowId;
+        }
+
 
         return $form;
 

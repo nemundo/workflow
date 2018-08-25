@@ -4,11 +4,15 @@ namespace Nemundo\Workflow\App\Task\Form;
 
 
 use Nemundo\App\Content\Form\AbstractContentHtmlContainerList;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
+use Nemundo\Workflow\App\Task\Table\TaskContentTable;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeValue;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
+use Schleuniger\App\ChangeOrder\Process\ChangeOrderProcess;
 
 
 class TaskListContentForm extends AbstractContentHtmlContainerList
@@ -27,6 +31,8 @@ class TaskListContentForm extends AbstractContentHtmlContainerList
 
         $workflowRow = (new WorkflowReader())->getRowById($workflowId);
 
+        $workflowItem = new WorkflowItem($workflowId);
+
 
         $row = new BootstrapRow($this);
 
@@ -38,11 +44,18 @@ class TaskListContentForm extends AbstractContentHtmlContainerList
 
 
         $form = new TaskBuilderForm($colLeft);
-        $form->source = $workflowRow->subject;
-        $form->sourceId = $dataId;
+        $form->sourceType = new ChangeOrderProcess();
+        $form->source = $workflowItem->getSubject();  // $workflowRow->subject;
+        $form->sourceId = $workflowId;
+        $form->dataId = $dataId;
 
-        $table = new TaskTable($colRight);
-        $table->filter->andEqual($table->model->sourceId, $dataId);
+        //$table = new TaskTable($colRight);
+        //$table->filter->andEqual($table->model->sourceId, $dataId);
+
+        $table = new TaskContentTable($colRight);
+        $table->dataId = $dataId;
+
+        (new Debug())->write($dataId);
 
         return parent::getHtml();
 
