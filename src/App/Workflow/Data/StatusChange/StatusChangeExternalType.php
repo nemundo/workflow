@@ -61,6 +61,11 @@ public $draft;
 */
 public $message;
 
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\IdentificationModelType
+*/
+public $assignment;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = StatusChangeModel::class;
@@ -128,6 +133,14 @@ $this->message->tableName = $this->parentFieldName . "_" . $this->externalTableN
 $this->message->aliasFieldName = $this->message->tableName . "_" . $this->message->fieldName;
 $this->message->label = "Message";
 $this->addType($this->message);
+
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType();
+$this->assignment->fieldName = "assignment";
+$this->assignment->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->assignment->aliasFieldName = $this->assignment->tableName . "_" . $this->assignment->fieldName;
+$this->assignment->label = "Assignment";
+$this->assignment->createObject();
+$this->addType($this->assignment);
 
 }
 public function loadWorkflow() {

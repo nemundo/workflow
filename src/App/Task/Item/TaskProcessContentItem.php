@@ -22,16 +22,18 @@ class TaskProcessContentItem extends ProcessContentItem
 
         $sourceType = $taskRow->sourceType->getContentTypeClassObject();
 
-        $p = new Paragraph($this);
+        /*$p = new Paragraph($this);
         $p->content = 'Source: ' . $sourceType->name;
 
         $p = new Paragraph($this);
-        $p->content = 'Source Id: ' .$taskRow->sourceId;
+        $p->content = 'Source Id: ' .$taskRow->sourceId;*/
 
 
-        $btn = new AdminButton($this);
-        $btn->content = $taskRow->source;
-        $btn->site = $sourceType->getItemSite($taskRow->sourceId);
+        if ($sourceType !== null) {
+            $btn = new AdminButton($this);
+            $btn->content = $sourceType->getSubject($taskRow->sourceId) . ' ---' . $taskRow->source;
+            $btn->site = $sourceType->getItemSite($taskRow->sourceId);
+        }
 
         return parent::getHtml();
 

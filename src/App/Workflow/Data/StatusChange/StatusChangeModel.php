@@ -61,6 +61,11 @@ public $draft;
 */
 public $message;
 
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\IdentificationModelType
+*/
+public $assignment;
+
 protected function loadModel() {
 $this->tableName = "workflow_status_change";
 $this->aliasTableName = "workflow_status_change";
@@ -137,6 +142,13 @@ $this->message->fieldName = "message";
 $this->message->aliasFieldName = "workflow_status_change_message";
 $this->message->label = "Message";
 $this->message->allowNullValue = "";
+
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType($this);
+$this->assignment->tableName = "workflow_status_change";
+$this->assignment->fieldName = "assignment";
+$this->assignment->aliasFieldName = "workflow_status_change_assignment";
+$this->assignment->label = "Assignment";
+$this->assignment->allowNullValue = "";
 
 }
 public function loadWorkflow() {

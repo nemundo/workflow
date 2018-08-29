@@ -14,7 +14,7 @@ class TaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
     {
 
         $this->name = 'Erledigt';
-        $this->workflowStatusText = 'Aufgabe wurde erledigt';
+        $this->statusText = 'Aufgabe wurde erledigt';
         $this->id = '0ecf9bad-c73a-4c53-85c6-19cbdc5d8f87';
         $this->closingWorkflow = true;
 

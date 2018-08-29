@@ -25,7 +25,8 @@ class UserDeadlineAssignmentWorkflowStatus extends AbstractDataWorkflowStatus
 
         $row = (new UserDeadlineAssignmentReader())->getRowById($dataId);
         $this->changeDeadline($row->deadline);
-        $this->createUserTask($row->userId, $row->deadline);
+        $this->assignUser($row->userId);
+        //$this->createUserTask($row->userId, $row->deadline);
 
     }
 

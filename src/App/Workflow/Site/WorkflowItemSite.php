@@ -3,13 +3,18 @@
 namespace Nemundo\Workflow\App\Workflow\Site;
 
 
+use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Package\Bootstrap\Breadcrumb\BootstrapBreadcrumb;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\Item\AbstractProcessItem;
@@ -91,9 +96,48 @@ class WorkflowItemSite extends AbstractSite
         }
 
 
+        /*
 
         $table = new TaskTable($page);
-        $table->filter->andEqual($table->model->sourceId, $workflowId);
+        $table->filter->andEqual($table->model->sourceId, $workflowId);*/
+
+
+
+        $title = new AdminTitle($page);
+        $title->content = 'Workflow Log';
+
+        $table = new AdminTable($page);
+
+        $header = new TableHeader($table);
+        $header->addText('Status');
+        $header->addText('Status Text');
+        $header->addText('Date/Time');
+        $header->addText('User');
+        $header->addText('assign to');
+
+
+        $statusChangeReader = new StatusChangeReader();
+        $statusChangeReader->model->loadWorkflowStatus();
+        $statusChangeReader->model->loadUser();
+        $statusChangeReader->filter->andEqual($statusChangeReader->model->workflowId, $workflowId);
+        foreach ($statusChangeReader->getData() as $statusChangeRow) {
+
+            /** @var AbstractWorkflowStatus $workflowStatus */
+            $workflowStatus = $statusChangeRow->workflowStatus->getContentTypeClassObject();
+
+            $row = new TableRow($table);
+            //$row->addText($statusChangeRow->workflowStatus->contentType);
+            $row->addText($workflowStatus->getStatusText($statusChangeRow->dataId));
+            $row->addText($workflowStatus->getSubject($statusChangeRow->dataId));
+
+            $row->addText($statusChangeRow->dateTime->getShortDateTimeLeadingZeroFormat());
+            $row->addText($statusChangeRow->user->displayName);
+
+
+        }
+
+
+
 
 
 

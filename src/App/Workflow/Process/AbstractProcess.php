@@ -75,7 +75,9 @@ abstract class AbstractProcess extends AbstractDataContentType
         $this->itemClass = ProcessContentItem::class;
         $this->parameterClass = WorkflowParameter::class;
 
-        parent::__construct();
+        $this->loadData();
+
+        //parent::__construct();
 
     }
 
@@ -115,5 +117,16 @@ abstract class AbstractProcess extends AbstractDataContentType
         return $subject;
 
     }
+
+
+    public function getSource($dataId)
+    {
+
+        $source = $this->name;
+        return $source;
+
+
+    }
+
 
 }

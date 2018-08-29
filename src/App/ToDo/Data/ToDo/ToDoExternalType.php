@@ -7,6 +7,16 @@ class ToDoExternalType extends \Nemundo\Model\Type\External\ExternalType {
 public $id;
 
 /**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
+public $workflowId;
+
+/**
+* @var \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType
+*/
+public $workflow;
+
+/**
 * @var \Nemundo\Model\Type\Text\TextType
 */
 public $todo;
@@ -38,6 +48,13 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
+$this->workflowId = new \Nemundo\Model\Type\Id\IdType();
+$this->workflowId->fieldName = "workflow";
+$this->workflowId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->workflowId->aliasFieldName = $this->workflowId->tableName ."_".$this->workflowId->fieldName;
+$this->workflowId->label = "";
+$this->addType($this->workflowId);
+
 $this->todo = new \Nemundo\Model\Type\Text\TextType();
 $this->todo->fieldName = "todo";
 $this->todo->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -59,6 +76,17 @@ $this->userId->aliasFieldName = $this->userId->tableName ."_".$this->userId->fie
 $this->userId->label = "User";
 $this->addType($this->userId);
 
+}
+public function loadWorkflow() {
+if ($this->workflow == null) {
+$this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowExternalType(null, $this->parentFieldName . "_workflow");
+$this->workflow->fieldName = "workflow";
+$this->workflow->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->workflow->aliasFieldName = $this->workflow->tableName ."_".$this->workflow->fieldName;
+$this->workflow->label = "";
+$this->addType($this->workflow);
+}
+return $this;
 }
 public function loadUser() {
 if ($this->user == null) {

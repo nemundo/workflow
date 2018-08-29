@@ -46,12 +46,15 @@ class StatusChangeContainer extends AbstractHtmlContainerList
         $factory->getForm($this);
 
         //if ($workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+
+        /* wieder aktiveren
+
         if ($workflowStatus->draftMode) {
             if ($workflowRow->draft) {
                 $btn = new DraftReleaseButton($this);
                 $btn->workflowId = $workflowId;
             }
-        }
+        }*/
 
         return parent::getHtml();
 

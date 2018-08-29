@@ -23,7 +23,7 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
     {
 
         $this->name = 'Aufgabe Erfassung (Personal Task)';
-        $this->workflowStatusText = 'Aufgabe wurde erfasst';
+        $this->statusText = 'Aufgabe wurde erfasst';
         $this->id = 'f2736f64-d659-4d2f-b73c-7a16b77c28ee';
         $this->modelClass = PersonalTaskModel::class;
 

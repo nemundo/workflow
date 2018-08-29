@@ -20,10 +20,13 @@ use Nemundo\Workflow\App\Survey\Site\SurveySite;
 use Nemundo\Workflow\App\Task\Site\Admin\TaskAdminSite;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\App\ToDo\Site\ToDoDoneSite;
+use Nemundo\Workflow\App\ToDo\Site\ToDoItemSite;
+use Nemundo\Workflow\App\ToDo\Site\ToDoSite;
 use Nemundo\Workflow\App\Widget\Site\WidgetSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\Workflow\App\Workflow\Site\Process\ProcessSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
+use Nemundo\Workflow\App\Workflow\Site\StatusChangeLogSite;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 class CollaborationSite extends AbstractSite
@@ -40,12 +43,19 @@ class CollaborationSite extends AbstractSite
         new InboxStreamSite($this);
         new WorkflowSearchSite($this);
         new ProcessSite($this);
+      new StatusChangeLogSite($this);
+
 
         new TaskSite($this);
         new TaskAdminSite($this);
         new RepeatingTaskSite($this);
 
-        new ToDoDoneSite($this);
+        new ToDoSite($this);
+
+        //new ToDoDoneSite($this);
+        //new ToDoItemSite($this);
+
+
         new NewsSite($this);
 
         new MessageSite($this);

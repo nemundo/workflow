@@ -4,12 +4,18 @@ namespace Nemundo\Workflow\App\Workflow\Event;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
+use Nemundo\User\Information\UserInformation;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
+use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChange;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
 class WorkflowEvent extends AbstractEvent
@@ -34,9 +40,10 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
+        /* wieder aktiverein
         if ($this->workflowStatus->draftMode) {
             $this->draft = true;
-        }
+        }*/
 
 
 
@@ -70,6 +77,13 @@ class WorkflowEvent extends AbstractEvent
         $data->workflowId = $this->workflowId;
         $data->dataId = $id;
         $data->draft = $this->draft;
+
+        $data->assignment = $this->workflowStatus->getAssignmentIdentification($id);
+
+        //$data->assignment->identificationType = new UserIdentificationType();
+        //$data->assignment->identificationId = (new UserInformation())->getUserId();
+
+
         $data->save();
 
 
@@ -148,6 +162,46 @@ class WorkflowEvent extends AbstractEvent
             }
 
             $this->workflowStatus->onCreate($id);
+
+
+            if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
+                 //$this->workflowStatus->checkSubscription();
+
+
+                $reader = new SubscriptionReader();
+                $reader->filter->andEqual($reader->model->dataId, $this->workflowId);
+                foreach ($reader->getData() as $subscriptionRow) {
+                    //$this->createUserInbox($subscriptionRow->userId);
+
+
+                    //protected function createUserInbox($userId)  //, $message = '')
+                    //{
+
+                        $workflowReader = new WorkflowReader();
+                        $workflowReader->model->loadProcess();
+                        $workflowRow = $workflowReader->getRowById($this->workflowId);
+
+                        $process = $workflowRow->process->getProcessClassObject();
+
+                        $builder = new InboxBuilder();
+                        $builder->contentType = $process;
+                        $builder->dataId = $this->workflowId;
+                        $builder->subject = $process->getSubject($this->workflowId);
+                        $builder->message = $this->workflowStatus->getStatusText($id);
+                        $builder->createUserInbox($subscriptionRow->userId);
+
+
+
+
+
+
+                }
+
+
+
+            }
+
+            //exit;
 
         }
 

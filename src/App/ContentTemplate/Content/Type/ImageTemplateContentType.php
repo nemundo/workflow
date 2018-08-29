@@ -8,9 +8,10 @@ use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\ImageContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\Item\TemplateImageItem;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImageModel;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 
-class ImageTemplateContentType extends AbstractDataContentType  // AbstractContentType
+class ImageTemplateContentType extends AbstractDataWorkflowStatus   // AbstractDataContentType  // AbstractContentType
 {
 
     //use WorkflowIdTrait;
@@ -22,6 +23,9 @@ class ImageTemplateContentType extends AbstractDataContentType  // AbstractConte
         $this->modelClass = ContentTemplateImageModel::class;
         $this->itemClass = TemplateImageItem::class;
         $this->formClass = ImageContentTemplateForm::class;
+
+        $this->statusText = 'Bild wurde hochgeladen';
+
     }
 
 }

@@ -16,6 +16,7 @@ class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
         $this->id = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
         $this->modelClass = DeadlineChangeModel::class;
         $this->changeWorkflowStatus = false;
+        $this->statusText = 'Deadline wurde geändert';
 
     }
 
@@ -27,5 +28,10 @@ class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
         $this->changeDeadline($row->deadline);
 
     }
+
+
+
+
+
 
 }

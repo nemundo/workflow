@@ -13,6 +13,7 @@ use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
 use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
 use Nemundo\Workflow\App\Message\Install\MessageInstall;
 use Nemundo\Workflow\App\News\Install\NewsInstall;
+use Nemundo\Workflow\App\Notification\Install\NotificationInstall;
 use Nemundo\Workflow\App\PersonalCalendar\Install\PersonalCalendarInstall;
 use Nemundo\Workflow\App\PersonalTask\Install\PersonalTaskInstall;
 use Nemundo\Workflow\App\RepeatingTask\Install\RepeatingTaskInstall;
@@ -49,6 +50,9 @@ class CollaborationInstall extends AbstractScript
         (new NewsInstall())->run();
 
         (new WidgetInstall())->run();
+
+        (new NotificationInstall())->run();
+
         //(new PersonalTaskInstall())->run();
         (new RepeatingTaskInstall())->run();
         (new PersonalCalendarInstall())->run();

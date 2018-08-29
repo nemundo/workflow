@@ -66,6 +66,11 @@ public $draft;
 */
 public $message;
 
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\Identification
+*/
+public $assignment;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -87,6 +92,8 @@ $this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue(
 $this->itemOrder = $this->getModelValue($model->itemOrder);
 $this->draft = $this->getModelValue($model->draft);
 $this->message = $this->getModelValue($model->message);
+$property = new \Nemundo\Workflow\App\Identification\Model\IdentificationReaderProperty($row, $model->assignment);
+$this->assignment = $property->getValue();
 }
 private function loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model) {
 $this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow($this->row, $model);

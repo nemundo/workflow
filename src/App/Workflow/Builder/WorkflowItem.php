@@ -61,6 +61,19 @@ class WorkflowItem extends AbstractBase
     }
 
 
+
+    public function fromDataId($dataId) {
+
+    }
+
+
+    public function fromWorkflowId($workflowId) {
+
+
+    }
+
+
+
     public function getSubject()
     {
 

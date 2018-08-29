@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Site\Delete;
 
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
-use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeDelete;
+use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeDelete;
 use Nemundo\Workflow\App\Workflow\Parameter\StatusChangeParameter;
 
 class StatusChangeDeleteSite extends AbstractSite
@@ -34,12 +34,10 @@ class StatusChangeDeleteSite extends AbstractSite
 
         $statusChangeId = (new StatusChangeParameter())->getValue();
 
-        $delete = new WorkflowStatusChangeDelete();
+        $delete = new StatusChangeDelete();
         $delete->deleteById($statusChangeId);
 
         (new UrlReferer())->redirect();
-
-
 
     }
 

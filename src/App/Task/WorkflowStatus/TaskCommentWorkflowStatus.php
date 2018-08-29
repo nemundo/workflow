@@ -16,7 +16,7 @@ class TaskCommentWorkflowStatus extends CommentTemplateWorkflowStatus
         parent::loadData();
 
         $this->name = 'Kommentar (Task)';
-        $this->workflowStatusText = 'Aufgabe wurde kommentiert';
+        $this->statusText = 'Aufgabe wurde kommentiert';
         $this->id = '87e2769c-88c7-433d-975e-d8319efd03b5';
         //$this->modelClass = CommentMod CommentModel::class;
         //$this->changeWorkflowStatus = false;

@@ -15,6 +15,8 @@ use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Favorite\Com\FavoriteButton;
+use Nemundo\Workflow\App\Subscription\Com\SubscriptionButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\App\Workflow\Com\Doc\WorkflowDoc;
@@ -28,7 +30,6 @@ use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
-
 
 
 class ProcessContentItem extends AbstractContentItem
@@ -55,7 +56,6 @@ class ProcessContentItem extends AbstractContentItem
     public $sortOrder = SortOrder::ASCENDING;
 
 
-
     public function getHtml()
     {
 
@@ -63,6 +63,15 @@ class ProcessContentItem extends AbstractContentItem
 
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
+
+
+        $btn = new SubscriptionButton($this);
+        $btn->contentType = $this->contentType;
+        $btn->dataId = $workflowId;
+
+        $btn = new FavoriteButton($this);
+        $btn->contentType = $this->contentType;
+        $btn->dataId = $workflowId;
 
 
         if ($this->showBaseData) {
@@ -86,8 +95,6 @@ class ProcessContentItem extends AbstractContentItem
         $workflowLog = new WorkflowLogContainer($this);
         $workflowLog->workflowId = $this->dataId;
         $workflowLog->statusChangeSite = $this->statusChangeRedirectSite;
-
-
 
 
         /*

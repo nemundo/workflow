@@ -9,6 +9,8 @@ use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
 use Nemundo\Workflow\App\ToDo\Content\ToDoContentType;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\AbstractToDoAction;
+use Nemundo\Workflow\App\ToDo\Process\ToDoProcess;
+use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\Stream\Builder\StreamBuilder;
 
 class ToDoAction extends AbstractToDoAction
@@ -17,7 +19,7 @@ class ToDoAction extends AbstractToDoAction
     public function run($id)
     {
 
-        $todoRow = $this->getRow();
+        //$todoRow = $this->getRow();
 
         /*$builder = new StreamBuilder();
         $builder->contentType = new ToDoContentType();
@@ -25,6 +27,8 @@ class ToDoAction extends AbstractToDoAction
         $builder->subject = $todoRow->todo;
         $builder->createItem();*/
 
+
+        /*
         $builder = new TaskBuilder();
         $builder->contentType = new ToDoContentType();
         $builder->dataId = $this->id;
@@ -33,7 +37,14 @@ class ToDoAction extends AbstractToDoAction
         //$builder->timeEffort = 1.5;
         //$builder->identificationType = new UserIdentificationType();
         //$builder->identificationId = ;
-        $builder->createUserTask((new UserInformation())->getUserId());
+        $builder->createUserTask((new UserInformation())->getUserId());*/
+
+
+        $event = new WorkflowStartEvent();
+        $event->process = new ToDoProcess();
+        $event->run($id);
+
+
 
 
     }
