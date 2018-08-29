@@ -91,6 +91,7 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
 
             if ($statusChangeRow->draft) {
 
+
                 $btn = new AdminButton($contentDiv);
                 $btn->content = 'Draft Edit';
                 $btn->site = clone($this->statusChangeSite);

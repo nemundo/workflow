@@ -124,7 +124,7 @@ trait WorkflowIdTrait
         $update->identificationId = $userId;
         $update->updateById($this->workflowId);
 
-        $this->createUserInbox($userId);
+        //$this->createUserInbox($userId);
 
     }
 
@@ -182,6 +182,7 @@ trait WorkflowIdTrait
         $this->changeDeadline($deadline);
 
     }
+
 
 
     protected function archiveTask()

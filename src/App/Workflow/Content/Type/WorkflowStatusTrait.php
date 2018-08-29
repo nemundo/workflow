@@ -43,7 +43,6 @@ trait WorkflowStatusTrait
      */
     protected $assignmentIdentification;
 
-
     /**
      * @var string
      */

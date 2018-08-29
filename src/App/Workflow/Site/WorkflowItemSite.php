@@ -87,6 +87,7 @@ class WorkflowItemSite extends AbstractSite
 
         $item = $process->getItem($page);
         $item->dataId = $workflowRow->dataId;
+        $item->statusChangeRedirectSite = StatusChangeSite::$site;
 
 
         if (!$workflowRow->draft) {
@@ -132,6 +133,7 @@ class WorkflowItemSite extends AbstractSite
 
             $row->addText($statusChangeRow->dateTime->getShortDateTimeLeadingZeroFormat());
             $row->addText($statusChangeRow->user->displayName);
+            $row->addText($statusChangeRow->assignment->getValue());
 
 
         }

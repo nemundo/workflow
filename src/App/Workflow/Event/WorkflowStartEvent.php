@@ -58,11 +58,15 @@ class WorkflowStartEvent extends AbstractEvent
         $data->dataId = $id;
         $data->save();
 
+
+
+        //(new Debug())->write($startWorkflowStatus);
+
         $event = new WorkflowEvent();
         $event->workflowStatus = $startWorkflowStatus;
         $event->workflowId = $id;
         $event->run($id);
-
+        //exit;
     }
 
 }

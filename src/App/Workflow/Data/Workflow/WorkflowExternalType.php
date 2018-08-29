@@ -197,7 +197,7 @@ $this->userId = new \Nemundo\Model\Type\User\CreatedUserType();
 $this->userId->fieldName = "user";
 $this->userId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->userId->aliasFieldName = $this->userId->tableName ."_".$this->userId->fieldName;
-$this->userId->label = "User";
+$this->userId->label = "Ersteller";
 $this->addType($this->userId);
 
 $this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType();
@@ -264,7 +264,7 @@ $this->user = new \Nemundo\User\Data\User\UserExternalType(null, $this->parentFi
 $this->user->fieldName = "user";
 $this->user->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->user->aliasFieldName = $this->user->tableName ."_".$this->user->fieldName;
-$this->user->label = "User";
+$this->user->label = "Ersteller";
 $this->addType($this->user);
 }
 return $this;

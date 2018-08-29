@@ -64,14 +64,14 @@ class ProcessContentItem extends AbstractContentItem
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
 
-
+/*
         $btn = new SubscriptionButton($this);
         $btn->contentType = $this->contentType;
         $btn->dataId = $workflowId;
 
         $btn = new FavoriteButton($this);
         $btn->contentType = $this->contentType;
-        $btn->dataId = $workflowId;
+        $btn->dataId = $workflowId;*/
 
 
         if ($this->showBaseData) {

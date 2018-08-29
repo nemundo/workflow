@@ -208,7 +208,7 @@ $this->userId = new \Nemundo\Model\Type\User\CreatedUserType($this);
 $this->userId->tableName = "workflow_workflow";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_workflow_user";
-$this->userId->label = "User";
+$this->userId->label = "Ersteller";
 
 $this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
 $this->dateTime->tableName = "workflow_workflow";
@@ -274,7 +274,7 @@ $this->user = new \Nemundo\User\Data\User\UserExternalType($this, "workflow_work
 $this->user->tableName = "workflow_workflow";
 $this->user->fieldName = "user";
 $this->user->aliasFieldName = "workflow_workflow_user";
-$this->user->label = "User";
+$this->user->label = "Ersteller";
 $this->user->visible->form = false;
 }
 }

@@ -19,7 +19,7 @@ class TaskProcess extends AbstractProcess
         $this->id = 'a480102a-6e69-4233-986d-f37db267e5aa';
 
         $this->itemClass = TaskProcessContentItem::class;
-        $this->itemSite = TaskItemSite::$site;
+        $this->itemSite =  TaskItemSite::$site;
         $this->parameterClass = TaskParameter::class;
         $this->prefix = 'T-';
         $this->modelClass = TaskModel::class;

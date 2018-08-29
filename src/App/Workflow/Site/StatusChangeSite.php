@@ -68,17 +68,6 @@ class StatusChangeSite extends AbstractSite
 
         $workflowItem = new WorkflowItem($workflowId);
 
-
-        /*
-        $workflowReader = new WorkflowReader();
-        $workflowReader->model->loadWorkflowStatus();
-        $workflowRow = $workflowReader->getRowById($workflowId);*/
-
-        //$process =
-
-        //$contentType= $workflowRow->workflowStatus->getContentTypeClassObject();
-
-
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $breadcrumb = new BootstrapBreadcrumb($page);

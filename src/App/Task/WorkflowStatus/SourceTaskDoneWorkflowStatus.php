@@ -3,11 +3,12 @@
 namespace Nemundo\Workflow\App\Task\WorkflowStatus;
 
 
+use Nemundo\Workflow\App\Task\Data\SourceTask\SourceTaskUpdate;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
 
 
-class TaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
+class SourceTaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
 {
 
     protected function loadData()
@@ -15,7 +16,7 @@ class TaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
 
         $this->name = 'Erledigt';
         $this->statusText = 'Aufgabe wurde erledigt';
-        $this->id = '0ecf9bad-c73a-4c53-85c6-19cbdc5d8f87';
+        $this->id = '91077ac2-1a9d-4507-af4f-e3d42a892d5e';
         $this->closingWorkflow = true;
 
     }
@@ -24,11 +25,9 @@ class TaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
     public function onCreate($dataId)
     {
 
-        $update = new TaskUpdate();
-        $update->archive = true;
+        $update = new SourceTaskUpdate();
+        $update->done = true;
         $update->updateById($this->workflowId);
-
-        //$this->archiveTask();
 
     }
 

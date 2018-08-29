@@ -40,10 +40,9 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
-        /* wieder aktiverein
         if ($this->workflowStatus->draftMode) {
             $this->draft = true;
-        }*/
+        }
 
 
 
@@ -77,7 +76,6 @@ class WorkflowEvent extends AbstractEvent
         $data->workflowId = $this->workflowId;
         $data->dataId = $id;
         $data->draft = $this->draft;
-
         $data->assignment = $this->workflowStatus->getAssignmentIdentification($id);
 
         //$data->assignment->identificationType = new UserIdentificationType();

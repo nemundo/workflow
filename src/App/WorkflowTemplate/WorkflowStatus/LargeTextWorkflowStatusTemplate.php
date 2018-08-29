@@ -3,9 +3,12 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 
+use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\User\Data\User\UserReader;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Identification\Model\Identification;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 
 class LargeTextWorkflowStatusTemplate extends LargeTextTemplateContentType
@@ -22,6 +25,8 @@ class LargeTextWorkflowStatusTemplate extends LargeTextTemplateContentType
 
         $this->statusText = 'Text wurde hinzugefügt';
 
+        $this->addFollowingContentTypeClass(LargeTextWorkflowStatusTemplate::class);
+
 
     }
 
@@ -29,9 +34,16 @@ class LargeTextWorkflowStatusTemplate extends LargeTextTemplateContentType
     public function getAssignmentIdentification($dataId)
     {
 
-        //$identification = new Identification();
-        //$identification->
+        $identification = new Identification();
+        $identification->identificationType = new UserIdentificationType();
 
+        $reader = new UserReader();
+        $reader->addOrder($reader->model->id, SortOrder::RANDOM);
+        $row = $reader->getRow();
+
+        $identification->identificationId = $row->id;
+
+        return $identification;
 
 
     }

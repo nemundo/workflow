@@ -48,48 +48,52 @@ class WorkflowActionButton extends AbstractHtmlContainerList
         $workflowReader->model->loadWorkflowStatus();
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
-        /** @var WorkflowStatusTrait $workflowStatus */
-        $workflowStatus = $workflowRow->workflowStatus->getContentTypeClassObject();
+        if (!$workflowRow->draft) {
 
-        foreach ($workflowStatus->getFollowingContentTypeList() as $className) {
-        //foreach ($workflowItem->workflowStatus->getFollowingStatusClassList($this->workflowId) as $className) {
+            /** @var WorkflowStatusTrait $workflowStatus */
+            $workflowStatus = $workflowRow->workflowStatus->getContentTypeClassObject();
 
-            /** @var AbstractWorkflowStatus $followingStatusClass */
-            $followingStatusClass = new $className();
+            foreach ($workflowStatus->getFollowingContentTypeList() as $className) {
+                //foreach ($workflowItem->workflowStatus->getFollowingStatusClassList($this->workflowId) as $className) {
 
-           // $label = $followingStatusClass->actionLabel;
-            //if ($label == null) {
+                /** @var AbstractWorkflowStatus $followingStatusClass */
+                $followingStatusClass = new $className();
+
+                // $label = $followingStatusClass->actionLabel;
+                //if ($label == null) {
                 $label = $followingStatusClass->name;
-           // }
+                // }
 
-            $btn = new AdminButton($this);
-            $btn->content = $label;
+                $btn = new AdminButton($this);
+                $btn->content = $label;
 
-            //$site = null;
+                //$site = null;
 
-            //$site = clone(StatusChangeSite::$site);
+                //$site = clone(StatusChangeSite::$site);
 
-            /*
-            if ($followingStatusClass->formSite == null) {
-                $site = clone(StatusChangeSite::$site);
-            } else {
-                $site = clone($followingStatusClass->formSite);
-            }*/
-
-
-            //$btn->site = $site;
-            $btn->site = clone($this->statusChangeRedirectSite);
-            $btn->site->addParameter(new ContentTypeParameter($followingStatusClass->id));
-            $btn->site->addParameter(new WorkflowParameter($this->workflowId));
+                /*
+                if ($followingStatusClass->formSite == null) {
+                    $site = clone(StatusChangeSite::$site);
+                } else {
+                    $site = clone($followingStatusClass->formSite);
+                }*/
 
 
-            /*
-            $btn->restricted = $followingStatusClass->restricted;
-            foreach ($followingStatusClass->getRestrictedUsergroupList() as $usergroup) {
-                $btn->addRestrictedUsergroup($usergroup);
-            }*/
+                //$btn->site = $site;
+                $btn->site = clone($this->statusChangeRedirectSite);
+                $btn->site->addParameter(new ContentTypeParameter($followingStatusClass->id));
+                $btn->site->addParameter(new WorkflowParameter($this->workflowId));
 
-            //$btn->disabled = true;
+
+                /*
+                $btn->restricted = $followingStatusClass->restricted;
+                foreach ($followingStatusClass->getRestrictedUsergroupList() as $usergroup) {
+                    $btn->addRestrictedUsergroup($usergroup);
+                }*/
+
+                //$btn->disabled = true;
+
+            }
 
         }
 
