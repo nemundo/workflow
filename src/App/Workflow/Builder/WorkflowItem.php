@@ -7,6 +7,8 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\Action\UserAssignmentAction;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
+use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
+use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeValue;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow;
 use Nemundo\Workflow\App\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
@@ -42,17 +44,13 @@ class WorkflowItem extends AbstractBase
      */
     private $workflowRow;
 
-    public function __construct($workflowId)
+    public function __construct($workflowId = null)
     {
 
-        $this->workflowId = $workflowId;
+        if ($workflowId !== null) {
+            $this->fromWorkflowId($workflowId);
 
-
-        $reader = new WorkflowReader();
-        $reader->model->loadProcess();
-        $reader->model->loadWorkflowStatus();
-        $this->workflowRow = $reader->getRowById($workflowId);
-
+        }
         /*
         $this->workflowNumber = $this->workflowRow->workflowNumber;
         $this->subject = $this->workflowRow->subject;
@@ -64,12 +62,30 @@ class WorkflowItem extends AbstractBase
     public function fromDataId($dataId)
     {
 
+        $value = new StatusChangeValue();
+        $value->field = $value->model->workflowId;
+        $value->filter->andEqual($value->model->dataId, $dataId);
+        $workflowId = $value->getValue();
+
+        $this->fromWorkflowId($workflowId);
+
+        return $this;
+
     }
 
 
     public function fromWorkflowId($workflowId)
     {
 
+        $this->workflowId = $workflowId;
+
+
+        $reader = new WorkflowReader();
+        $reader->model->loadProcess();
+        $reader->model->loadWorkflowStatus();
+        $this->workflowRow = $reader->getRowById($workflowId);
+
+        return $this;
 
     }
 
@@ -123,6 +139,32 @@ class WorkflowItem extends AbstractBase
         $workflowStatus = $this->workflowRow->workflowStatus->getContentTypeClassObject();
 
         return $workflowStatus;
+
+
+    }
+
+
+
+    public function getStatusChangeLog() {
+
+        /** @var AbstractWorkflowStatus[] $list */
+        $list=[];
+
+        $statusChangeReader = new StatusChangeReader();
+        $statusChangeReader->model->loadWorkflowStatus();
+        $statusChangeReader->model->loadUser();
+        $statusChangeReader->filter->andEqual($statusChangeReader->model->workflowId, $this->workflowId);
+
+        foreach ($statusChangeReader->getData() as $statusChangeRow) {
+
+            //$list->addHyperlink($statusChangeRow->workflowStatus->contentType, '#' . $statusChangeRow->dataId);
+
+            $list[]= $statusChangeRow->workflowStatus->getContentTypeClassObject();
+
+        }
+
+       return $list;
+
 
 
     }
@@ -195,6 +237,11 @@ class WorkflowItem extends AbstractBase
 
     }
 
+    public function isClosed()
+    {
+        return $this->workflowRow->closed;
+    }
+
 
     public function assignUser($userId)
     {
@@ -210,6 +257,19 @@ class WorkflowItem extends AbstractBase
 
 
     }
+
+
+    public function getSite()
+    {
+
+        $process = $this->getProcess();
+        $site = $process->getItemSite($this->workflowId);
+        return $site;
+
+
+    }
+
+
 
 
     /**

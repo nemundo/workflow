@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Process\Item;
 
 
 use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\App\Content\Com\ContentTypeCollectionDropdown;
 use Nemundo\App\Content\Item\AbstractContentItem;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Html\Basic\Div;
@@ -17,6 +18,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Favorite\Com\FavoriteButton;
 use Nemundo\Workflow\App\Subscription\Com\SubscriptionButton;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
 use Nemundo\Workflow\App\Workflow\Com\Doc\WorkflowDoc;
@@ -25,12 +27,15 @@ use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowItemContentItem;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
+use Nemundo\Workflow\App\Workflow\Site\StatusChangeSite;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
 
+
+// AbstractProcessContentItem
 
 class ProcessContentItem extends AbstractContentItem
 {
@@ -56,22 +61,40 @@ class ProcessContentItem extends AbstractContentItem
     public $sortOrder = SortOrder::ASCENDING;
 
 
+
+    protected function loadCom()
+    {
+        $this->statusChangeRedirectSite = StatusChangeSite::$site;
+
+
+    }
+
+
     public function getHtml()
     {
 
         $workflowId = $this->dataId;
 
+        $workflowItem = new WorkflowItem($workflowId);
+
+        $process = $workflowItem->getProcess();
+
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
 
-/*
-        $btn = new SubscriptionButton($this);
-        $btn->contentType = $this->contentType;
-        $btn->dataId = $workflowId;
 
-        $btn = new FavoriteButton($this);
-        $btn->contentType = $this->contentType;
-        $btn->dataId = $workflowId;*/
+        if ($this->showSubscription) {
+
+            $btn = new SubscriptionButton($this);
+            $btn->contentType = $this->contentType;
+            $btn->dataId = $workflowId;
+
+            $btn = new FavoriteButton($this);
+            $btn->contentType = $this->contentType;
+            $btn->dataId = $workflowId;
+
+        }
+
 
 
         if ($this->showBaseData) {
@@ -86,6 +109,13 @@ class ProcessContentItem extends AbstractContentItem
             $view->model = $model;
             $view->dataId = $this->dataId;
 
+        }
+
+        if ($process->processMenu->getCount() > 0) {
+            $dropdown = new ContentTypeCollectionDropdown($this);
+            $dropdown->contentTypeCollection = $process->processMenu;
+            $dropdown->redirectSite = $this->statusChangeRedirectSite;
+            $dropdown->redirectSite->addParameter(new WorkflowParameter($this->dataId));
         }
 
 

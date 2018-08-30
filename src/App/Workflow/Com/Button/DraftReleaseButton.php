@@ -15,10 +15,18 @@ class DraftReleaseButton extends AdminButton
      */
     public $workflowId;
 
-    public function getHtml()
+
+    protected function loadCom()
     {
 
         $this->content = 'Entwurf freigeben';
+
+    }
+
+
+    public function getHtml()
+    {
+
         $this->site = clone(DraftReleaseSite::$site);
         $this->site->addParameter(new WorkflowParameter($this->workflowId));
 

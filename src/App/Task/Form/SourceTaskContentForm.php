@@ -3,7 +3,9 @@
 namespace Nemundo\Workflow\App\Task\Form;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Form\AbstractContentHtmlContainerList;
+use Nemundo\Com\Html\Basic\Br;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
@@ -54,7 +56,16 @@ class SourceTaskContentForm extends AbstractContentHtmlContainerList
         $table = new SourceTaskContentTable($colRight);
         $table->dataId = $dataId;
 
+
+        (new Br($colLeft));
+
+        $btn = new AdminButton($colLeft);
+        $btn->content = 'Schliessen';
+        $btn->site = $workflowItem->getSite();
+
+
         $btn = new DraftReleaseButton($colLeft);
+        $btn->content = 'Weiter';
         $btn->workflowId = $workflowId;
 
 

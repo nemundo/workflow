@@ -2,6 +2,8 @@
 
 namespace Nemundo\Workflow\App\Workflow\Process;
 
+use Nemundo\App\Content\Collection\AbstractContentTypeCollection;
+use Nemundo\App\Content\Collection\ContentTypeCollection;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
@@ -68,12 +70,22 @@ abstract class AbstractProcess extends AbstractDataContentType
      */
     public $workflowId;
 
+
+    /**
+     * @var AbstractContentTypeCollection
+     */
+    public $processMenu;
+
+
+
     public function __construct()
     {
 
         $this->itemSite = WorkflowItemSite::$site;
         $this->itemClass = ProcessContentItem::class;
         $this->parameterClass = WorkflowParameter::class;
+
+        $this->processMenu =new ContentTypeCollection();
 
         $this->loadData();
 

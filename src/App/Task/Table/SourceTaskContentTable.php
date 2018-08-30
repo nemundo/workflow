@@ -24,7 +24,7 @@ class SourceTaskContentTable extends AdminClickableTable
     {
 
         $taskReader = new SourceTaskReader();
-        $taskReader->model->loadResponsibleUser();
+        //$taskReader->model->loadResponsibleUser();
         $taskReader->model->workflow->loadUser();
         //$taskReader->model->loadUserCreated();
         //$taskReader->model->loadIdentificationType();
@@ -33,7 +33,7 @@ class SourceTaskContentTable extends AdminClickableTable
         $header = new TableHeader($this);
         $header->addText($taskReader->model->done->label);
         $header->addText($taskReader->model->task->label);
-        $header->addText($taskReader->model->responsibleUser->label);
+        $header->addText($taskReader->model->assignment->label);
         $header->addText($taskReader->model->deadline->label);
         $header->addText($taskReader->model->timeEffort->label);
         $header->addText($taskReader->model->workflow->user->label);
@@ -47,7 +47,7 @@ class SourceTaskContentTable extends AdminClickableTable
             //$identitifactionType = $taskRow->identificationType->getIdentificationTypeClassObject();
             //$row->addText($identitifactionType->getValue($taskRow->identificationId));
 
-            $row->addText($taskRow->responsibleUser->displayName);
+            $row->addText($taskRow->assignment->getValue());
 
             if ($taskRow->deadline !== null) {
                 $row->addText($taskRow->deadline->getShortDateLeadingZeroFormat());

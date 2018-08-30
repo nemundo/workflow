@@ -37,16 +37,6 @@ public $dataId;
 public $description;
 
 /**
-* @var string
-*/
-public $responsibleUserId;
-
-/**
-* @var \Nemundo\User\Data\User\UserRow
-*/
-public $responsibleUser;
-
-/**
 * @var \Nemundo\Core\Type\DateTime\Date
 */
 public $deadline;
@@ -66,6 +56,11 @@ public $source;
 */
 public $done;
 
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\Identification
+*/
+public $assignment;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -77,10 +72,6 @@ $this->loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model->wor
 $this->task = $this->getModelValue($model->task);
 $this->dataId = $this->getModelValue($model->dataId);
 $this->description = $this->getModelValue($model->description);
-$this->responsibleUserId = $this->getModelValue($model->responsibleUserId);
-if ($model->responsibleUser !== null) {
-$this->loadNemundoUserDataUserUserresponsibleUserRow($model->responsibleUser);
-}
 $value = $this->getModelValue($model->deadline);
 if ($value !== "0000-00-00") {
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date($this->getModelValue($model->deadline));
@@ -88,11 +79,10 @@ $this->deadline = new \Nemundo\Core\Type\DateTime\Date($this->getModelValue($mod
 $this->timeEffort = $this->getModelValue($model->timeEffort);
 $this->source = $this->getModelValue($model->source);
 $this->done = $this->getModelValue($model->done);
+$property = new \Nemundo\Workflow\App\Identification\Model\IdentificationReaderProperty($row, $model->assignment);
+$this->assignment = $property->getValue();
 }
 private function loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model) {
 $this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow($this->row, $model);
-}
-private function loadNemundoUserDataUserUserresponsibleUserRow($model) {
-$this->responsibleUser = new \Nemundo\User\Data\User\UserRow($this->row, $model);
 }
 }

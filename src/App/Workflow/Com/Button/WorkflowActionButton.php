@@ -8,15 +8,12 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
-use Nemundo\Package\Bootstrap\Button\BootstrapButton;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
-use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Site\StatusChangeSite;
 
 
 class WorkflowActionButton extends AbstractHtmlContainerList
@@ -31,6 +28,12 @@ class WorkflowActionButton extends AbstractHtmlContainerList
      * @var AbstractSite
      */
     public $statusChangeRedirectSite;
+
+
+    protected function loadCom()
+    {
+        $this->statusChangeRedirectSite = StatusChangeSite::$site;
+    }
 
 
     public function getHtml()

@@ -32,16 +32,6 @@ public $dataId;
 public $description;
 
 /**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
-public $responsibleUserId;
-
-/**
-* @var \Nemundo\User\Data\User\UserExternalType
-*/
-public $responsibleUser;
-
-/**
 * @var \Nemundo\Model\Type\DateTime\DateType
 */
 public $deadline;
@@ -60,6 +50,11 @@ public $source;
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
 public $done;
+
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\IdentificationModelType
+*/
+public $assignment;
 
 protected function loadType() {
 parent::loadType();
@@ -101,13 +96,6 @@ $this->description->aliasFieldName = $this->description->tableName . "_" . $this
 $this->description->label = "Beschreibung";
 $this->addType($this->description);
 
-$this->responsibleUserId = new \Nemundo\Model\Type\Id\IdType();
-$this->responsibleUserId->fieldName = "responsible_user";
-$this->responsibleUserId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->responsibleUserId->aliasFieldName = $this->responsibleUserId->tableName ."_".$this->responsibleUserId->fieldName;
-$this->responsibleUserId->label = "Verantwortlicher";
-$this->addType($this->responsibleUserId);
-
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType();
 $this->deadline->fieldName = "deadline";
 $this->deadline->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -136,6 +124,14 @@ $this->done->aliasFieldName = $this->done->tableName . "_" . $this->done->fieldN
 $this->done->label = "Erledigt";
 $this->addType($this->done);
 
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType();
+$this->assignment->fieldName = "assignment";
+$this->assignment->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->assignment->aliasFieldName = $this->assignment->tableName . "_" . $this->assignment->fieldName;
+$this->assignment->label = "Assignment";
+$this->assignment->createObject();
+$this->addType($this->assignment);
+
 }
 public function loadWorkflow() {
 if ($this->workflow == null) {
@@ -145,17 +141,6 @@ $this->workflow->tableName = $this->parentFieldName . "_" . $this->externalTable
 $this->workflow->aliasFieldName = $this->workflow->tableName ."_".$this->workflow->fieldName;
 $this->workflow->label = "";
 $this->addType($this->workflow);
-}
-return $this;
-}
-public function loadResponsibleUser() {
-if ($this->responsibleUser == null) {
-$this->responsibleUser = new \Nemundo\User\Data\User\UserExternalType(null, $this->parentFieldName . "_responsible_user");
-$this->responsibleUser->fieldName = "responsible_user";
-$this->responsibleUser->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->responsibleUser->aliasFieldName = $this->responsibleUser->tableName ."_".$this->responsibleUser->fieldName;
-$this->responsibleUser->label = "Verantwortlicher";
-$this->addType($this->responsibleUser);
 }
 return $this;
 }

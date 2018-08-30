@@ -22,16 +22,6 @@ public $dataId;
 public $description;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
-*/
-public $responsibleUserId;
-
-/**
-* @var \Nemundo\User\Data\User\UserExternalType
-*/
-public $responsibleUser;
-
-/**
 * @var \Nemundo\Model\Type\DateTime\DateType
 */
 public $deadline;
@@ -50,6 +40,11 @@ public $source;
 * @var \Nemundo\Model\Type\Number\YesNoType
 */
 public $done;
+
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\IdentificationModelType
+*/
+public $assignment;
 
 protected function loadModel() {
 $this->tableName = "task_source_task";
@@ -97,13 +92,6 @@ $this->description->aliasFieldName = "task_source_task_description";
 $this->description->label = "Beschreibung";
 $this->description->allowNullValue = "";
 
-$this->responsibleUserId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->responsibleUserId->tableName = "task_source_task";
-$this->responsibleUserId->fieldName = "responsible_user";
-$this->responsibleUserId->aliasFieldName = "task_source_task_responsible_user";
-$this->responsibleUserId->label = "Verantwortlicher";
-$this->loadResponsibleUser();
-
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "task_source_task";
 $this->deadline->fieldName = "deadline";
@@ -135,16 +123,13 @@ $this->done->label = "Erledigt";
 $this->done->allowNullValue = "";
 $this->done->visible->form = false;
 
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType($this);
+$this->assignment->tableName = "task_source_task";
+$this->assignment->fieldName = "assignment";
+$this->assignment->aliasFieldName = "task_source_task_assignment";
+$this->assignment->label = "Assignment";
+$this->assignment->allowNullValue = "";
+
 $this->action->addInsertAction(new \Nemundo\Workflow\App\Task\Action\SourceTaskAction());
-}
-public function loadResponsibleUser() {
-if ($this->responsibleUser == null) {
-$this->responsibleUser = new \Nemundo\User\Data\User\UserExternalType($this, "task_source_task_responsible_user");
-$this->responsibleUser->tableName = "task_source_task";
-$this->responsibleUser->fieldName = "responsible_user";
-$this->responsibleUser->aliasFieldName = "task_source_task_responsible_user";
-$this->responsibleUser->label = "Verantwortlicher";
-$this->responsibleUser->validation = true;
-}
 }
 }

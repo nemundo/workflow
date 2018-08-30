@@ -6,7 +6,6 @@ namespace Nemundo\Workflow\App\Identification\Model;
 use Nemundo\Model\Type\Complex\AbstractComplexType;
 use Nemundo\Model\Type\External\Id\ExternalUniqueIdType;
 use Nemundo\Model\Type\Id\UniqueIdType;
-use Nemundo\Model\Type\Php\PhpClassType;
 use Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeExternalType;
 
 class IdentificationModelType extends AbstractComplexType
@@ -35,9 +34,11 @@ class IdentificationModelType extends AbstractComplexType
         $this->identificationTypeId = new UniqueIdType();
         $this->addType($this->identificationTypeId);
 
-
         $this->identificationId = new UniqueIdType();
         $this->addType($this->identificationId);
+
+        $this->tableItemClassName = IdentificationModelItem::class;
+        $this->viewItemClassName = IdentificationModelItem::class;
 
     }
 

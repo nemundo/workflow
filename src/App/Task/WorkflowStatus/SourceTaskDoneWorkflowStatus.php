@@ -29,6 +29,8 @@ class SourceTaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
         $update->done = true;
         $update->updateById($this->workflowId);
 
+        $this->clearAssignment();
+
     }
 
 }

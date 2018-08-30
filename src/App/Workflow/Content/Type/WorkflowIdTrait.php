@@ -140,6 +140,7 @@ trait WorkflowIdTrait
     }
 
 
+    /*
     protected function createUserTask($userId, Date $deadline = null)
     {
 
@@ -177,14 +178,13 @@ trait WorkflowIdTrait
         $builder->deadline = $deadline;
         $builder->createUsergroupTask($usergroup);*/
 
-
-        $this->assignUsergroup($usergroup);
+    /*    $this->assignUsergroup($usergroup);
         $this->changeDeadline($deadline);
 
-    }
+    }*/
 
 
-
+/*
     protected function archiveTask()
     {
 
@@ -196,7 +196,7 @@ trait WorkflowIdTrait
 
         $this->clearAssignment();
 
-    }
+    }*/
 
 
     protected function getProcess()

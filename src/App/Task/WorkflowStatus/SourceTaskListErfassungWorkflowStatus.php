@@ -13,7 +13,7 @@ use Nemundo\Workflow\App\Task\Item\SourceTaskContentItem;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
-class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus  // AbstractDataWorkflowStatus
+class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus
 {
 
     protected function loadData()
@@ -26,7 +26,7 @@ class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus  // A
         $this->formClass = SourceTaskContentForm::class;
         $this->itemClass = SourceTaskContentItem::class;
 
-        $this->changeWorkflowStatus = false;
+        //$this->changeWorkflowStatus = false;
         $this->draftMode = true;
 
         //$this->addFollowingContentTypeClass(TaskCommentWorkflowStatus::class);

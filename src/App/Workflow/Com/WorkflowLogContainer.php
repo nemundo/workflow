@@ -19,6 +19,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
+use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
@@ -96,7 +97,7 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
 
 
                 $btn = new AdminButton($contentDiv);
-                $btn->content = 'Draft Edit';
+                $btn->content = 'Bearbeiten';
                 $btn->site = clone($this->statusChangeSite);
                 //$btn->site = clone(IssueStatusChangeSite::$site);
                 $btn->site->addParameter(new ContentTypeParameter($statusChangeRow->workflowStatusId));
@@ -105,8 +106,8 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
                 $btn->site->addParameter(new WorkflowParameter($statusChangeRow->workflowId));
 
 
-                $btn = new DraftReleaseButton($contentDiv);
-                $btn->workflowId = $statusChangeRow->workflowId;
+                //$btn = new DraftReleaseButton($contentDiv);
+                //$btn->workflowId = $statusChangeRow->workflowId;
 
 
             }
@@ -146,16 +147,31 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
         }
 
 
-        /*
-        do {
+        if ((!$workflowItem->isClosed()) && (!$workflowItem->isDraft())) {
 
-            $workflowStatus = $workflowStatus->getNextContentType();
+            $nextWorkflowStatus = $workflowItem->getWorkflowStatus()->getNextContentType();
 
-            if ($workflowStatus !== null) {
-                $list->addText($workflowStatus->name);
+            if ($nextWorkflowStatus !== null) {
+                $btn = new AdminButton($colRight);
+                $btn->content = 'Weiter';
+                $btn->site = $this->statusChangeSite;
+                $btn->site->addParameter(new WorkflowParameter($workflowItem->workflowId));
+                $btn->site->addParameter(new ContentTypeParameter($nextWorkflowStatus->id));
             }
 
-        } while ($workflowStatus !== null);*/
+            // User Check
+            /*   $title = new AdminSubtitle($colRight);
+               $title->content = $nextWorkflowStatus->name;
+
+               $form = $nextWorkflowStatus->getForm($colRight);
+
+               $event = new WorkflowEvent();
+               $event->workflowStatus = $nextWorkflowStatus;
+               $event->workflowId = $this->workflowId;
+
+               $form->afterSubmitEvent->addEvent($event);*/
+
+        }
 
 
         return parent::getHtml();

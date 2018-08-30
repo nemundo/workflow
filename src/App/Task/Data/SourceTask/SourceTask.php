@@ -27,11 +27,6 @@ public $dataId;
 public $description;
 
 /**
-* @var string
-*/
-public $responsibleUserId;
-
-/**
 * @var \Nemundo\Core\Type\DateTime\Date
 */
 public $deadline;
@@ -51,23 +46,30 @@ public $source;
 */
 public $done;
 
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\Identification
+*/
+public $assignment;
+
 public function __construct() {
 parent::__construct();
 $this->model = new SourceTaskModel();
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\Identification();
 }
 public function save() {
 $this->typeValueList->setModelValue($this->model->workflowId, $this->workflowId);
 $this->typeValueList->setModelValue($this->model->task, $this->task);
 $this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
 $this->typeValueList->setModelValue($this->model->description, $this->description);
-$this->typeValueList->setModelValue($this->model->responsibleUserId, $this->responsibleUserId);
 $property = new \Nemundo\Model\Data\Property\DateTime\DateDataProperty($this->model->deadline, $this->typeValueList);
 $property->setValue($this->deadline);
 $value = (new \Nemundo\Core\Type\Text\Text($this->timeEffort))->replace(",", ".")->getValue();
 $this->typeValueList->setModelValue($this->model->timeEffort, $value);
 $this->typeValueList->setModelValue($this->model->source, $this->source);
 $this->typeValueList->setModelValue($this->model->done, $this->done);
+$property = new \Nemundo\Workflow\App\Identification\Model\IdentificationDataProperty($this->model->assignment, $this->typeValueList);
+$property->setValue($this->assignment);
 $id = parent::save();
 return $id;
 }

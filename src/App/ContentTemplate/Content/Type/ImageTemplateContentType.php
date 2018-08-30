@@ -24,6 +24,7 @@ class ImageTemplateContentType extends AbstractDataWorkflowStatus   // AbstractD
         $this->itemClass = TemplateImageItem::class;
         $this->formClass = ImageContentTemplateForm::class;
 
+        $this->changeWorkflowStatus= false;
         $this->statusText = 'Bild wurde hochgeladen';
 
     }
