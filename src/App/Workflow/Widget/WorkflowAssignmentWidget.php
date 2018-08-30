@@ -21,7 +21,7 @@ class WorkflowAssignmentWidget extends AbstractAdminWidget
 
     protected function loadWidget()
     {
-        $this->widgetTitle = 'Workflow Assignment';
+        $this->widgetTitle = 'Aufgaben (Workflow Assignment)';
         $this->widgetId = '';
         $this->widgetSite = WorkflowSearchSite::$site;
     }
@@ -95,6 +95,7 @@ class WorkflowAssignmentWidget extends AbstractAdminWidget
 
 
             // last dataId
+            $row->addEmpty();
             //$row->addText($workflowStatus->getStatusText($workflowRow->da));
 
 

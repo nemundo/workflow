@@ -6,14 +6,17 @@ namespace Nemundo\Workflow\App\Workflow\Com;
 use App\App\IssueTracking\Site\IssueEditSite;
 use App\App\IssueTracking\Site\IssueStatusChangeSite;
 use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Div;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
@@ -106,8 +109,6 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
                 $btn->workflowId = $statusChangeRow->workflowId;
 
 
-
-
             }
 
 
@@ -129,6 +130,33 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
             }*/
 
         }
+
+
+        $workflowItem = new WorkflowItem($this->workflowId);
+
+
+        //$workflowStatus = $workflowItem->getWorkflowStatus();
+
+        $title = new AdminSubtitle($colLeft);
+        $title->content = 'Nächste Schritte';
+        $list = new UnorderedList($colLeft);
+
+        foreach ($workflowItem->getNextWorkflowStatusList() as $nextWorkflowStatus) {
+            $list->addText($nextWorkflowStatus->name);
+        }
+
+
+        /*
+        do {
+
+            $workflowStatus = $workflowStatus->getNextContentType();
+
+            if ($workflowStatus !== null) {
+                $list->addText($workflowStatus->name);
+            }
+
+        } while ($workflowStatus !== null);*/
+
 
         return parent::getHtml();
     }

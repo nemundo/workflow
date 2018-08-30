@@ -61,17 +61,17 @@ class WorkflowItem extends AbstractBase
     }
 
 
-
-    public function fromDataId($dataId) {
-
-    }
-
-
-    public function fromWorkflowId($workflowId) {
-
+    public function fromDataId($dataId)
+    {
 
     }
 
+
+    public function fromWorkflowId($workflowId)
+    {
+
+
+    }
 
 
     public function getSubject()
@@ -79,9 +79,9 @@ class WorkflowItem extends AbstractBase
 
 //        $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
 
-      /*  $reader = new WorkflowReader();
-        $reader->model->loadProcess();
-        $workflowRow = $reader->getRowById($this->workflowId);*/
+        /*  $reader = new WorkflowReader();
+          $reader->model->loadProcess();
+          $workflowRow = $reader->getRowById($this->workflowId);*/
 
         $process = $this->workflowRow->process->getProcessClassObject();
         $subject = $process->getSubject($this->workflowId);
@@ -112,6 +112,40 @@ class WorkflowItem extends AbstractBase
 
         return $process;
 
+
+    }
+
+
+    public function getWorkflowStatus()
+    {
+
+        /** @var AbstractWorkflowStatus $workflowStatus */
+        $workflowStatus = $this->workflowRow->workflowStatus->getContentTypeClassObject();
+
+        return $workflowStatus;
+
+
+    }
+
+
+    public function getNextWorkflowStatusList()
+    {
+
+        $workflowStatus = $this->getWorkflowStatus();
+
+        $workflowStatusList = [];
+
+        do {
+
+            $workflowStatus = $workflowStatus->getNextContentType();
+
+            if ($workflowStatus !== null) {
+                $workflowStatusList[] = $workflowStatus;
+            }
+
+        } while ($workflowStatus !== null);
+
+        return $workflowStatusList;
 
     }
 
