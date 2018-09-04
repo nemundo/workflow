@@ -65,7 +65,7 @@ class TaskWidget extends AbstractAdminWidget
         foreach ($identificationTypeReader->getData() as $identificationTypeRow) {
 
             $identificationType = $identificationTypeRow->getIdentificationTypeClassObject();
-            foreach ($identificationType->getIdentificationIdList() as $value) {
+            foreach ($identificationType->getUserIdList() as $value) {
                 $filter->orEqual($taskReader->model->identificationId, $value);
             }
 

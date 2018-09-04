@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Site;
 use Nemundo\App\Content\Site\ContentTreeSite;
 use Nemundo\App\Content\Site\ContentTypeSite;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
 use Nemundo\Workflow\App\Favorite\Site\MyFavoriteSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
@@ -25,7 +26,7 @@ use Nemundo\Workflow\App\ToDo\Site\ToDoSite;
 use Nemundo\Workflow\App\Widget\Site\WidgetSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\Workflow\App\Workflow\Site\Process\ProcessSite;
-use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
+use Nemundo\Workflow\App\Workflow\Site\WorkflowSite;
 use Nemundo\Workflow\App\Workflow\Site\StatusChangeLogSite;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
@@ -41,9 +42,9 @@ class CollaborationSite extends AbstractSite
 
         new InboxSite($this);
         new InboxStreamSite($this);
-        new WorkflowSearchSite($this);
+        new WorkflowSite($this);
         new ProcessSite($this);
-      new StatusChangeLogSite($this);
+        new StatusChangeLogSite($this);
 
 
         new TaskSite($this);
@@ -51,6 +52,8 @@ class CollaborationSite extends AbstractSite
         new RepeatingTaskSite($this);
 
         new ToDoSite($this);
+
+        new AssignmentSite($this);
 
         //new ToDoDoneSite($this);
         //new ToDoItemSite($this);

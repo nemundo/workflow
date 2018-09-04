@@ -14,13 +14,14 @@ use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowCustomTable;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowSearchForm;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
+use Nemundo\Workflow\App\Workflow\Site\StatusChange\StatusChangeUpdateSite;
 
 
-class WorkflowSearchSite extends AbstractSite
+class WorkflowSite extends AbstractSite
 {
 
     /**
-     * @var WorkflowSearchSite
+     * @var WorkflowSite
      */
     public static $site;
 
@@ -28,7 +29,7 @@ class WorkflowSearchSite extends AbstractSite
     {
 
         $this->title = 'Workflow';
-        $this->url = 'workflow-search';
+        $this->url = 'workflow';
 
         new WorkflowNewSite($this);
         new WorkflowItemSite($this);
@@ -36,13 +37,14 @@ class WorkflowSearchSite extends AbstractSite
         new StatusChangeSite($this);
         new WorkflowDeleteSite($this);
         new DraftReleaseSite($this);
+        new StatusChangeUpdateSite($this);
 
     }
 
 
     protected function registerSite()
     {
-        WorkflowSearchSite::$site = $this;
+        WorkflowSite::$site = $this;
     }
 
 
@@ -59,7 +61,7 @@ class WorkflowSearchSite extends AbstractSite
 
         if ($processParameter->getValue() !== '') {
 
-            $breadcrumb->addItem(WorkflowSearchSite::$site);
+            $breadcrumb->addItem(WorkflowSite::$site);
 
             $processRow = (new ProcessReader())->getRowById($processParameter->getValue());
             $breadcrumb->addActiveItem($processRow->process);
@@ -74,7 +76,7 @@ class WorkflowSearchSite extends AbstractSite
 
         } else {
 
-            $breadcrumb->addItem(WorkflowSearchSite::$site);  //'Workflow Suche');
+            $breadcrumb->addItem(WorkflowSite::$site);  //'Workflow Suche');
 
 
             //$breadcrumb->addActiveItem(WorkflowSearchSite::$site->title);  //'Workflow Suche');
@@ -114,7 +116,7 @@ class WorkflowSearchSite extends AbstractSite
         $usergroupListBox->value = $usergroupListBox->getValue();*/
 
 
-        $table  = new WorkflowCustomTable($page);
+        $table = new WorkflowCustomTable($page);
         $table->filter = $searchForm->getFilter();
 
 

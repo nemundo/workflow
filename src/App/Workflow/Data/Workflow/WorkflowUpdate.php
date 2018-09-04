@@ -53,19 +53,15 @@ public $workflowStatusId;
 public $deadline;
 
 /**
-* @var string
+* @var \Nemundo\Workflow\App\Identification\Model\Identification
 */
-public $identificationTypeId;
-
-/**
-* @var string
-*/
-public $identificationId;
+public $assignment;
 
 public function __construct() {
 parent::__construct();
 $this->model = new WorkflowModel();
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\Identification();
 }
 public function update() {
 $this->typeValueList->setModelValue($this->model->processId, $this->processId);
@@ -78,8 +74,8 @@ $this->typeValueList->setModelValue($this->model->closed, $this->closed);
 $this->typeValueList->setModelValue($this->model->workflowStatusId, $this->workflowStatusId);
 $property = new \Nemundo\Model\Data\Property\DateTime\DateDataProperty($this->model->deadline, $this->typeValueList);
 $property->setValue($this->deadline);
-$this->typeValueList->setModelValue($this->model->identificationTypeId, $this->identificationTypeId);
-$this->typeValueList->setModelValue($this->model->identificationId, $this->identificationId);
+$property = new \Nemundo\Workflow\App\Identification\Model\IdentificationDataProperty($this->model->assignment, $this->typeValueList);
+$property->setValue($this->assignment);
 parent::update();
 }
 }

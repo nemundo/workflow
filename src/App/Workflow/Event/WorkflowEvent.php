@@ -77,11 +77,6 @@ class WorkflowEvent extends AbstractEvent
         $data->dataId = $id;
         $data->draft = $this->draft;
         $data->assignment = $this->workflowStatus->getAssignmentIdentification($id);
-
-        //$data->assignment->identificationType = new UserIdentificationType();
-        //$data->assignment->identificationId = (new UserInformation())->getUserId();
-
-
         $data->save();
 
 

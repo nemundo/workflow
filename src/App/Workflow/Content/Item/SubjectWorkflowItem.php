@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Item;
 
 use Nemundo\App\Content\Item\AbstractContentItem;
 use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 

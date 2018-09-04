@@ -71,9 +71,9 @@ class StatusChangeSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $breadcrumb = new BootstrapBreadcrumb($page);
-        $breadcrumb->addItem(WorkflowSearchSite::$site);
+        $breadcrumb->addItem(WorkflowSite::$site);
 
-        $site = clone(WorkflowSearchSite::$site);
+        $site = clone(WorkflowSite::$site);
         $site->title = $workflowItem->getProcess()->name;
         $site->addParameter(new ProcessParameter($workflowItem->getProcess()->id));
         $breadcrumb->addItem($site);

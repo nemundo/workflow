@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
+use Nemundo\Workflow\App\Workflow\Site\WorkflowSite;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxReader;
@@ -21,7 +21,7 @@ class WorkflowWidget extends AbstractAdminWidget
     {
         $this->widgetTitle = 'Workflow';
         $this->widgetId = '';
-        $this->widgetSite = WorkflowSearchSite::$site;
+        $this->widgetSite = WorkflowSite::$site;
     }
 
 

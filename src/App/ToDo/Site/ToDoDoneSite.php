@@ -5,6 +5,8 @@ namespace Nemundo\Workflow\App\ToDo\Site;
 
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
+use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 use Nemundo\Workflow\App\Task\Item\TaskItem;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoUpdate;
 use Nemundo\Workflow\App\ToDo\Parameter\ToDoParameter;
@@ -40,8 +42,9 @@ class ToDoDoneSite extends AbstractSite
         $update->updateById($todoId);
 
 
-        $item = new TaskItem($todoId);
-        $item->archiveTask();
+        (new AssignmentArchive())->archiveAssignment($todoId);
+
+
 
 
         (new UrlReferer())->redirect();

@@ -97,19 +97,9 @@ public $userModified;
 public $dateTimeModified;
 
 /**
-* @var \Nemundo\Model\Type\Id\IdType
+* @var \Nemundo\Workflow\App\Identification\Model\IdentificationModelType
 */
-public $identificationTypeId;
-
-/**
-* @var \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeExternalType
-*/
-public $identificationType;
-
-/**
-* @var \Nemundo\Model\Type\Id\UniqueIdType
-*/
-public $identificationId;
+public $assignment;
 
 protected function loadType() {
 parent::loadType();
@@ -221,19 +211,13 @@ $this->dateTimeModified->aliasFieldName = $this->dateTimeModified->tableName . "
 $this->dateTimeModified->label = "Date Time Modified";
 $this->addType($this->dateTimeModified);
 
-$this->identificationTypeId = new \Nemundo\Model\Type\Id\IdType();
-$this->identificationTypeId->fieldName = "identification_type";
-$this->identificationTypeId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->identificationTypeId->aliasFieldName = $this->identificationTypeId->tableName ."_".$this->identificationTypeId->fieldName;
-$this->identificationTypeId->label = "Identification Type";
-$this->addType($this->identificationTypeId);
-
-$this->identificationId = new \Nemundo\Model\Type\Id\UniqueIdType();
-$this->identificationId->fieldName = "identification_id";
-$this->identificationId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->identificationId->aliasFieldName = $this->identificationId->tableName . "_" . $this->identificationId->fieldName;
-$this->identificationId->label = "Identification Id";
-$this->addType($this->identificationId);
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType();
+$this->assignment->fieldName = "assignment";
+$this->assignment->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->assignment->aliasFieldName = $this->assignment->tableName . "_" . $this->assignment->fieldName;
+$this->assignment->label = "Assignment";
+$this->assignment->createObject();
+$this->addType($this->assignment);
 
 }
 public function loadProcess() {
@@ -277,17 +261,6 @@ $this->userModified->tableName = $this->parentFieldName . "_" . $this->externalT
 $this->userModified->aliasFieldName = $this->userModified->tableName ."_".$this->userModified->fieldName;
 $this->userModified->label = "User Modified";
 $this->addType($this->userModified);
-}
-return $this;
-}
-public function loadIdentificationType() {
-if ($this->identificationType == null) {
-$this->identificationType = new \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeExternalType(null, $this->parentFieldName . "_identification_type");
-$this->identificationType->fieldName = "identification_type";
-$this->identificationType->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->identificationType->aliasFieldName = $this->identificationType->tableName ."_".$this->identificationType->fieldName;
-$this->identificationType->label = "Identification Type";
-$this->addType($this->identificationType);
 }
 return $this;
 }

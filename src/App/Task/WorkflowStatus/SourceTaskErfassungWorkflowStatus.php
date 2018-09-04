@@ -42,12 +42,13 @@ class SourceTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
 
         $sourceTaskRow = (new SourceTaskReader())->getRowById($dataId);
 
-        //$this->assignUser($sourceTaskRow->assignment->identificationId);
+        $this->assignUser($sourceTaskRow->assignment->identificationId);
 
+        /*
         $update = new WorkflowUpdate();
         $update->identificationTypeId = $sourceTaskRow->assignment->identificationType->id;  // (new UserIdentificationType())->id;
         $update->identificationId = $sourceTaskRow->assignment->identificationId;  // $userId;
-        $update->updateById($this->workflowId);
+        $update->updateById($this->workflowId);*/
 
 
         $this->changeDeadline($sourceTaskRow->deadline);

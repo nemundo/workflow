@@ -40,7 +40,7 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
         $workflowReader = new WorkflowPaginationReader();
         $workflowReader->model->loadWorkflowStatus();
         $workflowReader->model->loadProcess();
-        $workflowReader->model->loadIdentificationType();
+        //$workflowReader->model->loadIdentificationType();
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
         $workflowReader->filter = $this->filter;
@@ -113,12 +113,16 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             $row->addText($workflowRow->workflowStatus->contentType . $draft);
             $row->addYesNo($workflowRow->closed);
 
+
+            $row->addText($workflowRow->assignment->getValue());
+
+            /*
             if ($workflowRow->identificationTypeId !== '') {
                 $identificationType = $workflowRow->identificationType->getIdentificationTypeClassObject();
                 $row->addText($identificationType->getValue($workflowRow->identificationId));
             } else {
                 $row->addEmpty();
-            }
+            }*/
 
             if ($workflowRow->deadline !== null) {
                 $row->addText($workflowRow->deadline->getShortDateLeadingZeroFormat());

@@ -33,7 +33,7 @@ class WorkflowTitle extends AbstractHtmlContainerList
 
         $workflowReader = new WorkflowReader();
         $workflowReader->model->loadWorkflowStatus();
-        $workflowReader->model->loadIdentificationType();
+        //$workflowReader->model->loadIdentificationType();
         $workflowReader->model->loadUser();
         $workflowReader->model->loadUserModified();
         $workflowReader->model->loadProcess();
@@ -76,13 +76,14 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $table->addLabelValue('Status', $workflowRow->workflowStatus->contentType);
         $table->addLabelValue('Subject', $process->getSubject($workflowRow->id));
 
+        /*
         $identificationType = $workflowRow->identificationType->getIdentificationTypeClassObject();
         $verantwortlicher = '';
         if ($identificationType !== null) {
             $verantwortlicher = $identificationType->getValue($workflowRow->identificationId);
-        }
+        }*/
 
-        $table->addLabelValue('Verantwortlicher', $verantwortlicher);
+        $table->addLabelValue('Verantwortlicher', $workflowRow->assignment->getValue());
 
         //$table->addLabelValue('Status', $workflowItem->getStatus());
         //$table->addLabelValue('Status Text', $workflowRow->workflowStatus->workflowStatusText);

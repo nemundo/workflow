@@ -102,19 +102,9 @@ public $userModified;
 public $dateTimeModified;
 
 /**
-* @var string
+* @var \Nemundo\Workflow\App\Identification\Model\Identification
 */
-public $identificationTypeId;
-
-/**
-* @var \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeRow
-*/
-public $identificationType;
-
-/**
-* @var string
-*/
-public $identificationId;
+public $assignment;
 
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
@@ -149,11 +139,8 @@ if ($model->userModified !== null) {
 $this->loadNemundoUserDataUserUseruserModifiedRow($model->userModified);
 }
 $this->dateTimeModified = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTimeModified));
-$this->identificationTypeId = $this->getModelValue($model->identificationTypeId);
-if ($model->identificationType !== null) {
-$this->loadNemundoWorkflowAppIdentificationDataIdentificationTypeIdentificationTypeidentificationTypeRow($model->identificationType);
-}
-$this->identificationId = $this->getModelValue($model->identificationId);
+$property = new \Nemundo\Workflow\App\Identification\Model\IdentificationReaderProperty($row, $model->assignment);
+$this->assignment = $property->getValue();
 }
 private function loadNemundoWorkflowAppWorkflowDataProcessProcessprocessRow($model) {
 $this->process = new \Nemundo\Workflow\App\Workflow\Data\Process\ProcessRow($this->row, $model);
@@ -166,8 +153,5 @@ $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);
 }
 private function loadNemundoUserDataUserUseruserModifiedRow($model) {
 $this->userModified = new \Nemundo\User\Data\User\UserRow($this->row, $model);
-}
-private function loadNemundoWorkflowAppIdentificationDataIdentificationTypeIdentificationTypeidentificationTypeRow($model) {
-$this->identificationType = new \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeRow($this->row, $model);
 }
 }

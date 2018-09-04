@@ -36,7 +36,7 @@ class UsergroupIdentificationType extends AbstractIdentificationType
     }
 
 
-    public function getIdentificationIdList()
+    public function getUserIdList()
     {
 
         $list = [];

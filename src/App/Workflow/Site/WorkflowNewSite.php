@@ -56,9 +56,9 @@ class WorkflowNewSite extends AbstractSite
         $process = $processRow->getProcessClassObject();
 
         $breadcrumb = new BootstrapBreadcrumb($page);
-        $breadcrumb->addItem(WorkflowSearchSite::$site);
+        $breadcrumb->addItem(WorkflowSite::$site);
 
-        $site = clone(WorkflowSearchSite::$site);
+        $site = clone(WorkflowSite::$site);
         $site->title = $process-> name;
         $site->addParameter($processParameter);
         $breadcrumb->addSite($site);
@@ -81,7 +81,7 @@ class WorkflowNewSite extends AbstractSite
 //        $form->afterSubmitEvent->addEvent( $event);
 
 
-        $form->redirectSite = clone(WorkflowSearchSite::$site);
+        $form->redirectSite = clone(WorkflowSite::$site);
         $form->redirectSite->addParameter(new ProcessParameter($processId));
 
 

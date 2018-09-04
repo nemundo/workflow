@@ -8,7 +8,7 @@ use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Workflow\Com\Doc\WorkflowDoc;
+use Nemundo\Workflow\App\Workflow\Com\Doc\ProcessDoc;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowCount;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
@@ -64,7 +64,7 @@ class ProcessDescriptionSite extends AbstractSite
         $table->addLabelValue('Anzahl Einträge', $itemCount);
 
 
-        $doc = new WorkflowDoc($page);
+        $doc = new ProcessDoc($page);
         $doc->process = $process;
 
 

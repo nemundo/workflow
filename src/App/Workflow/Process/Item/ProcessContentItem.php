@@ -21,7 +21,7 @@ use Nemundo\Workflow\App\Subscription\Com\SubscriptionButton;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
-use Nemundo\Workflow\App\Workflow\Com\Doc\WorkflowDoc;
+use Nemundo\Workflow\App\Workflow\Com\Doc\ProcessDoc;
 use Nemundo\Workflow\App\Workflow\Com\WorkflowLogContainer;
 use Nemundo\Workflow\App\Workflow\ContentItem\WorkflowItemContentItem;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
@@ -48,7 +48,7 @@ class ProcessContentItem extends AbstractContentItem
     /**
      * @var bool
      */
-    public $showSubscription = false;
+    public $showSubscription = true;  // false;
 
     /**
      * @var bool
@@ -59,7 +59,6 @@ class ProcessContentItem extends AbstractContentItem
      * @var SortOrder
      */
     public $sortOrder = SortOrder::ASCENDING;
-
 
 
     protected function loadCom()
@@ -96,7 +95,6 @@ class ProcessContentItem extends AbstractContentItem
         }
 
 
-
         if ($this->showBaseData) {
 
             $h3 = new H5($this);
@@ -111,11 +109,14 @@ class ProcessContentItem extends AbstractContentItem
 
         }
 
-        if ($process->processMenu->getCount() > 0) {
-            $dropdown = new ContentTypeCollectionDropdown($this);
-            $dropdown->contentTypeCollection = $process->processMenu;
-            $dropdown->redirectSite = $this->statusChangeRedirectSite;
-            $dropdown->redirectSite->addParameter(new WorkflowParameter($this->dataId));
+
+        if ($workflowItem->isOpen()) {
+            if ($process->processMenu->getCount() > 0) {
+                $dropdown = new ContentTypeCollectionDropdown($this);
+                $dropdown->contentTypeCollection = $process->processMenu;
+                $dropdown->redirectSite = $this->statusChangeRedirectSite;
+                $dropdown->redirectSite->addParameter(new WorkflowParameter($this->dataId));
+            }
         }
 
 

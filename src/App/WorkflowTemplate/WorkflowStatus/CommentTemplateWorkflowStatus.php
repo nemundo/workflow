@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 
-use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
@@ -26,7 +25,7 @@ class CommentTemplateWorkflowStatus extends AbstractDataWorkflowStatus
     public function onCreate($dataId)
     {
 
-        $this->createUserInbox((new UserInformation())->getUserId(), 'Neuer Kommentar');
+        //$this->createUserInbox((new UserInformation())->getUserId(), 'Neuer Kommentar');
 
 
     }

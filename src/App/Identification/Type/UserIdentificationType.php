@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\Identification\Type;
 
 
-use Nemundo\Db\Filter\Filter;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 
@@ -18,14 +17,6 @@ class UserIdentificationType extends AbstractIdentificationType
 
     }
 
-    /*
-        public function getFilter(Filter $filter)
-        {
-
-            $this->filter->orEqual($this->model->identification, (new UserInformation())->getUserId());
-
-        }*/
-
 
     public function getValue($identificationId)
     {
@@ -36,7 +27,7 @@ class UserIdentificationType extends AbstractIdentificationType
     }
 
 
-    public function getIdentificationIdList()
+    public function getUserIdList()
     {
 
         $list = [];
@@ -44,6 +35,5 @@ class UserIdentificationType extends AbstractIdentificationType
         return $list;
 
     }
-
 
 }

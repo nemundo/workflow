@@ -120,14 +120,8 @@ class WorkflowItem extends AbstractBase
     public function getProcess()
     {
 
-        /*$reader = new WorkflowReader();
-        $reader->model->loadProcess();
-        $workflowRow = $reader->getRowById($this->workflowId);*/
-
         $process = $this->workflowRow->process->getProcessClassObject();
-
         return $process;
-
 
     }
 
@@ -144,11 +138,11 @@ class WorkflowItem extends AbstractBase
     }
 
 
-
-    public function getStatusChangeLog() {
+    public function getStatusChangeLog()
+    {
 
         /** @var AbstractWorkflowStatus[] $list */
-        $list=[];
+        $list = [];
 
         $statusChangeReader = new StatusChangeReader();
         $statusChangeReader->model->loadWorkflowStatus();
@@ -159,12 +153,11 @@ class WorkflowItem extends AbstractBase
 
             //$list->addHyperlink($statusChangeRow->workflowStatus->contentType, '#' . $statusChangeRow->dataId);
 
-            $list[]= $statusChangeRow->workflowStatus->getContentTypeClassObject();
+            $list[] = $statusChangeRow->workflowStatus->getContentTypeClassObject();
 
         }
 
-       return $list;
-
+        return $list;
 
 
     }
@@ -237,9 +230,43 @@ class WorkflowItem extends AbstractBase
 
     }
 
+
+    public function isOpen()
+    {
+
+        $returnValue = true;
+        if ($this->workflowRow->closed) {
+            $returnValue = false;
+        }
+
+        return $returnValue;
+
+    }
+
     public function isClosed()
     {
         return $this->workflowRow->closed;
+    }
+
+
+    public function getDeadlineText()
+    {
+
+        $deadlineText = '';
+        if ($this->workflowRow->deadline !== null) {
+            $deadlineText = $this->workflowRow->deadline->getShortDateLeadingZeroFormat();
+        }
+        return $deadlineText;
+
+    }
+
+
+    public function getResponsibleUserText()
+    {
+
+        $deadlineText = $this->workflowRow->assignment->getValue();
+        return $deadlineText;
+
     }
 
 
@@ -259,6 +286,7 @@ class WorkflowItem extends AbstractBase
     }
 
 
+    // getItemSite
     public function getSite()
     {
 
@@ -268,6 +296,52 @@ class WorkflowItem extends AbstractBase
 
 
     }
+
+
+    public function getNextForm($parentItem = null)
+    {
+
+
+        /** @var AbstractWorkflowStatus $contentType */
+        $contentType = $this->getWorkflowStatus()->getNextContentType();
+        $contentType->workflowId = $this->workflowId;
+
+        $form = $contentType->getForm($parentItem);
+
+        /*
+                $event = new WorkflowEvent();
+                $event->workflowId = $workflowId;
+                $event->workflowStatus = $contentType;
+
+                $form->afterSubmitEvent->addEvent($event);*/
+
+
+        return $form;
+
+
+    }
+
+
+    public function getPreviousWorkflowStatus()
+    {
+
+
+        $workflowStatus = $this->getWorkflowStatus();
+
+        $previousWorkflowStatus = null;
+        $previousWorkflowStatus = $workflowStatus->getPreviousContentType();
+
+        return $previousWorkflowStatus;
+
+
+    }
+
+
+
+
+
+
+
 
 
 

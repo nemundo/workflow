@@ -3,11 +3,13 @@
 namespace Nemundo\Workflow\App\Workflow\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 use Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeReader;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
+use Nemundo\Workflow\App\Workflow\Site\WorkflowSite;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\Inbox\WorkflowInboxReader;
@@ -23,7 +25,7 @@ class WorkflowAssignmentWidget extends AbstractAdminWidget
     {
         $this->widgetTitle = 'Aufgaben (Workflow Assignment)';
         $this->widgetId = '';
-        $this->widgetSite = WorkflowSearchSite::$site;
+        $this->widgetSite = WorkflowSite::$site;
     }
 
 
@@ -36,6 +38,21 @@ class WorkflowAssignmentWidget extends AbstractAdminWidget
 
 
         $filter = new Filter();
+        foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
+
+            foreach ($identification->getUserIdList() as $value) {
+                $filter->orEqual($workflowReader->model->assignment->identificationId, $value);
+            }
+
+            //(new Debug())->write($identification);
+            //$filter->orEqual($workflowReader->model->assignment->identificationId, $value);
+
+
+        }
+
+
+        /*
+        $filter = new Filter();
         $identificationTypeReader = new IdentificationTypeReader();
         foreach ($identificationTypeReader->getData() as $identificationTypeRow) {
 
@@ -44,7 +61,7 @@ class WorkflowAssignmentWidget extends AbstractAdminWidget
                 $filter->orEqual($workflowReader->model->identificationId, $value);
             }
 
-        }
+        }*/
 
         $workflowReader->filter->andFilter($filter);
 

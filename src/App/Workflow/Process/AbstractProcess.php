@@ -77,7 +77,6 @@ abstract class AbstractProcess extends AbstractDataContentType
     public $processMenu;
 
 
-
     public function __construct()
     {
 
@@ -85,7 +84,7 @@ abstract class AbstractProcess extends AbstractDataContentType
         $this->itemClass = ProcessContentItem::class;
         $this->parameterClass = WorkflowParameter::class;
 
-        $this->processMenu =new ContentTypeCollection();
+        $this->processMenu = new ContentTypeCollection();
 
         $this->loadData();
 
@@ -97,14 +96,8 @@ abstract class AbstractProcess extends AbstractDataContentType
     public function getForm($parentItem = null)
     {
 
-        //$workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
         $workflowStatus = $this->getStartWorkflowStatus();
-
-        //$event = new WorkflowStartEvent();
-        //$event->process = $this;
-
         $form = $workflowStatus->getForm($parentItem);
-        //$form->afterSubmitEvent->addEvent($event);
 
         return $form;
 

@@ -64,9 +64,9 @@ class WorkflowItemSite extends AbstractSite
 
 
         $breadcrumb = new BootstrapBreadcrumb($page);
-        $breadcrumb->addItem(WorkflowSearchSite::$site);
+        $breadcrumb->addItem(WorkflowSite::$site);
 
-        $site = clone(WorkflowSearchSite::$site);
+        $site = clone(WorkflowSite::$site);
         $site->title = $process->name;
         $site->addParameter(new ProcessParameter($process->id));
         $breadcrumb->addItem($site);
@@ -114,7 +114,7 @@ class WorkflowItemSite extends AbstractSite
         $header->addText('Status Text');
         $header->addText('Date/Time');
         $header->addText('User');
-        $header->addText('assign to');
+        $header->addText('Assign to');
 
 
         $statusChangeReader = new StatusChangeReader();

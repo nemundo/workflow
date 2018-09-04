@@ -22,6 +22,7 @@ use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Site\StatusChangeSite;
 
 class WorkflowLogContainer extends AbstractHtmlContainerList
 {
@@ -35,6 +36,16 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
      * @var AbstractSite
      */
     public $statusChangeSite;
+
+
+    protected function loadCom()
+    {
+        parent::loadCom();
+
+        $this->statusChangeSite = StatusChangeSite::$site;
+
+    }
+
 
     public function getHtml()
     {

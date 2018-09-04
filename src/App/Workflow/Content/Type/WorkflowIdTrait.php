@@ -5,7 +5,9 @@ namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Db\DbConfig;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Core\Type\DateTime\Date;
@@ -77,7 +79,7 @@ trait WorkflowIdTrait
         $builder->contentType = $process;
         $builder->dataId = $this->workflowId;
         $builder->subject = $process->getSubject($this->workflowId);
-        //$builder->message = $this->getStatusText($this->dataId);  // $message;
+        $builder->message = $this->getStatusText($this->dataId);  // $message;
         $builder->createUserInbox($userId);
 
     }
@@ -107,11 +109,17 @@ trait WorkflowIdTrait
     {
 
         $update = new WorkflowUpdate();
-        $update->identificationTypeId = (new UsergroupIdentificationType())->id;
-        $update->identificationId = $usergroup->id;
+        $update->assignment->setUsergroupIdentification($usergroup);
+        //$update->identificationTypeId = (new UsergroupIdentificationType())->id;
+        //$update->identificationId = $usergroup->id;
         $update->updateById($this->workflowId);
 
-        $this->createUsergroupInbox($usergroup);
+        //$this->createUsergroupInbox($usergroup);
+
+
+
+
+
 
     }
 
@@ -120,11 +128,8 @@ trait WorkflowIdTrait
     {
 
         $update = new WorkflowUpdate();
-        $update->identificationTypeId = (new UserIdentificationType())->id;
-        $update->identificationId = $userId;
+        $update->assignment->setUserIdentification($userId);
         $update->updateById($this->workflowId);
-
-        //$this->createUserInbox($userId);
 
     }
 
@@ -133,8 +138,11 @@ trait WorkflowIdTrait
     {
 
         $update = new WorkflowUpdate();
-        $update->identificationTypeId = '';
-        $update->identificationId = '';
+        $update->assignment->identificationType = null;
+        $update->assignment->identificationId = '';
+
+        //$update->identificationTypeId = '';
+        //$update->identificationId = '';
         $update->updateById($this->workflowId);
 
     }

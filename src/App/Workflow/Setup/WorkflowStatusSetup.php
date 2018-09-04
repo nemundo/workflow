@@ -14,13 +14,6 @@ class WorkflowStatusSetup extends AbstractBase
     public function addWorkflowStatus(AbstractContentType $workflowStatus)
     {
 
-        /*$data = new WorkflowStatus();
-        $data->updateOnDuplicate = true;
-        $data->id = $workflowStatus->id;
-        $data->workflowStatus = $workflowStatus->name;
-        $data->workflowStatusClass = $workflowStatus->getClassName();
-        //$data->workflowStatusText = $workflowStatus->workflowStatusText;
-        $data->save();*/
 
         $setup = new ContentTypeSetup();
         $setup->addContentType($workflowStatus);
