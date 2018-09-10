@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\Site;
 
 
+use Nemundo\App\Content\Site\ContentLogSite;
 use Nemundo\App\Content\Site\ContentTreeSite;
 use Nemundo\App\Content\Site\ContentTypeSite;
 use Nemundo\Web\Site\AbstractSite;
@@ -65,6 +66,7 @@ class CollaborationSite extends AbstractSite
         new WikiSite($this);
 
         new ContentTypeSite($this);
+        new ContentLogSite($this);
         //new ContentTreeSite($this);
 
         new SearchEngineSite($this);

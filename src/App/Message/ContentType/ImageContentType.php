@@ -18,9 +18,9 @@ class ImageContentType extends AbstractMessageContentType
 
     protected function loadData()
     {
-        $this->name = 'Image';
+        $this->objectName = 'Image';
         $this->subject = 'Neues Bild';
-        $this->id = '54944a0b-58c3-466b-99f2-4cd5431c91e5';
+        $this->objectId = '54944a0b-58c3-466b-99f2-4cd5431c91e5';
         $this->itemClass = ImageContentItem::class;
         //$this->formClass = MessageImageForm::class;
 

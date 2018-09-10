@@ -67,14 +67,14 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
         $data->task = $this->task;
         $data->description = $this->description;
         $data->deadline = $this->deadline;
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->objectId;
         $data->dataId = $this->dataId;
         $data->timeEffort = $this->timeEffort;
         $data->identificationTypeId = $this->identificationType->id;
         $data->identificationId = $this->identificationId;
 
         if ($this->sourceType !== null) {
-            $data->sourceTypeId = $this->sourceType->id;
+            $data->sourceTypeId = $this->sourceType->objectId;
         }
         $data->source = $this->source;
         $data->sourceId = $this->sourceId;

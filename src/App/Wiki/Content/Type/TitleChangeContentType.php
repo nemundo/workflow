@@ -14,8 +14,8 @@ class TitleChangeContentType extends AbstractWikiContentType
     protected function loadData()
     {
 
-        $this->name = 'Title Change';
-        $this->id = '3bcd1384-569b-49f5-a2f6-416b2d3f82a6';
+        $this->objectName = 'Title Change';
+        $this->objectId = '3bcd1384-569b-49f5-a2f6-416b2d3f82a6';
         $this->modelClass = TitleChangeModel::class;
 
     }

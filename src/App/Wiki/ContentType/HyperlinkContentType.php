@@ -14,8 +14,8 @@ class HyperlinkContentType extends AbstractContentType
     protected function loadData()
     {
 
-        $this->name = 'Hyperlink';
-        $this->id = '855391b8-6291-49ee-9e72-7f24277adf2e';
+        $this->objectName = 'Hyperlink';
+        $this->objectId = '855391b8-6291-49ee-9e72-7f24277adf2e';
         $this->formClass = HyperlinkContentForm::class;
         $this->itemClass = HyperlinkContentItem::class;
         $this->itemSite = WikiRedirectSite::$site;

@@ -17,7 +17,7 @@ use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 class WikiPageContentForm extends BootstrapForm  // WikiPageForm
 {
 
-    use ContentFormTrait;
+    //use ContentFormTrait;
 
     /**
      * @var BootstrapTextBox
@@ -34,10 +34,11 @@ class WikiPageContentForm extends BootstrapForm  // WikiPageForm
     {
 
         $this->title = new BootstrapTextBox($this);
-        $this->title->label = 'Der Titel';
+        $this->title->label = 'Wiki Titel';
+        $this->title->autofocus = true;
 
-        $this->text = new BootstrapLargeTextBox($this);
-        $this->text->label = 'Text';
+        //$this->text = new BootstrapLargeTextBox($this);
+        //$this->text->label = 'Text';
 
 
         return parent::getHtml();
@@ -47,6 +48,13 @@ class WikiPageContentForm extends BootstrapForm  // WikiPageForm
     protected function onSubmit()
     {
 
+
+        $content = new WikiPageContentType();
+        $content->title = $this->title->getValue();
+        $content->saveItem();
+
+
+        /*
         $data = new WikiPage();
         $data->title = $this->title->getValue();
         $pageId = $data->save();
@@ -64,10 +72,10 @@ class WikiPageContentForm extends BootstrapForm  // WikiPageForm
         $event->run($id);
 
 
-        $this->afterSubmitEvent->run($pageId);
+        $this->afterSubmitEvent->run($pageId);*/
 
 
-        return $pageId;
+        //return $pageId;
 
     }
 

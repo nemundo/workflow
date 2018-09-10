@@ -47,7 +47,7 @@ class ProcessSite extends AbstractSite
             $process = $processRow->getProcessClassObject();
 
             $title = new AdminTitle($page);
-            $title->content = $process->name;
+            $title->content = $process->objectName;
 
             $p = new Paragraph($page);
             $p->content = $process->description;

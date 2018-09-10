@@ -79,7 +79,7 @@ trait WorkflowStatusTrait
         $statusText = $this->statusText;
 
         if ($statusText == null) {
-            $statusText = $this->name;
+            $statusText = $this->objectName;
         }
 
 

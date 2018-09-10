@@ -64,7 +64,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
 
                 // $label = $followingStatusClass->actionLabel;
                 //if ($label == null) {
-                $label = $followingStatusClass->name;
+                $label = $followingStatusClass->objectName;
                 // }
 
                 $btn = new AdminButton($this);
@@ -84,7 +84,7 @@ class WorkflowActionButton extends AbstractHtmlContainerList
 
                 //$btn->site = $site;
                 $btn->site = clone($this->statusChangeRedirectSite);
-                $btn->site->addParameter(new ContentTypeParameter($followingStatusClass->id));
+                $btn->site->addParameter(new ContentTypeParameter($followingStatusClass->objectId));
                 $btn->site->addParameter(new WorkflowParameter($this->workflowId));
 
 

@@ -20,8 +20,8 @@ class LargeTextWorkflowStatusTemplate extends LargeTextTemplateContentType
     {
         parent::loadData();
 
-        $this->name = 'Large Text (Workflow)';
-        $this->id = '37d570b7-f0b8-4057-ac0a-f1e2002dd3c7';
+        $this->objectName = 'Large Text (Workflow)';
+        $this->objectId = '37d570b7-f0b8-4057-ac0a-f1e2002dd3c7';
 
         $this->statusText = 'Text wurde hinzugefügt';
 

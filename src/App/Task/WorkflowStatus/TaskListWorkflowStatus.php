@@ -13,8 +13,8 @@ class TaskListWorkflowStatus extends AbstractWorkflowStatus
     protected function loadData()
     {
 
-        $this->name = 'Aufgaben Liste';
-        $this->id = 'fea83ba0-dbfa-4242-b4a5-221b9ba9ed5c';
+        $this->objectName = 'Aufgaben Liste';
+        $this->objectId = 'fea83ba0-dbfa-4242-b4a5-221b9ba9ed5c';
         $this->changeWorkflowStatus = false;
         $this->draftMode = true;
 

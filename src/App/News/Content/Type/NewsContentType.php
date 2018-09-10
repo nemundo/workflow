@@ -19,8 +19,8 @@ class NewsContentType extends AbstractDataContentType
     protected function loadData()
     {
 
-        $this->name = 'News';
-        $this->id = '9ba5d00a-682c-42b9-8ce2-26497047feaf';
+        $this->objectName = 'News';
+        $this->objectId = '9ba5d00a-682c-42b9-8ce2-26497047feaf';
         $this->itemSite = NewsItemSite::$site;
         //$this->itemClass = NewsContentItem::class;
         $this->parameterClass = NewsParameter::class;

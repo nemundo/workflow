@@ -35,7 +35,7 @@ class WikiContentItem extends AbstractContentItem
             $contentType = $wikiRow->contentType->getContentTypeClassObject();
 
             $title = new AdminSubtitle($this);
-            $title->content = $contentType->name;
+            $title->content = $contentType->objectName;
 
             $item = $contentType->getItem($this);
             $item->dataId = $wikiRow->dataId;

@@ -96,7 +96,7 @@ class MessageItemSite extends AbstractSite
         foreach ((new MessageDataTypeCollection())->getContentTypeList() as $contentType) {
 
             $widget = new AdminWidget($page);
-            $widget->widgetTitle = $contentType->name;
+            $widget->widgetTitle = $contentType->objectName;
 
             $form = $contentType->getForm($widget);
             $form->afterSubmitEvent = new MessageEvent();

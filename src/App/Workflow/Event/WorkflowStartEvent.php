@@ -30,7 +30,7 @@ class WorkflowStartEvent extends AbstractEvent
 
         $data = new Workflow();
         $data->id = $id;
-        $data->processId = $this->process->id;
+        $data->processId = $this->process->objectId;
 
         $workflowNumber = null;
         if ($this->process->createWorkflowNumber) {
@@ -41,7 +41,7 @@ class WorkflowStartEvent extends AbstractEvent
 
                 $value = new WorkflowValue();
                 $value->field = $value->model->number;
-                $value->filter->andEqual($value->model->processId, $this->process->id);
+                $value->filter->andEqual($value->model->processId, $this->process->objectId);
                 $number = $value->getMaxValue();
 
                 if ($number == 0) {

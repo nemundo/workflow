@@ -74,8 +74,8 @@ class StatusChangeSite extends AbstractSite
         $breadcrumb->addItem(WorkflowSite::$site);
 
         $site = clone(WorkflowSite::$site);
-        $site->title = $workflowItem->getProcess()->name;
-        $site->addParameter(new ProcessParameter($workflowItem->getProcess()->id));
+        $site->title = $workflowItem->getProcess()->objectName;
+        $site->addParameter(new ProcessParameter($workflowItem->getProcess()->objectId));
         $breadcrumb->addItem($site);
 
 
@@ -84,7 +84,7 @@ class StatusChangeSite extends AbstractSite
         $site->addParameter($workflowParameter);
         $breadcrumb->addItem($site);
 
-        $breadcrumb->addActiveItem($workflowStatus->name);
+        $breadcrumb->addActiveItem($workflowStatus->objectName);
 
 
         $title = new AdminTitle($page);

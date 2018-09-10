@@ -15,9 +15,9 @@ class PersonalTaskCommentWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->name = 'Kommentar';
+        $this->objectName = 'Kommentar';
         $this->statusText = 'Aufgabe wurde kommentiert';
-        $this->id = '6ad1ddc1-04ff-47d6-bfaa-2677238c7de4';
+        $this->objectId = '6ad1ddc1-04ff-47d6-bfaa-2677238c7de4';
         $this->modelClass = CommentModel::class;
         $this->changeWorkflowStatus = false;
         //$this->workflowItemClassName = WorkflowItem::class;

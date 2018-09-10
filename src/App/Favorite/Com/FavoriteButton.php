@@ -41,7 +41,7 @@ class FavoriteButton extends AbstractHtmlContainerList
     {
 
         $count = new FavoriteCount();
-        $count->filter->andEqual($count->model->contentTypeId, $this->contentType->id);
+        $count->filter->andEqual($count->model->contentTypeId, $this->contentType->objectId);
         $count->filter->andEqual($count->model->dataId, $this->dataId);
         $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
 
@@ -50,7 +50,7 @@ class FavoriteButton extends AbstractHtmlContainerList
             $button->content = $this->label;
             $button->site = FavoriteSite::$site;
             $button->site->addParameter(new DataIdParameter($this->dataId));
-            $button->site->addParameter(new ContentTypeParameter($this->contentType->id));
+            $button->site->addParameter(new ContentTypeParameter($this->contentType->objectId));
 
         } else {
             $p = new Paragraph($this);
@@ -61,7 +61,7 @@ class FavoriteButton extends AbstractHtmlContainerList
             $button->site = FavoriteDeleteSite::$site;
             //$button->site->addParameter(new SubscriptionParameter())
             $button->site->addParameter(new DataIdParameter($this->dataId));
-            $button->site->addParameter(new ContentTypeParameter($this->contentType->id));
+            $button->site->addParameter(new ContentTypeParameter($this->contentType->objectId));
 
         }
 

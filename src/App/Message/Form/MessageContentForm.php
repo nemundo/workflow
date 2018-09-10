@@ -70,7 +70,7 @@ class MessageContentForm extends BootstrapForm
             $data = new MessageItem();
             $data->messageId = $messageId;
             $data->dataId = $textId;
-            $data->contentTypeId = (new TextContentType())->id;
+            $data->contentTypeId = (new TextContentType())->objectId;
             $data->save();
 
         }

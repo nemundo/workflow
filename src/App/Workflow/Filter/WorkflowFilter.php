@@ -24,7 +24,7 @@ class WorkflowFilter extends Filter
         $model = new WorkflowModel();
 
 
-        $this->andEqual($model->processId, $process->id);
+        $this->andEqual($model->processId, $process->objectId);
 
     }
 

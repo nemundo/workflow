@@ -22,9 +22,9 @@ class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->name = 'Aufgabe Erfassung (Personal Task)';
+        $this->objectName = 'Aufgabe Erfassung (Personal Task)';
         $this->statusText = 'Aufgabe wurde erfasst';
-        $this->id = 'f2736f64-d659-4d2f-b73c-7a16b77c28ee';
+        $this->objectId = 'f2736f64-d659-4d2f-b73c-7a16b77c28ee';
         $this->modelClass = PersonalTaskModel::class;
 
         $this->addFollowingContentTypeClass(PersonalTaskCommentWorkflowStatus::class);

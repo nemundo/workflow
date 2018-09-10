@@ -18,8 +18,8 @@ class TextContentType extends AbstractMessageContentType
 
     protected function loadData()
     {
-        $this->name = 'Text';
-        $this->id = 'be649b42-4818-4c9e-b778-212c71aa90f0';
+        $this->objectName = 'Text';
+        $this->objectId = 'be649b42-4818-4c9e-b778-212c71aa90f0';
         $this->itemClass = TextContentItem::class;
         //$this->formClass = MessageTextForm::class;
 

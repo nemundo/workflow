@@ -59,7 +59,7 @@ class WorkflowNewSite extends AbstractSite
         $breadcrumb->addItem(WorkflowSite::$site);
 
         $site = clone(WorkflowSite::$site);
-        $site->title = $process-> name;
+        $site->title = $process-> objectName;
         $site->addParameter($processParameter);
         $breadcrumb->addSite($site);
         //$breadcrumb->addActiveItem($process->process);

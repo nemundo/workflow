@@ -19,7 +19,7 @@ class AssignmentWidget extends AbstractAdminWidget
 
     protected function loadWidget()
     {
-        $this->widgetTitle = 'Aufgaben (Assignment)';
+        $this->widgetTitle = 'Aufgaben';  // (Assignment)';
         $this->widgetSite = AssignmentSite::$site;
     }
 

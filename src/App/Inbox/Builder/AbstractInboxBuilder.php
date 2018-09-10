@@ -86,7 +86,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
 
         $data = new Inbox();
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->objectId;
         //$data->contentRedirect = $this->contentRedirect->getClassName();
         $data->dataId = $this->dataId;
         //$data->bookmarkId = $this->bookmarkId;

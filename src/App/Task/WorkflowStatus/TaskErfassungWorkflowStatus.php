@@ -16,9 +16,9 @@ class TaskErfassungWorkflowStatus extends AbstractWorkflowStatus  // AbstractDat
     protected function loadData()
     {
 
-        $this->name = 'Aufgabe Erfassung';
+        $this->objectName = 'Aufgabe Erfassung';
         $this->statusText = 'Aufgabe wurde erfasst';
-        $this->id = '258ae798-3da1-43ea-ae43-81adaa8da59c';
+        $this->objectId = '258ae798-3da1-43ea-ae43-81adaa8da59c';
         //$this->modelClass = TaskModel::class;
         $this->formClass = TaskBuilderForm::class;
 

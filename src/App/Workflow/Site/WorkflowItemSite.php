@@ -67,8 +67,8 @@ class WorkflowItemSite extends AbstractSite
         $breadcrumb->addItem(WorkflowSite::$site);
 
         $site = clone(WorkflowSite::$site);
-        $site->title = $process->name;
-        $site->addParameter(new ProcessParameter($process->id));
+        $site->title = $process->objectName;
+        $site->addParameter(new ProcessParameter($process->objectId));
         $breadcrumb->addItem($site);
 
         $breadcrumb->addActiveItem($workflowItem->getTitle());
@@ -83,7 +83,7 @@ class WorkflowItemSite extends AbstractSite
         //$title->process = $process;
 
         $title = new AdminTitle($page);
-        $title->content = $process->name;
+        $title->content = $process->objectName;
 
         $item = $process->getItem($page);
         $item->dataId = $workflowRow->dataId;

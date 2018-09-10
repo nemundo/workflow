@@ -18,8 +18,8 @@ class MailContentType extends AbstractContentType
     protected function loadData()
     {
 
-        $this->name = 'Mail';
-        $this->id = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
+        $this->objectName = 'Mail';
+        $this->objectId = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
         $this->modelClass = MailModel::class;
         $this->itemClass = MailContentItem::class;
         $this->itemSite = WikiRedirectSite::$site;

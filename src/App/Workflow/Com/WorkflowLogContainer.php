@@ -167,7 +167,7 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
                 $btn->content = 'Weiter';
                 $btn->site = $this->statusChangeSite;
                 $btn->site->addParameter(new WorkflowParameter($workflowItem->workflowId));
-                $btn->site->addParameter(new ContentTypeParameter($nextWorkflowStatus->id));
+                $btn->site->addParameter(new ContentTypeParameter($nextWorkflowStatus->objectId));
             }
 
             // User Check

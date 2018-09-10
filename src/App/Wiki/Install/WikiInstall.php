@@ -37,7 +37,7 @@ class WikiInstall extends AbstractScript
         $setup->addApplication(new WikiApplication());
 
         $setup = new ContentTypeSetup();
-        //$setup->addContentType(new WikiPageContentType());
+        $setup->addContentType(new WikiPageContentType());
 
 
         //$setup = new WikiContentTypeSetup();

@@ -3,15 +3,20 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
+use Nemundo\App\Content\Data\ContentLog\ContentLog;
+use Nemundo\App\Content\Form\ContentFormTrait;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Form\AcceptFileType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapFileUpload;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\TemplateImageContent;
+use Nemundo\Workflow\App\ContentTemplate\Content\Type\ImageTemplateContentType;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImage;
 
 class ImageContentTemplateForm extends BootstrapForm  // ContentTreeForm
 {
+
+    use ContentFormTrait;
 
     /**
      * @var BootstrapFileUpload
@@ -38,7 +43,21 @@ class ImageContentTemplateForm extends BootstrapForm  // ContentTreeForm
         $content->image->fromFileRequest($this->image->getFileRequest());
         $dataId = $content->save();
 
-        $this->afterSubmitEvent->run($dataId);  // runAfterSubmitEvent-> ($dataId);
+
+
+        $data = new ContentLog();
+        $data->contentTypeId = (new ImageTemplateContentType())->objectId;  // $dataIdthis->id;
+        $data->dataId = $dataId;
+
+        if ($this->parentContentType !== null) {
+            $data->parentId = $this->parentContentType->dataId;
+        }
+
+        $data->save();
+
+
+
+        //$this->afterSubmitEvent->run($dataId);  // runAfterSubmitEvent-> ($dataId);
 
         //return parent::onSubmit();
 

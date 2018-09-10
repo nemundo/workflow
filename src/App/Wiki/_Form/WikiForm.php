@@ -40,7 +40,7 @@ class WikiForm extends BootstrapModelForm
 
         $data = new Wiki();
         $data->pageId = $this->pageId;
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->objectId;
         $data->dataId = $dataId;
         $data->save();
 

@@ -15,8 +15,8 @@ class Survey3ContentType extends AbstractDataListContentType  // AbstractSequenc
 
     protected function loadData()
     {
-        $this->name = 'Survey3';
-        $this->id = 'bc7d6589-3313-4c07-a621-cb397dd1025f';
+        $this->objectName = 'Survey3';
+        $this->objectId = 'bc7d6589-3313-4c07-a621-cb397dd1025f';
         $this->modelClass = Survey3Model::class;
         //$this->formClass = Survey3ContentForm::class;
         //$this->itemClass = Survey3ContentItem::class;

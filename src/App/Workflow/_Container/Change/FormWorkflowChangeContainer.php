@@ -20,7 +20,7 @@ class FormWorkflowChangeContainer extends AbstractWorkflowChangeContainer
     {
 
         $subtitle = new AdminSubtitle($this);
-        $subtitle->content = $this->workflowStatus->name;
+        $subtitle->content = $this->workflowStatus->objectName;
 
         $className = $this->workflowStatus->formClass;
 

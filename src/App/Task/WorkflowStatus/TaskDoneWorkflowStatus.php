@@ -13,9 +13,9 @@ class TaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
     protected function loadData()
     {
 
-        $this->name = 'Erledigt';
+        $this->objectName = 'Erledigt';
         $this->statusText = 'Aufgabe wurde erledigt';
-        $this->id = '0ecf9bad-c73a-4c53-85c6-19cbdc5d8f87';
+        $this->objectId = '0ecf9bad-c73a-4c53-85c6-19cbdc5d8f87';
         $this->closingWorkflow = true;
 
     }

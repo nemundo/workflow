@@ -23,12 +23,12 @@ abstract class AbstractProcess extends AbstractDataContentType
     /**
      * @var string
      */
-    public $name;
+    public $objectName;
 
     /**
      * @var string
      */
-    public $id;
+    public $objectId;
 
     /**
      * @var string
@@ -127,7 +127,7 @@ abstract class AbstractProcess extends AbstractDataContentType
     public function getSource($dataId)
     {
 
-        $source = $this->name;
+        $source = $this->objectName;
         return $source;
 
 

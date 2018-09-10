@@ -19,9 +19,9 @@ class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus
     protected function loadData()
     {
 
-        $this->name = 'Source Aufgabe Liste Erfassung';
+        $this->objectName = 'Source Aufgabe Liste Erfassung';
         $this->statusText = 'Aufgaben Liste wurde erfasst';
-        $this->id = '34ec3aa8-3419-4c1b-a313-8c017225e6e6';
+        $this->objectId = '34ec3aa8-3419-4c1b-a313-8c017225e6e6';
         //$this->modelClass = TaskModel::class;
         $this->formClass = SourceTaskContentForm::class;
         $this->itemClass = SourceTaskContentItem::class;

@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Install;
 use Nemundo\App\Content\Install\ContentInstall;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\User\Setup\UsergroupSetup;
+use Nemundo\Workflow\App\Assignment\Install\AssignmentInstall;
 use Nemundo\Workflow\App\Calendar\Install\CalendarInstall;
 use Nemundo\Workflow\App\ContentTemplate\Install\ContentTemplateInstall;
 use Nemundo\Workflow\App\Favorite\Install\FavoriteInstall;
@@ -46,7 +47,7 @@ class CollaborationInstall extends AbstractScript
         (new WikiInstall())->run();
         (new MessageInstall())->run();
         (new IdentificationInstall())->run();
-
+        (new AssignmentInstall())->run();
         (new NewsInstall())->run();
 
         (new WidgetInstall())->run();

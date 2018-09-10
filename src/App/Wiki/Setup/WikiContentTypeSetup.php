@@ -16,8 +16,8 @@ class WikiContentTypeSetup extends ContentTypeSetup
 
         $data = new WikiContentType();
         $data->updateOnDuplicate = true;
-        $data->id = $contentType->id;
-        $data->contentType = $contentType->name;
+        $data->id = $contentType->objectId;
+        $data->contentType = $contentType->objectName;
         $data->contentTypeClass = $contentType->getClassName();
         $data->save();
 

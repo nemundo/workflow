@@ -13,8 +13,8 @@ class Survey2ContentType extends AbstractSequenceDataContentType
 
     protected function loadData()
     {
-        $this->name = 'Survey2';
-        $this->id = '19820505-fb0d-4948-afe2-a54a032bd4f8';
+        $this->objectName = 'Survey2';
+        $this->objectId = '19820505-fb0d-4948-afe2-a54a032bd4f8';
         $this->modelClass = Survey2Model::class;
         $this->nextContentTypeClass = Survey3ContentType::class;
     }
@@ -27,7 +27,7 @@ class Survey2ContentType extends AbstractSequenceDataContentType
 
         $data = new SurveyLog();
         //$data->surveyId = $surveyId;
-        $data->contentTypeId = $this->id;
+        $data->contentTypeId = $this->objectId;
         $data->dataId = $dataId;
         $data->save();
 

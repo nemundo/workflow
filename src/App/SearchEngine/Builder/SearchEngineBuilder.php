@@ -70,7 +70,7 @@ class SearchEngineBuilder extends AbstractContentBuilder
 
         //$data->processId = $this->process->processId;
         $data->wordId = $wordId;
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->objectId;
         $data->resultId = $this->resultId;
         //$data->dataId = $this->dataId;
 

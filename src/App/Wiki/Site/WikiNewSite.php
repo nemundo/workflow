@@ -54,7 +54,7 @@ class WikiNewSite extends AbstractSite
         $contentType = (new ContentTypeFactory())->getContentTypeByParameter();
 
         $title = new AdminTitle($page);
-        $title->content = $contentType->name;
+        $title->content = $contentType->objectName;
 
         $redirectSite = clone(WikiPageSite::$site);
         $redirectSite->addParameter($pageParameter);

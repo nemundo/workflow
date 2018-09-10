@@ -21,8 +21,8 @@ class Survey1ContentType extends AbstractMultiSequenceDataContentType  // Abstra
 
     protected function loadData()
     {
-        $this->name = 'Survey1';
-        $this->id = '53cf8b66-a073-4b0f-bdaf-c0490680eb0b';
+        $this->objectName = 'Survey1';
+        $this->objectId = '53cf8b66-a073-4b0f-bdaf-c0490680eb0b';
         $this->modelClass = Survey1Model::class;
 
         //$this->formClass = Survey1ContentForm::class;
@@ -44,7 +44,7 @@ class Survey1ContentType extends AbstractMultiSequenceDataContentType  // Abstra
 
         $data = new SurveyLog();
         $data->surveyId = $surveyId;
-        $data->contentTypeId = $this->id;
+        $data->contentTypeId = $this->objectId;
         $data->dataId = $dataId;
         $data->save();
 

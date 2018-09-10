@@ -20,8 +20,8 @@ class SourceTaskProcess extends AbstractProcess
 
     protected function loadData()
     {
-        $this->name = 'Source Task Aufgabe';
-        $this->id = 'a2ddd161-153e-4788-a575-10d7486e690c';
+        $this->objectName = 'Source Task Aufgabe';
+        $this->objectId = 'a2ddd161-153e-4788-a575-10d7486e690c';
 
         //$this->itemClass = TaskProcessContentItem::class;
         $this->itemSite = SourceTaskItemSite::$site;

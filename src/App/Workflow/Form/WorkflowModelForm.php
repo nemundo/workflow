@@ -37,7 +37,7 @@ class WorkflowModelForm extends BootstrapModelForm
         $this->addCssClass('border');
 
         $title = new AdminTitle($this);
-        $title->content = $this->workflowStatus->name;
+        $title->content = $this->workflowStatus->objectName;
 
 
         $p = new Paragraph($this);
@@ -47,7 +47,7 @@ class WorkflowModelForm extends BootstrapModelForm
         $btn->content = 'Abbruch';
 
         $btn->site = new Site();
-        $btn->site->addParameter(new ContentTypeParameter((new WorkflowAbortWorkflowStatus())->id));
+        $btn->site->addParameter(new ContentTypeParameter((new WorkflowAbortWorkflowStatus())->objectId));
         //$btn->site->addParameter(new WorkflowParameter($workflowItem->workflowId));
 
 

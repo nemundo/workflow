@@ -28,7 +28,7 @@ class InboxWidget extends AbstractAdminWidget
     protected function loadWidget()
     {
 
-        $this->widgetTitle = 'Inbox';
+        $this->widgetTitle = 'Benachrichtigungen';  // 'Inbox';
         $this->widgetSite = InboxSite::$site;  // InboxStreamSite::$site;
 
     }
@@ -68,7 +68,7 @@ class InboxWidget extends AbstractAdminWidget
             $dateTime = $inboxRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
-            $source = $contentType->name;
+            $source = $contentType->objectName;
 
 
             if ($inboxRow->read == 0) {

@@ -20,8 +20,8 @@ class CommentContentType extends AbstractDataContentType
 
     protected function loadData()
     {
-        $this->name = 'News Comment';
-        $this->id = '3cf44cd4-a6ff-44b3-8c89-21770e62a39f';
+        $this->objectName = 'News Comment';
+        $this->objectId = '3cf44cd4-a6ff-44b3-8c89-21770e62a39f';
         //$this->itemSite = CommentRedirectSite::$site;
         //$this->itemClass = CommentContentItem::class;
         $this->modelClass = CommentModel::class;
