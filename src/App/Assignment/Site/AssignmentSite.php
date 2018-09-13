@@ -18,6 +18,8 @@ class AssignmentSite extends AbstractSite
     {
         $this->title = 'Assignment';
         $this->url = 'assignment';
+
+
     }
 
 

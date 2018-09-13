@@ -59,7 +59,7 @@ class InboxWidget extends AbstractAdminWidget
             $row = new BootstrapClickableTableRow($table);
             //$row->addText($inboxRow->contentType->contentType);
 
-            $text = $inboxRow->subject;
+            $subject = $inboxRow->subject;
             $message = $inboxRow->message;
             /*if ($inboxRow->message !== '') {
                 $text .= ':' . (new Br())->getHtmlString() . $inboxRow->message;
@@ -68,16 +68,22 @@ class InboxWidget extends AbstractAdminWidget
             $dateTime = $inboxRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
+            $contentType->dataId = $inboxRow->dataId;
+
+            $subject = $contentType->getSubject();
+
+
+
             $source = $contentType->objectName;
 
 
             if ($inboxRow->read == 0) {
-                $row->addBoldText($text);
+                $row->addBoldText($subject);
                 $row->addBoldText($message);
                 $row->addBoldText($dateTime);
                 $row->addBoldText($source);
             } else {
-                $row->addText($text);
+                $row->addText($subject);
                 $row->addText($message);
                 $row->addText($dateTime);
                 $row->addText($source);

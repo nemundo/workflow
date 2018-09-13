@@ -7,6 +7,7 @@ use Nemundo\App\Content\Site\ContentLogSite;
 use Nemundo\App\Content\Site\ContentTreeSite;
 use Nemundo\App\Content\Site\ContentTypeSite;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Assignment\Site\AssignmentAdminSite;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
 use Nemundo\Workflow\App\Favorite\Site\MyFavoriteSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
@@ -55,6 +56,8 @@ class CollaborationSite extends AbstractSite
         new ToDoSite($this);
 
         new AssignmentSite($this);
+
+        new AssignmentAdminSite($this);
 
         //new ToDoDoneSite($this);
         //new ToDoItemSite($this);

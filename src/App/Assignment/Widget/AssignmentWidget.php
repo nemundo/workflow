@@ -61,6 +61,9 @@ class AssignmentWidget extends AbstractAdminWidget
 
             $row = new BootstrapClickableTableRow($table);
 
+            $contentType = $assignmentRow->contentType->getContentTypeClassObject();
+            $contentType->dataId = $assignmentRow->dataId;
+
             if ($assignmentRow->deadline !== null) {
                 $trafficLight = new DateTrafficLight($row);
                 $trafficLight->date = $assignmentRow->deadline;
@@ -69,7 +72,12 @@ class AssignmentWidget extends AbstractAdminWidget
             }
 
             $row->addText($assignmentRow->contentType->contentType);
+
             $row->addText($assignmentRow->subject);
+
+            $row->addText($contentType->getSubject());
+
+
             $row->addText($assignmentRow->message);
 
             if ($assignmentRow->deadline !== null) {
@@ -78,8 +86,15 @@ class AssignmentWidget extends AbstractAdminWidget
                 $row->addEmpty();
             }
 
-            $site = $assignmentRow->contentType->getContentTypeClassObject()->getItemSite($assignmentRow->dataId);
-            $row->addClickableSite($site);
+            //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
+
+            if ($contentType !== null) {
+                $site = $contentType->getItemSite();
+
+                if ($site !== null) {
+                    $row->addClickableSite($site);
+                }
+            }
 
         }
 

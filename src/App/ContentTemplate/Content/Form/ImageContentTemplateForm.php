@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
 use Nemundo\App\Content\Data\ContentLog\ContentLog;
-use Nemundo\App\Content\Form\ContentFormTrait;
+use Nemundo\App\Content\Form\ContentTreeFormTrait;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Form\AcceptFileType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
@@ -16,7 +16,7 @@ use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTempla
 class ImageContentTemplateForm extends BootstrapForm  // ContentTreeForm
 {
 
-    use ContentFormTrait;
+    use ContentTreeFormTrait;
 
     /**
      * @var BootstrapFileUpload
