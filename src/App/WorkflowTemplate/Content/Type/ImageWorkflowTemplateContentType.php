@@ -12,8 +12,8 @@ class ImageWorkflowTemplateContentType extends AbstractDataWorkflowStatus  // Im
 
     protected function loadData()
     {
-   $this->objectName = 'Image (Workflow Template)';
-   $this->objectId = '';
+   $this->contentName = 'Image (Workflow Template)';
+   $this->contentId = '';
     }
 
 

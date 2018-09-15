@@ -38,7 +38,7 @@ class SourceTaskItemSite extends AbstractSite
 
         $taskId = (new TaskParameter())->getValue();
 
-        $item = (new SourceTaskProcess())->getItem($page);
+        $item = (new SourceTaskProcess())->getView($page);
         $item->dataId = $taskId;
 
 

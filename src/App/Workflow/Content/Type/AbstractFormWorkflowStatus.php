@@ -26,7 +26,7 @@ abstract class AbstractFormWorkflowStatus extends AbstractWorkflowStatus
     public function __construct()
     {
 
-        $this->itemClass = DataWorkflowItemView::class;
+        $this->viewClass = DataWorkflowItemView::class;
 
         //$this->startContainerClass = FormWorkflowStartContainer::class;
         //$this->changeContainerClass = FormWorkflowChangeContainer::class;

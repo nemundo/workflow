@@ -25,8 +25,8 @@ class ToDoErfassungWorkflowStatus extends AbstractDataWorkflowStatus
 
     protected function loadData()
     {
-        $this->objectName = 'Todo Erfassung';
-        $this->objectId = '8053c883-b6ef-412a-97a4-172060adeb19';
+        $this->contentName = 'Todo Erfassung';
+        $this->contentId = '8053c883-b6ef-412a-97a4-172060adeb19';
         $this->statusText = 'ToDo wurde erfasst';
         $this->modelClass = ToDoModel::class;
 

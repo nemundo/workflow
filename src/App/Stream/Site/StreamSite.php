@@ -35,7 +35,7 @@ class StreamSite extends AbstractSite
             $widget = new AdminWidget($page);
             $widget->widgetTitle = $streamRow->contentType->contentType . ': ' . $streamRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
-            $item = $contentType->getItem($widget);
+            $item = $contentType->getView($widget);
             $item->dataId = $streamRow->dataId;
 
         }

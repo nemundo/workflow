@@ -39,7 +39,7 @@ class LargeTextContentTemplateForm extends BootstrapForm
         $content = new LargeTextTemplateContentType();
         $content->parentContentType = $this->parentContentType;
         $content->text = $this->text->getValue();
-        $content->saveItem();
+        $content->saveType();
 
         /*
         $content = new LargeTextTemplateContent();

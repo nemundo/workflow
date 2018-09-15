@@ -36,7 +36,7 @@ class TaskItemSite extends AbstractSite
 
         $taskId = (new TaskParameter())->getValue();
 
-        $item = (new TaskProcess())->getItem($page);
+        $item = (new TaskProcess())->getView($page);
         $item->dataId = $taskId;
 
         $btn = new WorkflowActionButton($page);

@@ -12,8 +12,8 @@ class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Terminverschiebung';  // 'Deadline Change';
-        $this->objectId = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
+        $this->contentName = 'Terminverschiebung';  // 'Deadline Change';
+        $this->contentId = '03d66420-e86f-4f7c-95f6-352a41dc98f3';
         $this->modelClass = DeadlineChangeModel::class;
         $this->changeWorkflowStatus = false;
         $this->statusText = 'Termin wurde verschoben';

@@ -5,10 +5,10 @@ namespace Nemundo\Workflow\App\PersonalTask\ContentItem;
 
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskStatusChangeSite;
-use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentView;
 
 
-class PersonalTaskContentItem extends ProcessContentItem
+class PersonalTaskContentItem extends ProcessContentView
 {
 
 

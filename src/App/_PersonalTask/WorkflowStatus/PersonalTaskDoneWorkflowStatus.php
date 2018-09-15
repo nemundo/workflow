@@ -15,9 +15,9 @@ class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Erledigt';
+        $this->contentName = 'Erledigt';
         $this->statusText = 'Aufgabe wurde erledigt';
-        $this->objectId = '4eb59f4f-0a08-42e4-98a3-c8b9922552b7';
+        $this->contentId = '4eb59f4f-0a08-42e4-98a3-c8b9922552b7';
         $this->closingWorkflow = true;
         $this->modelClass = CommentModel::class;
 

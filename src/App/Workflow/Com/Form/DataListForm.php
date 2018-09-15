@@ -61,7 +61,7 @@ class DataListForm extends AbstractHtmlContainerList
 
 
         $count = new StatusChangeCount();
-        $count->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->objectId);
+        $count->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->contentId);
         $count->filter->andEqual($count->model->workflowId, $workflowId);
 
         if ($count->getCount() == 0) {
@@ -84,7 +84,7 @@ class DataListForm extends AbstractHtmlContainerList
 
 
         $value = new StatusChangeValue();
-        $value->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->objectId);
+        $value->filter->andEqual($count->model->workflowStatusId, $this->workflowStatus->contentId);
         $value->filter->andEqual($count->model->workflowId, $workflowId);
         $value->field = $value->model->dataId;
         $dataId = $value->getValue();

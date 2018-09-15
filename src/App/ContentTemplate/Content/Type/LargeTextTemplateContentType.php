@@ -7,7 +7,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\LargeTextContentTemplateForm;
-use Nemundo\Workflow\App\ContentTemplate\Content\Item\LargeTextContentItem;
+use Nemundo\Workflow\App\ContentTemplate\Content\Item\LargeTextContentView;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeText;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeTextModel;
 
@@ -24,16 +24,16 @@ class LargeTextTemplateContentType extends AbstractTreeContentType  // AbstractD
     protected function loadData()
     {
 
-        $this->objectName = 'Large Text (Template)';
-        $this->objectId = '46e84be8-7173-41ff-8c7a-b7f91f33a0fb';
+        $this->contentName = 'Large Text (Template)';
+        $this->contentId = '46e84be8-7173-41ff-8c7a-b7f91f33a0fb';
         //$this->modelClass = LargeTextModel::class;
         $this->formClass = LargeTextContentTemplateForm::class;
-        $this->itemClass = LargeTextContentItem::class;
+        $this->viewClass = LargeTextContentView::class;
 
     }
 
 
-    public function saveItem()
+    public function saveType()
     {
 
         $data = new LargeText();
@@ -45,7 +45,7 @@ class LargeTextTemplateContentType extends AbstractTreeContentType  // AbstractD
     }
 
 
-    public function deleteItem()
+    public function deleteType()
     {
         // TODO: Implement deleteItem() method.
     }

@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Assignment\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentReader;
@@ -61,8 +62,13 @@ class AssignmentWidget extends AbstractAdminWidget
 
             $row = new BootstrapClickableTableRow($table);
 
-            $contentType = $assignmentRow->contentType->getContentTypeClassObject();
-            $contentType->dataId = $assignmentRow->dataId;
+            $className = $assignmentRow->contentType->contentTypeClass;
+
+            //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
+            //$contentType->dataId = $assignmentRow->dataId;
+
+            /** @var AbstractContentType $contentType */
+            $contentType = new $className($assignmentRow->dataId);
 
             if ($assignmentRow->deadline !== null) {
                 $trafficLight = new DateTrafficLight($row);
@@ -73,11 +79,9 @@ class AssignmentWidget extends AbstractAdminWidget
 
             $row->addText($assignmentRow->contentType->contentType);
 
-            $row->addText($assignmentRow->subject);
+            //$row->addText($assignmentRow->subject);
 
             $row->addText($contentType->getSubject());
-
-
             $row->addText($assignmentRow->message);
 
             if ($assignmentRow->deadline !== null) {

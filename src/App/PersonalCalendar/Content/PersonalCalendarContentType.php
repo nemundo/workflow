@@ -10,8 +10,8 @@ class PersonalCalendarContentType extends AbstractContentType
 
     protected function loadData()
     {
-        $this->objectName = 'Personal Calendar';
-        $this->objectId = '5d2054e4-1216-477c-90fa-6e5419dd1b57';
+        $this->contentName = 'Personal Calendar';
+        $this->contentId = '5d2054e4-1216-477c-90fa-6e5419dd1b57';
     }
 
 }

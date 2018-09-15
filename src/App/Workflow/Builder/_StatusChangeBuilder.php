@@ -82,7 +82,7 @@ class StatusChangeBuilder extends AbstractBaseClass
 
         // Status Change
         $data = new StatusChange();
-        $data->workflowStatusId = $this->workflowStatus->objectId;
+        $data->workflowStatusId = $this->workflowStatus->contentId;
         $data->workflowId = $this->workflowId;
         $data->dataId = $this->dataId;
         $data->draft = $this->draft;
@@ -98,7 +98,7 @@ class StatusChangeBuilder extends AbstractBaseClass
         if ($this->workflowStatus->isObjectOfClass(AbstractWorkflowStatus::class)) {
 
             if ($this->workflowStatus->changeWorkflowStatus) {
-                $update->workflowStatusId = $this->workflowStatus->objectId;
+                $update->workflowStatusId = $this->workflowStatus->contentId;
             }
 
             if ($this->workflowStatus->closingWorkflow) {

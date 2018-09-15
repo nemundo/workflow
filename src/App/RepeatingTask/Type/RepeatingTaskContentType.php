@@ -11,8 +11,8 @@ class RepeatingTaskContentType extends AbstractContentType
 
     protected function loadData()
     {
-        $this->objectName = 'Wiederholdende Aufgabe';
-        $this->objectId = '59f7cdb2-19c6-49ab-94a4-53488bf0994c';
+        $this->contentName = 'Wiederholdende Aufgabe';
+        $this->contentId = '59f7cdb2-19c6-49ab-94a4-53488bf0994c';
         $this->itemSite = RepeatingTaskItemSite::$site;
     }
 

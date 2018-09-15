@@ -35,7 +35,7 @@ class MessageImageForm extends BootstrapModelForm
         $data = new MessageItem();
         $data->messageId = $this->messageId;
         $data->dataId = $dataId;
-        $data->contentTypeId = (new ImageContentType())->objectId;
+        $data->contentTypeId = (new ImageContentType())->contentId;
         $data->save();
 
     }

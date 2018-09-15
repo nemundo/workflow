@@ -72,7 +72,7 @@ class WorkflowEvent extends AbstractEvent
 
 
         $data = new StatusChange();
-        $data->workflowStatusId = $this->workflowStatus->objectId;
+        $data->workflowStatusId = $this->workflowStatus->contentId;
         $data->workflowId = $this->workflowId;
         $data->dataId = $id;
         $data->draft = $this->draft;
@@ -91,7 +91,7 @@ class WorkflowEvent extends AbstractEvent
             if ($this->workflowStatus->changeWorkflowStatus) {
                 $update = new WorkflowUpdate();
                 //$update->draft = $this->draft;
-                $update->workflowStatusId = $this->workflowStatus->objectId;
+                $update->workflowStatusId = $this->workflowStatus->contentId;
                 $update->updateById($this->workflowId);
             }
 

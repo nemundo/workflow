@@ -22,16 +22,16 @@ class ProcessDoc extends AbstractHtmlContainerList
 
 
         $title = new AdminSubtitle($this);
-        $title->content = 'Doc: ' . $this->process->objectName;
+        $title->content = 'Doc: ' . $this->process->contentName;
 
 
         $list = new UnorderedList($this);
 
         $status = $this->process->getStartWorkflowStatus();
-        $list->addText($status->objectName);
+        $list->addText($status->contentName);
 
         foreach ($status->getFollowingContentTypeList() as $nextStatus) {
-            $list->addText($nextStatus->objectName);
+            $list->addText($nextStatus->contentName);
         }
 
         return parent::getHtml();

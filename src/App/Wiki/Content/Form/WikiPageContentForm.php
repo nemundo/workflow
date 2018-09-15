@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Wiki\Content\Form;
 
 
+use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\App\Content\Form\ContentTreeFormTrait;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
@@ -12,10 +13,14 @@ use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentTy
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPage;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageForm;
+use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
 use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 
-class WikiPageContentForm extends BootstrapForm  // WikiPageForm
+class WikiPageContentForm extends ContentTreeForm  // BootstrapForm  // WikiPageForm
 {
+
+    public $updateId;
+
 
     //use ContentFormTrait;
 
@@ -40,6 +45,15 @@ class WikiPageContentForm extends BootstrapForm  // WikiPageForm
         //$this->text = new BootstrapLargeTextBox($this);
         //$this->text->label = 'Text';
 
+        if ($this->updateId !== null) {
+
+            $row = (new WikiPageReader())->getRowById($this->updateId);
+
+            $this->title->value = $row->title;
+
+
+        }
+
 
         return parent::getHtml();
     }
@@ -48,10 +62,19 @@ class WikiPageContentForm extends BootstrapForm  // WikiPageForm
     protected function onSubmit()
     {
 
-
-        $content = new WikiPageContentType();
+        $content = new WikiPageContentType($this->updateId);
         $content->title = $this->title->getValue();
-        $content->saveItem();
+        $content->saveType();
+
+
+
+
+        //if ($this->redirectToContentItemSite) {
+        $this->redirectSite = $content->getItemSite();
+        //}
+
+
+        //$this->checkContentItemRedirect();
 
 
         /*

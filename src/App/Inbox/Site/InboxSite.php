@@ -166,7 +166,7 @@ class InboxSite extends AbstractSite
             $dateTime = $inboxRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
             $contentType = $inboxRow->contentType->getContentTypeClassObject();
-            $source = $contentType->objectName;
+            $source = $contentType->contentName;
 
 
             if ($inboxRow->read == 0) {

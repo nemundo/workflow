@@ -93,7 +93,7 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
 
             $workflowStatus = $statusChangeRow->workflowStatus->getContentTypeClassObject();
 
-            $item = $workflowStatus->getItem($contentDiv);
+            $item = $workflowStatus->getView($contentDiv);
             $item->dataId = $statusChangeRow->dataId;
 
             /*
@@ -167,7 +167,7 @@ class WorkflowLogContainer extends AbstractHtmlContainerList
                 $btn->content = 'Weiter';
                 $btn->site = $this->statusChangeSite;
                 $btn->site->addParameter(new WorkflowParameter($workflowItem->workflowId));
-                $btn->site->addParameter(new ContentTypeParameter($nextWorkflowStatus->objectId));
+                $btn->site->addParameter(new ContentTypeParameter($nextWorkflowStatus->contentId));
             }
 
             // User Check

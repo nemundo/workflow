@@ -16,7 +16,7 @@ class WorkflowContentReader extends WorkflowReader
     public function addProcessFilter(AbstractProcess $process)
     {
 
-        $this->filter->andEqual($this->model->processId, $process->objectId);
+        $this->filter->andEqual($this->model->processId, $process->contentId);
 
     }
 

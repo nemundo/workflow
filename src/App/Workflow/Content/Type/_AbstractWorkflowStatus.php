@@ -6,7 +6,7 @@ use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
+use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowViewView;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
 
@@ -42,9 +42,9 @@ abstract class AbstractWorkflowStatusOld extends AbstractDataContentType
     public $actionLabel;
 
     /**
-     * @var AbstractWorkflowItemView
+     * @var AbstractWorkflowViewView
      */
-    public $itemClass;
+    public $viewClass;
 
     /**
      * @var AbstractActionPanel

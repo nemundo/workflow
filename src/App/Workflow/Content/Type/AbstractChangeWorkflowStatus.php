@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Workflow\Com\Form\StatusChangeForm;
-use Nemundo\Workflow\App\Workflow\Content\Item\SubjectWorkflowItem;
+use Nemundo\Workflow\App\Workflow\Content\Item\SubjectWorkflowView;
 
 abstract class AbstractChangeWorkflowStatus extends AbstractContentType
 {
@@ -16,7 +16,7 @@ abstract class AbstractChangeWorkflowStatus extends AbstractContentType
     {
 
         parent::__construct();
-        $this->itemClass = SubjectWorkflowItem::class;
+        $this->viewClass = SubjectWorkflowView::class;
 
     }
 

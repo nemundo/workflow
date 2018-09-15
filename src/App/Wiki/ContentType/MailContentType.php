@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Wiki\ContentType;
 
 
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
-use Nemundo\Workflow\App\Wiki\ContentItem\MailContentItem;
+use Nemundo\Workflow\App\Wiki\ContentItem\MailContentView;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailModel;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailReader;
 use Nemundo\App\Content\Type\AbstractContentType;
@@ -18,10 +18,10 @@ class MailContentType extends AbstractContentType
     protected function loadData()
     {
 
-        $this->objectName = 'Mail';
-        $this->objectId = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
+        $this->contentName = 'Mail';
+        $this->contentId = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
         $this->modelClass = MailModel::class;
-        $this->itemClass = MailContentItem::class;
+        $this->viewClass = MailContentView::class;
         $this->itemSite = WikiRedirectSite::$site;
 
     }

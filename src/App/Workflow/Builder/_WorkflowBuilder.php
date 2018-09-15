@@ -99,7 +99,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         }
 
         $data = new Workflow();
-        $data->processId = $this->contentType->objectId;
+        $data->processId = $this->contentType->contentId;
 
         $workflowNumber = null;
         if ($this->contentType->createWorkflowNumber) {
@@ -110,7 +110,7 @@ class WorkflowBuilder extends AbstractContentBuilder
 
                 $value = new WorkflowValue();
                 $value->field = $value->model->number;
-                $value->filter->andEqual($value->model->processId, $this->contentType->objectId);
+                $value->filter->andEqual($value->model->processId, $this->contentType->contentId);
                 $number = $value->getMaxValue();
 
                 if ($number == 0) {
@@ -130,7 +130,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         }
 
         $data->subject = $this->subject;
-        $data->workflowStatusId = $this->contentType->objectId;  // $workflowStatus->id;
+        $data->workflowStatusId = $this->contentType->contentId;  // $workflowStatus->id;
         $data->dataId = $this->dataId;
         $workflowId = $data->save();
 
@@ -174,7 +174,7 @@ class WorkflowBuilder extends AbstractContentBuilder
 
 
         $data = new Workflow();
-        $data->processId = $this->contentType->objectId;
+        $data->processId = $this->contentType->contentId;
         $data->dataId = $this->baseId;
 
         $workflowNumber = null;
@@ -186,7 +186,7 @@ class WorkflowBuilder extends AbstractContentBuilder
 
                 $value = new WorkflowValue();
                 $value->field = $value->model->number;
-                $value->filter->andEqual($value->model->processId, $this->contentType->objectId);
+                $value->filter->andEqual($value->model->processId, $this->contentType->contentId);
                 $number = $value->getMaxValue();
 
                 if ($number == 0) {
@@ -206,7 +206,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         }
 
         $data->subject = $this->subject;
-        $data->workflowStatusId = $this->contentType->objectId;  // $workflowStatus->id;
+        $data->workflowStatusId = $this->contentType->contentId;  // $workflowStatus->id;
         //$data->dataId = $this->dataId;
         $workflowId = $data->save();
 

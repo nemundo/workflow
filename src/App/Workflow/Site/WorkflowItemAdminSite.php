@@ -63,7 +63,7 @@ class WorkflowItemAdminSite extends AbstractSite
 
             $contentType = $statusChangeRow->workflowStatus->getContentTypeClassObject();
 
-            $item = $contentType->getItem($page);
+            $item = $contentType->getView($page);
             $item->dataId = $statusChangeRow->dataId;
 
 

@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
 use Nemundo\Workflow\App\Task\Form\SourceTaskContentForm;
 use Nemundo\Workflow\App\Task\Form\TaskBuilderForm;
-use Nemundo\Workflow\App\Task\Item\SourceTaskContentItem;
+use Nemundo\Workflow\App\Task\Item\SourceTaskContentView;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
@@ -19,12 +19,12 @@ class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Source Aufgabe Liste Erfassung';
+        $this->contentName = 'Source Aufgabe Liste Erfassung';
         $this->statusText = 'Aufgaben Liste wurde erfasst';
-        $this->objectId = '34ec3aa8-3419-4c1b-a313-8c017225e6e6';
+        $this->contentId = '34ec3aa8-3419-4c1b-a313-8c017225e6e6';
         //$this->modelClass = TaskModel::class;
         $this->formClass = SourceTaskContentForm::class;
-        $this->itemClass = SourceTaskContentItem::class;
+        $this->viewClass = SourceTaskContentView::class;
 
         //$this->changeWorkflowStatus = false;
         $this->draftMode = true;

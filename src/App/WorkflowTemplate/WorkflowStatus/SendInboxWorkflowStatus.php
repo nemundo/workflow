@@ -14,8 +14,8 @@ class SendInboxWorkflowStatus extends AbstractDataWorkflowStatus
 
     protected function loadData()
     {
-        $this->objectName = 'Send To Inbox';
-        $this->objectId = '62416c6a-6a43-42b1-a8b2-0df25d0f318d';
+        $this->contentName = 'Send To Inbox';
+        $this->contentId = '62416c6a-6a43-42b1-a8b2-0df25d0f318d';
         $this->changeWorkflowStatus = false;
         $this->modelClass = SendInboxModel::class;
     }

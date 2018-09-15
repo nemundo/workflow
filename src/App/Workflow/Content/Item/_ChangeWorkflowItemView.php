@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Item;
 
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
 
-class ChangeWorkflowItemView extends AbstractWorkflowItemView
+class ChangeWorkflowItemView extends AbstractWorkflowViewView
 {
 
     public function getHtml()

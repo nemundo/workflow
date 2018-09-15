@@ -19,10 +19,10 @@ class CommentType extends \Nemundo\App\Content\Type\Workflow\AbstractWorkflowSta
 
     protected function loadData()
     {
-        $this->objectName = 'Kommentar';
-        $this->objectId = '3d7012e5-6751-4d49-8d68-a0f49a888718';
+        $this->contentName = 'Kommentar';
+        $this->contentId = '3d7012e5-6751-4d49-8d68-a0f49a888718';
         $this->formClass = CommentTypeForm::class;
-        $this->itemClass = CommentItem::class;
+        $this->viewClass = CommentView::class;
         $this->subject = 'Es wurde was kommentiert';
 
 
@@ -36,7 +36,7 @@ class CommentType extends \Nemundo\App\Content\Type\Workflow\AbstractWorkflowSta
 
     }
 
-    public function saveItem()
+    public function saveType()
     {
 
         $data = new Comment();

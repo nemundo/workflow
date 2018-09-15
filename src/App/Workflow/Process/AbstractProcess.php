@@ -8,7 +8,7 @@ use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
-use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentView;
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
@@ -23,12 +23,12 @@ abstract class AbstractProcess extends AbstractDataContentType
     /**
      * @var string
      */
-    public $objectName;
+    public $contentName;
 
     /**
      * @var string
      */
-    public $objectId;
+    public $contentId;
 
     /**
      * @var string
@@ -81,7 +81,7 @@ abstract class AbstractProcess extends AbstractDataContentType
     {
 
         $this->itemSite = WorkflowItemSite::$site;
-        $this->itemClass = ProcessContentItem::class;
+        $this->viewClass = ProcessContentView::class;
         $this->parameterClass = WorkflowParameter::class;
 
         $this->processMenu = new ContentTypeCollection();
@@ -127,7 +127,7 @@ abstract class AbstractProcess extends AbstractDataContentType
     public function getSource($dataId)
     {
 
-        $source = $this->objectName;
+        $source = $this->contentName;
         return $source;
 
 

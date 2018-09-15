@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 use Nemundo\App\Content\Type\Sequence\MultiSequenceTrait;
-use Nemundo\App\Content\Type\Sequence\SequenceTrait;
+use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
@@ -19,7 +19,7 @@ trait WorkflowStatusTrait
 
     use WorkflowIdTrait;
 
-    use SequenceTrait;
+    use SequenceContentTypeTrait;
 
     use MultiSequenceTrait;
 
@@ -79,7 +79,7 @@ trait WorkflowStatusTrait
         $statusText = $this->statusText;
 
         if ($statusText == null) {
-            $statusText = $this->objectName;
+            $statusText = $this->contentName;
         }
 
 

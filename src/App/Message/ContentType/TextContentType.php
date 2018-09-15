@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Message\ContentType;
 
 
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
-use Nemundo\Workflow\App\Message\ContentItem\TextContentItem;
+use Nemundo\Workflow\App\Message\ContentItem\TextContentView;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\Message\MessageUpdate;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemCount;
@@ -18,9 +18,9 @@ class TextContentType extends AbstractMessageContentType
 
     protected function loadData()
     {
-        $this->objectName = 'Text';
-        $this->objectId = 'be649b42-4818-4c9e-b778-212c71aa90f0';
-        $this->itemClass = TextContentItem::class;
+        $this->contentName = 'Text';
+        $this->contentId = 'be649b42-4818-4c9e-b778-212c71aa90f0';
+        $this->viewClass = TextContentView::class;
         //$this->formClass = MessageTextForm::class;
 
         $this->modelClass = MessageTextModel::class;

@@ -18,8 +18,8 @@ class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Verantwortungswechsel';  // 'User Assignment';
-        $this->objectId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
+        $this->contentName = 'Verantwortungswechsel';  // 'User Assignment';
+        $this->contentId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeWorkflowStatus = false;
         $this->modelClass = UserAssignmentChangeModel::class;
 

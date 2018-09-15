@@ -32,7 +32,7 @@ class CommentTypeForm extends ContentTreeForm
         $type = new CommentType();
         $type->parentContentType = $this->parentContentType;
         $type->comment = $this->comment->getValue();
-        $type->saveItem();
+        $type->saveType();
 
     }
 

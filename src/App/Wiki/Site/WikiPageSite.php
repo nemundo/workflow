@@ -4,6 +4,8 @@ namespace Nemundo\Workflow\App\Wiki\Site;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\Com\ContentTypeCollectionDropdown;
+use Nemundo\App\Workflow\Com\WorkflowMenuDropdown;
 use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbar;
 use Nemundo\Package\Bootstrap\Navigation\BootstrapNavigation;
 use Nemundo\Web\Site\AbstractSite;
@@ -17,7 +19,7 @@ use Nemundo\Workflow\App\ContentTemplate\Content\Type\ImageTemplateContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentItem;
+use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentView;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentTypeReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
@@ -40,6 +42,7 @@ class WikiPageSite extends AbstractSite
         $this->menuActive = false;
 
         new WikiNewSite($this);
+        new WikiPageEditSite($this);
 
     }
 
@@ -60,58 +63,42 @@ class WikiPageSite extends AbstractSite
         $pageId = $pageParameter->getValue();
 
 
-        $pageRow = (new WikiPageReader())->getRowById($pageId);
 
         $nav = new BootstrapNavigation($page);
         $nav->site = WikiSite::$site;
 
+        $btn = new AdminButton($page);
+        $btn->content = 'edit';
+        $btn->site=WikiPageEditSite::$site;
+        $btn->site->addParameter($pageParameter);
+
+
         $wikiPage = new WikiPageContentType($pageId);
-        $wikiPage->getItem($page);
+        $wikiPage->getView($page);
 
 
-        $form = (new LargeTextTemplateContentType())->getForm($page);
-        $form->parentContentType = $wikiPage;
-
-        $form = (new ImageTemplateContentType())->getForm($page);
-        $form->parentContentType = $wikiPage;
-
+        $dropdown = new ContentTypeCollectionDropdown($page);
+        $dropdown->contentTypeCollection = new WikiContentTypeCollection();
+        $dropdown->redirectSite = WikiPageSite::$site;
+        $dropdown->redirectSite->addParameter($pageParameter);
 
 
-        //    $title = new AdminTitle($page);
-        //    $title->content = $pageRow->title;
-
-        /*    $dropdown = new BootstrapDropdown($page);
-
-            $reader = new WikiContentTypeReader();
-            foreach ($reader->getData() as $typeRow) {
-                $site = clone(WikiNewSite::$site);
-                $site->title = $typeRow->contentType;
-                $site->addParameter(new ContentTypeParameter($typeRow->id));
-                $site->addParameter($pageParameter);
-
-                $dropdown->addSite($site);
-
-            }*/
+        $contentTypeParameter = new ContentTypeParameter();
+        $contentType = $contentTypeParameter->getContentType();
+        if ($contentType !== null) {
 
 
-        /*
-            $dropdown = new BootstrapDropdown($page);
+            $btn = new AdminButton($page);
+            $btn->content = 'Back';
+            $btn->site = $wikiPage->getItemSite();
 
-            //$reader = new WikiContentTypeReader();
-            foreach ((new WikiContentTypeCollection())->getContentTypeList() as $contentType) {
+            $contentType->parentContentType = $wikiPage;
+            $form = $contentType->getForm($page);
+            $form->redirectSite = $wikiPage->getItemSite();
 
-                $site = clone(WikiNewSite::$site);
-                $site->title = $contentType->name;
-                $site->addParameter(new ContentTypeParameter($contentType->id));
-                $site->addParameter($pageParameter);
-
-                $dropdown->addSite($site);
-
-            }*/
+        }
 
 
-        //$item = new WikiContentItem($page);
-        //$item->dataId = $pageId;
 
         $page->render();
 

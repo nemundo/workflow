@@ -25,12 +25,12 @@ class StatusChangeList extends BootstrapList
          $workflowItem = new WorkflowItem($this->workflowId);
 
         foreach ($workflowItem->getStatusChangeLog() as $workflowStatus) {
-            $this->addText($workflowStatus->objectName);
+            $this->addText($workflowStatus->contentName);
             //addHyperlink($statusChangeRow->workflowStatus->contentType, '#' . $statusChangeRow->dataId);
         }
 
         $bold = new Bold();
-        $bold->content = $workflowItem->getWorkflowStatus()->objectName;
+        $bold->content = $workflowItem->getWorkflowStatus()->contentName;
 
 
         $this->addText($bold->getHtmlString());

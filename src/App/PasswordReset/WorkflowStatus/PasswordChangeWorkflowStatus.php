@@ -12,8 +12,8 @@ class PasswordChangeWorkflowStatus extends AbstractChangeWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Password Change';
-        $this->objectId = '4aceb6db-1fd8-41bb-8796-7ea8f8abdfde';
+        $this->contentName = 'Password Change';
+        $this->contentId = '4aceb6db-1fd8-41bb-8796-7ea8f8abdfde';
 
     }
 

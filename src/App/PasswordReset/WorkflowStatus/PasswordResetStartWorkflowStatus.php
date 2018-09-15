@@ -13,8 +13,8 @@ class PasswordResetStartWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Passwod Reset Start';
-        $this->objectId = '582d6b76-c57f-437f-9ad4-1b785951beab';
+        $this->contentName = 'Passwod Reset Start';
+        $this->contentId = '582d6b76-c57f-437f-9ad4-1b785951beab';
         $this->modelClass = PasswordResetRequestModel::class;
 
         //$this->restricted = true;

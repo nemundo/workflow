@@ -7,9 +7,9 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
-use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentView;
 
-class TaskProcessContentItem extends ProcessContentItem
+class TaskProcessContentItem extends ProcessContentView
 {
 
     public function getHtml()

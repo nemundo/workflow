@@ -14,8 +14,8 @@ class UserDeadlineAssignmentWorkflowStatus extends AbstractDataWorkflowStatus
 
     protected function loadData()
     {
-        $this->objectName = 'User Deadline Assignment Change';
-        $this->objectId = 'd0e47cc1-c22f-4b11-9d00-fcbe38dfe2e5';
+        $this->contentName = 'User Deadline Assignment Change';
+        $this->contentId = 'd0e47cc1-c22f-4b11-9d00-fcbe38dfe2e5';
         $this->modelClass = UserDeadlineAssignmentModel::class;
     }
 

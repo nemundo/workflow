@@ -82,7 +82,7 @@ class InboxStreamSite extends AbstractSite
 
             if ($contentType !== null) {
 
-                $item = $contentType->getItem($widget);
+                $item = $contentType->getView($widget);
                 $item->dataId = $inboxRow->dataId;
 
 

@@ -7,37 +7,47 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\File\TextFile;
 use Nemundo\Project\ProjectConfig;
+use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentForm;
-use Nemundo\Workflow\App\Wiki\Content\Item\WikiPageContentItem;
+use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentFormUpdate;
+use Nemundo\Workflow\App\Wiki\Content\View\WikiPageView;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPage;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
+use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
+use Schleuniger\Usergroup\SchleunigerUsergroup;
 
-class WikiPageContentType extends AbstractTreeContentType  // AbstractWikiContentType  // AbstractContentType
+
+class WikiPageContentType extends AbstractTreeContentType
 {
 
+    /**
+     * @var string
+     */
     public $title;
 
 
     protected function loadData()
     {
-        $this->objectName = 'Wiki Page';
-        $this->objectId = 'd6a20e68-3463-491f-a76c-bd8a8df1f57e';
-        //$this->modelClass = WikiPageModel::class;
+        $this->contentName = 'Wiki Page';
+        $this->contentId = 'd6a20e68-3463-491f-a76c-bd8a8df1f57e';
 
         $this->formClass = WikiPageContentForm::class;
-        $this->itemClass = WikiPageContentItem::class;
+        $this->formUpdateClass = WikiPageContentForm::class;  // WikiPageContentFormUpdate::class;
+        $this->viewClass = WikiPageView::class;
         $this->itemSite = WikiPageSite::$site;
         $this->parameterClass = WikiPageParameter::class;
 
     }
 
 
-
-    public function saveItem()
+    public function saveType()
     {
+
+
+        if ($this->dataId!== null) {
 
         $data = new WikiPage();
         $data->title = $this->title;
@@ -45,54 +55,46 @@ class WikiPageContentType extends AbstractTreeContentType  // AbstractWikiConten
 
         $this->saveContentLog();
 
-        /*
-        $contentType = new WikiPageContentType();
-        $contentType->onCreate($pageId);
+        } else {
 
-        $content = new LargeTextTemplateContent();
-        $content->text = $this->teaser;
-        $id = $content->save();
-
-        $event = new WikiEvent();
-        $event->contentType = new LargeTextTemplateContentType();
-        $event->pageId = $pageId;
-        $event->run($id);
+            $update = new WikiPageUpdate();
+            $update->title = $this->title;
+            $this->dataId = $update->updateById($this->dataId);
 
 
-        $content = new BetaProcessContent();
-        $content->name = 'Klang';
-        $content->vorname = 'Kurs';
-        $content->email = 'klang@kurs.ch';
-        $id = $content->save();
+        }
 
-        $event = new WikiEvent();
-        $event->contentType = new BetaProcess();
-        $event->pageId = $pageId;
-        $event->run($id);*/
+
+        return $this->dataId;
+
+    }
+
+
+    public function onChildAddEvent(AbstractTreeContentType $contentType)
+    {
+
+        $update = new WikiPageUpdate();
+        $update->count = $this->getChildCount();
+        $update->updateById($this->dataId);
+
+
+        $builder = new InboxBuilder();
+        $builder->contentType = $this;
+        $builder->dataId = $this->dataId;
+        $builder->subject = $this->getSubject();
+        $builder->message = 'Neuer Eintrag: ' . $contentType->getSubject();
+        $builder->createUsergroupInbox(new SchleunigerUsergroup());
 
 
     }
 
 
-
-    public function deleteItem()
+    public function getSubject()
     {
-        // TODO: Implement deleteItem() method.
+
+        $row = (new WikiPageReader())->getRowById($this->dataId);
+        return $row->title;
+
     }
-
-
-    /*
-    public function onCreate($dataId)
-    {
-
-        $row = (new WikiPageReader())->getRowById($dataId);
-
-        $file = new TextFile();
-        $file->overwriteExistingFile = true;
-        $file->filename = ProjectConfig::$tmpPath . $row->title . '.txt';
-        $file->saveFile();
-
-    }*/
-
 
 }

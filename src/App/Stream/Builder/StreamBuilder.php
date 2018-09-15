@@ -15,7 +15,7 @@ class StreamBuilder extends AbstractContentBuilder
     {
 
         $data = new Stream();
-        $data->contentTypeId = $this->contentType->objectId;
+        $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->dataId;
         $data->save();
 

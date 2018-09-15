@@ -46,7 +46,7 @@ class ImageContentTemplateForm extends BootstrapForm  // ContentTreeForm
 
 
         $data = new ContentLog();
-        $data->contentTypeId = (new ImageTemplateContentType())->objectId;  // $dataIdthis->id;
+        $data->contentTypeId = (new ImageTemplateContentType())->contentId;  // $dataIdthis->id;
         $data->dataId = $dataId;
 
         if ($this->parentContentType !== null) {

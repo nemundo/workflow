@@ -43,7 +43,7 @@ class WorkflowTitle extends AbstractHtmlContainerList
         $contentType = $workflowRow->workflowStatus->getContentTypeClassObject();
 
         $subtitle = new AdminSubtitle($this);
-        $subtitle->content = $process->objectName;
+        $subtitle->content = $process->contentName;
 
         $workflowTitle = $workflowRow->subject;
 

@@ -9,7 +9,7 @@ use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 
 
-class DataListWorkflowItemView extends AbstractWorkflowItemView
+class DataListWorkflowItemView extends AbstractWorkflowViewView
 {
 
     public function getHtml()

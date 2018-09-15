@@ -10,7 +10,7 @@ use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 
-class DataWorkflowItemView extends AbstractWorkflowItemView
+class DataWorkflowItemView extends AbstractWorkflowViewView
 {
 
     public function getHtml()

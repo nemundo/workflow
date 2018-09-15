@@ -51,13 +51,10 @@ class InboxRedirectSite extends AbstractSite
         $inboxRow = $inboxReader->getRowById($inboxId);
 
         $contentType = $inboxRow->contentType->getContentTypeClassObject();
+        $contentType->dataId = $inboxRow->dataId;
 
-        $site = $contentType->getItemSite($inboxRow->dataId);
-
+        $site = $contentType->getItemSite();
         $site->redirect();
-
-
-        //(new UrlReferer())->redirect();
 
 
     }

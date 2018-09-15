@@ -37,7 +37,7 @@ class StatusChangeContainer extends AbstractHtmlContainerList
         $workflowStatus = (new ContentTypeFactory())->getContentTypeByParameter();
 
         $title = new AdminTitle($this);
-        $title->content = $workflowStatus->objectName;
+        $title->content = $workflowStatus->contentName;
 
         $factory = new StatusChangeFormFactory();
         $factory->worklfowStatus = $workflowStatus;

@@ -12,8 +12,8 @@ class MessageContentType extends AbstractContentType
 
     protected function loadData()
     {
-       $this->objectName = 'Message';
-       $this->objectId = 'a5dbb6c4-61ed-425a-9f24-432b116599f1';
+       $this->contentName = 'Message';
+       $this->contentId = 'a5dbb6c4-61ed-425a-9f24-432b116599f1';
        $this->itemSite = MessageItemSite::$site;
        $this->parameterClass = MessageParameter::class;
     }

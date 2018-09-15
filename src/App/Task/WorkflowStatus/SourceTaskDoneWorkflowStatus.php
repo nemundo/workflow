@@ -14,9 +14,9 @@ class SourceTaskDoneWorkflowStatus extends AbstractChangeWorkflowStatus
     protected function loadData()
     {
 
-        $this->objectName = 'Erledigt';
+        $this->contentName = 'Erledigt';
         $this->statusText = 'Aufgabe wurde erledigt';
-        $this->objectId = '91077ac2-1a9d-4507-af4f-e3d42a892d5e';
+        $this->contentId = '91077ac2-1a9d-4507-af4f-e3d42a892d5e';
         $this->closingWorkflow = true;
 
     }

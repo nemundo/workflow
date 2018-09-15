@@ -8,7 +8,7 @@ use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Model\Data\Property\File\ImageDataProperty;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\ImageContentTemplateForm;
-use Nemundo\Workflow\App\ContentTemplate\Content\Item\TemplateImageItem;
+use Nemundo\Workflow\App\ContentTemplate\Content\Item\TemplateImageView;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImage;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImageModel;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
@@ -27,10 +27,10 @@ class ImageTemplateContentType extends AbstractTreeContentType   // AbstractData
 
     protected function loadData()
     {
-        $this->objectName = 'Bild';
-        $this->objectId = '265611fc-189f-4d8d-85cf-0b96edad40ef';
+        $this->contentName = 'Bild';
+        $this->contentId = '265611fc-189f-4d8d-85cf-0b96edad40ef';
         //$this->modelClass = ContentTemplateImageModel::class;
-        $this->itemClass = TemplateImageItem::class;
+        $this->viewClass = TemplateImageView::class;
         $this->formClass = ImageContentTemplateForm::class;
 
         //$this->changeWorkflowStatus= false;
@@ -42,7 +42,7 @@ class ImageTemplateContentType extends AbstractTreeContentType   // AbstractData
     }
 
 
-    public function saveItem()
+    public function saveType()
     {
 
         /*
@@ -56,7 +56,7 @@ class ImageTemplateContentType extends AbstractTreeContentType   // AbstractData
     }
 
 
-    public function deleteItem()
+    public function deleteType()
     {
         // TODO: Implement deleteItem() method.
     }

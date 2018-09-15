@@ -21,7 +21,7 @@ class AssignmentBuilder extends AbstractBase
     /**
      * @var string
      */
-    public $dataId;
+    //public $dataId;
 
     /**
      * @var string
@@ -54,8 +54,9 @@ class AssignmentBuilder extends AbstractBase
     {
 
         $data = new Assignment();
-        $data->contentTypeId = $this->contentType->objectId;
-        $data->dataId = $this->dataId;
+        $data->contentTypeId = $this->contentType->contentId;
+        //$data->dataId = $this->dataId;
+        $data->dataId = $this->contentType->dataId;
         $data->subject = $this->subject;
         $data->message = $this->message;
         $data->assignment = $this->assignment;
