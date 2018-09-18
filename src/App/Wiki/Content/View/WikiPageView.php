@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Wiki\Content\View;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Content\Com\ChildContentItemContainer;
+use Nemundo\App\Content\Com\ChildContentViewContainer;
 use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
@@ -40,7 +40,7 @@ class WikiPageView extends AbstractContentView
         //(new Debug())->write('123');
 
 
-        $log = new ChildContentItemContainer($this);
+        $log = new ChildContentViewContainer($this);
         $log->contentType = $wikiContentType;
 
 

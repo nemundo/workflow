@@ -44,16 +44,17 @@ class CollaborationSite extends AbstractSite
 
         new InboxSite($this);
         new InboxStreamSite($this);
-        new WorkflowSite($this);
-        new ProcessSite($this);
-        new StatusChangeLogSite($this);
 
 
-        new TaskSite($this);
-        new TaskAdminSite($this);
+        //new WorkflowSite($this);
+        //new ProcessSite($this);
+        //new StatusChangeLogSite($this);
+        //new TaskSite($this);
+        //new TaskAdminSite($this);
+
         new RepeatingTaskSite($this);
 
-        new ToDoSite($this);
+        //new ToDoSite($this);
 
         new AssignmentSite($this);
 

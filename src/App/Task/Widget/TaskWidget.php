@@ -97,7 +97,6 @@ class TaskWidget extends AbstractAdminWidget
 
             //$row->addText($taskRow->timeEffort);
 
-
             $contentType = $taskRow->contentType->getContentTypeClassObject();
 
             //(new Debug())->write($contentType);

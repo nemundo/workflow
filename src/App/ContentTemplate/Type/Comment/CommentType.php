@@ -3,19 +3,25 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Type\Comment;
 
 
-use Nemundo\App\Content\Type\AbstractTreeContentType;
+use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\Text\Html;
+use Nemundo\Db\DbConfig;
 use Nemundo\Workflow\App\ContentTemplate\Data\Comment\Comment;
 use Nemundo\Workflow\App\ContentTemplate\Data\Comment\CommentReader;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\ContentTemplate\Data\Comment\CommentUpdate;
 
-class CommentType extends \Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus  // AbstractWorkflowStatus  // AbstractTreeContentType
+
+class CommentType extends AbstractWorkflowStatus
 {
 
     /**
      * @var string
      */
     public $comment;
+
+
+    // commentLabel
 
     protected function loadData()
     {
@@ -25,6 +31,8 @@ class CommentType extends \Nemundo\App\Content\Type\Workflow\AbstractWorkflowSta
         $this->viewClass = CommentView::class;
         $this->subject = 'Es wurde was kommentiert';
 
+
+        $this->changeStatus = false;
 
         if ($this->dataId !== null) {
 
@@ -39,11 +47,21 @@ class CommentType extends \Nemundo\App\Content\Type\Workflow\AbstractWorkflowSta
     public function saveType()
     {
 
-        $data = new Comment();
-        $data->comment = $this->comment;
-        $this->dataId = $data->save();
+        if ($this->dataId == null) {
 
-        $this->saveContentLog();
+            $data = new Comment();
+            $data->comment = $this->comment;
+            $this->dataId = $data->save();
+
+            $this->saveContentLog();
+
+        } else {
+
+            $update = new CommentUpdate();
+            $update->comment = $this->comment;
+            $update->updateById($this->dataId);
+
+        }
 
     }
 
