@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Assignment\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentReader;
@@ -67,6 +68,10 @@ class AssignmentWidget extends AbstractAdminWidget
             //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
             //$contentType->dataId = $assignmentRow->dataId;
 
+            if (class_exists($className)) {
+
+
+
             /** @var AbstractContentType $contentType */
             $contentType = new $className($assignmentRow->dataId);
 
@@ -98,6 +103,11 @@ class AssignmentWidget extends AbstractAdminWidget
                 if ($site !== null) {
                     $row->addClickableSite($site);
                 }
+            }
+
+
+            } else {
+                (new LogMessage())->writeError('Class does not exist. Class Name: '.$className);
             }
 
         }

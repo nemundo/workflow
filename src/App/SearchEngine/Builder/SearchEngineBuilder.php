@@ -74,7 +74,6 @@ class SearchEngineBuilder extends AbstractContentBuilder
         $data->resultId = $this->resultId;
         //$data->dataId = $this->dataId;
 
-
         //$data->workflowId = $this->changeEvent->workflowId;
         //$data->searchTextId = $this->searchTextId;
         $data->save();

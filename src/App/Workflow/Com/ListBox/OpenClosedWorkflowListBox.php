@@ -14,17 +14,13 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     /**
      * @var int
      */
-    public $defaultValue = 1;  // (new OpenListBoxItem())->id;  // 1;
-
+    public $defaultValue;
 
     protected function loadCom()
     {
         parent::loadCom();
         $this->name = 'status';
-
-
-
-
+        $this->defaultValue = (new OpenListBoxItem())->id;
     }
 
 
@@ -36,21 +32,30 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
         $this->submitOnChange = true;
         $this->emptyValueAsDefault = false;
 
-        //$this->addItem(0, 'Alle');
-        //$this->addItem(1, 'Offene');
-        //$this->addItem(2, 'Abgeschlossene');
-
         $this->addListBoxItem(new AllListBoxItem());
         $this->addListBoxItem(new OpenListBoxItem());
         $this->addListBoxItem(new ClosedListBoxItem());
 
         if ($this->getValue() == '') {
-            $this->value = $this->defaultValue;  // 0;
+            $this->value = $this->defaultValue;
         } else {
             $this->value = $this->getValue();
         }
 
         return parent::getHtml();
+
+    }
+
+
+    public function getValue()
+    {
+        $value =  parent::getValue();
+
+        if ($value == '') {
+            $value = $this->defaultValue;
+        }
+
+        return $value;
 
     }
 
