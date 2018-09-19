@@ -66,7 +66,7 @@ class CollaborationSite extends AbstractSite
 
         new NewsSite($this);
 
-        new MessageSite($this);
+        //new MessageSite($this);
         new WikiSite($this);
 
         new ContentTypeSite($this);
@@ -74,7 +74,7 @@ class CollaborationSite extends AbstractSite
         //new ContentTreeSite($this);
 
         new SearchEngineSite($this);
-        new WidgetSite($this);
+        //new WidgetSite($this);
 
         new SubscriptionSite($this);
         new MySubscriptionSite($this);
@@ -82,7 +82,7 @@ class CollaborationSite extends AbstractSite
 
         new StreamSite($this);
 
-        new SurveySite($this);
+        //new SurveySite($this);
 
     }
 

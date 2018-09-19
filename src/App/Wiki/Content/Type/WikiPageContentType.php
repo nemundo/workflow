@@ -35,7 +35,7 @@ class WikiPageContentType extends AbstractTreeContentType
         $this->contentId = 'd6a20e68-3463-491f-a76c-bd8a8df1f57e';
 
         $this->formClass = WikiPageContentForm::class;
-        $this->formUpdateClass = WikiPageContentForm::class;  // WikiPageContentFormUpdate::class;
+        //$this->formUpdateClass = WikiPageContentForm::class;  // WikiPageContentFormUpdate::class;
         $this->viewClass = WikiPageView::class;
         $this->itemSite = WikiPageSite::$site;
         $this->parameterClass = WikiPageParameter::class;

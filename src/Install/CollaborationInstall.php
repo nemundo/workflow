@@ -41,30 +41,30 @@ class CollaborationInstall extends AbstractScript
 
         //(new WorkflowInstall())->run();
         //(new WorkflowTemplateInstall())->run();
-        (new CalendarInstall())->run();
+        //(new CalendarInstall())->run();
         (new InboxInstall())->run();
         //(new TaskInstall())->run();
         (new WikiInstall())->run();
-        (new MessageInstall())->run();
+        //(new MessageInstall())->run();
         (new IdentificationInstall())->run();
         (new AssignmentInstall())->run();
         (new NewsInstall())->run();
 
         (new WidgetInstall())->run();
 
-        (new NotificationInstall())->run();
+        //(new NotificationInstall())->run();
 
         //(new PersonalTaskInstall())->run();
         (new RepeatingTaskInstall())->run();
         (new PersonalCalendarInstall())->run();
         (new SearchEngineInstall())->run();
-        (new WidgetInstall())->run();
-        (new ToDoInstall())->run();
+        //(new WidgetInstall())->run();
+        //(new ToDoInstall())->run();
         (new ContentTemplateInstall())->run();
         (new SubscriptionInstall())->run();
         (new FavoriteInstall())->run();
 
-        (new SurveyInstall())->run();
+        //(new SurveyInstall())->run();
         (new StreamInstall())->run();
 
         $setup = new UsergroupSetup();
