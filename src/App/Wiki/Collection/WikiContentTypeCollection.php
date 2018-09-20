@@ -16,7 +16,7 @@ use Schleuniger\App\Absenzmeldung\WorkflowStatus\AbsenzmeldungType;
 use Schleuniger\App\Ecr\Process\Ecr\EcrWorkflowProcess;
 use Schleuniger\App\Kvp\Process\KvpProcess;
 use Schleuniger\App\Task\Content\Type\TaskListType;
-use Schleuniger\App\Task\Content\Type\TaskType;
+use Schleuniger\App\Task\Content\Type\TaskProcess;
 
 
 class WikiContentTypeCollection extends AbstractContentTypeCollection
@@ -30,7 +30,7 @@ class WikiContentTypeCollection extends AbstractContentTypeCollection
         $this->addContentType(new ImageTemplateContentType());
         //$this->addContentType(new KvpProcess());
         $this->addContentType(new EcrWorkflowProcess());
-        $this->addContentType(new TaskType());
+        $this->addContentType(new TaskProcess());
         $this->addContentType(new AbsenzmeldungType());
         $this->addContentType(new TextListType());
         $this->addContentType(new TaskListType());
