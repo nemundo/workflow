@@ -54,30 +54,38 @@ class AssignmentSite extends AbstractSite
         $title->content = $this->title;
 
 
+        /*
         $searchForm = new SearchForm($page);
 
         $row = new BootstrapFormRow($searchForm);
 
         $mitarbeiterListBox = new MitarbeiterListBox($row);
         $mitarbeiterListBox->value = $mitarbeiterListBox->getValue();
-        $mitarbeiterListBox->submitOnChange = true;
+        $mitarbeiterListBox->submitOnChange = true;*/
 
 
         //$table = new AssignmentTable($page);
 
-        $table = new AdminClickableTable($page);
 
-        $header = new TableHeader($table);
-        $header->addText('Type');
-        $header->addText('Subject');
-        $header->addText('Zuweisung');
-        $header->addText('Archiviert');
 
 
         $assignmentReader = new AssignmentPaginationReader();
         $assignmentReader->paginationLimit = 30;
         $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
+
+        $filter = new Filter();
+        foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
+
+            foreach ($identification->getUserIdList() as $value) {
+                $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
+            }
+
+        }
+
+        $assignmentReader->filter->andFilter($filter);
+        
+        /*
         if ($mitarbeiterListBox->getValue() !== null) {
             $filter = new Filter();
             foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
@@ -89,7 +97,17 @@ class AssignmentSite extends AbstractSite
             }
 
             $assignmentReader->filter->andFilter($filter);
-        }
+        }*/
+
+
+
+        $table = new AdminClickableTable($page);
+
+        $header = new TableHeader($table);
+        $header->addText('Quelle');  // 'Type');
+        $header->addText('Betreff');
+        $header->addText('Zuweisung');
+        $header->addText('Archiviert');
 
 
         foreach ($assignmentReader->getData() as $assignmentRow) {
