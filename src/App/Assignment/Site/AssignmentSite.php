@@ -73,7 +73,7 @@ class AssignmentSite extends AbstractSite
         $assignmentReader->paginationLimit = 30;
         $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
-
+/*
         $filter = new Filter();
         foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
 
@@ -84,7 +84,9 @@ class AssignmentSite extends AbstractSite
         }
 
         $assignmentReader->filter->andFilter($filter);
-        
+*/
+
+
         /*
         if ($mitarbeiterListBox->getValue() !== null) {
             $filter = new Filter();
