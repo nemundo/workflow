@@ -67,7 +67,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
         $data->userId = $userId;
         $data->save();
 
-        //$this->sendMail($userId);
+        $this->sendMail($userId);
 
     }
 
@@ -97,10 +97,10 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
         $mail = new ResponsiveActionMailMessage();
         $mail->addTo($userRow->email);
-        $mail->subject = $this->subject;
+        $mail->subject = $this->contentType->getSubject();
         $mail->actionText = $this->message;
         $mail->actionLabel = 'Ansehen';
-        $mail->actionUrlSite = $this->contentType->getItemSite($this->dataId);
+        $mail->actionUrlSite = $this->contentType->getItemSite();
         $mail->sendMail();
 
 

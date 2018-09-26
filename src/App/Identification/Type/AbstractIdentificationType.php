@@ -21,7 +21,11 @@ abstract class AbstractIdentificationType extends AbstractBaseClass
 
     abstract public function getValue($identificationId);
 
+    abstract public function getUserIdListFromIdentificationId($identificationId);
+
     abstract public function getUserIdList();
+
+    abstract public function getIdentificationIdFromUserId($userId);
 
 
     public function __construct()

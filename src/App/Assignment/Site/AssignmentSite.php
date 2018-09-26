@@ -18,6 +18,8 @@ use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentPaginationReader;
 use Nemundo\Workflow\App\Assignment\Parameter\AssignmentParameter;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
+use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Schleuniger\App\Org\Com\MitarbeiterListBox;
 
 
@@ -54,53 +56,54 @@ class AssignmentSite extends AbstractSite
         $title->content = $this->title;
 
 
-        /*
         $searchForm = new SearchForm($page);
 
         $row = new BootstrapFormRow($searchForm);
 
         $mitarbeiterListBox = new MitarbeiterListBox($row);
         $mitarbeiterListBox->value = $mitarbeiterListBox->getValue();
-        $mitarbeiterListBox->submitOnChange = true;*/
+        $mitarbeiterListBox->submitOnChange = true;
 
 
         //$table = new AssignmentTable($page);
 
 
-
-
         $assignmentReader = new AssignmentPaginationReader();
         $assignmentReader->paginationLimit = 30;
+        $assignmentReader->addOrder($assignmentReader->model->archive);
         $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
-/*
-        $filter = new Filter();
-        foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
 
-            foreach ($identification->getUserIdList() as $value) {
-                $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
-            }
-
-        }
-
-        $assignmentReader->filter->andFilter($filter);
-*/
+        //(new UsergroupIdentificationType())
 
 
         /*
-        if ($mitarbeiterListBox->getValue() !== null) {
+                $filter = new Filter();
+                foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
+
+                    foreach ($identification->getUserIdList() as $value) {
+                        $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
+                    }
+
+                }
+
+                $assignmentReader->filter->andFilter($filter);
+        */
+
+
+        $userId = $mitarbeiterListBox->getValue();
+        if ($userId !== '') {
             $filter = new Filter();
             foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
 
-                foreach ($identification->getUserIdList() as $value) {
+                foreach ($identification->getIdentificationIdFromUserId($userId) as $value) {
                     $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
                 }
 
             }
 
             $assignmentReader->filter->andFilter($filter);
-        }*/
-
+        }
 
 
         $table = new AdminClickableTable($page);
@@ -109,6 +112,7 @@ class AssignmentSite extends AbstractSite
         $header->addText('Quelle');  // 'Type');
         $header->addText('Betreff');
         $header->addText('Zuweisung');
+        $header->addText('Erledigen bis');
         $header->addText('Archiviert');
 
 
@@ -129,6 +133,12 @@ class AssignmentSite extends AbstractSite
             $row->addText($contentType->contentName);
             $row->addText($contentType->getSubject());
             $row->addText($assignmentRow->assignment->getValue());
+
+            if ($assignmentRow->deadline !== null) {
+                $row->addText($assignmentRow->deadline->getShortDateLeadingZeroFormat());
+            } else {
+                $row->addEmpty();
+            }
 
             $row->addYesNo($assignmentRow->archive);
             $row->addClickableSite($contentType->getItemSite());

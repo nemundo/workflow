@@ -7,6 +7,8 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\User\Information\UserInformation;
+use Nemundo\Workflow\App\Assignment\Com\Table\AssignmentTable;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentReader;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
@@ -29,6 +31,14 @@ class AssignmentWidget extends AbstractAdminWidget
     public function getHtml()
     {
 
+
+        $table = new AssignmentTable($this);
+        $table->addUserId((new UserInformation())->getUserId());
+
+
+
+
+        /*
         $assignmentReader = new AssignmentReader();
 
 
@@ -73,7 +83,7 @@ class AssignmentWidget extends AbstractAdminWidget
 
 
             /** @var AbstractContentType $contentType */
-            $contentType = new $className($assignmentRow->dataId);
+           /* $contentType = new $className($assignmentRow->dataId);
 
             if ($assignmentRow->deadline !== null) {
                 $trafficLight = new DateTrafficLight($row);
@@ -110,7 +120,7 @@ class AssignmentWidget extends AbstractAdminWidget
                 (new LogMessage())->writeError('Class does not exist. Class Name: '.$className);
             }
 
-        }
+        }*/
 
         return parent::getHtml();
 

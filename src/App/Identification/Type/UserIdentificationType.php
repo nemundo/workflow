@@ -27,6 +27,26 @@ class UserIdentificationType extends AbstractIdentificationType
     }
 
 
+
+    public function getIdentificationIdFromUserId($userId)
+    {
+        $list = [];
+        $list[] =$userId;
+        return $list;
+    }
+
+    public function getUserIdListFromIdentificationId($identificationId)  //($identificationId)
+    {
+
+        $list = [];
+        $list[] = $identificationId;  // (new UserInformation())->getUserId();
+        return $list;
+
+    }
+
+
+
+
     public function getUserIdList()
     {
 
@@ -35,5 +55,9 @@ class UserIdentificationType extends AbstractIdentificationType
         return $list;
 
     }
+
+
+
+
 
 }
