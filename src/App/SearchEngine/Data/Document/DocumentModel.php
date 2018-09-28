@@ -57,6 +57,10 @@ $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
 $this->id->visible->form = false;
 
+$index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->addType($this->contentTypeId);
+$index->addType($this->dataId);
+
 }
 public function loadContentType() {
 if ($this->contentType == null) {

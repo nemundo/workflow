@@ -19,12 +19,12 @@ class SearchEngineBuilder extends AbstractContentBuilder
     /**
      * @var string
      */
-    public $title = '[no title]';
+    //public $title = '[no title]';
 
     /**
      * @var string
      */
-    public $text;
+    //public $text;
 
     /**
      * @var string
@@ -32,23 +32,10 @@ class SearchEngineBuilder extends AbstractContentBuilder
     private $documentId;
 
 
-
-
     private function prepareIndex()
     {
 
         $this->check();
-
-
-        /*
-        if ($this->searchTextId == null) {
-
-            $data = new SearchText();
-            $data->workflowNumber = $this->workflowNumber;
-            $data->text = $this->searchTitle;
-            $this->searchTextId = $data->save();
-        }*/
-
 
     }
 
@@ -70,15 +57,8 @@ class SearchEngineBuilder extends AbstractContentBuilder
 
         $data = new SearchIndex();
         $data->ignoreIfExists = true;
-
-        //$data->processId = $this->process->processId;
         $data->wordId = $wordId;
-        //$data->contentTypeId = $this->contentType->contentId;
         $data->documentId = $this->documentId;
-        //$data->dataId = $this->dataId;
-
-        //$data->workflowId = $this->changeEvent->workflowId;
-        //$data->searchTextId = $this->searchTextId;
         $data->save();
 
     }
@@ -96,34 +76,20 @@ class SearchEngineBuilder extends AbstractContentBuilder
 
     public function createItem()
     {
-        // TODO: Implement createItem() method.
     }
 
 
     private function saveDocument()
     {
 
-
-        $data = new Document();
-        $data->contentTypeId = $this->contentType->contentId;
-        $data->dataId = $this->contentType->dataId;
-        $this->documentId = $data->save();
-
-
-        /*
-        if ($this->resultId == null) {
-
-            if (!$this->checkProperty('title')) {
-                exit;
-            }
-
-            $data = new Result();
-            $data->title = $this->title;
-            $data->dataId = $this->dataId;
-            $this->resultId = $data->save();
-        }*/
+        if ($this->documentId == null) {
+            $data = new Document();
+            $data->ignoreIfExists = true;
+            $data->contentTypeId = $this->contentType->contentId;
+            $data->dataId = $this->contentType->dataId;
+            $this->documentId = $data->save();
+        }
 
     }
-
 
 }

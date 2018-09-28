@@ -3,17 +3,16 @@
 namespace Nemundo\Workflow\App\Task\WorkflowStatus;
 
 
+use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus\CommentTemplateWorkflowStatus;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 
-class TaskCommentWorkflowStatus extends CommentTemplateWorkflowStatus
+class TaskCommentWorkflowStatus extends AbstractWorkflowStatus
 {
 
     protected function loadData()
     {
-
-        parent::loadData();
 
         $this->contentName = 'Kommentar (Task)';
         $this->statusText = 'Aufgabe wurde kommentiert';
