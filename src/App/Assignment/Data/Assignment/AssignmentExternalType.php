@@ -46,6 +46,21 @@ public $dataId;
 */
 public $archive;
 
+/**
+* @var \Nemundo\Model\Type\User\CreatedUserType
+*/
+public $userCreatedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $userCreated;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
+*/
+public $dateTimeCreated;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = AssignmentModel::class;
@@ -108,6 +123,20 @@ $this->archive->aliasFieldName = $this->archive->tableName . "_" . $this->archiv
 $this->archive->label = "Archive";
 $this->addType($this->archive);
 
+$this->userCreatedId = new \Nemundo\Model\Type\User\CreatedUserType();
+$this->userCreatedId->fieldName = "user_created";
+$this->userCreatedId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->userCreatedId->aliasFieldName = $this->userCreatedId->tableName ."_".$this->userCreatedId->fieldName;
+$this->userCreatedId->label = "User Created";
+$this->addType($this->userCreatedId);
+
+$this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType();
+$this->dateTimeCreated->fieldName = "date_time_created";
+$this->dateTimeCreated->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dateTimeCreated->aliasFieldName = $this->dateTimeCreated->tableName . "_" . $this->dateTimeCreated->fieldName;
+$this->dateTimeCreated->label = "Date Time Created";
+$this->addType($this->dateTimeCreated);
+
 }
 public function loadContentType() {
 if ($this->contentType == null) {
@@ -117,6 +146,17 @@ $this->contentType->tableName = $this->parentFieldName . "_" . $this->externalTa
 $this->contentType->aliasFieldName = $this->contentType->tableName ."_".$this->contentType->fieldName;
 $this->contentType->label = "Content Type";
 $this->addType($this->contentType);
+}
+return $this;
+}
+public function loadUserCreated() {
+if ($this->userCreated == null) {
+$this->userCreated = new \Nemundo\User\Data\User\UserExternalType(null, $this->parentFieldName . "_user_created");
+$this->userCreated->fieldName = "user_created";
+$this->userCreated->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->userCreated->aliasFieldName = $this->userCreated->tableName ."_".$this->userCreated->fieldName;
+$this->userCreated->label = "User Created";
+$this->addType($this->userCreated);
 }
 return $this;
 }

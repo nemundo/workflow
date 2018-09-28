@@ -9,12 +9,12 @@ public $id;
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
-public $contentTypeId;
+public $documentId;
 
 /**
-* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentExternalType
 */
-public $contentType;
+public $document;
 
 /**
 * @var \Nemundo\Model\Type\Id\IdType
@@ -25,16 +25,6 @@ public $wordId;
 * @var \Nemundo\Workflow\App\SearchEngine\Data\Word\WordExternalType
 */
 public $word;
-
-/**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
-public $resultId;
-
-/**
-* @var \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType
-*/
-public $result;
 
 protected function loadType() {
 parent::loadType();
@@ -48,12 +38,12 @@ $this->id->aliasFieldName = $this->id->tableName . "_" . $this->id->fieldName;
 $this->id->label = "Id";
 $this->addType($this->id);
 
-$this->contentTypeId = new \Nemundo\Model\Type\Id\IdType();
-$this->contentTypeId->fieldName = "content_type";
-$this->contentTypeId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->contentTypeId->aliasFieldName = $this->contentTypeId->tableName ."_".$this->contentTypeId->fieldName;
-$this->contentTypeId->label = "Content Type";
-$this->addType($this->contentTypeId);
+$this->documentId = new \Nemundo\Model\Type\Id\IdType();
+$this->documentId->fieldName = "document";
+$this->documentId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->documentId->aliasFieldName = $this->documentId->tableName ."_".$this->documentId->fieldName;
+$this->documentId->label = "Document";
+$this->addType($this->documentId);
 
 $this->wordId = new \Nemundo\Model\Type\Id\IdType();
 $this->wordId->fieldName = "word";
@@ -62,22 +52,15 @@ $this->wordId->aliasFieldName = $this->wordId->tableName ."_".$this->wordId->fie
 $this->wordId->label = "Word";
 $this->addType($this->wordId);
 
-$this->resultId = new \Nemundo\Model\Type\Id\IdType();
-$this->resultId->fieldName = "result";
-$this->resultId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->resultId->aliasFieldName = $this->resultId->tableName ."_".$this->resultId->fieldName;
-$this->resultId->label = "Result";
-$this->addType($this->resultId);
-
 }
-public function loadContentType() {
-if ($this->contentType == null) {
-$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
-$this->contentType->fieldName = "content_type";
-$this->contentType->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->contentType->aliasFieldName = $this->contentType->tableName ."_".$this->contentType->fieldName;
-$this->contentType->label = "Content Type";
-$this->addType($this->contentType);
+public function loadDocument() {
+if ($this->document == null) {
+$this->document = new \Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentExternalType(null, $this->parentFieldName . "_document");
+$this->document->fieldName = "document";
+$this->document->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->document->aliasFieldName = $this->document->tableName ."_".$this->document->fieldName;
+$this->document->label = "Document";
+$this->addType($this->document);
 }
 return $this;
 }
@@ -89,17 +72,6 @@ $this->word->tableName = $this->parentFieldName . "_" . $this->externalTableName
 $this->word->aliasFieldName = $this->word->tableName ."_".$this->word->fieldName;
 $this->word->label = "Word";
 $this->addType($this->word);
-}
-return $this;
-}
-public function loadResult() {
-if ($this->result == null) {
-$this->result = new \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType(null, $this->parentFieldName . "_result");
-$this->result->fieldName = "result";
-$this->result->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->result->aliasFieldName = $this->result->tableName ."_".$this->result->fieldName;
-$this->result->label = "Result";
-$this->addType($this->result);
 }
 return $this;
 }

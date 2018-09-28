@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Assignment\Com\Table;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Filter\Filter;
@@ -17,6 +18,11 @@ use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 
 class AssignmentTable extends AbstractHtmlContainerList
 {
+
+    /**
+     * @var Filter
+     */
+    public $filter;
 
     /**
      * @var bool
@@ -39,112 +45,136 @@ class AssignmentTable extends AbstractHtmlContainerList
     {
 
 
-        if (sizeof($this->userIdList) > 0) {
+        //if (sizeof($this->userIdList) > 0) {
 
-            $assignmentReader = new AssignmentPaginationReader();
-            $assignmentReader->paginationLimit = 30;
+        $assignmentReader = new AssignmentPaginationReader();
 
-            //$userId = $mitarbeiterListBox->getValue();
-            //if ($userId !== '') {
+        if ($this->filter !== null) {
+            $assignmentReader->filter = $this->filter;
+        }
 
-            $filter = new Filter();
-            foreach ($this->userIdList as $userId) {
+        $assignmentReader->paginationLimit = 30;
 
-                foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
+        //$userId = $mitarbeiterListBox->getValue();
+        //if ($userId !== '') {
 
-                    foreach ($identification->getIdentificationIdFromUserId($userId) as $value) {
-                        $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
-                    }
 
+        /*
+        $filter = new Filter();
+        foreach ($this->userIdList as $userId) {
+
+            foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
+
+                foreach ($identification->getIdentificationIdFromUserId($userId) as $value) {
+                    $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
                 }
 
             }
 
-
-            $assignmentReader->filter->andFilter($filter);
-
-            $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
+        }
 
 
-            if ($this->showArchive) {
+        $assignmentReader->filter->andFilter($filter);
+
+        $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);*/
 
 
-            }
-
-
-            $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
-
-            //$assignmentReader->limit = 20;
-
-            $table = new AdminClickableTable($this);
-
-            $header = new TableHeader($table);
-            $header->addEmpty();
-            $header->addText('Quelle');
-            $header->addText('Betreff');
-            $header->addText('Nachricht');
-            $header->addText('Zuweisung');
-            $header->addText('Erledigen bis');
-
-            foreach ($assignmentReader->getData() as $assignmentRow) {
-
-                $row = new BootstrapClickableTableRow($table);
-
-                $className = $assignmentRow->contentType->contentTypeClass;
-
-                //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
-                //$contentType->dataId = $assignmentRow->dataId;
-
-                if (class_exists($className)) {
-
-
-                    /** @var AbstractContentType $contentType */
-                    $contentType = new $className($assignmentRow->dataId);
-
-                    if ($assignmentRow->deadline !== null) {
-                        $trafficLight = new DateTrafficLight($row);
-                        $trafficLight->date = $assignmentRow->deadline;
-                    } else {
-                        $row->addEmpty();
-                    }
-
-                    $row->addText($assignmentRow->contentType->contentType);
-
-                    //$row->addText($assignmentRow->subject);
-
-                    $row->addText($contentType->getSubject());
-                    $row->addText($assignmentRow->message);
-                    $row->addText($assignmentRow->assignment->getValue());
-
-                    if ($assignmentRow->deadline !== null) {
-                        $row->addText($assignmentRow->deadline->getShortDateLeadingZeroFormat());
-                    } else {
-                        $row->addEmpty();
-                    }
-
-                    //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
-
-                    if ($contentType !== null) {
-                        $site = $contentType->getItemSite();
-
-                        if ($site !== null) {
-                            $row->addClickableSite($site);
-                        }
-                    }
-
-
-                } else {
-                    (new LogMessage())->writeError('Class does not exist. Class Name: ' . $className);
-                }
-
-            }
-
-
-            $pagination = new BootstrapModelPagination($this);
-            $pagination->paginationReader = $assignmentReader;
+        if ($this->showArchive) {
 
 
         }
+
+
+        $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
+
+        //$assignmentReader->limit = 20;
+
+        $table = new AdminClickableTable($this);
+
+        $header = new TableHeader($table);
+        $header->addEmpty();
+        $header->addText('Quelle');
+        $header->addText('Source');
+        $header->addText('Betreff');
+        $header->addText('Nachricht');
+        $header->addText('Zuweisung');
+        $header->addText('Erledigen bis');
+
+        foreach ($assignmentReader->getData() as $assignmentRow) {
+
+            $row = new BootstrapClickableTableRow($table);
+
+            $className = $assignmentRow->contentType->contentTypeClass;
+
+            //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
+            //$contentType->dataId = $assignmentRow->dataId;
+
+            //if (class_exists($className)) {
+
+
+            /** @var AbstractTreeContentType $contentType */
+            $contentType = new $className($assignmentRow->dataId);
+
+            if ($assignmentRow->deadline !== null) {
+                $trafficLight = new DateTrafficLight($row);
+                $trafficLight->date = $assignmentRow->deadline;
+            } else {
+                $row->addEmpty();
+            }
+
+            $row->addText($assignmentRow->contentType->contentType);
+
+            //$row->addText($assignmentRow->subject);
+            $source = $assignmentRow->contentType->contentType;
+            if ($contentType->isObjectOfClass(AbstractTreeContentType::class)) {
+
+                $parentType = $contentType->getParent();
+
+                if ($parentType !== null) {
+
+                    $source = $parentType->getSubject();
+
+
+                }
+
+
+            }
+            $row->addText($source);
+
+
+            $row->addText($contentType->getSubject());
+            $row->addText($assignmentRow->message);
+            $row->addText($assignmentRow->assignment->getValue());
+
+            if ($assignmentRow->deadline !== null) {
+                $row->addText($assignmentRow->deadline->getShortDateLeadingZeroFormat());
+            } else {
+                $row->addEmpty();
+            }
+
+            //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
+
+            if ($contentType !== null) {
+                $site = $contentType->getItemSite();
+
+                if ($site !== null) {
+                    $row->addClickableSite($site);
+                }
+            }
+
+
+            /*     } else {
+                     (new LogMessage())->writeError('Class does not exist. Class Name: ' . $className);
+                 }
+
+             }*/
+        }
+
+        $pagination = new BootstrapModelPagination($this);
+        $pagination->paginationReader = $assignmentReader;
+
+
+        //}
 
         return parent::getHtml();
 

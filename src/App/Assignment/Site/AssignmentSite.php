@@ -11,6 +11,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Assignment\Com\Form\AssignmentSearchForm;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentTable;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Com\TableBuilder\TableHeader;
@@ -33,9 +34,9 @@ class AssignmentSite extends AbstractSite
 
     protected function loadSite()
     {
-        $this->title = 'Aufgaben (Zuweisung)';
-        $this->url = 'assignment';
 
+        $this->title = 'Aufgaben';
+        $this->url = 'assignment';
 
     }
 
@@ -56,13 +57,22 @@ class AssignmentSite extends AbstractSite
         $title->content = $this->title;
 
 
+        $searchForm = new AssignmentSearchForm($page);
+
+
+        $table = new \Nemundo\Workflow\App\Assignment\Com\Table\AssignmentTable($page);
+        $table->filter = $searchForm->getFilter();
+
+
+
+        /*
         $searchForm = new SearchForm($page);
 
         $row = new BootstrapFormRow($searchForm);
 
         $mitarbeiterListBox = new MitarbeiterListBox($row);
         $mitarbeiterListBox->value = $mitarbeiterListBox->getValue();
-        $mitarbeiterListBox->submitOnChange = true;
+        $mitarbeiterListBox->submitOnChange = true;*/
 
 
         //$table = new AssignmentTable($page);
@@ -70,6 +80,7 @@ class AssignmentSite extends AbstractSite
 
         $assignmentReader = new AssignmentPaginationReader();
         $assignmentReader->paginationLimit = 30;
+        $assignmentReader->filter = $searchForm->getFilter();
         $assignmentReader->addOrder($assignmentReader->model->archive);
         $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
@@ -90,7 +101,7 @@ class AssignmentSite extends AbstractSite
                 $assignmentReader->filter->andFilter($filter);
         */
 
-
+/*
         $userId = $mitarbeiterListBox->getValue();
         if ($userId !== '') {
             $filter = new Filter();
@@ -103,7 +114,7 @@ class AssignmentSite extends AbstractSite
             }
 
             $assignmentReader->filter->andFilter($filter);
-        }
+        }*/
 
 
         $table = new AdminClickableTable($page);
@@ -113,6 +124,7 @@ class AssignmentSite extends AbstractSite
         $header->addText('Betreff');
         $header->addText('Zuweisung');
         $header->addText('Erledigen bis');
+        $header->addText('Ersteller');
         $header->addText('Archiviert');
 
 
@@ -139,6 +151,9 @@ class AssignmentSite extends AbstractSite
             } else {
                 $row->addEmpty();
             }
+
+
+            $row->addText($assignmentRow->userCreated->displayName.' '.$assignmentRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
             $row->addYesNo($assignmentRow->archive);
             $row->addClickableSite($contentType->getItemSite());

@@ -51,6 +51,21 @@ public $dataId;
 */
 public $archive;
 
+/**
+* @var string
+*/
+public $userCreatedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserRow
+*/
+public $userCreated;
+
+/**
+* @var \Nemundo\Core\Type\DateTime\DateTime
+*/
+public $dateTimeCreated;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -69,8 +84,16 @@ $this->deadline = new \Nemundo\Core\Type\DateTime\Date($this->getModelValue($mod
 }
 $this->dataId = $this->getModelValue($model->dataId);
 $this->archive = $this->getModelValue($model->archive);
+$this->userCreatedId = $this->getModelValue($model->userCreatedId);
+if ($model->userCreated !== null) {
+$this->loadNemundoUserDataUserUseruserCreatedRow($model->userCreated);
+}
+$this->dateTimeCreated = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTimeCreated));
 }
 private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
+}
+private function loadNemundoUserDataUserUseruserCreatedRow($model) {
+$this->userCreated = new \Nemundo\User\Data\User\UserRow($this->row, $model);
 }
 }

@@ -10,6 +10,7 @@ use Nemundo\Db\DbConfig;
 use Nemundo\Workflow\App\ContentTemplate\Data\Comment\Comment;
 use Nemundo\Workflow\App\ContentTemplate\Data\Comment\CommentReader;
 use Nemundo\Workflow\App\ContentTemplate\Data\Comment\CommentUpdate;
+use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 
 
 class CommentType extends AbstractWorkflowStatus
@@ -54,6 +55,14 @@ class CommentType extends AbstractWorkflowStatus
             $this->dataId = $data->save();
 
             $this->saveContentLog();
+
+
+            $builder = new SearchEngineBuilder();
+            $builder->contentType = $this;
+            $builder->addText($this->comment);
+
+
+
 
         } else {
 

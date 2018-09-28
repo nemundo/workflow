@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Builder;
 
 
 use Nemundo\Core\Text\Keyword;
+use Nemundo\Workflow\App\SearchEngine\Data\Document\Document;
 use Nemundo\Workflow\App\SearchEngine\Data\Result\Result;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
@@ -28,7 +29,9 @@ class SearchEngineBuilder extends AbstractContentBuilder
     /**
      * @var string
      */
-    private $resultId;
+    private $documentId;
+
+
 
 
     private function prepareIndex()
@@ -54,7 +57,7 @@ class SearchEngineBuilder extends AbstractContentBuilder
     {
 
         $this->prepareIndex();
-        $this->saveResult();
+        $this->saveDocument();
 
         $data = new Word();
         $data->ignoreIfExists = true;
@@ -70,8 +73,8 @@ class SearchEngineBuilder extends AbstractContentBuilder
 
         //$data->processId = $this->process->processId;
         $data->wordId = $wordId;
-        $data->contentTypeId = $this->contentType->contentId;
-        $data->resultId = $this->resultId;
+        //$data->contentTypeId = $this->contentType->contentId;
+        $data->documentId = $this->documentId;
         //$data->dataId = $this->dataId;
 
         //$data->workflowId = $this->changeEvent->workflowId;
@@ -97,9 +100,17 @@ class SearchEngineBuilder extends AbstractContentBuilder
     }
 
 
-    private function saveResult()
+    private function saveDocument()
     {
 
+
+        $data = new Document();
+        $data->contentTypeId = $this->contentType->contentId;
+        $data->dataId = $this->contentType->dataId;
+        $this->documentId = $data->save();
+
+
+        /*
         if ($this->resultId == null) {
 
             if (!$this->checkProperty('title')) {
@@ -110,7 +121,7 @@ class SearchEngineBuilder extends AbstractContentBuilder
             $data->title = $this->title;
             $data->dataId = $this->dataId;
             $this->resultId = $data->save();
-        }
+        }*/
 
     }
 

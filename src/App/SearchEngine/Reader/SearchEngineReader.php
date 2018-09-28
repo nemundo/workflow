@@ -32,7 +32,7 @@ class SearchEngineReader extends AbstractDataSource
             $indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
             $indexReader->model->loadContentType();
-            $indexReader->model->loadResult();
+            //$indexReader->model->loadResult();
 
             //$indexReader->model->loadApplicationType();
             //$indexReader->model->loadSearchText();

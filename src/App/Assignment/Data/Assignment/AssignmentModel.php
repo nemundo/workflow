@@ -46,6 +46,21 @@ public $dataId;
 */
 public $archive;
 
+/**
+* @var \Nemundo\Model\Type\User\CreatedUserType
+*/
+public $userCreatedId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $userCreated;
+
+/**
+* @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
+*/
+public $dateTimeCreated;
+
 protected function loadModel() {
 $this->tableName = "assignment_assignment";
 $this->aliasTableName = "assignment_assignment";
@@ -118,6 +133,21 @@ $this->archive->aliasFieldName = "assignment_assignment_archive";
 $this->archive->label = "Archive";
 $this->archive->allowNullValue = "";
 
+$this->userCreatedId = new \Nemundo\Model\Type\User\CreatedUserType($this);
+$this->userCreatedId->tableName = "assignment_assignment";
+$this->userCreatedId->fieldName = "user_created";
+$this->userCreatedId->aliasFieldName = "assignment_assignment_user_created";
+$this->userCreatedId->label = "User Created";
+$this->loadUserCreated();
+
+$this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
+$this->dateTimeCreated->tableName = "assignment_assignment";
+$this->dateTimeCreated->fieldName = "date_time_created";
+$this->dateTimeCreated->aliasFieldName = "assignment_assignment_date_time_created";
+$this->dateTimeCreated->label = "Date Time Created";
+$this->dateTimeCreated->allowNullValue = "";
+$this->dateTimeCreated->visible->form = false;
+
 }
 public function loadContentType() {
 if ($this->contentType == null) {
@@ -126,6 +156,16 @@ $this->contentType->tableName = "assignment_assignment";
 $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "assignment_assignment_content_type";
 $this->contentType->label = "Content Type";
+}
+}
+public function loadUserCreated() {
+if ($this->userCreated == null) {
+$this->userCreated = new \Nemundo\User\Data\User\UserExternalType($this, "assignment_assignment_user_created");
+$this->userCreated->tableName = "assignment_assignment";
+$this->userCreated->fieldName = "user_created";
+$this->userCreated->aliasFieldName = "assignment_assignment_user_created";
+$this->userCreated->label = "User Created";
+$this->userCreated->visible->form = false;
 }
 }
 }
