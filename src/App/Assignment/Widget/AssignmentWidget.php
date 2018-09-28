@@ -21,8 +21,8 @@ class AssignmentWidget extends AbstractAdminWidget
     public function getHtml()
     {
 
-
         $table = new AssignmentTable($this);
+        $table->showArchive=false;
         $table->addUserId((new UserInformation())->getUserId());
 
         return parent::getHtml();

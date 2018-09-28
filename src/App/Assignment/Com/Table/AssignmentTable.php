@@ -8,6 +8,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
@@ -29,7 +30,7 @@ class AssignmentTable extends AbstractHtmlContainerList
      */
     public $showAssignment = true;
 
-    public $showArchive = false;
+    public $showArchive = true;
 
 
     private $userIdList = [];
@@ -44,9 +45,6 @@ class AssignmentTable extends AbstractHtmlContainerList
     public function getHtml()
     {
 
-
-        //if (sizeof($this->userIdList) > 0) {
-
         $assignmentReader = new AssignmentPaginationReader();
 
         if ($this->filter !== null) {
@@ -55,34 +53,27 @@ class AssignmentTable extends AbstractHtmlContainerList
 
         $assignmentReader->paginationLimit = 30;
 
-        //$userId = $mitarbeiterListBox->getValue();
-        //if ($userId !== '') {
 
+        if (sizeof($this->userIdList) > 0) {
+            $filter = new Filter();
+            foreach ($this->userIdList as $userId) {
 
-        /*
-        $filter = new Filter();
-        foreach ($this->userIdList as $userId) {
+                foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
 
-            foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {
+                    foreach ($identification->getIdentificationIdFromUserId($userId) as $value) {
+                        $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
+                    }
 
-                foreach ($identification->getIdentificationIdFromUserId($userId) as $value) {
-                    $filter->orEqual($assignmentReader->model->assignment->identificationId, $value);
                 }
 
             }
 
+            $assignmentReader->filter->andFilter($filter);
+            $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
         }
 
 
-        $assignmentReader->filter->andFilter($filter);
 
-        $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);*/
-
-
-        if ($this->showArchive) {
-
-
-        }
 
 
         $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
@@ -99,6 +90,10 @@ class AssignmentTable extends AbstractHtmlContainerList
         $header->addText('Nachricht');
         $header->addText('Zuweisung');
         $header->addText('Erledigen bis');
+        $header->addText('Ersteller');
+        if ($this->showArchive) {
+            $header->addText('Archiviert');
+        }
 
         foreach ($assignmentReader->getData() as $assignmentRow) {
 
@@ -154,12 +149,23 @@ class AssignmentTable extends AbstractHtmlContainerList
 
             //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
 
+            $row->addText($assignmentRow->userCreated->displayName.' '.$assignmentRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+
+            if ($this->showArchive) {
+                $row->addYesNo($assignmentRow->archive);
+            }
+
+
             if ($contentType !== null) {
                 $site = $contentType->getItemSite();
 
                 if ($site !== null) {
                     $row->addClickableSite($site);
+                } else {
+                    (new LogMessage())->writeError('No Site');
                 }
+            } else {
+                (new LogMessage())->writeError('No Content Type');
             }
 
 

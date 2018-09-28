@@ -3,25 +3,9 @@
 namespace Nemundo\Workflow\App\Assignment\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Db\Filter\Filter;
-use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
-use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Assignment\Com\Form\AssignmentSearchForm;
-use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentTable;
-use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
-use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentPaginationReader;
-use Nemundo\Workflow\App\Assignment\Parameter\AssignmentParameter;
-use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
-use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
-use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
-use Schleuniger\App\Org\Com\MitarbeiterListBox;
 
 
 class AssignmentSite extends AbstractSite
@@ -59,7 +43,6 @@ class AssignmentSite extends AbstractSite
 
         $searchForm = new AssignmentSearchForm($page);
 
-
         $table = new \Nemundo\Workflow\App\Assignment\Com\Table\AssignmentTable($page);
         $table->filter = $searchForm->getFilter();
 
@@ -77,7 +60,7 @@ class AssignmentSite extends AbstractSite
 
         //$table = new AssignmentTable($page);
 
-
+/*
         $assignmentReader = new AssignmentPaginationReader();
         $assignmentReader->paginationLimit = 30;
         $assignmentReader->filter = $searchForm->getFilter();
@@ -116,7 +99,7 @@ class AssignmentSite extends AbstractSite
             $assignmentReader->filter->andFilter($filter);
         }*/
 
-
+/*
         $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
@@ -136,7 +119,7 @@ class AssignmentSite extends AbstractSite
             $class = $assignmentRow->contentType->contentTypeClass;
 
             /** @var AbstractContentType $contentType */
-            $contentType = new $class($assignmentRow->dataId);
+  /*          $contentType = new $class($assignmentRow->dataId);
 
             //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
             //$contentType->dataId = $assignmentRow->dataId;
@@ -165,10 +148,10 @@ class AssignmentSite extends AbstractSite
             $row->addIconSite($site);*/
 
 
-        }
+    /*    }
 
         $pagination = new BootstrapModelPagination($page);
-        $pagination->paginationReader = $assignmentReader;
+        $pagination->paginationReader = $assignmentReader;*/
 
 
         $page->render();
