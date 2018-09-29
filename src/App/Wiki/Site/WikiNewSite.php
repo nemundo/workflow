@@ -10,6 +10,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Model\Form\ModelForm;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
+use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
 use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 use Nemundo\Workflow\App\Wiki\Form\WikiForm;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
@@ -43,7 +44,13 @@ class WikiNewSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $contentTypeId = (new ContentTypeParameter())->getValue();
+
+        $form = (new WikiPageContentType())->getForm($page);
+
+
+
+
+        /*$contentTypeId = (new ContentTypeParameter())->getValue();
 
         $pageParameter = new WikiPageParameter();
 
@@ -54,7 +61,7 @@ class WikiNewSite extends AbstractSite
         $contentType = (new ContentTypeFactory())->getContentTypeByParameter();
 
         $title = new AdminTitle($page);
-        $title->content = $contentType->name;
+        $title->content = $contentType->objectName;
 
         $redirectSite = clone(WikiPageSite::$site);
         $redirectSite->addParameter($pageParameter);

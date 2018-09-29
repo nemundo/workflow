@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Inbox\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Com\Html\Basic\Br;
 use Nemundo\Com\Html\Table\Tr;
 use Nemundo\Com\TableBuilder\TableCell;
@@ -28,7 +29,7 @@ class InboxWidget extends AbstractAdminWidget
     protected function loadWidget()
     {
 
-        $this->widgetTitle = 'Inbox';
+        $this->widgetTitle = 'Benachrichtigungen';  // 'Inbox';
         $this->widgetSite = InboxSite::$site;  // InboxStreamSite::$site;
 
     }
@@ -59,7 +60,7 @@ class InboxWidget extends AbstractAdminWidget
             $row = new BootstrapClickableTableRow($table);
             //$row->addText($inboxRow->contentType->contentType);
 
-            $text = $inboxRow->subject;
+            //$subject = $inboxRow->subject;
             $message = $inboxRow->message;
             /*if ($inboxRow->message !== '') {
                 $text .= ':' . (new Br())->getHtmlString() . $inboxRow->message;
@@ -67,17 +68,29 @@ class InboxWidget extends AbstractAdminWidget
 
             $dateTime = $inboxRow->dateTime->getShortDateTimeLeadingZeroFormat();
 
-            $contentType = $inboxRow->contentType->getContentTypeClassObject();
-            $source = $contentType->name;
+            //$contentType = $inboxRow->contentType->getContentTypeClassObject();
+            //$contentType->dataId = $inboxRow->dataId;
+
+            $className = $inboxRow->contentType->contentTypeClass;
+
+            /** @var AbstractContentType $contentType */
+            $contentType = new $className($inboxRow->dataId);
+
+
+            $subject = $contentType->getSubject();
+
+
+
+            $source = $contentType->contentName;
 
 
             if ($inboxRow->read == 0) {
-                $row->addBoldText($text);
+                $row->addBoldText($subject);
                 $row->addBoldText($message);
                 $row->addBoldText($dateTime);
                 $row->addBoldText($source);
             } else {
-                $row->addText($text);
+                $row->addText($subject);
                 $row->addText($message);
                 $row->addText($dateTime);
                 $row->addText($source);
@@ -97,7 +110,7 @@ class InboxWidget extends AbstractAdminWidget
             $row->addIconSite($site);
 
 
-            $site = $contentType->getItemSite($inboxRow->dataId);
+            $site = $contentType->getItemSite();
             if ($site !== null) {
                 //$row->addClickableSite($site);
 

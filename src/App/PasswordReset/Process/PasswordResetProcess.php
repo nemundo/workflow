@@ -15,8 +15,8 @@ class PasswordResetProcess extends AbstractProcess
     protected function loadData()
     {
 
-        $this->name = 'Passoword Reset';
-        $this->id = '087867de-bef4-4a08-8922-0367057481ae';
+        $this->contentName = 'Passoword Reset';
+        $this->contentId = '087867de-bef4-4a08-8922-0367057481ae';
         $this->modelClass = PasswordResetRequestModel::class;
         $this->startWorkflowStatusClass = PasswordResetStartWorkflowStatus::class;
 

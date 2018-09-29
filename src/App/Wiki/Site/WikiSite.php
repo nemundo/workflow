@@ -56,12 +56,18 @@ class WikiSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+
+        $btn = new AdminButton($page);
+        $btn->content = 'New';
+        $btn->site = WikiNewSite::$site;
+
+
         //$form = new WikiPageForm($page);
         //$form->model->action->addInsertAction(new WikiPageAction());
 
         //$form = new WikiPageContentForm($page);
 
-        (new WikiPageContentType())->getForm($page);
+        //(new WikiPageContentType())->getForm($page);
 
 
         $list = new BootstrapHyperlinkList($page);

@@ -27,9 +27,9 @@ class NewsInstall extends AbstractScript
         $setup->addCollection(new NewsCollection());
 
         $setup = new ContentTypeSetup();
-        $setup->addContentType(new NewsContentType());
+      /*  $setup->addContentType(new NewsContentType());
         $setup->addContentType(new CommentContentType());
-        $setup->addContentType(new BreakingNewsContentType());
+        $setup->addContentType(new BreakingNewsContentType());*/
 
         $setup = new ScriptSetup();
         $setup->application = new NewsApplication();

@@ -38,7 +38,7 @@ $this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userId->tableName = "workflow_template_user_assignment_change";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_template_user_assignment_change_user";
-$this->userId->label = "User";
+$this->userId->label = "Mitarbeiter";
 $this->loadUser();
 
 }
@@ -48,7 +48,7 @@ $this->user = new \Nemundo\User\Data\User\UserExternalType($this, "workflow_temp
 $this->user->tableName = "workflow_template_user_assignment_change";
 $this->user->fieldName = "user";
 $this->user->aliasFieldName = "workflow_template_user_assignment_change_user";
-$this->user->label = "User";
+$this->user->label = "Mitarbeiter";
 $this->user->validation = true;
 }
 }

@@ -33,7 +33,7 @@ $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "workflow_template_deadline_change";
 $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "workflow_template_deadline_change_deadline";
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Datum";
 $this->deadline->validation = true;
 $this->deadline->allowNullValue = "";
 

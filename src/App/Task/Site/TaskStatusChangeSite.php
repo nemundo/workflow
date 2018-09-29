@@ -9,6 +9,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Task\Item\TaskItem;
 use Nemundo\Workflow\App\Task\Parameter\TaskParameter;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
@@ -49,6 +50,13 @@ class TaskStatusChangeSite extends AbstractSite
 
         $contentType = (new ContentTypeFactory())->getContentTypeByParameter();
 
+        $workflowReader = new WorkflowReader();
+        $workflowReader->model->loadProcess();
+        $workflowRow = $workflowReader->getRowById($workflowId);
+        $process = $workflowRow->process->getProcessClassObject();
+
+
+
         $event = new WorkflowEvent();
         $event->workflowStatus = $contentType;
         $event->workflowId = $workflowId;
@@ -56,8 +64,10 @@ class TaskStatusChangeSite extends AbstractSite
 
         $form = $contentType->getForm($page);
         $form->afterSubmitEvent->addEvent($event);
-        $form->redirectSite = TaskItemSite::$site;  // PersonalTaskItemSite::$site;
-        $form->redirectSite->addParameter(new TaskParameter($workflowId));
+        $form->redirectSite = $process->getItemSite($workflowId);
+
+        //$form->redirectSite = TaskItemSite::$site;  // PersonalTaskItemSite::$site;
+        //$form->redirectSite->addParameter(new TaskParameter($workflowId));
 
 
         //$personalTaskRow = (new PersonalTaskReader())->getRowById()

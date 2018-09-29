@@ -15,11 +15,11 @@ class TaskProcess extends AbstractProcess
 
     protected function loadData()
     {
-        $this->name = 'Aufgabe';
-        $this->id = 'a480102a-6e69-4233-986d-f37db267e5aa';
+        $this->contentName = 'Aufgabe';
+        $this->contentId = 'a480102a-6e69-4233-986d-f37db267e5aa';
 
-        $this->itemClass = TaskProcessContentItem::class;
-        $this->itemSite = TaskItemSite::$site;
+        $this->viewClass = TaskProcessContentItem::class;
+        $this->itemSite =  TaskItemSite::$site;
         $this->parameterClass = TaskParameter::class;
         $this->prefix = 'T-';
         $this->modelClass = TaskModel::class;

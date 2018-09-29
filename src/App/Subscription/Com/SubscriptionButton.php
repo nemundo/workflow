@@ -40,7 +40,7 @@ class SubscriptionButton extends AbstractHtmlContainerList
     {
 
         $count = new SubscriptionCount();
-        $count->filter->andEqual($count->model->contentTypeId, $this->contentType->id);
+        $count->filter->andEqual($count->model->contentTypeId, $this->contentType->contentId);
         $count->filter->andEqual($count->model->dataId, $this->dataId);
         $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
 
@@ -54,7 +54,7 @@ class SubscriptionButton extends AbstractHtmlContainerList
             $button->content = $this->label;  // 'Abonnieren';
             $button->site = SubscriptionSite::$site;
             $button->site->addParameter(new DataIdParameter($this->dataId));
-            $button->site->addParameter(new ContentTypeParameter($this->contentType->id));
+            $button->site->addParameter(new ContentTypeParameter($this->contentType->contentId));
 
         } else {
 
@@ -63,7 +63,7 @@ class SubscriptionButton extends AbstractHtmlContainerList
             $link->site = SubscriptionDeleteSite::$site;
             //$button->site->addParameter(new SubscriptionParameter())
             $link->site->addParameter(new DataIdParameter($this->dataId));
-            $link->site->addParameter(new ContentTypeParameter($this->contentType->id));
+            $link->site->addParameter(new ContentTypeParameter($this->contentType->contentId));
 
             $icon = new FontAwesome($link);
             $icon->icon = 'star';

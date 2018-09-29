@@ -27,7 +27,7 @@ $this->deadline = new \Nemundo\Model\Type\DateTime\DateType();
 $this->deadline->fieldName = "deadline";
 $this->deadline->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->deadline->aliasFieldName = $this->deadline->tableName . "_" . $this->deadline->fieldName;
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Datum";
 $this->addType($this->deadline);
 
 }

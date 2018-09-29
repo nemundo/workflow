@@ -54,6 +54,8 @@ class TaskSite extends AbstractSite
         new TaskItemSite($this);
         new TaskStatusChangeSite($this);
 
+        new SourceTaskItemSite($this);
+
         //new PersonalTaskItemSite($this);
         //new PersonalTaskNewSite($this);
 

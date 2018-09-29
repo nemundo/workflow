@@ -12,8 +12,8 @@ class SubjectChangeWorkflowStatus extends AbstractDataWorkflowStatus
     protected function loadData()
     {
 
-        $this->name = 'Change Subject';
-        $this->id = 'bea4e096-e356-4b07-886e-8c5533f052d5';
+        $this->contentName = 'Change Subject';
+        $this->contentId = 'bea4e096-e356-4b07-886e-8c5533f052d5';
         $this->changeWorkflowStatus = false;
         $this->modelClass = SubjectChangeModel::class;
 

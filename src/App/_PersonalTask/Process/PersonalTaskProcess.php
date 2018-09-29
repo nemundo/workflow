@@ -17,11 +17,11 @@ class PersonalTaskProcess extends AbstractProcess
     protected function loadData()
     {
 
-        $this->name = 'Aufgaben';
+        $this->contentName = 'Aufgaben';
         $this->description = 'Aufgabenvewaltung';
-        $this->id = 'f340fd8d-3bb4-455e-ae1d-118e6ec7c654';
+        $this->contentId = 'f340fd8d-3bb4-455e-ae1d-118e6ec7c654';
 
-        $this->itemClass = PersonalTaskContentItem::class;
+        $this->viewClass = PersonalTaskContentItem::class;
         $this->itemSite = PersonalTaskItemSite::$site;
         $this->prefix = 'T-';
         $this->modelClass = PersonalTaskModel::class;

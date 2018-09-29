@@ -2,11 +2,7 @@
 
 namespace Nemundo\Workflow\App\Identification\Type;
 
-// Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType
-
-use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\Db\Filter\Filter;
 
 abstract class AbstractIdentificationType extends AbstractBaseClass
 {
@@ -23,20 +19,18 @@ abstract class AbstractIdentificationType extends AbstractBaseClass
 
     abstract protected function loadIdentification();
 
-    //abstract public function getFilter(Filter $filter);
-
     abstract public function getValue($identificationId);
 
-    abstract public function getIdentificationIdList();
+    abstract public function getUserIdListFromIdentificationId($identificationId);
+
+    abstract public function getUserIdList();
+
+    abstract public function getIdentificationIdFromUserId($userId);
 
 
     public function __construct()
     {
         $this->loadIdentification();
     }
-
-
-    // getSite --> für Mitglieder
-
 
 }

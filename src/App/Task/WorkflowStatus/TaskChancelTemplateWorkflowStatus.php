@@ -15,8 +15,8 @@ class TaskChancelTemplateWorkflowStatus extends CommentTemplateWorkflowStatus
     {
         parent::loadData();
 
-        $this->name = 'Task abbrechen';
-        $this->id = 'e0679af6-b663-4430-a559-bfdfb6e67fc6';
+        $this->contentName = 'Task abbrechen';
+        $this->contentId = 'e0679af6-b663-4430-a559-bfdfb6e67fc6';
         $this->closingWorkflow = true;
 
 

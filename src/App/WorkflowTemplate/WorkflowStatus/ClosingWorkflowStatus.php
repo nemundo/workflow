@@ -14,9 +14,9 @@ class ClosingWorkflowStatus extends AbstractDataWorkflowStatus
 
         //$this->workflowStatus = 'Close Workflow';
         //$this->workflowStatusText = 'Workflow was closed';
-        $this->name = 'Workflow abschliessen';
+        $this->contentName = 'Workflow abschliessen';
         //$this->workflowStatusText = 'Workflow wurde abgeschlossen';
-        $this->id = '0f5475a0-70a5-420e-957a-e6714fe5b85e';
+        $this->contentId = '0f5475a0-70a5-420e-957a-e6714fe5b85e';
         $this->modelClass = CommentModel::class;
         $this->closingWorkflow = true;
 

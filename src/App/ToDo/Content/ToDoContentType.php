@@ -18,9 +18,9 @@ class ToDoContentType extends AbstractContentType
 
     protected function loadData()
     {
-        $this->name = 'To Do (todo)';
-        $this->id = 'c9c9f07f-7608-49be-99b4-95c1aa07c69b';
-        $this->itemClass = ToDoContentItem::class;
+        $this->contentName = 'To Do (todo)';
+        $this->contentId = 'c9c9f07f-7608-49be-99b4-95c1aa07c69b';
+        $this->viewClass = ToDoContentView::class;
         $this->itemSite = ToDoItemSite::$site;
         $this->parameterClass = ToDoParameter::class;
         $this->formClass = ToDoContentForm::class;

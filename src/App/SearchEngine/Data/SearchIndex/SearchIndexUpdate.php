@@ -10,26 +10,20 @@ public $model;
 /**
 * @var string
 */
-public $contentTypeId;
+public $documentId;
 
 /**
 * @var string
 */
 public $wordId;
 
-/**
-* @var string
-*/
-public $resultId;
-
 public function __construct() {
 parent::__construct();
 $this->model = new SearchIndexModel();
 }
 public function update() {
-$this->typeValueList->setModelValue($this->model->contentTypeId, $this->contentTypeId);
+$this->typeValueList->setModelValue($this->model->documentId, $this->documentId);
 $this->typeValueList->setModelValue($this->model->wordId, $this->wordId);
-$this->typeValueList->setModelValue($this->model->resultId, $this->resultId);
 parent::update();
 }
 }

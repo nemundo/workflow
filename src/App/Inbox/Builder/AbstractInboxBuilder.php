@@ -6,12 +6,10 @@ namespace Nemundo\Workflow\App\Inbox\Builder;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
-use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
-use Nemundo\App\Content\Redirect\AbstractContentRedirect;
-use Nemundo\Workflow\Data\MailConfig\MailConfigValue;
+
 
 abstract class AbstractInboxBuilder extends AbstractContentBuilder
 {
@@ -25,21 +23,6 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
      * @var string
      */
     public $message;
-
-    /**
-     * @var string
-     */
-    //public $userId;
-
-    /**
-     * @var AbstractContentRedirect
-     */
-    //public $contentRedirect;
-
-    /**
-     * @var string
-     */
-    //public $bookmarkId;
 
 
     public function __construct()
@@ -59,16 +42,6 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
         (new LogMessage())->writeError('Invalid createItem Function');
 
-        /*
-        $data = new Inbox();
-        $data->contentTypeId = $this->contentType->id;
-        $data->dataId = $this->dataId;
-        $data->subject = $this->subject;
-        $data->userId = $this->userId;
-        $data->save();*/
-
-        //$this->createUserInbox($this->userId);
-
 
     }
 
@@ -78,24 +51,23 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
         $this->check();
 
+        /*
         $subject = $this->subject;
 
         if ($subject == null) {
             $subject = $this->contentType->getSubject($this->dataId);
-        }
+        }*/
 
 
         $data = new Inbox();
-        $data->contentTypeId = $this->contentType->id;
-        //$data->contentRedirect = $this->contentRedirect->getClassName();
-        $data->dataId = $this->dataId;
-        //$data->bookmarkId = $this->bookmarkId;
-        $data->subject =  $subject;
+        $data->contentTypeId = $this->contentType->contentId;
+        $data->dataId = $this->contentType->dataId;
+        //$data->subject =  $subject;
         $data->message = $this->message;
         $data->userId = $userId;
         $data->save();
 
-        //$this->sendMail($userId);
+        $this->sendMail($userId);
 
     }
 
@@ -125,10 +97,10 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
         $mail = new ResponsiveActionMailMessage();
         $mail->addTo($userRow->email);
-        $mail->subject = $this->subject;
+        $mail->subject = $this->contentType->getSubject();
         $mail->actionText = $this->message;
         $mail->actionLabel = 'Ansehen';
-        $mail->actionUrlSite = $this->contentType->getItemSite($this->dataId);
+        $mail->actionUrlSite = $this->contentType->getItemSite();
         $mail->sendMail();
 
 

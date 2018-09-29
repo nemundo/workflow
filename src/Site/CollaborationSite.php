@@ -3,9 +3,12 @@
 namespace Nemundo\Workflow\Site;
 
 
+use Nemundo\App\Content\Site\ContentLogSite;
 use Nemundo\App\Content\Site\ContentTreeSite;
 use Nemundo\App\Content\Site\ContentTypeSite;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Assignment\Site\AssignmentAdminSite;
+use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
 use Nemundo\Workflow\App\Favorite\Site\MyFavoriteSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
@@ -25,7 +28,7 @@ use Nemundo\Workflow\App\ToDo\Site\ToDoSite;
 use Nemundo\Workflow\App\Widget\Site\WidgetSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\Workflow\App\Workflow\Site\Process\ProcessSite;
-use Nemundo\Workflow\App\Workflow\Site\WorkflowSearchSite;
+use Nemundo\Workflow\App\Workflow\Site\WorkflowSite;
 use Nemundo\Workflow\App\Workflow\Site\StatusChangeLogSite;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
@@ -41,16 +44,21 @@ class CollaborationSite extends AbstractSite
 
         new InboxSite($this);
         new InboxStreamSite($this);
-        new WorkflowSearchSite($this);
-        new ProcessSite($this);
-      new StatusChangeLogSite($this);
 
 
-        new TaskSite($this);
-        new TaskAdminSite($this);
+        //new WorkflowSite($this);
+        //new ProcessSite($this);
+        //new StatusChangeLogSite($this);
+        //new TaskSite($this);
+        //new TaskAdminSite($this);
+
         new RepeatingTaskSite($this);
 
-        new ToDoSite($this);
+        //new ToDoSite($this);
+
+        new AssignmentSite($this);
+
+        new AssignmentAdminSite($this);
 
         //new ToDoDoneSite($this);
         //new ToDoItemSite($this);
@@ -58,14 +66,15 @@ class CollaborationSite extends AbstractSite
 
         new NewsSite($this);
 
-        new MessageSite($this);
+        //new MessageSite($this);
         new WikiSite($this);
 
         new ContentTypeSite($this);
+        new ContentLogSite($this);
         //new ContentTreeSite($this);
 
         new SearchEngineSite($this);
-        new WidgetSite($this);
+        //new WidgetSite($this);
 
         new SubscriptionSite($this);
         new MySubscriptionSite($this);
@@ -73,7 +82,7 @@ class CollaborationSite extends AbstractSite
 
         new StreamSite($this);
 
-        new SurveySite($this);
+        //new SurveySite($this);
 
     }
 

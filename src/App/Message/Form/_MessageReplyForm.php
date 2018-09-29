@@ -46,7 +46,7 @@ class MessageReplyForm extends BootstrapForm
         $data = new MessageItem();
         $data->messageId = $this->messageId;
         $data->dataId = $textId;
-        $data->contentTypeId = (new TextContentType())->id;
+        $data->contentTypeId = (new TextContentType())->contentId;
         $data->save();
 
     }

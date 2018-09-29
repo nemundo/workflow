@@ -12,8 +12,8 @@ class BreakingNewsContentType extends AbstractContentType
 
     protected function loadData()
     {
-        $this->name = 'Breaking News';
-        $this->id = 'c5f42b2c-2708-47ec-bce8-ab0110173a5e';
+        $this->contentName = 'Breaking News';
+        $this->contentId = 'c5f42b2c-2708-47ec-bce8-ab0110173a5e';
         $this->formClass = BreakingNewsForm::class;
 
     }

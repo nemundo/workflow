@@ -33,7 +33,7 @@ class MessageEvent extends AbstractEvent
         $data = new MessageItem();
         $data->messageId = $this->messageId;
         $data->dataId = $id;
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->contentId;
         $data->save();
 
         $messageRow = (new MessageReader())->getRowById($this->messageId);

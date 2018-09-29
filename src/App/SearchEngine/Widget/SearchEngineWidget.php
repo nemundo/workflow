@@ -4,18 +4,11 @@ namespace Nemundo\Workflow\App\SearchEngine\Widget;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Core\Text\Keyword;
-use Nemundo\Core\Type\Text\Text;
-use Nemundo\Package\Bootstrap\Autocomplete\BootstrapAutocompleteTextBox;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapSubmitButton;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTable;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
 use Nemundo\Workflow\App\SearchEngine\Form\SearchEngineForm;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
-use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineJsonSite;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 
 class SearchEngineWidget extends AbstractAdminWidget
@@ -24,7 +17,6 @@ class SearchEngineWidget extends AbstractAdminWidget
     protected function loadWidget()
     {
         $this->widgetTitle = 'Suchmaschine';
-        $this->widgetId = '';
         $this->widgetSite = SearchEngineSite::$site;
 
     }
@@ -55,18 +47,17 @@ class SearchEngineWidget extends AbstractAdminWidget
         //$submit->content = 'Suchen';
 
 
-        $keyword =$form->getKeyword();  // $query->getValue();
+        $keyword =$form->getKeyword();
 
         if ($keyword !== '') {
 
 
             $indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
-            $indexReader->model->loadContentType();
-            $indexReader->model->loadResult();
+            $indexReader->model->loadDocument();
+            $indexReader->model->document->loadContentType();
 
-            //$indexReader->model->loadApplicationType();
-            //$indexReader->model->loadSearchText();
+
             $indexReader->filter->andEqual($indexReader->model->word->word, $keyword);
 
             /*if ($searchTypeListBox->getValue() !== '') {
@@ -79,19 +70,19 @@ class SearchEngineWidget extends AbstractAdminWidget
             foreach ($indexReader->getData() as $indexRow) {
 
                 $row = new BootstrapClickableTableRow($table);
-                //$row->addText($indexRow->workflow->workflowNumber);
-                //$row->addText($indexRow->workflow->subject);
 
+                $className = $indexRow->document->contentType->contentTypeClass;
 
-                //$text = new Text($indexRow->result->title);
+                /** @var AbstractContentType $contentType */
+                $contentType = new $className($indexRow->document->dataId);
 
-                $title = $indexRow->result->title;
+                $title = $contentType->getSubject();
                 $title = preg_replace('/(' . $keyword . ')/i', '<b>$1</b>', $title);
                 $row->addText($title);
 
-                $contentType = $indexRow->contentType->getContentTypeClassObject();
-                $site = $contentType->getItemSite($indexRow->result->dataId);
-                $row->addClickableSite($site);
+                $row->addText($contentType->contentName);
+
+                $row->addClickableSite($contentType->getItemSite());
 
             }
 

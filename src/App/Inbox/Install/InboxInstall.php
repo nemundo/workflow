@@ -2,11 +2,12 @@
 
 namespace Nemundo\Workflow\App\Inbox\Install;
 
+use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
+use Nemundo\Workflow\App\Inbox\Application\InboxApplication;
 use Nemundo\Workflow\App\Inbox\Data\InboxCollection;
-use Nemundo\Workflow\App\Inbox\Widget\InboxWidget;
-use Nemundo\Workflow\App\Widget\Setup\WidgetSetup;
+
 
 class InboxInstall extends AbstractScript
 {
@@ -16,8 +17,9 @@ class InboxInstall extends AbstractScript
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new InboxCollection());
 
-        //$setup = new WidgetSetup();
-        //$setup->addWidget(new InboxWidget());
+        $setup = new ApplicationSetup();
+        $setup->addApplication(new InboxApplication());
 
     }
+
 }

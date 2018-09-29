@@ -14,8 +14,8 @@ class ToDoProcess extends AbstractProcess
 
     protected function loadData()
     {
-        $this->name = 'Todo';
-        $this->id = '567fd76c-f28a-4526-be23-18fa324db6f2';
+        $this->contentName = 'Todo';
+        $this->contentId = '567fd76c-f28a-4526-be23-18fa324db6f2';
         $this->modelClass = ToDoModel::class;
 
         $this->createWorkflowNumber = false;

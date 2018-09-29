@@ -53,7 +53,7 @@ class WikiEditSite extends AbstractSite
 
 
         $title = new AdminTitle($page);
-        $title->content =  $contentType->name;
+        $title->content =  $contentType->contentName;
 
         $form = $contentType->getFormUpdate($page);
         $form->updateId = $wikiRow->dataId;

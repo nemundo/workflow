@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\App\Message\ContentType;
 
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
-use Nemundo\Workflow\App\Message\ContentItem\ImageContentItem;
-use Nemundo\Workflow\App\Message\ContentItem\TextContentItem;
+use Nemundo\Workflow\App\Message\ContentItem\ImageContentView;
+use Nemundo\Workflow\App\Message\ContentItem\TextContentView;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\MessageImage\MessageImageForm;
 use Nemundo\Workflow\App\Message\Data\MessageImage\MessageImageModel;
@@ -18,10 +18,10 @@ class ImageContentType extends AbstractMessageContentType
 
     protected function loadData()
     {
-        $this->name = 'Image';
+        $this->contentName = 'Image';
         $this->subject = 'Neues Bild';
-        $this->id = '54944a0b-58c3-466b-99f2-4cd5431c91e5';
-        $this->itemClass = ImageContentItem::class;
+        $this->contentId = '54944a0b-58c3-466b-99f2-4cd5431c91e5';
+        $this->viewClass = ImageContentView::class;
         //$this->formClass = MessageImageForm::class;
 
         $this->modelClass = MessageImageModel::class;

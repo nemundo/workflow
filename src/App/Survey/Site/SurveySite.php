@@ -30,6 +30,15 @@ class SurveySite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+
+        $start = new Survey1ContentType();
+        $start->getForm();
+
+
+
+
+
+/*
         $event = new StreamEvent();
         $event->contentType = new Survey3ContentType();
 

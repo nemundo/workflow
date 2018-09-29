@@ -35,7 +35,7 @@ class CalendarBuilder extends AbstractIdentificationBuilder
         $data->date = $this->date;
         $data->event = $this->event;
         $data->dataId = $this->dataId;
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->contentId;
         $data->save();
 
     }

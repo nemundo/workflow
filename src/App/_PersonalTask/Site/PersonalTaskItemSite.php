@@ -9,7 +9,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\Redirect\PersonalTaskFileRedirectSite;
 use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\Workflow\Com\Button\WorkflowActionButton;
-use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
+use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentView;
 
 class PersonalTaskItemSite extends AbstractSite
 {
@@ -46,7 +46,7 @@ class PersonalTaskItemSite extends AbstractSite
         $dataId = (new DataIdParameter())->getValue();
 
 
-        $workflow = new ProcessContentItem($page);
+        $workflow = new ProcessContentView($page);
         $workflow->contentType= new PersonalTaskProcess();
         $workflow->showBaseData = false;
         $workflow->dataId = $dataId;

@@ -51,7 +51,7 @@ class MySubscriptionSite extends AbstractSite
 
             $contentType = $subscriptionRow->contentType->getContentTypeClassObject();
 
-            $subject = $contentType->name;
+            $subject = $contentType->contentName;
             if ($subscriptionRow->dataId !== '0') {
                 $subject = $contentType->getSubject($subscriptionRow->dataId);
             }

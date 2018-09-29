@@ -7,14 +7,14 @@ class SearchIndexModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 public $id;
 
 /**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+* @var \Nemundo\Model\Type\External\Id\ExternalIdType
 */
-public $contentTypeId;
+public $documentId;
 
 /**
-* @var \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType
+* @var \Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentExternalType
 */
-public $contentType;
+public $document;
 
 /**
 * @var \Nemundo\Model\Type\External\Id\ExternalIdType
@@ -25,16 +25,6 @@ public $wordId;
 * @var \Nemundo\Workflow\App\SearchEngine\Data\Word\WordExternalType
 */
 public $word;
-
-/**
-* @var \Nemundo\Model\Type\External\Id\ExternalIdType
-*/
-public $resultId;
-
-/**
-* @var \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType
-*/
-public $result;
 
 protected function loadModel() {
 $this->tableName = "searchengine_search_index";
@@ -54,11 +44,12 @@ $this->id->visible->table = false;
 $this->id->visible->view = false;
 $this->id->visible->form = false;
 
-$this->contentTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->contentTypeId->tableName = "searchengine_search_index";
-$this->contentTypeId->fieldName = "content_type";
-$this->contentTypeId->aliasFieldName = "searchengine_search_index_content_type";
-$this->contentTypeId->label = "Content Type";
+$this->documentId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
+$this->documentId->tableName = "searchengine_search_index";
+$this->documentId->fieldName = "document";
+$this->documentId->aliasFieldName = "searchengine_search_index_document";
+$this->documentId->label = "Document";
+$this->loadDocument();
 
 $this->wordId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
 $this->wordId->tableName = "searchengine_search_index";
@@ -66,24 +57,18 @@ $this->wordId->fieldName = "word";
 $this->wordId->aliasFieldName = "searchengine_search_index_word";
 $this->wordId->label = "Word";
 
-$this->resultId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
-$this->resultId->tableName = "searchengine_search_index";
-$this->resultId->fieldName = "result";
-$this->resultId->aliasFieldName = "searchengine_search_index_result";
-$this->resultId->label = "Result";
-
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->addType($this->wordId);
-$index->addType($this->resultId);
+$index->addType($this->documentId);
 
 }
-public function loadContentType() {
-if ($this->contentType == null) {
-$this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "searchengine_search_index_content_type");
-$this->contentType->tableName = "searchengine_search_index";
-$this->contentType->fieldName = "content_type";
-$this->contentType->aliasFieldName = "searchengine_search_index_content_type";
-$this->contentType->label = "Content Type";
+public function loadDocument() {
+if ($this->document == null) {
+$this->document = new \Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentExternalType($this, "searchengine_search_index_document");
+$this->document->tableName = "searchengine_search_index";
+$this->document->fieldName = "document";
+$this->document->aliasFieldName = "searchengine_search_index_document";
+$this->document->label = "Document";
 }
 }
 public function loadWord() {
@@ -93,15 +78,6 @@ $this->word->tableName = "searchengine_search_index";
 $this->word->fieldName = "word";
 $this->word->aliasFieldName = "searchengine_search_index_word";
 $this->word->label = "Word";
-}
-}
-public function loadResult() {
-if ($this->result == null) {
-$this->result = new \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType($this, "searchengine_search_index_result");
-$this->result->tableName = "searchengine_search_index";
-$this->result->fieldName = "result";
-$this->result->aliasFieldName = "searchengine_search_index_result";
-$this->result->label = "Result";
 }
 }
 }

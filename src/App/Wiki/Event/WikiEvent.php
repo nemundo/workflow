@@ -30,7 +30,7 @@ class WikiEvent extends AbstractEvent
 
         $data = new Wiki();
         $data->pageId = $this->pageId;
-        $data->contentTypeId = $this->contentType->id;
+        $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $id;
         $data->save();
 

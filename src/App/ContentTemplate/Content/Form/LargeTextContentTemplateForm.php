@@ -3,13 +3,18 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
+use Nemundo\App\Content\Form\ContentForm;
+use Nemundo\App\Content\Form\ContentTreeFormTrait;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
+use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 
 class LargeTextContentTemplateForm extends BootstrapForm
 {
+
+    use ContentTreeFormTrait;
 
     /**
      * @var BootstrapLargeTextBox
@@ -30,10 +35,17 @@ class LargeTextContentTemplateForm extends BootstrapForm
     protected function onSubmit()
     {
 
+
+        $content = new LargeTextTemplateContentType();
+        $content->parentContentType = $this->parentContentType;
+        $content->text = $this->text->getValue();
+        $content->saveType();
+
+        /*
         $content = new LargeTextTemplateContent();
         $content->parentId = $this->parentId;
         $content->text = $this->text->getValue();
-        $dataId = $content->save();
+        $dataId = $content->save();*/
 
         //$this->runAfterSubmitEvent($dataId);
 

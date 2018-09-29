@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\Install;
 use Nemundo\App\Content\Install\ContentInstall;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\User\Setup\UsergroupSetup;
+use Nemundo\Workflow\App\Assignment\Install\AssignmentInstall;
 use Nemundo\Workflow\App\Calendar\Install\CalendarInstall;
 use Nemundo\Workflow\App\ContentTemplate\Install\ContentTemplateInstall;
 use Nemundo\Workflow\App\Favorite\Install\FavoriteInstall;
@@ -38,32 +39,32 @@ class CollaborationInstall extends AbstractScript
         (new ContentInstall())->run();
 
 
-        (new WorkflowInstall())->run();
-        (new WorkflowTemplateInstall())->run();
-        (new CalendarInstall())->run();
+        //(new WorkflowInstall())->run();
+        //(new WorkflowTemplateInstall())->run();
+        //(new CalendarInstall())->run();
         (new InboxInstall())->run();
-        (new TaskInstall())->run();
+        //(new TaskInstall())->run();
         (new WikiInstall())->run();
-        (new MessageInstall())->run();
+        //(new MessageInstall())->run();
         (new IdentificationInstall())->run();
-
+        (new AssignmentInstall())->run();
         (new NewsInstall())->run();
 
         (new WidgetInstall())->run();
 
-        (new NotificationInstall())->run();
+        //(new NotificationInstall())->run();
 
         //(new PersonalTaskInstall())->run();
         (new RepeatingTaskInstall())->run();
         (new PersonalCalendarInstall())->run();
         (new SearchEngineInstall())->run();
-        (new WidgetInstall())->run();
-        (new ToDoInstall())->run();
+        //(new WidgetInstall())->run();
+        //(new ToDoInstall())->run();
         (new ContentTemplateInstall())->run();
         (new SubscriptionInstall())->run();
         (new FavoriteInstall())->run();
 
-        (new SurveyInstall())->run();
+        //(new SurveyInstall())->run();
         (new StreamInstall())->run();
 
         $setup = new UsergroupSetup();
