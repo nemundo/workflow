@@ -13,7 +13,7 @@ use Nemundo\Workflow\Action\SearchIndexWorkflowAction;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowValue;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
@@ -88,7 +88,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class) || $workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
 
             if ($this->contentType->modelClass == $workflowStatus->modelClass) {
-                $this->dataId = $this->workflowItemId;
+                $this->dataId = $this->dataId;
             }
         }
 
@@ -143,7 +143,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         $action = new StatusChangeBuilder();
         $action->workflowStatus =  $workflowStatus;
         $action->workflowId = $workflowId;
-        $action->workflowItemId = $this->workflowItemId;
+        $action->dataId = $this->dataId;
         $action->draft = $this->draft;
         $action->checkFollowingStatus = false;
         $action->changeStatus();

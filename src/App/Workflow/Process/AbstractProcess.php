@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentItem;
 use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
@@ -75,7 +75,9 @@ abstract class AbstractProcess extends AbstractDataContentType
         $this->itemClass = ProcessContentItem::class;
         $this->parameterClass = WorkflowParameter::class;
 
-        parent::__construct();
+        $this->loadData();
+
+        //parent::__construct();
 
     }
 
@@ -83,15 +85,26 @@ abstract class AbstractProcess extends AbstractDataContentType
     public function getForm($parentItem = null)
     {
 
-        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        //$workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        $workflowStatus = $this->getStartWorkflowStatus();
 
-        $event = new WorkflowStartEvent();
-        $event->process = $this;
+        //$event = new WorkflowStartEvent();
+        //$event->process = $this;
 
         $form = $workflowStatus->getForm($parentItem);
-        $form->afterSubmitEvent->addEvent($event);
+        //$form->afterSubmitEvent->addEvent($event);
 
         return $form;
+
+    }
+
+
+    public function getStartWorkflowStatus()
+    {
+
+
+        $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->startWorkflowStatusClass);
+        return $workflowStatus;
 
     }
 
@@ -104,5 +117,16 @@ abstract class AbstractProcess extends AbstractDataContentType
         return $subject;
 
     }
+
+
+    public function getSource($dataId)
+    {
+
+        $source = $this->name;
+        return $source;
+
+
+    }
+
 
 }

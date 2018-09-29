@@ -2,8 +2,10 @@
 
 namespace Nemundo\Workflow\App\Identification\Install;
 
+use Nemundo\App\Application\Setup\ApplicationSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
+use Nemundo\Workflow\App\Identification\Application\IdentificationApplication;
 use Nemundo\Workflow\App\Identification\Data\IdentificationCollection;
 use Nemundo\Workflow\App\Identification\Setup\IdentificationSetup;
 use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
@@ -20,6 +22,9 @@ class IdentificationInstall extends AbstractScript
         $setup = new IdentificationSetup();
         $setup->addIdentification(new UserIdentificationType());
         $setup->addIdentification(new UsergroupIdentificationType());
+
+        $setup = new ApplicationSetup();
+        $setup->addApplication(new IdentificationApplication());
 
     }
 }

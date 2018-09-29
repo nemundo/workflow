@@ -78,13 +78,13 @@ class StatusChangeBuilder extends AbstractBaseClass
 
         $changeEvent = new StatusChangeEvent();
         $changeEvent->workflowId = $this->workflowId;
-        $changeEvent->dataId = $this->workflowItemId;
+        $changeEvent->dataId = $this->dataId;
 
         // Status Change
         $data = new StatusChange();
         $data->workflowStatusId = $this->workflowStatus->id;
         $data->workflowId = $this->workflowId;
-        $data->workflowItemId = $this->workflowItemId;
+        $data->dataId = $this->dataId;
         $data->draft = $this->draft;
         //$data->message = $this->workflowStatus->getStatusText($changeEvent);
         $statusChangeId = $data->save();
@@ -115,14 +115,14 @@ class StatusChangeBuilder extends AbstractBaseClass
         if (!$this->draft) {
 
             //$this->workflowStatus->onChange($changeEvent);
-            //$this->workflowStatus->onCreate($this->workflowItemId);
+            //$this->workflowStatus->onCreate($this->dataId);
 
 
             $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
 
 
-            $this->workflowStatus->onCreate($this->workflowItemId, $workflowRow->dataId);
-            //$this->workflowStatus->onContainerCreate($this->workflowId, $this->workflowItemId);
+            $this->workflowStatus->onCreate($this->dataId, $workflowRow->dataId);
+            //$this->workflowStatus->onContainerCreate($this->workflowId, $this->dataId);
 
 
         }

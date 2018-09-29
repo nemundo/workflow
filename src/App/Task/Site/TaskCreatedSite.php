@@ -62,8 +62,7 @@ class TaskCreatedSite extends AbstractSite
 
         $btn = new AdminButton($page);
         $btn->content = 'Neue Aufgabe';
-        $btn->site = PersonalTaskNewSite::$site;
-
+        $btn->site = TaskNewSite::$site;
 
         $nav = new AdminNavigation($page);
         $nav->site = TaskSite::$site;

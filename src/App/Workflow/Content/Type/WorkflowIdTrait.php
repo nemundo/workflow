@@ -64,8 +64,21 @@ trait WorkflowIdTrait
     }
 
 
-    protected function createUserInbox($userId, $message = '')
+    protected function createUserInbox($userId)  //, $message = '')
     {
+
+        $workflowReader = new WorkflowReader();
+        $workflowReader->model->loadProcess();
+        $workflowRow = $workflowReader->getRowById($this->workflowId);
+
+        $process = $workflowRow->process->getProcessClassObject();
+
+        $builder = new InboxBuilder();
+        $builder->contentType = $process;
+        $builder->dataId = $this->workflowId;
+        $builder->subject = $process->getSubject($this->workflowId);
+        //$builder->message = $this->getStatusText($this->dataId);  // $message;
+        $builder->createUserInbox($userId);
 
     }
 
@@ -78,11 +91,6 @@ trait WorkflowIdTrait
         $workflowRow = $workflowReader->getRowById($this->workflowId);
 
         $process = $workflowRow->process->getProcessClassObject();
-
-
-        //(new Debug())->write($this->workflowId);
-        //(new Debug())->write($process);
-
 
         $builder = new InboxBuilder();
         $builder->contentType = $process;
@@ -103,6 +111,8 @@ trait WorkflowIdTrait
         $update->identificationId = $usergroup->id;
         $update->updateById($this->workflowId);
 
+        $this->createUsergroupInbox($usergroup);
+
     }
 
 
@@ -113,6 +123,8 @@ trait WorkflowIdTrait
         $update->identificationTypeId = (new UserIdentificationType())->id;
         $update->identificationId = $userId;
         $update->updateById($this->workflowId);
+
+        $this->createUserInbox($userId);
 
     }
 
@@ -136,27 +148,34 @@ trait WorkflowIdTrait
         $builder = new TaskBuilder();
         $builder->contentType = $process;
         $builder->dataId = $this->workflowId;
-        $builder->task = $process->getSubject($this->workflowId);
+        $builder->source = $process->getSubject($this->workflowId);
+        $builder->task = $this->name;
         $builder->deadline = $deadline;
         $builder->createUserTask($userId);
 
         $this->assignUser($userId);
         $this->changeDeadline($deadline);
 
+
     }
 
 
-    protected function createUsergroupTask(AbstractUsergroup $usergroup, Date $deadline = null)
+    protected function createUsergroupTask(AbstractUsergroup $usergroup, Date $deadline = null, $task = '')
     {
 
+        /*
         $process = $this->getProcess();
 
         $builder = new TaskBuilder();
         $builder->contentType = $process;
         $builder->dataId = $this->workflowId;
-        $builder->task = $process->getSubject($this->workflowId);
+
+        $builder->source = $process->getSubject($this->workflowId);
+        $builder->sourceId = $this->workflowId;
+
+        $builder->task = $task;  // $this->actionLabel;
         $builder->deadline = $deadline;
-        $builder->createUsergroupTask($usergroup);
+        $builder->createUsergroupTask($usergroup);*/
 
 
         $this->assignUsergroup($usergroup);

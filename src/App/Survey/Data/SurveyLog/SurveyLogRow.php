@@ -31,6 +31,11 @@ public $contentTypeId;
 */
 public $contentType;
 
+/**
+* @var string
+*/
+public $dataId;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -43,6 +48,7 @@ $this->contentTypeId = $this->getModelValue($model->contentTypeId);
 if ($model->contentType !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
+$this->dataId = $this->getModelValue($model->dataId);
 }
 private function loadNemundoWorkflowAppSurveyDataSurveySurveysurveyRow($model) {
 $this->survey = new \Nemundo\Workflow\App\Survey\Data\Survey\SurveyRow($this->row, $model);

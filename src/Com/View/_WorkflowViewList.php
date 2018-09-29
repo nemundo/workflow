@@ -45,7 +45,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 
 
-class WorkflowViewList extends AbstractProcessItem
+class WorkflowViewList //extends AbstractProcessItem
 {
 
     /**
@@ -177,7 +177,7 @@ class WorkflowViewList extends AbstractProcessItem
 
         foreach ($statusChangeReader->getData() as $statusChangeItem) {
 
-            $list->addHyperlink($statusChangeItem->getStatus(), '#' . $statusChangeItem->workflowItemId);
+            $list->addHyperlink($statusChangeItem->getStatus(), '#' . $statusChangeItem->dataId);
 
             $div = new Div($colRight);
             $div->addCssClass('card');
@@ -201,7 +201,7 @@ class WorkflowViewList extends AbstractProcessItem
                 $btn->site = clone($this->statusChangeRedirectSite);
                 $btn->site->addParameter(new WorkflowStatusParameter($statusChangeItem->workflowStatus->id));
                 $btn->site->addParameter(new WorkflowParameter($this->workflowId));
-                $btn->site->addParameter(new DraftEditParameter($statusChangeItem->workflowItemId));
+                $btn->site->addParameter(new DraftEditParameter($statusChangeItem->dataId));
 
 
                 if ($statusChangeItem->workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {

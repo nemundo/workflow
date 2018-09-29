@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ToDo\Data\ToDo;
-class ToDoModel extends \Nemundo\Model\Definition\Model\AbstractModel {
+class ToDoModel extends \Nemundo\Workflow\Model\AbstractWorkflowBaseModel {
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
@@ -43,6 +43,7 @@ $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
 $this->id->visible->form = false;
+
 
 $this->todo = new \Nemundo\Model\Type\Text\TextType($this);
 $this->todo->tableName = "todo_todo";

@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Builder;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
-use Nemundo\Workflow\Factory\WorkflowDataId;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowDataId;
 
 class StatusChangeEvent extends AbstractBase
 {

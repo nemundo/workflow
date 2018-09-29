@@ -9,7 +9,4 @@ public $model;
 protected function loadCom() {
 $this->model = new SurveyLogModel();
 }
-protected function onSubmit() {
-return parent::onSubmit();
-}
 }

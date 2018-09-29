@@ -37,16 +37,13 @@ class PasswordChangeSite extends AbstractSite
     {
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
-
-
+        
         $workflow = new WorkflowItem((new WorkflowParameter())->getValue());
 
         $passwordResetRow = (new PasswordResetRequestReader())->getRowById($workflow->getDataId());
 
         $title = new AdminTitle($page);
         $title->content = $passwordResetRow->login;
-
-
 
         $page->render();
 

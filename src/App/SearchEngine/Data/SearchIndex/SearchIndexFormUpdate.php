@@ -10,7 +10,4 @@ public $model;
 protected function loadCom() {
 $this->model = new SearchIndexModel();
 }
-protected function onSubmit() {
-return parent::onSubmit();
-}
 }

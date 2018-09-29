@@ -7,11 +7,14 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Navigation\AdminNavigation;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\Data\ContentType\ContentTypeListBox;
+use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\Html\Basic\Bold;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
+use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
@@ -24,7 +27,10 @@ use Nemundo\Workflow\App\Task\Data\Task\TaskPaginationReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskTable;
 use Nemundo\Workflow\App\Task\Data\Task\TaskValue;
+use Nemundo\Workflow\App\Task\Form\TaskBuilderForm;
+use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
+
 
 class TaskSite extends AbstractSite
 {
@@ -44,8 +50,12 @@ class TaskSite extends AbstractSite
         new TaskCreatedSite($this);
         new TaskArchiveSite($this);
 
-        new PersonalTaskItemSite($this);
-        new PersonalTaskNewSite($this);
+        new TaskNewSite($this);
+        new TaskItemSite($this);
+        new TaskStatusChangeSite($this);
+
+        //new PersonalTaskItemSite($this);
+        //new PersonalTaskNewSite($this);
 
     }
 
@@ -68,24 +78,39 @@ class TaskSite extends AbstractSite
 
         $btn = new AdminButton($page);
         $btn->content = 'Neue Aufgabe';
-        $btn->site = PersonalTaskNewSite::$site;
+        $btn->site = TaskNewSite::$site;
+
+
+        //$form = new TaskBuilderForm($page);
+
 
 
         $nav = new AdminNavigation($page);
         $nav->site = TaskSite::$site;
 
 
+        $form = new SearchForm($page);
+
+        $row = new BootstrapFormRow($form);
+
+
+        $contentTypeListBox = new ProcessListBox($row);
+        $contentTypeListBox->submitOnChange = true;
+
+
+
         $table = new AdminClickableTable($page);
 
         $header = new TableHeader($table);
         $header->addEmpty();
+        $header->addText('Typ');
         $header->addText('Quelle');
         $header->addText('Aufgabe');
         $header->addText('Erledigen bis');
         $header->addText('Aufwand');
         $header->addText('Zuweisung an');
         $header->addText('Ersteller');
-        $header->addText('Archiviert');
+        //$header->addText('Archiviert');
 
 
         $taskReader = new TaskPaginationReader();
@@ -126,6 +151,7 @@ class TaskSite extends AbstractSite
 
 
             $row->addText($taskRow->contentType->contentType);
+            $row->addText($taskRow->source);
             $row->addText($taskRow->task);
 
             if ($taskRow->deadline !== null) {

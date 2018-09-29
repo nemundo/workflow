@@ -3,18 +3,19 @@
 namespace Nemundo\Workflow\App\Workflow\Event;
 
 
-use Nemundo\App\Content\Event\AbstractContentEvent;
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\Sequence\AbstractSequenceContentType;
-use Nemundo\App\Content\Type\Sequence\MultiSequenceTrait;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
+use Nemundo\User\Information\UserInformation;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
+use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 use Nemundo\Workflow\App\Workflow\Data\StatusChange\StatusChange;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
 class WorkflowEvent extends AbstractEvent
@@ -39,24 +40,67 @@ class WorkflowEvent extends AbstractEvent
     public function run($id)
     {
 
+        /* wieder aktiverein
+        if ($this->workflowStatus->draftMode) {
+            $this->draft = true;
+        }*/
+
+
+
+        /*
+                if ($this->checkFollowingStatus) {
+
+
+                    $workflowItem = (new WorkflowItem($this->workflowId));
+
+                    (new Debug())->write($workflowItem->workflowStatus);
+
+
+                    $valid = false;
+                    foreach ($workflowItem->workflowStatus->getFollowingStatusClassList() as $followingStausClass) {
+                        if ($followingStausClass !== $this->workflowStatus->getClassName()) {
+                            $valid = true;
+                        }
+                    }
+
+
+                    if (!$valid) {
+                        (new LogMessage())->writeError('Workflow and Status are not valid. Refresh Browser.');
+                        exit;
+                    }
+
+                }*/
+
+
         $data = new StatusChange();
         $data->workflowStatusId = $this->workflowStatus->id;
         $data->workflowId = $this->workflowId;
-        $data->workflowItemId = $id;
+        $data->dataId = $id;
         $data->draft = $this->draft;
+
+        $data->assignment = $this->workflowStatus->getAssignmentIdentification($id);
+
+        //$data->assignment->identificationType = new UserIdentificationType();
+        //$data->assignment->identificationId = (new UserInformation())->getUserId();
+
+
         $data->save();
+
+
+        $update = new WorkflowUpdate();
+        $update->draft = $this->draft;
+        $update->updateById($this->workflowId);
+
 
 
         if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
 
             if ($this->workflowStatus->changeWorkflowStatus) {
                 $update = new WorkflowUpdate();
-                $update->draft = $this->draft;
+                //$update->draft = $this->draft;
                 $update->workflowStatusId = $this->workflowStatus->id;
                 $update->updateById($this->workflowId);
             }
-
-
 
         }
 
@@ -80,11 +124,33 @@ class WorkflowEvent extends AbstractEvent
         }*/
 
 
-        $this->workflowStatus->workflowId = $this->workflowId;
+        //$this->workflowStatus->workflowId = $this->workflowId;
 
 
         if ($this->workflowStatus->isObjectOfTrait(WorkflowIdTrait::class)) {
             $this->workflowStatus->workflowId = $this->workflowId;
+        }
+
+
+        /*
+        if ($this->workflowStatus->isObjectOfClass(AbstractDraftDataWorkflowStatus::class)) {
+
+            $update = new WorkflowUpdate();
+            $update->draft = true;
+            $update->updateById($this->workflowId);
+
+        }*/
+
+
+        if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
+            $this->workflowStatus->workflowId = $this->workflowId;
+
+            if ($this->workflowStatus->closingWorkflow) {
+                $update = new WorkflowUpdate();
+                $update->closed = true;
+                $update->updateById($this->workflowId);
+            }
+
         }
 
         if (!$this->draft) {
@@ -97,8 +163,47 @@ class WorkflowEvent extends AbstractEvent
 
             $this->workflowStatus->onCreate($id);
 
-        }
 
+            if ($this->workflowStatus->isObjectOfTrait(WorkflowStatusTrait::class)) {
+                 //$this->workflowStatus->checkSubscription();
+
+
+                $reader = new SubscriptionReader();
+                $reader->filter->andEqual($reader->model->dataId, $this->workflowId);
+                foreach ($reader->getData() as $subscriptionRow) {
+                    //$this->createUserInbox($subscriptionRow->userId);
+
+
+                    //protected function createUserInbox($userId)  //, $message = '')
+                    //{
+
+                        $workflowReader = new WorkflowReader();
+                        $workflowReader->model->loadProcess();
+                        $workflowRow = $workflowReader->getRowById($this->workflowId);
+
+                        $process = $workflowRow->process->getProcessClassObject();
+
+                        $builder = new InboxBuilder();
+                        $builder->contentType = $process;
+                        $builder->dataId = $this->workflowId;
+                        $builder->subject = $process->getSubject($this->workflowId);
+                        $builder->message = $this->workflowStatus->getStatusText($id);
+                        $builder->createUserInbox($subscriptionRow->userId);
+
+
+
+
+
+
+                }
+
+
+
+            }
+
+            //exit;
+
+        }
 
 
     }

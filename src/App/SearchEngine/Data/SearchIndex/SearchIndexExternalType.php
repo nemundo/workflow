@@ -27,9 +27,14 @@ public $wordId;
 public $word;
 
 /**
-* @var \Nemundo\Model\Type\Id\UniqueIdType
+* @var \Nemundo\Model\Type\Id\IdType
 */
-public $dataId;
+public $resultId;
+
+/**
+* @var \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType
+*/
+public $result;
 
 protected function loadType() {
 parent::loadType();
@@ -57,12 +62,12 @@ $this->wordId->aliasFieldName = $this->wordId->tableName ."_".$this->wordId->fie
 $this->wordId->label = "Word";
 $this->addType($this->wordId);
 
-$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
-$this->dataId->fieldName = "data_id";
-$this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
-$this->dataId->label = "Data Id";
-$this->addType($this->dataId);
+$this->resultId = new \Nemundo\Model\Type\Id\IdType();
+$this->resultId->fieldName = "result";
+$this->resultId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->resultId->aliasFieldName = $this->resultId->tableName ."_".$this->resultId->fieldName;
+$this->resultId->label = "Result";
+$this->addType($this->resultId);
 
 }
 public function loadContentType() {
@@ -84,6 +89,17 @@ $this->word->tableName = $this->parentFieldName . "_" . $this->externalTableName
 $this->word->aliasFieldName = $this->word->tableName ."_".$this->word->fieldName;
 $this->word->label = "Word";
 $this->addType($this->word);
+}
+return $this;
+}
+public function loadResult() {
+if ($this->result == null) {
+$this->result = new \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultExternalType(null, $this->parentFieldName . "_result");
+$this->result->fieldName = "result";
+$this->result->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->result->aliasFieldName = $this->result->tableName ."_".$this->result->fieldName;
+$this->result->label = "Result";
+$this->addType($this->result);
 }
 return $this;
 }

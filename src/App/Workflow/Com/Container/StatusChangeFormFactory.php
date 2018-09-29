@@ -5,9 +5,12 @@ namespace Nemundo\Workflow\App\Workflow\Com\Container;
 
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
+use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
 
 
 class StatusChangeFormFactory extends AbstractBaseClass
@@ -41,10 +44,26 @@ class StatusChangeFormFactory extends AbstractBaseClass
         $event = new WorkflowEvent();
         $event->workflowStatus = $this->worklfowStatus;
         $event->workflowId = $this->workflowId;
+        //$event->draft = true;
 
+        if ($this->worklfowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
+            $event->draft = true;
+        }
+
+        if ($this->worklfowStatus->isObjectOfClass(AbstractDraftDataWorkflowStatus::class)) {
+            $event->draft = true;
+        }
+
+
+        /** @var WorkflowContentForm $form */
         $form = $contentType->getForm($parentItem);
         $form->afterSubmitEvent->addEvent($event);
         $form->redirectSite = $this->redirect;
+
+        if ($form->isObjectOfClass(WorkflowContentForm::class) ) {
+            $form->workflowId = $this->workflowId;
+        }
+
 
         return $form;
 

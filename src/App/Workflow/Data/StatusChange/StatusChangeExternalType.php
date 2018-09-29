@@ -29,7 +29,7 @@ public $workflowStatus;
 /**
 * @var \Nemundo\Model\Type\Id\UniqueIdType
 */
-public $workflowItemId;
+public $dataId;
 
 /**
 * @var \Nemundo\Model\Type\User\CreatedUserType
@@ -61,6 +61,11 @@ public $draft;
 */
 public $message;
 
+/**
+* @var \Nemundo\Workflow\App\Identification\Model\IdentificationModelType
+*/
+public $assignment;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = StatusChangeModel::class;
@@ -87,12 +92,12 @@ $this->workflowStatusId->aliasFieldName = $this->workflowStatusId->tableName ."_
 $this->workflowStatusId->label = "Workflow Status";
 $this->addType($this->workflowStatusId);
 
-$this->workflowItemId = new \Nemundo\Model\Type\Id\UniqueIdType();
-$this->workflowItemId->fieldName = "workflow_item_id";
-$this->workflowItemId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->workflowItemId->aliasFieldName = $this->workflowItemId->tableName . "_" . $this->workflowItemId->fieldName;
-$this->workflowItemId->label = "Workflow Item Id";
-$this->addType($this->workflowItemId);
+$this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
+$this->dataId->fieldName = "data_id";
+$this->dataId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->fieldName;
+$this->dataId->label = "Data Id";
+$this->addType($this->dataId);
 
 $this->userId = new \Nemundo\Model\Type\User\CreatedUserType();
 $this->userId->fieldName = "user";
@@ -128,6 +133,14 @@ $this->message->tableName = $this->parentFieldName . "_" . $this->externalTableN
 $this->message->aliasFieldName = $this->message->tableName . "_" . $this->message->fieldName;
 $this->message->label = "Message";
 $this->addType($this->message);
+
+$this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType();
+$this->assignment->fieldName = "assignment";
+$this->assignment->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->assignment->aliasFieldName = $this->assignment->tableName . "_" . $this->assignment->fieldName;
+$this->assignment->label = "Assignment";
+$this->assignment->createObject();
+$this->addType($this->assignment);
 
 }
 public function loadWorkflow() {

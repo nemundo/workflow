@@ -58,6 +58,8 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
         $header = new TableHeader($table);
         $header->addEmpty();
         $header->addText('Prozess');
+        $header->addText('Quelle');
+
         $header->addText('Nr.');
         $header->addText('Betreff');
         $header->addText('Status');
@@ -96,6 +98,9 @@ class WorkflowCustomTable extends AbstractHtmlContainerList
             }
 
             $row->addText($workflowRow->process->process);
+
+            $row->addText($process->getSource($workflowRow->dataId));
+
             $row->addText($workflowRow->workflowNumber);
             $row->addText($workflowRow->subject);
 

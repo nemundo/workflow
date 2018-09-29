@@ -12,6 +12,9 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\UsergroupMembership;
+use Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeReader;
+use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Site\TaskSite;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
@@ -43,6 +46,7 @@ class TaskWidget extends AbstractAdminWidget
 
         $header = new TableHeader($table);
         $header->addEmpty();
+        $header->addText('Typ');
         $header->addText('Quelle');
         $header->addText('Aufgabe');
         $header->addText('Erledigen bis');
@@ -56,13 +60,19 @@ class TaskWidget extends AbstractAdminWidget
 
 
         $filter = new Filter();
-        $filter->orEqual($taskReader->model->identificationId, (new UserInformation())->getUserId());
-        foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
-            $filter->orEqual($taskReader->model->identificationId, $usergroupId);
+
+        $identificationTypeReader = new IdentificationTypeReader();
+        foreach ($identificationTypeReader->getData() as $identificationTypeRow) {
+
+            $identificationType = $identificationTypeRow->getIdentificationTypeClassObject();
+            foreach ($identificationType->getIdentificationIdList() as $value) {
+                $filter->orEqual($taskReader->model->identificationId, $value);
+            }
+
         }
 
-        $taskReader->filter->andFilter($filter);
 
+        $taskReader->filter->andFilter($filter);
 
         foreach ($taskReader->getData() as $taskRow) {
 
@@ -76,6 +86,7 @@ class TaskWidget extends AbstractAdminWidget
             }
 
             $row->addText($taskRow->contentType->contentType);
+            $row->addText($taskRow->source);
             $row->addText($taskRow->task);
 
             if ($taskRow->deadline !== null) {

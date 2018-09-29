@@ -61,16 +61,29 @@ class WorkflowItem extends AbstractBase
     }
 
 
+
+    public function fromDataId($dataId) {
+
+    }
+
+
+    public function fromWorkflowId($workflowId) {
+
+
+    }
+
+
+
     public function getSubject()
     {
 
 //        $workflowRow = (new WorkflowReader())->getRowById($this->workflowId);
 
-        $reader = new WorkflowReader();
+      /*  $reader = new WorkflowReader();
         $reader->model->loadProcess();
-        $workflowRow = $reader->getRowById($this->workflowId);
+        $workflowRow = $reader->getRowById($this->workflowId);*/
 
-        $process = $workflowRow->process->getProcessClassObject();
+        $process = $this->workflowRow->process->getProcessClassObject();
         $subject = $process->getSubject($this->workflowId);
 
         return $subject;
@@ -214,7 +227,7 @@ class WorkflowItem extends AbstractBase
          $changeReader->addOrder($changeReader->model->itemOrder, SortOrder::DESCENDING);
          $row = $changeReader->getRow();
 
-         return $row->workflowItemId;
+         return $row->dataId;
 
 
      }*/

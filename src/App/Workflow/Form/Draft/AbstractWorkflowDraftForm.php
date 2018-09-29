@@ -28,11 +28,10 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
     use ConnectionTrait;
 
-
     /**
      * @var AbstractModel
      */
-    private $model;
+    public $model;
 
     /**
      * @var string
@@ -55,7 +54,7 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
         //$this->model = $this->
         //(new ModelFactory())->getModelByClassName($this->workflowStatus->modelClassName);
 
-        $this->model = new MassnahmendefinitionModel();
+        //$this->model = new MassnahmendefinitionModel();
 
 
         $count = 0;
@@ -67,7 +66,8 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
             $reader->model = $this->model;
             $reader->addFieldByModel($this->model);
             $reader->checkExternal($this->model);
-            $row = $reader->getRowById($draftEditParamter->getValue());
+            //$row = $reader->getRowById($draftEditParamter->getValue());
+            $row = $reader->getRowById($this->dataId);
         }
 
         foreach ($this->model->getTypeList() as $type) {
@@ -179,6 +179,9 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
 
         $itemId = $data->save();
 
+
+        $this->afterSubmitEvent->run($itemId);
+
         //exit;
 
         return $itemId;
@@ -214,7 +217,7 @@ abstract class AbstractWorkflowDraftForm extends AbstractSubmitForm
         $update->updateById($workflowItemId);
 
         if (!$this->isDraft()) {
-            (new DraftRelease())->releaseDraft($this->workflowId);
+            (new DraftRelease())->releaseDraft($this->dataId);
         }
 
         return $workflowItemId;

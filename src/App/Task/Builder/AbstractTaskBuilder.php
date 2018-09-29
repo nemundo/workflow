@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Task\Builder;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\User\Usergroup\UsergroupItem;
@@ -11,6 +12,8 @@ use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Task\Data\Task\Task;
 use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
+use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
+use Nemundo\Workflow\App\Task\Process\TaskProcess;
 
 
 abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
@@ -22,6 +25,11 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
     public $task;
 
     /**
+     * @var string
+     */
+    public $description;
+
+    /**
      * @var Date
      */
     public $deadline;
@@ -31,11 +39,25 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
      */
     public $timeEffort = 0;
 
+    /**
+     * @var AbstractContentType
+     */
+    public $sourceType;
+
+    /**
+     * @var string
+     */
+    public $sourceId;
+
+    /**
+     * @var string
+     */
+    public $source;
 
     public function createItem()
     {
 
-        $this->check();
+        //$this->check();
 
         if (!$this->checkProperty('task')) {
             return;
@@ -43,30 +65,30 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
 
         $data = new Task();
         $data->task = $this->task;
+        $data->description = $this->description;
         $data->deadline = $this->deadline;
         $data->contentTypeId = $this->contentType->id;
         $data->dataId = $this->dataId;
         $data->timeEffort = $this->timeEffort;
         $data->identificationTypeId = $this->identificationType->id;
         $data->identificationId = $this->identificationId;
-        $data->save();
+
+        if ($this->sourceType !== null) {
+            $data->sourceTypeId = $this->sourceType->id;
+        }
+        $data->source = $this->source;
+        $data->sourceId = $this->sourceId;
+        $id = $data->save();
 
 
-        /*
-        if ($this->identificationType->isObjectOfClass(UserIdentificationType::class)) {
-            $this->createInboxItem($this->identificationId);
+        if ($this->contentType->isObjectOfClass(TaskProcess::class)) {
+
+            $update = new TaskUpdate();
+            $update->dataId = $id;
+            $update->updateById($id);
+
         }
 
-        if ($this->identificationType->isObjectOfClass(UsergroupIdentificationType::class)) {
-
-            $usergroup = new UsergroupItem($this->identificationId);
-
-            foreach ($usergroup->getUserList() as $user) {
-                //$this->createInboxItem($user->id);
-            }
-
-
-        }*/
 
     }
 

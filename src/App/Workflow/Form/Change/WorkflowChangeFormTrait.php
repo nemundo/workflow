@@ -36,7 +36,7 @@ trait WorkflowChangeFormTrait
         $builder = new StatusChangeBuilder();
         $builder->workflowStatus = $this->workflowStatus;
         $builder->workflowId = $this->workflowId;
-        $builder->workflowItemId = $workflowItemId;
+        $builder->dataId = $workflowItemId;
         $builder->changeStatus();
 
     }

@@ -8,7 +8,7 @@ use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\Factory\WorkflowStatusFactory;
+use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 
 class WorkflowStartEvent extends AbstractEvent
 {

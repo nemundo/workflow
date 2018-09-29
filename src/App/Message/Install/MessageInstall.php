@@ -16,13 +16,15 @@ class MessageInstall extends AbstractScript
     public function run()
     {
 
+
+/*
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new MessageCollection());
 
         $setup = new ContentTypeSetup();
         $setup->addContentType(new TextContentType());
         $setup->addContentType(new ImageContentType());
-        $setup->addContentType(new MessageContentType());
+        $setup->addContentType(new MessageContentType());*/
 
 
     }

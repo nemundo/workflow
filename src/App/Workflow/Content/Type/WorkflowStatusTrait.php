@@ -2,14 +2,14 @@
 
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
-use Nemundo\App\Content\Type\AbstractDataContentType;
 use Nemundo\App\Content\Type\Sequence\MultiSequenceTrait;
+use Nemundo\App\Content\Type\Sequence\SequenceTrait;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
-use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\App\Workflow\Content\Item\AbstractWorkflowItemView;
-use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
+use Nemundo\Workflow\App\Identification\Model\Identification;
+use Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType;
+use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
 
 
 trait WorkflowStatusTrait
@@ -19,34 +19,35 @@ trait WorkflowStatusTrait
 
     use WorkflowIdTrait;
 
+    use SequenceTrait;
+
     use MultiSequenceTrait;
 
     /**
      * @var
      */
-    protected $workflowStatusText;
+    protected $statusText;
 
     /**
      * @var bool
      */
     protected $createWorkflowEvent = true;
 
+    /**
+     * @var AbstractIdentificationType
+     */
+    //protected $assignmentIdentificationType;
 
     /**
-     * @var string
+     * @var Identification
      */
-    //public $workflowId;
+    protected $assignmentIdentification;
 
 
     /**
      * @var string
      */
     public $actionLabel;
-
-    /**
-     * @var AbstractWorkflowItemView
-     */
-    //public $itemClass;
 
     /**
      * @var AbstractActionPanel
@@ -57,7 +58,6 @@ trait WorkflowStatusTrait
      * @var bool
      */
     public $closingWorkflow = false;
-// closeWorkflow
 
     /**
      * @var bool
@@ -65,51 +65,58 @@ trait WorkflowStatusTrait
     public $changeWorkflowStatus = true;
 
     /**
-     * @var AbstractWorkflowStatus[]
+     * @var bool
      */
-   // private $followingStatusClassList = [];
+    public $draftMode = false;
 
 
-    /*
-    public function getForm($parentItem = null)
+
+
+
+    public function getStatusText($dataId)
     {
 
-        /** @var WorkflowContentForm $form */
-      /*  $form = parent::getForm($parentItem);
 
-        if ($form->isObjectOfClass(WorkflowContentForm::class)) {
-            $form->workflowId = $this->workflowId;
+        $statusText = $this->statusText;
+
+        if ($statusText == null) {
+            $statusText = $this->name;
         }
 
-        return $form;
+
+        return $statusText;
 
     }
 
-    //abstract public function getForm($parentItem = null);
+
+
+    public function getAssignmentIdentification($dataId) {
+
+
+        //$identification = new Identification();
+        //$identification->identificationType =
+
+        return $this->assignmentIdentification;
+
+    }
 
 
 
 /*
-    protected function addFollowingContentTypeClass($statusClassName)
-    {
-        $this->followingStatusClassList[] = $statusClassName;
-    }
-
-
-    /**
-     * @return AbstractWorkflowStatus[]
-     */
-  /*  public function getFollowingStatusClassList($workflowId = null)
+    public function checkSubscription()
     {
 
-        $list = [];
-        foreach ($this->followingStatusClassList as $className) {
-            $list[] = new $className();
+        $reader = new SubscriptionReader();
+        $reader->filter->andEqual($reader->model->dataId, $this->workflowId);
+        foreach ($reader->getData() as $subscriptionRow) {
+            $this->createUserInbox($subscriptionRow->userId);
+
+
+
+
         }
 
-        return $list;
     }*/
-
 
 
 }

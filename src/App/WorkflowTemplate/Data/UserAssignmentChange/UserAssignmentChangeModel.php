@@ -49,6 +49,7 @@ $this->user->tableName = "workflow_template_user_assignment_change";
 $this->user->fieldName = "user";
 $this->user->aliasFieldName = "workflow_template_user_assignment_change_user";
 $this->user->label = "User";
+$this->user->validation = true;
 }
 }
 }

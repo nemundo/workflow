@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Message\Event;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Com\Html\Form\Event\AbstractEvent;
+use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Message\ContentType\AbstractMessageContentType;
 use Nemundo\Workflow\App\Message\ContentType\MessageContentType;

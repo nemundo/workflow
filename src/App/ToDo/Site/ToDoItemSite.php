@@ -8,6 +8,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
 use Nemundo\App\Content\Parameter\DataIdParameter;
+use Nemundo\Workflow\App\ToDo\Parameter\ToDoParameter;
 
 class ToDoItemSite extends AbstractSite
 {
@@ -38,9 +39,12 @@ class ToDoItemSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $dataId = (new DataIdParameter())->getValue();
+        //$dataId = (new DataIdParameter())->getValue();
 
-        $todoRow = (new ToDoReader())->getRowById($dataId);
+        $todoId = (new ToDoParameter())->getValue();
+
+
+        $todoRow = (new ToDoReader())->getRowById($todoId);
 
         $title = new AdminTitle($page);
         $title->content = $todoRow->todo;

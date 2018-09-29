@@ -34,7 +34,12 @@ public $word;
 /**
 * @var string
 */
-public $dataId;
+public $resultId;
+
+/**
+* @var \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultRow
+*/
+public $result;
 
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
@@ -42,18 +47,24 @@ $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->contentTypeId = $this->getModelValue($model->contentTypeId);
 if ($model->contentType !== null) {
-$this->loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model->contentType);
+$this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
 $this->wordId = $this->getModelValue($model->wordId);
 if ($model->word !== null) {
 $this->loadNemundoWorkflowAppSearchEngineDataWordWordwordRow($model->word);
 }
-$this->dataId = $this->getModelValue($model->dataId);
+$this->resultId = $this->getModelValue($model->resultId);
+if ($model->result !== null) {
+$this->loadNemundoWorkflowAppSearchEngineDataResultResultresultRow($model->result);
 }
-private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
+}
+private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 private function loadNemundoWorkflowAppSearchEngineDataWordWordwordRow($model) {
 $this->word = new \Nemundo\Workflow\App\SearchEngine\Data\Word\WordRow($this->row, $model);
+}
+private function loadNemundoWorkflowAppSearchEngineDataResultResultresultRow($model) {
+$this->result = new \Nemundo\Workflow\App\SearchEngine\Data\Result\ResultRow($this->row, $model);
 }
 }

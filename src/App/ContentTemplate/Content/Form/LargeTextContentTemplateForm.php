@@ -4,10 +4,11 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
 use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
 
-class LargeTextContentTemplateForm extends ContentTreeForm
+class LargeTextContentTemplateForm extends BootstrapForm
 {
 
     /**
@@ -34,7 +35,7 @@ class LargeTextContentTemplateForm extends ContentTreeForm
         $content->text = $this->text->getValue();
         $dataId = $content->save();
 
-        $this->runAfterSubmitEvent($dataId);
+        //$this->runAfterSubmitEvent($dataId);
 
     }
 

@@ -5,6 +5,9 @@ namespace Nemundo\Workflow\App\Survey\Install;
 use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
+use Nemundo\Workflow\App\Survey\Content\Type\Survey1ContentType;
+use Nemundo\Workflow\App\Survey\Content\Type\Survey2ContentType;
+use Nemundo\Workflow\App\Survey\Content\Type\Survey3ContentType;
 use Nemundo\Workflow\App\Survey\Data\SurveyCollection;
 use Nemundo\Workflow\App\Survey\Type\SurveyTypeContentType;
 use Nemundo\Workflow\App\Survey\Type\UmfrageStartType;
@@ -18,11 +21,16 @@ class SurveyInstall extends AbstractScript
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new SurveyCollection());
 
-        $setup = new WikiContentTypeSetup();
-        $setup->addContentType(new SurveyTypeContentType());
+        //$setup = new WikiContentTypeSetup();
+        //$setup->addContentType(new SurveyTypeContentType());
 
         $setup = new ContentTypeSetup();
-        $setup->addContentType(new UmfrageStartType());
+        $setup->addContentType(new Survey1ContentType());
+        $setup->addContentType(new Survey2ContentType());
+        $setup->addContentType(new Survey3ContentType());
+
+
+        //$setup->addContentType(new UmfrageStartType());
 
 
     }

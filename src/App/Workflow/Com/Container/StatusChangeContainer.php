@@ -3,8 +3,13 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Container;
 
 
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Factory\ContentTypeFactory;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Workflow\App\Workflow\Com\Button\DraftReleaseButton;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
 use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
@@ -23,10 +28,16 @@ class StatusChangeContainer extends AbstractHtmlContainerList
 
         $workflowId = (new WorkflowParameter())->getValue();
 
+        $workflowRow = (new WorkflowReader())->getRowById($workflowId);
+
         $title = new WorkflowTitle($this);
         $title->workflowId = $workflowId;
 
+        /** @var AbstractWorkflowStatus $workflowStatus */
         $workflowStatus = (new ContentTypeFactory())->getContentTypeByParameter();
+
+        $title = new AdminTitle($this);
+        $title->content = $workflowStatus->name;
 
         $factory = new StatusChangeFormFactory();
         $factory->worklfowStatus = $workflowStatus;
@@ -34,15 +45,16 @@ class StatusChangeContainer extends AbstractHtmlContainerList
         $factory->redirect = $this->process->getItemSite($workflowId);
         $factory->getForm($this);
 
+        //if ($workflowStatus->isObjectOfClass(AbstractDataListWorkflowStatus::class)) {
 
-        /*
-        $event = new WorkflowEvent();
-        $event->workflowStatus = $workflowStatus;
-        $event->workflowId = $workflowId;
+        /* wieder aktiveren
 
-        $form = $workflowStatus->getForm($this);
-        $form->afterSubmitEvent->addEvent($event);
-        $form->redirectSite = $this->process->getItemSite($workflowId);*/
+        if ($workflowStatus->draftMode) {
+            if ($workflowRow->draft) {
+                $btn = new DraftReleaseButton($this);
+                $btn->workflowId = $workflowId;
+            }
+        }*/
 
         return parent::getHtml();
 
