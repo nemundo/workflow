@@ -38,6 +38,9 @@ class InboxWidget extends AbstractAdminWidget
     public function getHtml()
     {
 
+
+        // Inbox Table !!!
+
         $table = new AdminClickableTable($this);
 
         $header = new TableHeader($table);
