@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Application;
 use Nemundo\App\Application\Type\AbstractApplication;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchEngineCollection;
 
-class WorkflowSearchEngineApplication extends AbstractApplication
+class SearchEngineApplication extends AbstractApplication
 {
 
     protected function loadApplication()

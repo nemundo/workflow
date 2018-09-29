@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Inbox\Site;
 
 
 use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
@@ -61,9 +62,13 @@ class InboxSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-
         $contentTypeParameter = new ContentTypeParameter();
         $contentTypeId = $contentTypeParameter->getValue();
+
+
+        $title = new AdminTitle($page);
+        $title->content = InboxSite::$site->title;
+
 
 
         $row = new BootstrapRow($page);

@@ -16,16 +16,10 @@ use Nemundo\Workflow\App\Identification\Model\Identification;
 class AssignmentBuilder extends AbstractBase
 {
 
-
     /**
      * @var AbstractContentType
      */
     public $contentType;
-
-    /**
-     * @var string
-     */
-    //public $dataId;
 
     /**
      * @var string
@@ -59,7 +53,6 @@ class AssignmentBuilder extends AbstractBase
 
         $data = new Assignment();
         $data->contentTypeId = $this->contentType->contentId;
-        //$data->dataId = $this->dataId;
         $data->dataId = $this->contentType->dataId;
         $data->subject = $this->subject;
         $data->message = $this->message;
