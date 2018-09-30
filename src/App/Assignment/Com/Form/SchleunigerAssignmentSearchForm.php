@@ -9,7 +9,6 @@ use Nemundo\App\Workflow\Com\ListBox\Item\OpenListBoxItem;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
-use Nemundo\User\Data\User\UserListBox;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentModel;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 use Nemundo\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
@@ -19,7 +18,7 @@ class AssignmentSearchForm extends SearchForm
 {
 
     /**
-     * @var UserListBox
+     * @var MitarbeiterListBox
      */
     private $mitarbeiterListBox;
 
@@ -29,7 +28,7 @@ class AssignmentSearchForm extends SearchForm
     private $status;
 
     /**
-     * @var UserListBox
+     * @var MitarbeiterListBox
      */
     private $ersteller;
 
@@ -45,15 +44,15 @@ class AssignmentSearchForm extends SearchForm
 
         $row = new BootstrapFormRow($this);
 
-        $this->mitarbeiterListBox = new UserListBox($row);
-        //$this->mitarbeiterListBox->loggedUserAsDefaultValue = true;
+        $this->mitarbeiterListBox = new MitarbeiterListBox($row);
+        $this->mitarbeiterListBox->loggedUserAsDefaultValue = true;
         $this->mitarbeiterListBox->value = $this->mitarbeiterListBox->getValue();
         $this->mitarbeiterListBox->submitOnChange = true;
 
         $this->status = new OpenClosedWorkflowListBox($row);
         $this->status->submitOnChange = true;
 
-        $this->ersteller = new UserListBox($row);
+        $this->ersteller = new MitarbeiterListBox($row);
         $this->ersteller->label = 'Ersteller';
         $this->ersteller->value = $this->ersteller->getValue();
         $this->ersteller->submitOnChange = true;
