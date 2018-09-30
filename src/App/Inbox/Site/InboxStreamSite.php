@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Inbox\Site;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
@@ -75,47 +76,63 @@ class InboxStreamSite extends AbstractSite
         foreach ($inboxReader->getData() as $inboxRow) {
 
 
+            $className = $inboxRow->contentType->contentTypeClass;
+
+
+            /** @var AbstractContentType $contentType */
+            $contentType = new $className($inboxRow->dataId);
+
+
+            $subject = $contentType->getSubject() . ' ' . $inboxRow->dateTime->getShortDateTimeLeadingZeroFormat();  //.' '.$contentType->u;
+
             $widget = new AdminWidget($col2);
-            $widget->widgetTitle = $inboxRow->subject;
-
-            $contentType = $inboxRow->contentType->getContentTypeClassObject();
-
-            if ($contentType !== null) {
-
-                $item = $contentType->getView($widget);
-                $item->dataId = $inboxRow->dataId;
+            $widget->widgetTitle = $subject;  // $inboxRow->subject;
 
 
-                if ($contentType->getItemSite($inboxRow->dataId) !== null) {
+            if ($contentType->hasView()) {
 
-                    $btn = new AdminButton($widget);
-                    $btn->content = 'Weiter';
-                    $btn->site = $contentType->getItemSite($inboxRow->dataId);
-                    //$btn->site->addParameter(new DataIdParameter($inboxRow->dataId));
+                $contentType->getView($widget);
 
-                }
             }
 
-            /*
-              $text =
+            //$inboxRow->contentType->getContentTypeClassObject();
 
-              if ($inboxRow->message !== '') {
-                  $text .= ':' . (new Br())->getHtmlString() . $inboxRow->message;
-              }
+            //if ($contentType !== null) {
 
-              $row->addText($text);
+            /*     $item = $contentType->getView($widget);
+                 $item->dataId = $inboxRow->dataId;
 
-              //$row->addText($inboxRow->subject . ': ' . $inboxRow->message);
 
-              $row->addText($inboxRow->dateTime->getShortDateTimeLeadingZeroFormat());
+                 if ($contentType->getItemSite($inboxRow->dataId) !== null) {
 
-              $contentType = $inboxRow->contentType->getContentTypeClassObject();
+                     $btn = new AdminButton($widget);
+                     $btn->content = 'Weiter';
+                     $btn->site = $contentType->getItemSite($inboxRow->dataId);
+                     //$btn->site->addParameter(new DataIdParameter($inboxRow->dataId));
 
-              $site = clone(InboxArchiveSite::$site);
-              $site->addParameter(new InboxParameter($inboxRow->id));
-              $row->addIconSite($site);
+                 }
+             //}
 
-              $row->addClickableSite($contentType->getItemSite($inboxRow->dataId));*/
+             /*
+               $text =
+
+               if ($inboxRow->message !== '') {
+                   $text .= ':' . (new Br())->getHtmlString() . $inboxRow->message;
+               }
+
+               $row->addText($text);
+
+               //$row->addText($inboxRow->subject . ': ' . $inboxRow->message);
+
+               $row->addText($inboxRow->dateTime->getShortDateTimeLeadingZeroFormat());
+
+               $contentType = $inboxRow->contentType->getContentTypeClassObject();
+
+               $site = clone(InboxArchiveSite::$site);
+               $site->addParameter(new InboxParameter($inboxRow->id));
+               $row->addIconSite($site);
+
+               $row->addClickableSite($contentType->getItemSite($inboxRow->dataId));*/
 
         }
 
