@@ -7,9 +7,9 @@ use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoModel;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
 use Nemundo\Workflow\App\ToDo\Status\ToDoErfassungWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
-class ToDoProcess extends AbstractProcess
+class ToDoProcess extends AbstractModelProcess
 {
 
     protected function loadData()

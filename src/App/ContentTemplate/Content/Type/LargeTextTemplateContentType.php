@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
 
-use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\LargeTextContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\Item\LargeTextContentView;

@@ -3,10 +3,10 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\WorkflowAbort\WorkflowAbortModel;
 
-class WorkflowAbortWorkflowStatus extends AbstractDataWorkflowStatus
+class WorkflowAbortWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
 

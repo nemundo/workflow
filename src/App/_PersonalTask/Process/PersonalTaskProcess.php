@@ -8,10 +8,10 @@ use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskReader;
 use Nemundo\Workflow\App\PersonalTask\Site\PersonalTaskItemSite;
 use Nemundo\Workflow\App\PersonalTask\WorkflowStatus\PersonalTaskErfassungWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 
-class PersonalTaskProcess extends AbstractProcess
+class PersonalTaskProcess extends AbstractModelProcess
 {
 
     protected function loadData()

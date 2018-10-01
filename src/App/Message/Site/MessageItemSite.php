@@ -56,6 +56,11 @@ class MessageItemSite extends AbstractSite
         $title = new AdminTitle($page);
         $title->content = $messageRow->subject . ' (' . $messageRow->count . ')';
 
+        $p = new Paragraph($page);
+        $p->content = $messageRow->text;
+
+
+        /*
         $text = 'To: ';
 
         $reader = new MessageToReader();

@@ -8,12 +8,12 @@ use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\Workflow\App\Workflow\Data\Process\Process;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessDelete;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessUpdate;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 class ProcessSetup extends AbstractBase
 {
 
-    public function addProcess(AbstractProcess $process)
+    public function addProcess(AbstractModelProcess $process)
     {
 
         $data = new Process();

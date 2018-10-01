@@ -5,9 +5,9 @@ namespace Nemundo\Workflow\App\PasswordReset\WorkflowStatus;
 use Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest\PasswordResetRequestModel;
 use Nemundo\Workflow\Template\WorkflowStatus\CommentWorkflowStatus;
 use Nemundo\Workflow\Usergroup\WorkflowAdministratorUsergroup;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
-class PasswordResetStartWorkflowStatus extends AbstractDataWorkflowStatus
+class PasswordResetStartWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

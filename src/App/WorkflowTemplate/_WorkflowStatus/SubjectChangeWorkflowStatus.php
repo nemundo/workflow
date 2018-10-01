@@ -2,11 +2,11 @@
 
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SubjectChange\SubjectChangeReader;
 
-class SubjectChangeWorkflowStatus extends AbstractDataWorkflowStatus
+class SubjectChangeWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

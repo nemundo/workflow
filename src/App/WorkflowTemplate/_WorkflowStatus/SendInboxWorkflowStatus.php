@@ -5,11 +5,11 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SendInbox\SendInboxModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\SendInbox\SendInboxReader;
 
-class SendInboxWorkflowStatus extends AbstractDataWorkflowStatus
+class SendInboxWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

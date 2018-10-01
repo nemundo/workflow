@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 
-class CommentTemplateWorkflowStatus extends AbstractDataWorkflowStatus
+class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

@@ -31,7 +31,7 @@ use Nemundo\Workflow\App\Workflow\Site\StatusChangeSite;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
 use Nemundo\Workflow\App\Workflow\Parameter\DraftEditParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
 
 

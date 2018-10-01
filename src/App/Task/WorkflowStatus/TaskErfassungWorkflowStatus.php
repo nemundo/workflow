@@ -7,7 +7,7 @@ use Nemundo\Workflow\App\Task\Data\Task\TaskModel;
 use Nemundo\Workflow\App\Task\Data\Task\TaskReader;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
 use Nemundo\Workflow\App\Task\Form\TaskBuilderForm;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class TaskErfassungWorkflowStatus extends AbstractWorkflowStatus  // AbstractDataWorkflowStatus

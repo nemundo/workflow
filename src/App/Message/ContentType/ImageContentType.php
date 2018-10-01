@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Message\ContentType;
 
 
-use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataContentType;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Message\ContentItem\ImageContentView;
 use Nemundo\Workflow\App\Message\ContentItem\TextContentView;

@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\ImageTemplateContentType;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
-class ImageWorkflowTemplateContentType extends AbstractDataWorkflowStatus  // ImageTemplateContentType
+class ImageWorkflowTemplateContentType extends AbstractModelDataWorkflowStatus  // ImageTemplateContentType
 {
 
     protected function loadData()

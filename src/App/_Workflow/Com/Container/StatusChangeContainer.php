@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 use Nemundo\Workflow\App\Workflow\Com\Title\WorkflowTitle;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
@@ -19,7 +19,7 @@ class StatusChangeContainer extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $process;
 

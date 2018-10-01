@@ -11,7 +11,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\Bootstrap\Form\BootstrapModelForm;
 use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
@@ -21,7 +21,7 @@ class WorkflowModelForm extends BootstrapModelForm
 {
 
     /**
-     * @var AbstractDataWorkflowStatus
+     * @var AbstractModelDataWorkflowStatus
      */
     public $workflowStatus;
 

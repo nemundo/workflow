@@ -8,11 +8,11 @@ use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowItem;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeReader;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 
 // UserAssignmentTemplateWorkflowStatus
-class UserAssignmentChangeWorkflowStatus extends AbstractDataWorkflowStatus
+class UserAssignmentChangeWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

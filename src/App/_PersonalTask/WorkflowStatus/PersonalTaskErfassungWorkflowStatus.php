@@ -12,11 +12,11 @@ use Nemundo\Workflow\App\PersonalTask\Process\PersonalTaskProcess;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
 
-class PersonalTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
+class PersonalTaskErfassungWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

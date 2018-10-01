@@ -3,14 +3,14 @@
 namespace Nemundo\Workflow\App\News\Content\Type;
 
 
-use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataContentType;
 use Nemundo\Workflow\App\News\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\News\Site\CommentRedirectSite;
 use Nemundo\Workflow\App\News\Site\NewsItemSite;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 
-class CommentContentType extends AbstractDataContentType
+class CommentContentTypeModel extends AbstractModelDataContentType
 {
 
     /**

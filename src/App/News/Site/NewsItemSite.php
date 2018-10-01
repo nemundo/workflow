@@ -9,7 +9,7 @@ use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Action\CommentAction;
-use Nemundo\Workflow\App\News\Content\Type\CommentContentType;
+use Nemundo\Workflow\App\News\Content\Type\CommentContentTypeModel;
 use Nemundo\Workflow\App\News\Data\Comment\CommentForm;
 use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
@@ -54,7 +54,7 @@ class NewsItemSite extends AbstractSite
         $p->content = $newsRow->text;
 
 
-        $contentType = new CommentContentType();
+        $contentType = new CommentContentTypeModel();
         $contentType->newsId = $newsId;
 
         //$form = (new CommentContentType())->getForm($page);

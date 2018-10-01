@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
 use Nemundo\Workflow\App\Task\Form\SourceTaskContentForm;
 use Nemundo\Workflow\App\Task\Form\TaskBuilderForm;
 use Nemundo\Workflow\App\Task\Item\SourceTaskContentView;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus

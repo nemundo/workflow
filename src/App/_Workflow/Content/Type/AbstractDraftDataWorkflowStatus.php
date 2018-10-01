@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\Workflow\Form\Draft\WorkflowDraftChangeForm;
 
 
 // AbstractDraftDataModelWorkflowStatus
-abstract class AbstractDraftDataWorkflowStatus extends AbstractDataWorkflowStatus  // AbstractWorkflowStatus
+abstract class AbstractDraftDataWorkflowStatus extends AbstractModelDataWorkflowStatus  // AbstractWorkflowStatus
 {
 
     /**

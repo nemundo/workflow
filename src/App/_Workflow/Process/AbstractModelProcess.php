@@ -9,13 +9,13 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowStartEvent;
 use Nemundo\Workflow\App\Workflow\Process\Item\ProcessContentView;
-use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataContentType;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowItemSite;
 use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 
 
-abstract class AbstractProcess extends AbstractDataContentType
+abstract class AbstractModelProcess extends AbstractModelDataContentType
 {
 
     use UserAccessTrait;

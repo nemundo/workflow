@@ -3,12 +3,12 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserDeadlineAssignment\UserDeadlineAssignmentModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserDeadlineAssignment\UserDeadlineAssignmentReader;
 
-class UserDeadlineAssignmentWorkflowStatus extends AbstractDataWorkflowStatus
+class UserDeadlineAssignmentWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
 

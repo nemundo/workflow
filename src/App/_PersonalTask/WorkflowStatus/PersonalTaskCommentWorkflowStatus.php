@@ -6,10 +6,10 @@ namespace Nemundo\Workflow\App\PersonalTask\WorkflowStatus;
 use Nemundo\Workflow\Action\NotificationWorkflowAction;
 use Nemundo\Workflow\App\PersonalTask\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 
-class PersonalTaskCommentWorkflowStatus extends AbstractDataWorkflowStatus
+class PersonalTaskCommentWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

@@ -8,9 +8,9 @@ use Nemundo\Workflow\App\Task\Item\TaskProcessContentItem;
 use Nemundo\Workflow\App\Task\Parameter\TaskParameter;
 use Nemundo\Workflow\App\Task\Site\TaskItemSite;
 use Nemundo\Workflow\App\Task\WorkflowStatus\TaskErfassungWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
-class TaskProcess extends AbstractProcess
+class TaskProcess extends AbstractModelProcess
 {
 
     protected function loadData()

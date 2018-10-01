@@ -7,7 +7,7 @@ use Nemundo\Db\Filter\Filter;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowModel;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 class WorkflowFilter extends Filter
 {
@@ -18,7 +18,7 @@ class WorkflowFilter extends Filter
 
 
 
-    public function addProcessFilter(AbstractProcess $process)
+    public function addProcessFilter(AbstractModelProcess $process)
     {
 
         $model = new WorkflowModel();

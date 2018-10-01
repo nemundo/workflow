@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\News\Content\Type;
 
 
-use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataContentType;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\News\Data\News\NewsModel;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
@@ -13,7 +13,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 
-class NewsContentType extends AbstractDataContentType
+class NewsContentTypeModel extends AbstractModelDataContentType
 {
 
     protected function loadData()
@@ -36,7 +36,7 @@ class NewsContentType extends AbstractDataContentType
 
         $builder = new SearchEngineBuilder();
         $builder->dataId = $newsRow->id;
-        $builder->contentType = new NewsContentType();
+        $builder->contentType = new NewsContentTypeModel();
         $builder->title = $newsRow->title;
         $builder->text = $newsRow->text;
         $builder->addText($newsRow->title);

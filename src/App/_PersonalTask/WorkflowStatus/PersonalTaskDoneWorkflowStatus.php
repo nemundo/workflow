@@ -6,10 +6,10 @@ namespace Nemundo\Workflow\App\PersonalTask\WorkflowStatus;
 use Nemundo\Workflow\App\PersonalTask\Data\Comment\CommentModel;
 use Nemundo\Workflow\App\PersonalTask\Data\PersonalTask\PersonalTaskUpdate;
 use Nemundo\Workflow\App\Task\Item\TaskItem;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 
-class PersonalTaskDoneWorkflowStatus extends AbstractDataWorkflowStatus
+class PersonalTaskDoneWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

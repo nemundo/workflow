@@ -15,8 +15,8 @@ use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowValue;
 use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 use Nemundo\Workflow\Model\AbstractWorkflowBaseModel;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractFormWorkflowStatus;
 
 
@@ -24,7 +24,7 @@ class WorkflowBuilder extends AbstractContentBuilder
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $contentType;
 
@@ -85,7 +85,7 @@ class WorkflowBuilder extends AbstractContentBuilder
         $workflowStatus = (new WorkflowStatusFactory())->getWorkflowStatus($this->contentType->startWorkflowStatusClass);
 
 
-        if ($workflowStatus->isObjectOfClass(AbstractDataWorkflowStatus::class) || $workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
+        if ($workflowStatus->isObjectOfClass(AbstractModelDataWorkflowStatus::class) || $workflowStatus->isObjectOfClass(AbstractFormWorkflowStatus::class)) {
 
             if ($this->contentType->modelClass == $workflowStatus->modelClass) {
                 $this->dataId = $this->dataId;

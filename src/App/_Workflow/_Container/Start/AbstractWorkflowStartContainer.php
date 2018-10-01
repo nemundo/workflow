@@ -5,13 +5,13 @@ namespace Nemundo\Workflow\App\Workflow\Container\Start;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 class AbstractWorkflowStartContainer extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $process;
 

@@ -10,8 +10,10 @@ use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
+use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\Assignment;
 use Nemundo\Workflow\App\Identification\Model\Identification;
+use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
 
 class AssignmentBuilder extends AbstractBase
 {
@@ -72,13 +74,22 @@ class AssignmentBuilder extends AbstractBase
 
             $userRow = (new UserReader())->getRowById($userId);
 
-            $mail = new ResponsiveActionMailMessage();
-            $mail->addTo($userRow->email);
-            $mail->subject = $this->contentType->getSubject();
-            $mail->actionText = (new Html($this->message))->getValue();
-            $mail->actionLabel = 'Ansehen';
-            $mail->actionUrlSite = $this->contentType->getItemSite();
-            $mail->sendMail();
+            $mailConfigValue = new MailConfigValue();
+            $mailConfigValue->field = $mailConfigValue->model->assignmentMail;
+            $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, $userRow->id);
+            $value = $mailConfigValue->getValue();
+
+            if (($value) || ($value == '')) {
+
+                $mail = new ResponsiveActionMailMessage();
+                $mail->addTo($userRow->email);
+                $mail->subject = $this->contentType->getSubject();
+                $mail->actionText = (new Html($this->message))->getValue();
+                $mail->actionLabel = 'Ansehen';
+                $mail->actionUrlSite = $this->contentType->getItemSite();
+                $mail->sendMail();
+
+            }
 
         }
 

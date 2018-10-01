@@ -13,9 +13,9 @@ use Nemundo\Workflow\App\Task\Site\TaskItemSite;
 use Nemundo\Workflow\App\Task\WorkflowStatus\SourceTaskErfassungWorkflowStatus;
 use Nemundo\Workflow\App\Task\WorkflowStatus\SourceTaskListErfassungWorkflowStatus;
 use Nemundo\Workflow\App\Task\WorkflowStatus\TaskErfassungWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
-class SourceTaskProcess extends AbstractProcess
+class SourceTaskProcess extends AbstractModelProcess
 {
 
     protected function loadData()

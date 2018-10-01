@@ -2,7 +2,7 @@
 
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
-use Nemundo\App\Content\Type\AbstractDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataContentType;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Action\AbstractActionPanel;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeEvent;
@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\Workflow\Form\WorkflowContentForm;
 
 
 // WorkflowContentType
-abstract class AbstractWorkflowStatusOld extends AbstractDataContentType
+abstract class AbstractModelWorkflowStatusOld extends AbstractModelDataContentType
 {
 
     use UserAccessTrait;

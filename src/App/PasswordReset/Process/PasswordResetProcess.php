@@ -6,10 +6,10 @@ namespace Nemundo\Workflow\App\PasswordReset\Process;
 use Nemundo\Workflow\App\PasswordReset\Data\PasswordResetRequest\PasswordResetRequestModel;
 use Nemundo\Workflow\App\PasswordReset\Site\PasswordChangeSite;
 use Nemundo\Workflow\App\PasswordReset\WorkflowStatus\PasswordResetStartWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
-class PasswordResetProcess extends AbstractProcess
+class PasswordResetProcess extends AbstractModelProcess
 {
 
     protected function loadData()

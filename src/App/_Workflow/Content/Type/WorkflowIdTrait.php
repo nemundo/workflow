@@ -16,7 +16,7 @@ use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 use Nemundo\Workflow\App\Task\Builder\TaskBuilder;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 
 trait WorkflowIdTrait
@@ -28,7 +28,7 @@ trait WorkflowIdTrait
     public $workflowId;
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     private $process;
 

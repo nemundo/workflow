@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Container\Start;
 
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 class WorkflowStartContainer extends AbstractWorkflowStartContainer
 {
@@ -13,7 +13,7 @@ class WorkflowStartContainer extends AbstractWorkflowStartContainer
     public function getHtml()
     {
 
-        if (!$this->checkObject('process', $this->process, AbstractProcess::class)) {
+        if (!$this->checkObject('process', $this->process, AbstractModelProcess::class)) {
             return parent::getHtml();
         }
 

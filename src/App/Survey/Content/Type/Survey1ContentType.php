@@ -8,7 +8,7 @@ use Nemundo\App\Content\Type\Model\ModelContentTypeTrait;
 use Nemundo\App\Content\Type\Sequence\AbstractMultiSequenceContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractMultiSequenceDataContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractSequenceContentType;
-use Nemundo\App\Content\Type\Sequence\AbstractSequenceDataContentType;
+use Nemundo\App\Content\Type\Sequence\AbstractSequenceModelDataContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractSequenceTreeContentType;
 use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
 use Nemundo\App\Content\View\DataModelContentView;
@@ -16,9 +16,9 @@ use Nemundo\Workflow\App\Survey\Content\Form\Survey1ContentForm;
 use Nemundo\Workflow\App\Survey\Data\Survey\Survey;
 use Nemundo\Workflow\App\Survey\Data\Survey1\Survey1Model;
 use Nemundo\Workflow\App\Survey\Data\SurveyLog\SurveyLog;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
-class Survey1ContentType extends AbstractDataWorkflowStatus  // AbstractSequenceTreeContentType   //ContentType   // AbstractMultiSequenceDataContentType  // AbstractSequenceDataContentType  // AbstractSequenceContentType  //ContentType
+class Survey1ContentType extends AbstractModelDataWorkflowStatus  // AbstractSequenceTreeContentType   //ContentType   // AbstractMultiSequenceDataContentType  // AbstractSequenceDataContentType  // AbstractSequenceContentType  //ContentType
 {
 
  //   use SequenceTrait;

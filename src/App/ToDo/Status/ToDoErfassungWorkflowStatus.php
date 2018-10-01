@@ -15,12 +15,12 @@ use Nemundo\Workflow\App\ToDo\Content\ToDoContentType;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoModel;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
 use Nemundo\Workflow\App\ToDo\Notification\ToDoNotificationType;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Event\WorkflowEvent;
 use Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus\DeadlineChangeWorkflowStatus;
 
-class ToDoErfassungWorkflowStatus extends AbstractDataWorkflowStatus
+class ToDoErfassungWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

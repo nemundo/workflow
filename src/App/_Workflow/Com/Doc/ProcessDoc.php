@@ -6,14 +6,14 @@ namespace Nemundo\Workflow\App\Workflow\Com\Doc;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Listing\UnorderedList;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 
 class ProcessDoc extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $process;
 

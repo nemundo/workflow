@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 
 class SearchEngineBuilder extends AbstractContentBuilder

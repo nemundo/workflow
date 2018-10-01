@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Survey\Content\Type;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\Model\ModelContentTypeTrait;
-use Nemundo\App\Content\Type\Sequence\AbstractSequenceDataContentType;
+use Nemundo\App\Content\Type\Sequence\AbstractSequenceModelDataContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractSequenceTreeContentType;
 use Nemundo\App\Content\View\DataModelContentView;
 use Nemundo\Workflow\App\Survey\Data\Survey2\Survey2Model;

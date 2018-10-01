@@ -33,7 +33,7 @@ use Nemundo\Workflow\App\Workflow\Parameter\DraftParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\Parameter\WorkflowStatusChangeParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 use Nemundo\Workflow\Reader\WorkflowStatusChangeItemReader;
 use Nemundo\Workflow\Site\StatusChange\StatusChangeSite;
 use Nemundo\Workflow\Site\WorkflowActionPanelSite;
@@ -41,7 +41,7 @@ use Nemundo\Workflow\Site\DraftReleaseSite;
 use Nemundo\Workflow\Site\WorkflowFormUpdateSite;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataListWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDraftDataWorkflowStatus;
 
 
@@ -49,7 +49,7 @@ class WorkflowViewList //extends AbstractProcessItem
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $process;
 

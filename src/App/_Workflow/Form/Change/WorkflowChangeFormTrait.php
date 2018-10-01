@@ -7,14 +7,14 @@ namespace Nemundo\Workflow\App\Workflow\Form\Change;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Builder\StatusChangeBuilder;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 trait WorkflowChangeFormTrait
 {
 
     /**
-     * @var AbstractDataWorkflowStatus
+     * @var AbstractModelDataWorkflowStatus
      */
     public $workflowStatus;
 

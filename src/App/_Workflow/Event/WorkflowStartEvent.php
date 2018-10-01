@@ -7,14 +7,14 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\AbstractEvent;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowValue;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 use Nemundo\Workflow\App\Workflow\Factory\WorkflowStatusFactory;
 
 class WorkflowStartEvent extends AbstractEvent
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $process;
 

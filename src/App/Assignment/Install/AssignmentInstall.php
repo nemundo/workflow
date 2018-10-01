@@ -7,6 +7,7 @@ use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\Assignment\Application\AssignmentApplication;
 use Nemundo\Workflow\App\Assignment\Data\AssignmentCollection;
+use Nemundo\Workflow\App\MailConfig\Install\MailConfigInstall;
 
 class AssignmentInstall extends AbstractScript
 {
@@ -19,6 +20,8 @@ class AssignmentInstall extends AbstractScript
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new AssignmentCollection());
 
+
+        (new MailConfigInstall());
 
     }
 }

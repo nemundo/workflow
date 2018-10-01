@@ -6,13 +6,13 @@ namespace Nemundo\Workflow\App\Task\WorkflowStatus;
 use Nemundo\Workflow\App\Task\Data\SourceTask\SourceTaskModel;
 use Nemundo\Workflow\App\Task\Data\SourceTask\SourceTaskReader;
 use Nemundo\Workflow\App\Task\Data\SourceTask\SourceTaskUpdate;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 use Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus\DeadlineChangeWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus\UserAssignmentChangeWorkflowStatus;
 
 
-class SourceTaskErfassungWorkflowStatus extends AbstractDataWorkflowStatus
+class SourceTaskErfassungWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()

@@ -9,6 +9,7 @@ use Nemundo\App\Content\Site\ContentTypeSite;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentAdminSite;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
+use Nemundo\Workflow\App\Dashboard\Site\DashboardSite;
 use Nemundo\Workflow\App\Favorite\Site\MyFavoriteSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
@@ -45,6 +46,7 @@ class CollaborationSite extends AbstractSite
         new InboxSite($this);
         new InboxStreamSite($this);
 
+        new DashboardSite($this);
 
         //new WorkflowSite($this);
         //new ProcessSite($this);
@@ -66,7 +68,7 @@ class CollaborationSite extends AbstractSite
 
         new NewsSite($this);
 
-        //new MessageSite($this);
+        new MessageSite($this);
         new WikiSite($this);
 
         new ContentTypeSite($this);

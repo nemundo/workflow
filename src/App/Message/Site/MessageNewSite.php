@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Message\Site;
 
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Message\ContentType\MessageContentType;
 use Nemundo\Workflow\App\Message\Form\MessageContentForm;
 
 class MessageNewSite extends AbstractSite
@@ -32,7 +33,9 @@ class MessageNewSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $form = new MessageContentForm($page);
+        //$form = new MessageContentForm($page);
+
+        $form = (new MessageContentType())->getForm($page);
         $form->redirectSite = MessageSite::$site;
 
 

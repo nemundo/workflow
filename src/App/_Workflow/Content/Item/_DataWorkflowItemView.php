@@ -8,7 +8,7 @@ use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Workflow\Com\View\WorkflowModelView;
 use Nemundo\Workflow\Data\WorkflowStatusChange\WorkflowStatusChangeReader;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 class DataWorkflowItemView extends AbstractWorkflowViewView
 {
@@ -22,7 +22,7 @@ class DataWorkflowItemView extends AbstractWorkflowViewView
 
         $row = $reader->getRow();
 
-        /** @var AbstractDataWorkflowStatus $workflowStatus */
+        /** @var AbstractModelDataWorkflowStatus $workflowStatus */
         $workflowStatus = $row->workflowStatus->getWorkflowStatusClassObject();
 
         //(new Debug())->write($workflowStatus);

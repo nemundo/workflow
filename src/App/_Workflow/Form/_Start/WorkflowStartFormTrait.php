@@ -4,13 +4,13 @@ namespace Nemundo\Workflow\App\Workflow\Form\Start;
 
 
 use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
-use Nemundo\Workflow\App\Workflow\Process\AbstractProcess;
+use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 trait WorkflowStartFormTrait
 {
 
     /**
-     * @var AbstractProcess
+     * @var AbstractModelProcess
      */
     public $process;
 

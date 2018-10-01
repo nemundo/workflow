@@ -4,9 +4,9 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus;
 
 use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\DeadlineChange\DeadlineChangeReader;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
-class DeadlineChangeWorkflowStatus extends AbstractDataWorkflowStatus
+class DeadlineChangeWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
     protected function loadData()
