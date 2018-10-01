@@ -25,7 +25,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
     /**
      * @var string
      */
-    public $message;
+    public $message = '';
 
 
     public function __construct()
