@@ -26,7 +26,7 @@ class AssignmentBuilder extends AbstractBase
     /**
      * @var string
      */
-    public $subject;
+    //public $subject;
 
     /**
      * @var string
@@ -56,7 +56,7 @@ class AssignmentBuilder extends AbstractBase
         $data = new Assignment();
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
-        $data->subject = $this->subject;
+        $data->subject = $this->contentType->getSubject();  // $this->subject;
         $data->message = $this->message;
         $data->assignment = $this->assignment;
         $data->deadline = $this->deadline;

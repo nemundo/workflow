@@ -124,6 +124,7 @@ class AssignmentTable extends AbstractHtmlContainerList
             if ($contentType->isObjectOfClass(AbstractTreeContentType::class)) {
 
                 $parentType = $contentType->getParent();
+$parentType = null;
 
                 if ($parentType !== null) {
 

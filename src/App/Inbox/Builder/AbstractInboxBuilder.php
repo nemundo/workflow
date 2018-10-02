@@ -20,7 +20,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
     /**
      * @var string
      */
-    public $subject;
+    public $subject = '';
 
     /**
      * @var string
@@ -54,18 +54,10 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
         $this->check();
 
-        /*
-        $subject = $this->subject;
-
-        if ($subject == null) {
-            $subject = $this->contentType->getSubject($this->dataId);
-        }*/
-
-
         $data = new Inbox();
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
-        //$data->subject =  $subject;
+        $data->subject = $this->contentType->getSubject();
         $data->message = $this->message;
         $data->userId = $userId;
         $data->save();
