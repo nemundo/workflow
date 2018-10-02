@@ -18,17 +18,6 @@ class UsergroupIdentificationType extends AbstractIdentificationType
     }
 
 
-    /*
-        public function getFilter()
-        {
-
-            foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
-                $this->filter->orEqual($this->model->identification, $usergroupId);
-            }
-
-        }*/
-
-
     public function getValue($identificationId)
     {
 
@@ -70,6 +59,8 @@ class UsergroupIdentificationType extends AbstractIdentificationType
         return $list;
 
     }
+
+
 
     public function getUserIdList()
     {
