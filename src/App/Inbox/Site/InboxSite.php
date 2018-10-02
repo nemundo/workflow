@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Inbox\Site;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
+use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
@@ -27,7 +28,7 @@ use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\InboxPaginationReader;
 use Nemundo\Workflow\App\Inbox\Parameter\InboxParameter;
-
+use Nemundo\Workflow\App\Notification\Com\ListBox\NotificationFilterListBox;
 
 
 class InboxSite extends AbstractSite
@@ -70,7 +71,6 @@ class InboxSite extends AbstractSite
         $title->content = InboxSite::$site->title;
 
 
-
         $row = new BootstrapRow($page);
 
         $col1 = new BootstrapColumn($row);
@@ -98,6 +98,11 @@ class InboxSite extends AbstractSite
 
         }
 
+
+        $form = new SearchForm($col2);
+
+        $listBox = new NotificationFilterListBox($form);
+        $listBox->submitOnChange = true;
 
 
         /*
@@ -220,10 +225,6 @@ class InboxSite extends AbstractSite
 
         $pagination = new BootstrapModelPagination($col2);
         $pagination->paginationReader = $inboxReader;
-
-
-
-
 
 
         $page->render();

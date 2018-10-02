@@ -16,11 +16,6 @@ public $dataId;
 */
 public $userId;
 
-/**
-* @var string
-*/
-public $notificationTypeId;
-
 public function __construct() {
 parent::__construct();
 $this->model = new NotificationModel();
@@ -28,7 +23,6 @@ $this->model = new NotificationModel();
 public function save() {
 $this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
 $this->typeValueList->setModelValue($this->model->userId, $this->userId);
-$this->typeValueList->setModelValue($this->model->notificationTypeId, $this->notificationTypeId);
 $id = parent::save();
 return $id;
 }

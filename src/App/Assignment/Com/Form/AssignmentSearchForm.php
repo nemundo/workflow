@@ -10,6 +10,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\User\Data\User\UserListBox;
+use Nemundo\Workflow\App\Assignment\Com\ListBox\AssignmentFilterListBox;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentModel;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 use Nemundo\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
@@ -58,7 +59,8 @@ class AssignmentSearchForm extends SearchForm
         $this->ersteller->value = $this->ersteller->getValue();
         $this->ersteller->submitOnChange = true;
 
-        $this->source = new ContentTypeListBox($row);
+        //$this->source = new ContentTypeListBox($row);
+        $this->source = new AssignmentFilterListBox($row);
         $this->source->value = $this->source->getValue();
         $this->source->submitOnChange = true;
 

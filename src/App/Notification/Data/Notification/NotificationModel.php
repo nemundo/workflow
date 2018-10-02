@@ -16,16 +16,6 @@ public $userId;
 */
 public $user;
 
-/**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
-*/
-public $notificationTypeId;
-
-/**
-* @var \Nemundo\Workflow\App\Notification\Data\NotificationType\NotificationTypeExternalType
-*/
-public $notificationType;
-
 protected function loadModel() {
 $this->tableName = "notification_notification";
 $this->aliasTableName = "notification_notification";
@@ -52,12 +42,6 @@ $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "notification_notification_user";
 $this->userId->label = "User";
 
-$this->notificationTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->notificationTypeId->tableName = "notification_notification";
-$this->notificationTypeId->fieldName = "notification_type";
-$this->notificationTypeId->aliasFieldName = "notification_notification_notification_type";
-$this->notificationTypeId->label = "Notification Type";
-
 }
 public function loadUser() {
 if ($this->user == null) {
@@ -66,15 +50,6 @@ $this->user->tableName = "notification_notification";
 $this->user->fieldName = "user";
 $this->user->aliasFieldName = "notification_notification_user";
 $this->user->label = "User";
-}
-}
-public function loadNotificationType() {
-if ($this->notificationType == null) {
-$this->notificationType = new \Nemundo\Workflow\App\Notification\Data\NotificationType\NotificationTypeExternalType($this, "notification_notification_notification_type");
-$this->notificationType->tableName = "notification_notification";
-$this->notificationType->fieldName = "notification_type";
-$this->notificationType->aliasFieldName = "notification_notification_notification_type";
-$this->notificationType->label = "Notification Type";
 }
 }
 }

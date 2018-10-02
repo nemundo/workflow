@@ -12,6 +12,7 @@ use Nemundo\Workflow\App\Message\ContentType\ImageContentType;
 use Nemundo\Workflow\App\Message\ContentType\MessageContentType;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\Message\Data\MessageCollection;
+use Nemundo\Workflow\App\Notification\Setup\NotificationFilterSetup;
 
 class MessageInstall extends AbstractScript
 {
@@ -29,6 +30,9 @@ class MessageInstall extends AbstractScript
         //$setup->addContentType(new ImageContentType());
         $setup->addContentType(new MessageContentType());
 
+
+        $setup = new NotificationFilterSetup();
+        $setup->addContentType(new MessageContentType());
 
 
 

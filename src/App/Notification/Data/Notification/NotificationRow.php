@@ -26,16 +26,6 @@ public $userId;
 */
 public $user;
 
-/**
-* @var string
-*/
-public $notificationTypeId;
-
-/**
-* @var \Nemundo\Workflow\App\Notification\Data\NotificationType\NotificationTypeRow
-*/
-public $notificationType;
-
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -45,15 +35,8 @@ $this->userId = $this->getModelValue($model->userId);
 if ($model->user !== null) {
 $this->loadNemundoAppUserDataUserUseruserRow($model->user);
 }
-$this->notificationTypeId = $this->getModelValue($model->notificationTypeId);
-if ($model->notificationType !== null) {
-$this->loadNemundoWorkflowAppNotificationDataNotificationTypeNotificationTypenotificationTypeRow($model->notificationType);
-}
 }
 private function loadNemundoAppUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\App\User\Data\User\UserRow($this->row, $model);
-}
-private function loadNemundoWorkflowAppNotificationDataNotificationTypeNotificationTypenotificationTypeRow($model) {
-$this->notificationType = new \Nemundo\Workflow\App\Notification\Data\NotificationType\NotificationTypeRow($this->row, $model);
 }
 }
