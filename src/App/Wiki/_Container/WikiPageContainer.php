@@ -17,7 +17,7 @@ class WikiPageContainer extends AbstractContentType
         $this->contentName = 'Wiki';
         $this->contentId = 'f40aefbc-3f4f-4d15-b27a-8139eccb162a';
         $this->viewClass = WikiContentView::class;
-        $this->itemSite = WikiPageSite::$site;
+        $this->viewSite = WikiPageSite::$site;
         $this->parameterClass = WikiPageParameter::class;
 
     }

@@ -90,11 +90,11 @@ class WikiPageSite extends AbstractSite
 
             $btn = new AdminButton($page);
             $btn->content = 'Back';
-            $btn->site = $wikiPage->getItemSite();
+            $btn->site = $wikiPage->getViewSite();
 
             $contentType->parentContentType = $wikiPage;
             $form = $contentType->getForm($page);
-            $form->redirectSite = $wikiPage->getItemSite();
+            $form->redirectSite = $wikiPage->getViewSite();
 
         }
 

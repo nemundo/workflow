@@ -176,7 +176,7 @@ class TaskSite extends AbstractSite
 
             $row->addYesNo($taskRow->archive);
 
-            $site = $contentType->getItemSite($taskRow->dataId);
+            $site = $contentType->getViewSite($taskRow->dataId);
             if ($site !== null) {
                 $row->addClickableSite($site);
             }

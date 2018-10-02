@@ -70,7 +70,7 @@ class MyFavoriteSite extends AbstractSite
             $row->addIconSite($site);
 
 
-            $row->addClickableSite($contentType->getItemSite($favoriteRow->dataId));
+            $row->addClickableSite($contentType->getViewSite($favoriteRow->dataId));
 
 
         }

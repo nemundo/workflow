@@ -58,7 +58,7 @@ class WikiPageContentFormUpdate extends ContentTreeForm  // BootstrapForm  // Wi
         $content->saveType();
 
         //if ($this->redirectToContentItemSite) {
-            $this->redirectSite = $content->getItemSite();
+            $this->redirectSite = $content->getViewSite();
         //}
 
 

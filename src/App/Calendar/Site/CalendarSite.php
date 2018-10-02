@@ -106,8 +106,8 @@ class CalendarSite extends AbstractSite
             $identificationType = $calendarRow->identificationType->getIdentificationTypeClassObject();
             $row->addText($identificationType->getValue($calendarRow->identificationId));
 
-            if ($contentType->itemSite !== null) {
-                $row->addClickableSite($contentType->getItemSite($calendarRow->dataId));
+            if ($contentType->viewSite !== null) {
+                $row->addClickableSite($contentType->getViewSite($calendarRow->dataId));
             }
 
 

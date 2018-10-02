@@ -70,7 +70,7 @@ class WikiPageContentForm extends ContentTreeForm  // BootstrapForm  // WikiPage
 
 
         //if ($this->redirectToContentItemSite) {
-        $this->redirectSite = $content->getItemSite();
+        $this->redirectSite = $content->getViewSite();
         //}
 
 

@@ -60,7 +60,7 @@ class MySubscriptionSite extends AbstractSite
 
             $row->addText($subscriptionRow->user->displayName);
 
-            $row->addClickableSite($contentType->getItemSite($subscriptionRow->dataId));
+            $row->addClickableSite($contentType->getViewSite($subscriptionRow->dataId));
 
 
         }

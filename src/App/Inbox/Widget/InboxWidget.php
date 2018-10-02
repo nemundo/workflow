@@ -113,7 +113,7 @@ class InboxWidget extends AbstractAdminWidget
             $row->addIconSite($site);
 
 
-            $site = $contentType->getItemSite();
+            $site = $contentType->getViewSite();
             if ($site !== null) {
                 //$row->addClickableSite($site);
 

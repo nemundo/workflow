@@ -22,7 +22,7 @@ class MailContentType extends AbstractContentType
         $this->contentId = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
         $this->modelClass = MailModel::class;
         $this->viewClass = MailContentView::class;
-        $this->itemSite = WikiRedirectSite::$site;
+        $this->viewSite = WikiRedirectSite::$site;
 
     }
 

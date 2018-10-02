@@ -32,7 +32,7 @@ class TaskProcessContentItem extends ProcessContentView
         if ($sourceType !== null) {
             $btn = new AdminButton($this);
             $btn->content = $sourceType->getSubject($taskRow->sourceId) . ' ---' . $taskRow->source;
-            $btn->site = $sourceType->getItemSite($taskRow->sourceId);
+            $btn->site = $sourceType->getViewSite($taskRow->sourceId);
         }
 
         return parent::getHtml();

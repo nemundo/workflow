@@ -13,7 +13,7 @@ class RepeatingTaskContentType extends AbstractContentType
     {
         $this->contentName = 'Wiederholdende Aufgabe';
         $this->contentId = '59f7cdb2-19c6-49ab-94a4-53488bf0994c';
-        $this->itemSite = RepeatingTaskItemSite::$site;
+        $this->viewSite = RepeatingTaskItemSite::$site;
     }
 
 }

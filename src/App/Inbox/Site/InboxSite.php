@@ -205,7 +205,7 @@ class InboxSite extends AbstractSite
             $row->addIconSite($site);
 
 
-            $site = $contentType->getItemSite($inboxRow->dataId);
+            $site = $contentType->getViewSite($inboxRow->dataId);
             if ($site !== null) {
                 //$row->addClickableSite($site);
 

@@ -82,7 +82,7 @@ class SearchEngineWidget extends AbstractAdminWidget
 
                 $row->addText($contentType->contentName);
 
-                $row->addClickableSite($contentType->getItemSite());
+                $row->addClickableSite($contentType->getViewSite());
 
             }
 

@@ -21,7 +21,7 @@ class ToDoContentType extends AbstractContentType
         $this->contentName = 'To Do (todo)';
         $this->contentId = 'c9c9f07f-7608-49be-99b4-95c1aa07c69b';
         $this->viewClass = ToDoContentView::class;
-        $this->itemSite = ToDoItemSite::$site;
+        $this->viewSite = ToDoItemSite::$site;
         $this->parameterClass = ToDoParameter::class;
         $this->formClass = ToDoContentForm::class;
     }

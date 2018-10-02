@@ -179,7 +179,7 @@ class AssignmentTable extends AbstractHtmlContainerList
 
 
             if ($contentType !== null) {
-                $site = $contentType->getItemSite();
+                $site = $contentType->getViewSite();
 
                 if ($site !== null) {
                     $row->addClickableSite($site);

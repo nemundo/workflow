@@ -101,7 +101,7 @@ class AssignmentBuilder extends AbstractBase
                 $mail->subject = $this->contentType->getSubject();
                 $mail->actionText = (new Html($this->message))->getValue();
                 $mail->actionLabel = 'Ansehen';
-                $mail->actionUrlSite = $this->contentType->getItemSite();
+                $mail->actionUrlSite = $this->contentType->getViewSite();
                 $mail->sendMail();
 
             }

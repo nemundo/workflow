@@ -58,7 +58,7 @@ class WikiContentView extends AbstractContentView
             new TrashIcon($btn);
 
 
-            $site = $contentType->getItemSite($wikiRow->dataId);
+            $site = $contentType->getViewSite($wikiRow->dataId);
 
             if ($site !== null) {
                 $btn = new AdminButton($this);

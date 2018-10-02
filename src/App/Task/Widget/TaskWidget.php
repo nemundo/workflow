@@ -101,7 +101,7 @@ class TaskWidget extends AbstractAdminWidget
 
             //(new Debug())->write($contentType);
 
-            $site = $contentType->getItemSite($taskRow->dataId);
+            $site = $contentType->getViewSite($taskRow->dataId);
             if ($site !== null) {
                 $row->addClickableSite($site);
             }

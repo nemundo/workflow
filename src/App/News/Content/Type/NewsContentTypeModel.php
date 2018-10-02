@@ -21,7 +21,7 @@ class NewsContentTypeModel extends AbstractModelDataContentType
 
         $this->contentName = 'News';
         $this->contentId = '9ba5d00a-682c-42b9-8ce2-26497047feaf';
-        $this->itemSite = NewsItemSite::$site;
+        $this->viewSite = NewsItemSite::$site;
         //$this->itemClass = NewsContentItem::class;
         $this->parameterClass = NewsParameter::class;
         $this->modelClass = NewsModel::class;
