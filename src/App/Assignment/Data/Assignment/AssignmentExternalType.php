@@ -32,6 +32,11 @@ public $message;
 public $assignment;
 
 /**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $assignmentText;
+
+/**
 * @var \Nemundo\Model\Type\DateTime\DateType
 */
 public $deadline;
@@ -61,6 +66,11 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $source;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = AssignmentModel::class;
@@ -84,7 +94,7 @@ $this->subject = new \Nemundo\Model\Type\Text\TextType();
 $this->subject->fieldName = "subject";
 $this->subject->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->subject->aliasFieldName = $this->subject->tableName . "_" . $this->subject->fieldName;
-$this->subject->label = "Subject";
+$this->subject->label = "Betreff";
 $this->addType($this->subject);
 
 $this->message = new \Nemundo\Model\Type\Text\LargeTextType();
@@ -102,11 +112,18 @@ $this->assignment->label = "Assignment";
 $this->assignment->createObject();
 $this->addType($this->assignment);
 
+$this->assignmentText = new \Nemundo\Model\Type\Text\TextType();
+$this->assignmentText->fieldName = "assignment_text";
+$this->assignmentText->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->assignmentText->aliasFieldName = $this->assignmentText->tableName . "_" . $this->assignmentText->fieldName;
+$this->assignmentText->label = "Verantwortlicher";
+$this->addType($this->assignmentText);
+
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType();
 $this->deadline->fieldName = "deadline";
 $this->deadline->tableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->deadline->aliasFieldName = $this->deadline->tableName . "_" . $this->deadline->fieldName;
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Erledigen bis";
 $this->addType($this->deadline);
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType();
@@ -136,6 +153,13 @@ $this->dateTimeCreated->tableName = $this->parentFieldName . "_" . $this->extern
 $this->dateTimeCreated->aliasFieldName = $this->dateTimeCreated->tableName . "_" . $this->dateTimeCreated->fieldName;
 $this->dateTimeCreated->label = "Date Time Created";
 $this->addType($this->dateTimeCreated);
+
+$this->source = new \Nemundo\Model\Type\Text\TextType();
+$this->source->fieldName = "source";
+$this->source->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->source->aliasFieldName = $this->source->tableName . "_" . $this->source->fieldName;
+$this->source->label = "Source";
+$this->addType($this->source);
 
 }
 public function loadContentType() {

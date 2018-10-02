@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Assignment\Builder;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\Date;
@@ -19,7 +20,7 @@ class AssignmentBuilder extends AbstractBase
 {
 
     /**
-     * @var AbstractContentType
+     * @var AbstractContentType|AbstractTreeContentType
      */
     public $contentType;
 
@@ -57,8 +58,22 @@ class AssignmentBuilder extends AbstractBase
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
         $data->subject = $this->contentType->getSubject();  // $this->subject;
+
+
+        $source = $this->contentType->contentName;
+        if ($this->contentType->isObjectOfClass(AbstractTreeContentType::class)) {
+
+            $parentType = $this->contentType->getParent();
+            if ($parentType !== null) {
+                $source = $parentType->getSubject();
+            }
+
+        }
+
+        $data->source = $source;
         $data->message = $this->message;
         $data->assignment = $this->assignment;
+        $data->assignmentText = $this->assignment->getValue();
         $data->deadline = $this->deadline;
         $data->save();
 

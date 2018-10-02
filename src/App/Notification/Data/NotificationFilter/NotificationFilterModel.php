@@ -41,6 +41,9 @@ $this->contentTypeId->aliasFieldName = "notification_filter_content_type";
 $this->contentTypeId->label = "Content Type";
 $this->loadContentType();
 
+$index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->addType($this->contentTypeId);
+
 }
 public function loadContentType() {
 if ($this->contentType == null) {

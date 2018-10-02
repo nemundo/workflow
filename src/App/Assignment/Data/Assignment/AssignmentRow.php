@@ -37,6 +37,11 @@ public $message;
 public $assignment;
 
 /**
+* @var string
+*/
+public $assignmentText;
+
+/**
 * @var \Nemundo\Core\Type\DateTime\Date
 */
 public $deadline;
@@ -66,6 +71,11 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
+/**
+* @var string
+*/
+public $source;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -78,6 +88,7 @@ $this->subject = $this->getModelValue($model->subject);
 $this->message = $this->getModelValue($model->message);
 $property = new \Nemundo\Workflow\App\Identification\Model\IdentificationReaderProperty($row, $model->assignment);
 $this->assignment = $property->getValue();
+$this->assignmentText = $this->getModelValue($model->assignmentText);
 $value = $this->getModelValue($model->deadline);
 if ($value !== "0000-00-00") {
 $this->deadline = new \Nemundo\Core\Type\DateTime\Date($this->getModelValue($model->deadline));
@@ -89,6 +100,7 @@ if ($model->userCreated !== null) {
 $this->loadNemundoUserDataUserUseruserCreatedRow($model->userCreated);
 }
 $this->dateTimeCreated = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTimeCreated));
+$this->source = $this->getModelValue($model->source);
 }
 private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);

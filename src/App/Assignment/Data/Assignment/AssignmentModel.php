@@ -32,6 +32,11 @@ public $message;
 public $assignment;
 
 /**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $assignmentText;
+
+/**
 * @var \Nemundo\Model\Type\DateTime\DateType
 */
 public $deadline;
@@ -60,6 +65,11 @@ public $userCreated;
 * @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
 */
 public $dateTimeCreated;
+
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $source;
 
 protected function loadModel() {
 $this->tableName = "assignment_assignment";
@@ -90,7 +100,7 @@ $this->subject = new \Nemundo\Model\Type\Text\TextType($this);
 $this->subject->tableName = "assignment_assignment";
 $this->subject->fieldName = "subject";
 $this->subject->aliasFieldName = "assignment_assignment_subject";
-$this->subject->label = "Subject";
+$this->subject->label = "Betreff";
 $this->subject->allowNullValue = "";
 $this->subject->length = 255;
 
@@ -108,11 +118,19 @@ $this->assignment->aliasFieldName = "assignment_assignment_assignment";
 $this->assignment->label = "Assignment";
 $this->assignment->allowNullValue = "";
 
+$this->assignmentText = new \Nemundo\Model\Type\Text\TextType($this);
+$this->assignmentText->tableName = "assignment_assignment";
+$this->assignmentText->fieldName = "assignment_text";
+$this->assignmentText->aliasFieldName = "assignment_assignment_assignment_text";
+$this->assignmentText->label = "Verantwortlicher";
+$this->assignmentText->allowNullValue = "";
+$this->assignmentText->length = 255;
+
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "assignment_assignment";
 $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "assignment_assignment_deadline";
-$this->deadline->label = "Deadline";
+$this->deadline->label = "Erledigen bis";
 $this->deadline->allowNullValue = "";
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
@@ -147,6 +165,14 @@ $this->dateTimeCreated->aliasFieldName = "assignment_assignment_date_time_create
 $this->dateTimeCreated->label = "Date Time Created";
 $this->dateTimeCreated->allowNullValue = "";
 $this->dateTimeCreated->visible->form = false;
+
+$this->source = new \Nemundo\Model\Type\Text\TextType($this);
+$this->source->tableName = "assignment_assignment";
+$this->source->fieldName = "source";
+$this->source->aliasFieldName = "assignment_assignment_source";
+$this->source->label = "Source";
+$this->source->allowNullValue = "";
+$this->source->length = 255;
 
 }
 public function loadContentType() {

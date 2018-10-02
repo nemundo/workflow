@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\Assignment\Com\Table;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\Admin\Com\Table\Header\SortingHyperlink;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
@@ -73,10 +74,7 @@ class AssignmentTable extends AbstractHtmlContainerList
         }
 
 
-
-
-
-        $assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
+        //$assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
         //$assignmentReader->limit = 20;
 
@@ -85,15 +83,32 @@ class AssignmentTable extends AbstractHtmlContainerList
         $header = new TableHeader($table);
         $header->addEmpty();
         $header->addText('Quelle');
-        $header->addText('Source');
-        $header->addText('Betreff');
+        //$header->addText('Source');
+        //$header->addText('Betreff');
+
+        $subjectSorting = new SortingHyperlink($header);
+        $subjectSorting->fieldType = $assignmentReader->model->subject;
+        $subjectSorting->checkSorting($assignmentReader);
+
         $header->addText('Nachricht');
-        $header->addText('Zuweisung');
-        $header->addText('Erledigen bis');
+
+        //$header->addText('Zuweisung');
+        $assignmentSorting = new SortingHyperlink($header);
+        $assignmentSorting->fieldType = $assignmentReader->model->assignmentText;
+        $assignmentSorting->checkSorting($assignmentReader);
+
+        //$header->addText('Erledigen bis');
+        $deadlineSorting = new SortingHyperlink($header);
+        $deadlineSorting->fieldType = $assignmentReader->model->deadline;
+        //$deadlineSorting->sortOder = SortOrder::DESCENDING;
+        $deadlineSorting->checkSorting($assignmentReader);
+
+
         $header->addText('Ersteller');
         if ($this->showArchive) {
             $header->addText('Archiviert');
         }
+
 
         foreach ($assignmentReader->getData() as $assignmentRow) {
 
@@ -117,6 +132,7 @@ class AssignmentTable extends AbstractHtmlContainerList
                 $row->addEmpty();
             }
 
+            /*
             $row->addText($assignmentRow->contentType->contentType);
 
             //$row->addText($assignmentRow->subject);
@@ -124,7 +140,7 @@ class AssignmentTable extends AbstractHtmlContainerList
             if ($contentType->isObjectOfClass(AbstractTreeContentType::class)) {
 
                 $parentType = $contentType->getParent();
-$parentType = null;
+                //$parentType = null;
 
                 if ($parentType !== null) {
 
@@ -135,10 +151,15 @@ $parentType = null;
 
 
             }
-            $row->addText($source);
+            $row->addText($source);*/
 
 
-            $row->addText($contentType->getSubject());
+            //$row->addText($contentType->getSubject());
+
+            $row->addText($assignmentRow->source);
+            $row->addText($assignmentRow->subject);
+
+
             $row->addText($assignmentRow->message);
             $row->addText($assignmentRow->assignment->getValue());
 
@@ -150,7 +171,7 @@ $parentType = null;
 
             //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
 
-            $row->addText($assignmentRow->userCreated->displayName.' '.$assignmentRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+            $row->addText($assignmentRow->userCreated->displayName . ' ' . $assignmentRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
             if ($this->showArchive) {
                 $row->addYesNo($assignmentRow->archive);
