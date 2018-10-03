@@ -29,11 +29,11 @@ class WikiContentTypeCollection extends AbstractContentTypeCollection
         $this->addContentType(new LargeTextTemplateContentType());
         $this->addContentType(new ImageTemplateContentType());
         //$this->addContentType(new KvpProcess());
-        $this->addContentType(new EcrWorkflowProcess());
-        $this->addContentType(new TaskProcess());
-        $this->addContentType(new AbsenzmeldungType());
+        /* $this->addContentType(new EcrWorkflowProcess());
+         $this->addContentType(new TaskProcess());
+         $this->addContentType(new AbsenzmeldungType());*/
         $this->addContentType(new TextListType());
-        $this->addContentType(new TaskListType());
+        //$this->addContentType(new TaskListType());
 
     }
 
