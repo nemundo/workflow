@@ -26,6 +26,16 @@ public $dataId;
 */
 public $dateTime;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $subject;
+
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $message;
+
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = StreamModel::class;
@@ -58,6 +68,20 @@ $this->dateTime->tableName = $this->parentFieldName . "_" . $this->externalTable
 $this->dateTime->aliasFieldName = $this->dateTime->tableName . "_" . $this->dateTime->fieldName;
 $this->dateTime->label = "Date Time";
 $this->addType($this->dateTime);
+
+$this->subject = new \Nemundo\Model\Type\Text\TextType();
+$this->subject->fieldName = "subject";
+$this->subject->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->subject->aliasFieldName = $this->subject->tableName . "_" . $this->subject->fieldName;
+$this->subject->label = "Subject";
+$this->addType($this->subject);
+
+$this->message = new \Nemundo\Model\Type\Text\LargeTextType();
+$this->message->fieldName = "message";
+$this->message->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->message->aliasFieldName = $this->message->tableName . "_" . $this->message->fieldName;
+$this->message->label = "Message";
+$this->addType($this->message);
 
 }
 public function loadContentType() {

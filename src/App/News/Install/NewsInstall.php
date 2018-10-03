@@ -8,8 +8,8 @@ use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\News\Application\NewsApplication;
 use Nemundo\Workflow\App\News\Content\Type\BreakingNewsContentType;
-use Nemundo\Workflow\App\News\Content\Type\CommentContentTypeModel;
-use Nemundo\Workflow\App\News\Content\Type\NewsContentTypeModel;
+use Nemundo\Workflow\App\News\Content\Type\CommentContentTypeModelTree;
+use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\NewsCollection;
 use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\Workflow\App\News\Test\NewsTest;
@@ -27,8 +27,8 @@ class NewsInstall extends AbstractScript
         $setup->addCollection(new NewsCollection());
 
         $setup = new ContentTypeSetup();
-      /*  $setup->addContentType(new NewsContentType());
-        $setup->addContentType(new CommentContentType());
+        $setup->addContentType(new NewsContentType());
+      /*  $setup->addContentType(new CommentContentType());
         $setup->addContentType(new BreakingNewsContentType());*/
 
         $setup = new ScriptSetup();

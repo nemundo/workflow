@@ -26,6 +26,16 @@ public $dataId;
 */
 public $dateTime;
 
+/**
+* @var \Nemundo\Model\Type\Text\TextType
+*/
+public $subject;
+
+/**
+* @var \Nemundo\Model\Type\Text\LargeTextType
+*/
+public $message;
+
 protected function loadModel() {
 $this->tableName = "stream_stream";
 $this->aliasTableName = "stream_stream";
@@ -69,6 +79,21 @@ $this->dateTime->aliasFieldName = "stream_stream_date_time";
 $this->dateTime->label = "Date Time";
 $this->dateTime->allowNullValue = "";
 $this->dateTime->visible->form = false;
+
+$this->subject = new \Nemundo\Model\Type\Text\TextType($this);
+$this->subject->tableName = "stream_stream";
+$this->subject->fieldName = "subject";
+$this->subject->aliasFieldName = "stream_stream_subject";
+$this->subject->label = "Subject";
+$this->subject->allowNullValue = "";
+$this->subject->length = 255;
+
+$this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
+$this->message->tableName = "stream_stream";
+$this->message->fieldName = "message";
+$this->message->aliasFieldName = "stream_stream_message";
+$this->message->label = "Message";
+$this->message->allowNullValue = "";
 
 }
 public function loadContentType() {

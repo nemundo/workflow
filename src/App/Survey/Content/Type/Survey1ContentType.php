@@ -8,7 +8,7 @@ use Nemundo\App\Content\Type\Model\ModelContentTypeTrait;
 use Nemundo\App\Content\Type\Sequence\AbstractMultiSequenceContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractMultiSequenceDataContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractSequenceContentType;
-use Nemundo\App\Content\Type\Sequence\AbstractSequenceModelDataContentType;
+use Nemundo\App\Content\Type\Sequence\AbstractSequenceModelDataTreeContentType;
 use Nemundo\App\Content\Type\Sequence\AbstractSequenceTreeContentType;
 use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
 use Nemundo\App\Content\View\DataModelContentView;

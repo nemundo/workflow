@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\AbstractModelDataContentType;
+use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Model\Data\Property\File\ImageDataProperty;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\ImageContentTemplateForm;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\App\News\Content\Item;
+namespace Nemundo\Workflow\App\News\Content\View;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;

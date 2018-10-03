@@ -9,7 +9,8 @@ use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Action\CommentAction;
-use Nemundo\Workflow\App\News\Content\Type\CommentContentTypeModel;
+use Nemundo\Workflow\App\News\Content\Type\CommentContentTypeModelTree;
+use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\Comment\CommentForm;
 use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
@@ -42,9 +43,15 @@ class NewsItemSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $newsParameter = new NewsParameter();
-
-        //$newsId = (new DataIdParameter())->getValue();
         $newsId = (new NewsParameter())->getValue();
+
+
+        $newsType = new NewsContentType($newsId);
+        $newsType->getView($page);
+
+
+
+        /*
         $newsRow = (new NewsReader())->getRowById($newsId);
 
         $title = new AdminTitle($page);
@@ -54,7 +61,7 @@ class NewsItemSite extends AbstractSite
         $p->content = $newsRow->text;
 
 
-        $contentType = new CommentContentTypeModel();
+        $contentType = new CommentContentTypeModelTree();
         $contentType->newsId = $newsId;
 
         //$form = (new CommentContentType())->getForm($page);
@@ -81,7 +88,7 @@ class NewsItemSite extends AbstractSite
 
             $list->addText($commentRow->comment);
 
-        }
+        }*/
 
 
         $page->render();

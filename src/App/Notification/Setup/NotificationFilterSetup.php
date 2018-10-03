@@ -17,10 +17,8 @@ class NotificationFilterSetup extends AbstractBase
         $setup = new ContentTypeSetup();
         $setup->addContentType($contentType);
 
-
-
         $data = new NotificationFilter();
-        $data->updateOnDuplicate = true;
+        $data->ignoreIfExists = true;
         $data->contentTypeId = $contentType->contentId;
         $data->save();
 

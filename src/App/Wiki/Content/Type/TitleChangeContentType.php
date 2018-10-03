@@ -8,7 +8,7 @@ use Nemundo\Workflow\App\Wiki\Data\TitleChange\TitleChangeModel;
 use Nemundo\Workflow\App\Wiki\Data\TitleChange\TitleChangeReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
 
-class TitleChangeContentType extends AbstractModelWikiContentType
+class TitleChangeContentType extends AbstractModelWikiTreeContentType
 {
 
     protected function loadData()

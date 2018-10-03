@@ -24,7 +24,7 @@ public $dateTime;
 protected function loadType() {
 parent::loadType();
 $this->externalModelClassName = NewsModel::class;
-$this->externalTableName = "news_news";
+$this->externalTableName = "collaboration_news";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->id = new \Nemundo\Model\Type\Id\IdType();
 $this->id->fieldName = "id";

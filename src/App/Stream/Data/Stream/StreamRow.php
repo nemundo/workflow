@@ -31,6 +31,16 @@ public $dataId;
 */
 public $dateTime;
 
+/**
+* @var string
+*/
+public $subject;
+
+/**
+* @var string
+*/
+public $message;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -41,6 +51,8 @@ $this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->con
 }
 $this->dataId = $this->getModelValue($model->dataId);
 $this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTime));
+$this->subject = $this->getModelValue($model->subject);
+$this->message = $this->getModelValue($model->message);
 }
 private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);

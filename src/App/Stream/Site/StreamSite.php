@@ -2,7 +2,9 @@
 
 namespace Nemundo\Workflow\App\Stream\Site;
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
@@ -10,6 +12,7 @@ use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Stream\Data\Stream\StreamPaginationReader;
 use Nemundo\Workflow\App\Stream\Data\Stream\StreamReader;
+use Nemundo\Workflow\App\Stream\Reader\StreamContentTypeReader;
 use Nemundo\Workflow\App\Widget\Data\Widget\Widget;
 
 class StreamSite extends AbstractSite
@@ -25,23 +28,26 @@ class StreamSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $streamReader = new StreamPaginationReader();
-        $streamReader->addOrder($streamReader->model->id, SortOrder::DESCENDING);
 
-        foreach ($streamReader->getData() as $streamRow) {
+        $streamReader = new StreamContentTypeReader();
+        $streamReader->limit = 50;
 
-            $contentType = $streamRow->contentType->getContentTypeClassObject();
+
+        foreach ($streamReader->getData() as $contentType) {
 
             $widget = new AdminWidget($page);
-            $widget->widgetTitle = $streamRow->contentType->contentType . ': ' . $streamRow->dateTime->getShortDateTimeLeadingZeroFormat();
+            $widget->widgetTitle = $contentType->getSubject();
 
-            $item = $contentType->getView($widget);
-            $item->dataId = $streamRow->dataId;
+            $contentType->getView($widget);
+
+            $btn = new AdminButton($widget);
+            $btn->content = 'Weiter';
+            $btn->site = $contentType->getViewSite();
 
         }
 
         $pagination = new BootstrapModelPagination($page);
-        $pagination->paginationReader = $streamReader;
+        $pagination->paginationReader = $streamReader->getPaginationReader();
 
         $page->render();
 

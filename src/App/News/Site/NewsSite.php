@@ -11,7 +11,7 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Action\NewsAction;
-use Nemundo\Workflow\App\News\Content\Type\NewsContentTypeModel;
+use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsForm;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Data\News\NewsTable;
@@ -38,11 +38,7 @@ class NewsSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
-        $event = new StreamEvent();
-        $event->contentType = new NewsContentTypeModel();
-
-        $form = (new NewsContentTypeModel())->getForm($page);
-        $form->afterSubmitEvent->addEvent($event);
+        $form = (new NewsContentType())->getForm($page);
 
 
 

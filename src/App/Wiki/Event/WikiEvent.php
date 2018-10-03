@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Wiki\Event;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Event\AbstractEvent;
-use Nemundo\Workflow\App\Wiki\Content\Type\AbstractModelWikiContentType;
+use Nemundo\Workflow\App\Wiki\Content\Type\AbstractModelWikiTreeContentType;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\Wiki;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiCount;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
@@ -20,7 +20,7 @@ class WikiEvent extends AbstractEvent
     public $pageId;
 
     /**
-     * @var AbstractContentType|AbstractModelWikiContentType
+     * @var AbstractContentType|AbstractModelWikiTreeContentType
      */
     public $contentType;
 
@@ -43,7 +43,7 @@ class WikiEvent extends AbstractEvent
         $update->count = $itemCount;
         $update->updateById($this->pageId);
 
-        if ($this->contentType->isObjectOfClass(AbstractModelWikiContentType::class)) {
+        if ($this->contentType->isObjectOfClass(AbstractModelWikiTreeContentType::class)) {
             $this->contentType->onWikiCreate($this->pageId, $id);
             $this->contentType->onCreate($id);
         }

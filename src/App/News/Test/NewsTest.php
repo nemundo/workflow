@@ -10,6 +10,15 @@ use Nemundo\Workflow\App\News\Content\Data\NewsContent;
 class NewsTest extends AbstractScript
 {
 
+    protected function loadScript()
+    {
+
+        $this->consoleScript = true;
+        $this->scriptName = 'news-test';
+
+    }
+
+
     public function run()
     {
 
@@ -19,7 +28,7 @@ class NewsTest extends AbstractScript
         foreach ($loop->getData() as $number) {
 
             $content = new NewsContent();
-            $content->title = 'News'.$number;
+            $content->title = 'News' . $number;
             $content->text = 'test test test';
             $content->save();
 
