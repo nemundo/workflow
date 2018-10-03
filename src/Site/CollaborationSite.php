@@ -31,6 +31,7 @@ use Nemundo\Workflow\App\Wiki\Site\WikiSite;
 use Nemundo\Workflow\App\Workflow\Site\Process\ProcessSite;
 use Nemundo\Workflow\App\Workflow\Site\WorkflowSite;
 use Nemundo\Workflow\App\Workflow\Site\StatusChangeLogSite;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\File\Redirect\FileFileRedirectSite;
 use Nemundo\Workflow\Usergroup\CollaborationUsergroup;
 
 class CollaborationSite extends AbstractSite
@@ -83,6 +84,9 @@ class CollaborationSite extends AbstractSite
         new MyFavoriteSite($this);
 
         new StreamSite($this);
+
+
+        new FileFileRedirectSite($this);
 
         //new SurveySite($this);
 

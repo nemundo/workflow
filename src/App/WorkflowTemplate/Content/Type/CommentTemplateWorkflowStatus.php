@@ -4,7 +4,9 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
 use Nemundo\App\Content\Type\Workflow\AbstractModelDataWorkflowStatus;
+use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentReader;
 
 class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
@@ -24,6 +26,12 @@ class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
     {
 
         $this->saveContentLog();
+
+        $row = (new CommentReader())->getRowById($this->dataId);
+
+        $builder = new SearchEngineBuilder();
+        $builder->contentType = $this;
+        $builder->addText($row->comment);
 
     }
 
