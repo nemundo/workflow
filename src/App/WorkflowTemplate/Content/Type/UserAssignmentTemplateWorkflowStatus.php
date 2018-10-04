@@ -47,7 +47,7 @@ class UserAssignmentTemplateWorkflowStatus extends AbstractModelDataWorkflowStat
 
         $row = (new UserAssignmentChangeReader())->getRowById($this->dataId);
 
-        $subject = 'Verantwort geht an: ' . $row->user->displayName;
+        $subject = 'Verantwortung geht an: ' . $row->user->displayName;
         return $subject;
 
     }

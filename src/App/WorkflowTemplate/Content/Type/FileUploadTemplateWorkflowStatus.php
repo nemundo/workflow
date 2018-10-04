@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\FileUploadTemplateWorkflo
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\File;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
 
-
+// FileTemplateWorkflowStatus
 class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
 {
 
@@ -22,7 +22,7 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
 
     protected function loadData()
     {
-        $this->contentName = 'Dokument Upload';
+        $this->contentName = 'Dokument';
         $this->contentId = '8d49707a-9763-4b0d-b169-b50a939ddb1d';
         $this->changeStatus = false;
         $this->formClass = FileUploadTemplateWorkflowForm::class;
