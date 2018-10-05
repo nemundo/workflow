@@ -9,7 +9,4 @@ public $model;
 protected function loadCom() {
 $this->model = new CommentModel();
 }
-protected function onSubmit() {
-return parent::onSubmit();
-}
 }

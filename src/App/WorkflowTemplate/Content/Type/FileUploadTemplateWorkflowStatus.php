@@ -27,6 +27,7 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
         $this->changeStatus = false;
         $this->formClass = FileUploadTemplateWorkflowForm::class;
         //$this->viewClass = FileUploadContentView::class;
+        $this->showStatus = false;
 
     }
 

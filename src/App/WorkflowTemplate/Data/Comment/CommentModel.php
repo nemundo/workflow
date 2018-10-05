@@ -34,7 +34,6 @@ $this->comment->tableName = "workflow_template_comment";
 $this->comment->fieldName = "comment";
 $this->comment->aliasFieldName = "workflow_template_comment_comment";
 $this->comment->label = "Kommentar";
-$this->comment->validation = true;
 $this->comment->allowNullValue = "";
 
 }
