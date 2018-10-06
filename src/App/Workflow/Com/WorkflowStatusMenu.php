@@ -10,6 +10,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\Bootstrap\Button\BootstrapButtonColor;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
 use Paranautik\App\VideoWorkflow\Content\Type\Status\VideoProposalStatus;
@@ -25,8 +26,8 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
     public $process;
 
 
-
-    public function getNextForm($parentItem = null) {
+    public function getNextForm($parentItem = null)
+    {
 
 
         $status = $this->process->getStatus();
@@ -47,8 +48,6 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
             $form->redirectSite = $this->process->getViewSite();
 
             $formContentType = $contentType;
-
-
 
 
         } else {
@@ -72,7 +71,6 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
         }
 
 
-
     }
 
 
@@ -82,9 +80,9 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
 
         $formContentType = null;
 
-        //$status = $this->process->getStatus();
-$status = new VideoProposalStatus();
-$formContentType = new VideoProposalStatus();
+        $status = $this->process->getStatus();
+        //$status = new VideoProposalStatus();
+        $formContentType = new VideoProposalStatus();
 
 
         //$table = new AdminTable($this);
@@ -111,14 +109,10 @@ $formContentType = new VideoProposalStatus();
         }
 
 
-
-
-
-
-
         foreach ($status->getNextContentTypeList() as $item) {
 
-            //   (new Debug())->write($item->contentName);
+            //(new Debug())->write($item->contentName);
+
 
             //$row = new TableRow($table);
             //$row->addEmpty();
@@ -148,11 +142,9 @@ $formContentType = new VideoProposalStatus();
         }
 
 
-
-
         $nextContentType = $status->getNextContentType();
 
-        if ($nextContentType!==null) {
+        if ($nextContentType !== null) {
 
             $btn = new AdminButton($this);
             $btn->content = $nextContentType->contentName;
@@ -160,7 +152,6 @@ $formContentType = new VideoProposalStatus();
             $btn->site->addParameter(new ContentTypeParameter($nextContentType->contentId));
 
         }
-
 
 
         foreach ($status->getMenuContentType() as $workflowStatus) {
@@ -183,12 +174,7 @@ $formContentType = new VideoProposalStatus();
             }
 
 
-
-
         }
-
-
-
 
 
         return parent::getHtml();
