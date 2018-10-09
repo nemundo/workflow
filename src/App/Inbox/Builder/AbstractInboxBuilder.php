@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Inbox\Builder;
 
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
@@ -51,6 +52,8 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
 
     public function createUserInbox($userId)
     {
+
+        (new Debug())->write('InboxBuilder: '.$this->contentType->contentName);
 
         $this->check();
 
