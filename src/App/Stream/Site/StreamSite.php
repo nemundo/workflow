@@ -40,9 +40,11 @@ class StreamSite extends AbstractSite
 
             $contentType->getView($widget);
 
-            $btn = new AdminButton($widget);
-            $btn->content = 'Weiter';
-            $btn->site = $contentType->getViewSite();
+            if ($contentType->hasViewSite()) {
+                $btn = new AdminButton($widget);
+                $btn->content = 'Weiter';
+                //$btn->site = $contentType->getViewSite();
+            }
 
         }
 

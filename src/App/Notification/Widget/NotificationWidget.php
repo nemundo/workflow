@@ -16,7 +16,7 @@ class NotificationWidget extends AdminWidget
     public function getHtml()
     {
 
-        $this->widgetTitle = 'Notification';
+        $this->widgetTitle = 'Notification2';
 
 
         $table = new AdminClickableTable($this);

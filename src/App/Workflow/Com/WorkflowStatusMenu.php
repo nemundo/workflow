@@ -7,6 +7,8 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
+use Nemundo\App\Content\Site\Draft\ContentDraftFreigebenSite;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableRow;
@@ -29,8 +31,11 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
     public function getNextForm($parentItem = null)
     {
 
-
         $status = $this->process->getStatus();
+        if ($status->isDraft()) {
+            $form = $status->getForm($parentItem);
+        }
+
 
         $contentTypeParameter = new ContentTypeParameter();
 
@@ -109,71 +114,94 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
         }
 
 
-        foreach ($status->getNextContentTypeList() as $item) {
-
-            //(new Debug())->write($item->contentName);
+        if ($status->isDraft()) {
 
 
-            //$row = new TableRow($table);
-            //$row->addEmpty();
+            $dataId = $status->dataId;
 
-            // Pfeil rechts Icon
+            /*
+            $dataIdParameter = new DataIdParameter();
 
-            if ($formContentType !== null) {
-                if ($item->contentId == $formContentType->contentId) {
-                    //$row->addBoldText($item->contentName);
+            if ($dataIdParameter->exists()) {
+                $dataId = $dataIdParameter->getValue();
+            }*/
 
-                    $table->addActiveWorkflowStatus($item);
 
+            $btn = new AdminButton($this);
+            $btn->content = 'Weiter';
+            $btn->site = ContentDraftFreigebenSite::$site;
+            $btn->site->addParameter(new DataIdParameter($dataId));
+            $btn->site->addParameter(new ContentTypeParameter($status->contentId));
+
+        } else {
+
+
+            foreach ($status->getNextContentTypeList() as $item) {
+
+                //(new Debug())->write($item->contentName);
+
+
+                //$row = new TableRow($table);
+                //$row->addEmpty();
+
+                // Pfeil rechts Icon
+
+                if ($formContentType !== null) {
+                    if ($item->contentId == $formContentType->contentId) {
+                        //$row->addBoldText($item->contentName);
+
+                        $table->addActiveWorkflowStatus($item);
+
+                    } else {
+                        //$row->addText($item->contentName);
+                        $table->addNextWorkflowStatus($item);
+                    }
                 } else {
                     //$row->addText($item->contentName);
                     $table->addNextWorkflowStatus($item);
                 }
-            } else {
-                //$row->addText($item->contentName);
-                $table->addNextWorkflowStatus($item);
+
+
+                //$row->addEmpty();
+                //$row->addEmpty();
+
+
             }
 
 
-            //$row->addEmpty();
-            //$row->addEmpty();
+            $nextContentType = $status->getNextContentType();
+
+            if ($nextContentType !== null) {
+
+                $btn = new AdminButton($this);
+                $btn->content = $nextContentType->contentName;
+                $btn->site = $this->process->getViewSite();
+                $btn->site->addParameter(new ContentTypeParameter($nextContentType->contentId));
+
+            }
 
 
-        }
+            foreach ($status->getMenuContentType() as $workflowStatus) {
 
 
-        $nextContentType = $status->getNextContentType();
+                $btn = new AdminButton($this);
+                $btn->content = $workflowStatus->contentName;
+                $btn->site = $this->process->getViewSite();
+                $btn->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
+                $btn->color = BootstrapButtonColor::OUTLINE_PRIMARY;
+                $btn->addCssClass('btn-block');
+                //$btn->addCssClass('btn-default');
 
-        if ($nextContentType !== null) {
+                if ($formContentType !== null) {
+                    if ($workflowStatus->contentId == $formContentType->contentId) {
+                        $btn->color = BootstrapButtonColor::SUCCESS;  // addCssClass('btn-success');
+                    }
+                } else {
 
-            $btn = new AdminButton($this);
-            $btn->content = $nextContentType->contentName;
-            $btn->site = $this->process->getViewSite();
-            $btn->site->addParameter(new ContentTypeParameter($nextContentType->contentId));
-
-        }
-
-
-        foreach ($status->getMenuContentType() as $workflowStatus) {
-
-
-            $btn = new AdminButton($this);
-            $btn->content = $workflowStatus->contentName;
-            $btn->site = $this->process->getViewSite();
-            $btn->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
-            $btn->color = BootstrapButtonColor::OUTLINE_PRIMARY;
-            $btn->addCssClass('btn-block');
-            //$btn->addCssClass('btn-default');
-
-            if ($formContentType !== null) {
-                if ($workflowStatus->contentId == $formContentType->contentId) {
-                    $btn->color = BootstrapButtonColor::SUCCESS;  // addCssClass('btn-success');
                 }
-            } else {
+
 
             }
-
-
         }
 
 

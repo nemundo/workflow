@@ -6,6 +6,7 @@ use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\AbortTemplateWorkflowStatus;
+use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\ClosingWorkflowTemplateWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\CommentTemplateWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileUploadTemplateWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\UserAssignmentTemplateWorkflowStatus;
@@ -24,6 +25,7 @@ class WorkflowTemplateInstall extends AbstractScript
         $setup = new ContentTypeSetup();
         $setup->addContentType(new CommentTemplateWorkflowStatus());
         $setup->addContentType(new AbortTemplateWorkflowStatus());
+        $setup->addContentType(new ClosingWorkflowTemplateWorkflowStatus());
         $setup->addContentType(new UserAssignmentTemplateWorkflowStatus());
         $setup->addContentType(new FileUploadTemplateWorkflowStatus());
 

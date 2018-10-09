@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Stream\Reader;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Workflow\App\Stream\Data\Stream\StreamPaginationReader;
 
@@ -41,17 +42,24 @@ class StreamContentTypeReader extends AbstractDataSource
 
             $className = $streamRow->contentType->contentTypeClass;
 
-            /** @var AbstractContentType $contentType */
-            $contentType = new $className($streamRow->dataId);
+            if (class_exists($className)) {
 
-            $this->addItem($contentType);
+                /** @var AbstractContentType $contentType */
+                $contentType = new $className($streamRow->dataId);
+
+                $this->addItem($contentType);
+
+            } else {
+                (new LogMessage())->writeError('Class does not exist: ' . $className);
+            }
 
         }
 
     }
 
 
-    public function getPaginationReader() {
+    public function getPaginationReader()
+    {
         return $this->streamReader;
     }
 

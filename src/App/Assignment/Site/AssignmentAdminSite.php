@@ -60,7 +60,7 @@ class AssignmentAdminSite extends AbstractSite
             $contentType->dataId = $assignmentRow->dataId;
 
             $row->addText($assignmentRow->subject);
-            $row->addText($contentType->getSubject());
+            //$row->addText($contentType->getSubject());
 
             $site = AssignmentDeleteSite::$site;
             $site->addParameter(new AssignmentParameter($assignmentRow->id));
