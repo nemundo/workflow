@@ -4,13 +4,11 @@ namespace Nemundo\Workflow\App\Assignment\Builder;
 
 
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 
 class AssignmentArchive extends AbstractBase
 {
-
-
-
 
 
     public function archiveAssignment($dataId)
@@ -22,6 +20,17 @@ class AssignmentArchive extends AbstractBase
         $update->update();
 
     }
+
+
+    public function deleteAssignment($dataId)
+    {
+
+        $delete = new AssignmentDelete();
+        $delete->filter->andEqual($delete->model->dataId, $dataId);
+        $delete->delete();
+
+    }
+
 
 
 }

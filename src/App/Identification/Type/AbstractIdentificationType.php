@@ -11,6 +11,7 @@ abstract class AbstractIdentificationType extends AbstractBaseClass
      * @var string
      */
     public $id;
+    // identificationId
 
     /**
      * @var string

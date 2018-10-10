@@ -23,19 +23,20 @@ class IdentificationDataProperty extends AbstractDataProperty
 
                 $this->typeValueList->setModelValue($this->type->identificationTypeId, $identification->identificationType->id);
                 $this->typeValueList->setModelValue($this->type->identificationId, $identification->identificationId);
-                //$this->typeValueList->setModelValue($this->type->identificationId, $identification->identificationId);
 
             } else {
-                //$this->typeValueList->setModelValue($this->type->identificationTypeId, '');
+
+                // Problem: es wird überschrieben und auf null gesetzt
+
+                //$this->typeValueList->setModelValue($this->type->identificationTypeId,'');
+                //$this->typeValueList->setModelValue($this->type->identificationId, '');
 
             }
-
-            //$this->typeValueList->setModelValue($this->type->identificationId, $identification->identificationId);
-
 
         }
 
         return $this;
+
     }
 
 }

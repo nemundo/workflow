@@ -77,4 +77,13 @@ class Identification extends AbstractBase
 
     }
 
+
+    public function clearIdentification() {
+
+        $this->identificationType = null;
+        $this->identificationId = '';
+
+
+    }
+
 }
