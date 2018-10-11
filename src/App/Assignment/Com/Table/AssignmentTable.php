@@ -83,8 +83,6 @@ class AssignmentTable extends AbstractHtmlContainerList
         $header = new TableHeader($table);
         $header->addEmpty();
         $header->addText('Quelle');
-        //$header->addText('Source');
-        //$header->addText('Betreff');
 
         $subjectSorting = new SortingHyperlink($header);
         $subjectSorting->fieldType = $assignmentReader->model->subject;
@@ -92,15 +90,12 @@ class AssignmentTable extends AbstractHtmlContainerList
 
         $header->addText('Nachricht');
 
-        //$header->addText('Zuweisung');
         $assignmentSorting = new SortingHyperlink($header);
         $assignmentSorting->fieldType = $assignmentReader->model->assignmentText;
         $assignmentSorting->checkSorting($assignmentReader);
 
-        //$header->addText('Erledigen bis');
         $deadlineSorting = new SortingHyperlink($header);
         $deadlineSorting->fieldType = $assignmentReader->model->deadline;
-        //$deadlineSorting->sortOder = SortOrder::DESCENDING;
         $deadlineSorting->checkSorting($assignmentReader);
 
 
@@ -116,12 +111,6 @@ class AssignmentTable extends AbstractHtmlContainerList
 
             $className = $assignmentRow->contentType->contentTypeClass;
 
-            //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
-            //$contentType->dataId = $assignmentRow->dataId;
-
-            //if (class_exists($className)) {
-
-
             /** @var AbstractTreeContentType $contentType */
             $contentType = new $className($assignmentRow->dataId);
 
@@ -131,30 +120,6 @@ class AssignmentTable extends AbstractHtmlContainerList
             } else {
                 $row->addEmpty();
             }
-
-            /*
-            $row->addText($assignmentRow->contentType->contentType);
-
-            //$row->addText($assignmentRow->subject);
-            $source = $assignmentRow->contentType->contentType;
-            if ($contentType->isObjectOfClass(AbstractTreeContentType::class)) {
-
-                $parentType = $contentType->getParent();
-                //$parentType = null;
-
-                if ($parentType !== null) {
-
-                    $source = $parentType->getSubject();
-
-
-                }
-
-
-            }
-            $row->addText($source);*/
-
-
-            //$row->addText($contentType->getSubject());
 
             $row->addText($assignmentRow->source);
             $row->addText($assignmentRow->subject);
@@ -168,8 +133,6 @@ class AssignmentTable extends AbstractHtmlContainerList
             } else {
                 $row->addEmpty();
             }
-
-            //$contentType = $assignmentRow->contentType->getContentTypeClassObject();
 
             $row->addText($assignmentRow->userCreated->displayName . ' ' . $assignmentRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
@@ -190,19 +153,10 @@ class AssignmentTable extends AbstractHtmlContainerList
                 (new LogMessage())->writeError('No Content Type');
             }
 
-
-            /*     } else {
-                     (new LogMessage())->writeError('Class does not exist. Class Name: ' . $className);
-                 }
-
-             }*/
         }
 
         $pagination = new BootstrapModelPagination($this);
         $pagination->paginationReader = $assignmentReader;
-
-
-        //}
 
         return parent::getHtml();
 

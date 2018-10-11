@@ -14,10 +14,11 @@ use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 class SearchEngineWidget extends AbstractAdminWidget
 {
 
+
     protected function loadWidget()
     {
         $this->widgetTitle = 'Suchmaschine';
-        $this->widgetSite = SearchEngineSite::$site;
+        //$this->widgetSite = SearchEngineSite::$site;
 
     }
 
@@ -28,26 +29,10 @@ class SearchEngineWidget extends AbstractAdminWidget
         $this->widgetTitle = 'Suchmaschine';
 
 
-       $form= new SearchEngineForm($this);
-
-       /* $form = new SearchForm($this);
-
-        $query = new BootstrapAutocompleteTextBox($form);
-        $query->sourceSite = SearchEngineJsonSite::$site;
-        $query->minLength = 1;
-        $query->name = 'q';
-        $query->placeholder = 'Suche';
-        $query->value = $query->getValue();*/
-
-        /*$searchTypeListBox = new ApplicationTypeListBox($form);
-        $searchTypeListBox->label = 'Application';
-        $searchTypeListBox->value = $searchTypeListBox->getValue();*/
-
-        //$submit = new BootstrapSubmitButton($form);
-        //$submit->content = 'Suchen';
+        $form = new SearchEngineForm($this);
 
 
-        $keyword =$form->getKeyword();
+        $keyword = $form->getKeyword();
 
         if ($keyword !== '') {
 

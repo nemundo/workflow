@@ -22,7 +22,6 @@ class SearchEngineForm extends SearchForm
     {
         parent::loadCom();
 
-
         $row = new BootstrapFormRow($this);
 
         $this->query = new BootstrapAutocompleteTextBox($row);
@@ -33,21 +32,12 @@ class SearchEngineForm extends SearchForm
         $this->query->value = $this->query->getValue();
 
 
+        // Content Filter
 
 
-        $row = new BootstrapFormRow($this);
+        //$row = new BootstrapFormRow($this);
         $submit = new BootstrapSubmitButton($row);
         $submit->content = 'Suchen';
-
-    }
-
-
-    public function getHtml()
-    {
-
-
-
-        return parent::getHtml();
 
     }
 

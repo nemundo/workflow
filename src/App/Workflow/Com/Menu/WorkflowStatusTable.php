@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\App\Workflow\Com;
+namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 
 use Nemundo\Admin\Com\Table\AdminTable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Workflow\App\Workflow\Com;
+namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 
 use Nemundo\Admin\Com\Button\AdminButton;
@@ -31,7 +31,16 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
      */
     public $process;
 
+    /**
+     * @var AbstractWorkflowStatus
+     */
+    public $formStatus;
 
+    // current Status
+
+
+
+    /*
     public function getNextForm($parentItem = null)
     {
 
@@ -56,6 +65,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
     }
 
 
+    /*
     public function getFormStatus()
     {
 
@@ -90,14 +100,14 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
 
         return $formStatus;
 
-    }
+    }*/
 
 
     public function getHtml()
     {
 
         $status = $this->process->getStatus();
-        $formStatus = $this->getFormStatus();
+        //$formStatus = $this->getFormStatus();
 
         $table = new WorkflowStatusTable($this);
 
@@ -125,8 +135,8 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
 
 
             foreach ($status->getNextContentTypeList() as $item) {
-                if ($formStatus !== null) {
-                    if ($item->contentId == $formStatus->contentId) {
+                if ($this->formStatus !== null) {
+                    if ($item->contentId == $this->formStatus->contentId) {
                         $table->addActiveWorkflowStatus($item);
                     } else {
                         $table->addNextWorkflowStatus($item);
@@ -160,8 +170,8 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
                     $btn->color = BootstrapButtonColor::OUTLINE_PRIMARY;
                     $btn->addCssClass('btn-block');
 
-                    if ($formStatus !== null) {
-                        if ($nextStatus->contentId == $formStatus->contentId) {
+                    if ($this->formStatus !== null) {
+                        if ($nextStatus->contentId == $this->formStatus->contentId) {
                             $btn->color = BootstrapButtonColor::SUCCESS;
                         }
                     }
@@ -183,8 +193,8 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
                     $btn->color = BootstrapButtonColor::OUTLINE_PRIMARY;
                     $btn->addCssClass('btn-block');
 
-                    if ($formStatus !== null) {
-                        if ($workflowStatus->contentId == $formStatus->contentId) {
+                    if ($this->formStatus !== null) {
+                        if ($workflowStatus->contentId == $this->formStatus->contentId) {
                             $btn->color = BootstrapButtonColor::SUCCESS;
                         }
                     }
