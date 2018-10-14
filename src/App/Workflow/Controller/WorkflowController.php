@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Workflow\Com\Menu\WorkflowStatusMenu;
 
 class WorkflowController extends AbstractBase
@@ -29,30 +30,41 @@ class WorkflowController extends AbstractBase
 
         //if ($this->process->isWorkflowOpen()) {
 
-            $status = $this->process->getStatus();
-            if ($status->isDraft()) {
-                $formStatus = $status;
-            }
-
-            $contentTypeParameter = new ContentTypeParameter();
+        $status = $this->process->getStatus();
 
 
-            if ($contentTypeParameter->exists()) {
+       // (new Debug())->write($status->dataId);
+       // exit;
 
-                $formStatus = $contentTypeParameter->getContentType();
-                $formStatus->parentContentType = $this->process;
-
-            } else {
+        //(new Debug())->write($status->isDraft());
 
 
-                if (!$status->isDraft()) {
-                    $nextStatus2 = $status->getNextContentType();
 
-                    if ($nextStatus2 !== null) {
-                        $formStatus = $nextStatus2;
-                    }
+
+        if ($status->isDraft()) {
+            $formStatus = $status;
+        }
+
+
+
+        $contentTypeParameter = new ContentTypeParameter();
+
+        if ($contentTypeParameter->exists()) {
+
+            $formStatus = $contentTypeParameter->getContentType();
+            $formStatus->parentContentType = $this->process;
+
+        } else {
+
+
+            if (!$status->isDraft()) {
+                $nextStatus2 = $status->getNextContentType();
+
+                if ($nextStatus2 !== null) {
+                    $formStatus = $nextStatus2;
                 }
             }
+        }
         //}
 
         return $formStatus;
@@ -83,7 +95,7 @@ class WorkflowController extends AbstractBase
     }
 
 
-    public function getTitleCom($parentItem = null)
+    public function getTitle($parentItem = null)
     {
 
         $this->check();

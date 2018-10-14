@@ -39,82 +39,19 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
     // current Status
 
 
-
-    /*
-    public function getNextForm($parentItem = null)
-    {
-
-
-        $nextStatus = $this->getFormStatus();
-
-        if ($nextStatus !== null) {
-
-            if ($nextStatus->checkUserVisibility()) {
-
-                $title = new AdminSubtitle($parentItem);
-                $title->content = $nextStatus->contentName;
-
-                $form = $nextStatus->getForm($parentItem);
-                $form->parentContentType = $this->process;
-                $form->redirectSite = $this->process->getViewSite();
-
-            }
-
-        }
-
-    }
-
-
-    /*
-    public function getFormStatus()
-    {
-
-        $formStatus = null;
-
-
-        if ($this->process->isWorkflowOpen()) {
-
-            $status = $this->process->getStatus();
-            if ($status->isDraft()) {
-                $formStatus = $status;
-            }
-
-            $contentTypeParameter = new ContentTypeParameter();
-
-
-            if ($contentTypeParameter->exists()) {
-
-                $formStatus = $contentTypeParameter->getContentType();
-                $formStatus->parentContentType = $this->process;
-
-            } else {
-
-                $nextStatus2 = $status->getNextContentType();
-
-                if ($nextStatus2 !== null) {
-                    $formStatus = $nextStatus2;
-                }
-
-            }
-        }
-
-        return $formStatus;
-
-    }*/
-
-
     public function getHtml()
     {
 
         $status = $this->process->getStatus();
-        //$formStatus = $this->getFormStatus();
 
         $table = new WorkflowStatusTable($this);
 
 
         foreach ($this->process->getChild() as $contentType) {
             if ($contentType->showStatus) {
-                $table->addLogWorkflowStatus($contentType);
+                if ($contentType->isNotDraft()) {
+                    $table->addLogWorkflowStatus($contentType);
+                }
             }
         }
 

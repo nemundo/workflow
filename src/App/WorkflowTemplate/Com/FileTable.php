@@ -56,6 +56,8 @@ class FileTable extends AdminTable
 
             $row->addHyperlink($dateiRow->file->getUrl(), $dateiRow->file->getFilename());
 
+            // show image bzw. detail ansicht
+
             $userDisplay = $dateiRow->getModelValue($userModel->displayName);
             $dateTimeCreated = new DateTime($dateiRow->getModelValue($contentLogModel->dateTimeCreated));
 
