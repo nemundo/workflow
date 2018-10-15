@@ -115,7 +115,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
         $row = new TableRow($this->table);
 
         $row->addEmpty();
-        $row->addText('next:' . $workflowStatus->contentName);
+        $row->addText($workflowStatus->contentName);
         $row->addEmpty();
         $row->addEmpty();
     }
