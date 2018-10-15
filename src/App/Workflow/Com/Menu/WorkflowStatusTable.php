@@ -25,12 +25,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
     public $process;
 
     /**
-     * @var AbstractWorkflowStatus
-     */
-    //public $currentStatus;
-
-
-    /**
      * @var AdminTable
      */
     private $table;
@@ -48,7 +42,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
         new CheckIcon($row);
 
-        //$row->addText($workflowStatus->contentName);
         $row->addText($workflowStatus->getSubject());
 
         $row->addText($workflowStatus->userCreated->displayName);
@@ -72,8 +65,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
             $hyperlink = new SiteHyperlink($row);
             $hyperlink->site = $this->process->getViewSite();
             $hyperlink->site->title = $workflowStatus->contentName;
-            $hyperlink->site->addParameter((new ContentTypeParameter($workflowStatus->contentId)));
-
 
         }
 
@@ -86,23 +77,32 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
     public function addMenu()
     {
 
-        $row = new TableRow($this->table);
-        $row->addEmpty();
-        $list = new UnorderedList($row);
 
-        foreach ($this->process->getStatus()->getMenuSite() as $site) {
+        if ($this->process->getStatus()->hasMenuSite()) {
 
-            if ($site->isActiveWorkflowStatus()) {
-                $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
-            } else {
+            $row = new TableRow($this->table);
+            $row->addEmpty();
 
-                $hyperlink = new SiteHyperlink($list);
-                $hyperlink->site = $site;
+            $list = new UnorderedList($row);
+            $list->addCssClass('no-bullet');
+
+
+            foreach ($this->process->getStatus()->getMenuSite() as $site) {
+
+                if ($site->isActiveWorkflowStatus()) {
+                    $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
+                } else {
+
+                    $hyperlink = new SiteHyperlink($list);
+                    $hyperlink->site = $site;
+                }
             }
+
+
+            $row->addEmpty();
+            $row->addEmpty();
+
         }
-
-
-        $row->addEmpty();
 
 
     }
@@ -111,13 +111,17 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
     public function addNextWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
     {
 
+        if ($workflowStatus->showStatus) {
 
-        $row = new TableRow($this->table);
+            $row = new TableRow($this->table);
 
-        $row->addEmpty();
-        $row->addText($workflowStatus->contentName);
-        $row->addEmpty();
-        $row->addEmpty();
+            $row->addEmpty();
+            $row->addText($workflowStatus->contentName);
+            $row->addEmpty();
+            $row->addEmpty();
+
+        }
+
     }
 
 }

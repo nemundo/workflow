@@ -4,8 +4,8 @@ namespace Nemundo\Workflow\App\Assignment\Com\Form;
 
 
 use Nemundo\App\Content\Data\ContentType\ContentTypeListBox;
-use Nemundo\App\Workflow\Com\ListBox\Item\ClosedListBoxItem;
-use Nemundo\App\Workflow\Com\ListBox\Item\OpenListBoxItem;
+use Nemundo\Workflow\App\Workflow\Com\ListBox\Item\ClosedListBoxItem;
+use Nemundo\Workflow\App\Workflow\Com\ListBox\Item\OpenListBoxItem;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -13,7 +13,7 @@ use Nemundo\User\Data\User\UserListBox;
 use Nemundo\Workflow\App\Assignment\Com\ListBox\AssignmentFilterListBox;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentModel;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
-use Nemundo\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
+use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
 use Schleuniger\App\Org\Com\MitarbeiterListBox;
 
 class AssignmentSearchForm extends SearchForm
