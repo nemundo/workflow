@@ -16,12 +16,9 @@ use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\Bootstrap\Button\BootstrapButtonColor;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
+use Nemundo\Web\Site\Site;
 use Paranautik\App\VideoWorkflow\Content\Type\Status\VideoProposalStatus;
 
-
-// Control
-
-// WorkflowController
 
 class WorkflowStatusMenu extends AbstractHtmlContainerList
 {
@@ -45,6 +42,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
         $status = $this->process->getStatus();
 
         $table = new WorkflowStatusTable($this);
+        $table->process = $this->process;
 
 
         foreach ($this->process->getChild() as $contentType) {
@@ -58,40 +56,6 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
 
         if ($this->process->isWorkflowOpen()) {
 
-            /* if ($status->isDraft()) {
-
-                 $dataId = $status->dataId;
-
-                 $btn = new AdminButton($this);
-                 $btn->content = 'Weiter';
-                 $btn->site = ContentDraftFreigebenSite::$site;
-                 $btn->site->addParameter(new DataIdParameter($dataId));
-                 $btn->site->addParameter(new ContentTypeParameter($status->contentId));
-
-             } else {*/
-
-
-            foreach ($status->getNextContentTypeList() as $item) {
-                if ($this->formStatus !== null) {
-                    if ($item->contentId == $this->formStatus->contentId) {
-                        $table->addActiveWorkflowStatus($item);
-                    } else {
-                        $table->addNextWorkflowStatus($item);
-                    }
-                } else {
-                    $table->addNextWorkflowStatus($item);
-                }
-            }
-
-
-            /*
-            $contentTypeParameter = new ContentTypeParameter();
-            if ($contentTypeParameter->exists()) {
-                $table->addActiveWorkflowStatus($contentTypeParameter->getContentType());
-
-
-            }*/
-
 
             /** @var AbstractWorkflowStatus $nextStatus */
             $nextStatus = $status->getNextContentType();
@@ -100,49 +64,27 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
 
                 if ($nextStatus->checkUserVisibility()) {
 
-                    $btn = new AdminButton($this);
-                    $btn->content = $nextStatus->contentName;
-                    $btn->site = $this->process->getViewSite();
-                    $btn->site->addParameter(new ContentTypeParameter($nextStatus->contentId));
-                    $btn->color = BootstrapButtonColor::OUTLINE_PRIMARY;
-                    $btn->addCssClass('btn-block');
-
-                    if ($this->formStatus !== null) {
-                        if ($nextStatus->contentId == $this->formStatus->contentId) {
-                            $btn->color = BootstrapButtonColor::SUCCESS;
-                        }
+                    $active=false;
+                    if ($this->formStatus->contentId == $nextStatus->contentId) {
+                        $active = true;
                     }
+                    $table->addActiveWorkflowStatus($nextStatus,$active);
 
                 }
 
             }
 
 
-            foreach ($status->getMenuContentType() as $workflowStatus) {
+            $table->addMenu();
 
-
-                if ($workflowStatus->checkUserVisibility()) {
-
-                    $btn = new AdminButton($this);
-                    $btn->content = $workflowStatus->contentName;
-                    $btn->site = $this->process->getViewSite();
-                    $btn->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
-                    $btn->color = BootstrapButtonColor::OUTLINE_PRIMARY;
-                    $btn->addCssClass('btn-block');
-
-                    if ($this->formStatus !== null) {
-                        if ($workflowStatus->contentId == $this->formStatus->contentId) {
-                            $btn->color = BootstrapButtonColor::SUCCESS;
-                        }
-                    }
-
+            $nextStatus = $status->getNextContentType();
+            if ($nextStatus !== null) {
+                foreach ($nextStatus->getNextContentTypeList() as $item) {
+                    $table->addNextWorkflowStatus($item);
                 }
-
             }
 
         }
-
-        //}
 
         return parent::getHtml();
 

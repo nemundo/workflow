@@ -9,6 +9,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Com\Menu\WorkflowStatusMenu;
 
 class WorkflowController extends AbstractBase
@@ -18,6 +19,12 @@ class WorkflowController extends AbstractBase
      * @var AbstractWorkflowProcess
      */
     public $process;
+
+
+    public function __construct(AbstractWorkflowProcess $process = null)
+    {
+        $this->process = $process;
+    }
 
 
     public function getFormStatus()
@@ -33,18 +40,15 @@ class WorkflowController extends AbstractBase
         $status = $this->process->getStatus();
 
 
-       // (new Debug())->write($status->dataId);
-       // exit;
+        // (new Debug())->write($status->dataId);
+        // exit;
 
         //(new Debug())->write($status->isDraft());
-
-
 
 
         if ($status->isDraft()) {
             $formStatus = $status;
         }
-
 
 
         $contentTypeParameter = new ContentTypeParameter();
@@ -86,7 +90,10 @@ class WorkflowController extends AbstractBase
 
                 $form = $formStatus->getForm($parentItem);
                 $form->parentContentType = $this->process;
-                $form->redirectSite = $this->process->getViewSite();
+                //$form->redirectSite = $this->process->getViewSite();
+                $form->redirectSite = new Site();
+                $form->redirectSite->removeParameter(new ContentTypeParameter());
+
 
             }
 
