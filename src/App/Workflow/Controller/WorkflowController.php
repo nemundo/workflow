@@ -90,14 +90,15 @@ class WorkflowController extends AbstractBase
 
                 $form = $formStatus->getForm($parentItem);
                 $form->parentContentType = $this->process;
-                $form->redirectSite = $this->process->getViewSite();
-                //$form->redirectSite = new Site();
-                //$form->redirectSite->removeParameter(new ContentTypeParameter());
+                //$form->redirectSite = $this->process->getViewSite();
+                $form->redirectSite = new Site();
+                $form->redirectSite->removeParameter(new ContentTypeParameter());
 
 
             }
 
         }
+
 
     }
 

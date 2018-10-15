@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 use Nemundo\App\Content\Type\Workflow\AbstractChangeWorkflowStatus;
-use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\AbortTemplateWorkflowForm;
 

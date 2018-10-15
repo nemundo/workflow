@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Site;
 
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Web\Site\Site;
 
 class WorkflowStatusSite extends Site

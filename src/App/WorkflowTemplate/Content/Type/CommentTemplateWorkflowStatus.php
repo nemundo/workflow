@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
-use Nemundo\App\Content\Type\Workflow\AbstractModelDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\View\CommentWorkflowTemplateView;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentModel;

@@ -2,7 +2,7 @@
 
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
-use Nemundo\App\Content\Type\Workflow\AbstractModelDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;

@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Task\WorkflowStatus;
 
 
-use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus\CommentTemplateWorkflowStatus;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 

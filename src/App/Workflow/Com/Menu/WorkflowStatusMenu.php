@@ -10,7 +10,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Site\Draft\ContentDraftFreigebenSite;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
-use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Debug\Debug;

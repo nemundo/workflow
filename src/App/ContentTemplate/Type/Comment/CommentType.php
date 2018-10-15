@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Type\Comment;
 
 
-use Nemundo\App\Content\Type\Workflow\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Db\DbConfig;

@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Message\ContentType;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
-use Nemundo\App\Content\Type\Workflow\AbstractModelDataWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
 use Nemundo\Workflow\App\Message\Data\Message\MessageModel;
