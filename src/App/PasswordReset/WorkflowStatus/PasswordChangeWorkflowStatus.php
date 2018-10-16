@@ -3,7 +3,8 @@
 namespace Nemundo\Workflow\App\PasswordReset\WorkflowStatus;
 
 
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
+//use Nemundo\Workflow\App\Workflow\Content\Type\AbstractChangeWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class PasswordChangeWorkflowStatus extends AbstractChangeWorkflowStatus
