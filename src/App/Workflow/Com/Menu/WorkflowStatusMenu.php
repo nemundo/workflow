@@ -33,8 +33,6 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
      */
     public $formStatus;
 
-    // current Status
-
 
     public function getHtml()
     {
@@ -57,27 +55,25 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
         if ($this->process->isWorkflowOpen()) {
 
 
-            /** @var AbstractWorkflowStatus $nextStatus */
             $nextStatus = $status->getNextContentType();
+
 
             if ($nextStatus !== null) {
 
                 //if ($nextStatus->checkUserVisibility()) {
 
-                    $active=false;
-                    if ($this->formStatus->contentId == $nextStatus->contentId) {
-                        $active = true;
-                    }
-                    $table->addActiveWorkflowStatus($nextStatus,$active);
+                $active = false;
+                if ($this->formStatus->contentId == $nextStatus->contentId) {
+                    $active = true;
+                }
+                $table->addActiveWorkflowStatus($nextStatus, $active);
 
                 //}
 
             }
 
-
             $table->addMenu();
 
-            $nextStatus = $status->getNextContentType();
             if ($nextStatus !== null) {
                 foreach ($nextStatus->getNextContentTypeList() as $item) {
                     $table->addNextWorkflowStatus($item);
