@@ -38,24 +38,19 @@ class CollaborationInstall extends AbstractScript
     {
 
         (new ContentInstall())->run();
-
-
         //(new WorkflowInstall())->run();
         (new WorkflowTemplateInstall())->run();
         //(new CalendarInstall())->run();
-        (new InboxInstall())->run();
+        //(new InboxInstall())->run();
         //(new TaskInstall())->run();
         (new WikiInstall())->run();
-        (new MessageInstall())->run();
+        //(new MessageInstall())->run();
         (new IdentificationInstall())->run();
         (new AssignmentInstall())->run();
         (new NewsInstall())->run();
-
         (new WidgetInstall())->run();
         (new DashboardInstall())->run();
-
         (new NotificationInstall())->run();
-
         //(new PersonalTaskInstall())->run();
         (new RepeatingTaskInstall())->run();
         (new PersonalCalendarInstall())->run();
