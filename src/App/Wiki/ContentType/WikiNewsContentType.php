@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Wiki\ContentType;
 
 
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
@@ -30,7 +30,7 @@ class WikiNewsContentType //extends NewsContentType
 
         $newsRow = (new NewsReader())->getRowById($dataId);
 
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->contentType = $this;
         $builder->dataId = $dataId;
         $builder->subject = 'Neu: ' . $newsRow->title;

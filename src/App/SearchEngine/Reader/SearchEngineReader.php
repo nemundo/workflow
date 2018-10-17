@@ -3,6 +3,8 @@
 namespace Nemundo\Workflow\App\SearchEngine\Reader;
 
 
+use Nemundo\App\Content\Factory\ContentTypeFactory;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
 
@@ -31,48 +33,31 @@ class SearchEngineReader extends AbstractDataSource
 
             $indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
-            $indexReader->model->loadContentType();
-            //$indexReader->model->loadResult();
-
-            //$indexReader->model->loadApplicationType();
-            //$indexReader->model->loadSearchText();
+            $indexReader->model->loadDocument();
+            $indexReader->model->document->loadContentType();
             $indexReader->filter->andEqual($indexReader->model->word->word, $this->keyword);
-
-            /*if ($searchTypeListBox->getValue() !== '') {
-                $indexReader->filter->andEqual($indexReader->model->applicationTypeId, $searchTypeListBox->getValue());
-            }*/
-
-
-            //$table = new AdminClickableTable($this);
 
             foreach ($indexReader->getData() as $indexRow) {
 
-                //$row = new BootstrapClickableTableRow($table);
-                //$row->addText($indexRow->workflow->workflowNumber);
-                //$row->addText($indexRow->workflow->subject);
+
+                $className = $indexRow->document->contentType->contentTypeClass;
 
 
-                //$text = new Text($indexRow->result->title);
+                /** @var AbstractContentType $contentType */
+                $contentType = new $className($indexRow->document->dataId);
 
-                $title = $indexRow->result->title;
+
+
+                $title = $contentType->getSubject();
                 $title = preg_replace('/(' . $this->keyword . ')/i', '<b>$1</b>', $title);
 
-
-                //$row->addText($title);
-
-                $contentType = $indexRow->contentType->getContentTypeClassObject();
-                $site = $contentType->getItemSite($indexRow->result->dataId);
-                $site->title = $title;
-
-
                 $item = new SearchEngineItem();
+                $item->source = $contentType->contentName;
                 $item->title = $title;
-                $item->site = $site;
+                $item->site = $contentType->getViewSite();
+                $item->site->title = $title;
 
                 $this->addItem($item);
-
-
-                //$row->addClickableSite($site);
 
             }
 

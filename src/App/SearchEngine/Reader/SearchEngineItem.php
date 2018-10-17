@@ -12,6 +12,11 @@ class SearchEngineItem extends AbstractBase
     /**
      * @var string
      */
+    public $source;
+
+    /**
+     * @var string
+     */
     public $title;
 
     /**

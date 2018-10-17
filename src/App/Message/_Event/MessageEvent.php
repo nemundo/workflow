@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Message\Event;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Event\AbstractEvent;
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\ContentType\AbstractMessageContentType;
 use Nemundo\Workflow\App\Message\ContentType\MessageContentType;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
@@ -39,7 +39,7 @@ class MessageEvent extends AbstractEvent
         $messageRow = (new MessageReader())->getRowById($this->messageId);
 
         /*
-                $builder = new InboxBuilder();
+                $builder = new NotificationBuilder();
                 $builder->contentType = $this->contentType;  // new MessageContentType();
                 $builder->dataId = $id;
                 $builder->subject = $messageRow->subject;
@@ -48,7 +48,7 @@ class MessageEvent extends AbstractEvent
 
 
         /*
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->contentType = new MessageContentType();
         $builder->dataId = $this->messageId;
         $builder->subject = $messageRow->subject;

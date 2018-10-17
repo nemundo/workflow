@@ -9,6 +9,7 @@ use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationReader;
+use Nemundo\Workflow\App\Notification\Reader\NotificationItemReader;
 
 class NotificationWidget extends AdminWidget
 {
@@ -16,29 +17,23 @@ class NotificationWidget extends AdminWidget
     public function getHtml()
     {
 
-        $this->widgetTitle = 'Notification2';
+        $this->widgetTitle = 'Notification';
 
 
         $table = new AdminClickableTable($this);
 
-        $reader = new NotificationReader();
-        $reader->model->loadNotificationType();
-        $reader->addOrder($reader->model->id, SortOrder::DESCENDING);
+        $reader = new NotificationItemReader();
+        //$reader->model->loadNotificationType();
+        //$reader->addOrder($reader->model->id, SortOrder::DESCENDING);
 
-        foreach ($reader->getData() as $notificationRow) {
+        foreach ($reader->getData() as $notificationItem) {
 
             $row = new BootstrapClickableTableRow($table);
-            //$row->addText($notificationRow->dataId);
 
-            $notificationType = $notificationRow->notificationType->getNotificationTypeObject();
-
-            $row->addText($notificationType->getNotificationText($notificationRow->dataId));
-
-            $row->addClickableSite($notificationType->getItemSite($notificationRow->dataId));
-
+            $row->addText( $notificationItem->subject);
+            $row->addClickableSite($notificationItem->site);
 
         }
-
 
         return parent::getHtml();
 

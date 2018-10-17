@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\News\Action;
 
 
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\AbstractNewsAction;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
@@ -17,11 +17,11 @@ class NewsAction extends AbstractNewsAction
 
         $newsRow = $this->getRow();
 
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->contentType = new NewsContentType();
         $builder->subject = $newsRow->title;
         $builder->dataId = $newsRow->id;
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        $builder->createUsergroupNotification(new SchleunigerUsergroup());
 
         $builder = new SearchEngineBuilder();
         $builder->contentType = new NewsContentType();

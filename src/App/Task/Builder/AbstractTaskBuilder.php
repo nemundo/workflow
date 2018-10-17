@@ -9,7 +9,7 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\User\Usergroup\UsergroupItem;
 use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
 use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Task\Data\Task\Task;
 use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
 use Nemundo\Workflow\App\Task\Data\Task\TaskUpdate;
@@ -96,7 +96,7 @@ abstract class AbstractTaskBuilder extends AbstractIdentificationBuilder
     private function createInboxItem($userId)
     {
 
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->subject = $this->task;  // 'Aufgabe: ' . $this->task;
         $builder->dataId = $this->dataId;
         $builder->contentType = $this->contentType;

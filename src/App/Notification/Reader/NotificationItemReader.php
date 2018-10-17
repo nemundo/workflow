@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Notification\Reader;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationReader;
@@ -49,12 +50,16 @@ class NotificationItemReader extends AbstractDataSource
             /** @var AbstractContentType $contentType */
             $contentType = new $className($notificationRow->dataId);
 
-            $site = $contentType->getViewSite();
-            if ($site !== null) {
-                $item->site = clone(NotificationRedirectSite::$site);
-                $item->site->addParameter(new NotificationParameter($notificationRow->id));
-            }
+           // (new Debug())->write($contentType->getViewSite());
 
+
+            if ($contentType->hasViewSite()) {
+                $site = $contentType->getViewSite();
+                if ($site !== null) {
+                    $item->site = clone(NotificationRedirectSite::$site);
+                    $item->site->addParameter(new NotificationParameter($notificationRow->id));
+                }
+            }
             $this->addItem($item);
 
         }

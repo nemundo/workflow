@@ -8,6 +8,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
 use Nemundo\Workflow\App\SearchEngine\Form\SearchEngineForm;
+use Nemundo\Workflow\App\SearchEngine\Reader\SearchEngineReader;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 
@@ -18,7 +19,7 @@ class SearchEngineWidget extends AbstractAdminWidget
     protected function loadWidget()
     {
         $this->widgetTitle = 'Suchmaschine';
-        //$this->widgetSite = SearchEngineSite::$site;
+        $this->widgetSite = SearchEngineSite::$site;
 
     }
 
@@ -37,13 +38,16 @@ class SearchEngineWidget extends AbstractAdminWidget
         if ($keyword !== '') {
 
 
-            $indexReader = new SearchIndexReader();
+            $searchEngineReader = new SearchEngineReader();
+            $searchEngineReader->keyword = $keyword;
+
+            /*$indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
             $indexReader->model->loadDocument();
             $indexReader->model->document->loadContentType();
 
 
-            $indexReader->filter->andEqual($indexReader->model->word->word, $keyword);
+            $indexReader->filter->andEqual($indexReader->model->word->word, $keyword);*/
 
             /*if ($searchTypeListBox->getValue() !== '') {
                 $indexReader->filter->andEqual($indexReader->model->applicationTypeId, $searchTypeListBox->getValue());
@@ -52,14 +56,19 @@ class SearchEngineWidget extends AbstractAdminWidget
 
             $table = new AdminClickableTable($this);
 
-            foreach ($indexReader->getData() as $indexRow) {
+            foreach ($searchEngineReader->getData() as $searchEngineItem) {
 
                 $row = new BootstrapClickableTableRow($table);
 
-                $className = $indexRow->document->contentType->contentTypeClass;
+                $row->addText($searchEngineItem->title);
+                $row->addText($searchEngineItem->source);
+                $row->addClickableSite($searchEngineItem->site);
+
+
+                /*$className = $indexRow->document->contentType->contentTypeClass;
 
                 /** @var AbstractContentType $contentType */
-                $contentType = new $className($indexRow->document->dataId);
+                /*$contentType = new $className($indexRow->document->dataId);
 
                 $title = $contentType->getSubject();
                 $title = preg_replace('/(' . $keyword . ')/i', '<b>$1</b>', $title);
@@ -67,7 +76,7 @@ class SearchEngineWidget extends AbstractAdminWidget
 
                 $row->addText($contentType->contentName);
 
-                $row->addClickableSite($contentType->getViewSite());
+                $row->addClickableSite($contentType->getViewSite());*/
 
             }
 

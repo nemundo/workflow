@@ -7,7 +7,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\Data\Message\MessageModel;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Parameter\MessageParameter;
@@ -40,7 +40,7 @@ class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractMod
         $builder->assignment->setUserIdentification($row->toId);
         $builder->createAssignment();*/
 
-        $builder = new NotificationBuilder();  // InboxBuilder();
+        $builder = new NotificationBuilder();  // NotificationBuilder();
         $builder->contentType = $this;
         $builder->message = $row->text;
         $builder->createUserInbox($row->toId);

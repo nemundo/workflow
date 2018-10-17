@@ -7,7 +7,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\File\TextFile;
 use Nemundo\Project\ProjectConfig;
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentForm;
 use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentFormUpdate;
 use Nemundo\Workflow\App\Wiki\Content\View\WikiPageView;
@@ -78,12 +78,12 @@ class WikiPageContentType extends AbstractTreeContentType
         $update->updateById($this->dataId);
 
 
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->contentType = $this;
         $builder->dataId = $this->dataId;
         $builder->subject = $this->getSubject();
         $builder->message = 'Neuer Eintrag: ' . $contentType->getSubject();
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        $builder->createUsergroupNotification(new SchleunigerUsergroup());
 
 
     }

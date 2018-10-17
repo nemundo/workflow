@@ -55,6 +55,7 @@ class SearchEngineSite extends AbstractSite
 
             $row = new TableRow($table);
             $row->addSite($searchEngineItem->site);
+            $row->addText($searchEngineItem->source);
 
         }
 

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Stream\Builder;
 
 
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
-use Nemundo\Workflow\App\Inbox\Builder\AbstractInboxBuilder;
+use Nemundo\Workflow\App\Inbox\Builder\AbstractNotificationBuilder;
 use Nemundo\Workflow\App\Stream\Data\Stream\Stream;
 
 class StreamBuilder extends AbstractContentBuilder

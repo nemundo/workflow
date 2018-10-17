@@ -44,8 +44,10 @@ class CollaborationSite extends AbstractSite
         $this->restricted = true;
         $this->addRestrictedUsergroup(new CollaborationUsergroup());
 
-        new InboxSite($this);
-        new InboxStreamSite($this);
+        //new InboxSite($this);
+        //new InboxStreamSite($this);
+
+        new StreamSite($this);
 
         new DashboardSite($this);
 

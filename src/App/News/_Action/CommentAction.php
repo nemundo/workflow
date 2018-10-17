@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\News\Action;
 
 
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\News\Content\CommentContentType;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\News\Data\Comment\AbstractCommentAction;
@@ -18,11 +18,11 @@ class CommentAction extends AbstractCommentAction
 
         $commentRow = $this->getRow();
 
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->contentType = new CommentContentType();
         $builder->subject = 'News Kommentar';  // $commentRow->title;
         $builder->dataId = $commentRow->id;
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        $builder->createUsergroupNotification(new SchleunigerUsergroup());
 
 
 

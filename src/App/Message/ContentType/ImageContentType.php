@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Message\ContentType;
 
 
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
-use Nemundo\Workflow\App\Inbox\Builder\InboxBuilder;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\ContentItem\ImageContentView;
 use Nemundo\Workflow\App\Message\ContentItem\TextContentView;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
@@ -36,12 +36,12 @@ class ImageContentType extends AbstractMessageContentType
         //$textRow = (new MessageTextReader())->getRowById($dataId);
 
 
-        $builder = new InboxBuilder();
+        $builder = new NotificationBuilder();
         $builder->contentType = new MessageContentType();
         $builder->dataId = $messageId;
         $builder->subject = $messageRow->subject;
         $builder->message = 'Neues Bild';
-        $builder->createUsergroupInbox(new SchleunigerUsergroup());
+        $builder->createUsergroupNotification(new SchleunigerUsergroup());
 
 
 

@@ -36,8 +36,6 @@ class NotificationBuilder extends AbstractBaseClass
     public $contentType;
 
 
-   // abstract public function createItem();
-
 
     protected function check()
     {
@@ -50,17 +48,12 @@ class NotificationBuilder extends AbstractBaseClass
     }
 
 
-
-
-
-
-
-    public function createUserInbox($userId)
+    public function createUserNotification($userId)
     {
 
         $this->check();
 
-        $data = new Notification();  // Inbox();
+        $data = new Notification();
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
         $data->subject = $this->contentType->getSubject();
@@ -73,11 +66,11 @@ class NotificationBuilder extends AbstractBaseClass
     }
 
 
-    public function createUsergroupInbox(AbstractUsergroup $usergroup)
+    public function createUsergroupNotification(AbstractUsergroup $usergroup)
     {
 
         foreach ($usergroup->getUserList() as $userRow) {
-            $this->createUserInbox($userRow->id);
+            $this->createUserNotification($userRow->id);
         }
 
     }

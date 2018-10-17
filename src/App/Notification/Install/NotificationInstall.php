@@ -20,7 +20,7 @@ class NotificationInstall extends AbstractScript
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new NotificationCollection());
 
-        (new InboxInstall())->run();
+        //(new InboxInstall())->run();
 
     }
 }

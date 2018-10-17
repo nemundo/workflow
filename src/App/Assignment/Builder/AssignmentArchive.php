@@ -11,6 +11,9 @@ class AssignmentArchive extends AbstractBase
 {
 
 
+    // nach AssignmentBuilder
+    // ContentType/DataId
+
     public function archiveAssignment($dataId)
     {
 

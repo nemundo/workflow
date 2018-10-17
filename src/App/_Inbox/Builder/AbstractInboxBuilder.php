@@ -53,7 +53,7 @@ abstract class AbstractInboxBuilder extends AbstractContentBuilder
     public function createUserInbox($userId)
     {
 
-        (new Debug())->write('InboxBuilder: '.$this->contentType->contentName);
+        //(new Debug())->write('InboxBuilder: '.$this->contentType->contentName);
 
         $this->check();
 
