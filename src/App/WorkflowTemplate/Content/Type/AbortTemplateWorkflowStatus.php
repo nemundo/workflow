@@ -3,13 +3,14 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 use Nemundo\App\Content\Type\Workflow\AbstractChangeWorkflowStatus;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\AbortTemplateWorkflowForm;
 
 
 // ChancelWorkflowTemplateWorkflowStatus
-class AbortTemplateWorkflowStatus extends AbstractWorkflowStatus  // AbstractChangeWorkflowStatus
+class AbortTemplateWorkflowStatus extends AbstractStatusChangeWorkflowStaus   // AbstractWorkflowStatus  // AbstractChangeWorkflowStatus
 {
 
 
@@ -23,7 +24,7 @@ class AbortTemplateWorkflowStatus extends AbstractWorkflowStatus  // AbstractCha
 
         //$this->changeStatus = false;
 
-        $this->formClass = AbortTemplateWorkflowForm::class;
+        //$this->formClass = AbortTemplateWorkflowForm::class;
     }
 
 

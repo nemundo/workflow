@@ -13,6 +13,7 @@ use Nemundo\Workflow\App\Dashboard\Install\DashboardInstall;
 use Nemundo\Workflow\App\Favorite\Install\FavoriteInstall;
 use Nemundo\Workflow\App\Identification\Install\IdentificationInstall;
 use Nemundo\Workflow\App\Inbox\Install\InboxInstall;
+use Nemundo\Workflow\App\MailConfig\Install\MailConfigInstall;
 use Nemundo\Workflow\App\Message\Install\MessageInstall;
 use Nemundo\Workflow\App\News\Install\NewsInstall;
 use Nemundo\Workflow\App\Notification\Install\NotificationInstall;
@@ -60,6 +61,7 @@ class CollaborationInstall extends AbstractScript
         (new ContentTemplateInstall())->run();
         (new SubscriptionInstall())->run();
         (new FavoriteInstall())->run();
+        (new MailConfigInstall())->run();
 
         //(new SurveyInstall())->run();
         (new StreamInstall())->run();

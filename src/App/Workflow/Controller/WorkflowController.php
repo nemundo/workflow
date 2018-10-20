@@ -5,12 +5,14 @@ namespace Nemundo\Workflow\App\Workflow\Controller;
 
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\Com\ChildContentViewContainer;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Com\Menu\WorkflowStatusMenu;
+use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowLogTable;
 
 class WorkflowController extends AbstractBase
 {
@@ -40,36 +42,41 @@ class WorkflowController extends AbstractBase
         $status = $this->process->getStatus();
 
 
-        // (new Debug())->write($status->dataId);
-        // exit;
-
-        //(new Debug())->write($status->isDraft());
+        if ($status !== null) {
 
 
-        if ($status->isDraft()) {
-            $formStatus = $status;
-        }
+            //(new Debug())->write($status);
+            // exit;
+
+            //(new Debug())->write($status->isDraft());
 
 
-        $contentTypeParameter = new ContentTypeParameter();
-
-        if ($contentTypeParameter->exists()) {
-
-            $formStatus = $contentTypeParameter->getContentType();
-            $formStatus->parentContentType = $this->process;
-
-        } else {
+            if ($status->isDraft()) {
+                $formStatus = $status;
+            }
 
 
-            if (!$status->isDraft()) {
-                $nextStatus2 = $status->getNextContentType();
+            $contentTypeParameter = new ContentTypeParameter();
 
-                if ($nextStatus2 !== null) {
-                    $formStatus = $nextStatus2;
+            if ($contentTypeParameter->exists()) {
+
+                $formStatus = $contentTypeParameter->getContentType();
+                $formStatus->parentContentType = $this->process;
+
+            } else {
+
+
+                if (!$status->isDraft()) {
+                    $nextStatus2 = $status->getNextContentType();
+
+                    if ($nextStatus2 !== null) {
+                        $formStatus = $nextStatus2;
+                    }
                 }
             }
+            //}
+
         }
-        //}
 
         return $formStatus;
 
@@ -94,8 +101,14 @@ class WorkflowController extends AbstractBase
                 $form->redirectSite = new Site();
                 $form->redirectSite->removeParameter(new ContentTypeParameter());
 
-
             }
+
+        } else {
+
+            $form = $this->process->getForm($parentItem);
+            $form->parentContentType = $this->process;
+            $form->redirectSite = new Site();
+            $form->redirectSite->removeParameter(new ContentTypeParameter());
 
         }
 
@@ -127,6 +140,26 @@ class WorkflowController extends AbstractBase
 
         return $menu;
 
+
+    }
+
+
+    public function getLogView($parentItem = null)
+    {
+
+        $view = new ChildContentViewContainer($parentItem);
+        $view->contentType = $this->process;
+        return $view;
+
+    }
+
+
+    public function getLogTable($parentItem = null)
+    {
+
+        $log = new WorkflowLogTable($parentItem);
+        $log->process = $this->process;
+        return $log;
 
     }
 

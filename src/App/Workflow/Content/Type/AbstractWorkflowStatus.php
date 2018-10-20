@@ -45,7 +45,7 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
      * @var AbstractSite
      *
      */
-    protected $statusChangeSite;
+    //protected $statusChangeSite;
 
 
 
@@ -61,7 +61,7 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 
 
     // getStatusFormSite oder so was
-    public function getStatusChangeSite()
+   /* public function getStatusChangeSite()
     {
 
         $site = null;
@@ -74,6 +74,6 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 
         return $site;
 
-    }
+    }*/
 
 }
