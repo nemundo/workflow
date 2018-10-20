@@ -29,7 +29,7 @@ class WikiPageContentType extends AbstractTreeContentType
     public $title;
 
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Wiki Page';
         $this->contentId = 'd6a20e68-3463-491f-a76c-bd8a8df1f57e';

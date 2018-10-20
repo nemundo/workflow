@@ -16,7 +16,7 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class ImageContentType extends AbstractMessageContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Image';
         $this->subject = 'Neues Bild';

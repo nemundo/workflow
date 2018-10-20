@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 class BreakingNewsContentType extends AbstractContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Breaking News';
         $this->contentId = 'c5f42b2c-2708-47ec-bce8-ab0110173a5e';

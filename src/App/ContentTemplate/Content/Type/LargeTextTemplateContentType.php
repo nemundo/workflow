@@ -3,17 +3,20 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
-
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
+use Nemundo\Core\Type\Text\Html;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\LargeTextContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\Item\LargeTextContentView;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeText;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeTextModel;
+use Nemundo\Workflow\App\ContentTemplate\Data\LargeTextContentTemplate\LargeTextContentTemplate;
+use Nemundo\Workflow\App\ContentTemplate\Data\LargeTextContentTemplate\LargeTextContentTemplateReader;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 
 // LargeTextContentTypeTemplate
-class LargeTextTemplateContentType extends AbstractTreeContentType  // AbstractDataContentType
+class LargeTextTemplateContentType extends AbstractWorkflowStatus  // AbstractTreeContentType  // AbstractDataContentType
 {
 
     /**
@@ -21,7 +24,12 @@ class LargeTextTemplateContentType extends AbstractTreeContentType  // AbstractD
      */
     public $text;
 
-    protected function loadData()
+    /**
+     * @var string
+     */
+    public $largeTextLabel = 'TExt';
+
+    protected function loadType()
     {
 
         $this->contentName = 'Large Text (Template)';
@@ -33,10 +41,19 @@ class LargeTextTemplateContentType extends AbstractTreeContentType  // AbstractD
     }
 
 
+    protected function loadData()
+    {
+
+        $row = (new LargeTextContentTemplateReader())->getRowById($this->dataId);
+        $this->text = (new Html($row->text))->getValue();
+
+    }
+
+
     public function saveType()
     {
 
-        $data = new LargeText();
+        $data = new LargeTextContentTemplate();  // LargeText();
         $data->text = $this->text;
         $this->dataId = $data->save();
 

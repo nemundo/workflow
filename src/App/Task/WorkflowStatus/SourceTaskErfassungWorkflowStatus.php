@@ -15,7 +15,7 @@ use Nemundo\Workflow\App\WorkflowTemplate\WorkflowStatus\UserAssignmentChangeWor
 class SourceTaskErfassungWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Source Aufgabe Erfassung';

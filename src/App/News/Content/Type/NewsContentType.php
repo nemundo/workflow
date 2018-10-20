@@ -15,7 +15,7 @@ use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 class NewsContentType extends AbstractModelDataTreeContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'News';

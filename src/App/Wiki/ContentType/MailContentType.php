@@ -15,7 +15,7 @@ use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
 class MailContentType extends AbstractContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Mail';

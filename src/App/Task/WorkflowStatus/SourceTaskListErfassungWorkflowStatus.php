@@ -16,7 +16,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 class SourceTaskListErfassungWorkflowStatus extends AbstractWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Source Aufgabe Liste Erfassung';

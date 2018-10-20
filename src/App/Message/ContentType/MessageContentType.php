@@ -17,7 +17,7 @@ use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractModelDataContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Message';
         $this->contentId = 'a5dbb6c4-61ed-425a-9f24-432b116599f1';

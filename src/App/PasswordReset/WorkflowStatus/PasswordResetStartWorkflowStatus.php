@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 class PasswordResetStartWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Passwod Reset Start';

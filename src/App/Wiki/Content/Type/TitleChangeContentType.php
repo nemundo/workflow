@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
 class TitleChangeContentType extends AbstractModelWikiTreeContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Title Change';

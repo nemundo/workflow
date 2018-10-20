@@ -18,21 +18,22 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
     use UserAccessTrait;
     use SequenceContentTypeTrait;
     use MenuContentTypeTrait;
+    use WorkflowStatusTrait;
 
     /**
      * @var bool
      */
-    public $changeStatus = true;
+   // public $changeStatus = true;
 
     /**
      * @var bool
      */
-    public $closingWorkflow = false;
+   // public $closingWorkflow = false;
 
     /**
      * @var bool
      */
-    public $showStatus = true;
+  //  public $showStatus = true;
 
 
     /**

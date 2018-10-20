@@ -17,7 +17,7 @@ class Survey2ContentType extends AbstractSequenceTreeContentType  //DataContentT
     use ModelContentTypeTrait;
 
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Survey2';
         $this->contentId = '19820505-fb0d-4948-afe2-a54a032bd4f8';

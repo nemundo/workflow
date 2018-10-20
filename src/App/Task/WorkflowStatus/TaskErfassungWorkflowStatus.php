@@ -13,7 +13,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 class TaskErfassungWorkflowStatus extends AbstractWorkflowStatus  // AbstractDataWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Aufgabe Erfassung';

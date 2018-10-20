@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 class ImageWorkflowTemplateContentType extends AbstractModelDataWorkflowStatus  // ImageTemplateContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
    $this->contentName = 'Image (Workflow Template)';
    $this->contentId = '';

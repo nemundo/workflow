@@ -13,7 +13,7 @@ class AbortTemplateWorkflowStatus extends AbstractWorkflowStatus  // AbstractCha
 {
 
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentId = '0e49408b-e3cd-4850-888f-65c53415c043';
         $this->contentName = 'Workflow Abbrechen (Abbruch)';

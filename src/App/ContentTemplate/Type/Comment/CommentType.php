@@ -24,7 +24,7 @@ class CommentType extends AbstractWorkflowStatus
 
     // commentLabel
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Kommentar';
         $this->contentId = '3d7012e5-6751-4d49-8d68-a0f49a888718';

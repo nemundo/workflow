@@ -16,7 +16,7 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class TextContentType extends AbstractMessageContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Text';
         $this->contentId = 'be649b42-4818-4c9e-b778-212c71aa90f0';

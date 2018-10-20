@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus
 class ClosingWorkflowTemplateWorkflowStatus extends AbstractStatusChangeWorkflowStaus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentId = 'd868b46c-6be6-4e3f-a3fa-cfd989397630';

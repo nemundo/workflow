@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
 class HyperlinkContentType extends AbstractContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Hyperlink';

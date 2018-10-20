@@ -11,7 +11,7 @@ use Schleuniger\Usergroup\SchleunigerUsergroup;
 class TaskCommentWorkflowStatus extends AbstractWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Kommentar (Task)';

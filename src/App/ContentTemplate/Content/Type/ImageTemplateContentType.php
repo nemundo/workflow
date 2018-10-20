@@ -25,7 +25,7 @@ class ImageTemplateContentType extends AbstractTreeContentType   // AbstractData
     public $image;
 
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Bild';
         $this->contentId = '265611fc-189f-4d8d-85cf-0b96edad40ef';

@@ -13,7 +13,7 @@ use Nemundo\Workflow\App\Wiki\Data\TextList\TextListForm;
 class TextListType extends AbstractTreeContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Text List';
         $this->contentId = 'bbf160e0-039d-45d3-850f-b7e88a020c4f';

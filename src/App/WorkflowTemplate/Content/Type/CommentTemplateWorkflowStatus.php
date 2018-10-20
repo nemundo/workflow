@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentReader;
 class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Comment';

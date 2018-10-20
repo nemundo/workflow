@@ -16,7 +16,7 @@ class ToDoContentType extends AbstractContentType
 {
 
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'To Do (todo)';
         $this->contentId = 'c9c9f07f-7608-49be-99b4-95c1aa07c69b';

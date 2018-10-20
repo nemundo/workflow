@@ -11,7 +11,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 class WikiPageContainer extends AbstractContentType
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Wiki';

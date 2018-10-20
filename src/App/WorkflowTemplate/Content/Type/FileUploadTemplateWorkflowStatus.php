@@ -20,7 +20,7 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
     public $fileRequest;
 
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'Dokument';
         $this->contentId = '8d49707a-9763-4b0d-b169-b50a939ddb1d';

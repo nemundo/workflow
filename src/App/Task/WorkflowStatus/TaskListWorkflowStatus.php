@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 class TaskListWorkflowStatus extends AbstractWorkflowStatus
 {
 
-    protected function loadData()
+    protected function loadType()
     {
 
         $this->contentName = 'Aufgaben Liste';

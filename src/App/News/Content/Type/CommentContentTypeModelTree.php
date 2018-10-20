@@ -18,7 +18,7 @@ class CommentContentTypeModelTree extends AbstractModelDataTreeContentType
      */
     public $newsId;
 
-    protected function loadData()
+    protected function loadType()
     {
         $this->contentName = 'News Comment';
         $this->contentId = '3cf44cd4-a6ff-44b3-8c89-21770e62a39f';
