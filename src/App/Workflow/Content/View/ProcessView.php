@@ -8,6 +8,8 @@ use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Workflow\App\Workflow\Com\Layout\WorkflowLayout;
 use Nemundo\Workflow\App\Workflow\Controller\WorkflowController;
 
+
+// WorkflowProcessView
 class ProcessView extends AbstractContentView
 {
 
@@ -28,7 +30,10 @@ class ProcessView extends AbstractContentView
         $betaController->getMenu($layout->col1);
         $betaController->getForm($layout->col2);
         $betaController->getLogView($layout->col3);
-        $betaController->getLogTable($layout->col3);
+        //$betaController->getLogTable($layout->col3);
+
+
+
 
         return parent::getHtml();
 

@@ -7,6 +7,11 @@ class ToDoRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var ToDoModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;
@@ -14,12 +19,22 @@ public $id;
 /**
 * @var string
 */
-public $workflowId;
+public $statusId;
 
 /**
-* @var \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow
+* @var \Nemundo\App\Content\Data\ContentType\ContentTypeRow
 */
-public $workflow;
+public $status;
+
+/**
+* @var string
+*/
+public $statusDataId;
+
+/**
+* @var bool
+*/
+public $closed;
 
 /**
 * @var string
@@ -45,10 +60,12 @@ public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
-$this->workflowId = $this->getModelValue($model->workflowId);
-if ($model->workflow !== null) {
-$this->loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model->workflow);
+$this->statusId = $this->getModelValue($model->statusId);
+if ($model->status !== null) {
+$this->loadNemundoAppContentDataContentTypeContentTypestatusRow($model->status);
 }
+$this->statusDataId = $this->getModelValue($model->statusDataId);
+$this->closed = $this->getModelValue($model->closed);
 $this->todo = $this->getModelValue($model->todo);
 $this->done = $this->getModelValue($model->done);
 $this->userId = $this->getModelValue($model->userId);
@@ -56,8 +73,8 @@ if ($model->user !== null) {
 $this->loadNemundoUserDataUserUseruserRow($model->user);
 }
 }
-private function loadNemundoWorkflowAppWorkflowDataWorkflowWorkflowworkflowRow($model) {
-$this->workflow = new \Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowRow($this->row, $model);
+private function loadNemundoAppContentDataContentTypeContentTypestatusRow($model) {
+$this->status = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

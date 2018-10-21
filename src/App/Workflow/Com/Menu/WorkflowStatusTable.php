@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
@@ -36,6 +37,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
 
     public function addLogWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
+        // public function addLogWorkflowStatus(AbstractContentType $workflowStatus)
     {
 
         $row = new TableRow($this->table);
@@ -51,6 +53,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
 
     public function addActiveWorkflowStatus(AbstractWorkflowStatus $workflowStatus, $active)
+        // public function addActiveWorkflowStatus(AbstractContentType $workflowStatus, $active)
     {
 
         $row = new TableRow($this->table);
@@ -78,30 +81,33 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
     {
 
 
-        if ($this->process->getStatus()->hasMenuSite()) {
+        if ($this->process->dataId !== null) {
 
-            $row = new TableRow($this->table);
-            $row->addEmpty();
+            if ($this->process->getStatus()->hasMenuSite()) {
 
-            $list = new UnorderedList($row);
-            $list->addCssClass('no-bullet');
+                $row = new TableRow($this->table);
+                $row->addEmpty();
+
+                $list = new UnorderedList($row);
+                $list->addCssClass('no-bullet');
 
 
-            foreach ($this->process->getStatus()->getMenuSite() as $site) {
+                foreach ($this->process->getStatus()->getMenuSite() as $site) {
 
-                if ($site->isActiveWorkflowStatus()) {
-                    $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
-                } else {
+                    if ($site->isActiveWorkflowStatus()) {
+                        $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
+                    } else {
 
-                    $hyperlink = new SiteHyperlink($list);
-                    $hyperlink->site = $site;
+                        $hyperlink = new SiteHyperlink($list);
+                        $hyperlink->site = $site;
+                    }
                 }
+
+
+                $row->addEmpty();
+                $row->addEmpty();
+
             }
-
-
-            $row->addEmpty();
-            $row->addEmpty();
-
         }
 
 
@@ -109,6 +115,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
 
     public function addNextWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
+        // public function addNextWorkflowStatus(AbstractContentType $workflowStatus)
     {
 
         if ($workflowStatus->showStatus) {

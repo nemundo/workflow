@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\ToDo\Data\ToDo;
-class ToDoModel extends \Nemundo\Workflow\Model\AbstractWorkflowBaseModel {
+class ToDoModel extends \Nemundo\App\Workflow\Model\AbstractWorkflowModel {
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
@@ -42,6 +42,9 @@ $this->id->allowNullValue = "";
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
+$this->id->visible->form = false;
+
+
 $this->id->visible->form = false;
 
 

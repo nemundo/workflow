@@ -69,6 +69,8 @@ class CollaborationSite extends AbstractSite
         //new ToDoItemSite($this);
 
 
+        new ToDoSite($this);
+
         new NewsSite($this);
 
         new MessageSite($this);

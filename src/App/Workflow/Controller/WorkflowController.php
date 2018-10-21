@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Controller;
 
 
+use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ChildContentViewContainer;
@@ -44,13 +45,6 @@ class WorkflowController extends AbstractBase
 
         if ($status !== null) {
 
-
-            //(new Debug())->write($status);
-            // exit;
-
-            //(new Debug())->write($status->isDraft());
-
-
             if ($status->isDraft()) {
                 $formStatus = $status;
             }
@@ -88,16 +82,27 @@ class WorkflowController extends AbstractBase
 
         $formStatus = $this->getFormStatus();
 
-        if ($formStatus !== null) {
+        if ($this->process->dataId !== null) {
 
-            if ($formStatus->checkUserVisibility()) {
+            if ($formStatus !== null) {
 
-                $title = new AdminSubtitle($parentItem);
-                $title->content = $formStatus->contentName;
+                if ($formStatus->checkUserVisibility()) {
 
-                $form = $formStatus->getForm($parentItem);
+                    $title = new AdminSubtitle($parentItem);
+                    $title->content = $formStatus->contentName;
+
+                    $form = $formStatus->getForm($parentItem);
+                    $form->parentContentType = $this->process;
+                    //$form->redirectSite = $this->process->getViewSite();
+                    $form->redirectSite = new Site();
+                    $form->redirectSite->removeParameter(new ContentTypeParameter());
+
+                }
+
+            } else {
+
+                $form = $this->process->getForm($parentItem);
                 $form->parentContentType = $this->process;
-                //$form->redirectSite = $this->process->getViewSite();
                 $form->redirectSite = new Site();
                 $form->redirectSite->removeParameter(new ContentTypeParameter());
 
@@ -105,10 +110,12 @@ class WorkflowController extends AbstractBase
 
         } else {
 
+
             $form = $this->process->getForm($parentItem);
             $form->parentContentType = $this->process;
             $form->redirectSite = new Site();
             $form->redirectSite->removeParameter(new ContentTypeParameter());
+
 
         }
 
@@ -156,6 +163,24 @@ class WorkflowController extends AbstractBase
 
     public function getLogTable($parentItem = null)
     {
+
+        $table = new AdminLabelValueTable($parentItem);
+        $table->addLabelValue('Status', $this->process->getStatus()->contentName);
+        $table->addLabelValue('Subject', $this->process->getSubject());
+        $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
+
+        $parent = $this->process->getParent();
+
+        if ($parent !== null) {
+            $table->addLabelValue('Parent', $parent->contentName);
+
+            $site = $parent->getViewSite();
+            $site->title = $parent->getSubject();
+            $table->addLabelSite('Parent', $site);
+            //$table->addLabelValue('Subject', $parent->getSubject());
+            //$table->addLabelValue('Parent', $parent->contentName);
+        }
+
 
         $log = new WorkflowLogTable($parentItem);
         $log->process = $this->process;
