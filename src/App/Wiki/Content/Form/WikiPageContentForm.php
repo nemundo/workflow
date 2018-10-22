@@ -62,7 +62,14 @@ class WikiPageContentForm extends ContentTreeForm  // BootstrapForm  // WikiPage
     protected function onSubmit()
     {
 
+
+/*
         $content = new WikiPageContentType($this->updateId);
+        $content->title = $this->title->getValue();
+        $content->saveType();*/
+
+
+        $content = new WikiPageContentType();
         $content->title = $this->title->getValue();
         $content->saveType();
 

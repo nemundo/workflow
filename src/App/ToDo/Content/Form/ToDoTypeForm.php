@@ -21,14 +21,14 @@ class ToDoTypeForm extends ContentTreeForm
     public function getHtml()
     {
 
-        if ($this->parentContentType !==null) {
+        if ($this->parentContentType !== null) {
 
             $p = new Paragraph($this);
-            $p->content = $this->parentContentType->contentName;
+            $p->content = 'Parent: ' . $this->parentContentType->contentName;
 
         }
 
-        $this->toDo=new BootstrapTextBox($this);
+        $this->toDo = new BootstrapTextBox($this);
         $this->toDo->label = 'To Do';
 
 
@@ -44,8 +44,9 @@ class ToDoTypeForm extends ContentTreeForm
         $status->toDo = $this->toDo->getValue();
         $status->saveType();
 
-        $process = new ToDoProcess($status->dataId);
-        $this->redirectSite = $process->getViewSite();
+
+        //$process = new ToDoProcess($status->dataId);
+        //$this->redirectSite = $process->getViewSite();
 
 
     }

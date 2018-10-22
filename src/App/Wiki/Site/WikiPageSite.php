@@ -63,19 +63,17 @@ class WikiPageSite extends AbstractSite
         $pageId = $pageParameter->getValue();
 
 
-
         $nav = new BootstrapNavigation($page);
         $nav->site = WikiSite::$site;
 
         $btn = new AdminButton($page);
         $btn->content = 'edit';
-        $btn->site=WikiPageEditSite::$site;
+        $btn->site = WikiPageEditSite::$site;
         $btn->site->addParameter($pageParameter);
 
 
         $wikiPage = new WikiPageContentType($pageId);
         $wikiPage->getView($page);
-
 
         $dropdown = new ContentTypeCollectionDropdown($page);
         $dropdown->contentTypeCollection = new WikiContentTypeCollection();
@@ -97,7 +95,6 @@ class WikiPageSite extends AbstractSite
             $form->redirectSite = $wikiPage->getViewSite();
 
         }
-
 
 
         $page->render();

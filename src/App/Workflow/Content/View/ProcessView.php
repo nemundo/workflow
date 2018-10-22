@@ -30,7 +30,7 @@ class ProcessView extends AbstractContentView
         $betaController->getMenu($layout->col1);
         $betaController->getForm($layout->col2);
         $betaController->getLogView($layout->col3);
-        //$betaController->getLogTable($layout->col3);
+        $betaController->getLogTable($layout->col3);
 
 
 

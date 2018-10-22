@@ -164,6 +164,15 @@ class WorkflowController extends AbstractBase
     public function getLogTable($parentItem = null)
     {
 
+
+
+        $log = new WorkflowLogTable($parentItem);
+        $log->process = $this->process;
+
+        $title = new AdminSubtitle($parentItem);
+        $title->content = 'Status';
+
+
         $table = new AdminLabelValueTable($parentItem);
         $table->addLabelValue('Status', $this->process->getStatus()->contentName);
         $table->addLabelValue('Subject', $this->process->getSubject());
@@ -182,8 +191,8 @@ class WorkflowController extends AbstractBase
         }
 
 
-        $log = new WorkflowLogTable($parentItem);
-        $log->process = $this->process;
+
+
         return $log;
 
     }

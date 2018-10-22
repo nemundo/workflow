@@ -6,7 +6,9 @@ namespace Nemundo\Workflow\App\Wiki\Content\View;
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ChildContentViewContainer;
+use Nemundo\App\Content\Com\Table\ContentLogTable;
 use Nemundo\App\Content\View\AbstractContentView;
+use Nemundo\App\Workflow\Com\WorkflowLogTable;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
 use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentView;
@@ -23,9 +25,12 @@ class WikiPageView extends AbstractContentView
     public function getHtml()
     {
 
-        $pageRow = (new WikiPageReader())->getRowById($this->dataId);
+        //$this->contentType
 
-        $wikiContentType = new WikiPageContentType($this->dataId);
+
+        //$pageRow = (new WikiPageReader())->getRowById($this->dataId);
+
+        //$wikiContentType = new WikiPageContentType($this->dataId);
 
         /*
         $btn = new AdminButton($this);
@@ -35,13 +40,22 @@ class WikiPageView extends AbstractContentView
 
 
         $title = new AdminTitle($this);
-        $title->content = $pageRow->title;
+        $title->content = $this->contentType->getSubject();
+
+        //$title->content = $wikiContentType->getSubject();  // $pageRow->title;
 
         //(new Debug())->write('123');
 
 
         $log = new ChildContentViewContainer($this);
-        $log->contentType = $wikiContentType;
+        $log->contentType = $this->contentType;
+
+
+        $log = new ContentLogTable($this);
+        $log->contentType = $this->contentType;
+
+        //$log = new ChildContentViewContainer($this);
+        //$log->contentType = $wikiContentType;
 
 
 

@@ -19,11 +19,14 @@ class WikiInstall extends AbstractScript
     public function run()
     {
 
-        $setup = new ModelCollectionSetup();
-        $setup->addCollection(new WikiCollection());
 
         $setup = new ApplicationSetup();
         $setup->addApplication(new WikiApplication());
+
+        $setup = new ModelCollectionSetup();
+        $setup->addCollection(new WikiCollection());
+
+
 
         $setup = new ContentTypeSetup();
         $setup->addContentType(new WikiPageContentType());

@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
+use Nemundo\Model\Data\Property\File\RedirectFilenameDataProperty;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Web\Http\FileRequest\FileRequest;
@@ -18,6 +19,17 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
      * @var FileRequest
      */
     public $fileRequest;
+
+
+    /**
+     * @var string
+     */
+    public $filename;
+
+    /**
+     * @var string
+     */
+    public $filenameOrginal;
 
 
     protected function loadType()
@@ -36,13 +48,29 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
     {
 
         $data = new File();
-        $data->file->fromFileRequest($this->fileRequest);
+
+        if ($this->fileRequest !== null) {
+            $data->file->fromFileRequest($this->fileRequest);
+        }
+
+        if ($this->filename !== null) {
+            $data->file->fromFilename($this->filename, $this->filenameOrginal);
+        }
+
         $this->dataId = $data->save();
 
         $this->saveContentLog();
 
     }
 
+
+    public function getFile()
+    {
+
+        $row = (new FileReader())->getRowById($this->dataId);
+        return $row->file;
+
+    }
 
     public function getSubject()
     {

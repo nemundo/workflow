@@ -35,7 +35,6 @@ class WikiPageContentType extends AbstractTreeContentType
         $this->contentId = 'd6a20e68-3463-491f-a76c-bd8a8df1f57e';
 
         $this->formClass = WikiPageContentForm::class;
-        //$this->formUpdateClass = WikiPageContentForm::class;  // WikiPageContentFormUpdate::class;
         $this->viewClass = WikiPageView::class;
         $this->viewSite = WikiPageSite::$site;
         $this->parameterClass = WikiPageParameter::class;
@@ -46,6 +45,14 @@ class WikiPageContentType extends AbstractTreeContentType
     public function saveType()
     {
 
+        $data = new WikiPage();
+        $data->title = $this->title;
+        $this->dataId = $data->save();
+
+        $this->saveContentLog();
+
+
+        /*
 
         if ($this->dataId!== null) {
 
@@ -65,11 +72,12 @@ class WikiPageContentType extends AbstractTreeContentType
         }
 
 
-        return $this->dataId;
+        return $this->dataId;*/
 
     }
 
 
+    /*
     public function onChildAddEvent(AbstractTreeContentType $contentType)
     {
 
@@ -86,14 +94,15 @@ class WikiPageContentType extends AbstractTreeContentType
         $builder->createUsergroupNotification(new SchleunigerUsergroup());
 
 
-    }
+    }*/
 
 
     public function getSubject()
     {
 
         $row = (new WikiPageReader())->getRowById($this->dataId);
-        return $row->title;
+        $subject = 'Subject: ' . $row->title;
+        return $subject;
 
     }
 

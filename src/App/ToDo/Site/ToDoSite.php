@@ -55,8 +55,6 @@ class ToDoSite extends AbstractSite
 
         //$nav = new AdminNavigation($page);
         //$nav->site = ToDoSite::$site;
-
-
         //new ToDoTable($page);
 
         $row = new BootstrapRow($page);
@@ -90,11 +88,7 @@ class ToDoSite extends AbstractSite
         if ($toDoParameter->exists()) {
 
             $process = new ToDoProcess($toDoParameter->getValue());
-
-            //$controller = new WorkflowController($process);
-            //$controller->getTitle($col2);
-
-            $process->getView($col2);
+            $process->getProcessView($col2);
 
         }
 
