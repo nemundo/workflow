@@ -22,7 +22,7 @@ class Survey3ContentType extends AbstractTreeContentType   // AbstractContentTyp
 
     protected function loadType()
     {
-        $this->contentName = 'Survey3';
+        $this->contentLabel = 'Survey3';
         $this->contentId = 'bc7d6589-3313-4c07-a621-cb397dd1025f';
         $this->modelClass = Survey3Model::class;
         //$this->formClass = Survey3ContentForm::class;

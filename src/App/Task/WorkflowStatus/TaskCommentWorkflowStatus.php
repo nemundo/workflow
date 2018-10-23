@@ -14,7 +14,7 @@ class TaskCommentWorkflowStatus extends AbstractWorkflowStatus
     protected function loadType()
     {
 
-        $this->contentName = 'Kommentar (Task)';
+        $this->contentLabel = 'Kommentar (Task)';
         $this->statusText = 'Aufgabe wurde kommentiert';
         $this->contentId = '87e2769c-88c7-433d-975e-d8319efd03b5';
         //$this->modelClass = CommentMod CommentModel::class;

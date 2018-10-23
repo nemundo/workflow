@@ -89,7 +89,7 @@ class WorkflowController extends AbstractBase
                 if ($formStatus->checkUserVisibility()) {
 
                     $title = new AdminSubtitle($parentItem);
-                    $title->content = $formStatus->contentName;
+                    $title->content = $formStatus->contentLabel;
 
                     $form = $formStatus->getForm($parentItem);
                     $form->parentContentType = $this->process;
@@ -101,10 +101,11 @@ class WorkflowController extends AbstractBase
 
             } else {
 
+                /*
                 $form = $this->process->getForm($parentItem);
                 $form->parentContentType = $this->process;
                 $form->redirectSite = new Site();
-                $form->redirectSite->removeParameter(new ContentTypeParameter());
+                $form->redirectSite->removeParameter(new ContentTypeParameter());*/
 
             }
 
@@ -174,14 +175,14 @@ class WorkflowController extends AbstractBase
 
 
         $table = new AdminLabelValueTable($parentItem);
-        $table->addLabelValue('Status', $this->process->getStatus()->contentName);
+        $table->addLabelValue('Status', $this->process->getStatus()->contentLabel);
         $table->addLabelValue('Subject', $this->process->getSubject());
         $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
 
         $parent = $this->process->getParent();
 
         if ($parent !== null) {
-            $table->addLabelValue('Parent', $parent->contentName);
+            $table->addLabelValue('Parent', $parent->contentLabel);
 
             $site = $parent->getViewSite();
             $site->title = $parent->getSubject();

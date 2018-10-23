@@ -34,7 +34,7 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
 
     protected function loadType()
     {
-        $this->contentName = 'Dokument';
+        $this->contentLabel = 'Dokument';
         $this->contentId = '8d49707a-9763-4b0d-b169-b50a939ddb1d';
         $this->changeStatus = false;
         $this->formClass = FileUploadTemplateWorkflowForm::class;

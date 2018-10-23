@@ -15,7 +15,7 @@ class StatusChangeForm extends ContentTreeForm
     {
 
         $p = new Paragraph($this);
-        $p->content = 'Folgende Aktion ausführen: ' . $this->contentType->contentName;
+        $p->content = 'Folgende Aktion ausführen: ' . $this->contentType->contentLabel;
 
         return parent::getHtml();
 

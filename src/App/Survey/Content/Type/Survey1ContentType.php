@@ -27,7 +27,7 @@ class Survey1ContentType extends AbstractModelDataWorkflowStatus  // AbstractSeq
 
     protected function loadType()
     {
-        $this->contentName = 'Survey1';
+        $this->contentLabel = 'Survey1';
         $this->contentId = '53cf8b66-a073-4b0f-bdaf-c0490680eb0b';
         $this->modelClass = Survey1Model::class;
 

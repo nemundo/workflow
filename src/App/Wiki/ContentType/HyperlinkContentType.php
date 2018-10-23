@@ -14,7 +14,7 @@ class HyperlinkContentType extends AbstractContentType
     protected function loadType()
     {
 
-        $this->contentName = 'Hyperlink';
+        $this->contentLabel = 'Hyperlink';
         $this->contentId = '855391b8-6291-49ee-9e72-7f24277adf2e';
         $this->formClass = HyperlinkContentForm::class;
         $this->viewClass = HyperlinkContentView::class;

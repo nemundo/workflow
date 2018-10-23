@@ -18,7 +18,7 @@ class SourceTaskErfassungWorkflowStatus extends AbstractModelDataWorkflowStatus
     protected function loadType()
     {
 
-        $this->contentName = 'Source Aufgabe Erfassung';
+        $this->contentLabel = 'Source Aufgabe Erfassung';
         $this->statusText = 'Source Aufgabe wurde erfasst';
         $this->contentId = 'c935da6f-e977-4799-8385-14aaeafc99c2';
         $this->modelClass = SourceTaskModel::class;

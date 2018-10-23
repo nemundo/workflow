@@ -30,7 +30,7 @@ class YouTubeType extends AbstractWorkflowStatus   // AbstractTreeContentType  /
     protected function loadType()
     {
 
-        $this->contentName = 'YouTube Video';
+        $this->contentLabel = 'YouTube Video';
         $this->contentId = 'f4be09e9-e901-425e-86ca-fb4b639c067b';
 
         $this->formClass = YouTubeTypeForm::class;

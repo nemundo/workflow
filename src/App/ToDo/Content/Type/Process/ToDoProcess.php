@@ -30,13 +30,16 @@ class ToDoProcess extends AbstractWorkflowProcess
     protected function loadType()
     {
 
-        $this->contentName = 'To Do';
+        $this->contentLabel = 'To Do';
+        $this->contentName = 'to_do';
         $this->contentId = '567fd76c-f28a-4526-be23-18fa324db6f2';
+
         $this->baseModelClass = ToDoModel::class;
         $this->viewClass = ToDoView::class;  // ProcessView::class;
         $this->viewSite = ToDoSite::$site;
         $this->parameterClass = ToDoParameter::class;
         $this->nextContentTypeClass = ToDoErfassungStatus::class;
+        $this->changeStatus = false;
 
     }
 

@@ -22,7 +22,7 @@ class ToDoErfassungStatus extends AbstractWorkflowStatus  // AbstractModelDataWo
     protected function loadType()
     {
 
-        $this->contentName = 'Todo Erfassung';
+        $this->contentLabel = 'Todo Erfassung';
         $this->contentId = '8053c883-b6ef-412a-97a4-172060adeb19';
         $this->subject = 'ToDo wurde erfasst';
         //$this->modelClass = ToDoModel::class;

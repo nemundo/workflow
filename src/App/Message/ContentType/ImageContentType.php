@@ -18,7 +18,7 @@ class ImageContentType extends AbstractMessageContentType
 
     protected function loadType()
     {
-        $this->contentName = 'Image';
+        $this->contentLabel = 'Image';
         $this->subject = 'Neues Bild';
         $this->contentId = '54944a0b-58c3-466b-99f2-4cd5431c91e5';
         $this->viewClass = ImageContentView::class;

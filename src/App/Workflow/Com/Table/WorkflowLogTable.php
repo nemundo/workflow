@@ -59,7 +59,7 @@ class WorkflowLogTable extends AbstractHtmlContainerList
         foreach ($this->process->getChild() as $child) {
 
             $row = new TableRow($table);
-            $row->addText($child->contentName);
+            $row->addText($child->contentLabel);
             if ($this->showDraftColumn) {
                 $row->addYesNo($child->isDraft());
             }

@@ -12,7 +12,7 @@ class ImageWorkflowTemplateContentType extends AbstractModelDataWorkflowStatus  
 
     protected function loadType()
     {
-   $this->contentName = 'Image (Workflow Template)';
+   $this->contentLabel = 'Image (Workflow Template)';
    $this->contentId = '';
     }
 

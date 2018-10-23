@@ -35,7 +35,7 @@ class WikiContentView extends AbstractContentView
             $contentType = $wikiRow->contentType->getContentTypeClassObject();
 
             $title = new AdminSubtitle($this);
-            $title->content = $contentType->contentName;
+            $title->content = $contentType->contentLabel;
 
             $item = $contentType->getView($this);
             $item->dataId = $wikiRow->dataId;

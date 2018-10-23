@@ -13,7 +13,7 @@ class TaskListWorkflowStatus extends AbstractWorkflowStatus
     protected function loadType()
     {
 
-        $this->contentName = 'Aufgaben Liste';
+        $this->contentLabel = 'Aufgaben Liste';
         $this->contentId = 'fea83ba0-dbfa-4242-b4a5-221b9ba9ed5c';
         $this->changeWorkflowStatus = false;
         $this->draftMode = true;

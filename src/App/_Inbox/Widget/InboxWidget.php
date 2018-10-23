@@ -84,7 +84,7 @@ class InboxWidget extends AbstractAdminWidget
 
 
 
-            $source = $contentType->contentName;
+            $source = $contentType->contentLabel;
 
 
             if ($inboxRow->read == 0) {

@@ -52,7 +52,7 @@ class SearchEngineReader extends AbstractDataSource
                 $title = preg_replace('/(' . $this->keyword . ')/i', '<b>$1</b>', $title);
 
                 $item = new SearchEngineItem();
-                $item->source = $contentType->contentName;
+                $item->source = $contentType->contentLabel;
                 $item->title = $title;
                 $item->site = $contentType->getViewSite();
                 $item->site->title = $title;

@@ -24,7 +24,7 @@ class ToDoTypeForm extends ContentTreeForm
         if ($this->parentContentType !== null) {
 
             $p = new Paragraph($this);
-            $p->content = 'Parent: ' . $this->parentContentType->contentName;
+            $p->content = 'Parent: ' . $this->parentContentType->contentLabel;
 
         }
 

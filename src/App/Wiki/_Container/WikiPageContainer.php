@@ -14,7 +14,7 @@ class WikiPageContainer extends AbstractContentType
     protected function loadType()
     {
 
-        $this->contentName = 'Wiki';
+        $this->contentLabel = 'Wiki';
         $this->contentId = 'f40aefbc-3f4f-4d15-b27a-8139eccb162a';
         $this->viewClass = WikiContentView::class;
         $this->viewSite = WikiPageSite::$site;

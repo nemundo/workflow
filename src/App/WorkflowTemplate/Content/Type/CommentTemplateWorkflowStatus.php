@@ -15,7 +15,8 @@ class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
     protected function loadType()
     {
 
-        $this->contentName = 'Comment';
+        $this->contentLabel = 'Comment';
+        $this->contentName = 'comment';
         $this->contentId = '9fc81c7a-1fe8-4b8d-aa52-5a9f60431330';
         $this->modelClass = CommentModel::class;
         $this->changeStatus = false;
@@ -34,6 +35,25 @@ class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
         $builder = new SearchEngineBuilder();
         $builder->contentType = $this;
         $builder->addText($row->comment);
+
+    }
+
+
+    public function exportJson()
+    {
+
+
+        $data = parent::exportJson();
+
+        $row = (new CommentReader())->getRowById($this->dataId);
+
+        //$data['comment'];
+        $data[$this->contentName]['comment'] = $row->comment;
+        //$data[$this->contentName]['user']=$this->userCreated->login;
+        //$data[$this->contentName]['date_time']=$this->dateTimeCreated->getDbFormat();
+
+        return $data;
+
 
     }
 

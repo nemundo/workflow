@@ -19,7 +19,7 @@ class TemplateFileType extends AbstractTreeContentType
 
     protected function loadType()
     {
-        $this->contentName = 'Datei';
+        $this->contentLabel = 'Datei';
         $this->contentId = 'b1610c3e-4d39-4b53-b126-d026930e1701';
         $this->viewClass = FileContentView::class;
         $this->formClass = TemplateFileTypeForm::class;

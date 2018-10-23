@@ -15,7 +15,7 @@ class TextListType extends AbstractTreeContentType
 
     protected function loadType()
     {
-        $this->contentName = 'Text List';
+        $this->contentLabel = 'Text List';
         $this->contentId = 'bbf160e0-039d-45d3-850f-b7e88a020c4f';
         $this->viewClass = TextListView::class;
         $this->formClass = TextListTypeForm::class;

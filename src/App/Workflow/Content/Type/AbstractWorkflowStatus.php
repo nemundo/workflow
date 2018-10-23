@@ -20,33 +20,6 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
     use MenuContentTypeTrait;
     use WorkflowStatusTrait;
 
-    /**
-     * @var bool
-     */
-   // public $changeStatus = true;
-
-    /**
-     * @var bool
-     */
-   // public $closingWorkflow = false;
-
-    /**
-     * @var bool
-     */
-  //  public $showStatus = true;
-
-
-    /**
-     * @var string
-     */
-    //  protected $processClass;
-
-    /**
-     * @var AbstractSite
-     *
-     */
-    //protected $statusChangeSite;
-
 
 
     public function getForm($parentItem = null)
@@ -58,22 +31,5 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
         return parent::getForm($div);
 
     }
-
-
-    // getStatusFormSite oder so was
-   /* public function getStatusChangeSite()
-    {
-
-        $site = null;
-
-        if ($this->statusChangeSite !== null) {
-            $site = clone($this->statusChangeSite);
-            $site->addParameter(new ContentTypeParameter($this->contentId));
-
-        }
-
-        return $site;
-
-    }*/
 
 }

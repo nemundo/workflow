@@ -19,7 +19,7 @@ class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractMod
 
     protected function loadType()
     {
-        $this->contentName = 'Message';
+        $this->contentLabel = 'Message';
         $this->contentId = 'a5dbb6c4-61ed-425a-9f24-432b116599f1';
         $this->viewSite = MessageItemSite::$site;
         $this->parameterClass = MessageParameter::class;

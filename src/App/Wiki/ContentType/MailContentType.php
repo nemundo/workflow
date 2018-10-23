@@ -18,7 +18,7 @@ class MailContentType extends AbstractContentType
     protected function loadType()
     {
 
-        $this->contentName = 'Mail';
+        $this->contentLabel = 'Mail';
         $this->contentId = 'ffa2fb24-f736-4821-ae28-3b9ad30b7c08';
         $this->modelClass = MailModel::class;
         $this->viewClass = MailContentView::class;

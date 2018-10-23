@@ -60,7 +60,7 @@ class AssignmentBuilder extends AbstractBase
         $data->subject = $this->contentType->getSubject();  // $this->subject;
 
 
-        $source = $this->contentType->contentName;
+        $source = $this->contentType->contentLabel;
         if ($this->contentType->isObjectOfClass(AbstractTreeContentType::class)) {
 
             $parentType = $this->contentType->getParent();

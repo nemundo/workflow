@@ -15,7 +15,7 @@ class ClosingWorkflowTemplateWorkflowStatus extends AbstractStatusChangeWorkflow
     {
 
         $this->contentId = 'd868b46c-6be6-4e3f-a3fa-cfd989397630';
-        $this->contentName = 'Workflow Close';
+        $this->contentLabel = 'Workflow Close';
         $this->subject = 'Workflow was closed';
         $this->closingWorkflow = true;
 

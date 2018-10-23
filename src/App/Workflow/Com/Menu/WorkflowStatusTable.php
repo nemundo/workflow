@@ -60,14 +60,14 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
         if ($active) {
             new ArrowRightIcon($row);
-            $row->addBoldText($workflowStatus->contentName);
+            $row->addBoldText($workflowStatus->contentLabel);
         } else {
 
             $row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
             $hyperlink->site = $this->process->getViewSite();
-            $hyperlink->site->title = $workflowStatus->contentName;
+            $hyperlink->site->title = $workflowStatus->contentLabel;
 
         }
 
@@ -123,7 +123,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
             $row = new TableRow($this->table);
 
             $row->addEmpty();
-            $row->addText($workflowStatus->contentName);
+            $row->addText($workflowStatus->contentLabel);
             $row->addEmpty();
             $row->addEmpty();
 

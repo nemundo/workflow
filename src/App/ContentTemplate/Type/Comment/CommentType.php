@@ -26,7 +26,7 @@ class CommentType extends AbstractWorkflowStatus
 
     protected function loadType()
     {
-        $this->contentName = 'Kommentar';
+        $this->contentLabel = 'Kommentar';
         $this->contentId = '3d7012e5-6751-4d49-8d68-a0f49a888718';
         $this->formClass = CommentTypeForm::class;
         $this->viewClass = CommentView::class;

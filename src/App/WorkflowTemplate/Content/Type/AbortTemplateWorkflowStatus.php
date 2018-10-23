@@ -17,7 +17,7 @@ class AbortTemplateWorkflowStatus extends AbstractStatusChangeWorkflowStaus   //
     protected function loadType()
     {
         $this->contentId = '0e49408b-e3cd-4850-888f-65c53415c043';
-        $this->contentName = 'Workflow Abbrechen (Abbruch)';
+        $this->contentLabel = 'Workflow Abbrechen (Abbruch)';
         //$this->modelClass = WorkflowAbortModel::class;
         $this->subject = 'Workflow was chanceld';
         $this->closingWorkflow = true;

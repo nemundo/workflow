@@ -4,7 +4,11 @@ namespace Nemundo\Workflow\App\News\Content\Type;
 
 
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
+use Nemundo\App\Content\Type\AbstractTreeContentType;
+use Nemundo\Workflow\App\News\Content\Form\NewsForm;
 use Nemundo\Workflow\App\News\Content\View\NewsContentView;
+use Nemundo\Workflow\App\News\Data\News\News;
+use Nemundo\Workflow\App\News\Data\News\NewsDelete;
 use Nemundo\Workflow\App\News\Data\News\NewsModel;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
@@ -12,36 +16,115 @@ use Nemundo\Workflow\App\News\Site\NewsItemSite;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 
-class NewsContentType extends AbstractModelDataTreeContentType
+class NewsContentType extends AbstractTreeContentType  // AbstractModelDataTreeContentType
 {
+
+    /**
+     * @var string
+     */
+    public $title;
+
+    /**
+     * @var string
+     */
+    public $text;
+
 
     protected function loadType()
     {
 
-        $this->contentName = 'News';
+        $this->contentLabel = 'News';
         $this->contentId = '9ba5d00a-682c-42b9-8ce2-26497047feaf';
+        $this->contentName = 'news';
         $this->viewSite = NewsItemSite::$site;
         $this->viewClass = NewsContentView::class;
         $this->parameterClass = NewsParameter::class;
-        $this->modelClass = NewsModel::class;
+        $this->formClass = NewsForm::class;
+
+        //$this->modelClass = NewsModel::class;
 
     }
 
 
-    public function onCreate()
+    protected function loadData()
     {
 
         $newsRow = (new NewsReader())->getRowById($this->dataId);
 
-        $builder = new SearchEngineBuilder();
-        $builder->contentType = $this;
-        $builder->addText($newsRow->title);
-        $builder->addText($newsRow->text);
-
-        $builder = new StreamBuilder();
-        $builder->contentType = $this;
-        $builder->createItem();
+        $this->title = $newsRow->title;
+        $this->text = $newsRow->text;
 
     }
+
+
+    public function getSubject()
+    {
+        return $this->title;
+    }
+
+
+    public function saveType()
+    {
+
+        //$newsRow = (new NewsReader())->getRowById($this->dataId);
+
+        $data = new News();
+        $data->title = $this->title;
+        $data->text = $this->text;
+        $this->dataId = $data->save();
+
+        $this->saveContentLog();
+
+
+        $builder = new SearchEngineBuilder();
+        $builder->contentType = $this;
+        $builder->addText($this->title);
+        $builder->addText($this->text);
+
+        /*
+        $builder = new StreamBuilder();
+        $builder->contentType = $this;
+        $builder->createItem();*/
+
+    }
+
+
+    public function deleteType()
+    {
+
+
+        $builder = new SearchEngineBuilder();
+        $builder->contentType = $this;
+        $builder->removeItem();
+
+        (new NewsDelete())->deleteById($this->dataId);
+
+    }
+
+
+    public function importJson($data)
+    {
+
+        $this->title = $data[$this->contentName]['title'];
+        $this->text = $data[$this->contentName]['text'];
+        $this->saveType();
+
+    }
+
+
+    public function exportJson()
+    {
+
+        //parent::exportJson();
+
+        //$data[$this->contentName]['content_id'] = $this->contentId;
+        //$data[$this->contentName]['data_id'] = $this->dataId;
+        $data[$this->contentName]['title'] = $this->title;
+        $data[$this->contentName]['text'] = $this->text;
+
+        return $data;
+
+    }
+
 
 }

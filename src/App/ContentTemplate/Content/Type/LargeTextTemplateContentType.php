@@ -32,7 +32,7 @@ class LargeTextTemplateContentType extends AbstractWorkflowStatus  // AbstractTr
     protected function loadType()
     {
 
-        $this->contentName = 'Large Text (Template)';
+        $this->contentLabel = 'Large Text (Template)';
         $this->contentId = '46e84be8-7173-41ff-8c7a-b7f91f33a0fb';
         //$this->modelClass = LargeTextModel::class;
         $this->formClass = LargeTextContentTemplateForm::class;
