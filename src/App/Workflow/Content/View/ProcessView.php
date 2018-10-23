@@ -28,11 +28,14 @@ class ProcessView extends AbstractContentView
 
         $betaController->getTitle($layout->header);
         $betaController->getMenu($layout->col1);
-        $betaController->getForm($layout->col2);
+
+        $form = $betaController->getForm($layout->col2);
+        if ($form !== null) {
+            $form->redirectSite = $this->contentType->getViewSite();
+        }
+
         $betaController->getLogView($layout->col3);
         $betaController->getLogTable($layout->col3);
-
-
 
 
         return parent::getHtml();

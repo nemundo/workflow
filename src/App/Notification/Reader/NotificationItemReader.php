@@ -38,7 +38,7 @@ class NotificationItemReader extends AbstractDataSource
         foreach ($notificationReader->getData() as $notificationRow) {
 
             $item = new NotificationItem();
-
+            $item->id = $notificationRow->id;
             $item->source = $notificationRow->contentType->contentType;
             $item->subject = $notificationRow->subject;
             $item->message = $notificationRow->message;
@@ -50,7 +50,7 @@ class NotificationItemReader extends AbstractDataSource
             /** @var AbstractContentType $contentType */
             $contentType = new $className($notificationRow->dataId);
 
-           // (new Debug())->write($contentType->getViewSite());
+            // (new Debug())->write($contentType->getViewSite());
 
 
             if ($contentType->hasViewSite()) {

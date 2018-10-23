@@ -3,19 +3,20 @@
 namespace Nemundo\Workflow\App\SearchEngine\Builder;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Text\Keyword;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\Document;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentDelete;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentId;
-use Nemundo\Workflow\App\SearchEngine\Data\Result\Result;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexDelete;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
-use Nemundo\Workflow\App\Workflow\Process\AbstractModelProcess;
 
 
+// SearchIndexBuilder
+// keine extends AbstractContentBuilder
 class SearchEngineBuilder extends AbstractContentBuilder
 {
 
@@ -24,6 +25,13 @@ class SearchEngineBuilder extends AbstractContentBuilder
      * @var string
      */
     private $documentId;
+
+
+    public function __construct(AbstractContentType $contentType=null)
+    {
+        $this->contentType = $contentType;
+
+    }
 
 
     private function prepareIndex()
@@ -73,9 +81,13 @@ class SearchEngineBuilder extends AbstractContentBuilder
     }
 
 
+
+    // removeSearchIndex
     public function removeItem()
     {
 
+        // check, ob Word from this document Id sonstwo noch verwendet werden
+        // word auflistung, every word check
 
         $id = new DocumentId();
         $id->filter->andEqual($id->model->dataId, $this->contentType->dataId);

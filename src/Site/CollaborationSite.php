@@ -15,6 +15,7 @@ use Nemundo\Workflow\App\Inbox\Site\InboxSite;
 use Nemundo\Workflow\App\Inbox\Site\InboxStreamSite;
 use Nemundo\Workflow\App\Message\Site\MessageSite;
 use Nemundo\Workflow\App\News\Site\NewsSite;
+use Nemundo\Workflow\App\Notification\Site\NotificationSite;
 use Nemundo\Workflow\App\RepeatingTask\Site\RepeatingTaskSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Stream\Site\StreamSite;
@@ -44,55 +45,26 @@ class CollaborationSite extends AbstractSite
         $this->restricted = true;
         $this->addRestrictedUsergroup(new CollaborationUsergroup());
 
-        //new InboxSite($this);
-        //new InboxStreamSite($this);
 
         new StreamSite($this);
-
         new DashboardSite($this);
-
-        //new WorkflowSite($this);
-        //new ProcessSite($this);
-        //new StatusChangeLogSite($this);
-        //new TaskSite($this);
-        //new TaskAdminSite($this);
-
-        new RepeatingTaskSite($this);
-
-        //new ToDoSite($this);
-
+        //new RepeatingTaskSite($this);
         new AssignmentSite($this);
-
         new AssignmentAdminSite($this);
-
-        //new ToDoDoneSite($this);
-        //new ToDoItemSite($this);
-
-
+        new NotificationSite($this);
         new ToDoSite($this);
-
         new NewsSite($this);
-
         new MessageSite($this);
         new WikiSite($this);
-
         new ContentTypeSite($this);
         new ContentLogSite($this);
-        //new ContentTreeSite($this);
-
         new SearchEngineSite($this);
-        //new WidgetSite($this);
-
         new SubscriptionSite($this);
         new MySubscriptionSite($this);
         new MyFavoriteSite($this);
 
-        new StreamSite($this);
-
-
         new FileFileRedirectSite($this);
 
-        //new SurveySite($this);
 
     }
 

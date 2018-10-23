@@ -15,6 +15,7 @@ use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
+use Nemundo\Workflow\App\Notification\Data\Notification\NotificationDelete;
 
 class NotificationBuilder extends AbstractBaseClass
 {
@@ -35,6 +36,11 @@ class NotificationBuilder extends AbstractBaseClass
      */
     public $contentType;
 
+
+    public function __construct(AbstractContentType $contentType = null)
+    {
+        $this->contentType = $contentType;
+    }
 
 
     protected function check()
@@ -72,6 +78,18 @@ class NotificationBuilder extends AbstractBaseClass
         foreach ($usergroup->getUserList() as $userRow) {
             $this->createUserNotification($userRow->id);
         }
+
+    }
+
+
+    public function removeNotification()
+    {
+
+
+        $delete = new NotificationDelete();
+        $delete->filter->andEqual($delete->model->contentTypeId, $this->contentType->contentId);
+        $delete->filter->andEqual($delete->model->dataId, $this->contentType->dataId);
+        $delete->delete();
 
     }
 

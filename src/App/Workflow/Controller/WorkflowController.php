@@ -81,6 +81,7 @@ class WorkflowController extends AbstractBase
     {
 
         $formStatus = $this->getFormStatus();
+        $form = null;
 
         if ($this->process->dataId !== null) {
 
@@ -120,6 +121,7 @@ class WorkflowController extends AbstractBase
 
         }
 
+        return $form;
 
     }
 
@@ -165,33 +167,31 @@ class WorkflowController extends AbstractBase
     public function getLogTable($parentItem = null)
     {
 
-
-
         $log = new WorkflowLogTable($parentItem);
         $log->process = $this->process;
 
         $title = new AdminSubtitle($parentItem);
         $title->content = 'Status';
 
+        if ($this->process->dataId !== null) {
 
-        $table = new AdminLabelValueTable($parentItem);
-        $table->addLabelValue('Status', $this->process->getStatus()->contentLabel);
-        $table->addLabelValue('Subject', $this->process->getSubject());
-        $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
+            $table = new AdminLabelValueTable($parentItem);
+            $table->addLabelValue('Status', $this->process->getStatus()->contentLabel);
+            $table->addLabelValue('Subject', $this->process->getSubject());
+            $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
 
-        $parent = $this->process->getParent();
+            $parent = $this->process->getParent();
 
-        if ($parent !== null) {
-            $table->addLabelValue('Parent', $parent->contentLabel);
+            if ($parent !== null) {
+                $table->addLabelValue('Parent', $parent->contentLabel);
 
-            $site = $parent->getViewSite();
-            $site->title = $parent->getSubject();
-            $table->addLabelSite('Parent', $site);
-            //$table->addLabelValue('Subject', $parent->getSubject());
-            //$table->addLabelValue('Parent', $parent->contentName);
+                $site = $parent->getViewSite();
+                $site->title = $parent->getSubject();
+                $table->addLabelSite('Parent', $site);
+                //$table->addLabelValue('Subject', $parent->getSubject());
+                //$table->addLabelValue('Parent', $parent->contentName);
+            }
         }
-
-
 
 
         return $log;

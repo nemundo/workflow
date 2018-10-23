@@ -10,6 +10,8 @@ use Nemundo\Web\Site\AbstractSite;
 class NotificationItem extends AbstractBase
 {
 
+    public $id;
+
     /**
      * @var string
      */
