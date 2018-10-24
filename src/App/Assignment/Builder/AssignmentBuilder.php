@@ -13,6 +13,8 @@ use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\Assignment;
+use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
+use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 use Nemundo\Workflow\App\Identification\Model\Identification;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
 
@@ -45,9 +47,10 @@ class AssignmentBuilder extends AbstractBase
     public $assignment;
 
 
-    public function __construct()
+    public function __construct(AbstractContentType $contentType = null)
     {
         $this->assignment = new Identification();
+        $this->contentType = $contentType;
     }
 
 
@@ -78,6 +81,28 @@ class AssignmentBuilder extends AbstractBase
         $data->save();
 
         $this->sendMail();
+
+    }
+
+
+    public function archiveAssignment($dataId)
+    {
+
+        $update = new AssignmentUpdate();
+        $update->filter->andEqual($update->model->dataId, $dataId);
+        $update->archive = true;
+        $update->update();
+
+    }
+
+
+    public function removeAssignment()
+    {
+
+        $delete = new AssignmentDelete();
+        $delete->filter->andEqual($delete->model->contentTypeId, $this->contentType->contentId);
+        $delete->filter->andEqual($delete->model->dataId, $this->contentType->dataId);
+        $delete->delete();
 
     }
 

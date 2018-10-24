@@ -83,7 +83,7 @@ class SearchEngineBuilder extends AbstractContentBuilder
 
 
     // removeSearchIndex
-    public function removeItem()
+    public function removeSearchIndex()
     {
 
         // check, ob Word from this document Id sonstwo noch verwendet werden

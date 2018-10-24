@@ -39,7 +39,7 @@ class AssignmentArchive extends AbstractBase
 
 
     // removeAssignment()
-    public function deleteAssignment()
+   /* public function deleteAssignment()
     {
 
         $delete = new AssignmentDelete();
@@ -47,7 +47,7 @@ class AssignmentArchive extends AbstractBase
         $delete->filter->andEqual($delete->model->dataId, $this->contentType->dataId);
         $delete->delete();
 
-    }
+    }*/
 
 
 
