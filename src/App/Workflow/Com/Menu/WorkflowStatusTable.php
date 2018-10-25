@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
@@ -67,7 +68,8 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
             $row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
-            $hyperlink->site = $this->process->getViewSite();
+            //$hyperlink->site = $this->process->getViewSite();
+            $hyperlink->site = new Site();  // $this->process->getViewSite();
             $hyperlink->site->title = $workflowStatus->getSubject();
             //$hyperlink->site->title = $workflowStatus->contentLabel;
 

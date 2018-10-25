@@ -49,15 +49,11 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
 
             if ($nextStatus !== null) {
 
-                //if ($nextStatus->checkUserVisibility()) {
-
                 $active = false;
                 if ($this->formStatus->contentId == $nextStatus->contentId) {
                     $active = true;
                 }
                 $table->addActiveWorkflowStatus($nextStatus, $active);
-
-                //}
 
             }
 
