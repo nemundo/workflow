@@ -61,7 +61,7 @@ class FileTable extends AdminTable
             $userDisplay = $dateiRow->getModelValue($userModel->displayName);
             $dateTimeCreated = new DateTime($dateiRow->getModelValue($contentLogModel->dateTimeCreated));
 
-            $row->addText($userDisplay.' '.$dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+            $row->addText($userDisplay . ' ' . $dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
         }
 

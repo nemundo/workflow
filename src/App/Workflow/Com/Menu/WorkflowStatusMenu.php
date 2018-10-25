@@ -42,7 +42,6 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
             $nextStatus = $status->getNextContentType();
 
             if ($this->process->dataId == null) {
-                //(new Debug())->write('new process');
                 $nextStatus = $status;
                 $this->formStatus = $status;
             }

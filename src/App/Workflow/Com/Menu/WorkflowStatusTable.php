@@ -54,7 +54,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
 
     public function addActiveWorkflowStatus(AbstractWorkflowStatus $workflowStatus, $active)
-        // public function addActiveWorkflowStatus(AbstractContentType $workflowStatus, $active)
     {
 
         $row = new TableRow($this->table);
@@ -71,6 +70,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
             //$hyperlink->site = $this->process->getViewSite();
             $hyperlink->site = new Site();  // $this->process->getViewSite();
             $hyperlink->site->title = $workflowStatus->getSubject();
+            $hyperlink->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
             //$hyperlink->site->title = $workflowStatus->contentLabel;
 
         }

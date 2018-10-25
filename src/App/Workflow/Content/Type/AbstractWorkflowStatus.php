@@ -8,6 +8,7 @@ use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\App\Content\Type\Menu\MenuContentTypeTrait;
 use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
 use Nemundo\Com\Html\Basic\Div;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\User\Access\UserAccessTrait;
 use Nemundo\Web\Site\AbstractSite;
 
@@ -30,6 +31,15 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 
         return parent::getForm($div);
 
+    }
+
+    /**
+     * @param string $sortOrder
+     * @return AbstractTreeContentType[]|AbstractWorkflowStatus[]
+     */
+    public function getChild($sortOrder = SortOrder::ASCENDING)
+    {
+        return parent::getChild($sortOrder);
     }
 
 }
