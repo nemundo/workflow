@@ -57,6 +57,11 @@ class AssignmentBuilder extends AbstractBase
     public function createAssignment()
     {
 
+        if (!$this->checkObject('contentType', $this->contentType, AbstractContentType::class)) {
+            return;
+        }
+
+
         $data = new Assignment();
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
@@ -85,11 +90,11 @@ class AssignmentBuilder extends AbstractBase
     }
 
 
-    public function archiveAssignment($dataId)
+    public function archiveAssignment()
     {
 
         $update = new AssignmentUpdate();
-        $update->filter->andEqual($update->model->dataId, $dataId);
+        $update->filter->andEqual($update->model->dataId, $this->contentType->dataId);
         $update->archive = true;
         $update->update();
 
