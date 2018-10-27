@@ -112,7 +112,7 @@ class NewsContentType extends AbstractTreeContentType  // AbstractModelDataTreeC
     }
 
 
-    public function exportJson()
+    public function getJson()
     {
 
         //parent::exportJson();

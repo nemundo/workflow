@@ -29,7 +29,7 @@ class NewsMigration extends AbstractMigration
         $reader = new NewsReader();
         foreach ($reader->getData() as $newsRow) {
             $newsType = new NewsContentType($newsRow->id);
-            $this->addJsonData($newsType->exportJson());
+            $this->addJsonData($newsType->getJson());
         }
 
     }

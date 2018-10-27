@@ -39,11 +39,11 @@ class CommentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
     }
 
 
-    public function exportJson()
+    public function getJson()
     {
 
 
-        $data = parent::exportJson();
+        $data = parent::getJson();
 
         $row = (new CommentReader())->getRowById($this->dataId);
 
