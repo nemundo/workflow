@@ -12,6 +12,7 @@ use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
 use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\Assignment;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
@@ -53,6 +54,25 @@ class AssignmentBuilder extends AbstractBase
         $this->contentType = $contentType;
     }
 
+
+    public function createUserAssignment($userId)
+    {
+
+        $this->assignment->setUserIdentification($userId);
+        return $this;
+
+    }
+
+
+    public function createUsergroupAssignment(AbstractUsergroup $usergroup)
+    {
+
+        foreach ($usergroup->getUserList() as $userRow) {
+            $this->createUserAssignment($userRow->id);
+        }
+        return $this;
+
+    }
 
     public function createAssignment()
     {
