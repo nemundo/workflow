@@ -180,11 +180,17 @@ class WorkflowController extends AbstractBase
             $table->addLabelValue('Subject', $this->process->getSubject());
             $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
 
+            //(new Debug())->write('next:')
+
+            $nextSatus = $this->process->getNextContentType();
+            if ($nextSatus !== null) {
+                $table->addLabelValue('Next Status', $nextSatus->contentLabel);
+            }
+
 
             $parent = $this->process->getParent();
 
             if ($parent !== null) {
-
 
 
                 $table->addLabelValue('Parent', $parent->contentLabel);
