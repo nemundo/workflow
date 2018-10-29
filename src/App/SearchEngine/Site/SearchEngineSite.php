@@ -3,10 +3,10 @@
 namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 
-use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Form\SearchEngineForm;
 use Nemundo\Workflow\App\SearchEngine\Reader\SearchEngineReader;
@@ -46,19 +46,19 @@ class SearchEngineSite extends AbstractSite
         $form = new SearchEngineForm($page);
 
 
-        $table = new AdminTable($page);
+        $table = new AdminClickableTable($page);
 
 
         $reader = new SearchEngineReader();
         $reader->keyword = $form->getKeyword();
         foreach ($reader->getData() as $searchEngineItem) {
 
-            $row = new TableRow($table);
+            $row = new BootstrapClickableTableRow($table);
             $row->addSite($searchEngineItem->site);
             $row->addText($searchEngineItem->source);
+            $row->addClickableSite($searchEngineItem->site);
 
         }
-
 
         $page->render();
 

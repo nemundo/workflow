@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\SearchEngine\Reader;
 
 
-use Nemundo\App\Content\Factory\ContentTypeFactory;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
@@ -30,7 +29,6 @@ class SearchEngineReader extends AbstractDataSource
 
         if ($this->keyword !== '') {
 
-
             $indexReader = new SearchIndexReader();
             $indexReader->model->loadWord();
             $indexReader->model->loadDocument();
@@ -39,14 +37,10 @@ class SearchEngineReader extends AbstractDataSource
 
             foreach ($indexReader->getData() as $indexRow) {
 
-
                 $className = $indexRow->document->contentType->contentTypeClass;
-
 
                 /** @var AbstractContentType $contentType */
                 $contentType = new $className($indexRow->document->dataId);
-
-
 
                 $title = $contentType->getSubject();
                 $title = preg_replace('/(' . $this->keyword . ')/i', '<b>$1</b>', $title);
@@ -61,8 +55,8 @@ class SearchEngineReader extends AbstractDataSource
 
             }
 
-
         }
 
     }
+
 }

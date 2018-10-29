@@ -21,17 +21,23 @@ class UserIdentificationType extends AbstractIdentificationType
     public function getValue($identificationId)
     {
 
-        $userRow = (new UserReader())->getRowById($identificationId);
-        return $userRow->displayName;
+        $value = 'Benutzer existiert nicht';
+
+        $reader = new UserReader();
+        $reader->filter->andEqual($reader->model->id, $identificationId);
+        foreach ($reader->getData() as $userRow) {
+            $value = $userRow->displayName;
+        }
+
+        return $value;
 
     }
-
 
 
     public function getIdentificationIdFromUserId($userId)
     {
         $list = [];
-        $list[] =$userId;
+        $list[] = $userId;
         return $list;
     }
 
@@ -45,8 +51,6 @@ class UserIdentificationType extends AbstractIdentificationType
     }
 
 
-
-
     public function getUserIdList()
     {
 
@@ -55,9 +59,6 @@ class UserIdentificationType extends AbstractIdentificationType
         return $list;
 
     }
-
-
-
 
 
 }
