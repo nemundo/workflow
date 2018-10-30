@@ -24,6 +24,8 @@ class FileTable extends AdminTable
     public function getHtml()
     {
 
+        // nur anzeigen, falls Files vorhanden sind ???
+
         $header = new TableHeader($this);
         $header->addText('Dokument');
         $header->addText('Ersteller');

@@ -91,8 +91,8 @@ class WorkflowController extends AbstractBase
 
                 if ($formStatus->checkUserVisibility()) {
 
-                    $title = new AdminSubtitle($parentItem);
-                    $title->content = $formStatus->contentLabel;
+                    //$title = new AdminSubtitle($parentItem);
+                    //$title->content = $formStatus->contentLabel;
 
                     $form = $formStatus->getForm($parentItem);
                     $form->parentContentType = $this->process;
