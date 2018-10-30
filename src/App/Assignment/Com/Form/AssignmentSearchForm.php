@@ -22,7 +22,7 @@ class AssignmentSearchForm extends SearchForm
     /**
      * @var UserListBox
      */
-    private $mitarbeiterListBox;
+    private $userListBox;
 
     /**
      * @var OpenClosedWorkflowListBox
@@ -46,10 +46,10 @@ class AssignmentSearchForm extends SearchForm
 
         $row = new BootstrapFormRow($this);
 
-        $this->mitarbeiterListBox = new UserListBox($row);
+        $this->userListBox = new UserListBox($row);
         //$this->mitarbeiterListBox->loggedUserAsDefaultValue = true;
-        $this->mitarbeiterListBox->value = $this->mitarbeiterListBox->getValue();
-        $this->mitarbeiterListBox->submitOnChange = true;
+        $this->userListBox->value = $this->userListBox->getValue();
+        $this->userListBox->submitOnChange = true;
 
         $this->status = new OpenClosedWorkflowListBox($row);
         $this->status->submitOnChange = true;
@@ -74,7 +74,7 @@ class AssignmentSearchForm extends SearchForm
         $model = new AssignmentModel();
         $filter = new Filter();
 
-        $userId = $this->mitarbeiterListBox->getValue();
+        $userId = $this->userListBox->getValue();
         if ($userId !== '') {
             $mitarbeiterFilter = new Filter();
             foreach ((new IdentificationConfig())->getIdentificationList() as $identification) {

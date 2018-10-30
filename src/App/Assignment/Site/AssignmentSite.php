@@ -20,7 +20,7 @@ class AssignmentSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Aufgaben';
+        $this->title = 'Assignment';  // 'Aufgaben';
         $this->url = 'assignment';
 
     }
