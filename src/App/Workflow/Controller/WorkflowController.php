@@ -11,6 +11,8 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Dev\Deployment\DeploymentConfig;
+use Nemundo\Dev\Deployment\StagingEnvironment;
 use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Com\Menu\WorkflowStatusMenu;
 use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowLogTable;
@@ -167,45 +169,49 @@ class WorkflowController extends AbstractBase
     public function getLogTable($parentItem = null)
     {
 
-        $log = new WorkflowLogTable($parentItem);
-        $log->process = $this->process;
+        $log = null;
 
-        $title = new AdminSubtitle($parentItem);
-        $title->content = 'Status';
+        if (DeploymentConfig::$stagingEnviroment == StagingEnvironment::DEVELOPMENT) {
 
-        if ($this->process->dataId !== null) {
+            $log = new WorkflowLogTable($parentItem);
+            $log->process = $this->process;
 
-            $table = new AdminLabelValueTable($parentItem);
-            $table->addLabelValue('Status', $this->process->getStatus()->contentLabel);
-            $table->addLabelValue('Subject', $this->process->getSubject());
-            $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
+            $title = new AdminSubtitle($parentItem);
+            $title->content = 'Status';
 
-            //(new Debug())->write('next:')
+            if ($this->process->dataId !== null) {
 
-            $nextSatus = $this->process->getNextContentType();
-            if ($nextSatus !== null) {
-                $table->addLabelValue('Next Status', $nextSatus->contentLabel);
+                $table = new AdminLabelValueTable($parentItem);
+                $table->addLabelValue('Status', $this->process->getStatus()->contentLabel);
+                $table->addLabelValue('Subject', $this->process->getSubject());
+                $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
+
+                //(new Debug())->write('next:')
+
+                $nextSatus = $this->process->getNextContentType();
+                if ($nextSatus !== null) {
+                    $table->addLabelValue('Next Status', $nextSatus->contentLabel);
+                }
+
+
+                $parent = $this->process->getParent();
+
+                if ($parent !== null) {
+
+
+                    $table->addLabelValue('Parent', $parent->contentLabel);
+
+                    $site = $parent->getViewSite();
+                    $site->title = $parent->getSubject();
+                    $table->addLabelSite('Parent', $site);
+
+                    //$table->addLabelValue('Subject', $parent->getSubject());
+                    //$table->addLabelValue('Parent', $parent->contentName);
+                }
+
+
             }
-
-
-            $parent = $this->process->getParent();
-
-            if ($parent !== null) {
-
-
-                $table->addLabelValue('Parent', $parent->contentLabel);
-
-                $site = $parent->getViewSite();
-                $site->title = $parent->getSubject();
-                $table->addLabelSite('Parent', $site);
-
-                //$table->addLabelValue('Subject', $parent->getSubject());
-                //$table->addLabelValue('Parent', $parent->contentName);
-            }
-
-
         }
-
 
         return $log;
 

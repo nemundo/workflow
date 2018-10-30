@@ -17,9 +17,11 @@ class DateTrafficLight extends AbstractHtmlContainerList
     public function getHtml()
     {
 
-        $circle = new ColorCircle($this);
+        //$circle = new ColorCircle($this);
 
         if ($this->date !== null) {
+
+            $circle = new ColorCircle($this);
             if ($this->date < ((new Date())->setNow())) {
                 $circle->color = '#FF0000';
             }

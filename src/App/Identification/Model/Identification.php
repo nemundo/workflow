@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Identification\Model;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType;
+use Nemundo\Workflow\App\Identification\Type\EmptyIdentification;
 use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
 use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 
@@ -78,11 +79,11 @@ class Identification extends AbstractBase
     }
 
 
-    public function clearIdentification() {
+    public function clearIdentification()
+    {
 
-        $this->identificationType = null;
+        $this->identificationType = new EmptyIdentification();
         $this->identificationId = '';
-
 
     }
 
