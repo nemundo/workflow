@@ -50,7 +50,7 @@ class CollaborationSite extends AbstractSite
         new DashboardSite($this);
         //new RepeatingTaskSite($this);
         new AssignmentSite($this);
-        new AssignmentAdminSite($this);
+        //new AssignmentAdminSite($this);
         new NotificationSite($this);
         new ToDoSite($this);
         new NewsSite($this);

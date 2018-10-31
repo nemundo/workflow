@@ -23,6 +23,8 @@ class AssignmentSite extends AbstractSite
         $this->title = 'Assignment';  // 'Aufgaben';
         $this->url = 'assignment';
 
+        new AssignmentDeleteSite($this);
+
     }
 
 

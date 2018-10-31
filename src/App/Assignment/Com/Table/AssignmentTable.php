@@ -15,7 +15,11 @@ use Nemundo\Db\Filter\Filter;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
+use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentPaginationReader;
+use Nemundo\Workflow\App\Assignment\Parameter\AssignmentParameter;
+use Nemundo\Workflow\App\Assignment\Site\AssignmentDeleteSite;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 
@@ -73,7 +77,6 @@ class AssignmentTable extends AbstractHtmlContainerList
             $assignmentReader->filter->andFilter($filter);
 
         }
-
 
 
         $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
@@ -142,6 +145,13 @@ class AssignmentTable extends AbstractHtmlContainerList
 
             if ($this->showArchive) {
                 $row->addYesNo($assignmentRow->archive);
+            }
+
+
+            if ((new UsergroupMembership())->isMemberOfUsergroup(new SystemAdministratorUsergroup())) {
+                $site = clone(AssignmentDeleteSite::$site);
+                $site->addParameter(new AssignmentParameter($assignmentRow->id));
+                $row->addIconSite($site);
             }
 
 
