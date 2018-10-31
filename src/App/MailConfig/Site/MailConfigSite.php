@@ -51,6 +51,18 @@ class MailConfigSite extends AbstractSite
         $title = new AdminTitle($page);
         $title->content =$this->title;
 
+        $count = new MailConfigCount();
+        $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
+        if ($count->getCount() == 0) {
+
+            $data = new MailConfig();
+            $data->userId = (new UserInformation())->getUserId();
+            $data->assignmentMail = true;
+            $data->inboxMail = true;
+            $data->save();
+
+        }
+
         $id = new MailConfigId();
         $id->filter->andEqual($id->model->userId, (new UserInformation())->getUserId());
         $mailConfigId = $id->getId();
