@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
@@ -21,5 +20,13 @@ trait WorkflowStatusTrait
      * @var bool
      */
     public $showStatus = true;
+
+    /**
+     * @var bool
+     */
+    public $showLog = true;
+// showHistory
+
+
 
 }

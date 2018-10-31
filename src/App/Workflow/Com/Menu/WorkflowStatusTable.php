@@ -45,7 +45,9 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
         new CheckIcon($row);
 
-        $row->addText($workflowStatus->getSubject());
+        //$row->addText($workflowStatus->getSubject());
+        $row->addText($workflowStatus->contentLabel);
+
 
         $row->addText($workflowStatus->userCreated->displayName);
         $row->addText($workflowStatus->dateTimeCreated->getShortDateLeadingZeroFormat());
@@ -60,8 +62,8 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
         if ($active) {
             new ArrowRightIcon($row);
-            //$row->addBoldText($workflowStatus->contentLabel);
-            $row->addBoldText($workflowStatus->getSubject());
+            $row->addBoldText($workflowStatus->contentLabel);
+            //$row->addBoldText($workflowStatus->getSubject());
         } else {
 
             $row->addEmpty();
@@ -69,7 +71,8 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
             $hyperlink = new SiteHyperlink($row);
             //$hyperlink->site = $this->process->getViewSite();
             $hyperlink->site = new Site();  // $this->process->getViewSite();
-            $hyperlink->site->title = $workflowStatus->getSubject();
+            //$hyperlink->site->title = $workflowStatus->getSubject();
+            $hyperlink->site->title = $workflowStatus->contentLabel;
             $hyperlink->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
             //$hyperlink->site->title = $workflowStatus->contentLabel;
 

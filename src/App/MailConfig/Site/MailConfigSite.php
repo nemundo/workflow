@@ -47,6 +47,21 @@ class MailConfigSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+
+        $title = new AdminTitle($page);
+        $title->content =$this->title;
+
+        $id = new MailConfigId();
+        $id->filter->andEqual($id->model->userId, (new UserInformation())->getUserId());
+        $mailConfigId = $id->getId();
+
+
+        $update = new MailConfigFormUpdate($page);
+        $update->updateId = $mailConfigId;
+        $update->redirectSite = MailConfigSite::$site;
+
+
+        /*
         $row = new BootstrapRow($page);
         $col = new BootstrapColumn($row);
         $col->columnWidth = 4;
@@ -80,7 +95,7 @@ class MailConfigSite extends AbstractSite
         $btn->site = MailConfigEditSite::$site;
 
         //$update = new MailConfigFormUpdate($page);
-        //$update->updateId = $mailConfigId;
+        //$update->updateId = $mailConfigId;*/
 
 
         $page->render();

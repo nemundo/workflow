@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Assignment\Com\Table;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\Header\SortingHyperlink;
+use Nemundo\Admin\Com\Table\Header\UpDownSortingHyperlink;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
@@ -70,9 +71,12 @@ class AssignmentTable extends AbstractHtmlContainerList
             }
 
             $assignmentReader->filter->andFilter($filter);
-            $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
+
         }
 
+
+
+        $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
 
         //$assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
@@ -84,17 +88,17 @@ class AssignmentTable extends AbstractHtmlContainerList
         $header->addEmpty();
         $header->addText('Quelle');
 
-        $subjectSorting = new SortingHyperlink($header);
+        $subjectSorting = new UpDownSortingHyperlink($header);
         $subjectSorting->fieldType = $assignmentReader->model->subject;
         $subjectSorting->checkSorting($assignmentReader);
 
         $header->addText('Nachricht');
 
-        $assignmentSorting = new SortingHyperlink($header);
+        $assignmentSorting = new UpDownSortingHyperlink($header);
         $assignmentSorting->fieldType = $assignmentReader->model->assignmentText;
         $assignmentSorting->checkSorting($assignmentReader);
 
-        $deadlineSorting = new SortingHyperlink($header);
+        $deadlineSorting = new UpDownSortingHyperlink($header);
         $deadlineSorting->fieldType = $assignmentReader->model->deadline;
         $deadlineSorting->checkSorting($assignmentReader);
 
