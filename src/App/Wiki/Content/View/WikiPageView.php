@@ -51,8 +51,11 @@ class WikiPageView extends AbstractContentView
         $log->contentType = $this->contentType;
 
 
-        $log = new ContentLogTable($this);
-        $log->contentType = $this->contentType;
+
+
+
+        //$log = new ContentLogTable($this);
+        //$log->contentType = $this->contentType;
 
         //$log = new ChildContentViewContainer($this);
         //$log->contentType = $wikiContentType;

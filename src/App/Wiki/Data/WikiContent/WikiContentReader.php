@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
-class WikiReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\Workflow\App\Wiki\Data\WikiContent;
+class WikiContentReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var WikiModel
+* @var WikiContentModel
 */
 public $model;
 
 public function __construct() {
 parent::__construct();
-$this->model = new WikiModel();
+$this->model = new WikiContentModel();
 }
 /**
-* @return WikiRow[]
+* @return WikiContentRow[]
 */
 public function getData() {
 $this->addFieldByModel($this->model);
@@ -24,7 +24,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return WikiRow
+* @return WikiContentRow
 */
 public function getRow() {
 $this->addFieldByModel($this->model);
@@ -34,13 +34,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return WikiRow
+* @return WikiContentRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new WikiRow($dataRow, $this->model);
+$row = new WikiContentRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }

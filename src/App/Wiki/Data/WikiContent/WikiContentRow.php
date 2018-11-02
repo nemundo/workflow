@@ -1,10 +1,15 @@
 <?php
-namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
-class WikiRow extends \Nemundo\Model\Row\AbstractModelDataRow {
+namespace Nemundo\Workflow\App\Wiki\Data\WikiContent;
+class WikiContentRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 /**
 * @var \Nemundo\Model\Row\AbstractModelDataRow
 */
 private $row;
+
+/**
+* @var WikiContentModel
+*/
+public $model;
 
 /**
 * @var string

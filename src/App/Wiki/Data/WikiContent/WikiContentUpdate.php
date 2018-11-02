@@ -1,9 +1,9 @@
 <?php
-namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
+namespace Nemundo\Workflow\App\Wiki\Data\WikiContent;
 use Nemundo\Model\Data\AbstractModelUpdate;
-class WikiUpdate extends AbstractModelUpdate {
+class WikiContentUpdate extends AbstractModelUpdate {
 /**
-* @var WikiModel
+* @var WikiContentModel
 */
 public $model;
 
@@ -34,7 +34,7 @@ public $itemOrder;
 
 public function __construct() {
 parent::__construct();
-$this->model = new WikiModel();
+$this->model = new WikiContentModel();
 }
 public function update() {
 $this->typeValueList->setModelValue($this->model->pageId, $this->pageId);

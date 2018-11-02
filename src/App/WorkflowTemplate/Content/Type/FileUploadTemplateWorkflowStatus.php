@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
+use Nemundo\Core\File\Base64File;
 use Nemundo\Model\Data\Property\File\RedirectFilenameDataProperty;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
@@ -10,6 +11,7 @@ use Nemundo\Web\Http\FileRequest\FileRequest;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\FileUploadTemplateWorkflowForm;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\File;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileRow;
 
 // FileTemplateWorkflowStatus
 class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
@@ -31,10 +33,15 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
      */
     public $filenameOrginal;
 
+    /**
+     * @var FileRow
+     */
+    private $row;
 
     protected function loadType()
     {
         $this->contentLabel = 'Dokument';
+        $this->contentName = 'document';
         $this->contentId = '8d49707a-9763-4b0d-b169-b50a939ddb1d';
         $this->changeStatus = false;
         $this->formClass = FileUploadTemplateWorkflowForm::class;
@@ -42,6 +49,14 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
 
         // wieder aktivieren
         $this->showStatus = false;
+
+    }
+
+
+    protected function loadData()
+    {
+
+        $this->row = (new FileReader())->getRowById($this->dataId);
 
     }
 
@@ -77,15 +92,30 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
     public function getSubject()
     {
 
-        $row = (new FileReader())->getRowById($this->dataId);
-
         $hyperlink = new Hyperlink();
-        $hyperlink->content = $row->file->getFilename();
-        $hyperlink->url = $row->file->getUrl();
+        $hyperlink->content = $this->row->file->getFilename();
+        $hyperlink->url = $this->row->file->getUrl();
 
         $subject = 'Upload ' . $hyperlink->getHtmlString();
 
         return $subject;
+
+    }
+
+
+    public function getJson()
+    {
+
+        $data = parent::getJson();
+
+        $base64 = '';
+        //$base64 = (new Base64File($this->row->file->getFullFilename()))->getBase64();
+
+
+        $data['filename'] = $this->row->file->getFilename();
+        $data['base64'] = $base64;
+
+        return $data;
 
     }
 

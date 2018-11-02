@@ -1,6 +1,6 @@
 <?php
-namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
-class WikiExternalType extends \Nemundo\Model\Type\External\ExternalType {
+namespace Nemundo\Workflow\App\Wiki\Data\WikiContent;
+class WikiContentExternalType extends \Nemundo\Model\Type\External\ExternalType {
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
@@ -43,8 +43,8 @@ public $itemOrder;
 
 protected function loadType() {
 parent::loadType();
-$this->externalModelClassName = WikiModel::class;
-$this->externalTableName = "wiki_wiki";
+$this->externalModelClassName = WikiContentModel::class;
+$this->externalTableName = "wiki_wiki_content";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->id = new \Nemundo\Model\Type\Id\IdType();
 $this->id->fieldName = "id";

@@ -33,7 +33,7 @@ class LargeTextContentTemplateForm extends ContentTreeForm  // BootstrapForm
 
         $this->text = new BootstrapLargeTextBox($this);
         $this->text->label = $this->contentType->largeTextLabel;  // 'Text';
-        $this->text->autofocus = true;
+        //$this->text->autofocus = true;
 
         return parent::getHtml();
     }

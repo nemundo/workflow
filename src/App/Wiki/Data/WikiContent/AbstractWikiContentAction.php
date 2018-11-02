@@ -1,12 +1,12 @@
 <?php
-namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
+namespace Nemundo\Workflow\App\Wiki\Data\WikiContent;
 use Nemundo\Model\Action\AbstractModelAction;
-abstract class AbstractWikiAction extends AbstractModelAction {
+abstract class AbstractWikiContentAction extends AbstractModelAction {
 /**
-* @return WikiRow
+* @return WikiContentRow
 */
 protected function getRow() {
-$reader = new WikiReader();
+$reader = new WikiContentReader();
 $reader->connection = $this->connection;
 $row = $reader->getRowById($this->id);
 return $row;

@@ -1,8 +1,8 @@
 <?php
-namespace Nemundo\Workflow\App\Wiki\Data\Wiki;
-class Wiki extends \Nemundo\Model\Data\AbstractModelData {
+namespace Nemundo\Workflow\App\Wiki\Data\WikiContent;
+class WikiContent extends \Nemundo\Model\Data\AbstractModelData {
 /**
-* @var WikiModel
+* @var WikiContentModel
 */
 protected $model;
 
@@ -33,7 +33,7 @@ public $itemOrder;
 
 public function __construct() {
 parent::__construct();
-$this->model = new WikiModel();
+$this->model = new WikiContentModel();
 }
 public function save() {
 $this->typeValueList->setModelValue($this->model->pageId, $this->pageId);

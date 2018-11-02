@@ -7,7 +7,7 @@ $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\Hyperlink\HyperlinkModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\Mail\MailModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\TextList\TextListModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\TitleChange\TitleChangeModel());
-$this->addModel(new \Nemundo\Workflow\App\Wiki\Data\Wiki\WikiModel());
+$this->addModel(new \Nemundo\Workflow\App\Wiki\Data\WikiContent\WikiContentModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel());
 $this->addModel(new \Nemundo\Workflow\App\Wiki\Data\WikiType\WikiTypeModel());
 }

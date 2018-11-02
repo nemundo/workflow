@@ -17,6 +17,7 @@ class UserAssignmentTemplateWorkflowStatus extends AbstractModelDataWorkflowStat
     {
 
         $this->contentLabel = 'Verantwortungswechsel';  // 'User Assignment';
+        $this->contentName = 'user_assignment';
         $this->contentId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeStatus = false;
         $this->modelClass = UserAssignmentChangeModel::class;
@@ -51,5 +52,19 @@ class UserAssignmentTemplateWorkflowStatus extends AbstractModelDataWorkflowStat
         return $subject;
 
     }
+
+
+    public function getJson()
+    {
+
+        $row = (new UserAssignmentChangeReader())->getRowById($this->dataId);
+
+        $data = parent::getJson();
+        $data['assignment_login'] = $row->user->login;
+
+
+        return $data;
+    }
+
 
 }
