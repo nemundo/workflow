@@ -111,7 +111,6 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
         $base64 = '';
         //$base64 = (new Base64File($this->row->file->getFullFilename()))->getBase64();
 
-
         $data['filename'] = $this->row->file->getFilename();
         $data['base64'] = $base64;
 
