@@ -38,7 +38,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
 
     public function addLogWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
-        // public function addLogWorkflowStatus(AbstractContentType $workflowStatus)
     {
 
         $row = new TableRow($this->table);
@@ -69,12 +68,9 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
             $row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
-            //$hyperlink->site = $this->process->getViewSite();
-            $hyperlink->site = new Site();  // $this->process->getViewSite();
-            //$hyperlink->site->title = $workflowStatus->getSubject();
+            $hyperlink->site = new Site();
             $hyperlink->site->title = $workflowStatus->contentLabel;
             $hyperlink->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
-            //$hyperlink->site->title = $workflowStatus->contentLabel;
 
         }
 
@@ -107,7 +103,13 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
                         $hyperlink = new SiteHyperlink($list);
                         $hyperlink->site = $site;
+
+                        if (!$site->workflowStatus->checkUserVisibility()) {
+                            $hyperlink->addCssClass('btn disabled');
+                        }
+
                     }
+
                 }
 
 
