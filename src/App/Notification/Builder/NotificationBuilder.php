@@ -108,7 +108,7 @@ class NotificationBuilder extends AbstractBaseClass
             $userRow = (new UserReader())->getRowById($userId);
 
             $mail = new ResponsiveActionMailMessage();
-            $mail->addTo($userRow->email);
+            $mail->mailTo = $userRow->email;
             $mail->subject = $this->contentType->getSubject();
             $mail->actionText = (new Html($this->message))->getValue();
             $mail->actionLabel = 'Ansehen';
