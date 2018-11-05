@@ -81,11 +81,10 @@ class AssignmentBuilder extends AbstractBase
             return;
         }
 
-
         $data = new Assignment();
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
-        $data->subject = $this->contentType->getSubject();  // $this->subject;
+        $data->subject = $this->contentType->getSubject();
 
 
         $source = $this->contentType->contentLabel;
@@ -147,7 +146,7 @@ class AssignmentBuilder extends AbstractBase
             if (($value) || ($value == '')) {
 
                 $mail = new ResponsiveActionMailMessage();
-                $mail->addTo($userRow->email);
+                $mail->mailTo = $userRow->email;
                 $mail->subject = $this->contentType->getSubject();
                 $mail->actionText = (new Html($this->message))->getValue();
                 $mail->actionLabel = 'Ansehen';

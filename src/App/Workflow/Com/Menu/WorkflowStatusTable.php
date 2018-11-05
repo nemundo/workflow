@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
@@ -101,11 +102,29 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
                         $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
                     } else {
 
-                        $hyperlink = new SiteHyperlink($list);
-                        $hyperlink->site = $site;
 
-                        if (!$site->workflowStatus->checkUserVisibility()) {
-                            $hyperlink->addCssClass('btn disabled');
+                        //$btn = new AdminButton($list);
+                        //$btn->site = $site;
+                        //$btn->content = $site->title;
+
+                        if ($site->workflowStatus->checkUserVisibility()) {
+
+                            //$btn->disabled = true;
+
+                            $hyperlink = new SiteHyperlink($list);
+                            $hyperlink->site = $site;
+
+
+                        } else {
+
+                            $list->addText($site->title);
+
+                            // $hyperlink = new Hyperlink();
+                            //   $hy
+
+                            //$hyperlink->addCssClass('btn disabled');
+                            //$hyperlink->addCssClass('disabled');
+                            //$hyperlink->
                         }
 
                     }

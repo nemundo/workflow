@@ -7,6 +7,7 @@ use Nemundo\Core\Base\AbstractBaseClass;
 abstract class AbstractIdentificationType extends AbstractBaseClass
 {
 
+
     /**
      * @var string
      */
@@ -17,6 +18,10 @@ abstract class AbstractIdentificationType extends AbstractBaseClass
      * @var string
      */
     public $identification;
+
+
+//identificationId
+
 
     abstract protected function loadIdentification();
 

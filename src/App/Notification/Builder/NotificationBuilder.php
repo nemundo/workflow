@@ -34,7 +34,7 @@ class NotificationBuilder extends AbstractBaseClass
     /**
      * @var AbstractContentType
      */
-    public $contentType;
+    protected $contentType;
 
 
     public function __construct(AbstractContentType $contentType = null)

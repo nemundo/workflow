@@ -79,7 +79,7 @@ class AssignmentTable extends AbstractHtmlContainerList
         }
 
 
-        $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
+        //$assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
 
         //$assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
 
@@ -108,7 +108,8 @@ class AssignmentTable extends AbstractHtmlContainerList
 
         $header->addText('Ersteller');
         if ($this->showArchive) {
-            $header->addText('Archiviert');
+            //$header->addText('Archiviert');
+            $header->addText('Abgeschlossen');
         }
 
 
