@@ -7,6 +7,11 @@ class SearchIndexRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var SearchIndexModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

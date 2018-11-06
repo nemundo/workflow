@@ -7,6 +7,11 @@ class MessageRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var MessageModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

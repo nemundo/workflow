@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Message\ContentType;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\ContentItem\TextContentView;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
@@ -13,7 +14,7 @@ use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextModel;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextReader;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
-class TextContentType extends AbstractMessageContentType
+class TextContentType extends AbstractContentType
 {
 
     protected function loadType()

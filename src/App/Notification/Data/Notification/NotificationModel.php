@@ -9,6 +9,16 @@ public $id;
 /**
 * @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
 */
+public $userId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $user;
+
+/**
+* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
+*/
 public $contentTypeId;
 
 /**
@@ -25,16 +35,6 @@ public $subject;
 * @var \Nemundo\Model\Type\Text\LargeTextType
 */
 public $message;
-
-/**
-* @var \Nemundo\Model\Type\External\Id\ExternalUniqueIdType
-*/
-public $userId;
-
-/**
-* @var \Nemundo\App\User\Data\User\UserExternalType
-*/
-public $user;
 
 /**
 * @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
@@ -71,6 +71,13 @@ $this->id->visible->form = false;
 
 $this->id->visible->form = false;
 
+$this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
+$this->userId->tableName = "notification_notification";
+$this->userId->fieldName = "user";
+$this->userId->aliasFieldName = "notification_notification_user";
+$this->userId->label = "User";
+$this->loadUser();
+
 $this->contentTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->contentTypeId->tableName = "notification_notification";
 $this->contentTypeId->fieldName = "content_type";
@@ -91,12 +98,6 @@ $this->message->fieldName = "message";
 $this->message->aliasFieldName = "notification_notification_message";
 $this->message->label = "Message";
 $this->message->allowNullValue = "";
-
-$this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->userId->tableName = "notification_notification";
-$this->userId->fieldName = "user";
-$this->userId->aliasFieldName = "notification_notification_user";
-$this->userId->label = "User";
 
 $this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
 $this->dateTimeCreated->tableName = "notification_notification";
@@ -121,6 +122,15 @@ $this->archive->label = "Archive";
 $this->archive->allowNullValue = "";
 
 }
+public function loadUser() {
+if ($this->user == null) {
+$this->user = new \Nemundo\User\Data\User\UserExternalType($this, "notification_notification_user");
+$this->user->tableName = "notification_notification";
+$this->user->fieldName = "user";
+$this->user->aliasFieldName = "notification_notification_user";
+$this->user->label = "User";
+}
+}
 public function loadContentType() {
 if ($this->contentType == null) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType($this, "notification_notification_content_type");
@@ -128,15 +138,6 @@ $this->contentType->tableName = "notification_notification";
 $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "notification_notification_content_type";
 $this->contentType->label = "Content Type";
-}
-}
-public function loadUser() {
-if ($this->user == null) {
-$this->user = new \Nemundo\App\User\Data\User\UserExternalType($this, "notification_notification_user");
-$this->user->tableName = "notification_notification";
-$this->user->fieldName = "user";
-$this->user->aliasFieldName = "notification_notification_user";
-$this->user->label = "User";
 }
 }
 }

@@ -14,6 +14,7 @@ class WorkflowProject extends AbstractProject
         $this->project = 'Workflow';
         $this->path = __DIR__;
         $this->namespace = __NAMESPACE__;
+
         $this->dbFilename = (new Path())
             ->addPath(__DIR__)
             ->addPath('..')

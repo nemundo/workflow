@@ -7,6 +7,11 @@ class UserAssignmentChangeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var UserAssignmentChangeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

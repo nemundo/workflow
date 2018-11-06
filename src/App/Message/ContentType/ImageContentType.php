@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Message\ContentType;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\ContentItem\ImageContentView;
@@ -13,7 +14,7 @@ use Nemundo\Workflow\App\Message\Data\MessageImage\MessageImageModel;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextReader;
 use Schleuniger\Usergroup\SchleunigerUsergroup;
 
-class ImageContentType extends AbstractMessageContentType
+class ImageContentType extends AbstractContentType
 {
 
     protected function loadType()

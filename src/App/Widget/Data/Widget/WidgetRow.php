@@ -7,6 +7,11 @@ class WidgetRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var WidgetModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

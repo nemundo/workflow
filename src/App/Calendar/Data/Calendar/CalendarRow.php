@@ -7,6 +7,11 @@ class CalendarRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var CalendarModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;
@@ -67,14 +72,14 @@ $this->loadNemundoWorkflowAppIdentificationDataIdentificationTypeIdentificationT
 $this->identificationId = $this->getModelValue($model->identificationId);
 $this->contentTypeId = $this->getModelValue($model->contentTypeId);
 if ($model->contentType !== null) {
-$this->loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model->contentType);
+$this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
 $this->dataId = $this->getModelValue($model->dataId);
 }
 private function loadNemundoWorkflowAppIdentificationDataIdentificationTypeIdentificationTypeidentificationTypeRow($model) {
 $this->identificationType = new \Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTypeRow($this->row, $model);
 }
-private function loadNemundoWorkflowContentDataContentTypeContentTypecontentTypeRow($model) {
+private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);
 }
 }

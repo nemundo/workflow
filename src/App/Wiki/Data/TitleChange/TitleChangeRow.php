@@ -7,6 +7,11 @@ class TitleChangeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var TitleChangeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

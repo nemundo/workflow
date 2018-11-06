@@ -7,6 +7,11 @@ class DeadlineChangeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var DeadlineChangeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

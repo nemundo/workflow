@@ -7,6 +7,11 @@ class WordRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var WordModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

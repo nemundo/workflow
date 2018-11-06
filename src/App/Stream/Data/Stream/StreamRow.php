@@ -7,6 +7,11 @@ class StreamRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var StreamModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

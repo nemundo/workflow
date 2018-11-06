@@ -11,6 +11,7 @@ use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentType;
 class WikiContentTypeSetup extends ContentTypeSetup
 {
 
+    /*
     public function addContentType(AbstractBaseContentType $contentType)
     {
 
@@ -23,6 +24,6 @@ class WikiContentTypeSetup extends ContentTypeSetup
 
         parent::addContentType($contentType);
 
-    }
+    }*/
 
 }

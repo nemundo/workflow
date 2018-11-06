@@ -7,6 +7,11 @@ class StatusChangeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var StatusChangeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

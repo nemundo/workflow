@@ -7,6 +7,11 @@ class TextListRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var TextListModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

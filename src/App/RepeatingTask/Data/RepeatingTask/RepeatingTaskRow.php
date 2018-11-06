@@ -7,6 +7,11 @@ class RepeatingTaskRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var RepeatingTaskModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

@@ -7,6 +7,11 @@ class WorkflowAbortRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var WorkflowAbortModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

@@ -7,6 +7,11 @@ class SubjectChangeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var SubjectChangeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

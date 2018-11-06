@@ -7,6 +7,11 @@ class DocumentRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var DocumentModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

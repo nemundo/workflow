@@ -7,6 +7,11 @@ class MailRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var MailModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

@@ -7,6 +7,11 @@ class UserDeadlineAssignmentRow extends \Nemundo\Model\Row\AbstractModelDataRow 
 private $row;
 
 /**
+* @var UserDeadlineAssignmentModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

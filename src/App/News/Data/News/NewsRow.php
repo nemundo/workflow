@@ -7,6 +7,11 @@ class NewsRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var NewsModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

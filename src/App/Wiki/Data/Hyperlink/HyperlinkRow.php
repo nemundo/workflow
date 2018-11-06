@@ -7,6 +7,11 @@ class HyperlinkRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var HyperlinkModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

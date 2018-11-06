@@ -7,6 +7,11 @@ class SubscriptionRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var SubscriptionModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

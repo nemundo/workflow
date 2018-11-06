@@ -7,6 +7,11 @@ class DashboardContentTypeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var DashboardContentTypeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

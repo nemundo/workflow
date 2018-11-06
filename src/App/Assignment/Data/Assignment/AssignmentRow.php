@@ -7,6 +7,11 @@ class AssignmentRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var AssignmentModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

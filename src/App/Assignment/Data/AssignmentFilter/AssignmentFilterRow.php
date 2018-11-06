@@ -7,6 +7,11 @@ class AssignmentFilterRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var AssignmentFilterModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

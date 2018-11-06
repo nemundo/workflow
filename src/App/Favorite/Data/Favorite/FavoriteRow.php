@@ -7,6 +7,11 @@ class FavoriteRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var FavoriteModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

@@ -7,6 +7,11 @@ class WikiPageRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var WikiPageModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

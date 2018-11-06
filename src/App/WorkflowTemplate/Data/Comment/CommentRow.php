@@ -7,6 +7,11 @@ class CommentRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var CommentModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

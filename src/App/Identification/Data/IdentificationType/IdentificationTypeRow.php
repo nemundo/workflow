@@ -7,6 +7,11 @@ class IdentificationTypeRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var IdentificationTypeModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

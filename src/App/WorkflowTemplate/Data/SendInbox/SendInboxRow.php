@@ -7,6 +7,11 @@ class SendInboxRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var SendInboxModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

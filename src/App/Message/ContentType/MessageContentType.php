@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\Message\Data\Message\MessageModel;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Parameter\MessageParameter;
 use Nemundo\Workflow\App\Message\Site\MessageItemSite;
-use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
+
 
 class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractModelDataContentType
 {
@@ -43,7 +43,7 @@ class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractMod
         $builder = new NotificationBuilder();  // NotificationBuilder();
         $builder->contentType = $this;
         $builder->message = $row->text;
-        $builder->createUserInbox($row->toId);
+       // $builder->createUserInbox();
 
     }
 

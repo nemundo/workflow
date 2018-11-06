@@ -7,6 +7,11 @@ class FileRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var FileModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

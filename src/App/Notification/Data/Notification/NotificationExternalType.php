@@ -14,6 +14,16 @@ public $dataId;
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
+public $userId;
+
+/**
+* @var \Nemundo\User\Data\User\UserExternalType
+*/
+public $user;
+
+/**
+* @var \Nemundo\Model\Type\Id\IdType
+*/
 public $contentTypeId;
 
 /**
@@ -30,16 +40,6 @@ public $subject;
 * @var \Nemundo\Model\Type\Text\LargeTextType
 */
 public $message;
-
-/**
-* @var \Nemundo\Model\Type\Id\IdType
-*/
-public $userId;
-
-/**
-* @var \Nemundo\App\User\Data\User\UserExternalType
-*/
-public $user;
 
 /**
 * @var \Nemundo\Model\Type\DateTime\CreatedDateTimeType
@@ -75,6 +75,13 @@ $this->dataId->aliasFieldName = $this->dataId->tableName . "_" . $this->dataId->
 $this->dataId->label = "Id";
 $this->addType($this->dataId);
 
+$this->userId = new \Nemundo\Model\Type\Id\IdType();
+$this->userId->fieldName = "user";
+$this->userId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->userId->aliasFieldName = $this->userId->tableName ."_".$this->userId->fieldName;
+$this->userId->label = "User";
+$this->addType($this->userId);
+
 $this->contentTypeId = new \Nemundo\Model\Type\Id\IdType();
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
@@ -95,13 +102,6 @@ $this->message->tableName = $this->parentFieldName . "_" . $this->externalTableN
 $this->message->aliasFieldName = $this->message->tableName . "_" . $this->message->fieldName;
 $this->message->label = "Message";
 $this->addType($this->message);
-
-$this->userId = new \Nemundo\Model\Type\Id\IdType();
-$this->userId->fieldName = "user";
-$this->userId->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->userId->aliasFieldName = $this->userId->tableName ."_".$this->userId->fieldName;
-$this->userId->label = "User";
-$this->addType($this->userId);
 
 $this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType();
 $this->dateTimeCreated->fieldName = "date_time_created";
@@ -125,6 +125,17 @@ $this->archive->label = "Archive";
 $this->addType($this->archive);
 
 }
+public function loadUser() {
+if ($this->user == null) {
+$this->user = new \Nemundo\User\Data\User\UserExternalType(null, $this->parentFieldName . "_user");
+$this->user->fieldName = "user";
+$this->user->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->user->aliasFieldName = $this->user->tableName ."_".$this->user->fieldName;
+$this->user->label = "User";
+$this->addType($this->user);
+}
+return $this;
+}
 public function loadContentType() {
 if ($this->contentType == null) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeExternalType(null, $this->parentFieldName . "_content_type");
@@ -133,17 +144,6 @@ $this->contentType->tableName = $this->parentFieldName . "_" . $this->externalTa
 $this->contentType->aliasFieldName = $this->contentType->tableName ."_".$this->contentType->fieldName;
 $this->contentType->label = "Content Type";
 $this->addType($this->contentType);
-}
-return $this;
-}
-public function loadUser() {
-if ($this->user == null) {
-$this->user = new \Nemundo\App\User\Data\User\UserExternalType(null, $this->parentFieldName . "_user");
-$this->user->fieldName = "user";
-$this->user->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->user->aliasFieldName = $this->user->tableName ."_".$this->user->fieldName;
-$this->user->label = "User";
-$this->addType($this->user);
 }
 return $this;
 }

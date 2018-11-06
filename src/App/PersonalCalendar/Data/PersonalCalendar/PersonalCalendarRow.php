@@ -7,6 +7,11 @@ class PersonalCalendarRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var PersonalCalendarModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;

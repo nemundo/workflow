@@ -7,6 +7,11 @@ class NotificationFilterRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 private $row;
 
 /**
+* @var NotificationFilterModel
+*/
+public $model;
+
+/**
 * @var string
 */
 public $id;
