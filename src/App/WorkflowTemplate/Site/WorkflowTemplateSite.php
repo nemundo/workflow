@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Site;
 
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\Redirect\FileFileRedirectSite;
+use Nemundo\Workflow\App\WorkflowTemplate\Site\Delete\FileDeleteSite;
 
 class WorkflowTemplateSite extends AbstractSite
 {
@@ -14,6 +15,7 @@ class WorkflowTemplateSite extends AbstractSite
         $this->menuActive = false;
 
         new FileFileRedirectSite($this);
+        new FileDeleteSite($this);
 
 
     }

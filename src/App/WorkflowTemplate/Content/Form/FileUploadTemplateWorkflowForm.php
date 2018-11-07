@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Form;
 
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapFileUpload;
-use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileUploadTemplateWorkflowStatus;
+use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileTemplateStatus;
 
 
 class FileUploadTemplateWorkflowForm extends ContentTreeForm
@@ -32,7 +32,7 @@ class FileUploadTemplateWorkflowForm extends ContentTreeForm
     {
 
         foreach ($this->file->getMultiFileRequest() as $fileRequest) {
-            $type = new FileUploadTemplateWorkflowStatus();
+            $type = new FileTemplateStatus();
             $type->parentContentType = $this->parentContentType;
             $type->fileRequest = $fileRequest;
             $type->saveType();

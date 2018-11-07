@@ -6,12 +6,18 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Com;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Data\ContentLog\ContentLogModel;
 use Nemundo\App\Content\Data\ContentLog\ContentLogReader;
+use Nemundo\App\Content\Parameter\DataIdParameter;
+use Nemundo\App\Content\Parameter\ParentContentTypeParameter;
+use Nemundo\Com\Html\Basic\Strike;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Model\Join\ModelJoin;
 use Nemundo\User\Data\User\UserModel;
+use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileTemplateStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
+use Nemundo\Workflow\App\WorkflowTemplate\Parameter\FileParameter;
+use Nemundo\Workflow\App\WorkflowTemplate\Site\Delete\FileDeleteSite;
 
 class FileTable extends AdminTable
 {
@@ -29,41 +35,60 @@ class FileTable extends AdminTable
         $header = new TableHeader($this);
         $header->addText('Dokument');
         $header->addText('Ersteller');
+        $header->addEmpty();
 
 
-        $reader = new FileReader();
+        $fileReader = new FileReader();
 
         $contentLogModel = new ContentLogModel();
-        $reader->addFieldByModel($contentLogModel);
+        $fileReader->addFieldByModel($contentLogModel);
 
         $userModel = new UserModel();
-        $reader->addFieldByModel($userModel);
+        $fileReader->addFieldByModel($userModel);
 
-        $join = new ModelJoin($reader);
+        $join = new ModelJoin($fileReader);
         $join->externalModel = $contentLogModel;
-        $join->type = $reader->model->id;
+        $join->type = $fileReader->model->id;
         $join->externalType = $contentLogModel->dataId;
 
-        $join = new ModelJoin($reader);
+        $join = new ModelJoin($fileReader);
         $join->externalModel = $userModel;
         $join->type = $contentLogModel->userCreatedId;;
         $join->externalType = $userModel->id;
 
-        $reader->filter->andEqual($contentLogModel->parentId, $this->dataId);
+        $fileReader->filter->andEqual($contentLogModel->parentId, $this->dataId);
+        $fileReader->filter->andEqual($contentLogModel->contentTypeId, (new FileTemplateStatus())->contentId);
 
 
-        foreach ($reader->getData() as $dateiRow) {
+        foreach ($fileReader->getData() as $fileRow) {
 
             $row = new TableRow($this);
 
-            $row->addHyperlink($dateiRow->file->getUrl(), $dateiRow->file->getFilename());
+            if (!$fileRow->delete) {
+                $row->addHyperlink($fileRow->file->getUrl(), $fileRow->file->getFilename());
 
+            } else {
+
+                $stroke = new Strike($row);
+                $stroke->content = $fileRow->file->getFilename();
+
+            }
             // show image bzw. detail ansicht
 
-            $userDisplay = $dateiRow->getModelValue($userModel->displayName);
-            $dateTimeCreated = new DateTime($dateiRow->getModelValue($contentLogModel->dateTimeCreated));
+            $userDisplay = $fileRow->getModelValue($userModel->displayName);
+            $dateTimeCreated = new DateTime($fileRow->getModelValue($contentLogModel->dateTimeCreated));
 
             $row->addText($userDisplay . ' ' . $dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+
+            if (!$fileRow->delete) {
+                $site = clone(FileDeleteSite::$site);
+                $site->addParameter(new FileParameter($fileRow->id));
+                $site->addParameter(new DataIdParameter($this->dataId));
+                $row->addIconSite($site);
+            } else {
+                $row->addEmpty();
+            }
+
 
         }
 

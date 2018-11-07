@@ -13,15 +13,13 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\File\File;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileRow;
 
-// FileTemplateWorkflowStatus
-class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
+class FileTemplateStatus extends AbstractWorkflowStatus
 {
 
     /**
      * @var FileRequest
      */
     public $fileRequest;
-
 
     /**
      * @var string
@@ -48,7 +46,7 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
         //$this->viewClass = FileUploadContentView::class;
 
         // wieder aktivieren
-        $this->showStatus = false;
+        $this->showMenu = false;
 
     }
 
@@ -108,8 +106,7 @@ class FileUploadTemplateWorkflowStatus extends AbstractWorkflowStatus
 
         $data = parent::getJson();
 
-        $base64 = '';
-        //$base64 = (new Base64File($this->row->file->getFullFilename()))->getBase64();
+        $base64 = (new Base64File($this->row->file->getFullFilename()))->getBase64();
 
         $data['filename'] = $this->row->file->getFilename();
         $data['base64'] = $base64;

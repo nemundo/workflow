@@ -11,6 +11,11 @@ public $id;
 */
 public $file;
 
+/**
+* @var \Nemundo\Model\Type\Number\YesNoType
+*/
+public $delete;
+
 protected function loadModel() {
 $this->tableName = "workflow_template_file";
 $this->aliasTableName = "workflow_template_file";
@@ -36,6 +41,13 @@ $this->file->aliasFieldName = "workflow_template_file_file";
 $this->file->label = "File";
 $this->file->allowNullValue = "";
 $this->file->redirectSite = \Nemundo\Workflow\App\WorkflowTemplate\Data\File\Redirect\FileRedirectConfig::$redirectFileFileSite;
+
+$this->delete = new \Nemundo\Model\Type\Number\YesNoType($this);
+$this->delete->tableName = "workflow_template_file";
+$this->delete->fieldName = "delete";
+$this->delete->aliasFieldName = "workflow_template_file_delete";
+$this->delete->label = "Delete";
+$this->delete->allowNullValue = "";
 
 }
 }

@@ -29,7 +29,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
         $table->process = $this->process;
 
         foreach ($this->process->getChild() as $contentType) {
-            if ($contentType->showStatus) {
+            if ($contentType->showMenu) {
                 if ($contentType->isNotDraft()) {
                     $table->addLogWorkflowStatus($contentType);
                 }

@@ -146,7 +146,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
         // public function addNextWorkflowStatus(AbstractContentType $workflowStatus)
     {
 
-        if ($workflowStatus->showStatus) {
+        if ($workflowStatus->showMenu) {
 
             $row = new TableRow($this->table);
 
