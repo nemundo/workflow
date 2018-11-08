@@ -107,6 +107,8 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
                         //$btn->site = $site;
                         //$btn->content = $site->title;
 
+
+
                         if ($site->workflowStatus->checkUserVisibility()) {
 
                             //$btn->disabled = true;
