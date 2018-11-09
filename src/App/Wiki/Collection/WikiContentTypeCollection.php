@@ -15,7 +15,7 @@ use Paranautik\App\Meteoschweiz\Content\Type\AllgemeineLageAktuellContentType;
 use Paranautik\App\TestApp\Content\LandContentType;
 use Paranautik\App\TestApp\Content\SlideshowContentType;
 use Schleuniger\App\Absenzmeldung\WorkflowStatus\AbsenzmeldungType;
-use Schleuniger\App\Ecr\Process\Ecr\EcrWorkflowProcess;
+use Schleuniger\App\Ecr\Process\Ecr\EcrProcess;
 use Schleuniger\App\Kvp\Process\KvpProcess;
 use Schleuniger\App\Task\Content\Type\TaskListType;
 use Schleuniger\App\Task\Content\Type\TaskProcess;
