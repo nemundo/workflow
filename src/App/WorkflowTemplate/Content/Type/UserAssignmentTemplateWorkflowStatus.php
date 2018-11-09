@@ -16,7 +16,7 @@ class UserAssignmentTemplateWorkflowStatus extends AbstractModelDataWorkflowStat
     protected function loadType()
     {
 
-        $this->contentLabel = 'Verantwortungswechsel';  // 'User Assignment';
+        $this->contentLabel = 'Assignment';  //'Verantwortungswechsel';  // 'User Assignment';
         $this->contentName = 'user_assignment';
         $this->contentId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeStatus = false;

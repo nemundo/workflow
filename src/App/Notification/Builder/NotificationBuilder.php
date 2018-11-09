@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Notification\Builder;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 use Nemundo\Workflow\App\Notification\Data\Notification\Notification;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\Text\Html;
@@ -78,6 +79,17 @@ class NotificationBuilder extends AbstractBaseClass
         foreach ($usergroup->getUserList() as $userRow) {
             $this->createUserNotification($userRow->id);
         }
+
+    }
+
+
+    public function archiveAssignment()
+    {
+
+        $update = new AssignmentUpdate();
+        $update->filter->andEqual($update->model->dataId, $this->contentType->dataId);
+        $update->archive = true;
+        $update->update();
 
     }
 
