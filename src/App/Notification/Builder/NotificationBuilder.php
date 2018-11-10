@@ -17,6 +17,7 @@ use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
 use Nemundo\App\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationDelete;
+use Nemundo\Workflow\App\Notification\Data\Notification\NotificationUpdate;
 
 class NotificationBuilder extends AbstractBaseClass
 {
@@ -83,10 +84,10 @@ class NotificationBuilder extends AbstractBaseClass
     }
 
 
-    public function archiveAssignment()
+    public function archiveNotification()
     {
 
-        $update = new AssignmentUpdate();
+        $update = new NotificationUpdate();
         $update->filter->andEqual($update->model->dataId, $this->contentType->dataId);
         $update->archive = true;
         $update->update();
