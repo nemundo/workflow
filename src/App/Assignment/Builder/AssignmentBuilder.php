@@ -18,6 +18,7 @@ use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 use Nemundo\Workflow\App\Identification\Model\Identification;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
+use Nemundo\Workflow\App\MailConfig\MailConfig;
 
 class AssignmentBuilder extends AbstractBase
 {
@@ -134,24 +135,28 @@ class AssignmentBuilder extends AbstractBase
     private function sendMail()
     {
 
-        foreach ($this->assignment->getUserIdListFromIdentificationId() as $userId) {
+        if (MailConfig::$sendMail) {
 
-            $userRow = (new UserReader())->getRowById($userId);
+            foreach ($this->assignment->getUserIdListFromIdentificationId() as $userId) {
 
-            $mailConfigValue = new MailConfigValue();
-            $mailConfigValue->field = $mailConfigValue->model->assignmentMail;
-            $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, $userRow->id);
-            $value = $mailConfigValue->getValue();
+                $userRow = (new UserReader())->getRowById($userId);
 
-            if (($value) || ($value == '')) {
+                $mailConfigValue = new MailConfigValue();
+                $mailConfigValue->field = $mailConfigValue->model->assignmentMail;
+                $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, $userRow->id);
+                $value = $mailConfigValue->getValue();
 
-                $mail = new ResponsiveActionMailMessage();
-                $mail->mailTo = $userRow->email;
-                $mail->subject = $this->contentType->getSubject();
-                $mail->actionText = (new Html($this->message))->getValue();
-                $mail->actionLabel = 'Ansehen';
-                $mail->actionUrlSite = $this->contentType->getViewSite();
-                $mail->sendMail();
+                if (($value) || ($value == '')) {
+
+                    $mail = new ResponsiveActionMailMessage();
+                    $mail->mailTo = $userRow->email;
+                    $mail->subject = $this->contentType->getSubject();
+                    $mail->actionText = (new Html($this->message))->getValue();
+                    $mail->actionLabel = 'Ansehen';
+                    $mail->actionUrlSite = $this->contentType->getViewSite();
+                    $mail->sendMail();
+
+                }
 
             }
 

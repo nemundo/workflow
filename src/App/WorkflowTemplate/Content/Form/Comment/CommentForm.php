@@ -15,6 +15,11 @@ class CommentForm extends ContentTreeForm
      */
     public $comment;
 
+    /**
+     * @var CommentTemplateStatus
+     */
+    public $contentType;
+
     public function getHtml()
     {
 
@@ -28,10 +33,17 @@ class CommentForm extends ContentTreeForm
     protected function onSubmit()
     {
 
+        /*
         $status = new CommentTemplateStatus();
         $status->parentContentType = $this->parentContentType;
         $status->comment = $this->comment->getValue();
-        $status->saveType();
+        $status->saveType();*/
+
+        $this->contentType->parentContentType = $this->parentContentType;
+        $this->contentType->comment =  $this->comment->getValue();
+        $this->contentType->saveType();
+
+
 
     }
 

@@ -69,13 +69,7 @@ class CommentTemplateStatus extends AbstractWorkflowStatus  // AbstractModelData
         $data = parent::getJson();
 
         $row = (new CommentReader())->getRowById($this->dataId);
-
-        //$data[$this->contentName]['comment'] = $row->comment;
-
         $data['comment'] = $row->comment;
-
-        //$data[$this->contentName]['user']=$this->userCreated->login;
-        //$data[$this->contentName]['date_time']=$this->dateTimeCreated->getDbFormat();
 
         return $data;
 

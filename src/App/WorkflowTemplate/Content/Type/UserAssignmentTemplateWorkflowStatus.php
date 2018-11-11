@@ -6,12 +6,21 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
+use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\UserAssignmentForm;
+use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChange;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeReader;
 
 
-class UserAssignmentTemplateWorkflowStatus extends AbstractModelDataWorkflowStatus
+class UserAssignmentTemplateWorkflowStatus extends AbstractWorkflowStatus  // AbstractModelDataWorkflowStatus
 {
+
+    /**
+     * @var string
+     */
+    public $userId;
+    // assignmentUserId
 
     protected function loadType()
     {
@@ -20,27 +29,49 @@ class UserAssignmentTemplateWorkflowStatus extends AbstractModelDataWorkflowStat
         $this->contentName = 'user_assignment';
         $this->contentId = '24a41cf4-4ccd-43f1-baa5-40ae79e040fa';
         $this->changeStatus = false;
-        $this->modelClass = UserAssignmentChangeModel::class;
+        //$this->modelClass = UserAssignmentChangeModel::class;
+
+        $this->formClass = UserAssignmentForm::class;
+
         $this->viewClass = null;
 
     }
 
 
-    public function onCreate()
+    public function saveType()
     {
 
-        (new AssignmentArchive())->archiveAssignment($this->parentContentType->dataId);
+        $data = new UserAssignmentChange();
+        $data->userId = $this->userId;
+        $this->dataId = $data->save();
 
+        $this->saveContentLog();
 
-        $row = (new UserAssignmentChangeReader())->getRowById($this->dataId);
-
-        $builder = new AssignmentBuilder();
-        $builder->contentType = $this->parentContentType;
-        $builder->assignment->setUserIdentification($row->userId);
+        $builder = new AssignmentBuilder($this->parentContentType);
+        $builder->archiveAssignment();
+        $builder->assignment->setUserIdentification($this->userId);
         $builder->message = $this->getSubject();
         $builder->createAssignment();
 
     }
+
+
+    /*
+    public function onCreate()
+    {
+
+        //(new AssignmentArchive())->archiveAssignment($this->parentContentType->dataId);
+
+
+        $row = (new UserAssignmentChangeReader())->getRowById($this->dataId);
+
+        $builder = new AssignmentBuilder($this->parentContentType);
+        $builder->archiveAssignment();
+        $builder->assignment->setUserIdentification($row->userId);
+        $builder->message = $this->getSubject();
+        $builder->createAssignment();
+
+    }*/
 
 
     public function getSubject()
