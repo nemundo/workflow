@@ -74,7 +74,7 @@ class Identification extends AbstractBase
     {
 
         $this->identificationType = new UsergroupIdentificationType();
-        $this->identificationId = $usergroup->id;
+        $this->identificationId = $usergroup->usergroupId;
 
     }
 

@@ -8,10 +8,10 @@ use Nemundo\User\Usergroup\AbstractUsergroup;
 class CollaborationUsergroup extends AbstractUsergroup
 {
 
-    protected function loadData()
+    protected function loadUsergroup()
     {
-        $this->name = 'Collaboration User';
-        $this->id = '57ddfc4d-f7b2-4c18-a9bd-298149823341';
+        $this->usergroup = 'Collaboration User';
+        $this->usergroupId = '57ddfc4d-f7b2-4c18-a9bd-298149823341';
     }
 
 }

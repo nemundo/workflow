@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Identification\Type;
 use Nemundo\User\Builder\UsergroupBuilder;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 use Nemundo\User\Item\UserItem;
+use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Usergroup\UsergroupMembership;
 
 class UsergroupIdentificationType extends AbstractIdentificationType
@@ -49,7 +50,7 @@ class UsergroupIdentificationType extends AbstractIdentificationType
     public function getIdentificationIdFromUserId($userId)
     {
 
-        $userItem = new UserItem($userId);
+        $userItem = new UserItemType($userId);
 
         $list = [];
         foreach ($userItem->getUsergroup() as $usergroupRow) {
