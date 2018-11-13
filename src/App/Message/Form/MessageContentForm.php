@@ -7,7 +7,7 @@ use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\User\Data\User\UserListBox;
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\Message\Data\Message\Message;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;
@@ -78,7 +78,7 @@ class MessageContentForm extends BootstrapForm
 
         $data = new MessageTo();
         $data->messageId = $messageId;
-        $data->toId = (new UserInformation())->getUserId();
+        $data->toId = (new UserSessionType())->userId;
         $data->save();
 
         $data = new MessageTo();

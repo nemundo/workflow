@@ -36,7 +36,7 @@ class ToDoErfassungStatus extends AbstractWorkflowStatus  // AbstractModelDataWo
 
         $this->assignmentIdentification = new Identification();
         $this->assignmentIdentification->identificationType = new UserIdentificationType();
-        $this->assignmentIdentification->identificationId= (new UserInformation())->getUserId();*/
+        $this->assignmentIdentification->identificationId= (new UserSessionType())->userId;*/
 
     }
 
@@ -75,7 +75,7 @@ class ToDoErfassungStatus extends AbstractWorkflowStatus  // AbstractModelDataWo
 
 
         /*
-        $this->assignUser((new UserInformation())->getUserId());
+        $this->assignUser((new UserSessionType())->userId);
 
 
         $row = (new ToDoReader())->getRowById($dataId);
@@ -91,7 +91,7 @@ class ToDoErfassungStatus extends AbstractWorkflowStatus  // AbstractModelDataWo
             $builder->contentType = new ToDoContentType();
             $builder->dataId = $dataId;
             $builder->subject = $row->todo;
-            $builder->assignment->setUserIdentification((new UserInformation())->getUserId());
+            $builder->assignment->setUserIdentification((new UserSessionType())->userId);
             $builder->deadline = (new Date())->setNow()->addDay(5);
             $builder->createAssignment();
 

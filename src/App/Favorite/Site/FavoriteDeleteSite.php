@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Favorite\Site;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteDelete;
@@ -46,7 +46,7 @@ class FavoriteDeleteSite extends AbstractIconSite
         /*$delete = new FavoriteDelete();
         $delete->filter->andEqual($delete->model->contentTypeId, (new ContentTypeParameter())->getValue());
         $delete->filter->andEqual($delete->model->dataId, (new DataIdParameter())->getValue());
-        $delete->filter->andEqual($delete->model->userId, (new UserInformation())->getUserId());
+        $delete->filter->andEqual($delete->model->userId, (new UserSessionType())->userId);
         $delete->delete();*/
 
         (new UrlReferer())->redirect();

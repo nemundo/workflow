@@ -7,7 +7,7 @@ use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendar\PersonalCalendarReader;
 use Nemundo\Workflow\App\PersonalCalendar\Form\PersonalCalendarBuilderForm;
 
@@ -36,7 +36,7 @@ class PersonalCalendarWidget extends AbstractAdminWidget
         $header->addText('Was');
 
         $reader = new PersonalCalendarReader();
-        $reader->filter->andEqual($reader->model->userId, (new UserInformation())->getUserId());
+        $reader->filter->andEqual($reader->model->userId, (new UserSessionType())->userId);
 
         foreach ($reader->getData() as $calendarRow) {
 

@@ -12,7 +12,7 @@ use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Calendar\Data\Calendar\CalendarReader;
@@ -85,7 +85,7 @@ class CalendarSite extends AbstractSite
         $calendarReader->model->loadIdentificationType();
 
 
-        $calendarReader->filter->orEqual($calendarReader->model->identificationId, (new UserInformation())->getUserId());
+        $calendarReader->filter->orEqual($calendarReader->model->identificationId, (new UserSessionType())->userId);
 
         foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
             $calendarReader->filter->orEqual($calendarReader->model->identificationId, $usergroupId);

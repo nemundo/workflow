@@ -52,11 +52,11 @@ class MailConfigSite extends AbstractSite
         $title->content =$this->title;
 
         $count = new MailConfigCount();
-        $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
+        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
         if ($count->getCount() == 0) {
 
             $data = new MailConfig();
-            $data->userId = (new UserInformation())->getUserId();
+            $data->userId = (new UserSessionType())->userId;
             $data->assignmentMail = true;
             $data->inboxMail = true;
             $data->save();
@@ -64,7 +64,7 @@ class MailConfigSite extends AbstractSite
         }
 
         $id = new MailConfigId();
-        $id->filter->andEqual($id->model->userId, (new UserInformation())->getUserId());
+        $id->filter->andEqual($id->model->userId, (new UserSessionType())->userId);
         $mailConfigId = $id->getId();
 
 
@@ -83,11 +83,11 @@ class MailConfigSite extends AbstractSite
 
 
         $count = new MailConfigCount();
-        $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
+        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
         if ($count->getCount() == 0) {
 
             $data = new MailConfig();
-            $data->userId = (new UserInformation())->getUserId();
+            $data->userId = (new UserSessionType())->userId;
             $data->assignmentMail = true;
             $data->inboxMail = true;
             $data->save();
@@ -96,7 +96,7 @@ class MailConfigSite extends AbstractSite
 
 
         $id = new MailConfigId();
-        $id->filter->andEqual($id->model->userId, (new UserInformation())->getUserId());
+        $id->filter->andEqual($id->model->userId, (new UserSessionType())->userId);
         $mailConfigId = $id->getId();
 
         $view = new MailConfigView($col);

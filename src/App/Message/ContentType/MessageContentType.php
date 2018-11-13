@@ -34,16 +34,9 @@ class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractMod
 
         $row = (new MessageReader())->getRowById($this->dataId);
 
-        /*$builder = new AssignmentBuilder();
-        $builder->contentType = $this;
+        $builder = new NotificationBuilder($this);
         $builder->message = $row->text;
-        $builder->assignment->setUserIdentification($row->toId);
-        $builder->createAssignment();*/
-
-        $builder = new NotificationBuilder();  // NotificationBuilder();
-        $builder->contentType = $this;
-        $builder->message = $row->text;
-       // $builder->createUserInbox();
+        $builder->createUserNotification($row->toId);
 
     }
 

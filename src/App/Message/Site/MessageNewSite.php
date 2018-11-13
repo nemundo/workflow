@@ -19,6 +19,7 @@ class MessageNewSite extends AbstractSite
     {
         $this->title = 'MessageNew';
         $this->url = 'message-new';
+        $this->menuActive = false;
 
     }
 

@@ -5,7 +5,10 @@ namespace Nemundo\Workflow\App\Notification\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AdminWidget;
+use Nemundo\Com\Html\Table\Td;
+use Nemundo\Com\Html\Table\Th;
 use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Notification\Parameter\NotificationParameter;
 use Nemundo\Workflow\App\Notification\Reader\NotificationItemReader;
@@ -17,14 +20,27 @@ class NotificationWidget extends AdminWidget
     public function getHtml()
     {
 
-        $this->widgetTitle = 'Notification';
+        //$this->widgetTitle = 'Notification';
+
+        $this->widgetTitle[LanguageCode::EN] = 'Notification';
+        $this->widgetTitle[LanguageCode::DE] = 'Benachrichtigungen';
+
 
 
         $table = new AdminClickableTable($this);
 
         $header = new TableHeader($table);
-        $header->addText('Subject');
-        $header->addText('Message');
+
+        $th = new Th($header);
+        $th->content[LanguageCode::EN]  = 'Subject';
+        $th->content[LanguageCode::DE]  = 'Betreff';
+
+        $th = new Th($header);
+        $th->content[LanguageCode::EN]  = 'Message';
+        $th->content[LanguageCode::DE]  = 'Nachricht';
+
+        //$header->addText('Subject');
+        //$header->addText('Message');
         $header->addEmpty();
 
         $reader = new NotificationItemReader();

@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Builder;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Text\Keyword;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\Document;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentDelete;
@@ -17,9 +18,13 @@ use Nemundo\App\Content\Builder\AbstractContentBuilder;
 
 // SearchIndexBuilder
 // keine extends AbstractContentBuilder
-class SearchEngineBuilder extends AbstractContentBuilder
+class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
 {
 
+    /**
+     * @var AbstractContentType
+     */
+    private $contentType;
 
     /**
      * @var string
@@ -27,7 +32,7 @@ class SearchEngineBuilder extends AbstractContentBuilder
     private $documentId;
 
 
-    public function __construct(AbstractContentType $contentType=null)
+    public function __construct(AbstractContentType $contentType)
     {
         $this->contentType = $contentType;
 
@@ -37,7 +42,7 @@ class SearchEngineBuilder extends AbstractContentBuilder
     private function prepareIndex()
     {
 
-        $this->check();
+       // $this->check();
 
     }
 
@@ -75,10 +80,10 @@ class SearchEngineBuilder extends AbstractContentBuilder
 
     }
 
-
+/*
     public function createItem()
     {
-    }
+    }*/
 
 
 

@@ -37,7 +37,7 @@ class ToDoWidget extends AbstractAdminWidget
         $table = new AdminTable($this);
 
         $toDoReader = new ToDoReader();
-        $toDoReader->filter->andEqual($toDoReader->model->userId, (new UserInformation())->getUserId());
+        $toDoReader->filter->andEqual($toDoReader->model->userId, (new UserSessionType())->userId);
         $toDoReader->addOrder($toDoReader->model->done);
         $toDoReader->addOrder($toDoReader->model->todo);
 
@@ -71,7 +71,7 @@ class ToDoWidget extends AbstractAdminWidget
 
 
         //$table = new ToDoTable($this);
-        //$table->filter->andEqual($table->model->userId, (new UserInformation())->getUserId());
+        //$table->filter->andEqual($table->model->userId, (new UserSessionType())->userId);
 
         return parent::getHtml();
 

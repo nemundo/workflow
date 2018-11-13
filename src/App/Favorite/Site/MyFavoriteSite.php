@@ -7,7 +7,7 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteReader;
 use Nemundo\Workflow\App\Favorite\Parameter\FavoriteParameter;
@@ -45,7 +45,7 @@ class MyFavoriteSite extends AbstractSite
         $favoriteReader = new FavoriteReader();
         $favoriteReader->model->loadContentType();
         $favoriteReader->model->loadUser();
-        $favoriteReader->filter->andEqual($favoriteReader->model->userId, (new UserInformation())->getUserId());
+        $favoriteReader->filter->andEqual($favoriteReader->model->userId, (new UserSessionType())->userId);
 
         foreach ($favoriteReader->getData() as $favoriteRow) {
 

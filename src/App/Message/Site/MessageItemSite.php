@@ -2,6 +2,7 @@
 
 namespace Nemundo\Workflow\App\Message\Site;
 
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Com\Html\Basic\Bold;
@@ -32,6 +33,7 @@ class MessageItemSite extends AbstractSite
     {
         $this->title = 'MessageItem';
         $this->url = 'message-item';
+        $this->menuActive = false;
 
         //new MessageItemSite($this);
 
@@ -58,6 +60,14 @@ class MessageItemSite extends AbstractSite
 
         $p = new Paragraph($page);
         $p->content = $messageRow->text;
+
+
+        $btn = new AdminButton($page);
+        $btn->content = 'Add Document';
+
+        $btn = new AdminButton($page);
+        $btn->content = 'Add Text';
+
 
 
         /*

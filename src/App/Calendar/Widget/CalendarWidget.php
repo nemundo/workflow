@@ -48,7 +48,7 @@ class CalendarWidget extends AbstractAdminWidget
         $header->addText('Betreff');
 
         $calendarReader = new CalendarIdentificationReader();
-        //$calendarReader->filter->andEqual($calendarReader->model->userId, (new UserInformation())->getUserId());
+        //$calendarReader->filter->andEqual($calendarReader->model->userId, (new UserSessionType())->userId);
         //$calendarReader->filter->andEqualOrGreater($calendarReader->model->date, (new Date())->setNow()->getDbFormat());
         $calendarReader->addOrder($calendarReader->model->date);
 

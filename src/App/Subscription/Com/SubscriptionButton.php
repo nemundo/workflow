@@ -42,7 +42,7 @@ class SubscriptionButton extends AbstractHtmlContainerList
         $count = new SubscriptionCount();
         $count->filter->andEqual($count->model->contentTypeId, $this->contentType->contentId);
         $count->filter->andEqual($count->model->dataId, $this->dataId);
-        $count->filter->andEqual($count->model->userId, (new UserInformation())->getUserId());
+        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
 
         if ($count->getCount() == 0) {
 

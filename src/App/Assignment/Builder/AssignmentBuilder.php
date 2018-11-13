@@ -2,7 +2,6 @@
 
 namespace Nemundo\Workflow\App\Assignment\Builder;
 
-
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\Base\AbstractBase;
@@ -11,7 +10,6 @@ use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
-use Nemundo\User\Information\UserInformation;
 use Nemundo\User\Usergroup\AbstractUsergroup;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\Assignment;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
@@ -26,7 +24,7 @@ class AssignmentBuilder extends AbstractBase
     /**
      * @var AbstractContentType|AbstractTreeContentType
      */
-    public $contentType;
+    protected $contentType;
 
     /**
      * @var string

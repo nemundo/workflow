@@ -31,7 +31,7 @@ class TeamConfigSite extends AbstractSite
         $title->content = $this->title;
 
         $admin = new TeamUserAdmin($page);
-        $admin->filter->andEqual($admin->model->userId, (new UserInformation())->getUserId());
+        $admin->filter->andEqual($admin->model->userId, (new UserSessionType())->userId);
 
 
         $page->render();

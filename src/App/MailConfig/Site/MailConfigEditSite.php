@@ -45,7 +45,7 @@ class MailConfigEditSite extends AbstractSite
         $title->content =$this->title;
 
         $id = new MailConfigId();
-        $id->filter->andEqual($id->model->userId, (new UserInformation())->getUserId());
+        $id->filter->andEqual($id->model->userId, (new UserSessionType())->userId);
         $mailConfigId = $id->getId();
 
 

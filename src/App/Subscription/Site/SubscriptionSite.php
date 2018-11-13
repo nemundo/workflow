@@ -39,7 +39,7 @@ class SubscriptionSite extends AbstractSite
         $data = new Subscription();
         $data->contentTypeId = (new ContentTypeParameter())->getValue();
         $data->dataId = (new DataIdParameter())->getValue();
-        $data->userId = (new UserInformation())->getUserId();
+        $data->userId = (new UserSessionType())->userId;
         $data->save();
 
         (new UrlReferer())->redirect();

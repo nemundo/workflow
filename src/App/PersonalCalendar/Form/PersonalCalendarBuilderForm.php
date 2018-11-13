@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\PersonalCalendar\Form;
 
 
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Calendar\Builder\CalendarBuilder;
 use Nemundo\Workflow\App\PersonalCalendar\Content\PersonalCalendarContentType;
 use Nemundo\Workflow\App\PersonalCalendar\Data\PersonalCalendar\PersonalCalendarForm;
@@ -22,7 +22,7 @@ class PersonalCalendarBuilderForm extends PersonalCalendarForm
 
         $builder = new CalendarBuilder();
         $builder->identificationType = new UserIdentificationType();
-        $builder->identificationId = (new UserInformation())->getUserId();
+        $builder->identificationId = (new UserSessionType())->userId;
         $builder->contentType = new PersonalCalendarContentType();
         $builder->dataId = $dataId;
         $builder->date = $row->date;

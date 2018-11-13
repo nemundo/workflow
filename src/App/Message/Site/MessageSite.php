@@ -9,6 +9,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Parameter\MessageParameter;
+use Nemundo\Workflow\App\Message\Usergroup\MessageUsergroup;
 
 class MessageSite extends AbstractSite
 {
@@ -22,6 +23,9 @@ class MessageSite extends AbstractSite
     {
         $this->title = 'Message';
         $this->url = 'message';
+
+        $this->restricted = true;
+        $this->addRestrictedUsergroup(new MessageUsergroup());
 
         new MessageNewSite($this);
         new MessageItemSite($this);

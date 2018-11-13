@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Calendar\Reader;
 
 
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Calendar\Data\Calendar\CalendarReader;
 
@@ -16,7 +16,7 @@ class CalendarIdentificationReader extends CalendarReader
     public function getData()
     {
 
-        $this->filter->orEqual($this->model->identification, (new UserInformation())->getUserId());
+        $this->filter->orEqual($this->model->identification, (new UserSessionType())->userId);
 
         foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
             $this->filter->orEqual($this->model->identification, $usergroupId);

@@ -5,17 +5,13 @@ namespace Nemundo\Workflow\App\Notification\Builder;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\User\Usergroup\AbstractUsergroup;
-use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 use Nemundo\Workflow\App\MailConfig\MailConfig;
 use Nemundo\Workflow\App\Notification\Data\Notification\Notification;
-use Nemundo\Core\Log\LogMessage;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Data\User\UserReader;
-use Nemundo\User\Information\UserInformation;
-use Nemundo\Workflow\App\Inbox\Data\Inbox\Inbox;
-use Nemundo\App\Content\Builder\AbstractContentBuilder;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationDelete;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationUpdate;
@@ -115,7 +111,7 @@ class NotificationBuilder extends AbstractBaseClass
 
             $mailConfigValue = new MailConfigValue();
             $mailConfigValue->field = $mailConfigValue->model->inboxMail;
-            $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, (new UserInformation())->getUserId());
+            $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, (new UserSessionType())->userId);
             $value = $mailConfigValue->getValue();
 
 
