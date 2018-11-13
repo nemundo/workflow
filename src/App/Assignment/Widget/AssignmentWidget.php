@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Assignment\Widget;
 
 use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Assignment\Com\Table\AssignmentTable;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
