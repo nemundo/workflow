@@ -3,12 +3,9 @@
 namespace Nemundo\Workflow\App\MailConfig\Site;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
-use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfig;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigCount;
@@ -30,14 +27,14 @@ class MailConfigSite extends AbstractSite
         $this->title = 'eMail Einstellungen';
         $this->url = 'mail-config';
 
-        new MailConfigEditSite($this);
+        //new MailConfigEditSite($this);
 
     }
 
 
     protected function registerSite()
     {
-        MailConfigSite::$site=$this;
+        MailConfigSite::$site = $this;
     }
 
 
@@ -46,10 +43,8 @@ class MailConfigSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-
-
         $title = new AdminTitle($page);
-        $title->content =$this->title;
+        $title->content = $this->title;
 
         $count = new MailConfigCount();
         $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
