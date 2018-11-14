@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Wiki\Site;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ContentTypeCollectionDropdown;
 use Nemundo\App\Workflow\Com\WorkflowMenuDropdown;
-use Nemundo\Package\Bootstrap\Navbar\BootstrapNavbar;
+use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
 use Nemundo\Package\Bootstrap\Navigation\BootstrapNavigation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Admin\Com\Button\AdminButton;
