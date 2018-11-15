@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\MailConfig\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfig;
@@ -45,6 +46,12 @@ class MailConfigSite extends AbstractSite
 
         $title = new AdminTitle($page);
         $title->content = $this->title;
+
+        $email = new BootstrapTextBox($page);
+        $email->label = 'eMail';
+        $email->disabled = true;
+        $email->value = (new UserSessionType())->email;
+
 
         $count = new MailConfigCount();
         $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
