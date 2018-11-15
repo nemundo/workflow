@@ -3,12 +3,11 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
-use Nemundo\App\Content\Type\Workflow\_AbstractChangeWorkflowStatus;
-use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
+use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus;
 
 
-class ClosingWorkflowTemplateWorkflowStatus extends AbstractStatusChangeWorkflowStaus
+class ClosingWorkflowTemplateStatus extends AbstractStatusChangeWorkflowStaus
 {
 
     protected function loadType()
@@ -28,7 +27,7 @@ class ClosingWorkflowTemplateWorkflowStatus extends AbstractStatusChangeWorkflow
         $this->saveContentLog();
 
         if ($this->parentContentType !== null) {
-            (new AssignmentArchive())->archiveAssignment($this->parentContentType->dataId);
+            (new AssignmentBuilder($this->parentContentType))->archiveAssignment();
         }
 
     }

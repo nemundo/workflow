@@ -47,7 +47,7 @@ class AssignmentBuilder extends AbstractBase
     public $assignment;
 
 
-    public function __construct(AbstractContentType $contentType = null)
+    public function __construct(AbstractContentType $contentType)
     {
         $this->assignment = new Identification();
         $this->contentType = $contentType;
@@ -58,6 +58,7 @@ class AssignmentBuilder extends AbstractBase
     {
 
         $this->assignment->setUserIdentification($userId);
+        $this->createAssignment();
         return $this;
 
     }

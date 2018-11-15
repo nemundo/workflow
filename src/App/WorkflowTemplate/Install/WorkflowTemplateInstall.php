@@ -6,7 +6,7 @@ use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\AbortTemplateWorkflowStatus;
-use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\ClosingWorkflowTemplateWorkflowStatus;
+use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\ClosingWorkflowTemplateStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\Comment\CommentTemplateStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\File\FileDeleteTemplateStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileTemplateStatus;
@@ -28,7 +28,7 @@ class WorkflowTemplateInstall extends AbstractScript
         $setup->addContentType(new CommentTemplateStatus());
 
         $setup->addContentType(new AbortTemplateWorkflowStatus());
-        $setup->addContentType(new ClosingWorkflowTemplateWorkflowStatus());
+        $setup->addContentType(new ClosingWorkflowTemplateStatus());
         $setup->addContentType(new UserAssignmentTemplateWorkflowStatus());
 
         // File
