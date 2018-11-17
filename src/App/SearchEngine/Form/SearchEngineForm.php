@@ -32,10 +32,6 @@ class SearchEngineForm extends SearchForm
         $this->query->placeholder = 'Suche';
         $this->query->value = $this->query->getValue();
 
-
-        // Content Filter
-
-
         //$row = new BootstrapFormRow($this);
         $submit = new BootstrapSubmitButton($row);
         $submit->content = 'Suchen';
