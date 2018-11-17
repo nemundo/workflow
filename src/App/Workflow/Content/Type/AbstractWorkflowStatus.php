@@ -22,7 +22,7 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
     use WorkflowStatusTrait;
 
 
-
+/*
     public function getForm($parentItem = null)
     {
 
@@ -31,7 +31,7 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 
         return parent::getForm($div);
 
-    }
+    }*/
 
     /**
      * @param string $sortOrder
