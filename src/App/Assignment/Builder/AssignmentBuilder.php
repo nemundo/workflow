@@ -51,6 +51,7 @@ class AssignmentBuilder extends AbstractBase
     {
         $this->assignment = new Identification();
         $this->contentType = $contentType;
+        $this->deadline = new Date();
     }
 
 
@@ -101,7 +102,9 @@ class AssignmentBuilder extends AbstractBase
         $data->message = $this->message;
         $data->assignment = $this->assignment;
         $data->assignmentText = $this->assignment->getValue();
-        $data->deadline = $this->deadline;
+        if ($this->deadline->isNotNull()) {
+            $data->deadline = $this->deadline;
+        }
         $data->save();
 
         $this->sendMail();

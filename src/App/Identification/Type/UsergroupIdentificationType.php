@@ -14,7 +14,7 @@ class UsergroupIdentificationType extends AbstractIdentificationType
 
     protected function loadIdentification()
     {
-        $this->id = 'ad5c33f6-88d9-444a-89e5-8f41a56fb5e3';
+        $this->identificationId = 'ad5c33f6-88d9-444a-89e5-8f41a56fb5e3';
         $this->identification = 'Usergroup';
     }
 

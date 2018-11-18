@@ -15,7 +15,7 @@ class IdentificationSetup extends AbstractBase
 
         $data = new IdentificationType();
         $data->updateOnDuplicate = true;
-        $data->id = $identificationType->id;
+        $data->id = $identificationType->identificationId;
         $data->identification = $identificationType->identification;
         $data->identificationTypeClass = $identificationType->getClassName();
         $data->save();

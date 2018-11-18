@@ -21,7 +21,7 @@ class IdentificationDataProperty extends AbstractDataProperty
 
             if ($identification->identificationType !== null) {
 
-                $this->typeValueList->setModelValue($this->type->identificationTypeId, $identification->identificationType->id);
+                $this->typeValueList->setModelValue($this->type->identificationTypeId, $identification->identificationType->identificationId);
                 $this->typeValueList->setModelValue($this->type->identificationId, $identification->identificationId);
 
             } else {

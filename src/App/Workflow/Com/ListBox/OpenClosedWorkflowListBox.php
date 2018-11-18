@@ -50,7 +50,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
 
     public function getValue()
     {
-        $value =  parent::getValue();
+        $value = parent::getValue();
 
         if ($value == '') {
             $value = $this->defaultValue;
@@ -61,8 +61,45 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     }
 
 
-    private function addListBoxItem(AbstractDataType $listBoxItem) {
-        $this->addItem($listBoxItem->id,$listBoxItem->name);
+    public function isAll()
+    {
+
+        $value = $this->compareValue(new AllListBoxItem());
+        return $value;
+
+    }
+
+
+    public function isOpen()
+    {
+        $value = $this->compareValue(new OpenListBoxItem());
+        return $value;
+
+    }
+
+
+    public function isCloesed()
+    {
+        $value = $this->compareValue(new ClosedListBoxItem());
+        return $value;
+    }
+
+
+    private function compareValue(AbstractDataType $dataType)
+    {
+
+        $value = false;
+        if ($this->getValue() == $dataType->id) {
+            $value = true;
+        }
+        return $value;
+
+    }
+
+
+    private function addListBoxItem(AbstractDataType $listBoxItem)
+    {
+        $this->addItem($listBoxItem->id, $listBoxItem->name);
     }
 
 

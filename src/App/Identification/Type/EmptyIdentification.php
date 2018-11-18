@@ -9,7 +9,7 @@ class EmptyIdentification extends AbstractIdentificationType
     protected function loadIdentification()
     {
 
-        $this->id = '';
+        $this->identificationId = '';
 
         //$this->identification = 'User';
 

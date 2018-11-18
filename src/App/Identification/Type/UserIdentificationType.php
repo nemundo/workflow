@@ -12,7 +12,7 @@ class UserIdentificationType extends AbstractIdentificationType
     protected function loadIdentification()
     {
 
-        $this->id = '5f6983b9-ab9d-4f63-8cc4-891227dd0750';
+        $this->identificationId = '5f6983b9-ab9d-4f63-8cc4-891227dd0750';
         $this->identification = 'User';
 
     }

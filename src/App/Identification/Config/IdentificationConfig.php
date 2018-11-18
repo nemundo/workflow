@@ -18,7 +18,7 @@ class IdentificationConfig extends AbstractBase
     public static function addIdentification(AbstractIdentificationType $identificationType)
     {
 
-        IdentificationConfig::$identificationList[$identificationType->id] = $identificationType;
+        IdentificationConfig::$identificationList[$identificationType->identificationId] = $identificationType;
 
     }
 
