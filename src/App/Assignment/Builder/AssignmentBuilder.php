@@ -46,6 +46,11 @@ class AssignmentBuilder extends AbstractBase
      */
     public $assignment;
 
+    /**
+     * @var string
+     */
+    public $source;
+
 
     public function __construct(AbstractContentType $contentType)
     {
@@ -88,14 +93,19 @@ class AssignmentBuilder extends AbstractBase
         $data->subject = $this->contentType->getSubject();
 
 
-        $source = $this->contentType->contentLabel;
-        if ($this->contentType->isObjectOfClass(AbstractTreeContentType::class)) {
+        $source = $this->source;
 
-            $parentType = $this->contentType->getParent();
-            if ($parentType !== null) {
-                $source = $parentType->getSubject();
+        if ($source == null) {
+
+            $source = $this->contentType->contentLabel;
+            if ($this->contentType->isObjectOfClass(AbstractTreeContentType::class)) {
+
+                $parentType = $this->contentType->getParent();
+                if ($parentType !== null) {
+                    $source = $parentType->getSubject();
+                }
+
             }
-
         }
 
         $data->source = $source;
