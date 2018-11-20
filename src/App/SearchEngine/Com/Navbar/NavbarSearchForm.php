@@ -29,7 +29,7 @@ class NavbarSearchForm extends AbstractHtmlContainerList
 
         $input = new SearchAutocompleteTextBox($form);
         $input->name = (new QueryParameter())->getParameterName();
-$input->addCssClass('mr-sm-2');
+        $input->addCssClass('mr-sm-2');
 
         $submit = new SubmitButton($form);
         $submit->content = 'Search';
