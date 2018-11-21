@@ -26,8 +26,8 @@ public $messageId;
 */
 public $message;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = MessageToModel::class;
 $this->externalTableName = "message_to";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

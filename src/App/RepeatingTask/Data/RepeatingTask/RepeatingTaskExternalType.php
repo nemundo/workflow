@@ -21,8 +21,8 @@ public $task;
 */
 public $deadlineDay;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = RepeatingTaskModel::class;
 $this->externalTableName = "repeatingtask_repeating_task";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

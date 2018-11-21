@@ -71,8 +71,8 @@ public $dateTimeCreated;
 */
 public $source;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = AssignmentModel::class;
 $this->externalTableName = "assignment_assignment";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

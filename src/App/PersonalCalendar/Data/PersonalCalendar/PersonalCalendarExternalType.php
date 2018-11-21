@@ -26,8 +26,8 @@ public $userId;
 */
 public $user;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = PersonalCalendarModel::class;
 $this->externalTableName = "personal_calendar_personal_calendar";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

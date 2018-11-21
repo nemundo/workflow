@@ -6,8 +6,8 @@ class ImageContentTemplateExternalType extends \Nemundo\Model\Type\External\Exte
 */
 public $id;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = ImageContentTemplateModel::class;
 $this->externalTableName = "content_template_imagecontenttemplate";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -11,8 +11,8 @@ public $id;
 */
 public $comment;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = CommentModel::class;
 $this->externalTableName = "personal_task_comment";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

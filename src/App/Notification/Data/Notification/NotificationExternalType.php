@@ -56,8 +56,8 @@ public $read;
 */
 public $archive;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = NotificationModel::class;
 $this->externalTableName = "notification_notification";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

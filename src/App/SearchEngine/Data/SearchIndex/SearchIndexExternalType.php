@@ -26,8 +26,8 @@ public $wordId;
 */
 public $word;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = SearchIndexModel::class;
 $this->externalTableName = "searchengine_search_index";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

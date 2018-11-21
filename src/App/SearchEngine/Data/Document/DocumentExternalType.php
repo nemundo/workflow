@@ -21,8 +21,8 @@ public $contentType;
 */
 public $dataId;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = DocumentModel::class;
 $this->externalTableName = "searchengine_document";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

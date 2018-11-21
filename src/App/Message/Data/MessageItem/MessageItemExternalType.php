@@ -46,8 +46,8 @@ public $contentTypeId;
 */
 public $contentType;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = MessageItemModel::class;
 $this->externalTableName = "message_item";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

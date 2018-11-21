@@ -11,8 +11,8 @@ public $id;
 */
 public $document;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = MessageDocumentModel::class;
 $this->externalTableName = "message_message_document";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

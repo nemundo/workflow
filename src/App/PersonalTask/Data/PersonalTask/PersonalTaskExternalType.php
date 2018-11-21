@@ -56,8 +56,8 @@ public $description;
 */
 public $file;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = PersonalTaskModel::class;
 $this->externalTableName = "personal_task_personal_task";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

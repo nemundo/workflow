@@ -16,8 +16,8 @@ public $contentTypeId;
 */
 public $contentType;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = DashboardContentTypeModel::class;
 $this->externalTableName = "dashboard_content_type";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

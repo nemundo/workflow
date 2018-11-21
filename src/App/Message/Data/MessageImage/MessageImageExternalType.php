@@ -11,8 +11,8 @@ public $id;
 */
 public $image;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = MessageImageModel::class;
 $this->externalTableName = "message_message_image";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

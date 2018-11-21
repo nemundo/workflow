@@ -26,8 +26,8 @@ public $assignmentMail;
 */
 public $inboxMail;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = MailConfigModel::class;
 $this->externalTableName = "mailconfig_mail_config";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

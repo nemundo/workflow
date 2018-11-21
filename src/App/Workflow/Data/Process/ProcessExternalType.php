@@ -21,8 +21,8 @@ public $processClass;
 */
 public $setupStatus;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = ProcessModel::class;
 $this->externalTableName = "workflow_process";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
