@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Assignment\Install;
 
 use Nemundo\App\Application\Setup\ApplicationSetup;
+use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\Assignment\Application\AssignmentApplication;
@@ -20,6 +21,9 @@ class AssignmentInstall extends AbstractScript
         $setup = new ModelCollectionSetup();
         $setup->addCollection(new AssignmentCollection());
 
+        $setup = new ScriptSetup();
+        $setup->application = new AssignmentApplication();
+        $setup->addScript(new AssignmentClean());
 
         (new MailConfigInstall());
 

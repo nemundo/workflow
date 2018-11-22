@@ -3,11 +3,13 @@
 namespace Nemundo\Workflow\App\Identification\Type;
 
 
+use Nemundo\Admin\Usergroup\Parameter\UsergroupParameter;
 use Nemundo\User\Builder\UsergroupBuilder;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 use Nemundo\User\Item\UserItem;
 use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Usergroup\UsergroupMembership;
+use Nemundo\Workflow\App\Identification\Site\UsergroupIdentificationSite;
 
 class UsergroupIdentificationType extends AbstractIdentificationType
 {
@@ -27,6 +29,17 @@ class UsergroupIdentificationType extends AbstractIdentificationType
 
     }
 
+
+    public function getSite($identificationId)
+    {
+
+        $site = clone(UsergroupIdentificationSite::$site);
+        $site->addParameter(new UsergroupParameter($identificationId));
+        $site->title = $this->getValue($identificationId);
+
+        return $site;
+
+    }
 
 
     public function getUserIdListFromIdentificationId($identificationId)
@@ -60,7 +73,6 @@ class UsergroupIdentificationType extends AbstractIdentificationType
         return $list;
 
     }
-
 
 
     public function getUserIdList()

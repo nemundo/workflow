@@ -37,6 +37,19 @@ class Identification extends AbstractBase
     }
 
 
+    public function getSite()
+    {
+
+        $site = null;
+        if ($this->identificationType !== null) {
+            $site = $this->identificationType->getSite($this->identificationId);
+        }
+
+        return $site;
+
+    }
+
+
     public function getUserIdListFromIdentificationId()
     {
 

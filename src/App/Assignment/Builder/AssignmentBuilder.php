@@ -5,7 +5,6 @@ namespace Nemundo\Workflow\App\Assignment\Builder;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
@@ -73,9 +72,14 @@ class AssignmentBuilder extends AbstractBase
     public function createUsergroupAssignment(AbstractUsergroup $usergroup)
     {
 
+        $this->assignment->setUsergroupIdentification($usergroup);
+        $this->createAssignment();
+
+        /*
         foreach ($usergroup->getUserList() as $userRow) {
             $this->createUserAssignment($userRow->id);
-        }
+        }*/
+
         return $this;
 
     }
@@ -91,7 +95,6 @@ class AssignmentBuilder extends AbstractBase
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
         $data->subject = $this->contentType->getSubject();
-
 
         $source = $this->source;
 
