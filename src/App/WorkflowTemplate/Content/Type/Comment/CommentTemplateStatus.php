@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type\Comment;
 
 
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
@@ -15,18 +16,27 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentReader;
 class CommentTemplateStatus extends AbstractWorkflowStatus  // AbstractModelDataWorkflowStatus
 {
 
+    /**
+     * @var string
+     */
     public $comment;
 
+
+    public $commentLabel = 'Kommentar';
 
     protected function loadType()
     {
 
         //$this->contentLabel = 'Comment';
         $this->contentLabel = 'Kommentar';
+
+        //$this->contentLabel[LanguageCode::EN] = 'Comment';
+        //$this->contentLabel[LanguageCode::DE] = 'Kommentar';
+
+
         $this->contentName = 'comment';
         $this->contentId = '9fc81c7a-1fe8-4b8d-aa52-5a9f60431330';
-        //$this->modelClass = CommentModel::class;
-        $this->changeStatus = false;
+          $this->changeStatus = false;
         $this->showMenu = false;
 
         $this->formClass = CommentForm::class;
@@ -47,24 +57,8 @@ class CommentTemplateStatus extends AbstractWorkflowStatus  // AbstractModelData
     }
 
 
-    /*
-    public function onCreate()
-    {
-
-        $this->saveContentLog();
-
-        $row = (new CommentReader())->getRowById($this->dataId);
-
-        $builder = new SearchEngineBuilder();
-        $builder->contentType = $this;
-        $builder->addText($row->comment);
-
-    }*/
-
-
     public function getJson()
     {
-
 
         $data = parent::getJson();
 
@@ -72,7 +66,6 @@ class CommentTemplateStatus extends AbstractWorkflowStatus  // AbstractModelData
         $data['comment'] = $row->comment;
 
         return $data;
-
 
     }
 

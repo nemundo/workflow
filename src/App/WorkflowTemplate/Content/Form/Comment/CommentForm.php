@@ -24,7 +24,8 @@ class CommentForm extends ContentTreeForm
     {
 
         $this->comment = new BootstrapLargeTextBox($this);
-        $this->comment->label = 'Kommentar';
+        $this->comment->label = $this->contentType->commentLabel;  // 'Kommentar';
+        $this->comment->validation = true;
 
         return parent::getHtml();
     }
@@ -33,17 +34,9 @@ class CommentForm extends ContentTreeForm
     protected function onSubmit()
     {
 
-        /*
-        $status = new CommentTemplateStatus();
-        $status->parentContentType = $this->parentContentType;
-        $status->comment = $this->comment->getValue();
-        $status->saveType();*/
-
         $this->contentType->parentContentType = $this->parentContentType;
-        $this->contentType->comment =  $this->comment->getValue();
+        $this->contentType->comment = $this->comment->getValue();
         $this->contentType->saveType();
-
-
 
     }
 

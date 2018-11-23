@@ -13,6 +13,8 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\File\File;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileRow;
 
+
+// FileUploadTemplateStatus
 class FileTemplateStatus extends AbstractWorkflowStatus
 {
 

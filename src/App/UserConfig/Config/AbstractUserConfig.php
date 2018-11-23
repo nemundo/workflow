@@ -1,22 +1,22 @@
 <?php
 
-namespace Nemundo\Workflow\App\Store\Type;
+namespace Nemundo\Workflow\App\UserConfig\Config;
 
 
 use Nemundo\Core\Base\AbstractBase;
 
-abstract class AbstractStore extends AbstractBase
+abstract class AbstractUserConfig extends AbstractBase
 {
 
     /**
      * @var string
      */
-    protected $storeId;
+    public $configId;
 
     /**
      * @var string
      */
-    public $storeName;
+    public $configLabel;
 
     /**
      * @var string
@@ -24,17 +24,15 @@ abstract class AbstractStore extends AbstractBase
     protected $defaultValue;
 
 
-    abstract protected function loadStore();
+    abstract protected function loadUserConfig();
 
     abstract public function setValue($value);
 
     abstract public function getValue();
 
-    abstract public function removeStore();
-
     public function __construct()
     {
-        $this->loadStore();
+        $this->loadUserConfig();
     }
 
 

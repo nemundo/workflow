@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Store\Type;
 
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStore;
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreCount;
+use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreDelete;
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreReader;
 
 abstract class AbstractLargeTextStore extends AbstractStore
@@ -36,6 +37,16 @@ abstract class AbstractLargeTextStore extends AbstractStore
         }
 
         return $value;
+
+    }
+
+
+    public function removeStore()
+    {
+
+        (new LargeTextStoreDelete())->deleteById($this->storeId);
+
+        return $this;
 
     }
 
