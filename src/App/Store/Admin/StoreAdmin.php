@@ -7,17 +7,17 @@ use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Workflow\App\Store\Form\LargeTextStoreForm;
-use Nemundo\Workflow\App\Store\Type\AbstractStore;
+use Nemundo\Workflow\App\Store\Type\AbstractStoreType;
 
 class StoreAdmin extends AbstractHtmlContainerList
 {
 
     /**
-     * @var AbstractStore[]
+     * @var AbstractStoreType[]
      */
     private $storeList = [];
 
-    public function addStore(AbstractStore $store)
+    public function addStore(AbstractStoreType $store)
     {
         $this->storeList[] = $store;
         return $this;

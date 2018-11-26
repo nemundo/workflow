@@ -8,7 +8,7 @@ use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreCount;
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreDelete;
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreReader;
 
-abstract class AbstractLargeTextStore extends AbstractStore
+abstract class AbstractLargeTextStoreType extends AbstractStoreType
 {
 
     public function setValue($value)

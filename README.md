@@ -14,3 +14,10 @@ git submodule add https://github.com/nemundo/workflow.git lib/workflow
 (new WorkflowInstall())->run();
 
 ```
+
+### config.php
+```
+$lib = new Library($autoload);
+$lib->source = __DIR__ . '/lib/workflow/src/';
+$lib->namespace = 'Nemundo\\Workflow';
+```

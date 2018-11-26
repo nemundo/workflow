@@ -5,13 +5,14 @@ namespace Nemundo\Workflow\App\Store\Type;
 
 use Nemundo\Core\Base\AbstractBase;
 
-abstract class AbstractStore extends AbstractBase
+
+abstract class AbstractStoreType extends AbstractBase
 {
 
     /**
      * @var string
      */
-    protected $storeId;
+    public $storeId;
 
     /**
      * @var string
