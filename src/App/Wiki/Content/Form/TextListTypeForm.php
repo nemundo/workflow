@@ -6,7 +6,6 @@ namespace Nemundo\Workflow\App\Wiki\Content\Form;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\App\Content\Form\ContentTreeFormTrait;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Wiki\Content\Type\TextListType;

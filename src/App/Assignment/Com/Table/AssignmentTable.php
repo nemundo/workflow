@@ -4,15 +4,12 @@ namespace Nemundo\Workflow\App\Assignment\Com\Table;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Admin\Com\Table\Header\SortingHyperlink;
 use Nemundo\Admin\Com\Table\Header\UpDownSortingHyperlink;
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
-use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;

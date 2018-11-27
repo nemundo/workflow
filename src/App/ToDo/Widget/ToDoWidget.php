@@ -7,7 +7,6 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Com\Html\Basic\Strike;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
-use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Workflow\App\ToDo\Action\ToDoAction;
@@ -62,9 +61,6 @@ class ToDoWidget extends AbstractAdminWidget
                 $link->site = $site;
 
             }
-
-
-
 
 
         }

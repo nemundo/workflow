@@ -4,21 +4,10 @@ namespace Nemundo\Workflow\App\Message\Site;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Admin\Com\Widget\AdminWidget;
-use Nemundo\Com\Html\Basic\Bold;
-use Nemundo\Com\Html\Basic\Hr;
 use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Core\Directory\TextDirectory;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Message\Collection\MessageDataTypeCollection;
-use Nemundo\Workflow\App\Message\ContentType\TextContentType;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
-use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemReader;
-use Nemundo\Workflow\App\Message\Data\MessageTo\MessageToReader;
-use Nemundo\Workflow\App\Message\Event\MessageEvent;
-use Nemundo\Workflow\App\Message\Form\MessageImageForm;
-use Nemundo\Workflow\App\Message\Form\MessageReplyForm;
 use Nemundo\Workflow\App\Message\Parameter\MessageParameter;
 
 class MessageItemSite extends AbstractSite
@@ -67,7 +56,6 @@ class MessageItemSite extends AbstractSite
 
         $btn = new AdminButton($page);
         $btn->content = 'Add Text';
-
 
 
         /*

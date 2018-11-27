@@ -15,6 +15,5 @@ class CalendarInstall extends AbstractScript
         $setup->addCollection(new CalendarCollection());
 
 
-
     }
 }

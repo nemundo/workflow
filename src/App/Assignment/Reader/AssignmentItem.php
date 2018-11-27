@@ -36,11 +36,12 @@ class AssignmentItem extends AbstractBaseClass
     public $deadline;
 
 
-    public function hasDeadline() {
+    public function hasDeadline()
+    {
 
         $value = false;
-        if ($this->deadline !==null) {
-            $value=true;
+        if ($this->deadline !== null) {
+            $value = true;
         }
         return $value;
 

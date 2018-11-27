@@ -2,20 +2,11 @@
 
 namespace Nemundo\Workflow\App\Wiki\Site;
 
-use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Content\Factory\ContentTypeFactory;
-use Nemundo\App\Content\Form\ContentModelForm;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Model\Form\ModelForm;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 use Nemundo\Workflow\App\Wiki\Form\WikiForm;
-use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
-use Nemundo\App\Content\Data\ContentType\ContentTypeReader;
-use Nemundo\App\Content\Parameter\ContentTypeParameter;
 
 class WikiNewSite extends AbstractSite
 {
@@ -46,8 +37,6 @@ class WikiNewSite extends AbstractSite
 
 
         $form = (new WikiPageContentType())->getForm($page);
-
-
 
 
         /*$contentTypeId = (new ContentTypeParameter())->getValue();

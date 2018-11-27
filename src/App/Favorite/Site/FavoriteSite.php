@@ -3,12 +3,11 @@
 namespace Nemundo\Workflow\App\Favorite\Site;
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\Favorite;
-use Nemundo\Workflow\App\Subscription\Data\Subscription\Subscription;
-use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class FavoriteSite extends AbstractSite
 {

@@ -44,7 +44,7 @@ class AssignmentSite extends AbstractSite
 
         $searchForm = new AssignmentSearchForm($page);
 
-        $table =  new AssignmentTable($page);
+        $table = new AssignmentTable($page);
         $table->filter = $searchForm->getFilter();
 
         $page->render();

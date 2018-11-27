@@ -3,16 +3,12 @@
 namespace Nemundo\Workflow\App\Message\Event;
 
 
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Event\AbstractEvent;
-use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\ContentType\AbstractMessageContentType;
-use Nemundo\Workflow\App\Message\ContentType\MessageContentType;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Data\Message\MessageUpdate;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemCount;
-use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 class MessageEvent extends AbstractEvent
 {

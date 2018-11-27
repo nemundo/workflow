@@ -8,6 +8,10 @@ use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigText;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextCount;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextUpdate;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextValue;
+use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNo;
+use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNoCount;
+use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNoUpdate;
+use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNoValue;
 
 abstract class AbstractYesNoUserConfig extends AbstractUserConfig
 {
@@ -20,12 +24,12 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
     public function setValue($value)
     {
 
-        $count = new UserConfigTextCount();
+        $count = new UserConfigYesNoCount();
         $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
         $count->filter->andEqual($count->model->userConfigId, $this->configId);
         if ($count->getCount() == 0) {
 
-            $data = new UserConfigText();
+            $data = new UserConfigYesNo();
             $data->userId = (new UserSessionType())->userId;
             $data->userConfigId = $this->configId;
             $data->value = $value;
@@ -33,7 +37,7 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
 
         } else {
 
-            $update = new UserConfigTextUpdate();
+            $update = new UserConfigYesNoUpdate();
             $update->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
             $update->filter->andEqual($count->model->userConfigId, $this->configId);
             $update->value = $value;
@@ -50,13 +54,12 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
 
         $value = $this->defaultValue;
 
-
-        $count = new UserConfigTextCount();
+        $count = new UserConfigYesNoCount();
         $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
         $count->filter->andEqual($count->model->userConfigId, $this->configId);
         if ($count->getCount() == 1) {
 
-            $configValue = new UserConfigTextValue();
+            $configValue = new UserConfigYesNoValue();
             $configValue->field = $configValue->model->value;
             $configValue->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
             $configValue->filter->andEqual($count->model->userConfigId, $this->configId);

@@ -4,8 +4,8 @@ namespace Nemundo\Workflow\App\Workflow\Site;
 
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Web\Site\Site;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusSite extends Site
 {
@@ -15,11 +15,12 @@ class WorkflowStatusSite extends Site
      */
     public $workflowStatus;
 
-    public function isActiveWorkflowStatus() {
+    public function isActiveWorkflowStatus()
+    {
 
-        $value= false;
+        $value = false;
         if ($this->workflowStatus->contentId == (new ContentTypeParameter())->getValue()) {
-            $value=true;
+            $value = true;
         }
         return $value;
 

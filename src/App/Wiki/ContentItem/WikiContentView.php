@@ -5,14 +5,12 @@ namespace Nemundo\Workflow\App\Wiki\ContentItem;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
-use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Com\Html\Basic\Hr;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Package\FontAwesome\Icon\EditIcon;
 use Nemundo\Package\FontAwesome\Icon\TrashIcon;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
-use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiItemParameter;
 use Nemundo\Workflow\App\Wiki\Site\WikiEditSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiItemDeleteSite;

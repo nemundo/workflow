@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
 use Nemundo\Core\File\Base64File;
-use Nemundo\Model\Data\Property\File\RedirectFilenameDataProperty;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Web\Http\FileRequest\FileRequest;
@@ -47,7 +46,6 @@ class FileTemplateStatus extends AbstractWorkflowStatus
         $this->formClass = FileUploadTemplateWorkflowForm::class;
         //$this->viewClass = FileUploadContentView::class;
 
-        // wieder aktivieren
         $this->showMenu = false;
 
     }

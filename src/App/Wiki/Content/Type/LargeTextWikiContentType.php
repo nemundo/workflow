@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\Wiki\Content\Type;
 
 
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 
 class LargeTextWikiContentType extends LargeTextTemplateContentType

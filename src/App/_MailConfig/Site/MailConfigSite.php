@@ -12,7 +12,6 @@ use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfig;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigCount;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigFormUpdate;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigId;
-use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigView;
 
 class MailConfigSite extends AbstractSite
 {

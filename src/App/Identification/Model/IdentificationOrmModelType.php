@@ -53,5 +53,4 @@ class IdentificationOrmModelType extends IdentificationModelType
     }
 
 
-
 }

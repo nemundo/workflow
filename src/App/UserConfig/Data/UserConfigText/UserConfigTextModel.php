@@ -32,16 +32,16 @@ public $userConfig;
 public $value;
 
 protected function loadModel() {
-$this->tableName = "userconfig_userconfigtext";
-$this->aliasTableName = "userconfig_userconfigtext";
+$this->tableName = "userconfig_text";
+$this->aliasTableName = "userconfig_text";
 $this->label = "UserConfigText";
 
 $this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
-$this->id->tableName = "userconfig_userconfigtext";
+$this->id->tableName = "userconfig_text";
 $this->id->fieldName = "id";
-$this->id->aliasFieldName = "userconfig_userconfigtext_id";
+$this->id->aliasFieldName = "userconfig_text_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = "";
 $this->id->visible->form = false;
@@ -50,21 +50,21 @@ $this->id->visible->view = false;
 $this->id->visible->form = false;
 
 $this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->userId->tableName = "userconfig_userconfigtext";
+$this->userId->tableName = "userconfig_text";
 $this->userId->fieldName = "user";
-$this->userId->aliasFieldName = "userconfig_userconfigtext_user";
+$this->userId->aliasFieldName = "userconfig_text_user";
 $this->userId->label = "User";
 
 $this->userConfigId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
-$this->userConfigId->tableName = "userconfig_userconfigtext";
+$this->userConfigId->tableName = "userconfig_text";
 $this->userConfigId->fieldName = "user_config";
-$this->userConfigId->aliasFieldName = "userconfig_userconfigtext_user_config";
+$this->userConfigId->aliasFieldName = "userconfig_text_user_config";
 $this->userConfigId->label = "User Config";
 
 $this->value = new \Nemundo\Model\Type\Text\TextType($this);
-$this->value->tableName = "userconfig_userconfigtext";
+$this->value->tableName = "userconfig_text";
 $this->value->fieldName = "value";
-$this->value->aliasFieldName = "userconfig_userconfigtext_value";
+$this->value->aliasFieldName = "userconfig_text_value";
 $this->value->label = "Value";
 $this->value->allowNullValue = "";
 $this->value->length = 255;
@@ -72,19 +72,19 @@ $this->value->length = 255;
 }
 public function loadUser() {
 if ($this->user == null) {
-$this->user = new \Nemundo\User\Data\User\UserExternalType($this, "userconfig_userconfigtext_user");
-$this->user->tableName = "userconfig_userconfigtext";
+$this->user = new \Nemundo\User\Data\User\UserExternalType($this, "userconfig_text_user");
+$this->user->tableName = "userconfig_text";
 $this->user->fieldName = "user";
-$this->user->aliasFieldName = "userconfig_userconfigtext_user";
+$this->user->aliasFieldName = "userconfig_text_user";
 $this->user->label = "User";
 }
 }
 public function loadUserConfig() {
 if ($this->userConfig == null) {
-$this->userConfig = new \Nemundo\Workflow\App\UserConfig\Data\UserConfig\UserConfigExternalType($this, "userconfig_userconfigtext_user_config");
-$this->userConfig->tableName = "userconfig_userconfigtext";
+$this->userConfig = new \Nemundo\Workflow\App\UserConfig\Data\UserConfig\UserConfigExternalType($this, "userconfig_text_user_config");
+$this->userConfig->tableName = "userconfig_text";
 $this->userConfig->fieldName = "user_config";
-$this->userConfig->aliasFieldName = "userconfig_userconfigtext_user_config";
+$this->userConfig->aliasFieldName = "userconfig_text_user_config";
 $this->userConfig->label = "User Config";
 }
 }

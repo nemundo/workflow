@@ -3,12 +3,10 @@
 namespace Nemundo\Workflow\App\Wiki\ContentType;
 
 
-use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Workflow\App\News\Content\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
-use Nemundo\App\Content\Parameter\DataIdParameter;
-use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 class WikiNewsContentType //extends NewsContentType
 {
@@ -46,7 +44,6 @@ class WikiNewsContentType //extends NewsContentType
         $subject = $newsRow->title;
 
         return $subject;
-
 
 
     }

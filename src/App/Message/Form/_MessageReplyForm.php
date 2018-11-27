@@ -5,10 +5,7 @@ namespace Nemundo\Workflow\App\Message\Form;
 
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-use Nemundo\User\Data\User\UserListBox;
 use Nemundo\Workflow\App\Message\ContentType\TextContentType;
-use Nemundo\Workflow\App\Message\Data\Message\Message;
 use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItem;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageText;
 

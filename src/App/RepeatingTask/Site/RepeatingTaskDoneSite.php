@@ -19,14 +19,14 @@ class RepeatingTaskDoneSite extends AbstractSite
 
     protected function loadSite()
     {
-   $this->url = 'done';
-   $this->menuActive= false;
+        $this->url = 'done';
+        $this->menuActive = false;
     }
 
 
     protected function registerSite()
     {
-      RepeatingTaskDoneSite::$site=$this;
+        RepeatingTaskDoneSite::$site = $this;
     }
 
 
@@ -38,7 +38,6 @@ class RepeatingTaskDoneSite extends AbstractSite
         (new TaskItem($dataId))->archiveTask();
 
         (new UrlReferer())->redirect();
-
 
 
     }

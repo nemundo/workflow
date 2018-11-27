@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\Identification\Model;
 
 
-use Nemundo\Core\System\ObjectBuilder;
 use Nemundo\Model\Reader\Property\AbstractReaderProperty;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 

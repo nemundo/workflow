@@ -9,7 +9,8 @@ use Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTy
 class IdentificationFilter
 {
 
-    public function getFilter() {
+    public function getFilter()
+    {
 
         $filter = new Filter();
 

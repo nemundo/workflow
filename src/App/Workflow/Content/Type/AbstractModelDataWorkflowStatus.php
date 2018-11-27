@@ -27,7 +27,8 @@ abstract class AbstractModelDataWorkflowStatus extends AbstractWorkflowStatus
     }
 
 
-    public function onCreate() {
+    public function onCreate()
+    {
 
     }
 

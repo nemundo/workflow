@@ -12,11 +12,8 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Action\NewsAction;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
-use Nemundo\Workflow\App\News\Data\News\NewsForm;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
-use Nemundo\Workflow\App\News\Data\News\NewsTable;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
-use Nemundo\Workflow\App\Stream\Event\StreamEvent;
 
 class NewsSite extends AbstractSite
 {
@@ -41,7 +38,6 @@ class NewsSite extends AbstractSite
         $form = (new NewsContentType())->getForm($page);
 
 
-
         $newsReader = new NewsReader();
         $newsReader->addOrder($newsReader->model->dateTime, SortOrder::DESCENDING);
 
@@ -62,9 +58,6 @@ class NewsSite extends AbstractSite
 
 
         }
-
-
-
 
 
         //$form->redirectSite =

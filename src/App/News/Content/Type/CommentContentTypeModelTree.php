@@ -5,9 +5,6 @@ namespace Nemundo\Workflow\App\News\Content\Type;
 
 use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\Workflow\App\News\Data\Comment\CommentModel;
-use Nemundo\Workflow\App\News\Site\CommentRedirectSite;
-use Nemundo\Workflow\App\News\Site\NewsItemSite;
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 
 class CommentContentTypeModelTree extends AbstractModelDataTreeContentType
@@ -30,7 +27,7 @@ class CommentContentTypeModelTree extends AbstractModelDataTreeContentType
 
     public function getForm($parentItem = null)
     {
-        $form= parent::getForm($parentItem);
+        $form = parent::getForm($parentItem);
 
         //$form = (new CommentContentType())->getForm($page);
         $form->model->newsId->defaultValue = $this->newsId;

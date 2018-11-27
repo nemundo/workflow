@@ -14,7 +14,7 @@ abstract class AbstractUserConfig extends AbstractBase
     public $configId;
 
     /**
-     * @var string
+     * @var string|string[]
      */
     public $configLabel;
 

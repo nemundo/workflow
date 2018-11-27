@@ -15,7 +15,7 @@ class TextListView extends AbstractContentView
 
 
         $reader = new TextListReader();
-        $reader->filter->andEqual($reader->model->dataId,$this->dataId);
+        $reader->filter->andEqual($reader->model->dataId, $this->dataId);
 
         $list = new OrderedList($this);
 

@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\App\Identification\Config;
 
 
 use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Core\Log\LogMessage;
 use Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType;
 
 class IdentificationConfig extends AbstractBase

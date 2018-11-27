@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\App\Wiki\ContentItem;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Workflow\App\Wiki\Data\Hyperlink\Hyperlink;
 use Nemundo\Workflow\App\Wiki\Data\Hyperlink\HyperlinkReader;
 
 class HyperlinkContentView extends AbstractContentView

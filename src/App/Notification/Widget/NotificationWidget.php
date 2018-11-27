@@ -5,7 +5,6 @@ namespace Nemundo\Workflow\App\Notification\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AdminWidget;
-use Nemundo\Com\Html\Table\Td;
 use Nemundo\Com\Html\Table\Th;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Language\LanguageCode;
@@ -26,18 +25,17 @@ class NotificationWidget extends AdminWidget
         $this->widgetTitle[LanguageCode::DE] = 'Benachrichtigungen';
 
 
-
         $table = new AdminClickableTable($this);
 
         $header = new TableHeader($table);
 
         $th = new Th($header);
-        $th->content[LanguageCode::EN]  = 'Subject';
-        $th->content[LanguageCode::DE]  = 'Betreff';
+        $th->content[LanguageCode::EN] = 'Subject';
+        $th->content[LanguageCode::DE] = 'Betreff';
 
         $th = new Th($header);
-        $th->content[LanguageCode::EN]  = 'Message';
-        $th->content[LanguageCode::DE]  = 'Nachricht';
+        $th->content[LanguageCode::EN] = 'Message';
+        $th->content[LanguageCode::DE] = 'Nachricht';
 
         //$header->addText('Subject');
         //$header->addText('Message');

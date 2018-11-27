@@ -2,17 +2,11 @@
 
 namespace Nemundo\Workflow\App\Favorite\Site;
 
-use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\User\Type\UserSessionType;
-use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteDelete;
 use Nemundo\Workflow\App\Favorite\Parameter\FavoriteParameter;
-use Nemundo\Workflow\App\Subscription\Data\Subscription\Subscription;
-use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionDelete;
 
 class FavoriteDeleteSite extends AbstractIconSite
 {

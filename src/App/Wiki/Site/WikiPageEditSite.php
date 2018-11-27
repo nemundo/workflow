@@ -43,7 +43,7 @@ class WikiPageEditSite extends AbstractSite
         $title->content = $wiki->getSubject();
 
         $form = $wiki->getFormUpdate($page);
-        $form->updateId  = $wiki->dataId;
+        $form->updateId = $wiki->dataId;
 
         $page->render();
 

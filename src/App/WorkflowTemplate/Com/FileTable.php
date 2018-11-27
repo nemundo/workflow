@@ -5,9 +5,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Com;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Data\ContentLog\ContentLogModel;
-use Nemundo\App\Content\Data\ContentLog\ContentLogReader;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\App\Content\Parameter\ParentContentTypeParameter;
 use Nemundo\Com\Html\Basic\Strike;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;

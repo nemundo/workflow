@@ -3,17 +3,7 @@
 namespace Nemundo\Workflow\App\Calendar\Widget;
 
 
-use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
-use Nemundo\Com\Html\Basic\Bold;
-use Nemundo\Com\Html\Basic\Strike;
-use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTable;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
-use Nemundo\Workflow\App\Calendar\Reader\CalendarIdentificationReader;
 use Nemundo\Workflow\App\Calendar\Site\CalendarSite;
 
 
@@ -40,50 +30,50 @@ class CalendarWidget extends AbstractAdminWidget
 
         $this->widgetTitle = 'Kalender';
 
-/*
-        $table = new AdminClickableTable($this);
+        /*
+                $table = new AdminClickableTable($this);
 
-        $header = new TableHeader($table);
-        $header->addText('Datum/Zeit');
-        $header->addText('Betreff');
+                $header = new TableHeader($table);
+                $header->addText('Datum/Zeit');
+                $header->addText('Betreff');
 
-        $calendarReader = new CalendarIdentificationReader();
-        //$calendarReader->filter->andEqual($calendarReader->model->userId, (new UserSessionType())->userId);
-        //$calendarReader->filter->andEqualOrGreater($calendarReader->model->date, (new Date())->setNow()->getDbFormat());
-        $calendarReader->addOrder($calendarReader->model->date);
+                $calendarReader = new CalendarIdentificationReader();
+                //$calendarReader->filter->andEqual($calendarReader->model->userId, (new UserSessionType())->userId);
+                //$calendarReader->filter->andEqualOrGreater($calendarReader->model->date, (new Date())->setNow()->getDbFormat());
+                $calendarReader->addOrder($calendarReader->model->date);
 
-        //$calendarReader->limit = 5;
+                //$calendarReader->limit = 5;
 
-        foreach ($calendarReader->getData() as $calendarRow) {
+                foreach ($calendarReader->getData() as $calendarRow) {
 
-            $row = new BootstrapClickableTableRow($table);
+                    $row = new BootstrapClickableTableRow($table);
 
-            $datum = $calendarRow->date->getShortDateLeadingZeroFormat();
+                    $datum = $calendarRow->date->getShortDateLeadingZeroFormat();
 
-            $subject = $calendarRow->event;
+                    $subject = $calendarRow->event;
 
 
-            $row->addText($datum);
-            $row->addText($subject);
+                    $row->addText($datum);
+                    $row->addText($subject);
 
-            /*
-            $type = $calendarRow->applicationType->getApplicationTypeClassNameObject();
+                    /*
+                    $type = $calendarRow->applicationType->getApplicationTypeClassNameObject();
 
-            if ($type !== null) {
+                    if ($type !== null) {
 
-                if ($type->site !== null) {
+                        if ($type->site !== null) {
 
-                    $site = clone($type->site);
-                    $parameter = clone($type->parameter);
-                    $parameter->setValue($calendarRow->dataId);
-                    $site->addParameter($parameter);
-                    $row->addClickableSite($site);
+                            $site = clone($type->site);
+                            $parameter = clone($type->parameter);
+                            $parameter->setValue($calendarRow->dataId);
+                            $site->addParameter($parameter);
+                            $row->addClickableSite($site);
 
-                }
+                        }
 
-            }*/
+                    }*/
 
-       // }
+        // }
 
         return parent::getHtml();
 

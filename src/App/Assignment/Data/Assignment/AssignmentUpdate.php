@@ -1,75 +1,82 @@
 <?php
+
 namespace Nemundo\Workflow\App\Assignment\Data\Assignment;
+
 use Nemundo\Model\Data\AbstractModelUpdate;
-class AssignmentUpdate extends AbstractModelUpdate {
-/**
-* @var AssignmentModel
-*/
-public $model;
 
-/**
-* @var string
-*/
-public $contentTypeId;
+class AssignmentUpdate extends AbstractModelUpdate
+{
+    /**
+     * @var AssignmentModel
+     */
+    public $model;
 
-/**
-* @var string
-*/
-public $subject;
+    /**
+     * @var string
+     */
+    public $contentTypeId;
 
-/**
-* @var string
-*/
-public $message;
+    /**
+     * @var string
+     */
+    public $subject;
 
-/**
-* @var \Nemundo\Workflow\App\Identification\Model\Identification
-*/
-public $assignment;
+    /**
+     * @var string
+     */
+    public $message;
 
-/**
-* @var string
-*/
-public $assignmentText;
+    /**
+     * @var \Nemundo\Workflow\App\Identification\Model\Identification
+     */
+    public $assignment;
 
-/**
-* @var \Nemundo\Core\Type\DateTime\Date
-*/
-public $deadline;
+    /**
+     * @var string
+     */
+    public $assignmentText;
 
-/**
-* @var string
-*/
-public $dataId;
+    /**
+     * @var \Nemundo\Core\Type\DateTime\Date
+     */
+    public $deadline;
 
-/**
-* @var bool
-*/
-public $archive;
+    /**
+     * @var string
+     */
+    public $dataId;
 
-/**
-* @var string
-*/
-public $source;
+    /**
+     * @var bool
+     */
+    public $archive;
 
-public function __construct() {
-parent::__construct();
-$this->model = new AssignmentModel();
-$this->assignment = new \Nemundo\Workflow\App\Identification\Model\Identification();
-$this->deadline = new \Nemundo\Core\Type\DateTime\Date();
-}
-public function update() {
-$this->typeValueList->setModelValue($this->model->contentTypeId, $this->contentTypeId);
-$this->typeValueList->setModelValue($this->model->subject, $this->subject);
-$this->typeValueList->setModelValue($this->model->message, $this->message);
-$property = new \Nemundo\Workflow\App\Identification\Model\IdentificationDataProperty($this->model->assignment, $this->typeValueList);
-$property->setValue($this->assignment);
-$this->typeValueList->setModelValue($this->model->assignmentText, $this->assignmentText);
-$property = new \Nemundo\Model\Data\Property\DateTime\DateDataProperty($this->model->deadline, $this->typeValueList);
-$property->setValue($this->deadline);
-$this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
-$this->typeValueList->setModelValue($this->model->archive, $this->archive);
-$this->typeValueList->setModelValue($this->model->source, $this->source);
-parent::update();
-}
+    /**
+     * @var string
+     */
+    public $source;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->model = new AssignmentModel();
+        $this->assignment = new \Nemundo\Workflow\App\Identification\Model\Identification();
+        $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
+    }
+
+    public function update()
+    {
+        $this->typeValueList->setModelValue($this->model->contentTypeId, $this->contentTypeId);
+        $this->typeValueList->setModelValue($this->model->subject, $this->subject);
+        $this->typeValueList->setModelValue($this->model->message, $this->message);
+        $property = new \Nemundo\Workflow\App\Identification\Model\IdentificationDataProperty($this->model->assignment, $this->typeValueList);
+        $property->setValue($this->assignment);
+        $this->typeValueList->setModelValue($this->model->assignmentText, $this->assignmentText);
+        $property = new \Nemundo\Model\Data\Property\DateTime\DateDataProperty($this->model->deadline, $this->typeValueList);
+        $property->setValue($this->deadline);
+        $this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
+        $this->typeValueList->setModelValue($this->model->archive, $this->archive);
+        $this->typeValueList->setModelValue($this->model->source, $this->source);
+        parent::update();
+    }
 }

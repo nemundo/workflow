@@ -3,17 +3,13 @@
 namespace Nemundo\Workflow\App\Wiki\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 use Nemundo\Workflow\App\Wiki\Form\WikiForm;
-use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
-use Nemundo\App\Content\Data\ContentType\ContentTypeReader;
-use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiItemParameter;
+use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 
 class WikiEditSite extends AbstractSite
 {
@@ -53,13 +49,12 @@ class WikiEditSite extends AbstractSite
 
 
         $title = new AdminTitle($page);
-        $title->content =  $contentType->contentLabel;
+        $title->content = $contentType->contentLabel;
 
         $form = $contentType->getFormUpdate($page);
         $form->updateId = $wikiRow->dataId;
-$form->redirectSite = clone(WikiPageSite::$site);
-$form->redirectSite->addParameter(new WikiPageParameter($wikiRow->pageId));
-
+        $form->redirectSite = clone(WikiPageSite::$site);
+        $form->redirectSite->addParameter(new WikiPageParameter($wikiRow->pageId));
 
 
         /*
@@ -87,14 +82,12 @@ $form->redirectSite->addParameter(new WikiPageParameter($wikiRow->pageId));
         $form->redirectSite->addParameter($pageParameter);*/
 
 
-
         /*
         $form = new WikiForm($page);
         $form->contentType = $contentType;
         $form->pageId = (new PageParameter())->getValue();
         $form->redirectSite = clone(WikiPageSite::$site);*/
         //$form->redirectSite->addParameter($pageParameter);
-
 
 
         $page->render();

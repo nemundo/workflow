@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\ToDo\Install;
 
 use Nemundo\App\Application\Setup\ApplicationSetup;
+use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\Assignment\Setup\AssignmentFilterSetup;
@@ -11,7 +12,6 @@ use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
 use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoDoneStatus;
 use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
 use Nemundo\Workflow\App\ToDo\Data\ToDoCollection;
-use Nemundo\App\Content\Setup\ContentTypeSetup;
 
 class ToDoInstall extends AbstractScript
 {

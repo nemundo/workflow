@@ -5,7 +5,6 @@ namespace Nemundo\Workflow\App\Message\Site;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Message\ContentType\MessageContentType;
-use Nemundo\Workflow\App\Message\Form\MessageContentForm;
 
 class MessageNewSite extends AbstractSite
 {

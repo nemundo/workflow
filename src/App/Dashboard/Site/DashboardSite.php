@@ -24,13 +24,13 @@ class DashboardSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
-        $contentTypeParameter=new ContentTypeParameter();
+        $contentTypeParameter = new ContentTypeParameter();
 
         $form = new SearchForm($page);
 
         $listbox = new BootstrapListBox($form);
         $listbox->name = $contentTypeParameter->getParameterName();
-        $listbox->submitOnChange=true;
+        $listbox->submitOnChange = true;
         $listbox->value = $listbox->getValue();
 
         $reader = new DashboardContentTypeReader();
@@ -38,8 +38,6 @@ class DashboardSite extends AbstractSite
         foreach ($reader->getData() as $dashboardContentTypeRow) {
             $listbox->addItem($dashboardContentTypeRow->contentTypeId, $dashboardContentTypeRow->contentType->contentType);
         }
-
-
 
 
         if ($contentTypeParameter->exists()) {
@@ -51,7 +49,6 @@ class DashboardSite extends AbstractSite
             $contentType->getView($widget);
 
         }
-
 
 
         $page->render();

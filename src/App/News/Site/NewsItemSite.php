@@ -3,19 +3,13 @@
 namespace Nemundo\Workflow\App\News\Site;
 
 
-use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\News\Action\CommentAction;
-use Nemundo\Workflow\App\News\Content\Type\CommentContentTypeModelTree;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\Comment\CommentForm;
 use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
-use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
-use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class NewsItemSite extends AbstractSite
 {
@@ -48,7 +42,6 @@ class NewsItemSite extends AbstractSite
 
         $newsType = new NewsContentType($newsId);
         $newsType->getView($page);
-
 
 
         /*

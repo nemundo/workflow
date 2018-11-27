@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\App\Wiki\ContentType;
 
 
-use Nemundo\Workflow\App\Wiki\ContentForm\HyperlinkContentForm;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Workflow\App\Wiki\ContentForm\HyperlinkContentForm;
 use Nemundo\Workflow\App\Wiki\ContentItem\HyperlinkContentView;
 use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
 

@@ -5,13 +5,9 @@ namespace Nemundo\Workflow\App\Store\Form;
 
 use Nemundo\Com\Html\Form\HiddenInput;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapHtmlEditor;
-use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Web\Url\UrlRedirect;
 use Nemundo\Web\Url\UrlReferer;
-use Nemundo\Workflow\App\Store\Type\AbstractLargeTextStoreType;
 use Nemundo\Workflow\App\Store\Type\AbstractStoreType;
-use Nemundo\Workflow\App\Store\Type\AbstractTextStoreType;
 
 
 class AbstractStoreForm extends BootstrapForm
@@ -43,7 +39,8 @@ class AbstractStoreForm extends BootstrapForm
     }
 
 
-    protected function getStoreValue() {
+    protected function getStoreValue()
+    {
 
     }
 

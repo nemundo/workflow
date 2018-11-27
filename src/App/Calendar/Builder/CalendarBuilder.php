@@ -3,9 +3,9 @@
 namespace Nemundo\Workflow\App\Calendar\Builder;
 
 
+use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Workflow\App\Calendar\Data\Calendar\Calendar;
-use Nemundo\App\Content\Builder\AbstractIdentificationBuilder;
 
 class CalendarBuilder extends AbstractIdentificationBuilder
 {

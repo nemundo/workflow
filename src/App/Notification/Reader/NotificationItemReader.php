@@ -5,7 +5,6 @@ namespace Nemundo\Workflow\App\Notification\Reader;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationReader;

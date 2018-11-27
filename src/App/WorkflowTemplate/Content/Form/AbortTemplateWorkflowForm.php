@@ -5,7 +5,6 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Form;
 
 use Nemundo\App\Content\Form\ContentTreeFormTrait;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Event\EventTrait;
 
 class AbortTemplateWorkflowForm extends AbstractHtmlContainerList

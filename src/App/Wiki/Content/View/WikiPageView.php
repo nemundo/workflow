@@ -3,19 +3,11 @@
 namespace Nemundo\Workflow\App\Wiki\Content\View;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ChildContentViewContainer;
-use Nemundo\App\Content\Com\Table\ContentLogTable;
 use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\App\Workflow\Com\WorkflowLogTable;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentView;
 use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentType;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
-use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
-use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
 
 
 // View
@@ -51,16 +43,11 @@ class WikiPageView extends AbstractContentView
         $log->contentType = $this->contentType;
 
 
-
-
-
         //$log = new ContentLogTable($this);
         //$log->contentType = $this->contentType;
 
         //$log = new ChildContentViewContainer($this);
         //$log->contentType = $wikiContentType;
-
-
 
 
         /*

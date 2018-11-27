@@ -5,14 +5,12 @@ namespace Nemundo\Workflow\App\Notification\Builder;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\AbstractBaseClass;
-use Nemundo\User\Type\UserSessionType;
-use Nemundo\User\Usergroup\AbstractUsergroup;
-use Nemundo\Workflow\App\MailConfig\MailConfig;
-use Nemundo\Workflow\App\Notification\Data\Notification\Notification;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
-use Nemundo\User\Data\User\UserReader;
-use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
+use Nemundo\User\Type\UserItemType;
+use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\App\Notification\Config\NotificationSendMailConfig;
+use Nemundo\Workflow\App\Notification\Data\Notification\Notification;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationDelete;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationUpdate;
 
@@ -28,7 +26,6 @@ class NotificationBuilder extends AbstractBaseClass
      * @var string
      */
     public $message = '';
-
 
     /**
      * @var AbstractContentType
@@ -48,7 +45,6 @@ class NotificationBuilder extends AbstractBaseClass
         if (!$this->checkObject('contentType', $this->contentType, AbstractContentType::class)) {
             exit;
         }
-
 
     }
 
@@ -95,7 +91,6 @@ class NotificationBuilder extends AbstractBaseClass
     public function removeNotification()
     {
 
-
         $delete = new NotificationDelete();
         $delete->filter->andEqual($delete->model->contentTypeId, $this->contentType->contentId);
         $delete->filter->andEqual($delete->model->dataId, $this->contentType->dataId);
@@ -107,6 +102,7 @@ class NotificationBuilder extends AbstractBaseClass
     protected function sendMail($userId)
     {
 
+        /*
         if (MailConfig::$sendMail) {
 
             $mailConfigValue = new MailConfigValue();
@@ -115,22 +111,24 @@ class NotificationBuilder extends AbstractBaseClass
             $value = $mailConfigValue->getValue();
 
 
-            if (($value) || ($value == '')) {
+            if (($value) || ($value == '')) {*/
 
-                $userRow = (new UserReader())->getRowById($userId);
+        if ((new NotificationSendMailConfig)->getValue()) {
 
-                $mail = new ResponsiveActionMailMessage();
-                $mail->mailTo = $userRow->email;
-                $mail->subject = $this->contentType->getSubject();
-                $mail->actionText = (new Html($this->message))->getValue();
-                $mail->actionLabel = 'Ansehen';
-                $mail->actionUrlSite = $this->contentType->getViewSite();
-                $mail->sendMail();
+            //$userRow = (new UserReader())->getRowById($userId);
 
-            }
+            $userType = new UserItemType($userId);
+
+            $mail = new ResponsiveActionMailMessage();
+            $mail->mailTo = $userType->email;  // $userRow->email;
+            $mail->subject = $this->contentType->getSubject();
+            $mail->actionText = (new Html($this->message))->getValue();
+            $mail->actionLabel = 'Ansehen';
+            $mail->actionUrlSite = $this->contentType->getViewSite();
+            $mail->sendMail();
 
         }
-    }
 
+    }
 
 }

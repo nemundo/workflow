@@ -28,8 +28,6 @@ class DashboardSite extends AbstractSite
         new WidgetListBox($page);
 
 
-
-
         $page->render();
 
 

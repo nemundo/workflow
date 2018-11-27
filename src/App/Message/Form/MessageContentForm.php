@@ -87,7 +87,6 @@ class MessageContentForm extends BootstrapForm
         $data->save();
 
 
-
         $site = clone(MessageItemSite::$site);
         $site->addParameter(new MessageParameter($messageId));
         $site->redirect();

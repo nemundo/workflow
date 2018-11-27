@@ -30,6 +30,5 @@ class RepeatingTaskSite extends AbstractSite
         $page->render();
 
 
-
     }
 }

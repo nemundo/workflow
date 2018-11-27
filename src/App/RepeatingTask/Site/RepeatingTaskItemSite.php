@@ -61,9 +61,6 @@ class RepeatingTaskItemSite extends AbstractSite
         // Erledigte Task
 
 
-
-
-
         $page->render();
 
 

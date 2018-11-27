@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\News\Content\View;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
-use Nemundo\App\Content\View\AbstractContentView;
 
 class NewsContentView extends AbstractContentView
 {

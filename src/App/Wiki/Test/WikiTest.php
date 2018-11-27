@@ -8,8 +8,6 @@ use Nemundo\Core\Structure\ForLoop;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Content\Data\WikiPageContent;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageDelete;
-use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowDelete;
 
 class WikiTest extends AbstractScript
 {
@@ -32,7 +30,7 @@ class WikiTest extends AbstractScript
 
 
             $type = new WikiPageContentType();
-            $type->title =  'Titel ' . $number;
+            $type->title = 'Titel ' . $number;
             $type->saveType();
 
 
@@ -40,7 +38,6 @@ class WikiTest extends AbstractScript
             $textType->parentContentType = $type;
             $textType->text = 'Teaser ' . $number;
             $textType->saveType();
-
 
 
             /*

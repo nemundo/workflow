@@ -3,28 +3,18 @@
 namespace Nemundo\Workflow\App\Wiki\Site;
 
 
-use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Com\ContentTypeCollectionDropdown;
+use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Workflow\Com\WorkflowMenuDropdown;
-use Nemundo\Package\Bootstrap\Navbar\BootstrapSiteNavbar;
+use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Navigation\BootstrapNavigation;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Admin\Com\Button\AdminButton;
-use Nemundo\Com\Html\Basic\Br;
-use Nemundo\Com\Html\Basic\Hr;
-use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Package\Bootstrap\Dropdown\BootstrapDropdown;
-use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Workflow\App\ContentTemplate\Content\Type\ImageTemplateContentType;
-use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\ContentItem\WikiContentView;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentTypeReader;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
-use Nemundo\App\Content\Parameter\ContentTypeParameter;
 
 
 class WikiPageSite extends AbstractSite

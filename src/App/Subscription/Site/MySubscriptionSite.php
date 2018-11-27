@@ -5,8 +5,8 @@ namespace Nemundo\Workflow\App\Subscription\Site;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
 
@@ -40,7 +40,6 @@ class MySubscriptionSite extends AbstractSite
         $reader->model->loadUser();
 
         foreach ($reader->getData() as $subscriptionRow) {
-
 
 
             $row = new BootstrapClickableTableRow($table);

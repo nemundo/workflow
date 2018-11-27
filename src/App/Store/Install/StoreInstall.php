@@ -11,7 +11,7 @@ class StoreInstall extends AbstractScript
     public function run()
     {
 
-        $setup  = new ModelCollectionSetup();
+        $setup = new ModelCollectionSetup();
         $setup->addCollection(new StoreCollection());
 
 

@@ -30,10 +30,10 @@ abstract class AbstractIdentificationType extends AbstractBaseClass
     abstract public function getIdentificationIdFromUserId($userId);
 
 
-    public function getSite($identificationId) {
+    public function getSite($identificationId)
+    {
         return null;
     }
-
 
 
     public function __construct()

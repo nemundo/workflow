@@ -4,9 +4,6 @@ namespace Nemundo\Workflow\App\News\Migration;
 
 
 use Nemundo\App\Migration\Type\AbstractMigration;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\Json\Document\JsonDocument;
-use Nemundo\Core\Json\Reader\JsonReader;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Install\NewsInstall;

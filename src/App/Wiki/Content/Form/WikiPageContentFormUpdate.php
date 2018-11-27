@@ -4,16 +4,11 @@ namespace Nemundo\Workflow\App\Wiki\Content\Form;
 
 
 use Nemundo\App\Content\Form\ContentTreeForm;
-use Nemundo\App\Content\Form\ContentTreeFormTrait;
-use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
-use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPage;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageForm;
-use Nemundo\Workflow\App\Wiki\Event\WikiEvent;
 
 class WikiPageContentFormUpdate extends ContentTreeForm  // BootstrapForm  // WikiPageForm
 {
@@ -58,7 +53,7 @@ class WikiPageContentFormUpdate extends ContentTreeForm  // BootstrapForm  // Wi
         $content->saveType();
 
         //if ($this->redirectToContentItemSite) {
-            $this->redirectSite = $content->getViewSite();
+        $this->redirectSite = $content->getViewSite();
         //}
 
 

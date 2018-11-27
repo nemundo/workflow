@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Form\StatusChangeForm;
 
 abstract class AbstractStatusChangeWorkflowStaus extends AbstractWorkflowStatus

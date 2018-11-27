@@ -3,13 +3,10 @@
 namespace Nemundo\Workflow\App\Wiki\Site;
 
 
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Web\Http\Parameter\UrlParameter;
+use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Web\Url\UrlRedirect;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
-use Nemundo\App\Content\Parameter\DataIdParameter;
 
 class WikiRedirectSite extends AbstractSite
 {

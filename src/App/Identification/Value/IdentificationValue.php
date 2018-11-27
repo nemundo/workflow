@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType;
 class IdentificationValue extends AbstractBaseClass
 {
 
-    public function getValue(AbstractIdentificationType $identificationType=null, $identificationId)
+    public function getValue(AbstractIdentificationType $identificationType = null, $identificationId)
     {
 
         $text = '';

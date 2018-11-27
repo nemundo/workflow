@@ -3,21 +3,13 @@
 namespace Nemundo\Workflow\App\Wiki\Content\Type;
 
 
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
-use Nemundo\Core\File\TextFile;
-use Nemundo\Project\ProjectConfig;
-use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentForm;
-use Nemundo\Workflow\App\Wiki\Content\Form\WikiPageContentFormUpdate;
 use Nemundo\Workflow\App\Wiki\Content\View\WikiPageView;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPage;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageModel;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageUpdate;
 use Nemundo\Workflow\App\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
-use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 
 class WikiPageContentType extends AbstractTreeContentType

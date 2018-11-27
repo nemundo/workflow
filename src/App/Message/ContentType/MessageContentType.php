@@ -3,15 +3,12 @@
 namespace Nemundo\Workflow\App\Message\ContentType;
 
 
-use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
-use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
-use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\Data\Message\MessageModel;
 use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
 use Nemundo\Workflow\App\Message\Parameter\MessageParameter;
 use Nemundo\Workflow\App\Message\Site\MessageItemSite;
+use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
 
 
 class MessageContentType extends AbstractModelDataWorkflowStatus  // AbstractModelDataContentType

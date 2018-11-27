@@ -8,14 +8,13 @@ use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Type\DateTime\Date;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
-use Nemundo\User\Data\User\UserReader;
+use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\App\Assignment\Config\AssignmentSendMailConfig;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\Assignment;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentUpdate;
 use Nemundo\Workflow\App\Identification\Model\Identification;
-use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigValue;
-use Nemundo\Workflow\App\MailConfig\MailConfig;
 
 class AssignmentBuilder extends AbstractBase
 {
@@ -150,33 +149,39 @@ class AssignmentBuilder extends AbstractBase
     private function sendMail()
     {
 
-        if (MailConfig::$sendMail) {
+        /* if (MailConfig::$sendMail) {
 
-            foreach ($this->assignment->getUserIdListFromIdentificationId() as $userId) {
+             foreach ($this->assignment->getUserIdListFromIdentificationId() as $userId) {
 
-                $userRow = (new UserReader())->getRowById($userId);
+                 $userRow = (new UserReader())->getRowById($userId);
 
-                $mailConfigValue = new MailConfigValue();
-                $mailConfigValue->field = $mailConfigValue->model->assignmentMail;
-                $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, $userRow->id);
-                $value = $mailConfigValue->getValue();
+                 $mailConfigValue = new MailConfigValue();
+                 $mailConfigValue->field = $mailConfigValue->model->assignmentMail;
+                 $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, $userRow->id);
+                 $value = $mailConfigValue->getValue();
 
-                if (($value) || ($value == '')) {
+                 if (($value) || ($value == '')) {*/
 
-                    $mail = new ResponsiveActionMailMessage();
-                    $mail->mailTo = $userRow->email;
-                    $mail->subject = $this->contentType->getSubject();
-                    $mail->actionText = (new Html($this->message))->getValue();
-                    $mail->actionLabel = 'Ansehen';
-                    $mail->actionUrlSite = $this->contentType->getViewSite();
-                    $mail->sendMail();
+        foreach ($this->assignment->getUserIdListFromIdentificationId() as $userId) {
 
-                }
+            if ((new AssignmentSendMailConfig())->getValue()) {
+
+                $userType = new UserItemType($userId);
+
+                $mail = new ResponsiveActionMailMessage();
+                $mail->mailTo = $userType->email;  // $userRow->email;
+                $mail->subject = $this->contentType->getSubject();
+                $mail->actionText = (new Html($this->message))->getValue();
+                $mail->actionLabel = 'Ansehen';
+                $mail->actionUrlSite = $this->contentType->getViewSite();
+                $mail->sendMail();
+
+                //}
+
+                //}
 
             }
-
         }
-
     }
 
 }

@@ -34,7 +34,7 @@ public $value;
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = UserConfigTextModel::class;
-$this->externalTableName = "userconfig_userconfigtext";
+$this->externalTableName = "userconfig_text";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->id = new \Nemundo\Model\Type\Id\IdType();
 $this->id->fieldName = "id";

@@ -13,7 +13,7 @@ class MailContent extends Mail
     public function save()
     {
 
-        $dataId =  parent::save();
+        $dataId = parent::save();
 
         $type = new MailContentType();
         $type->onCreate($dataId);

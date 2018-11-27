@@ -4,15 +4,9 @@ namespace Nemundo\Workflow\App\Message\ContentType;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Workflow\App\Notification\Builder\NotificationBuilder;
 use Nemundo\Workflow\App\Message\ContentItem\TextContentView;
-use Nemundo\Workflow\App\Message\Data\Message\MessageReader;
-use Nemundo\Workflow\App\Message\Data\Message\MessageUpdate;
-use Nemundo\Workflow\App\Message\Data\MessageItem\MessageItemCount;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextForm;
 use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextModel;
-use Nemundo\Workflow\App\Message\Data\MessageText\MessageTextReader;
-use Schleuniger\Usergroup\SchleunigerUsergroup;
 
 class TextContentType extends AbstractContentType
 {
@@ -59,21 +53,21 @@ class TextContentType extends AbstractContentType
 
 
     //public function onCreate($dataId)
-   // {
+    // {
 
-        /*
-        $reader = new MessageItemReader();
-        $reader->filter->andEqual($reader->model->dataId, $dataId);
-        $row = (new MessageItemReader())->getRowById($da)
+    /*
+    $reader = new MessageItemReader();
+    $reader->filter->andEqual($reader->model->dataId, $dataId);
+    $row = (new MessageItemReader())->getRowById($da)
 
 
-        $count = new MessageItemCount();
-        $count->filter->andEqual($count->model->messageId, $this->messageId);
-        $messageCount = $count->getCount();
+    $count = new MessageItemCount();
+    $count->filter->andEqual($count->model->messageId, $this->messageId);
+    $messageCount = $count->getCount();
 
-        $update = new MessageUpdate();
-        $update->count = $messageCount;
-        $update->updateById($this->messageId);*/
+    $update = new MessageUpdate();
+    $update->count = $messageCount;
+    $update->updateById($this->messageId);*/
 
 
     //}

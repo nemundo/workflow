@@ -13,7 +13,6 @@ use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexDelete;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
-use Nemundo\App\Content\Builder\AbstractContentBuilder;
 
 
 // SearchIndexBuilder
@@ -42,7 +41,7 @@ class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
     private function prepareIndex()
     {
 
-       // $this->check();
+        // $this->check();
 
     }
 
@@ -80,11 +79,10 @@ class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
 
     }
 
-/*
-    public function createItem()
-    {
-    }*/
-
+    /*
+        public function createItem()
+        {
+        }*/
 
 
     // removeSearchIndex

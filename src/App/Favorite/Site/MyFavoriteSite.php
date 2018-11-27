@@ -5,13 +5,12 @@ namespace Nemundo\Workflow\App\Favorite\Site;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteReader;
 use Nemundo\Workflow\App\Favorite\Parameter\FavoriteParameter;
-use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
 
 class MyFavoriteSite extends AbstractSite
 {

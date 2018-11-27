@@ -3,13 +3,12 @@
 namespace Nemundo\Workflow\App\Wiki\ContentType;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\Workflow\App\Wiki\ContentItem\MailContentView;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailModel;
 use Nemundo\Workflow\App\Wiki\Data\Mail\MailReader;
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Workflow\App\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Workflow\App\Wiki\Site\WikiPageSite;
 use Nemundo\Workflow\App\Wiki\Site\WikiRedirectSite;
 
 class MailContentType extends AbstractContentType
@@ -41,7 +40,7 @@ class MailContentType extends AbstractContentType
 
         $mail = new ResponsiveActionMailMessage();
         $mail->addTo($row->to);
-        $mail->subject = $row->subject.' ('.$wikiRow->page->title.')' ;
+        $mail->subject = $row->subject . ' (' . $wikiRow->page->title . ')';
         $mail->sendMail();
 
     }

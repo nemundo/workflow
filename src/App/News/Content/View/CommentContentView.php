@@ -4,10 +4,9 @@ namespace Nemundo\Workflow\App\News\Content\Item;
 
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
-use Nemundo\Workflow\App\News\Data\News\NewsReader;
-use Nemundo\App\Content\View\AbstractContentView;
 
 class CommentContentView extends AbstractContentView
 {
@@ -20,7 +19,7 @@ class CommentContentView extends AbstractContentView
 
 
         $title = new AdminTitle($this);
-        $title->content = 'Kommentar aus dem Artikel '. $commentRow->news->title;
+        $title->content = 'Kommentar aus dem Artikel ' . $commentRow->news->title;
 
         $p = new Paragraph($this);
         $p->content = $commentRow->comment;

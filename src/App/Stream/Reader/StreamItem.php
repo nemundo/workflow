@@ -9,16 +9,17 @@ class StreamItem extends AbstractBaseClass
 {
 
 
-public $subject;
+    public $subject;
 
-public $message;
+    public $message;
 
-public $site;
+    public $site;
 
 
-public function getView() {
+    public function getView()
+    {
 
-}
+    }
 
 
 }

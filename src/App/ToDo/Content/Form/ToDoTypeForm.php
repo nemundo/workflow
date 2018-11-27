@@ -6,7 +6,6 @@ namespace Nemundo\Workflow\App\ToDo\Content\Form;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
 use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
 
 class ToDoTypeForm extends ContentTreeForm

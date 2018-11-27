@@ -3,18 +3,15 @@
 namespace Nemundo\Workflow\App\News\Content\Type;
 
 
-use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Workflow\App\News\Content\Form\NewsForm;
 use Nemundo\Workflow\App\News\Content\View\NewsContentView;
 use Nemundo\Workflow\App\News\Data\News\News;
 use Nemundo\Workflow\App\News\Data\News\NewsDelete;
-use Nemundo\Workflow\App\News\Data\News\NewsModel;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
 use Nemundo\Workflow\App\News\Site\NewsItemSite;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
-use Nemundo\Workflow\App\Stream\Builder\StreamBuilder;
 
 class NewsContentType extends AbstractTreeContentType  // AbstractModelDataTreeContentType
 {

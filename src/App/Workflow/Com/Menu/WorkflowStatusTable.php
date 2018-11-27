@@ -3,21 +3,17 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
-use Nemundo\Web\Site\Site;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
-use Nemundo\Workflow\App\Wiki\Data\Hyperlink\Hyperlink;
+use Nemundo\Web\Site\Site;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusTable extends AbstractHtmlContainerList
 {
@@ -106,7 +102,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
                         //$btn = new AdminButton($list);
                         //$btn->site = $site;
                         //$btn->content = $site->title;
-
 
 
                         if ($site->workflowStatus->checkUserVisibility()) {

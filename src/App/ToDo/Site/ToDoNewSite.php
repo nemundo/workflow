@@ -3,7 +3,6 @@
 namespace Nemundo\Workflow\App\ToDo\Site;
 
 
-use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\ToDo\Com\ToDoNavigation;
@@ -42,9 +41,6 @@ class ToDoNewSite extends AbstractSite
 
 
         (new ToDoProcess())->getView($page);
-
-
-
 
 
         $page->render();

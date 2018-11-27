@@ -4,12 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Type\Comment;
 
 
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\Text\Html;
-use Nemundo\Db\DbConfig;
-use Nemundo\Workflow\App\ContentTemplate\Data\Comment\Comment;
-use Nemundo\Workflow\App\ContentTemplate\Data\Comment\CommentReader;
-use Nemundo\Workflow\App\ContentTemplate\Data\Comment\CommentUpdate;
 use Nemundo\Workflow\App\SearchEngine\Builder\SearchEngineBuilder;
 
 
@@ -21,9 +16,6 @@ class CommentType extends AbstractWorkflowStatus
      */
     public $comment;
 
-
-    // commentLabel
-
     protected function loadType()
     {
         $this->contentLabel = 'Kommentar';
@@ -31,7 +23,6 @@ class CommentType extends AbstractWorkflowStatus
         $this->formClass = CommentTypeForm::class;
         $this->viewClass = CommentView::class;
         $this->subject = 'Es wurde was kommentiert';
-
 
         $this->changeStatus = false;
 

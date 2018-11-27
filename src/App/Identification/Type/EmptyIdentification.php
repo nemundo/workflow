@@ -16,11 +16,10 @@ class EmptyIdentification extends AbstractIdentificationType
     }
 
 
-
     public function getValue($identificationId)
     {
 
-              return null;
+        return null;
 
     }
 
@@ -34,13 +33,11 @@ class EmptyIdentification extends AbstractIdentificationType
     {
 
 
-
     }
 
 
     public function getUserIdList()
     {
-
 
 
     }

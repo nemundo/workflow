@@ -22,9 +22,6 @@ class WorkflowSite extends AbstractSite
         // search
 
 
-
-
-
         $page->render();
 
     }

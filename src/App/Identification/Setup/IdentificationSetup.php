@@ -23,7 +23,8 @@ class IdentificationSetup extends AbstractBase
     }
 
 
-    public function removeUnusedIdentification() {
+    public function removeUnusedIdentification()
+    {
 
     }
 

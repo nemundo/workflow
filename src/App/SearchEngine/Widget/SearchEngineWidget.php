@@ -4,11 +4,11 @@ namespace Nemundo\Workflow\App\SearchEngine\Widget;
 
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\SearchEngine\Form\SearchEngineForm;
 use Nemundo\Workflow\App\SearchEngine\Reader\SearchEngineReader;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
-use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 
 class SearchEngineWidget extends AbstractAdminWidget
 {

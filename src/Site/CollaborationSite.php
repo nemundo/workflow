@@ -12,7 +12,6 @@ use Nemundo\Workflow\App\Favorite\Site\MyFavoriteSite;
 use Nemundo\Workflow\App\Message\Site\MessageSite;
 use Nemundo\Workflow\App\News\Site\NewsSite;
 use Nemundo\Workflow\App\Notification\Site\NotificationSite;
-use Nemundo\Workflow\App\RepeatingTask\Site\RepeatingTaskSite;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 use Nemundo\Workflow\App\Stream\Site\StreamSite;
 use Nemundo\Workflow\App\Subscription\Site\MySubscriptionSite;

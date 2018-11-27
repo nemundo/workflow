@@ -7,8 +7,6 @@ use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\User\Information\UserInformation;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfig;
-use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigCount;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigFormUpdate;
 use Nemundo\Workflow\App\MailConfig\Data\MailConfig\MailConfigId;
 
@@ -42,7 +40,7 @@ class MailConfigEditSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         $title = new AdminTitle($page);
-        $title->content =$this->title;
+        $title->content = $this->title;
 
         $id = new MailConfigId();
         $id->filter->andEqual($id->model->userId, (new UserSessionType())->userId);

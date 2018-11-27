@@ -5,8 +5,6 @@ namespace Nemundo\Workflow\App\News\Content\Form;
 
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Package\Bootstrap\Form\BootstrapForm;
-use Nemundo\Workflow\App\News\Content\Type\BreakingNewsContentType;
 
 class BreakingNewsForm extends AbstractHtmlContainerList
 {
@@ -23,7 +21,6 @@ class BreakingNewsForm extends AbstractHtmlContainerList
         return parent::getHtml();
 
     }
-
 
 
     /*

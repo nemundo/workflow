@@ -25,7 +25,5 @@ class AssignmentInstall extends AbstractScript
         $setup->application = new AssignmentApplication();
         $setup->addScript(new AssignmentClean());
 
-        (new MailConfigInstall());
-
     }
 }
