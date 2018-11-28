@@ -19,17 +19,6 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
     use WorkflowStatusTrait;
 
 
-    /*
-        public function getForm($parentItem = null)
-        {
-
-            $div = new Div($parentItem);
-            $div->addCssClass('jumbotron');
-
-            return parent::getForm($div);
-
-        }*/
-
     /**
      * @param string $sortOrder
      * @return AbstractTreeContentType[]|AbstractWorkflowStatus[]
