@@ -1,16 +1,13 @@
 <?php
-
 namespace Nemundo\Workflow\App\Store\Data\NumberStore;
-class NumberStoreDelete extends \Nemundo\Model\Delete\AbstractModelDelete
-{
-    /**
-     * @var NumberStoreModel
-     */
-    public $model;
+class NumberStoreDelete extends \Nemundo\Model\Delete\AbstractModelDelete {
+/**
+* @var NumberStoreModel
+*/
+public $model;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->model = new NumberStoreModel();
-    }
+public function __construct() {
+parent::__construct();
+$this->model = new NumberStoreModel();
+}
 }

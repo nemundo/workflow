@@ -1,13 +1,13 @@
 <?php
-namespace Nemundo\Workflow\App\Store\Data\NumberStore;
-class NumberStoreRow extends \Nemundo\Model\Row\AbstractModelDataRow {
+namespace Nemundo\Workflow\App\Store\Data\YesNoStore;
+class YesNoStoreRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 /**
 * @var \Nemundo\Model\Row\AbstractModelDataRow
 */
 private $row;
 
 /**
-* @var NumberStoreModel
+* @var YesNoStoreModel
 */
 public $model;
 
@@ -17,14 +17,14 @@ public $model;
 public $id;
 
 /**
-* @var int
+* @var bool
 */
-public $number;
+public $value;
 
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
-$this->number = $this->getModelValue($model->number);
+$this->value = $this->getModelValue($model->value);
 }
 }

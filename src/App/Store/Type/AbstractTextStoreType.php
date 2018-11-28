@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\App\Store\Type;
 
 
 use Nemundo\Workflow\App\Store\Data\TextStore\TextStore;
-use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreCount;
 use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreDelete;
 use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreReader;
 
@@ -28,13 +27,20 @@ abstract class AbstractTextStoreType extends AbstractStoreType
 
         $value = $this->defaultValue;
 
+        $storeReader = new TextStoreReader();
+        $storeReader->filter->andEqual($storeReader->model->id, $this->storeId);
+        foreach ($storeReader->getData() as $storeRow) {
+            $value = $storeRow->text;
+        }
+
+        /*
         $count = new TextStoreCount();
         $count->filter->andEqual($count->model->id, $this->storeId);
 
         if ($count->getCount() > 0) {
             $row = (new TextStoreReader())->getRowById($this->storeId);
             $value = $row->text;
-        }
+        }*/
 
         return $value;
 

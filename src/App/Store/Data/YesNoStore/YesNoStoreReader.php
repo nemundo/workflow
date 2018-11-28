@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\Workflow\App\Store\Data\NumberStore;
-class NumberStoreReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\Workflow\App\Store\Data\YesNoStore;
+class YesNoStoreReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var NumberStoreModel
+* @var YesNoStoreModel
 */
 public $model;
 
 public function __construct() {
 parent::__construct();
-$this->model = new NumberStoreModel();
+$this->model = new YesNoStoreModel();
 }
 /**
-* @return NumberStoreRow[]
+* @return YesNoStoreRow[]
 */
 public function getData() {
 $this->addFieldByModel($this->model);
@@ -24,7 +24,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return NumberStoreRow
+* @return YesNoStoreRow
 */
 public function getRow() {
 $this->addFieldByModel($this->model);
@@ -34,13 +34,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return NumberStoreRow
+* @return YesNoStoreRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new NumberStoreRow($dataRow, $this->model);
+$row = new YesNoStoreRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }
