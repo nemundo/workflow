@@ -3,20 +3,28 @@
 namespace Nemundo\Workflow\App\Store\Type;
 
 
+use Nemundo\Workflow\App\Store\Data\NumberStore\NumberStore;
+use Nemundo\Workflow\App\Store\Data\NumberStore\NumberStoreDelete;
+use Nemundo\Workflow\App\Store\Data\NumberStore\NumberStoreReader;
 use Nemundo\Workflow\App\Store\Data\TextStore\TextStore;
 use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreDelete;
 use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreReader;
 
-abstract class AbstractTextStoreType extends AbstractStoreType
+abstract class AbstractNumberStoreType extends AbstractStoreType
 {
+
+    /**
+     * @var int
+     */
+    protected $defaultValue = 0;
 
     public function setValue($value)
     {
 
-        $data = new TextStore();
+        $data = new NumberStore();
         $data->updateOnDuplicate = true;
         $data->id = $this->storeId;
-        $data->text = $value;
+        $data->number = $value;
         $data->save();
 
     }
@@ -27,10 +35,10 @@ abstract class AbstractTextStoreType extends AbstractStoreType
 
         $value = $this->defaultValue;
 
-        $storeReader = new TextStoreReader();
+        $storeReader = new NumberStoreReader();
         $storeReader->filter->andEqual($storeReader->model->id, $this->storeId);
         foreach ($storeReader->getData() as $storeRow) {
-            $value = $storeRow->text;
+            $value = $storeRow->number;
         }
 
         return $value;
@@ -41,7 +49,7 @@ abstract class AbstractTextStoreType extends AbstractStoreType
     public function removeStore()
     {
 
-        (new TextStoreDelete())->deleteById($this->storeId);
+        (new NumberStoreDelete())->deleteById($this->storeId);
 
         return $this;
 

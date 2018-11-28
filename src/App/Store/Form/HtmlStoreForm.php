@@ -34,7 +34,7 @@ class HtmlStoreForm extends BootstrapForm
     {
 
         $this->text = new BootstrapHtmlEditor($this);
-        $this->text->label = $this->store->storeName;  // 'Text';
+        $this->text->label = $this->store->storeLabel;  // 'Text';
         $this->text->value = $this->store->getValue();
 
         $this->hidden = new HiddenInput($this);

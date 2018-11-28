@@ -8,6 +8,7 @@ use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreCount;
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreDelete;
 use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreReader;
 use Nemundo\Workflow\App\Store\Data\YesNoStore\YesNoStore;
+use Nemundo\Workflow\App\Store\Data\YesNoStore\YesNoStoreDelete;
 use Nemundo\Workflow\App\Store\Data\YesNoStore\YesNoStoreReader;
 
 abstract class AbstractYesNoStoreType extends AbstractStoreType
@@ -43,16 +44,6 @@ abstract class AbstractYesNoStoreType extends AbstractStoreType
             $value = $storeRow->value;
         }
 
-
-        /*
-        $count = new LargeTextStoreCount();
-        $count->filter->andEqual($count->model->id, $this->storeId);
-
-        if ($count->getCount() > 0) {
-            $row = (new LargeTextStoreReader())->getRowById($this->storeId);
-            $value = $row->text;
-        }*/
-
         return $value;
 
     }
@@ -61,7 +52,7 @@ abstract class AbstractYesNoStoreType extends AbstractStoreType
     public function removeStore()
     {
 
-        (new LargeTextStoreDelete())->deleteById($this->storeId);
+        (new YesNoStoreDelete())->deleteById($this->storeId);
 
         return $this;
 

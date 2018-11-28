@@ -17,7 +17,7 @@ abstract class AbstractStoreType extends AbstractBase
     /**
      * @var string
      */
-    public $storeName;
+    public $storeLabel;
 
     /**
      * @var string
