@@ -9,6 +9,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Form\SearchEngineForm;
+use Nemundo\Workflow\App\SearchEngine\Parameter\QueryParameter;
 use Nemundo\Workflow\App\SearchEngine\Reader\SearchEngineReader;
 
 class SearchEngineSite extends AbstractSite
@@ -50,7 +51,7 @@ class SearchEngineSite extends AbstractSite
 
 
         $reader = new SearchEngineReader();
-        $reader->keyword = $form->getKeyword();
+        $reader->keyword = (new QueryParameter())->getValue();  // $form->getKeyword();
         foreach ($reader->getData() as $searchEngineItem) {
 
             $row = new BootstrapClickableTableRow($table);
