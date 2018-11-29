@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\ToDo\Site;
 
 
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\Button\BootstrapSiteButton;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\ToDo\Com\ToDoNavigation;
 use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
@@ -21,6 +22,9 @@ class ToDoNewSite extends AbstractSite
     {
         $this->url = 'new';
         $this->title = 'New';
+        $this->menuActive = false;
+
+
 
     }
 
@@ -37,10 +41,11 @@ class ToDoNewSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+
         new ToDoNavigation($page);
 
 
-        (new ToDoProcess())->getView($page);
+        (new ToDoProcess())->getProcessView($page);
 
 
         $page->render();

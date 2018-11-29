@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\ToDo\Content\Form;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
+use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
 use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
 
 class ToDoTypeForm extends ContentTreeForm
@@ -38,10 +39,17 @@ class ToDoTypeForm extends ContentTreeForm
     protected function onSubmit()
     {
 
+
+        $process = new ToDoProcess();
+        $process->toDo = $this->toDo->getValue();
+        $process->saveType();
+
+
+/*
         $status = new ToDoErfassungStatus();
         $status->parentContentType = $this->parentContentType;
         $status->toDo = $this->toDo->getValue();
-        $status->saveType();
+        $status->saveType();*/
 
 
         //$process = new ToDoProcess($status->dataId);

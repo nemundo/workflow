@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\ToDo\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\Button\BootstrapSiteButton;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
@@ -49,6 +50,10 @@ class ToDoSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
         new ToDoNavigation($page);
+
+        $btn = new BootstrapSiteButton($page);
+        $btn->site = ToDoNewSite::$site;
+
 
         //$nav = new AdminNavigation($page);
         //$nav->site = ToDoSite::$site;

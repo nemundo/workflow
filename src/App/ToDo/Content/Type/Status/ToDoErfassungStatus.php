@@ -41,6 +41,7 @@ class ToDoErfassungStatus extends AbstractWorkflowStatus  // AbstractModelDataWo
     }
 
 
+    /*
     public function saveType()
     {
 
@@ -58,7 +59,7 @@ class ToDoErfassungStatus extends AbstractWorkflowStatus  // AbstractModelDataWo
         $this->saveContentLog();
 
 
-    }
+    }*/
 
 
 
