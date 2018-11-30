@@ -24,6 +24,7 @@ use Nemundo\Workflow\App\Subscription\Install\SubscriptionInstall;
 use Nemundo\Workflow\App\Survey\Install\SurveyInstall;
 use Nemundo\Workflow\App\Task\Install\TaskInstall;
 use Nemundo\Workflow\App\ToDo\Install\ToDoInstall;
+use Nemundo\Workflow\App\UserConfig\Install\UserConfigInstall;
 use Nemundo\Workflow\App\Widget\Install\WidgetInstall;
 use Nemundo\Workflow\App\Wiki\Install\WikiInstall;
 use Nemundo\Workflow\App\Workflow\Install\WorkflowInstall;
@@ -59,10 +60,11 @@ class CollaborationInstall extends AbstractScript
         (new ContentTemplateInstall())->run();
         (new SubscriptionInstall())->run();
         (new FavoriteInstall())->run();
-        (new MailConfigInstall())->run();
+        //(new MailConfigInstall())->run();
 
         //(new SurveyInstall())->run();
         (new StreamInstall())->run();
+        (new UserConfigInstall())->run();
 
         $setup = new UsergroupSetup();
         $setup->addUsergroup(new CollaborationUsergroup());
