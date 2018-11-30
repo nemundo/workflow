@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\ToDo\Content\Type\Status;
 
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoUpdate;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus;
+use Nemundo\Workflow\App\Workflow\Content\View\SubjectView;
 
 class ToDoDoneStatus extends AbstractStatusChangeWorkflowStaus
 {
@@ -14,6 +15,9 @@ class ToDoDoneStatus extends AbstractStatusChangeWorkflowStaus
         $this->contentLabel = 'Done';
         $this->contentId = '9760c730-817d-436d-862e-d3a25433dd38';
         $this->closingWorkflow = true;
+
+        $this->viewClass = SubjectView::class;
+
     }
 
 

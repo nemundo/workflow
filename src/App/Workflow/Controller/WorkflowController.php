@@ -39,28 +39,20 @@ class WorkflowController extends AbstractBase
 
         $formStatus = null;
 
-
-        //if ($this->process->isWorkflowOpen()) {
-
         $status = $this->process->getStatus();
-
-
         if ($status !== null) {
 
             if ($status->isDraft()) {
                 $formStatus = $status;
             }
 
-
             $contentTypeParameter = new ContentTypeParameter();
-
             if ($contentTypeParameter->exists()) {
 
                 $formStatus = $contentTypeParameter->getContentType();
                 $formStatus->parentContentType = $this->process;
 
             } else {
-
 
                 if (!$status->isDraft()) {
                     $nextStatus2 = $status->getNextContentType();
@@ -69,8 +61,8 @@ class WorkflowController extends AbstractBase
                         $formStatus = $nextStatus2;
                     }
                 }
+
             }
-            //}
 
         }
 
@@ -96,30 +88,19 @@ class WorkflowController extends AbstractBase
 
                     $form = $formStatus->getForm($parentItem);
                     $form->parentContentType = $this->process;
-                    //$form->redirectSite = $this->process->getViewSite();
                     $form->redirectSite = new Site();
                     $form->redirectSite->removeParameter(new ContentTypeParameter());
 
                 }
 
-            } else {
-
-                /*
-                $form = $this->process->getForm($parentItem);
-                $form->parentContentType = $this->process;
-                $form->redirectSite = new Site();
-                $form->redirectSite->removeParameter(new ContentTypeParameter());*/
-
             }
 
         } else {
-
 
             $form = $this->process->getForm($parentItem);
             $form->parentContentType = $this->process;
             $form->redirectSite = new Site();
             $form->redirectSite->removeParameter(new ContentTypeParameter());
-
 
         }
 
@@ -196,8 +177,6 @@ class WorkflowController extends AbstractBase
                 $table->addLabelValue('Subject', $this->process->getSubject());
                 $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
 
-                //(new Debug())->write('next:')
-
                 $nextSatus = $this->process->getNextContentType();
                 if ($nextSatus !== null) {
                     $table->addLabelValue('Next Status', $nextSatus->contentLabel);
@@ -205,22 +184,18 @@ class WorkflowController extends AbstractBase
 
 
                 $parent = $this->process->getParent();
-
                 if ($parent !== null) {
-
 
                     $table->addLabelValue('Parent', $parent->contentLabel);
 
                     $site = $parent->getViewSite();
                     $site->title = $parent->getSubject();
-                    $table->addLabelSite('Parent', $site);
+                    $table->addLabelSite('Parent Item', $site);
 
-                    //$table->addLabelValue('Subject', $parent->getSubject());
-                    //$table->addLabelValue('Parent', $parent->contentName);
                 }
 
-
             }
+
         }
 
         return $log;

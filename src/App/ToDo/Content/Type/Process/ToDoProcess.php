@@ -4,17 +4,18 @@ namespace Nemundo\Workflow\App\ToDo\Content\Type\Process;
 
 
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\User\Type\UserSessionType;
+use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
+use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
 use Nemundo\Workflow\App\ToDo\Content\View\ToDoView;
+use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDo;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoModel;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
-use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
 use Nemundo\Workflow\App\ToDo\Parameter\ToDoParameter;
 use Nemundo\Workflow\App\ToDo\Site\ToDoSite;
-use Nemundo\Workflow\App\Workflow\Content\View\ProcessView;
 
 class ToDoProcess extends AbstractWorkflowProcess
 {
-
 
     /**
      * @var string
@@ -35,7 +36,7 @@ class ToDoProcess extends AbstractWorkflowProcess
         $this->contentId = '567fd76c-f28a-4526-be23-18fa324db6f2';
 
         $this->baseModelClass = ToDoModel::class;
-        $this->viewClass = ToDoView::class;  // ProcessView::class;
+        $this->viewClass = ToDoView::class;
         $this->viewSite = ToDoSite::$site;
         $this->parameterClass = ToDoParameter::class;
         $this->nextContentTypeClass = ToDoErfassungStatus::class;
@@ -65,6 +66,26 @@ class ToDoProcess extends AbstractWorkflowProcess
             $subject = $row->todo;
         }
         return $subject;
+
+    }
+
+
+    public function saveType()
+    {
+
+        $data = new ToDo();
+        $data->todo = $this->toDo;
+        $this->dataId = $data->save();
+
+        $this->saveContentLog();
+
+        $status = new ToDoErfassungStatus();
+        $status->dataId = $this->dataId;
+        $status->parentContentType = $this;
+        $status->saveType();
+
+        $assignment = new AssignmentBuilder($this);
+        $assignment->createUserAssignment((new UserSessionType())->userId);
 
     }
 

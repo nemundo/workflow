@@ -7,7 +7,7 @@ use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
-use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
+
 
 class ToDoTypeForm extends ContentTreeForm
 {
@@ -41,22 +41,10 @@ class ToDoTypeForm extends ContentTreeForm
 
 
         $process = new ToDoProcess();
+        $process->parentContentType = $this->parentContentType;
         $process->toDo = $this->toDo->getValue();
         $process->saveType();
 
-
-/*
-        $status = new ToDoErfassungStatus();
-        $status->parentContentType = $this->parentContentType;
-        $status->toDo = $this->toDo->getValue();
-        $status->saveType();*/
-
-
-        //$process = new ToDoProcess($status->dataId);
-        //$this->redirectSite = $process->getViewSite();
-
-
     }
-
 
 }
