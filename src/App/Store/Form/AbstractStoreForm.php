@@ -19,6 +19,12 @@ class AbstractStoreForm extends BootstrapForm
     public $store;
 
     /**
+     * @var bool
+     */
+    public $urlRefererRedirect = false;
+
+
+    /**
      * @var HiddenInput
      */
     private $hidden;
@@ -26,11 +32,13 @@ class AbstractStoreForm extends BootstrapForm
     public function getHtml()
     {
 
-        $this->hidden = new HiddenInput($this);
-        if ($this->hidden->getValue() !== '') {
-            $this->hidden->value = $this->hidden->getValue();
-        } else {
-            $this->hidden->value = (new UrlReferer())->getUrl();
+        if ($this->urlRefererRedirect) {
+            $this->hidden = new HiddenInput($this);
+            if ($this->hidden->getValue() !== '') {
+                $this->hidden->value = $this->hidden->getValue();
+            } else {
+                $this->hidden->value = (new UrlReferer())->getUrl();
+            }
         }
 
 
@@ -50,7 +58,9 @@ class AbstractStoreForm extends BootstrapForm
 
         $this->store->setValue($this->getStoreValue());
 
-        (new UrlRedirect())->redirect($this->hidden->getValue());
+        if ($this->urlRefererRedirect) {
+            (new UrlRedirect())->redirect($this->hidden->getValue());
+        }
 
     }
 
