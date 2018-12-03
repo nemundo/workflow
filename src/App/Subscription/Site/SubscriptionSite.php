@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\Subscription\Site;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\User\Information\UserInformation;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\Subscription;

@@ -12,12 +12,22 @@ use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Workflow\App\Notification\Parameter\NotificationParameter;
 use Nemundo\Workflow\App\Notification\Reader\NotificationItemReader;
 use Nemundo\Workflow\App\Notification\Site\NotificationArchiveSite;
+use Nemundo\Workflow\App\Notification\Site\NotificationSite;
 
 class NotificationWidget extends AdminWidget
 {
 
+
+    protected function loadWidget()
+    {
+        $this->widgetSite = NotificationSite::$site;
+
+    }
+
+
     public function getHtml()
     {
+
 
         //$this->widgetTitle = 'Notification';
 

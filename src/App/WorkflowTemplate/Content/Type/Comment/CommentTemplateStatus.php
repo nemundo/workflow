@@ -35,6 +35,15 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
     }
 
 
+    protected function loadData()
+    {
+
+        $commentRow = (new CommentReader())->getRowById($this->dataId);
+        $this->comment = $commentRow->comment;
+
+    }
+
+
     public function saveType()
     {
 
@@ -43,6 +52,22 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
         $this->dataId = $data->save();
 
         $this->saveContentLog();
+
+    }
+
+
+    public function getSubject()
+    {
+
+        $this->loadData();
+
+
+        // Kommentar von LAU
+
+
+        $subject = 'Kommentar ' . $this->comment;  // $this->getSubject();
+//von '.(new UserSessionType())->getLabel().(new Br())->getHtmlString().
+        return $subject;
 
     }
 

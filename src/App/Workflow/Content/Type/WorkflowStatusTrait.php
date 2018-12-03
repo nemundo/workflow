@@ -27,5 +27,9 @@ trait WorkflowStatusTrait
     public $showLog = true;
 // showHistory
 
+    /**
+     * @var bool
+     */
+    public $sendNotification = true;
 
 }

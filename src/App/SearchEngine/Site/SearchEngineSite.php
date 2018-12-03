@@ -5,6 +5,11 @@ namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Com\Html\Basic\Br;
+use Nemundo\Com\Html\Basic\Hr;
+use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Com\Html\Basic\Small;
+use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
@@ -54,10 +59,28 @@ class SearchEngineSite extends AbstractSite
         $reader->keyword = (new QueryParameter())->getValue();  // $form->getKeyword();
         foreach ($reader->getData() as $searchEngineItem) {
 
+
+            $small = new Small($page);
+            $small->content = $searchEngineItem->source;
+
+            (new Br($page));
+
+            $hyperlink = new SiteHyperlink($page);
+            $hyperlink->site = $searchEngineItem->site;
+
+$p = new Paragraph($page);
+$p->content = $searchEngineItem->text;
+
+
+            (new Hr($page));
+
+
+            /*
             $row = new BootstrapClickableTableRow($table);
             $row->addSite($searchEngineItem->site);
+            $row->addText($searchEngineItem->text);
             $row->addText($searchEngineItem->source);
-            $row->addClickableSite($searchEngineItem->site);
+            $row->addClickableSite($searchEngineItem->site);*/
 
         }
 

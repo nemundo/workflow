@@ -25,15 +25,15 @@ class UserIdentificationType extends AbstractIdentificationType
 
         $value = 'Benutzer existiert nicht';
 
-        /*
+
         $reader = new UserReader();
         $reader->filter->andEqual($reader->model->id, $identificationId);
         foreach ($reader->getData() as $userRow) {
             $value = $userRow->displayName;
-        }*/
+        }
 
-        $userType = new MitarbeiterType($identificationId);
-        $value = $userType->getSubject();
+        //$userType = new MitarbeiterType($identificationId);
+        //$value = $userType->getSubject();
 
         return $value;
 

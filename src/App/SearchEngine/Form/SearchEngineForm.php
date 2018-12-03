@@ -8,6 +8,7 @@ use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Package\Bootstrap\Autocomplete\BootstrapAutocompleteTextBox;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Workflow\App\SearchEngine\Com\TextBox\SearchAutocompleteTextBox;
+use Nemundo\Workflow\App\SearchEngine\Parameter\QueryParameter;
 
 class SearchEngineForm extends SearchForm
 {
@@ -25,6 +26,8 @@ class SearchEngineForm extends SearchForm
         $row = new BootstrapFormRow($this);
 
         $this->query = new SearchAutocompleteTextBox($row);
+        $this->query->name = (new QueryParameter())->getParameterName();
+
 
         /*
         $this->query = new BootstrapAutocompleteTextBox($row);

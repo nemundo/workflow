@@ -20,6 +20,11 @@ class SearchEngineItem extends AbstractBase
     public $title;
 
     /**
+     * @var string
+     */
+    public $text;
+
+    /**
      * @var AbstractSite
      */
     public $site;

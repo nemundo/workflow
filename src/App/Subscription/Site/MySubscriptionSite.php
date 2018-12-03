@@ -4,9 +4,12 @@ namespace Nemundo\Workflow\App\Subscription\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\Factory\ContentTypeFactory;
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
 
@@ -35,11 +38,12 @@ class MySubscriptionSite extends AbstractSite
         $header->addText('User');
 
 
-        $reader = new SubscriptionReader();
-        $reader->model->loadContentType();
-        $reader->model->loadUser();
+        $subscriptionReader = new SubscriptionReader();
+        $subscriptionReader->model->loadContentType();
+        $subscriptionReader->model->loadUser();
+        $subscriptionReader->filter->andEqual($subscriptionReader->model->userId, (new UserSessionType())->userId);
 
-        foreach ($reader->getData() as $subscriptionRow) {
+        foreach ($subscriptionReader->getData() as $subscriptionRow) {
 
 
             $row = new BootstrapClickableTableRow($table);
@@ -48,18 +52,30 @@ class MySubscriptionSite extends AbstractSite
 
             //$row->addText($subscriptionRow->dataId);
 
+            $className = $subscriptionRow->contentType->contentTypeClass;
+
+            /** @var AbstractContentType $contentType */
+            $contentType = new $className($subscriptionRow->dataId);
+
+
+            /*
             $contentType = $subscriptionRow->contentType->getContentTypeClassObject();
 
             $subject = $contentType->contentLabel;
             if ($subscriptionRow->dataId !== '0') {
                 $subject = $contentType->getSubject($subscriptionRow->dataId);
-            }
-            $row->addText($subject);
-
-
+            }*/
+            $row->addText($contentType->getSubject());
             $row->addText($subscriptionRow->user->displayName);
+            $row->addClickableSite($contentType->getViewSite());
 
-            $row->addClickableSite($contentType->getViewSite($subscriptionRow->dataId));
+            // delete
+
+            //$site = clone(SubscriptionDeleteSite::$site);
+            //$site->addSite()
+
+            //$row->addIconSite();
+
 
 
         }

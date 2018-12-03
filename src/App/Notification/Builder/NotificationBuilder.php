@@ -9,6 +9,7 @@ use Nemundo\Core\Type\Text\Html;
 use Nemundo\Package\ResponsiveMail\ResponsiveActionMailMessage;
 use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Usergroup\AbstractUsergroup;
+use Nemundo\Workflow\App\Notification\Config\NotificationConfig;
 use Nemundo\Workflow\App\Notification\Config\NotificationSendMailConfig;
 use Nemundo\Workflow\App\Notification\Data\Notification\Notification;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationDelete;
@@ -102,33 +103,22 @@ class NotificationBuilder extends AbstractBaseClass
     protected function sendMail($userId)
     {
 
-        /*
-        if (MailConfig::$sendMail) {
+        if (NotificationConfig::$sendMail) {
 
-            $mailConfigValue = new MailConfigValue();
-            $mailConfigValue->field = $mailConfigValue->model->inboxMail;
-            $mailConfigValue->filter->andEqual($mailConfigValue->model->userId, (new UserSessionType())->userId);
-            $value = $mailConfigValue->getValue();
+            if ((new NotificationSendMailConfig)->getValue()) {
 
+                $userType = new UserItemType($userId);
 
-            if (($value) || ($value == '')) {*/
+                $mail = new ResponsiveActionMailMessage();
+                $mail->mailTo = $userType->email;
+                $mail->subject = $this->contentType->getSubject();
+                $mail->actionText = (new Html($this->message))->getValue();
+                $mail->actionLabel = 'Ansehen';
+                $mail->actionUrlSite = $this->contentType->getViewSite();
+                $mail->sendMail();
 
-        if ((new NotificationSendMailConfig)->getValue()) {
-
-            //$userRow = (new UserReader())->getRowById($userId);
-
-            $userType = new UserItemType($userId);
-
-            $mail = new ResponsiveActionMailMessage();
-            $mail->mailTo = $userType->email;  // $userRow->email;
-            $mail->subject = $this->contentType->getSubject();
-            $mail->actionText = (new Html($this->message))->getValue();
-            $mail->actionLabel = 'Ansehen';
-            $mail->actionUrlSite = $this->contentType->getViewSite();
-            $mail->sendMail();
-
+            }
         }
-
     }
 
 }

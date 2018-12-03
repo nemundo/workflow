@@ -4,12 +4,13 @@ namespace Nemundo\Workflow\App\Subscription\Site;
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
+use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Url\UrlReferer;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionDelete;
 
-class SubscriptionDeleteSite extends AbstractSite
+class SubscriptionDeleteSite extends AbstractDeleteIconSite
 {
 
     /**
@@ -20,7 +21,7 @@ class SubscriptionDeleteSite extends AbstractSite
     protected function loadSite()
     {
         $this->url = 'subscription-delete';
-        $this->menuActive = false;
+        //$this->menuActive = false;
     }
 
 

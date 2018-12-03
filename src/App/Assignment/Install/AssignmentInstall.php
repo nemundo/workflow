@@ -9,11 +9,14 @@ use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Workflow\App\Assignment\Application\AssignmentApplication;
 use Nemundo\Workflow\App\Assignment\Data\AssignmentCollection;
 use Nemundo\Workflow\App\MailConfig\Install\MailConfigInstall;
+use Nemundo\Workflow\App\UserConfig\Install\UserConfigInstall;
 
 class AssignmentInstall extends AbstractScript
 {
     public function run()
     {
+
+        (new UserConfigInstall())->run();
 
         $setup = new ApplicationSetup();
         $setup->addApplication(new AssignmentApplication());
