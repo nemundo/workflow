@@ -20,7 +20,7 @@ class NotificationWidget extends AdminWidget
 
     protected function loadWidget()
     {
-        $this->widgetSite = NotificationSite::$site;
+        //$this->widgetSite = NotificationSite::$site;
 
     }
 
