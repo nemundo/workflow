@@ -189,8 +189,10 @@ class WorkflowController extends AbstractBase
                     $table->addLabelValue('Parent', $parent->contentLabel);
 
                     $site = $parent->getViewSite();
-                    $site->title = $parent->getSubject();
-                    $table->addLabelSite('Parent Item', $site);
+                    if ($site !== null) {
+                        $site->title = $parent->getSubject();
+                        $table->addLabelSite('Parent Item', $site);
+                    }
 
                 }
 
