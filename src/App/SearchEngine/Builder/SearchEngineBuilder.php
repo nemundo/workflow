@@ -10,8 +10,11 @@ use Nemundo\Workflow\App\SearchEngine\Data\Document\Document;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentDelete;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentId;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndex;
+use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexCount;
 use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexDelete;
+use Nemundo\Workflow\App\SearchEngine\Data\SearchIndex\SearchIndexReader;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\Word;
+use Nemundo\Workflow\App\SearchEngine\Data\Word\WordDelete;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordId;
 
 
@@ -38,34 +41,31 @@ class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
     }
 
 
-    private function prepareIndex()
-    {
-
-        // $this->check();
-
-    }
-
-
     public function addWord($word)
     {
 
-        $this->prepareIndex();
-        $this->saveDocument();
+        $word = trim($word);
 
-        $data = new Word();
-        $data->ignoreIfExists = true;
-        $data->word = $word;
-        $data->save();
+        if ($word !== '') {
 
-        $id = new WordId();
-        $id->filter->andEqual($id->model->word, $word);
-        $wordId = $id->getId();
+            $this->saveDocument();
 
-        $data = new SearchIndex();
-        $data->ignoreIfExists = true;
-        $data->wordId = $wordId;
-        $data->documentId = $this->documentId;
-        $data->save();
+            $data = new Word();
+            $data->ignoreIfExists = true;
+            $data->word = $word;
+            $data->save();
+
+            $id = new WordId();
+            $id->filter->andEqual($id->model->word, $word);
+            $wordId = $id->getId();
+
+            $data = new SearchIndex();
+            $data->ignoreIfExists = true;
+            $data->wordId = $wordId;
+            $data->documentId = $this->documentId;
+            $data->save();
+
+        }
 
     }
 
@@ -79,31 +79,40 @@ class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
 
     }
 
-    /*
-        public function createItem()
-        {
-        }*/
 
-
-    // removeSearchIndex
     public function removeSearchIndex()
     {
 
         // check, ob Word from this document Id sonstwo noch verwendet werden
         // word auflistung, every word check
 
+
         $id = new DocumentId();
         $id->filter->andEqual($id->model->dataId, $this->contentType->dataId);
-        $this->documentId = $id->getId();
+        $documentId = $id->getId();
 
+
+//        $count = new SearchIndexCount();
+        $reader = new SearchIndexReader();
+        $reader->filter->andEqual($reader->model->documentId, $documentId);
+
+        foreach ($reader->getData() as $indexRow) {
+
+            $wordCount = new SearchIndexCount();
+            $wordCount->filter->andEqual($wordCount->model->wordId, $indexRow->wordId);
+            $wordCount->filter->andNotEqual($wordCount->model->documentId, $documentId);
+            if ($wordCount->getCount() == 0) {
+                (new WordDelete())->deleteById($indexRow->wordId);
+            }
+
+        }
 
         $delete = new DocumentDelete();
         $delete->filter->andEqual($delete->model->dataId, $this->contentType->dataId);
         $delete->delete();
 
-
         $delete = new SearchIndexDelete();
-        $delete->filter->andEqual($delete->model->documentId, $this->documentId);
+        $delete->filter->andEqual($delete->model->documentId, $documentId);
         $delete->delete();
 
 
