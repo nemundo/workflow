@@ -15,9 +15,9 @@ class AssignmentFilterListBox extends BootstrapListBox
         $this->label = 'Quelle';
 
         $reader = new AssignmentFilterReader();
-        $reader->addOrder($reader->model->contentType->contentType);
+        $reader->addOrder($reader->model->filterLabel);
         foreach ($reader->getData() as $filterRow) {
-            $this->addItem($filterRow->contentTypeId, $filterRow->contentType->contentType);
+            $this->addItem($filterRow->contentTypeId, $filterRow->filterLabel);
         }
 
         return parent::getHtml();

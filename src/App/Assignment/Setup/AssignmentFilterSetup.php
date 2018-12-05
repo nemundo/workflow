@@ -11,15 +11,21 @@ use Nemundo\Workflow\App\Assignment\Data\AssignmentFilter\AssignmentFilter;
 class AssignmentFilterSetup extends AbstractBaseClass
 {
 
-    public function addContentType(AbstractContentType $contentType)
+    public function addContentType(AbstractContentType $contentType, $filterLabel = null)
     {
 
         $setup = new ContentTypeSetup();
         $setup->addContentType($contentType);
 
+        if ($filterLabel == null) {
+            $filterLabel = $contentType->contentLabel;
+        }
+
+
         $data = new AssignmentFilter();
-        $data->ignoreIfExists = true;
+        $data->updateOnDuplicate = true;
         $data->contentTypeId = $contentType->contentId;
+        $data->filterLabel = $filterLabel;
         $data->save();
 
     }
