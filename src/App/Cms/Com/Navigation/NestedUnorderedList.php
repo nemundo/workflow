@@ -11,6 +11,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Site\AbstractSiteTree;
 
 // CmsNavigation
+// Wird verwendet in: Weihnachtszeit
 class NestedUnorderedList extends AbstractHtmlContainerList
 {
 
@@ -51,15 +52,28 @@ class NestedUnorderedList extends AbstractHtmlContainerList
             $link = new SiteHyperlink($li);
             $link->site = $subSite;
 
-            if ($subSite->isActive()) {
+            if ($subSite->isActive() || $subSite->isChildMenuActive()) {
                 $link->addCssClass($this->activeCssClass);
+
+                if ($subSite->hasItems()) {
+                    $this->addMenu($subSite, $li);
+                }
+
             }
 
-            if ($subSite->hasItems()) {
 
-                $this->addMenu($subSite, $li);
+            // is sub active
+            //foreach ($subSite->getMenuActiveSite() as $subSubSite) {
 
-            }
+
+
+            //}
+
+                /*
+                            if ($subSite->hasItems()) {
+                                $this->addMenu($subSite, $li);
+                            }*/
+
 
         }
 
