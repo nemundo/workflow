@@ -9,6 +9,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Workflow\Com\WorkflowMenuDropdown;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Navigation\BootstrapNavigation;
+use Nemundo\Package\Bootstrap\Tabs\BootstrapSiteTabs;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Wiki\Collection\WikiContentTypeCollection;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
@@ -53,7 +54,7 @@ class WikiPageSite extends AbstractSite
         $pageId = $pageParameter->getValue();
 
 
-        $nav = new BootstrapNavigation($page);
+        $nav = new BootstrapSiteTabs($page);
         $nav->site = WikiSite::$site;
 
         $btn = new AdminButton($page);
