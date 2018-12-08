@@ -7,7 +7,6 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Store\Form\TextStoreForm;
 use Nemundo\Workflow\App\Store\Parameter\StoreParameter;
 use Nemundo\Workflow\App\Store\Type\TextStoreType;
-use Weihnachtszeit\Store\PersoenlichesStore;
 
 class TextStoreEditSite extends AbstractSite
 {
@@ -41,6 +40,7 @@ class TextStoreEditSite extends AbstractSite
 
         $form = new TextStoreForm($page);
         $form->store = $store;
+        $form->urlRefererRedirect = true;
 
         $page->render();
 
