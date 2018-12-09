@@ -52,7 +52,7 @@ class CollaborationInstall extends AbstractScript
         (new DashboardInstall())->run();
         (new NotificationInstall())->run();
         //(new PersonalTaskInstall())->run();
-        (new RepeatingTaskInstall())->run();
+        //(new RepeatingTaskInstall())->run();
         (new PersonalCalendarInstall())->run();
         (new SearchEngineInstall())->run();
         //(new WidgetInstall())->run();
