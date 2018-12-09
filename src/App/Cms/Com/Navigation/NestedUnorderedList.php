@@ -45,35 +45,24 @@ class NestedUnorderedList extends AbstractHtmlContainerList
         $list = new UnorderedList($com);
         $list->addCssClass($this->unorderedListCssClass);
 
-        foreach ($site->getMenuActiveSite() as $subSite) {
+        foreach ($site->getSiteList() as $subSite) {
 
-            $li = new Li($list);
+            //if ($subSite->isCurrentSite()) {
+            if ($subSite->menuActive) {
+                $li = new Li($list);
 
-            $link = new SiteHyperlink($li);
-            $link->site = $subSite;
+                $link = new SiteHyperlink($li);
+                $link->site = $subSite;
 
-            if ($subSite->isActive() || $subSite->isChildMenuActive()) {
-                $link->addCssClass($this->activeCssClass);
+                if ($subSite->isCurrentSite() || $subSite->isChildMenuActive()) {
+                    $link->addCssClass($this->activeCssClass);
 
-                if ($subSite->hasItems()) {
-                    $this->addMenu($subSite, $li);
+                    if ($subSite->hasItems()) {
+                        $this->addMenu($subSite, $li);
+                    }
+
                 }
-
             }
-
-
-            // is sub active
-            //foreach ($subSite->getMenuActiveSite() as $subSubSite) {
-
-
-
-            //}
-
-                /*
-                            if ($subSite->hasItems()) {
-                                $this->addMenu($subSite, $li);
-                            }*/
-
 
         }
 
