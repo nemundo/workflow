@@ -7,7 +7,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Com\Html\Basic\Hr;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Basic\Small;
-use Nemundo\Com\Html\Div\ContainerDiv;
+use Nemundo\Com\Html\Div\DivContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
@@ -92,7 +92,7 @@ class NotificationSite extends AbstractSite
             $contentType = new $className($notificationRow->dataId);
 
 
-            $div = new ContainerDiv($layout->col2);
+            $div = new DivContainer($layout->col2);
 
             $small = new Small($div);
             $small->content = $notificationRow->contentType->contentType;
