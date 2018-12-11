@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Assignment\Site;
 
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Assignment\Com\Form\AssignmentSearchForm;
@@ -20,7 +21,9 @@ class AssignmentSite extends AbstractSite
     protected function loadSite()
     {
 
-        $this->title = 'Assignment';  // 'Aufgaben';
+        $this->title[LanguageCode::EN] = 'Assignment';
+        $this->title[LanguageCode::DE] = 'Zuweisung';
+
         $this->url = 'assignment';
 
         new AssignmentDeleteSite($this);

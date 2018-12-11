@@ -33,6 +33,9 @@ class AssignmentTable extends AbstractHtmlContainerList
      */
     public $showAssignment = true;
 
+    /**
+     * @var bool
+     */
     public $showArchive = true;
 
 
@@ -75,12 +78,6 @@ class AssignmentTable extends AbstractHtmlContainerList
 
         }
 
-
-        //$assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
-
-        //$assignmentReader->addOrder($assignmentReader->model->id, SortOrder::DESCENDING);
-
-        //$assignmentReader->limit = 20;
 
         $table = new AdminClickableTable($this);
 
@@ -129,7 +126,11 @@ class AssignmentTable extends AbstractHtmlContainerList
             }
 
             $row->addText($assignmentRow->source);
-            $row->addText($assignmentRow->subject);
+            $row->addText($contentType->getSubject());
+
+
+            //$row->addText($assignmentRow->subject);
+
 
 
             $row->addText($assignmentRow->message);
