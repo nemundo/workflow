@@ -110,8 +110,10 @@ class AssignmentBuilder extends AbstractBase
         $data->message = $this->message;
         $data->assignment = $this->assignment;
         $data->assignmentText = $this->assignment->getValue();
-        if ($this->deadline->isNotNull()) {
-            $data->deadline = $this->deadline;
+        if ($this->deadline !== null) {
+            if ($this->deadline->isNotNull()) {
+                $data->deadline = $this->deadline;
+            }
         }
         $data->save();
 
