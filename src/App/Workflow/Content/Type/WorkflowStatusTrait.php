@@ -20,6 +20,7 @@ trait WorkflowStatusTrait
      * @var bool
      */
     public $showMenu = true;
+    // showMenuLog
 
     /**
      * @var bool

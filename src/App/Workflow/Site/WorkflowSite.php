@@ -3,25 +3,49 @@
 namespace Nemundo\Workflow\App\Workflow\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
+use Nemundo\Admin\Com\Table\AdminTable;
+use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\App\Content\Parameter\ContentLogParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
+use Nemundo\Package\Bootstrap\Button\BootstrapSiteButton;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
+use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
+use Nemundo\Workflow\App\Workflow\Site\Delete\WorkflowStatusDeleteSite;
 
 class WorkflowSite extends AbstractSite
 {
+
+    /**
+     * @var WorkflowSite
+     */
+    public static $site;
+
     protected function loadSite()
     {
         $this->title = 'Workflow';
         $this->url = 'workflow';
+
+        new WorkflowStatusDeleteSite($this);
+
+    }
+
+
+    protected function registerSite()
+    {
+        WorkflowSite::$site = $this;
     }
 
     public function loadContent()
@@ -30,9 +54,12 @@ class WorkflowSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+        $layout = new BootstrapTwoColumnLayout($page);
+
+
         // search
 
-        $searchForm = new SearchForm($page);
+        $searchForm = new SearchForm($layout->col1);
 
         $row = new BootstrapFormRow($searchForm);
 
@@ -43,7 +70,7 @@ class WorkflowSite extends AbstractSite
         $processListBox->value = $processListBox->getValue();
 
 
-        $table = new AdminClickableTable($page);
+        $table = new AdminClickableTable($layout->col1);
 
         $header = new TableHeader($table);
         $header->addText('Closed');
@@ -88,7 +115,11 @@ class WorkflowSite extends AbstractSite
             $row->addText($workflowRow->userCreated->displayName);
             $row->addText($workflowRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
-            $row->addClickableSite($process->getViewSite());
+            //$row->addClickableSite($process->getViewSite());
+
+            $site = clone(WorkflowSite::$site);
+            $site->addParameter(new WorkflowParameter($workflowRow->id));
+            $row->addClickableSite($site);
 
 
         }
@@ -96,6 +127,45 @@ class WorkflowSite extends AbstractSite
 
         $pagination = new BootstrapModelPagination($page);
         $pagination->paginationReader = $workflowReader;
+
+        $workflowParameter = new WorkflowParameter();
+        if ($workflowParameter->exists()) {
+
+            $workflowReader = new WorkflowReader();
+            $workflowReader->model->loadProcess();
+            $workflowRow = $workflowReader->getRowById($workflowParameter->getValue());
+
+            $className = $workflowRow->process->processClass;
+
+            /** @var AbstractWorkflowProcess $process */
+            $process = new $className($workflowRow->dataId);
+
+            $title = new AdminTitle($layout->col2);
+            $title->content = $process->getSubject();
+
+            $btn = new BootstrapSiteButton($layout->col2);
+            $btn->site = $process->getViewSite();
+
+
+            $table = new AdminTable($layout->col2);
+
+
+            foreach ($process->getChild() as $child) {
+
+                $row = new TableRow($table);
+                $row->addText($child->getSubject());
+                $row->addText($child->userCreated->displayName);
+                $row->addText($child->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+
+                $site = clone(WorkflowStatusDeleteSite::$site);
+                $site->addParameter(new ContentLogParameter($child->logId));
+                $row->addIconSite($site);
+
+
+            }
+
+
+        }
 
 
         $page->render();

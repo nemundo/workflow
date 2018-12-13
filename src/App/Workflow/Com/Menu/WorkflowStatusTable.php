@@ -7,9 +7,12 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Com\Html\Hyperlink\ContentHyperlink;
+use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
 use Nemundo\Web\Site\Site;
@@ -42,8 +45,12 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
         new CheckIcon($row);
 
         //$row->addText($workflowStatus->getSubject());
-        $row->addText($workflowStatus->contentLabel);
+        //$row->addText($workflowStatus->contentLabel);
 
+        $link = new ContentHyperlink($row);
+        $link->content = $workflowStatus->contentLabel;
+        $link->href = '#log-'.$workflowStatus->logId;
+        $link->addCssClass(BootstrapFontColor::DARK);
 
         $row->addText($workflowStatus->userCreated->displayName);
         $row->addText($workflowStatus->dateTimeCreated->getShortDateLeadingZeroFormat());

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Parameter;
 
 use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
 
-class WorkflowNumberParameter extends AbstractUrlParameter
+class WorkflowParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {

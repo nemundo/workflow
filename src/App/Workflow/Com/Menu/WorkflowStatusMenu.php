@@ -37,34 +37,34 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
         }
 
 
-        if ($this->process->isWorkflowOpen()) {
+        //if ($this->process->isWorkflowOpen()) {
 
-            $nextStatus = $status->getNextContentType();
+        $nextStatus = $status->getNextContentType();
 
-            if ($this->process->dataId == null) {
-                $nextStatus = $status;
-                $this->formStatus = $status;
+        if ($this->process->dataId == null) {
+            $nextStatus = $status;
+            $this->formStatus = $status;
+        }
+
+        if ($nextStatus !== null) {
+
+            $active = false;
+            if ($this->formStatus->contentId == $nextStatus->contentId) {
+                $active = true;
             }
-
-            if ($nextStatus !== null) {
-
-                $active = false;
-                if ($this->formStatus->contentId == $nextStatus->contentId) {
-                    $active = true;
-                }
-                $table->addActiveWorkflowStatus($nextStatus, $active);
-
-            }
-
-            $table->addMenu();
-
-            if ($nextStatus !== null) {
-                foreach ($nextStatus->getNextContentTypeList() as $item) {
-                    $table->addNextWorkflowStatus($item);
-                }
-            }
+            $table->addActiveWorkflowStatus($nextStatus, $active);
 
         }
+
+        $table->addMenu();
+
+        if ($nextStatus !== null) {
+            foreach ($nextStatus->getNextContentTypeList() as $item) {
+                $table->addNextWorkflowStatus($item);
+            }
+        }
+
+        //}
 
         return parent::getHtml();
 
