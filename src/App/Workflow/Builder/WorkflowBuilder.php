@@ -3,10 +3,27 @@
 namespace Nemundo\Workflow\App\Workflow\Builder;
 
 
-use Nemundo\App\Content\Builder\AbstractContentBuilder;
+use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Type\DateTime\DateTime;
+use Nemundo\User\Type\UserSessionType;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
-class WorkflowBuilder extends AbstractContentBuilder
+class WorkflowBuilder extends AbstractBaseClass  // AbstractContentBuilder
 {
+
+    /**
+     * @var AbstractWorkflowProcess
+     */
+    protected $process;
+
+    public function __construct(AbstractWorkflowProcess $process)
+    {
+        $this->process = $process;
+    }
+
+
 
     // closed
 
@@ -18,10 +35,33 @@ class WorkflowBuilder extends AbstractContentBuilder
 
     // deadline???
 
+    // workflow number
 
-    public function createItem()
+    // datetime created
+
+    // user created
+
+
+    public function createWorkflow()
     {
-        // TODO: Implement createItem() method.
+
+        $data = new Workflow();
+        $data->processId = $this->process->contentId;
+        $data->userCreatedId = (new UserSessionType())->userId;
+        $data->dateTimeCreated = (new DateTime())->setNow();
+        $data->dataId = $this->process->dataId;
+        $data->save();
+
+    }
+
+
+    public function closeWorkflow() {
+
+
+        $update = new WorkflowUpdate();
+        $update->closed = true;
+        $update->filter->andEqual($update->model->dataId, $this->process->dataId);
+        $update->update();
     }
 
 }

@@ -1,16 +1,13 @@
 <?php
-
 namespace Nemundo\Workflow\App\Workflow\Data\Workflow;
-class WorkflowCount extends \Nemundo\Model\Count\AbstractModelDataCount
-{
-    /**
-     * @var WorkflowModel
-     */
-    public $model;
+class WorkflowCount extends \Nemundo\Model\Count\AbstractModelDataCount {
+/**
+* @var WorkflowModel
+*/
+public $model;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->model = new WorkflowModel();
-    }
+public function __construct() {
+parent::__construct();
+$this->model = new WorkflowModel();
+}
 }
