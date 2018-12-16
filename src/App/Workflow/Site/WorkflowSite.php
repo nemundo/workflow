@@ -18,10 +18,12 @@ use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Workflow\Com\Breadcrumb\WorkflowBreadcrumb;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
+use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\Delete\WorkflowStatusDeleteSite;
 
@@ -38,6 +40,7 @@ class WorkflowSite extends AbstractSite
         $this->title = 'Workflow';
         $this->url = 'workflow';
 
+        new WorkflowItemSite($this);
         new WorkflowStatusDeleteSite($this);
 
     }
@@ -54,7 +57,13 @@ class WorkflowSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+        $breadcrumb = new WorkflowBreadcrumb($page);
+
+
         $layout = new BootstrapTwoColumnLayout($page);
+
+
+
 
 
         // search
@@ -115,11 +124,18 @@ class WorkflowSite extends AbstractSite
             $row->addText($workflowRow->userCreated->displayName);
             $row->addText($workflowRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
 
+
+            $site = clone(WorkflowItemSite::$site);
+            $site->addParameter(new ProcessParameter($workflowRow->processId));
+            $site->addParameter(new WorkflowParameter($workflowRow->dataId));
+            $row->addClickableSite($site);
+
             //$row->addClickableSite($process->getViewSite());
 
-            $site = clone(WorkflowSite::$site);
+
+            /*$site = clone(WorkflowSite::$site);
             $site->addParameter(new WorkflowParameter($workflowRow->id));
-            $row->addClickableSite($site);
+            $row->addClickableSite($site);*/
 
 
         }
@@ -128,6 +144,8 @@ class WorkflowSite extends AbstractSite
         $pagination = new BootstrapModelPagination($page);
         $pagination->paginationReader = $workflowReader;
 
+
+        /*
         $workflowParameter = new WorkflowParameter();
         if ($workflowParameter->exists()) {
 
@@ -138,7 +156,7 @@ class WorkflowSite extends AbstractSite
             $className = $workflowRow->process->processClass;
 
             /** @var AbstractWorkflowProcess $process */
-            $process = new $className($workflowRow->dataId);
+       /*     $process = new $className($workflowRow->dataId);
 
             $title = new AdminTitle($layout->col2);
             $title->content = $process->getSubject();
@@ -165,7 +183,7 @@ class WorkflowSite extends AbstractSite
             }
 
 
-        }
+        }*/
 
 
         $page->render();

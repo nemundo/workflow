@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type\Comment;
 
 
+use Nemundo\Core\Type\Text\Html;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\Comment\CommentForm;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\View\CommentWorkflowTemplateView;
@@ -39,7 +40,7 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
     {
 
         $commentRow = (new CommentReader())->getRowById($this->dataId);
-        $this->comment = $commentRow->comment;
+        $this->comment = (new Html($commentRow->comment))->getValue();
 
     }
 
