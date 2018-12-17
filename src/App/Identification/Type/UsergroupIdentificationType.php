@@ -4,9 +4,7 @@ namespace Nemundo\Workflow\App\Identification\Type;
 
 
 use Nemundo\Admin\Usergroup\Parameter\UsergroupParameter;
-use Nemundo\User\Builder\UsergroupBuilder;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
-use Nemundo\User\Item\UserItem;
 use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Identification\Site\UsergroupIdentificationSite;
@@ -85,6 +83,5 @@ class UsergroupIdentificationType extends AbstractIdentificationType
         return $list;
 
     }
-
 
 }

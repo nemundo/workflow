@@ -6,12 +6,10 @@ namespace Nemundo\Workflow\App\Wiki\Content\Form;
 use Nemundo\App\Content\Form\ContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-use Nemundo\Workflow\App\ContentTemplate\Content\Data\LargeTextTemplateContent;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageForm;
 use Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageReader;
 
-class WikiPageContentForm extends ContentTreeForm  // BootstrapForm  // WikiPageForm
+class WikiPageContentForm extends ContentTreeForm
 {
 
     public $updateId;

@@ -13,7 +13,6 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\ToDo\Com\ToDoNavigation;
 use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
-use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoTable;
 use Nemundo\Workflow\App\ToDo\Parameter\ToDoParameter;
 
 class ToDoSite extends AbstractSite

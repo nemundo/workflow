@@ -3,21 +3,13 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
-use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Model\Data\Property\File\ImageDataProperty;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\ImageContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\Item\TemplateImageView;
-use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImage;
-use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateImage\ContentTemplateImageModel;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
-use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowIdTrait;
 
-class ImageTemplateContentType extends AbstractTreeContentType   // AbstractDataWorkflowStatus   // AbstractDataContentType  // AbstractContentType
+class ImageTemplateContentType extends AbstractTreeContentType
 {
-
-    //use WorkflowIdTrait;
 
     /**
      * @var ImageDataProperty
@@ -32,12 +24,6 @@ class ImageTemplateContentType extends AbstractTreeContentType   // AbstractData
         //$this->modelClass = ContentTemplateImageModel::class;
         $this->viewClass = TemplateImageView::class;
         $this->formClass = ImageContentTemplateForm::class;
-
-        //$this->changeWorkflowStatus= false;
-        //$this->statusText = 'Bild wurde hochgeladen';
-
-        //$this->image = new ImageDataProperty();
-
 
     }
 

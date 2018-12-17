@@ -73,8 +73,7 @@ class NewsContentType extends AbstractTreeContentType  // AbstractModelDataTreeC
         $this->saveContentLog();
 
 
-        $builder = new SearchEngineBuilder();
-        $builder->contentType = $this;
+        $builder = new SearchEngineBuilder($this);
         $builder->addText($this->title);
         $builder->addText($this->text);
 

@@ -5,10 +5,7 @@ namespace Nemundo\Workflow\App\News\Site;
 
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\News\Action\CommentAction;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
-use Nemundo\Workflow\App\News\Data\Comment\CommentForm;
-use Nemundo\Workflow\App\News\Data\Comment\CommentReader;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
 
 class NewsItemSite extends AbstractSite

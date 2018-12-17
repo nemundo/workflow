@@ -4,8 +4,7 @@ namespace Nemundo\Workflow\App\Wiki\Setup;
 
 
 use Nemundo\App\Content\Setup\ContentTypeSetup;
-use Nemundo\App\Content\Type\AbstractBaseContentType;
-use Nemundo\Workflow\App\Wiki\Data\WikiContentType\WikiContentType;
+
 
 class WikiContentTypeSetup extends ContentTypeSetup
 {

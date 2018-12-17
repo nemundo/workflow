@@ -5,6 +5,8 @@ namespace Nemundo\Workflow\App\Identification\Config;
 
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType;
+use Nemundo\Workflow\App\Identification\Type\UsergroupIdentificationType;
+use Nemundo\Workflow\App\Identification\Type\UserIdentificationType;
 
 class IdentificationConfig extends AbstractBase
 {
@@ -27,6 +29,7 @@ class IdentificationConfig extends AbstractBase
 
         return IdentificationConfig::$identificationList;
     }
+
 
 
     public function loadDefault()

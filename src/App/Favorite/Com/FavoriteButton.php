@@ -13,7 +13,6 @@ use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteCount;
 use Nemundo\Workflow\App\Favorite\Site\FavoriteDeleteSite;
 use Nemundo\Workflow\App\Favorite\Site\FavoriteSite;
-use Nemundo\Workflow\App\Subscription\Parameter\SubscriptionParameter;
 
 
 class FavoriteButton extends AbstractHtmlContainerList

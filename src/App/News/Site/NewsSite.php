@@ -10,7 +10,6 @@ use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\News\Action\NewsAction;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Parameter\NewsParameter;
@@ -24,7 +23,7 @@ class NewsSite extends AbstractSite
         $this->url = 'news';
 
         new NewsItemSite($this);
-        new CommentRedirectSite($this);
+        //new CommentRedirectSite($this);
 
     }
 
@@ -56,20 +55,10 @@ class NewsSite extends AbstractSite
 
             (new Hr($page));
 
-
         }
-
-
-        //$form->redirectSite =
-        //new NewsTable($page);
-        //$form = new NewsForm($page);
-        //$form->model->action->addInsertAction(new NewsAction());
-
 
         $page->render();
 
-
     }
-
 
 }

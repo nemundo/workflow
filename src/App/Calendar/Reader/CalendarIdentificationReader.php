@@ -16,11 +16,13 @@ class CalendarIdentificationReader extends CalendarReader
     public function getData()
     {
 
+
+/*
         $this->filter->orEqual($this->model->identification, (new UserSessionType())->userId);
 
         foreach ((new UsergroupMembership())->getUsergroupIdList() as $usergroupId) {
             $this->filter->orEqual($this->model->identification, $usergroupId);
-        }
+        }*/
 
         return parent::getData();
     }

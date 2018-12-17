@@ -7,7 +7,6 @@ use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Workflow\App\Wiki\Content\Form\TextListTypeForm;
 use Nemundo\Workflow\App\Wiki\Content\View\TextListView;
 use Nemundo\Workflow\App\Wiki\Data\TextList\TextList;
-use Nemundo\Workflow\App\Wiki\Data\TextList\TextListForm;
 
 class TextListType extends AbstractTreeContentType
 {

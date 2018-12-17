@@ -10,7 +10,6 @@ use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Wiki\Content\Type\TextListType;
 use Nemundo\Workflow\App\Wiki\Content\View\TextListView;
-use Nemundo\Workflow\App\Wiki\Data\TextList\TextListForm;
 
 class TextListTypeForm extends ContentTreeForm  // AbstractHtmlContainerList
 {

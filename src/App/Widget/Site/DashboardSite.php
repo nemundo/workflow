@@ -5,7 +5,6 @@ namespace Nemundo\Workflow\App\Widget\Site;
 
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Paranautik\App\TestApp\Data\Widget\WidgetListBox;
 
 class DashboardSite extends AbstractSite
 {
@@ -25,7 +24,7 @@ class DashboardSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        new WidgetListBox($page);
+        //new WidgetListBox($page);
 
 
         $page->render();

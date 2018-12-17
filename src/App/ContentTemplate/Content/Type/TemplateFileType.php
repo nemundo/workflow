@@ -4,15 +4,10 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
 use Nemundo\App\Content\Type\AbstractTreeContentType;
-use Nemundo\Web\Http\FileRequest\FileRequest;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\TemplateFileTypeForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\View\FileContentView;
-use Nemundo\Workflow\App\ContentTemplate\Data\TemplateFile\TemplateFile;
-use Nemundo\Workflow\App\ContentTemplate\Data\TemplateFile\TemplateFileReader;
 
 
-// TemplateFileContentType
-// FileTemplateType
 class TemplateFileType extends AbstractTreeContentType
 {
 
@@ -26,6 +21,8 @@ class TemplateFileType extends AbstractTreeContentType
 
     }
 
+
+    /*
 
     public function fromFilename($filename)
     {
@@ -58,7 +55,7 @@ class TemplateFileType extends AbstractTreeContentType
 
         return $subject;
 
-    }
+    }*/
 
 
 }

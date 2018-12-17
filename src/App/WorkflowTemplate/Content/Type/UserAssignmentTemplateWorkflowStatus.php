@@ -2,24 +2,22 @@
 
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractModelDataWorkflowStatus;
-use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\UserAssignmentForm;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChange;
-use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\UserAssignmentChange\UserAssignmentChangeReader;
 
 
-class UserAssignmentTemplateWorkflowStatus extends AbstractWorkflowStatus  // AbstractModelDataWorkflowStatus
+class UserAssignmentTemplateWorkflowStatus extends AbstractWorkflowStatus
 {
 
     /**
      * @var string
      */
     public $userId;
+
     // assignmentUserId
 
     protected function loadType()
@@ -54,24 +52,6 @@ class UserAssignmentTemplateWorkflowStatus extends AbstractWorkflowStatus  // Ab
         $builder->createAssignment();
 
     }
-
-
-    /*
-    public function onCreate()
-    {
-
-        //(new AssignmentArchive())->archiveAssignment($this->parentContentType->dataId);
-
-
-        $row = (new UserAssignmentChangeReader())->getRowById($this->dataId);
-
-        $builder = new AssignmentBuilder($this->parentContentType);
-        $builder->archiveAssignment();
-        $builder->assignment->setUserIdentification($row->userId);
-        $builder->message = $this->getSubject();
-        $builder->createAssignment();
-
-    }*/
 
 
     public function getSubject()

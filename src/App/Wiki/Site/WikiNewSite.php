@@ -4,9 +4,8 @@ namespace Nemundo\Workflow\App\Wiki\Site;
 
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Wiki\Action\WikiPageAction;
 use Nemundo\Workflow\App\Wiki\Content\Type\WikiPageContentType;
-use Nemundo\Workflow\App\Wiki\Form\WikiForm;
+
 
 class WikiNewSite extends AbstractSite
 {

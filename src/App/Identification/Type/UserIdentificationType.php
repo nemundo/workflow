@@ -4,9 +4,7 @@ namespace Nemundo\Workflow\App\Identification\Type;
 
 
 use Nemundo\User\Data\User\UserReader;
-use Nemundo\User\Type\UserItemType;
 use Nemundo\User\Type\UserSessionType;
-use Schleuniger\App\Org\Content\Type\MitarbeiterType;
 
 class UserIdentificationType extends AbstractIdentificationType
 {

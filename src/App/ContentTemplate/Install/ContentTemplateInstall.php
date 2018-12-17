@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentTy
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\TemplateFileType;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\YouTubeType;
 use Nemundo\Workflow\App\ContentTemplate\Data\ContentTemplateCollection;
-use Nemundo\Workflow\App\ContentTemplate\Type\Comment\CommentType;
+
 
 class ContentTemplateInstall extends AbstractScript
 {
@@ -28,7 +28,7 @@ class ContentTemplateInstall extends AbstractScript
         $setup = new ContentTypeSetup();
         $setup->addContentType(new ImageTemplateContentType());
         $setup->addContentType(new LargeTextTemplateContentType());
-        $setup->addContentType(new CommentType());
+        //$setup->addContentType(new CommentType());
         $setup->addContentType(new TemplateFileType());
         $setup->addContentType(new YouTubeType());
 

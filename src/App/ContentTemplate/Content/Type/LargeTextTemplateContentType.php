@@ -4,22 +4,15 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\AbstractModelDataTreeContentType;
-use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\LargeTextContentTemplateForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\Item\LargeTextContentView;
-use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeText;
-use Nemundo\Workflow\App\ContentTemplate\Data\LargeText\LargeTextModel;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeTextContentTemplate\LargeTextContentTemplate;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeTextContentTemplate\LargeTextContentTemplateDelete;
 use Nemundo\Workflow\App\ContentTemplate\Data\LargeTextContentTemplate\LargeTextContentTemplateReader;
-use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 
-// LargeTextContentTypeTemplate
-// LargeTextTemplateType
-class LargeTextTemplateContentType extends AbstractContentType  // AbstractWorkflowStatus  // AbstractTreeContentType  // AbstractDataContentType
+class LargeTextTemplateContentType extends AbstractContentType
 {
 
     /**

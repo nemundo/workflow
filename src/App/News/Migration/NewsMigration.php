@@ -4,6 +4,7 @@ namespace Nemundo\Workflow\App\News\Migration;
 
 
 use Nemundo\App\Migration\Type\AbstractMigration;
+use Nemundo\Workflow\App\News\Application\NewsApplication;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 use Nemundo\Workflow\App\News\Data\News\NewsReader;
 use Nemundo\Workflow\App\News\Install\NewsInstall;
@@ -14,7 +15,7 @@ class NewsMigration extends AbstractMigration
 
     protected function loadMigration()
     {
-        $this->app = 'news';
+        $this->application =new NewsApplication();
         $this->version = 1;
         $this->filename = 'news.json';
     }

@@ -56,7 +56,7 @@ class CalendarSite extends AbstractSite
         $list = new BootstrapHyperlinkList($col1);
 
         $site = clone(CalendarSite::$site);
-        $site->title = (new UserInformation())->getDisplayName();
+        $site->title = (new UserSessionType())->displayName;
         $list->addSite($site);
 
 
@@ -103,9 +103,10 @@ class CalendarSite extends AbstractSite
             $identificationType = $calendarRow->identificationType->getIdentificationTypeClassObject();
             $row->addText($identificationType->getValue($calendarRow->identificationId));
 
+            /*
             if ($contentType->viewSite !== null) {
                 $row->addClickableSite($contentType->getViewSite($calendarRow->dataId));
-            }
+            }*/
 
 
         }
