@@ -3,10 +3,6 @@
 namespace Nemundo\Workflow\App\Store\Type;
 
 
-use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStore;
-use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreCount;
-use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreDelete;
-use Nemundo\Workflow\App\Store\Data\LargeTextStore\LargeTextStoreReader;
 use Nemundo\Workflow\App\Store\Data\YesNoStore\YesNoStore;
 use Nemundo\Workflow\App\Store\Data\YesNoStore\YesNoStoreDelete;
 use Nemundo\Workflow\App\Store\Data\YesNoStore\YesNoStoreReader;

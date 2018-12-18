@@ -9,6 +9,7 @@ use Nemundo\Workflow\App\Identification\Data\IdentificationType\IdentificationTy
 class IdentificationFilter
 {
 
+    /*
     public function getFilter()
     {
 
@@ -27,7 +28,7 @@ class IdentificationFilter
         return $filter;
 
 
-    }
+    }*/
 
 
 }

@@ -4,10 +4,6 @@ namespace Nemundo\Workflow\App\UserConfig\Config;
 
 
 use Nemundo\User\Type\UserSessionType;
-use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigText;
-use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextCount;
-use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextUpdate;
-use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextValue;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNo;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNoCount;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigYesNo\UserConfigYesNoUpdate;
@@ -45,7 +41,6 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
 
         }
 
-
     }
 
 
@@ -70,6 +65,5 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
         return $value;
 
     }
-
 
 }

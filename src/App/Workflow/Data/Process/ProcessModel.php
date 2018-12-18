@@ -53,7 +53,7 @@ $this->processClass->fieldName = "process_class";
 $this->processClass->aliasFieldName = "workflow_process_process_class";
 $this->processClass->label = "Process Class";
 $this->processClass->allowNullValue = "";
-$this->processClass->phpClassName = Nemundo\App\Content\Type\Process::class;
+$this->processClass->phpClassName = \Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess::class;
 
 $this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->setupStatus->tableName = "workflow_process";

@@ -1,16 +1,13 @@
 <?php
-
 namespace Nemundo\Workflow\App\Calendar\Data\Calendar;
-class CalendarDelete extends \Nemundo\Model\Delete\AbstractModelDelete
-{
-    /**
-     * @var CalendarModel
-     */
-    public $model;
+class CalendarDelete extends \Nemundo\Model\Delete\AbstractModelDelete {
+/**
+* @var CalendarModel
+*/
+public $model;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->model = new CalendarModel();
-    }
+public function __construct() {
+parent::__construct();
+$this->model = new CalendarModel();
+}
 }

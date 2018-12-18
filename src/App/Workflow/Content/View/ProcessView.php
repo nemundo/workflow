@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Content\View;
 
 
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\App\Content\View\AbstractContentView;
 use Nemundo\Workflow\App\Workflow\Com\Layout\WorkflowLayout;
 use Nemundo\Workflow\App\Workflow\Controller\WorkflowController;

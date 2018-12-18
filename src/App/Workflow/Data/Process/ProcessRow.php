@@ -40,7 +40,7 @@ $this->processClass = $this->getModelValue($model->processClass);
 $this->setupStatus = $this->getModelValue($model->setupStatus);
 }
 /**
-* @return \Nemundo\App\Content\Type\Process
+* @return \Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess
 */
 public function getProcessClassObject() {
 $object = (new \Nemundo\Core\System\ObjectBuilder)->getObject($this->processClass);

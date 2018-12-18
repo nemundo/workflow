@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Site;
 
 
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Breadcrumb\WorkflowBreadcrumb;

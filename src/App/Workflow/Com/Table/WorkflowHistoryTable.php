@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Com\Table;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;

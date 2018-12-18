@@ -3,16 +3,11 @@
 namespace Nemundo\Workflow\App\Workflow\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
-use Nemundo\Admin\Com\Table\AdminTable;
-use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\App\Content\Parameter\ContentLogParameter;
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Com\TableBuilder\TableHeader;
-use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Button\BootstrapSiteButton;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
@@ -22,7 +17,6 @@ use Nemundo\Workflow\App\Workflow\Com\Breadcrumb\WorkflowBreadcrumb;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
-use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowReader;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\Delete\WorkflowStatusDeleteSite;
@@ -85,6 +79,7 @@ class WorkflowSite extends AbstractSite
         $header->addText('Closed');
         $header->addText('Process');
         $header->addText('Subject');
+        $header->addText('Status');
         $header->addText('Creator');
         $header->addText('Date/Time');
 
@@ -120,6 +115,8 @@ class WorkflowSite extends AbstractSite
 
 
             $row->addText($process->getSubject());
+            $row->addText($process->getStatus()->getSubject());
+
 
             $row->addText($workflowRow->userCreated->displayName);
             $row->addText($workflowRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());

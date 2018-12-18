@@ -2,7 +2,6 @@
 
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
-use Nemundo\Workflow\App\Assignment\Builder\AssignmentArchive;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\UserAssignmentForm;

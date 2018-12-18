@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\ToDo\Content\Type\Process;
 
 
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;

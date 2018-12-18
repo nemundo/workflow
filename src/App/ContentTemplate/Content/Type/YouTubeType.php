@@ -3,11 +3,6 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Type;
 
 
-use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\App\Content\Type\AbstractTreeContentType;
-use Nemundo\App\Content\Type\Business\AbstractBusinessContentType;
-use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
-use Nemundo\Com\Container\UserTrait;
 use Nemundo\Workflow\App\ContentTemplate\Content\Form\YouTubeTypeForm;
 use Nemundo\Workflow\App\ContentTemplate\Content\View\YouTubeView;
 use Nemundo\Workflow\App\ContentTemplate\Data\TextContentTemplate\TextContentTemplate;
@@ -15,12 +10,8 @@ use Nemundo\Workflow\App\ContentTemplate\Data\TextContentTemplate\TextContentTem
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\Type\WorkflowStatusTrait;
 
-class YouTubeType extends AbstractWorkflowStatus   // AbstractTreeContentType  // AbstractBusinessContentType  // AbstractContentType
+class YouTubeType extends AbstractWorkflowStatus
 {
-
-    //use WorkflowStatusTrait;
-    //use UserTrait;
-    //use SequenceContentTypeTrait;
 
     /**
      * @var string

@@ -2,7 +2,7 @@
 
 namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 

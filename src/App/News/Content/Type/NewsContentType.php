@@ -89,8 +89,7 @@ class NewsContentType extends AbstractTreeContentType  // AbstractModelDataTreeC
     {
 
 
-        $builder = new SearchEngineBuilder();
-        $builder->contentType = $this;
+        $builder = new SearchEngineBuilder($this);
         $builder->removeSearchIndex();
 
         (new NewsDelete())->deleteById($this->dataId);

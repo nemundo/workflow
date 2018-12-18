@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Builder;
 
 
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\User\Type\UserSessionType;

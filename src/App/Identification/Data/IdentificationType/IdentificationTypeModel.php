@@ -48,7 +48,7 @@ $this->identificationTypeClass->fieldName = "identification_type_class";
 $this->identificationTypeClass->aliasFieldName = "identification_identification_type_identification_type_class";
 $this->identificationTypeClass->label = "Identification Type Class";
 $this->identificationTypeClass->allowNullValue = "";
-$this->identificationTypeClass->phpClassName = Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType::class;
+$this->identificationTypeClass->phpClassName = \Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType::class;
 
 }
 }

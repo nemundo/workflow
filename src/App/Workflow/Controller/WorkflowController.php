@@ -8,7 +8,7 @@ use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ChildContentViewContainer;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Dev\Deployment\DeploymentConfig;
 use Nemundo\Dev\Deployment\StagingEnvironment;

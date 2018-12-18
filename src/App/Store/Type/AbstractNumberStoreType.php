@@ -6,9 +6,6 @@ namespace Nemundo\Workflow\App\Store\Type;
 use Nemundo\Workflow\App\Store\Data\NumberStore\NumberStore;
 use Nemundo\Workflow\App\Store\Data\NumberStore\NumberStoreDelete;
 use Nemundo\Workflow\App\Store\Data\NumberStore\NumberStoreReader;
-use Nemundo\Workflow\App\Store\Data\TextStore\TextStore;
-use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreDelete;
-use Nemundo\Workflow\App\Store\Data\TextStore\TextStoreReader;
 
 abstract class AbstractNumberStoreType extends AbstractStoreType
 {

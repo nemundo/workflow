@@ -55,7 +55,7 @@ class MyFavoriteSite extends AbstractSite
 
             $contentType = $favoriteRow->contentType->getContentTypeClassObject();
 
-            $subject = $contentType->getSubject($favoriteRow->dataId);
+            $subject = $contentType->getSubject();  //$favoriteRow->dataId);
 
             /*if ($favoriteRow->dataId !== '0') {
                 $subject = $contentType->getSubject($favoriteRow->dataId);
@@ -68,8 +68,7 @@ class MyFavoriteSite extends AbstractSite
             $site->addParameter(new FavoriteParameter($favoriteRow->id));
             $row->addIconSite($site);
 
-
-            $row->addClickableSite($contentType->getViewSite($favoriteRow->dataId));
+            $row->addClickableSite($contentType->getViewSite());  //$favoriteRow->dataId));
 
 
         }

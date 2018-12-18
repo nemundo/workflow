@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Setup;
 
 
 use Nemundo\App\Content\Setup\ContentTypeSetup;
-use Nemundo\App\Content\Type\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Workflow\App\Workflow\Data\Process\Process;
 

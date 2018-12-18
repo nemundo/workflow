@@ -31,7 +31,7 @@ class TemplateFileTypeForm extends ContentTreeForm
 
         $type = new TemplateFileType();
         $type->parentContentType = $this->parentContentType;
-        $type->fromFileRequest($this->file->getFileRequest());
+        //$type->fromFileRequest($this->file->getFileRequest());
 
     }
 
