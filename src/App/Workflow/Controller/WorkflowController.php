@@ -8,6 +8,7 @@ use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ChildContentViewContainer;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Dev\Deployment\DeploymentConfig;
@@ -74,35 +75,48 @@ class WorkflowController extends AbstractBase
     public function getForm($parentItem = null)
     {
 
-        $formStatus = $this->getFormStatus();
+
         $form = null;
 
-        if ($this->process->dataId !== null) {
+        try {
 
-            if ($formStatus !== null) {
+            $formStatus = $this->getFormStatus();
 
-                if ($formStatus->checkUserVisibility()) {
 
-                    $title = new AdminSubtitle($parentItem);
-                    $title->content = $formStatus->contentLabel;
 
-                    $form = $formStatus->getForm($parentItem);
-                    $form->parentContentType = $this->process;
-                    $form->redirectSite = new Site();
-                    $form->redirectSite->removeParameter(new ContentTypeParameter());
+            if ($this->process->dataId !== null) {
+
+                if ($formStatus !== null) {
+
+                    if ($formStatus->checkUserVisibility()) {
+
+                        $title = new AdminSubtitle($parentItem);
+                        $title->content = $formStatus->contentLabel;
+
+                        $form = $formStatus->getForm($parentItem);
+                        $form->parentContentType = $this->process;
+                        $form->redirectSite = new Site();
+                        $form->redirectSite->removeParameter(new ContentTypeParameter());
+
+                    }
 
                 }
 
+            } else {
+
+                $form = $this->process->getForm($parentItem);
+                $form->parentContentType = $this->process;
+                $form->redirectSite = new Site();
+                $form->redirectSite->removeParameter(new ContentTypeParameter());
+
             }
 
-        } else {
+            (new Debug())->write('no error');
 
-            $form = $this->process->getForm($parentItem);
-            $form->parentContentType = $this->process;
-            $form->redirectSite = new Site();
-            $form->redirectSite->removeParameter(new ContentTypeParameter());
+        } catch (\Exception $exception) {
 
         }
+
 
         return $form;
 

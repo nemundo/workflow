@@ -37,7 +37,7 @@ class WorkflowCheck extends AbstractBaseClass
 
                 if ($next->checkUserVisibility()) {
                     $valid = true;
-                    (new Debug())->write('next');
+                    //(new Debug())->write('next');
                 }
             }
         }
@@ -47,13 +47,14 @@ class WorkflowCheck extends AbstractBaseClass
 
                 if ($menu->checkUserVisibility()) {
                     $valid = true;
-                    (new Debug())->write('next2');
+                    //(new Debug())->write('next2');
                 }
             }
         }
 
         if (!$valid) {
-            (new LogMessage())->writeError('Workflow Operation not allowed. Status: '.$workflowStatus->getClassName());
+            (new LogMessage())->writeError('Workflow Operation not allowed. Status: ' . $workflowStatus->getClassName());
+            (new Debug())->write('Current Status: ' . $currentStatus->contentLabel);
             exit;
         }
 

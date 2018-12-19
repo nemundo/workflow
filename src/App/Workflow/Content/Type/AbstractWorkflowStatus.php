@@ -26,11 +26,17 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
      */
     public $parentContentType;
 
+    /**
+     * @var bool
+     */
+    public $workflowCheck = true;
 
     public function saveContentLog($draft = false)
     {
 
-        (new WorkflowCheck())->checkWorkflowStatus($this);
+        if ($this->workflowCheck) {
+            (new WorkflowCheck())->checkWorkflowStatus($this);
+        }
         parent::saveContentLog($draft);
 
     }

@@ -52,6 +52,7 @@ class SearchEngineSite extends AbstractSite
         $form = new SearchEngineForm($page);
 
 
+
         $table = new AdminClickableTable($page);
 
 

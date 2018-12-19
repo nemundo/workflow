@@ -94,7 +94,7 @@ class FileTemplateStatus extends AbstractWorkflowStatus
 
         $hyperlink = new Hyperlink();
         $hyperlink->content = $this->row->file->getFilename();
-        $hyperlink->url = $this->row->file->getUrl();
+        $hyperlink->url = $this->row->file->getUrlWithDomain();
 
         $subject = 'Upload ' . $hyperlink->getHtmlString();
 

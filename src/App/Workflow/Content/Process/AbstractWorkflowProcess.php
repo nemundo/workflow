@@ -14,6 +14,7 @@ use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\View\AbstractProcessView;
 use Nemundo\Workflow\App\Workflow\Content\View\ProcessView;
+use Schleuniger\Com\Error\ErrorMessage;
 
 
 abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
@@ -78,20 +79,11 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
                 $className = $this->baseRow->getModelValue($model->status->contentTypeClass);
                 $statusDataId = $this->baseRow->getModelValue($model->statusDataId);
 
-                //if ($statusDataId !== '') {
-
                 /** @var AbstractWorkflowStatus $contentType */
                 $contentType = new $className($statusDataId);
-                //if ($contentType !== null) {
                 $contentType->parentContentType = $this;
-                //}
-                //           }
-                //(new Debug())->write($contentType);
-                //(new Debug())->write($className);
 
-                //exit;
             }
-
 
         } else {
 
@@ -140,17 +132,25 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function getProcessView($parentItem = null)
     {
 
-        $view = null;
-        if (class_exists($this->processViewClass)) {
+        //$view = null;
+        //if (class_exists($this->processViewClass)) {
+
+
+        try {
 
             /** @var AbstractProcessView $view */
             $view = new $this->processViewClass($parentItem);
             $view->contentType = $this;
             $view->dataId = $this->dataId;
 
-        } else {
-            (new LogMessage())->writeError('Process View Class does not exist. Class Name: ' . $this->processViewClass);
+        } catch (\Exception $exception) {
+            new ErrorMessage($parentItem);
         }
+
+
+        /*} else {
+            (new LogMessage())->writeError('Process View Class does not exist. Class Name: ' . $this->processViewClass);
+        }*/
 
         return $view;
 

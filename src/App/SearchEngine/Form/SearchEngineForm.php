@@ -23,21 +23,14 @@ class SearchEngineForm extends SearchForm
     {
         parent::loadCom();
 
+        $this->addCssClass('form-inline');
+
         $row = new BootstrapFormRow($this);
 
         $this->query = new SearchAutocompleteTextBox($row);
         $this->query->name = (new QueryParameter())->getParameterName();
+        //$this->query->label = 'Query';
 
-
-        /*
-        $this->query = new BootstrapAutocompleteTextBox($row);
-        $this->query->sourceSite = SearchEngineJsonSite::$site;
-        $this->query->minLength = 1;
-        $this->query->name = (new QueryParameter())->getParameterName();
-        $this->query->placeholder = 'Suche';
-        $this->query->value = $this->query->getValue();*/
-
-        //$row = new BootstrapFormRow($this);
         $submit = new AdminSubmitButton($row);
         $submit->content = 'Suchen';
 

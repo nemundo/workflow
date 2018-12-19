@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Com\Navbar;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Form\Form\SiteForm;
 use Nemundo\Com\Html\Form\Button\SubmitButton;
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Com\TextBox\SearchAutocompleteTextBox;
 use Nemundo\Workflow\App\SearchEngine\Parameter\QueryParameter;
@@ -32,21 +33,12 @@ class NavbarSearchForm extends AbstractHtmlContainerList
         $input->addCssClass('mr-sm-2');
 
         $submit = new SubmitButton($form);
-        $submit->content = 'Search';
-        $submit->addCssClass('btn my-2 my-sm-0');
+        $submit->content[LanguageCode::EN] = 'Search';
+        $submit->content[LanguageCode::DE] = 'Suchen';
 
-        //$this->addHtml('<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">');
-        //$this->addHtml('<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>');
+        $submit->addCssClass('btn my-2 my-sm-0');
 
         return parent::getHtml();
     }
-
-
-    /*
-<form class="form-inline">
-<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-    */
 
 }
