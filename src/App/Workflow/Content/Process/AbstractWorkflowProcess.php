@@ -40,6 +40,7 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     {
         $this->viewClass = ProcessView::class;
         $this->processViewClass = ProcessView::class;
+        //$this->workflowCheck = false;
         parent::__construct($dataId);
     }
 
@@ -47,7 +48,7 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     private function loadBaseRow()
     {
 
-        if ($this->baseRow == null) {
+        //if ($this->baseRow == null) {
 
             /** @var AbstractWorkflowModel $model */
             $model = $this->getBaseModel();
@@ -58,12 +59,12 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
             $reader->checkExternal($model);
             $this->baseRow = $reader->getRowById($this->dataId);
 
-        }
+        //}
 
     }
 
-// getCurrentStatus
-    public function getStatus()
+
+    public function getCurrentStatus()
     {
 
         $contentType = null;
@@ -101,7 +102,7 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function getNextContentTypeList()
     {
 
-        $list = $this->getStatus()->getNextContentTypeList();
+        $list = $this->getCurrentStatus()->getNextContentTypeList();
         return $list;
     }
 
@@ -109,7 +110,7 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function getForm($parentItem = null)
     {
 
-        $status = $this->getStatus();
+        $status = $this->getCurrentStatus();
         $form = $status->getForm($parentItem);
         return $form;
 
@@ -136,16 +137,16 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
         //if (class_exists($this->processViewClass)) {
 
 
-        try {
+        //try {
 
             /** @var AbstractProcessView $view */
             $view = new $this->processViewClass($parentItem);
             $view->contentType = $this;
             $view->dataId = $this->dataId;
 
-        } catch (\Exception $exception) {
+        /*} catch (\Exception $exception) {
             new ErrorMessage($parentItem);
-        }
+        }*/
 
 
         /*} else {

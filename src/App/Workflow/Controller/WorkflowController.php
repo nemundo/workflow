@@ -8,15 +8,16 @@ use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\App\Content\Com\ChildContentViewContainer;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Dev\Deployment\DeploymentConfig;
 use Nemundo\Dev\Deployment\StagingEnvironment;
 use Nemundo\Web\Site\Site;
+use Nemundo\Workflow\App\Workflow\Check\WorkflowCheck;
 use Nemundo\Workflow\App\Workflow\Com\Menu\WorkflowStatusMenu;
 use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowHistoryTable;
 use Nemundo\Workflow\App\Workflow\Com\Table\WorkflowLogTable;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
+use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowController extends AbstractBase
 {
@@ -40,7 +41,7 @@ class WorkflowController extends AbstractBase
 
         $formStatus = null;
 
-        $status = $this->process->getStatus();
+        $status = $this->process->getCurrentStatus();
         if ($status !== null) {
 
             if ($status->isDraft()) {
@@ -50,17 +51,45 @@ class WorkflowController extends AbstractBase
             $contentTypeParameter = new ContentTypeParameter();
             if ($contentTypeParameter->exists()) {
 
+                /** @var AbstractWorkflowStatus $formStatus */
                 $formStatus = $contentTypeParameter->getContentType();
                 $formStatus->parentContentType = $this->process;
+
+
+
+                (new WorkflowCheck())->checkWorkflowStatus($formStatus);
+
+                /*
+                 $found = false;
+                 foreach ($status->getMenuContentType() as $menuContentType) {
+                     if ($menuContentType->getClassName() == $formStatus->getClassName()) {
+                         $found = true;
+                     }
+                 }
+
+                 if (!$found) {
+                     (new LogFile())->writeError('Content Type is not valid');
+                 }*/
+
+                //}
+
+                /*if (!$formStatus->checkUserVisibility()) {
+                    (new LogFile())->writeError('Restricted Content Type');
+                }*/
+
 
             } else {
 
                 if (!$status->isDraft()) {
-                    $nextStatus2 = $status->getNextContentType();
 
-                    if ($nextStatus2 !== null) {
-                        $formStatus = $nextStatus2;
+                    $nextStatus = $status->getNextContentType();
+
+                    if ($nextStatus !== null) {
+                        //if ($nextStatus->checkUserVisibility()) {
+                        $formStatus = $nextStatus;
+                        //}
                     }
+
                 }
 
             }
@@ -75,47 +104,44 @@ class WorkflowController extends AbstractBase
     public function getForm($parentItem = null)
     {
 
-
         $form = null;
 
-        try {
+        //try {
 
-            $formStatus = $this->getFormStatus();
+        $formStatus = $this->getFormStatus();
 
 
+        if ($this->process->dataId !== null) {
 
-            if ($this->process->dataId !== null) {
+            if ($formStatus !== null) {
 
-                if ($formStatus !== null) {
+                if ($formStatus->checkUserVisibility()) {
 
-                    if ($formStatus->checkUserVisibility()) {
+                $title = new AdminSubtitle($parentItem);
+                $title->content = $formStatus->contentLabel;
 
-                        $title = new AdminSubtitle($parentItem);
-                        $title->content = $formStatus->contentLabel;
-
-                        $form = $formStatus->getForm($parentItem);
-                        $form->parentContentType = $this->process;
-                        $form->redirectSite = new Site();
-                        $form->redirectSite->removeParameter(new ContentTypeParameter());
-
-                    }
-
-                }
-
-            } else {
-
-                $form = $this->process->getForm($parentItem);
+                $form = $formStatus->getForm($parentItem);
                 $form->parentContentType = $this->process;
                 $form->redirectSite = new Site();
                 $form->redirectSite->removeParameter(new ContentTypeParameter());
 
+                }
+
             }
 
-            (new Debug())->write('no error');
+        } else {
 
-        } catch (\Exception $exception) {
+            $form = $this->process->getForm($parentItem);
+            $form->parentContentType = $this->process;
+            $form->redirectSite = new Site();
+            $form->redirectSite->removeParameter(new ContentTypeParameter());
 
         }
+
+
+        /* } catch (\Exception $exception) {
+
+         }*/
 
 
         return $form;
@@ -144,6 +170,8 @@ class WorkflowController extends AbstractBase
         $menu = new WorkflowStatusMenu($parentItem);
         $menu->process = $this->process;
         $menu->formStatus = $this->getFormStatus();
+
+
 
         return $menu;
 
@@ -187,7 +215,7 @@ class WorkflowController extends AbstractBase
             if ($this->process->dataId !== null) {
 
                 $table = new AdminLabelValueTable($parentItem);
-                $table->addLabelValue('Status', $this->process->getStatus()->contentLabel);
+                $table->addLabelValue('Status', $this->process->getCurrentStatus()->contentLabel);
                 $table->addLabelValue('Subject', $this->process->getSubject());
                 $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
 

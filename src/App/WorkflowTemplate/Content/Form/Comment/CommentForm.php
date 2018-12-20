@@ -3,11 +3,11 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Form\Comment;
 
 
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\Comment\CommentTemplateStatus;
 
-class CommentForm extends ContentTreeForm
+class CommentForm extends AbstractContentTreeForm
 {
 
     /**

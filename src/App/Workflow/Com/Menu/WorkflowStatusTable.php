@@ -5,10 +5,8 @@ namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Com\Container\AbstractHtmlContainerList;
 use Nemundo\Com\Html\Hyperlink\ContentHyperlink;
-use Nemundo\Com\Html\Hyperlink\Hyperlink;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
@@ -16,6 +14,7 @@ use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
 use Nemundo\Web\Site\Site;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusTable extends AbstractHtmlContainerList
@@ -49,7 +48,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
         $link = new ContentHyperlink($row);
         $link->content = $workflowStatus->contentLabel;
-        $link->href = '#log-'.$workflowStatus->logId;
+        $link->href = '#log-' . $workflowStatus->logId;
         $link->addCssClass(BootstrapFontColor::DARK);
 
         $row->addText($workflowStatus->userCreated->displayName);
@@ -90,7 +89,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
         if ($this->process->dataId !== null) {
 
-            if ($this->process->getStatus()->hasMenuSite()) {
+            if ($this->process->getCurrentStatus()->hasMenuSite()) {
 
                 $row = new TableRow($this->table);
                 $row->addEmpty();
@@ -99,7 +98,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
                 $list->addCssClass('no-bullet');
 
 
-                foreach ($this->process->getStatus()->getMenuSite() as $site) {
+                foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {
 
                     if ($site->isActiveWorkflowStatus()) {
                         $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
@@ -147,7 +146,6 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
 
 
     public function addNextWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
-        // public function addNextWorkflowStatus(AbstractContentType $workflowStatus)
     {
 
         if ($workflowStatus->showMenu) {

@@ -3,12 +3,12 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Form;
 
 
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Core\Debug\Debug;
 use Paranautik\App\VideoWorkflow\Content\Type\Status\VideoPublishStatus;
 
-class StatusChangeForm extends ContentTreeForm
+class StatusChangeForm extends AbstractContentTreeForm
 {
 
     public function getHtml()

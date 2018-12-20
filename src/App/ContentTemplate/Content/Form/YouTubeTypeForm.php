@@ -3,11 +3,11 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\YouTubeType;
 
-class YouTubeTypeForm extends ContentTreeForm
+class YouTubeTypeForm extends AbstractContentTreeForm
 {
 
     /**

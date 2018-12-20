@@ -115,7 +115,7 @@ class WorkflowSite extends AbstractSite
 
 
             $row->addText($process->getSubject());
-            $row->addText($process->getStatus()->getSubject());
+            $row->addText($process->getCurrentStatus()->getSubject());
 
 
             $row->addText($workflowRow->userCreated->displayName);

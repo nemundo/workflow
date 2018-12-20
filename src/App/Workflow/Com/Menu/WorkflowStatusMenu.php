@@ -23,7 +23,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainerList
     public function getHtml()
     {
 
-        $status = $this->process->getStatus();
+        $status = $this->process->getCurrentStatus();
 
         $table = new WorkflowStatusTable($this);
         $table->process = $this->process;

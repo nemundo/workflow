@@ -3,11 +3,11 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapFileUpload;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\TemplateFileType;
 
-class TemplateFileTypeForm extends ContentTreeForm
+class TemplateFileTypeForm extends AbstractContentTreeForm
 {
 
     /**

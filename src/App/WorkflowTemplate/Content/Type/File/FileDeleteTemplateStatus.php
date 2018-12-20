@@ -18,6 +18,7 @@ class FileDeleteTemplateStatus extends AbstractWorkflowStatus
         $this->changeStatus = false;
         $this->showMenu = false;
 
+
     }
 
 

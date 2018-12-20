@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 use Nemundo\App\Content\Data\ContentLog\ContentLog;
 use Nemundo\App\Content\Form\ContentTreeFormTrait;
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Com\Html\Form\AcceptFileType;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapFileUpload;

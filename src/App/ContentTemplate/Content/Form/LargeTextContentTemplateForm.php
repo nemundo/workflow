@@ -3,11 +3,11 @@
 namespace Nemundo\Workflow\App\ContentTemplate\Content\Form;
 
 
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 
-class LargeTextContentTemplateForm extends ContentTreeForm
+class LargeTextContentTemplateForm extends AbstractContentTreeForm
 {
 
     /**

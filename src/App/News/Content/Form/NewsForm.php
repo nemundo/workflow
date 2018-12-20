@@ -3,12 +3,12 @@
 namespace Nemundo\Workflow\App\News\Content\Form;
 
 
-use Nemundo\App\Content\Form\ContentTreeForm;
+use Nemundo\App\Content\Form\AbstractContentTreeForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 
-class NewsForm extends ContentTreeForm
+class NewsForm extends AbstractContentTreeForm
 {
 
     /**
