@@ -216,6 +216,7 @@ class WorkflowController extends AbstractBase
 
                 $table = new AdminLabelValueTable($parentItem);
                 $table->addLabelValue('Status', $this->process->getCurrentStatus()->contentLabel);
+                $table->addLabelValue('Status Class', $this->process->getCurrentStatus()->getClassName());
                 $table->addLabelValue('Subject', $this->process->getSubject());
                 $table->addLabelYesNoValue('Closed', $this->process->isWorkflowClosed());
 
