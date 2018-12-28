@@ -27,10 +27,7 @@ class NewsTest extends AbstractScript
         $loop->maxNumber = 100;
         foreach ($loop->getData() as $number) {
 
-            $content = new NewsContent();
-            $content->title = 'News' . $number;
-            $content->text = 'test test test';
-            $content->save();
+
 
 
         }
