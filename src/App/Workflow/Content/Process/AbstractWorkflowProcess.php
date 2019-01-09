@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Process;
 
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\App\Workflow\Model\AbstractWorkflowModel;
-use Nemundo\Core\Log\LogMessage;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Reader\ModelDataReader;
@@ -14,7 +14,6 @@ use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\View\AbstractProcessView;
 use Nemundo\Workflow\App\Workflow\Content\View\ProcessView;
-use Schleuniger\Com\Error\ErrorMessage;
 
 
 abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
@@ -48,16 +47,17 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     private function loadBaseRow()
     {
 
+        // Probleme bei Änderung des Status etc.
         //if ($this->baseRow == null) {
 
-            /** @var AbstractWorkflowModel $model */
-            $model = $this->getBaseModel();
+        /** @var AbstractWorkflowModel $model */
+        $model = $this->getBaseModel();
 
-            $reader = new ModelDataReader();
-            $reader->model = $model;
-            $reader->addFieldByModel($model);
-            $reader->checkExternal($model);
-            $this->baseRow = $reader->getRowById($this->dataId);
+        $reader = new ModelDataReader();
+        $reader->model = $model;
+        $reader->addFieldByModel($model);
+        $reader->checkExternal($model);
+        $this->baseRow = $reader->getRowById($this->dataId);
 
         //}
 
@@ -139,10 +139,10 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
 
         //try {
 
-            /** @var AbstractProcessView $view */
-            $view = new $this->processViewClass($parentItem);
-            $view->contentType = $this;
-            $view->dataId = $this->dataId;
+        /** @var AbstractProcessView $view */
+        $view = new $this->processViewClass($parentItem);
+        $view->contentType = $this;
+        $view->dataId = $this->dataId;
 
         /*} catch (\Exception $exception) {
             new ErrorMessage($parentItem);
@@ -239,10 +239,13 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
         $value = true;
 
         if ($this->dataId !== null) {
+
             $model = $this->getBaseModel();
+            $this->loadBaseRow();
             if ($this->baseRow->getModelValue($model->closed)) {
                 $value = false;
             }
+
         }
 
         return $value;
@@ -253,13 +256,19 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function isWorkflowClosed()
     {
 
+        $value = $this->isWorkflowOpen();
+        $value = !$value;
+
+        return $value;
+
+        /*
         $closed = false;
         if ($this->dataId !== null) {
             $model = $this->getBaseModel();
             $closed = $this->baseRow->getModelValue($model->closed);
         }
 
-        return $closed;
+        return $closed;*/
 
     }
 
