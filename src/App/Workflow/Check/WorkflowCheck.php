@@ -4,7 +4,9 @@ namespace Nemundo\Workflow\App\Workflow\Check;
 
 
 use Nemundo\Core\Base\AbstractBaseClass;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Log\LogFile;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\WorkflowConfig;
 
@@ -15,37 +17,27 @@ class WorkflowCheck extends AbstractBaseClass
     public function checkWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
     {
 
-
         if (WorkflowConfig::$workflowCheck) {
-
 
             if (!$workflowStatus->checkUserVisibility()) {
                 (new LogFile())->writeError('Restricted Content Type');
             }
 
-
-            /*
-            if ($workflowStatus->isObjectOfClass(AbstractWorkflowProcess::class)) {
-                return;
-            }*/
-
-
-            //if ($workflowStatus->workflowCheck) {
-
             $currentStatus = null;
             if ($workflowStatus->parentContentType !== null) {
 
-                $currentStatus = $workflowStatus->parentContentType->getCurrentStatus();
-                /*   if ($currentStatus == null) {
-                       return;
-                   }*/
+                //(new Debug())->write($workflowStatus->parentContentType);
+
+
+                if ($workflowStatus->parentContentType->isObjectOfClass(AbstractWorkflowProcess::class)) {
+                    $currentStatus = $workflowStatus->parentContentType->getCurrentStatus();
+                }
 
             }
 
             if ($currentStatus == null) {
                 return;
             }
-
 
             $valid = false;
             $next = $currentStatus->getNextContentType();
@@ -61,13 +53,11 @@ class WorkflowCheck extends AbstractBaseClass
                 }
             }
 
-
             foreach ($currentStatus->getAllowedClassList() as $allowedClass) {
                 if ($workflowStatus->getClassName() == $allowedClass) {
                     $valid = true;
                 }
             }
-
 
             if (!$valid) {
                 (new LogFile())->writeError('Workflow Operation not allowed.' .
