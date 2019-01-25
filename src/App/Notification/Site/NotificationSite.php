@@ -9,6 +9,7 @@ use Nemundo\Com\Html\Basic\Paragraph;
 use Nemundo\Com\Html\Basic\Small;
 use Nemundo\Com\Html\Div\DivContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
@@ -48,7 +49,6 @@ class NotificationSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-
         $layout = new BootstrapTwoColumnLayout($page);
         $layout->col1->columnWidth = 4;
         $layout->col2->columnWidth = 8;
@@ -83,6 +83,9 @@ class NotificationSite extends AbstractSite
         }
 
         $notificationReader->model->loadContentType();
+
+        $notificationReader->addOrder($notificationReader->model->dateTimeCreated, SortOrder::DESCENDING);
+
         foreach ($notificationReader->getData() as $notificationRow) {
 
 
@@ -109,8 +112,12 @@ class NotificationSite extends AbstractSite
             }
 
 
+            //$p = new Paragraph($div);
+            //$p->content = $contentType->getText();
+
             $p = new Paragraph($div);
-            $p->content = $contentType->getText();
+            $p->content = $notificationRow->message;  // contentType->getText();
+
 
             $p = new Paragraph($div);
             $p->content = $notificationRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat();
