@@ -43,7 +43,7 @@ class SiteInformation extends AbstractHtmlContainerList
                 foreach ($site->getRestrictedUsergroupList() as $usergroup) {
                     $list->addText($usergroup->usergroup);
                 }
-                $table->addLabelValue('Restricted Usergroup', $list->getHtmlString());
+                $table->addLabelValue('Restricted Usergroup', $list->getHtml());
 
             }
 

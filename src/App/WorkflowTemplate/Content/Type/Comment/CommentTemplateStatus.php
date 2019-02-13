@@ -67,7 +67,7 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
 
 
         $subject = 'Kommentar ' . $this->comment;  // $this->getSubject();
-//von '.(new UserSessionType())->getLabel().(new Br())->getHtmlString().
+//von '.(new UserSessionType())->getLabel().(new Br())->getHtml().
         return $subject;
 
     }

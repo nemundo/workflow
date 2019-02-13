@@ -101,7 +101,7 @@ class WorkflowStatusTable extends AbstractHtmlContainerList
                 foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {
 
                     if ($site->isActiveWorkflowStatus()) {
-                        $list->addText((new ArrowRightIcon())->getHtmlString() . ' ' . $site->title);
+                        $list->addText((new ArrowRightIcon())->getHtml() . ' ' . $site->title);
                     } else {
 
 
