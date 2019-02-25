@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Form;
 
 
 use Nemundo\App\Content\Form\ContentTreeFormTrait;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Core\Event\EventTrait;
 
-class AbortTemplateWorkflowForm extends AbstractHtmlContainerList
+class AbortTemplateWorkflowForm extends AbstractHtmlContainer
 {
 
     use ContentTreeFormTrait;

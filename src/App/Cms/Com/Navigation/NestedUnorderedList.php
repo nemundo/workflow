@@ -3,16 +3,16 @@
 namespace Nemundo\Workflow\App\Cms\Com\Navigation;
 
 
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Com\Html\Listing\Li;
-use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Html\Listing\Li;
+use Nemundo\Html\Listing\UnorderedList;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Site\AbstractSiteTree;
 
 // CmsNavigation
 // Wird verwendet in: Weihnachtszeit
-class NestedUnorderedList extends AbstractHtmlContainerList
+class NestedUnorderedList extends AbstractHtmlContainer
 {
 
     /**

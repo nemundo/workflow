@@ -6,12 +6,12 @@ namespace Nemundo\Workflow\App\Workflow\Com\Table;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 
 
-class WorkflowLogTable extends AbstractHtmlContainerList
+class WorkflowLogTable extends AbstractHtmlContainer
 {
 
 

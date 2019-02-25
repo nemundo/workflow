@@ -3,16 +3,16 @@
 namespace Nemundo\Workflow\App\SearchEngine\Com\Navbar;
 
 
-use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Com\Html\Form\Form\SiteForm;
-use Nemundo\Com\Html\Form\Button\SubmitButton;
+use Nemundo\Html\Container\AbstractHtmlContainer;
+use Nemundo\Html\Form\Form\SiteForm;
+use Nemundo\Html\Form\Button\SubmitButton;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Com\TextBox\SearchAutocompleteTextBox;
 use Nemundo\Workflow\App\SearchEngine\Parameter\QueryParameter;
 use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 
-class NavbarSearchForm extends AbstractHtmlContainerList
+class NavbarSearchForm extends AbstractHtmlContainer
 {
 
     /**

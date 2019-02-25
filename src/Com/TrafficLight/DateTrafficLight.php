@@ -3,10 +3,10 @@
 namespace Nemundo\Workflow\Com\TrafficLight;
 
 
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Core\Type\DateTime\Date;
 
-class DateTrafficLight extends AbstractHtmlContainerList
+class DateTrafficLight extends AbstractHtmlContainer
 {
 
     /**

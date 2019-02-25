@@ -7,17 +7,17 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Com\Html\Hyperlink\Hyperlink;
-use Nemundo\Package\FontAwesome\FontAwesomeIconIcon;
+use Nemundo\Html\Container\AbstractHtmlContainer;
+use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Hyperlink\Hyperlink;
+use Nemundo\Package\FontAwesome\FontAwesomeIcon;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionCount;
 use Nemundo\Workflow\App\Subscription\Site\SubscriptionDeleteSite;
 use Nemundo\Workflow\App\Subscription\Site\SubscriptionSite;
 
 
-class SubscriptionButton extends AbstractHtmlContainerList
+class SubscriptionButton extends AbstractHtmlContainer
 {
 
     /**
@@ -64,7 +64,7 @@ class SubscriptionButton extends AbstractHtmlContainerList
             $link->site->addParameter(new DataIdParameter($this->dataId));
             $link->site->addParameter(new ContentTypeParameter($this->contentType->contentId));
 
-            $icon = new FontAwesomeIconIcon($link);
+            $icon = new FontAwesomeIcon($link);
             $icon->icon = 'star';
             $icon->iconSize = 3;
 

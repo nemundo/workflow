@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Store\Form;
 
 
-use Nemundo\Com\Html\Form\HiddenInput;
+use Nemundo\Html\Form\Input\HiddenInput;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Web\Url\UrlRedirect;
 use Nemundo\Web\Url\UrlReferer;

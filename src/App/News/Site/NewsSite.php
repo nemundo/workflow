@@ -4,9 +4,9 @@ namespace Nemundo\Workflow\App\News\Site;
 
 
 use Nemundo\Admin\Com\Title\AdminSubtitle;
-use Nemundo\Com\Html\Basic\Hr;
-use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Com\Html\Hyperlink\Hyperlink;
+use Nemundo\Html\Basic\Hr;
+use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Web\Site\AbstractSite;

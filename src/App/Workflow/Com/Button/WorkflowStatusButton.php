@@ -5,11 +5,11 @@ namespace Nemundo\Workflow\App\Workflow\Com\Button;
 
 use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
-class WorkflowStatusButton extends AbstractHtmlContainerList
+class WorkflowStatusButton extends AbstractHtmlContainer
 {
 
     /**

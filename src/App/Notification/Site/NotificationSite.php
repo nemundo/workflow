@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\Notification\Site;
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Com\Html\Basic\Hr;
-use Nemundo\Com\Html\Basic\Paragraph;
-use Nemundo\Com\Html\Basic\Small;
-use Nemundo\Com\Html\Div\DivContainer;
+use Nemundo\Html\Basic\Hr;
+use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Basic\Small;
+use Nemundo\Html\Div\DivContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;

@@ -5,10 +5,10 @@ namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
-use Nemundo\Com\Html\Hyperlink\ContentHyperlink;
+use Nemundo\Html\Container\AbstractHtmlContainer;
+use Nemundo\Html\Hyperlink\ContentHyperlink;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Com\Html\Listing\UnorderedList;
+use Nemundo\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
@@ -17,7 +17,7 @@ use Nemundo\Web\Site\Site;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
-class WorkflowStatusTable extends AbstractHtmlContainerList
+class WorkflowStatusTable extends AbstractHtmlContainer
 {
 
     /**

@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\View;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Html\Basic\Paragraph;
 
 class SubjectView extends AbstractContentView
 {

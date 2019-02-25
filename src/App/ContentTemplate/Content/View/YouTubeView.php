@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\View;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Com\Html\Basic\Paragraph;
+use Nemundo\Html\Basic\Paragraph;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\YouTubeType;
 
 class YouTubeView extends AbstractContentView

@@ -3,10 +3,10 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
-class WorkflowStatusMenu extends AbstractHtmlContainerList
+class WorkflowStatusMenu extends AbstractHtmlContainer
 {
 
     /**

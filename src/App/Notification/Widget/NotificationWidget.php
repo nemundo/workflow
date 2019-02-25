@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Notification\Widget;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Widget\AdminWidget;
-use Nemundo\Com\Html\Table\Th;
+use Nemundo\Html\Table\Th;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;

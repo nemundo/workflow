@@ -3,14 +3,14 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Layout;
 
 
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Package\Bootstrap\Layout\BootstrapColumn;
 use Nemundo\Package\Bootstrap\Layout\BootstrapRow;
 
 
 // BootstrapTitleColumn3Layout
 
-class WorkflowLayout extends AbstractHtmlContainerList
+class WorkflowLayout extends AbstractHtmlContainer
 {
 
     /**

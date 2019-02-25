@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Assignment\Com\Table;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\Header\UpDownSortingHyperlink;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
@@ -20,7 +20,7 @@ use Nemundo\Workflow\App\Assignment\Site\AssignmentDeleteSite;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 use Nemundo\Workflow\Com\TrafficLight\DateTrafficLight;
 
-class AssignmentTable extends AbstractHtmlContainerList
+class AssignmentTable extends AbstractHtmlContainer
 {
 
     /**

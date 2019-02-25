@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Search\Com;
 
 
-use Nemundo\Com\Html\Form\Select\Option;
+use Nemundo\Html\Form\Select\Option;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Workflow\App\Search\RedefineSearchList;
 

@@ -3,11 +3,11 @@
 namespace Nemundo\Workflow\App\Store\Admin;
 
 
-use Nemundo\Com\Container\AbstractHtmlContainerList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Workflow\App\Store\Form\LargeTextStoreForm;
 use Nemundo\Workflow\App\Store\Type\AbstractStoreType;
 
-class StoreAdmin extends AbstractHtmlContainerList
+class StoreAdmin extends AbstractHtmlContainer
 {
 
     /**

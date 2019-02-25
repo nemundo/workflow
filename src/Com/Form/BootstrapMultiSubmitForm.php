@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\Com\Form;
 
 
-use Nemundo\Com\Html\Form\AbstractSubmitForm;
+use Nemundo\Html\Form\AbstractSubmitForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapSubmitButton;
 use Nemundo\Web\Http\Request\PostRequest;
 

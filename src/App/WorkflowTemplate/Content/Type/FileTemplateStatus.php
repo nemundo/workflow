@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 use Nemundo\Core\File\Base64File;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
-use Nemundo\Com\Html\Hyperlink\Hyperlink;
+use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Web\Http\FileRequest\FileRequest;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\FileUploadTemplateWorkflowForm;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\File;

@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Com;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Data\ContentLog\ContentLogModel;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\Com\Html\Basic\Strike;
+use Nemundo\Html\Basic\Strike;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Type\DateTime\DateTime;
