@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ToDo\Content\View;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
 
 class ToDoErfassungView extends AbstractContentView

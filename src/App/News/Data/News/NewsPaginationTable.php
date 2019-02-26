@@ -6,8 +6,8 @@ class NewsPaginationTable extends \Nemundo\Model\Table\AbstractModelPaginationTa
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new NewsModel();
 }
 }

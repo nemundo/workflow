@@ -34,9 +34,9 @@ class WorkflowLayout extends AbstractHtmlContainer
     public $col3;
 
 
-    protected function loadCom()
+    protected function loadContainer()
     {
-        parent::loadCom();
+        parent::loadContainer();
 
         $row = new BootstrapRow($this);
         $this->header = new BootstrapColumn($row);

@@ -6,8 +6,8 @@ class NewsAdmin extends \Nemundo\Model\Admin\AbstractModelAdmin {
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new  NewsModel();
 }
 }

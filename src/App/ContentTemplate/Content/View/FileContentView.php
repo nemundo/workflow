@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\View;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Html\Basic\Div;
+use Nemundo\Html\Block\Div;
 use Nemundo\Html\Hyperlink\Hyperlink;
 
 class FileContentView extends AbstractContentView

@@ -8,7 +8,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Package\FontAwesome\FontAwesomeIcon;
 use Nemundo\User\Type\UserSessionType;

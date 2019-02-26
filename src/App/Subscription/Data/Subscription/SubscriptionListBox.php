@@ -6,8 +6,8 @@ class SubscriptionListBox extends \Nemundo\Package\Bootstrap\FormElement\Bootstr
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new SubscriptionModel();
 $this->label = $this->model->label;
 }

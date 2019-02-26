@@ -6,8 +6,8 @@ class UserDeadlineAssignmentListBox extends \Nemundo\Package\Bootstrap\FormEleme
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new UserDeadlineAssignmentModel();
 $this->label = $this->model->label;
 }

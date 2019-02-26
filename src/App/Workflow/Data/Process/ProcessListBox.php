@@ -6,8 +6,8 @@ class ProcessListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapMod
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new ProcessModel();
 $this->label = $this->model->label;
 }

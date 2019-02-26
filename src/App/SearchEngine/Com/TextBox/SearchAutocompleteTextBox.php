@@ -10,10 +10,10 @@ use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineJsonSite;
 class SearchAutocompleteTextBox extends BootstrapAutocompleteTextBox
 {
 
-    protected function loadCom()
+    protected function loadContainer()
     {
 
-        parent::loadCom();
+        parent::loadContainer();
         
         $this->sourceSite = SearchEngineJsonSite::$site;
         $this->minLength = 1;

@@ -12,9 +12,9 @@ class WorkflowModelView extends AbstractHtmlContainer
 
     use ModelViewTrait;
 
-    protected function loadCom()
+    protected function loadContainer()
     {
-        parent::loadCom();
+        parent::loadContainer();
         $this->loadModelView();
     }
 

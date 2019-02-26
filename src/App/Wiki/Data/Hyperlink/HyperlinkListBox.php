@@ -6,8 +6,8 @@ class HyperlinkListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapM
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new HyperlinkModel();
 $this->label = $this->model->label;
 }

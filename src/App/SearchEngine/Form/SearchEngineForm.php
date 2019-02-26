@@ -19,9 +19,9 @@ class SearchEngineForm extends SearchForm
     private $query;
 
 
-    protected function loadCom()
+    protected function loadContainer()
     {
-        parent::loadCom();
+        parent::loadContainer();
 
         $this->addCssClass('form-inline');
 

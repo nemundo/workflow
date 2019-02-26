@@ -6,8 +6,8 @@ class WikiPageListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapMo
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new WikiPageModel();
 $this->label = $this->model->label;
 }

@@ -6,8 +6,8 @@ class UserAssignmentChangeListBox extends \Nemundo\Package\Bootstrap\FormElement
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new UserAssignmentChangeModel();
 $this->label = $this->model->label;
 }

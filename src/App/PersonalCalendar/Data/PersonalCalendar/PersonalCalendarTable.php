@@ -7,7 +7,7 @@ class PersonalCalendarTable extends BootstrapModelTable {
 */
 public $model;
 
-protected function loadCom() {
+protected function loadContainer() {
 $this->model = new PersonalCalendarModel();
 }
 }

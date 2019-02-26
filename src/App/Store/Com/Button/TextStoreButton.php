@@ -17,10 +17,10 @@ class TextStoreButton extends AdminButton
     public $store;
 
 
-    protected function loadCom()
+    protected function loadContainer()
     {
 
-        parent::loadCom();
+        parent::loadContainer();
         $this->content = 'edit';
 
     }

@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\News\Site;
 
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Html\Basic\Hr;
-use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;

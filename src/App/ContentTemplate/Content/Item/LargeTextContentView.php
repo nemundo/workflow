@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ContentTemplate\Content\Item;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Workflow\App\ContentTemplate\Content\Type\LargeTextTemplateContentType;
 
 

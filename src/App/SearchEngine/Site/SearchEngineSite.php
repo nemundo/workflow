@@ -5,10 +5,10 @@ namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Html\Basic\Br;
+use Nemundo\Html\Block\Br;
 use Nemundo\Html\Basic\Hr;
-use Nemundo\Html\Basic\Paragraph;
-use Nemundo\Html\Basic\Small;
+use Nemundo\Html\Paragraph\Paragraph;
+use Nemundo\Html\Formatting\Small;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;

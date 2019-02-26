@@ -6,8 +6,8 @@ class UserConfigNumberListBox extends \Nemundo\Package\Bootstrap\FormElement\Boo
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new UserConfigNumberModel();
 $this->label = $this->model->label;
 }

@@ -6,8 +6,8 @@ class WikiTypeListBox extends \Nemundo\Package\Bootstrap\FormElement\BootstrapMo
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new WikiTypeModel();
 $this->label = $this->model->label;
 }

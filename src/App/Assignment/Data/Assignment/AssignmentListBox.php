@@ -6,8 +6,8 @@ class AssignmentListBox extends \Nemundo\Package\Bootstrap\FormElement\Bootstrap
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new AssignmentModel();
 $this->label = $this->model->label;
 }

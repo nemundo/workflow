@@ -6,8 +6,8 @@ class NotificationListBox extends \Nemundo\Package\Bootstrap\FormElement\Bootstr
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new NotificationModel();
 $this->label = $this->model->label;
 }

@@ -6,8 +6,8 @@ class SubjectChangeListBox extends \Nemundo\Package\Bootstrap\FormElement\Bootst
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new SubjectChangeModel();
 $this->label = $this->model->label;
 }

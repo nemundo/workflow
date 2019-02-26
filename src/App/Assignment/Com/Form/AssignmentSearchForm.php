@@ -39,9 +39,9 @@ class AssignmentSearchForm extends SearchForm
     private $source;
 
 
-    public function loadCom()
+    public function loadContainer()
     {
-        parent::loadCom();
+        parent::loadContainer();
 
         $row = new BootstrapFormRow($this);
 

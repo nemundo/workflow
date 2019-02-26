@@ -7,7 +7,7 @@ class NewsFormUpdate extends ModelFormUpdate {
 */
 public $model;
 
-protected function loadCom() {
+protected function loadContainer() {
 $this->model = new NewsModel();
 }
 }

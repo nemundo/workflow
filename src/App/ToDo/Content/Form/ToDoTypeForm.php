@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ToDo\Content\Form;
 
 
 use Nemundo\App\Content\Form\AbstractContentTreeForm;
-use Nemundo\Html\Basic\Paragraph;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\ToDo\Content\Type\Process\ToDoProcess;
 

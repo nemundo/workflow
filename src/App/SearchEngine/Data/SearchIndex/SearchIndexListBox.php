@@ -6,8 +6,8 @@ class SearchIndexListBox extends \Nemundo\Package\Bootstrap\FormElement\Bootstra
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new SearchIndexModel();
 $this->label = $this->model->label;
 }

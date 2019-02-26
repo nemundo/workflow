@@ -30,7 +30,7 @@ class WorkflowStatusTable extends AbstractHtmlContainer
      */
     private $table;
 
-    protected function loadCom()
+    protected function loadContainer()
     {
         $this->table = new AdminTable($this);
     }

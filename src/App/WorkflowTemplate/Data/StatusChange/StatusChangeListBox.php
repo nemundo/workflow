@@ -6,8 +6,8 @@ class StatusChangeListBox extends \Nemundo\Package\Bootstrap\FormElement\Bootstr
 */
 public $model;
 
-protected function loadCom() {
-parent::loadCom();
+protected function loadContainer() {
+parent::loadContainer();
 $this->model = new StatusChangeModel();
 $this->label = $this->model->label;
 }

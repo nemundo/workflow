@@ -6,7 +6,7 @@ class NewsForm extends \Nemundo\Package\Bootstrap\Form\BootstrapModelForm {
 */
 public $model;
 
-protected function loadCom() {
+protected function loadContainer() {
 $this->model = new NewsModel();
 }
 }

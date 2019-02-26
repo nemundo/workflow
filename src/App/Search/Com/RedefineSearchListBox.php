@@ -17,9 +17,9 @@ class RedefineSearchListBox extends BootstrapListBox
     public $redefineSearchList;
 
 
-    protected function loadCom()
+    protected function loadContainer()
     {
-        parent::loadCom();
+        parent::loadContainer();
         $this->redefineSearchList = new RedefineSearchList();
 
         $this->submitOnChange = true;
