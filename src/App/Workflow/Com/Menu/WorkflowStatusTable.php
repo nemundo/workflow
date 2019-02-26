@@ -5,10 +5,11 @@ namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Html\Hyperlink\ContentHyperlink;
+use Nemundo\Com\Container\AbstractContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Html\Listing\UnorderedList;
+use Nemundo\Html\Container\AbstractHtmlContainer;
+use Nemundo\Html\Hyperlink\Hyperlink;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
@@ -46,7 +47,7 @@ class WorkflowStatusTable extends AbstractHtmlContainer
         //$row->addText($workflowStatus->getSubject());
         //$row->addText($workflowStatus->contentLabel);
 
-        $link = new ContentHyperlink($row);
+        $link = new Hyperlink($row);
         $link->content = $workflowStatus->contentLabel;
         $link->href = '#log-' . $workflowStatus->logId;
         $link->addCssClass(BootstrapFontColor::DARK);

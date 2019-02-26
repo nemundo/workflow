@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Cms\Com;
 use Nemundo\Admin\Com\Table\AdminLabelValueTable;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Html\Listing\UnorderedList;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
 use Nemundo\Web\Site\AbstractController;
 
