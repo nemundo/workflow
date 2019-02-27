@@ -23,7 +23,7 @@ class DateTrafficLight extends AbstractHtmlContainer
 
             $circle = new ColorCircle($this);
             if ($this->date < ((new Date())->setNow())) {
-                $circle->color = '#FF0000';
+                $circle->color = TrafficLightColor::RED;  // '#FF0000';
             }
         }
 

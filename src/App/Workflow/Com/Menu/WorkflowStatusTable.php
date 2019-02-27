@@ -5,12 +5,11 @@ namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
-use Nemundo\Com\Container\AbstractContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Html\Container\AbstractHtmlContainer;
+use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
@@ -98,7 +97,6 @@ class WorkflowStatusTable extends AbstractHtmlContainer
                 $list = new UnorderedList($row);
                 $list->addCssClass('no-bullet');
 
-
                 foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {
 
                     if ($site->isActiveWorkflowStatus()) {
@@ -109,7 +107,6 @@ class WorkflowStatusTable extends AbstractHtmlContainer
                         //$btn = new AdminButton($list);
                         //$btn->site = $site;
                         //$btn->content = $site->title;
-
 
                         if ($site->workflowStatus->checkUserVisibility()) {
 

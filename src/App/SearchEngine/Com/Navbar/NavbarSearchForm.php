@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\App\SearchEngine\Com\Navbar;
 
 
+use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Html\Form\Form\SiteForm;
 use Nemundo\Html\Form\Button\SubmitButton;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Web\Site\AbstractSite;
@@ -23,8 +23,8 @@ class NavbarSearchForm extends AbstractHtmlContainer
     public function getHtml()
     {
 
-        $form = new SiteForm($this);
-        $form->redirectSite = SearchEngineSite::$site;
+        $form = new SearchForm($this);  // new SiteForm($this);
+        $form->site = SearchEngineSite::$site;
 
         $form->addCssClass('form-inline');
 
@@ -33,12 +33,13 @@ class NavbarSearchForm extends AbstractHtmlContainer
         $input->addCssClass('mr-sm-2');
 
         $submit = new SubmitButton($form);
-        $submit->content[LanguageCode::EN] = 'Search';
-        $submit->content[LanguageCode::DE] = 'Suchen';
+        $submit->label[LanguageCode::EN] = 'Search';
+        $submit->label[LanguageCode::DE] = 'Suchen';
 
         $submit->addCssClass('btn my-2 my-sm-0');
 
         return parent::getHtml();
+
     }
 
 }

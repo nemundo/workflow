@@ -7,7 +7,7 @@ use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\App\Content\Type\Menu\MenuContentTypeTrait;
 use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\User\Access\UserAccessTrait;
+use Nemundo\User\Access\UserRestrictionTrait;
 use Nemundo\Workflow\App\Workflow\Check\WorkflowCheck;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 
@@ -15,7 +15,7 @@ use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 {
 
-    use UserAccessTrait;
+    use UserRestrictionTrait;
     use SequenceContentTypeTrait;
     use MenuContentTypeTrait;
     use WorkflowStatusTrait;

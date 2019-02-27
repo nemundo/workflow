@@ -171,10 +171,7 @@ class WorkflowController extends AbstractBase
         $menu->process = $this->process;
         $menu->formStatus = $this->getFormStatus();
 
-
-
         return $menu;
-
 
     }
 

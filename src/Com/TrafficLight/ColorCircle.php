@@ -15,7 +15,7 @@ class ColorCircle extends Div
     /**
      * @var string
      */
-    public $color = HtmlColor::WHITE;
+    public $color = TrafficLightColor::WHITE;
 
     public function getHtml()
     {

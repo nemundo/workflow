@@ -2,8 +2,8 @@
 
 namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
-use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Html\Container\AbstractHtmlContainer;
+use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 
 class WorkflowStatusMenu extends AbstractHtmlContainer
@@ -19,6 +19,10 @@ class WorkflowStatusMenu extends AbstractHtmlContainer
      */
     public $formStatus;
 
+    /**
+     * @var bool
+     */
+    public $showMenuAfterWorklowClosing = true;
 
     public function getHtml()
     {
@@ -37,34 +41,34 @@ class WorkflowStatusMenu extends AbstractHtmlContainer
         }
 
 
-        //if ($this->process->isWorkflowOpen()) {
+        if ($this->process->isWorkflowOpen() || $this->showMenuAfterWorklowClosing) {
 
-        $nextStatus = $status->getNextContentType();
+            $nextStatus = $status->getNextContentType();
 
-        if ($this->process->dataId == null) {
-            $nextStatus = $status;
-            $this->formStatus = $status;
-        }
-
-        if ($nextStatus !== null) {
-
-            $active = false;
-            if ($this->formStatus->contentId == $nextStatus->contentId) {
-                $active = true;
+            if ($this->process->dataId == null) {
+                $nextStatus = $status;
+                $this->formStatus = $status;
             }
-            $table->addActiveWorkflowStatus($nextStatus, $active);
 
-        }
+            if ($nextStatus !== null) {
 
-        $table->addMenu();
+                $active = false;
+                if ($this->formStatus->contentId == $nextStatus->contentId) {
+                    $active = true;
+                }
+                $table->addActiveWorkflowStatus($nextStatus, $active);
 
-        if ($nextStatus !== null) {
-            foreach ($nextStatus->getNextContentTypeList() as $item) {
-                $table->addNextWorkflowStatus($item);
             }
-        }
 
-        //}
+            $table->addMenu();
+
+            if ($nextStatus !== null) {
+                foreach ($nextStatus->getNextContentTypeList() as $item) {
+                    $table->addNextWorkflowStatus($item);
+                }
+            }
+
+        }
 
         return parent::getHtml();
 
