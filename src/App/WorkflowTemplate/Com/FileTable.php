@@ -17,6 +17,7 @@ use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileTemplateStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
 use Nemundo\Workflow\App\WorkflowTemplate\Parameter\FileParameter;
 use Nemundo\Workflow\App\WorkflowTemplate\Site\Delete\FileDeleteSite;
+use Schleuniger\Com\Hyperlink\SchleunigerFancyboxHyperlink;
 
 class FileTable extends AdminTable
 {
@@ -65,6 +66,11 @@ class FileTable extends AdminTable
 
             if (!$fileRow->delete) {
 
+                $link = new SchleunigerFancyboxHyperlink($row);
+                $link->filename = $fileRow->file->getFilename();
+                $link->url = $fileRow->file->getUrl();
+
+                /*
                 $extension = $fileRow->file->getFileExtension();
                 if (($extension == 'png') || ($extension == 'jpg') || ($extension == 'jpeg')) {
 
@@ -76,7 +82,7 @@ class FileTable extends AdminTable
                 } else {
 
                     $row->addHyperlink($fileRow->file->getUrl(), $fileRow->file->getFilename());
-                }
+                }*/
 
             } else {
 
