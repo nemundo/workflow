@@ -6,11 +6,12 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Com;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Data\ContentLog\ContentLogModel;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\Html\Basic\Strike;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Type\DateTime\DateTime;
+use Nemundo\Html\Formatting\Strike;
 use Nemundo\Model\Join\ModelJoin;
+use Nemundo\Package\Fancybox\FancyboxHyperlink;
 use Nemundo\User\Data\User\UserModel;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Type\FileTemplateStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\File\FileReader;
@@ -63,7 +64,19 @@ class FileTable extends AdminTable
             $row = new TableRow($this);
 
             if (!$fileRow->delete) {
-                $row->addHyperlink($fileRow->file->getUrl(), $fileRow->file->getFilename());
+
+                $extension = $fileRow->file->getFileExtension();
+                if (($extension == 'png') || ($extension == 'jpg') || ($extension == 'jpeg')) {
+
+                    $hyperlink = new FancyboxHyperlink($row);
+                    $hyperlink->content = $fileRow->file->getFilename();
+                    $hyperlink->imageUrl = $fileRow->file->getUrl();
+                    $hyperlink->caption = $fileRow->file->getFilename();
+
+                } else {
+
+                    $row->addHyperlink($fileRow->file->getUrl(), $fileRow->file->getFilename());
+                }
 
             } else {
 
@@ -77,6 +90,9 @@ class FileTable extends AdminTable
             $dateTimeCreated = new DateTime($fileRow->getModelValue($contentLogModel->dateTimeCreated));
 
             $row->addText($userDisplay . ' ' . $dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+
+
+           // $row->addText($fileRow->file->getFileExtension());
 
             if (!$fileRow->delete) {
                 $site = clone(FileDeleteSite::$site);
