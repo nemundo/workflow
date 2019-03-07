@@ -5,13 +5,12 @@ namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Title\AdminTitle;
-use Nemundo\Html\Block\Br;
-use Nemundo\Html\Basic\Hr;
-use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\Html\Formatting\Small;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
+use Nemundo\Html\Block\Br;
+use Nemundo\Html\Block\Hr;
+use Nemundo\Html\Formatting\Small;
+use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Form\SearchEngineForm;
 use Nemundo\Workflow\App\SearchEngine\Parameter\QueryParameter;
@@ -52,7 +51,6 @@ class SearchEngineSite extends AbstractSite
         $form = new SearchEngineForm($page);
 
 
-
         $table = new AdminClickableTable($page);
 
 
@@ -69,8 +67,8 @@ class SearchEngineSite extends AbstractSite
             $hyperlink = new SiteHyperlink($page);
             $hyperlink->site = $searchEngineItem->site;
 
-$p = new Paragraph($page);
-$p->content = $searchEngineItem->text;
+            $p = new Paragraph($page);
+            $p->content = $searchEngineItem->text;
 
 
             (new Hr($page));

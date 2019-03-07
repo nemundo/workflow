@@ -32,7 +32,7 @@ class SearchEngineForm extends SearchForm
         //$this->query->label = 'Query';
 
         $submit = new AdminSubmitButton($row);
-        $submit->content = 'Suchen';
+        $submit->label = 'Suchen';
 
     }
 

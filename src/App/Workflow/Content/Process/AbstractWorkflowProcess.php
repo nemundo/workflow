@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Content\Process;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\App\Workflow\Model\AbstractWorkflowModel;
 use Nemundo\Core\Date\DateTimeDifference;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
@@ -291,11 +292,17 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
 
         if ($this->isWorkflowClosed()) {
             $diff->dateUntil = $this->getLast()->dateTimeCreated->resetTime();
+
+            //(new Debug())->write($this->getLast());
+
         } else {
             $diff->dateUntil = (new DateTime())->setNow()->resetTime();
         }
 
         $day = $diff->getDifferenceInDay();
+
+        //(new Debug())->write($diff);
+
 
         return $day;
 
