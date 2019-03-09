@@ -39,7 +39,7 @@ class RedefineSearchListBox extends BootstrapListBox
             $option->value = $redefineItem->id;
             $option->label = $redefineItem->label . ' (' . $redefineItem->count . ')';
             if ($redefineItem->count == 0) {
-                $option->disabled = true;
+                //$option->disabled = true;
             }
 
             $this->addOption($option);
