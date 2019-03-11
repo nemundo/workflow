@@ -22,13 +22,15 @@ class RedefineSearchListBox extends BootstrapListBox
         parent::loadContainer();
         $this->redefineSearchList = new RedefineSearchList();
 
-        $this->submitOnChange = true;
+        //$this->submitOnChange = true;
 
 
     }
 
     public function getHtml()
     {
+
+        $this->multiSelect = true;
 
         $this->value = $this->getValue();
 

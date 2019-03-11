@@ -46,6 +46,14 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     }
 
 
+    public function getWorkflowNumber() {
+
+        $number = 'No Number';
+        return $number;
+
+    }
+
+
     private function loadBaseRow()
     {
 
@@ -283,6 +291,7 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     }
 
 
+    /*
     public function getLeadTimeInDay()
     {
 
@@ -307,7 +316,7 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
         return $day;
 
 
-    }
+    }*/
 
 
 }
