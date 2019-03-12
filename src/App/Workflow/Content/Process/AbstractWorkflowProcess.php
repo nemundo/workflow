@@ -5,9 +5,6 @@ namespace Nemundo\Workflow\App\Workflow\Content\Process;
 
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\App\Workflow\Model\AbstractWorkflowModel;
-use Nemundo\Core\Date\DateTimeDifference;
-use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Model\Data\ModelUpdate;
 use Nemundo\Model\Factory\ModelFactory;
 use Nemundo\Model\Reader\ModelDataReader;
@@ -43,14 +40,6 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
         $this->processViewClass = ProcessView::class;
         //$this->workflowCheck = false;
         parent::__construct($dataId);
-    }
-
-
-    public function getWorkflowNumber() {
-
-        $number = 'No Number';
-        return $number;
-
     }
 
 

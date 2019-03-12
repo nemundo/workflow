@@ -100,7 +100,8 @@ class AssignmentBuilder extends AbstractBase
 
                 $parentType = $this->contentType->getParent();
                 if ($parentType !== null) {
-                    $source = $parentType->getSubject();
+                    //$source = $parentType->getSubject();
+                    $source = $parentType->getNumber();
                 }
 
             }
