@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
+use Nemundo\Com\Html\Hyperlink\UrlHyperlink;
 use Nemundo\Core\File\Base64File;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Html\Hyperlink\Hyperlink;
@@ -92,7 +93,7 @@ class FileTemplateStatus extends AbstractWorkflowStatus
 
         $this->loadData();
 
-        $hyperlink = new Hyperlink();
+        $hyperlink = new UrlHyperlink();
         $hyperlink->content = $this->row->file->getFilename();
         $hyperlink->url = $this->row->file->getUrlWithDomain();
 

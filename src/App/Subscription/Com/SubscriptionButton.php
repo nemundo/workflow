@@ -7,6 +7,7 @@ use Nemundo\Admin\Com\Button\AdminButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Hyperlink\Hyperlink;
@@ -57,8 +58,7 @@ class SubscriptionButton extends AbstractHtmlContainer
 
         } else {
 
-
-            $link = new Hyperlink($this);
+            $link = new SiteHyperlink($this);
             $link->site = SubscriptionDeleteSite::$site;
             //$button->site->addParameter(new SubscriptionParameter())
             $link->site->addParameter(new DataIdParameter($this->dataId));

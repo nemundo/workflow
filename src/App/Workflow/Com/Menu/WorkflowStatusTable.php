@@ -43,9 +43,6 @@ class WorkflowStatusTable extends AbstractHtmlContainer
 
         new CheckIcon($row);
 
-        //$row->addText($workflowStatus->getSubject());
-        //$row->addText($workflowStatus->contentLabel);
-
         $link = new Hyperlink($row);
         $link->content = $workflowStatus->contentLabel;
         $link->href = '#log-' . $workflowStatus->logId;
@@ -65,7 +62,6 @@ class WorkflowStatusTable extends AbstractHtmlContainer
         if ($active) {
             new ArrowRightIcon($row);
             $row->addBoldText($workflowStatus->contentLabel);
-            //$row->addBoldText($workflowStatus->getSubject());
         } else {
 
             $row->addEmpty();
@@ -95,7 +91,8 @@ class WorkflowStatusTable extends AbstractHtmlContainer
                 $row->addEmpty();
 
                 $list = new UnorderedList($row);
-                $list->addCssClass('no-bullet');
+                //$list->addCssClass('no-bullet');
+                $list->addCssClass('list-unstyled');
 
                 foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {
 
@@ -103,42 +100,27 @@ class WorkflowStatusTable extends AbstractHtmlContainer
                         $list->addText((new ArrowRightIcon())->getHtml() . ' ' . $site->title);
                     } else {
 
-
-                        //$btn = new AdminButton($list);
-                        //$btn->site = $site;
-                        //$btn->content = $site->title;
-
                         if ($site->workflowStatus->checkUserVisibility()) {
-
-                            //$btn->disabled = true;
 
                             $hyperlink = new SiteHyperlink($list);
                             $hyperlink->site = $site;
-
 
                         } else {
 
                             $list->addText($site->title);
 
-                            // $hyperlink = new Hyperlink();
-                            //   $hy
-
-                            //$hyperlink->addCssClass('btn disabled');
-                            //$hyperlink->addCssClass('disabled');
-                            //$hyperlink->
                         }
 
                     }
 
                 }
 
-
                 $row->addEmpty();
                 $row->addEmpty();
 
             }
-        }
 
+        }
 
     }
 
@@ -151,7 +133,6 @@ class WorkflowStatusTable extends AbstractHtmlContainer
             $row = new TableRow($this->table);
 
             $row->addEmpty();
-            //$row->addText($workflowStatus->contentLabel);
             $row->addText($workflowStatus->getSubject());
             $row->addEmpty();
             $row->addEmpty();
