@@ -16,6 +16,7 @@ class WorkflowCheck extends AbstractBaseClass
 
     public function checkWorkflowStatus(AbstractWorkflowStatus $workflowStatus)
     {
+        //(new Debug())->write($workflowStatus->getClassName());
 
         if (WorkflowConfig::$workflowCheck) {
 
@@ -25,9 +26,6 @@ class WorkflowCheck extends AbstractBaseClass
 
             $currentStatus = null;
             if ($workflowStatus->parentContentType !== null) {
-
-                //(new Debug())->write($workflowStatus->parentContentType);
-
 
                 if ($workflowStatus->parentContentType->isObjectOfClass(AbstractWorkflowProcess::class)) {
                     $currentStatus = $workflowStatus->parentContentType->getCurrentStatus();

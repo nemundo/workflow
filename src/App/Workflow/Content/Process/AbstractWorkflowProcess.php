@@ -132,25 +132,10 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function getProcessView($parentItem = null)
     {
 
-        //$view = null;
-        //if (class_exists($this->processViewClass)) {
-
-
-        //try {
-
         /** @var AbstractProcessView $view */
         $view = new $this->processViewClass($parentItem);
         $view->contentType = $this;
         $view->dataId = $this->dataId;
-
-        /*} catch (\Exception $exception) {
-            new ErrorMessage($parentItem);
-        }*/
-
-
-        /*} else {
-            (new LogMessage())->writeError('Process View Class does not exist. Class Name: ' . $this->processViewClass);
-        }*/
 
         return $view;
 
@@ -260,15 +245,6 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
 
         return $value;
 
-        /*
-        $closed = false;
-        if ($this->dataId !== null) {
-            $model = $this->getBaseModel();
-            $closed = $this->baseRow->getModelValue($model->closed);
-        }
-
-        return $closed;*/
-
     }
 
 
@@ -278,34 +254,5 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
         $this->changeStatus($contentType);
 
     }
-
-
-    /*
-    public function getLeadTimeInDay()
-    {
-
-
-        $diff = new DateTimeDifference();
-        $diff->dateFrom = $this->getFirstChild()->dateTimeCreated->resetTime();
-
-        if ($this->isWorkflowClosed()) {
-            $diff->dateUntil = $this->getLast()->dateTimeCreated->resetTime();
-
-            //(new Debug())->write($this->getLast());
-
-        } else {
-            $diff->dateUntil = (new DateTime())->setNow()->resetTime();
-        }
-
-        $day = $diff->getDifferenceInDay();
-
-        //(new Debug())->write($diff);
-
-
-        return $day;
-
-
-    }*/
-
 
 }

@@ -79,6 +79,11 @@ class AssignmentTable extends AbstractHtmlContainer
         }
 
 
+        if (!$this->showArchive) {
+            $assignmentReader->filter->andEqual($assignmentReader->model->archive, false);
+        }
+
+
         $table = new AdminClickableTable($this);
 
         $header = new TableHeader($table);

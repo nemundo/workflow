@@ -22,8 +22,9 @@ class AssignmentWidget extends AbstractAdminWidget
     {
 
         $table = new AssignmentTable($this);
-        //$table->showArchive = false;
+        $table->showArchive = false;
         $table->addUserId((new UserSessionType())->userId);
+
 
         return parent::getHtml();
 
