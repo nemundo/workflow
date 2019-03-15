@@ -36,8 +36,7 @@ class NavbarSearchForm extends AbstractHtmlContainer
         $submit->label = 'Suchen';
         //$submit->label[LanguageCode::EN] = 'Search';
         //$submit->label[LanguageCode::DE] = 'Suchen';
-
-        $submit->addCssClass('btn my-2 my-sm-0');
+        $submit->addCssClass('btn btn-secondary my-2 my-sm-0');
 
         return parent::getHtml();
 
