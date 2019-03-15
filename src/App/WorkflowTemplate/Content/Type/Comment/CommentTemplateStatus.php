@@ -29,7 +29,7 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
         $this->contentId = '9fc81c7a-1fe8-4b8d-aa52-5a9f60431330';
         $this->changeStatus = false;
         $this->showMenu = false;
-        $this->hideView = true;
+        //$this->hideView = true;
 
         $this->formClass = CommentForm::class;
         $this->viewClass = CommentWorkflowTemplateView::class;
