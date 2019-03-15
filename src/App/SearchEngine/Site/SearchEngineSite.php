@@ -45,17 +45,23 @@ class SearchEngineSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
-        $title = new AdminTitle($page);
-        $title->content = $this->title;
+        //$title = new AdminTitle($page);
+        //$title->content = $this->title;
 
-        $form = new SearchEngineForm($page);
+        //$form = new SearchEngineForm($page);
 
 
-        $table = new AdminClickableTable($page);
+        //$table = new AdminClickableTable($page);
+
+
 
 
         $reader = new SearchEngineReader();
         $reader->keyword = (new QueryParameter())->getValue();  // $form->getKeyword();
+
+        $p = new Paragraph($page);
+        $p->content = $reader->getCount().' Ergebnisse gefunden';
+
         foreach ($reader->getData() as $searchEngineItem) {
 
 
