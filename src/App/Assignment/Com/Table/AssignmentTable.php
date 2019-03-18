@@ -5,7 +5,10 @@ namespace Nemundo\Workflow\App\Assignment\Com\Table;
 
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Admin\Com\Table\Header\UpDownSortingHyperlink;
+use Nemundo\Admin\Parameter\SortingParameter;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
+use Nemundo\Core\Language\LanguageCode;
+use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Log\LogMessage;
@@ -93,6 +96,9 @@ class AssignmentTable extends AbstractHtmlContainer
 
         $subjectSorting = new UpDownSortingHyperlink($header);
         $subjectSorting->fieldType = $assignmentReader->model->subject;
+        $subjectSorting->label[LanguageCode::EN] = 'Subject';
+        $subjectSorting->label[LanguageCode::DE] = 'Betreff';
+
         $subjectSorting->checkSorting($assignmentReader);
 
         $header->addText('Message');
@@ -104,6 +110,8 @@ class AssignmentTable extends AbstractHtmlContainer
 
         $deadlineSorting = new UpDownSortingHyperlink($header);
         $deadlineSorting->fieldType = $assignmentReader->model->deadline;
+        $deadlineSorting->label[LanguageCode::EN] = 'Deadline';
+        $deadlineSorting->label[LanguageCode::DE] = 'Erledigen bis';
         $deadlineSorting->checkSorting($assignmentReader);
 
 
@@ -111,6 +119,12 @@ class AssignmentTable extends AbstractHtmlContainer
         if ($this->showArchive) {
             //$header->addText('Archiviert');
             $header->addText('Abgeschlossen');
+        }
+
+
+        if ((new SortingParameter())->notExists()) {
+            $assignmentReader->addOrder($assignmentReader->model->deadline, SortOrder::DESCENDING);
+            $assignmentReader->addOrder($assignmentReader->model->dateTimeCreated, SortOrder::DESCENDING);
         }
 
 
