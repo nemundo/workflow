@@ -38,7 +38,6 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     {
         $this->viewClass = ProcessView::class;
         $this->processViewClass = ProcessView::class;
-        //$this->workflowCheck = false;
         parent::__construct($dataId);
     }
 
