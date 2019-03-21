@@ -18,7 +18,7 @@ abstract class AbstractClearSite extends AbstractIconSite
         parent::__construct($site);
 
         $this->icon->icon = 'times';
-        $this->icon->iconSize = 3;
+        $this->icon->iconSize = 2;
 
     }
 

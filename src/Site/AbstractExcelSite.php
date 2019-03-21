@@ -18,7 +18,7 @@ abstract class AbstractExcelSite extends AbstractIconSite
         parent::__construct($site);
 
         $this->icon->icon = 'file-excel';
-        $this->icon->iconSize = 3;
+        $this->icon->iconSize = 2;
 
     }
 
