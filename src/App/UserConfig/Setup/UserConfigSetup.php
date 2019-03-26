@@ -14,6 +14,7 @@ class UserConfigSetup extends AbstractBase
     {
 
         $data = new UserConfig();
+        $data->updateOnDuplicate=true;
         $data->id = $userConfig->configId;
         $data->userConfig = $userConfig->configLabel;
         $data->save();
