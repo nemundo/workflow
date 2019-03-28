@@ -5,6 +5,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Builder;
 
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\AbstractBase;
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Text\Keyword;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\Document;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentDelete;
@@ -123,11 +124,25 @@ class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
     {
 
         if ($this->documentId == null) {
+
             $data = new Document();
             $data->ignoreIfExists = true;
             $data->contentTypeId = $this->contentType->contentId;
             $data->dataId = $this->contentType->dataId;
-            $this->documentId = $data->save();
+            $data->save();
+
+            //$this->documentId = $data->save();
+            //id
+
+            $id = new DocumentId();
+            $id->filter->andEqual($id->model->contentTypeId,$this->contentType->contentId );
+            $id->filter->andEqual($id->model->dataId,$this->contentType->dataId);
+            $this->documentId = $id->getId();
+
+            //(new Debug())->write($this->documentId);
+            //exit;
+
+
         }
 
     }
