@@ -4,10 +4,10 @@ namespace Nemundo\Workflow\App\Notification\Site;
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
-use Nemundo\Html\Basic\Hr;
+use Nemundo\Html\Block\Div;
+use Nemundo\Html\Block\Hr;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Formatting\Small;
-use Nemundo\Html\Div\DivContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
@@ -95,7 +95,7 @@ class NotificationSite extends AbstractSite
             $contentType = new $className($notificationRow->dataId);
 
 
-            $div = new DivContainer($layout->col2);
+            $div = new Div($layout->col2);
 
             $small = new Small($div);
             $small->content = $notificationRow->contentType->contentType;
@@ -111,20 +111,13 @@ class NotificationSite extends AbstractSite
                 $p->content = $contentType->getSubject();
             }
 
-
-            //$p = new Paragraph($div);
-            //$p->content = $contentType->getText();
-
             $p = new Paragraph($div);
-            $p->content = $notificationRow->message;  // contentType->getText();
-
+            $p->content = $notificationRow->message;
 
             $p = new Paragraph($div);
             $p->content = $notificationRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat();
 
-
             new Hr($div);
-
 
         }
 

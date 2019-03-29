@@ -68,6 +68,10 @@ class SearchEngineSite extends AbstractSite
             $small = new Small($page);
             $small->content = $searchEngineItem->source;
 
+            if (!$searchEngineItem->site->checkUserVisibility()) {
+                $small->content .= ' [KEIN ZUGRIFF]';
+            }
+
             (new Br($page));
 
             $hyperlink = new SiteHyperlink($page);
