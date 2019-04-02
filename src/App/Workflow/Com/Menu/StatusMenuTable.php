@@ -9,6 +9,7 @@ use Nemundo\Com\Container\ContainerUserRestrictionTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Html\Character\HtmlCharacter;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
@@ -29,9 +30,12 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     protected function loadContainer()
     {
         $this->table = new AdminTable($this);
+        //$this->table->border = 1;
     }
 
 
+
+    /*
     public function addLogMenu($label, $id = null)
     {
 
@@ -49,7 +53,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
         //$row->addText($workflowStatus->userCreated->displayName);
         //$row->addText($workflowStatus->dateTimeCreated->getShortDateLeadingZeroFormat());
 
-    }
+    }*/
 
 
 
@@ -112,6 +116,34 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
 
 
 
+    public function addSubMenu(AbstractSite $site, $active = false)
+    {
+
+        $row = new TableRow($this->table);
+
+        if ($active) {
+            new ArrowRightIcon($row);
+            $row->addBoldText($site->title);
+        } else {
+
+
+
+            $row->addEmpty();
+            //$row->addEmpty();
+
+            $site->title =HtmlCharacter::NON_BREAKING_SPACE.HtmlCharacter::NON_BREAKING_SPACE.HtmlCharacter::NON_BREAKING_SPACE.HtmlCharacter::NON_BREAKING_SPACE. $site->title;
+
+            $hyperlink = new SiteHyperlink($row);
+            $hyperlink->site =$site;
+
+        }
+
+        $row->addEmpty();
+        $row->addEmpty();
+
+    }
+
+
     public function addNextMenuSite(AbstractSite $site)
     {
 
@@ -139,7 +171,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
             $row->addBoldText($site->title);
         } else {
 
-            $row->addEmpty();
+            //$row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
             $hyperlink->site =$site;
