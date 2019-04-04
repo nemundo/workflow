@@ -24,6 +24,7 @@ class SubscriptionSite extends AbstractSite
         $this->menuActive = false;
 
         new SubscriptionDeleteSite($this);
+        new MySubscriptionSite($this);
     }
 
 

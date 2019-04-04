@@ -2,8 +2,11 @@
 
 namespace Nemundo\Workflow\App\Notification\Site;
 
+use Nemundo\Admin\Com\Button\AdminSiteButton;
+use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
+use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Block\Hr;
 use Nemundo\Html\Paragraph\Paragraph;
@@ -14,6 +17,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationReader;
@@ -49,6 +53,12 @@ class NotificationSite extends AbstractSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+
+        $btn = new AdminSiteButton($page);
+        $btn->site = NotificationSite::$site;
+
+
+
         $layout = new BootstrapTwoColumnLayout($page);
         $layout->col1->columnWidth = 4;
         $layout->col2->columnWidth = 8;
@@ -75,6 +85,14 @@ class NotificationSite extends AbstractSite
         }
 
 
+        $table = new AdminClickableTable($layout->col2);
+
+        $header = new TableHeader($table);
+        $header->addText('Content Type');
+        $header->addText('Subject');
+        $header->addText('Date/Time');
+
+
         $notificationReader = new NotificationPaginationReader();
         $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSessionType())->userId);
 
@@ -85,6 +103,7 @@ class NotificationSite extends AbstractSite
         $notificationReader->model->loadContentType();
 
         $notificationReader->addOrder($notificationReader->model->dateTimeCreated, SortOrder::DESCENDING);
+$notificationReader->paginationLimit = 30;
 
         foreach ($notificationReader->getData() as $notificationRow) {
 
@@ -95,6 +114,21 @@ class NotificationSite extends AbstractSite
             $contentType = new $className($notificationRow->dataId);
 
 
+            $row = new BootstrapClickableTableRow($table);
+            $row->addText($notificationRow->contentType->contentType);
+            $row->addText($contentType->getSubject());
+
+            $row->addText($notificationRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
+
+
+            $site = $contentType->getViewSite();
+            if ($site !== null) {
+                $row->addClickableSite($site);
+            }
+
+
+
+            /*
             $div = new Div($layout->col2);
 
             $small = new Small($div);
@@ -117,7 +151,7 @@ class NotificationSite extends AbstractSite
             $p = new Paragraph($div);
             $p->content = $notificationRow->dateTimeCreated->getShortDateTimeLeadingZeroFormat();
 
-            new Hr($div);
+            new Hr($div);*/
 
         }
 
