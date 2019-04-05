@@ -22,8 +22,15 @@ class UsergroupIdentificationType extends AbstractIdentificationType
     public function getValue($identificationId)
     {
 
-        $row = (new UsergroupReader())->getRowById($identificationId);
-        return $row->usergroup;
+        $usergroup = 'Usergroup not found';
+
+        $reader = new UsergroupReader();
+        $reader->filter->andEqual($reader->model->id, $identificationId);
+        foreach ($reader->getData() as $row) {
+            $usergroup = $row->usergroup;
+        }
+
+        return $usergroup;
 
     }
 

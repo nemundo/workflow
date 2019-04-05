@@ -13,7 +13,6 @@ class IdentificationDataProperty extends AbstractDataProperty
      */
     protected $type;
 
-
     public function setValue(Identification $identification = null)
     {
 

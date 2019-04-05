@@ -41,6 +41,11 @@ class AssignmentTable extends AbstractHtmlContainer
      */
     public $showArchive = true;
 
+    /**
+     * @var bool
+     */
+    public $showIdentificationType = false;
+
 
     private $userIdList = [];
 
@@ -104,6 +109,11 @@ class AssignmentTable extends AbstractHtmlContainer
         $header->addText('Message');
         //$header->addText('Nachricht');
 
+
+        if ($this->showIdentificationType) {
+            $header->addText('Identification Type');
+        }
+
         $assignmentSorting = new UpDownSortingHyperlink($header);
         $assignmentSorting->fieldType = $assignmentReader->model->assignmentText;
         $assignmentSorting->checkSorting($assignmentReader);
@@ -153,6 +163,11 @@ class AssignmentTable extends AbstractHtmlContainer
 
 
             $row->addText($assignmentRow->message);
+
+            if ($this->showIdentificationType) {
+                $row->addText($assignmentRow->assignment->identificationType->identification);
+            }
+
             $row->addText($assignmentRow->assignment->getValue());
 
             if ($assignmentRow->deadline !== null) {
