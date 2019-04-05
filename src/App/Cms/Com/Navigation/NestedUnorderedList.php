@@ -39,7 +39,7 @@ class NestedUnorderedList extends AbstractHtmlContainer
     }
 
 
-    private function addMenu(AbstractSiteTree $site, AbstractHtmlContainerList $com)
+    private function addMenu(AbstractSiteTree $site, AbstractHtmlContainer $com)
     {
 
         $list = new UnorderedList($com);
@@ -47,7 +47,6 @@ class NestedUnorderedList extends AbstractHtmlContainer
 
         foreach ($site->getSiteList() as $subSite) {
 
-            //if ($subSite->isCurrentSite()) {
             if ($subSite->menuActive) {
                 $li = new Li($list);
 
