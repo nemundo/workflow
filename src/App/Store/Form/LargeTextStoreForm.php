@@ -25,7 +25,7 @@ class LargeTextStoreForm extends BootstrapForm
     {
 
         $this->text = new BootstrapLargeTextBox($this);
-        $this->text->label = $this->store->storeLabel;  // 'Text';
+        $this->text->label = $this->store->storeLabel;
         $this->text->value = $this->store->getValue();
 
         return parent::getHtml();

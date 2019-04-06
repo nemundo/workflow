@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Store\Site;
 
 use Nemundo\Package\Bootstrap\Document\BootstrapDocument;
+use Nemundo\Package\Jquery\Container\JqueryHeader;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Store\Form\HtmlStoreForm;
 use Nemundo\Workflow\App\Store\Parameter\StoreParameter;
@@ -38,6 +39,8 @@ class HtmlStoreEditSite extends AbstractSite
 
         $page = new BootstrapDocument();
         $page->title = 'Edit';
+
+        $page->addHeaderContainer(new JqueryHeader());
 
         $form = new HtmlStoreForm($page);
         $form->store = $store;
