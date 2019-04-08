@@ -46,7 +46,6 @@ class AssignmentSearchForm extends SearchForm
         $row = new BootstrapFormRow($this);
 
         $this->userListBox = new UserListBox($row);
-        //$this->mitarbeiterListBox->loggedUserAsDefaultValue = true;
         $this->userListBox->value = $this->userListBox->getValue();
         $this->userListBox->submitOnChange = true;
 
@@ -58,7 +57,6 @@ class AssignmentSearchForm extends SearchForm
         $this->ersteller->value = $this->ersteller->getValue();
         $this->ersteller->submitOnChange = true;
 
-        //$this->source = new ContentTypeListBox($row);
         $this->source = new AssignmentFilterListBox($row);
         $this->source->value = $this->source->getValue();
         $this->source->submitOnChange = true;

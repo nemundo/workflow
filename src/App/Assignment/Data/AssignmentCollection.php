@@ -5,5 +5,6 @@ class AssignmentCollection extends AbstractModelCollection {
 protected function loadCollection() {
 $this->addModel(new \Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentModel());
 $this->addModel(new \Nemundo\Workflow\App\Assignment\Data\AssignmentFilter\AssignmentFilterModel());
+$this->addModel(new \Nemundo\Workflow\App\Assignment\Data\SearchFilter\SearchFilterModel());
 }
 }
