@@ -20,7 +20,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     protected function loadContainer()
     {
         parent::loadContainer();
-        $this->name =(new StatusParameter())->getParameterName(); // 'status';
+        $this->name =(new StatusParameter())->getParameterName();
         $this->defaultValue = (new OpenListBoxItem())->id;
     }
 

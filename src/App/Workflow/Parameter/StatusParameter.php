@@ -9,7 +9,7 @@ class StatusParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {
-        $this->parameterName = 'status';
+        $this->parameterName = 'workflow-status';
         $this->defaultValue = (new OpenListBoxItem())->id;
     }
 }

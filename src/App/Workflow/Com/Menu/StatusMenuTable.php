@@ -5,14 +5,9 @@ namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Com\Container\AbstractRestrictedUserHtmlContainer;
-use Nemundo\Com\Container\ContainerUserRestrictionTrait;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
-use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Html\Character\HtmlCharacter;
-use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Html\Hyperlink\Hyperlink;
-use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
 use Nemundo\Package\FontAwesome\AbstractFontAwesomeIcon;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
@@ -32,7 +27,6 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
         $this->table = new AdminTable($this);
         //$this->table->border = 1;
     }
-
 
 
     /*
@@ -56,9 +50,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }*/
 
 
-
-
-    public function addActiveMenu($label, $active = false)
+    public function addActiveMenuOld($label, $active = false)
     {
 
         $row = new TableRow($this->table);
@@ -83,6 +75,19 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }
 
 
+    public function addActiveMenu($label)
+    {
+
+        $row = new TableRow($this->table);
+
+        new ArrowRightIcon($row);
+        $row->addBoldText($label);
+
+        $row->addEmpty();
+        $row->addEmpty();
+
+    }
+
 
     public function addLogSite(AbstractSite $site)
     {
@@ -105,7 +110,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
             $row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
-            $hyperlink->site =$site;
+            $hyperlink->site = $site;
 
         }
 
@@ -113,7 +118,6 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
         $row->addEmpty();
 
     }
-
 
 
     public function addSubMenu(AbstractSite $site, $active = false)
@@ -127,14 +131,13 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
         } else {
 
 
-
             $row->addEmpty();
             //$row->addEmpty();
 
-            $site->title =HtmlCharacter::NON_BREAKING_SPACE.HtmlCharacter::NON_BREAKING_SPACE.HtmlCharacter::NON_BREAKING_SPACE.HtmlCharacter::NON_BREAKING_SPACE. $site->title;
+            $site->title = HtmlCharacter::NON_BREAKING_SPACE . HtmlCharacter::NON_BREAKING_SPACE . HtmlCharacter::NON_BREAKING_SPACE . HtmlCharacter::NON_BREAKING_SPACE . $site->title;
 
             $hyperlink = new SiteHyperlink($row);
-            $hyperlink->site =$site;
+            $hyperlink->site = $site;
 
         }
 
@@ -152,15 +155,13 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }
 
 
-
-
-    private function addSiteMenu(AbstractSite $site, AbstractFontAwesomeIcon $icon=null, $active = false)
+    private function addSiteMenu(AbstractSite $site, AbstractFontAwesomeIcon $icon = null, $active = false)
     {
 
         $row = new TableRow($this->table);
 
-        if ($icon !==null) {
-        $row->addContainer($icon);
+        if ($icon !== null) {
+            $row->addContainer($icon);
         } else {
             $row->addEmpty();
         }
@@ -174,7 +175,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
             //$row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
-            $hyperlink->site =$site;
+            $hyperlink->site = $site;
 
         }
 
@@ -182,9 +183,6 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
         $row->addEmpty();
 
     }
-
-
-
 
 
     /*
