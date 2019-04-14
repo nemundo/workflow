@@ -53,5 +53,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "dashboard_content_type_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

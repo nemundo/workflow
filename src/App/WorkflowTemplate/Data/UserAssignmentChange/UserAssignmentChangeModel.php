@@ -51,5 +51,6 @@ $this->user->aliasFieldName = "workflow_template_user_assignment_change_user";
 $this->user->label = "Mitarbeiter";
 $this->user->validation = true;
 }
+return $this;
 }
 }

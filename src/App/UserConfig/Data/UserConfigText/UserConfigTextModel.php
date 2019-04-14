@@ -78,6 +78,7 @@ $this->user->fieldName = "user";
 $this->user->aliasFieldName = "userconfig_text_user";
 $this->user->label = "User";
 }
+return $this;
 }
 public function loadUserConfig() {
 if ($this->userConfig == null) {
@@ -87,5 +88,6 @@ $this->userConfig->fieldName = "user_config";
 $this->userConfig->aliasFieldName = "userconfig_text_user_config";
 $this->userConfig->label = "User Config";
 }
+return $this;
 }
 }

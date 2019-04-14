@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\Com\TrafficLight;
 
 
 use Nemundo\Html\Block\Div;
-use Nemundo\Html\Color\HtmlColor;
 
 class ColorCircle extends Div
 {

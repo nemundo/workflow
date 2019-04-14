@@ -81,6 +81,7 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "subscription_subscription_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 public function loadUser() {
 if ($this->user == null) {
@@ -90,5 +91,6 @@ $this->user->fieldName = "user";
 $this->user->aliasFieldName = "subscription_subscription_user";
 $this->user->label = "User";
 }
+return $this;
 }
 }

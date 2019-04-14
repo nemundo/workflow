@@ -63,5 +63,6 @@ $this->user->aliasFieldName = "workflow_template_send_inbox_user";
 $this->user->label = "User";
 $this->user->validation = true;
 }
+return $this;
 }
 }

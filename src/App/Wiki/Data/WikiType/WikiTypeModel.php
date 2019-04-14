@@ -49,5 +49,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "wiki_wiki_type_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

@@ -64,5 +64,6 @@ $this->user->aliasFieldName = "workflow_template_user_deadline_assignment_user";
 $this->user->label = "Mitarbeiter";
 $this->user->validation = true;
 }
+return $this;
 }
 }

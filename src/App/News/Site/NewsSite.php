@@ -4,7 +4,8 @@ namespace Nemundo\Workflow\App\News\Site;
 
 
 use Nemundo\Admin\Com\Title\AdminSubtitle;
-use Nemundo\Html\Basic\Hr;
+use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
+use Nemundo\Html\Block\Hr;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Db\Sql\Order\SortOrder;
@@ -43,7 +44,7 @@ class NewsSite extends AbstractSite
         foreach ($newsReader->getData() as $newsRow) {
 
 
-            $link = new Hyperlink($page);
+            $link = new SiteHyperlink($page);
             $link->site = clone(NewsItemSite::$site);
             $link->site->addParameter(new NewsParameter($newsRow->id));
 

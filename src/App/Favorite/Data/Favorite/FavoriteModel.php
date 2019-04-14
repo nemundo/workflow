@@ -82,6 +82,7 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "favorite_favorite_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 public function loadUser() {
 if ($this->user == null) {
@@ -91,5 +92,6 @@ $this->user->fieldName = "user";
 $this->user->aliasFieldName = "favorite_favorite_user";
 $this->user->label = "User";
 }
+return $this;
 }
 }

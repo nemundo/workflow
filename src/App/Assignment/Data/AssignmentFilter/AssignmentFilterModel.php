@@ -65,5 +65,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "assignment_filter_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

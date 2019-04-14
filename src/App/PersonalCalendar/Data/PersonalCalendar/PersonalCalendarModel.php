@@ -77,5 +77,6 @@ $this->user->aliasFieldName = "personal_calendar_personal_calendar_user";
 $this->user->label = "User";
 $this->user->visible->form = false;
 }
+return $this;
 }
 }

@@ -104,5 +104,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "stream_stream_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

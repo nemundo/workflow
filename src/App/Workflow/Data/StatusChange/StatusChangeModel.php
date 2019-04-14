@@ -159,6 +159,7 @@ $this->workflow->fieldName = "workflow";
 $this->workflow->aliasFieldName = "workflow_status_change_workflow";
 $this->workflow->label = "Workflow";
 }
+return $this;
 }
 public function loadWorkflowStatus() {
 if ($this->workflowStatus == null) {
@@ -168,6 +169,7 @@ $this->workflowStatus->fieldName = "workflow_status";
 $this->workflowStatus->aliasFieldName = "workflow_status_change_workflow_status";
 $this->workflowStatus->label = "Workflow Status";
 }
+return $this;
 }
 public function loadUser() {
 if ($this->user == null) {
@@ -178,5 +180,6 @@ $this->user->aliasFieldName = "workflow_status_change_user";
 $this->user->label = "User";
 $this->user->visible->form = false;
 }
+return $this;
 }
 }

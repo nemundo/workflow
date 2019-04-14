@@ -70,6 +70,7 @@ $this->document->fieldName = "document";
 $this->document->aliasFieldName = "searchengine_search_index_document";
 $this->document->label = "Document";
 }
+return $this;
 }
 public function loadWord() {
 if ($this->word == null) {
@@ -79,5 +80,6 @@ $this->word->fieldName = "word";
 $this->word->aliasFieldName = "searchengine_search_index_word";
 $this->word->label = "Word";
 }
+return $this;
 }
 }

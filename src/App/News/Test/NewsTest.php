@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\News\Test;
 
 use Nemundo\App\Script\Type\AbstractScript;
 use Nemundo\Core\Structure\ForLoop;
-use Nemundo\Workflow\App\News\Content\Data\NewsContent;
+
 
 class NewsTest extends AbstractScript
 {

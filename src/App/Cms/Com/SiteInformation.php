@@ -8,7 +8,7 @@ use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
-use Nemundo\Web\Site\AbstractController;
+use Nemundo\Web\Controller\AbstractController;
 
 class SiteInformation extends AbstractHtmlContainer
 {

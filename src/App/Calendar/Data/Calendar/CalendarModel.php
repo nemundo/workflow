@@ -125,6 +125,7 @@ $this->identificationType->fieldName = "identification_type";
 $this->identificationType->aliasFieldName = "calendar_calendar_identification_type";
 $this->identificationType->label = "Identification Type";
 }
+return $this;
 }
 public function loadContentType() {
 if ($this->contentType == null) {
@@ -134,5 +135,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "calendar_calendar_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

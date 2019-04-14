@@ -81,5 +81,6 @@ $this->user->aliasFieldName = "todo_todo_user";
 $this->user->label = "User";
 $this->user->visible->form = false;
 }
+return $this;
 }
 }

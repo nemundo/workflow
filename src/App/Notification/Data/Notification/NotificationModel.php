@@ -130,6 +130,7 @@ $this->user->fieldName = "user";
 $this->user->aliasFieldName = "notification_notification_user";
 $this->user->label = "User";
 }
+return $this;
 }
 public function loadContentType() {
 if ($this->contentType == null) {
@@ -139,5 +140,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "notification_notification_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

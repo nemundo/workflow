@@ -183,6 +183,7 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "assignment_assignment_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 public function loadUserCreated() {
 if ($this->userCreated == null) {
@@ -193,5 +194,6 @@ $this->userCreated->aliasFieldName = "assignment_assignment_user_created";
 $this->userCreated->label = "User Created";
 $this->userCreated->visible->form = false;
 }
+return $this;
 }
 }

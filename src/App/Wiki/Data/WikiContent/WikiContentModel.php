@@ -106,6 +106,7 @@ $this->page->fieldName = "page";
 $this->page->aliasFieldName = "wiki_wiki_content_page";
 $this->page->label = "Page";
 }
+return $this;
 }
 public function loadContentType() {
 if ($this->contentType == null) {
@@ -115,5 +116,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "wiki_wiki_content_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }

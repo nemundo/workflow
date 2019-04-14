@@ -256,6 +256,7 @@ $this->process->fieldName = "process";
 $this->process->aliasFieldName = "workflow_workflow_process";
 $this->process->label = "Process";
 }
+return $this;
 }
 public function loadWorkflowStatus() {
 if ($this->workflowStatus == null) {
@@ -265,6 +266,7 @@ $this->workflowStatus->fieldName = "workflow_status";
 $this->workflowStatus->aliasFieldName = "workflow_workflow_workflow_status";
 $this->workflowStatus->label = "Status";
 }
+return $this;
 }
 public function loadUser() {
 if ($this->user == null) {
@@ -275,6 +277,7 @@ $this->user->aliasFieldName = "workflow_workflow_user";
 $this->user->label = "Ersteller";
 $this->user->visible->form = false;
 }
+return $this;
 }
 public function loadUserModified() {
 if ($this->userModified == null) {
@@ -285,6 +288,7 @@ $this->userModified->aliasFieldName = "workflow_workflow_user_modified";
 $this->userModified->label = "User Modified";
 $this->userModified->visible->form = false;
 }
+return $this;
 }
 public function loadUserCreated() {
 if ($this->userCreated == null) {
@@ -294,5 +298,6 @@ $this->userCreated->fieldName = "user_created";
 $this->userCreated->aliasFieldName = "workflow_workflow_user_created";
 $this->userCreated->label = "User Created";
 }
+return $this;
 }
 }

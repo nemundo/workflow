@@ -70,5 +70,6 @@ $this->contentType->fieldName = "content_type";
 $this->contentType->aliasFieldName = "searchengine_document_content_type";
 $this->contentType->label = "Content Type";
 }
+return $this;
 }
 }
