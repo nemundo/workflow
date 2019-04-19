@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 
 use Nemundo\Core\Json\Document\JsonResponse;
-use Nemundo\Web\Http\Request\GetRequest;
+use Nemundo\Web\Http\Parameter\GetParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordReader;
 
@@ -32,12 +32,13 @@ class SearchEngineJsonSite extends AbstractSite
     public function loadContent()
     {
 
-        $term = new GetRequest('term');
+        $parameter = new GetParameter();
+        $parameter->parameterName = 'term';
 
         $json = new JsonResponse();
 
         $wordReader = new WordReader();
-        $wordReader->filter->andContainsLeft($wordReader->model->word, $term->getValue());
+        $wordReader->filter->andContainsLeft($wordReader->model->word, $parameter->getValue());
         $wordReader->addOrder($wordReader->model->word);
         $wordReader->limit = 20;
         foreach ($wordReader->getData() as $wordRow) {

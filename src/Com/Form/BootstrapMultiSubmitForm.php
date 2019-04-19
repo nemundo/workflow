@@ -4,24 +4,25 @@ namespace Nemundo\Workflow\Com\Form;
 
 
 use Nemundo\Com\FormBuilder\AbstractFormBuilder;
-//use Nemundo\Html\Form\AbstractSubmitForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapSubmitButton;
-use Nemundo\Web\Http\Request\PostRequest;
+use Nemundo\Web\Http\Parameter\PostParameter;
 
-class BootstrapMultiSubmitForm extends AbstractFormBuilder  // AbstractSubmitForm
+
+class BootstrapMultiSubmitForm extends AbstractFormBuilder
 {
 
+    /**
+     * @var string
+     */
     private $submitName = 'submit';
 
 
     protected function addSubmitButton($label, $name)
     {
 
-        //$name = (new TextConvert())->convertToCode($label);
-
         $submit = new BootstrapSubmitButton($this);
         $submit->label = $label;
-        $submit->name = $this->submitName;  // 'submit';
+        $submit->name = $this->submitName;
         $submit->value = $name;
 
     }
@@ -30,8 +31,10 @@ class BootstrapMultiSubmitForm extends AbstractFormBuilder  // AbstractSubmitFor
     protected function getSubmitValue()
     {
 
+        $parameter = new PostParameter();
+        $parameter->parameterName = $this->submitName;
+        $value = $parameter->getValue();
 
-        $value = (new PostRequest($this->submitName))->getValue();
         return $value;
 
     }

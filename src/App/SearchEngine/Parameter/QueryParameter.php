@@ -2,9 +2,9 @@
 
 namespace Nemundo\Workflow\App\SearchEngine\Parameter;
 
-use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
+use Nemundo\Web\Http\Parameter\AbstractGetParameter;
 
-class QueryParameter extends AbstractUrlParameter
+class QueryParameter extends AbstractGetParameter
 {
     protected function loadParameter()
     {

@@ -2,9 +2,9 @@
 
 namespace Nemundo\Workflow\App\Favorite\Parameter;
 
-use Nemundo\Web\Http\Parameter\AbstractUrlParameter;
+use Nemundo\Web\Http\Parameter\AbstractGetParameter;
 
-class FavoriteParameter extends AbstractUrlParameter
+class FavoriteParameter extends AbstractGetParameter
 {
     protected function loadParameter()
     {
