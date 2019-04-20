@@ -89,7 +89,21 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }
 
 
-    public function addLogSite(AbstractSite $site)
+    public function addCheckIconActiveMenu($label)
+    {
+
+        $row = new TableRow($this->table);
+
+        new CheckIcon($row);
+        $row->addBoldText($label);
+
+        $row->addEmpty();
+        $row->addEmpty();
+
+    }
+
+
+    public function addCheckIconSite(AbstractSite $site)
     {
 
         $this->addSiteMenu($site, new CheckIcon());
@@ -147,7 +161,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }
 
 
-    public function addNextMenuSite(AbstractSite $site)
+    public function addEmptyIconSite(AbstractSite $site)
     {
 
         $this->addSiteMenu($site);
