@@ -161,7 +161,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }
 
 
-    public function addEmptyIconSite(AbstractSite $site)
+    public function addSite(AbstractSite $site)
     {
 
         $this->addSiteMenu($site);
