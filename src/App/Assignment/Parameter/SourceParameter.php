@@ -1,7 +1,7 @@
 <?php
 namespace Nemundo\Workflow\App\Assignment\Parameter;
-use Nemundo\Web\Http\Parameter\AbstractGetParameter;
-class SourceParameter extends AbstractGetParameter {
+use Nemundo\Web\Parameter\AbstractUrlParameter;
+class SourceParameter extends AbstractUrlParameter {
 protected function loadParameter() {
 $this->parameterName = 'source';
 }

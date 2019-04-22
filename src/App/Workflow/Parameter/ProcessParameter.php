@@ -3,10 +3,10 @@
 namespace Nemundo\Workflow\App\Workflow\Parameter;
 
 
-use Nemundo\Web\Http\Parameter\AbstractGetParameter;
+use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessReader;
 
-class ProcessParameter extends AbstractGetParameter
+class ProcessParameter extends AbstractUrlParameter
 {
 
     protected function loadParameter()

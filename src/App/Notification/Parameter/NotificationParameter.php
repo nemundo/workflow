@@ -2,9 +2,9 @@
 
 namespace Nemundo\Workflow\App\Notification\Parameter;
 
-use Nemundo\Web\Http\Parameter\AbstractGetParameter;
+use Nemundo\Web\Parameter\AbstractUrlParameter;
 
-class NotificationParameter extends AbstractGetParameter
+class NotificationParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {
