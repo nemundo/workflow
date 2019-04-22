@@ -31,6 +31,11 @@ class WorkflowLogTable extends AbstractHtmlContainer
     /**
      * @var bool
      */
+    public $showTypeColumn = true;
+
+    /**
+     * @var bool
+     */
     public $showDataIdColumn = false;
 
 
@@ -43,7 +48,11 @@ class WorkflowLogTable extends AbstractHtmlContainer
         $table = new AdminTable($this);
 
         $header = new TableHeader($table);
+
+        if ($this->showTypeColumn) {
         $header->addText('Type');
+        }
+
         if ($this->showDraftColumn) {
             $header->addText('Entwurf');
         }
@@ -58,7 +67,11 @@ class WorkflowLogTable extends AbstractHtmlContainer
         foreach ($this->process->getChild() as $child) {
 
             $row = new TableRow($table);
-            $row->addText($child->contentLabel);
+
+            if ($this->showTypeColumn) {
+                $row->addText($child->contentLabel);
+            }
+
             if ($this->showDraftColumn) {
                 $row->addYesNo($child->isDraft());
             }

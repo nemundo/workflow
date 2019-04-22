@@ -8,6 +8,7 @@ use Nemundo\Com\Container\AbstractRestrictedUserHtmlContainer;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Html\Character\HtmlCharacter;
+use Nemundo\Html\Formatting\Bold;
 use Nemundo\Package\FontAwesome\AbstractFontAwesomeIcon;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
 use Nemundo\Package\FontAwesome\Icon\CheckIcon;
@@ -169,7 +170,7 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
     }
 
 
-    private function addSiteMenu(AbstractSite $site, AbstractFontAwesomeIcon $icon = null, $active = false)
+  public function addSiteMenu(AbstractSite $site, AbstractFontAwesomeIcon $icon = null, $active = false)
     {
 
         $row = new TableRow($this->table);
@@ -183,7 +184,16 @@ class StatusMenuTable extends AbstractRestrictedUserHtmlContainer
         if ($active) {
             //new ArrowRightIcon($row);
 
-            $row->addBoldText($site->title);
+            //$row->addBoldText($site->title);
+
+
+            $hyperlink = new SiteHyperlink($row);
+            $hyperlink->site = $site;
+            $hyperlink->showSiteTitle=false;
+
+            $bold= new Bold($hyperlink);
+            $bold->content = $site->title;
+
         } else {
 
             //$row->addEmpty();
