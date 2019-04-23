@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Parameter;
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\Item\OpenListBoxItem;
 
-class StatusParameter extends AbstractUrlParameter
+class WorkflowStatusParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {

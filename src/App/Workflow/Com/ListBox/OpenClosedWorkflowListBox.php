@@ -7,7 +7,7 @@ use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\Item\AllListBoxItem;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\Item\ClosedListBoxItem;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\Item\OpenListBoxItem;
-use Nemundo\Workflow\App\Workflow\Parameter\StatusParameter;
+use Nemundo\Workflow\App\Workflow\Parameter\WorkflowStatusParameter;
 
 class OpenClosedWorkflowListBox extends BootstrapListBox
 {
@@ -20,7 +20,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     protected function loadContainer()
     {
         parent::loadContainer();
-        $this->name =(new StatusParameter())->getParameterName();
+        $this->name =(new WorkflowStatusParameter())->getParameterName();
         $this->defaultValue = (new OpenListBoxItem())->id;
     }
 
