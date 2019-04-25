@@ -3,12 +3,12 @@
 namespace Nemundo\Workflow\App\Store\Com\Button;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Workflow\App\Store\Parameter\StoreParameter;
 use Nemundo\Workflow\App\Store\Site\HtmlStoreEditSite;
 use Nemundo\Workflow\App\Store\Type\AbstractTextStoreType;
 
-class HtmlStoreButton extends AdminButton
+class HtmlStoreSiteButton extends AdminSiteButton
 {
 
     /**

@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Favorite\Com;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
@@ -42,7 +42,7 @@ class FavoriteButton extends AbstractHtmlContainer
         $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
 
         if ($count->getCount() == 0) {
-            $button = new AdminButton($this);
+            $button = new AdminSiteButton($this);
             $button->content = $this->label;
             $button->site = FavoriteSite::$site;
             $button->site->addParameter(new DataIdParameter($this->dataId));
@@ -52,7 +52,7 @@ class FavoriteButton extends AbstractHtmlContainer
             $p = new Paragraph($this);
             $p->content = 'Dein Favorit';
 
-            $button = new AdminButton($this);
+            $button = new AdminSiteButton($this);
             $button->content = 'Favorit löschen';
             $button->site = FavoriteDeleteSite::$site;
             //$button->site->addParameter(new SubscriptionParameter())

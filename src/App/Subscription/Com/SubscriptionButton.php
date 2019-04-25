@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Subscription\Com;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
@@ -50,7 +50,7 @@ class SubscriptionButton extends AbstractHtmlContainer
             $icon->icon = 'star far';
             $icon->iconSize = 3;*/
 
-            $button = new AdminButton($this);
+            $button = new AdminSiteButton($this);
             $button->content = $this->label;  // 'Abonnieren';
             $button->site = SubscriptionSite::$site;
             $button->site->addParameter(new DataIdParameter($this->dataId));

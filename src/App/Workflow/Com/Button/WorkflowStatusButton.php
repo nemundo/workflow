@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Com\Button;
 
 
-use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Web\Site\Site;
@@ -32,7 +32,7 @@ class WorkflowStatusButton extends AbstractHtmlContainer
             $label = $this->workflowStatus->contentLabel;
         }
 
-        $btn = new AdminButton($this);
+        $btn = new AdminSiteButton($this);
         $btn->content = $label;
         $btn->site = new Site();
         $btn->site->addParameter(new ContentTypeParameter($this->workflowStatus->contentId));

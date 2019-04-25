@@ -2,7 +2,7 @@
 
 namespace Nemundo\Workflow\App\Stream\Site;
 
-use Nemundo\Admin\Com\Button\AdminButton;
+use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
@@ -35,7 +35,7 @@ class StreamSite extends AbstractSite
             $contentType->getView($widget);
 
             if ($contentType->hasViewSite()) {
-                $btn = new AdminButton($widget);
+                $btn = new AdminSiteButton($widget);
                 $btn->content = 'Weiter';
                 $btn->site = $contentType->getViewSite();
             }
