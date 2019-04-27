@@ -11,6 +11,5 @@ class AbstractProcessView extends AbstractContentView
 {
 
     use RedirectTrait;
-    //use EventTrait;
 
 }
