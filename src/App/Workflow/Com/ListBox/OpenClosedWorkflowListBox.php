@@ -28,7 +28,6 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     public function getHtml()
     {
 
-        //$this->name = 'status';
         $this->label = 'Status';
 
         $this->submitOnChange = true;
@@ -103,6 +102,5 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     {
         $this->addItem($listBoxItem->id, $listBoxItem->name);
     }
-
 
 }

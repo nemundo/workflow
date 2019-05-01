@@ -3,8 +3,8 @@
 namespace Nemundo\Workflow\App\SearchEngine\Site;
 
 
+use Nemundo\Core\Http\Request\Get\GetRequest;
 use Nemundo\Core\Json\Document\JsonResponse;
-use Nemundo\Web\Http\Parameter\GetParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\SearchEngine\Data\Word\WordReader;
 
@@ -32,8 +32,7 @@ class SearchEngineJsonSite extends AbstractSite
     public function loadContent()
     {
 
-        $parameter = new GetParameter();
-        $parameter->parameterName = 'term';
+        $parameter = new GetRequest('term');
 
         $json = new JsonResponse();
 
