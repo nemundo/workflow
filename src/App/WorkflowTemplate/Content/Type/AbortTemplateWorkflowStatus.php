@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type;
 
 
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus;
 
@@ -10,14 +11,18 @@ use Nemundo\Workflow\App\Workflow\Content\Type\AbstractStatusChangeWorkflowStaus
 class AbortTemplateWorkflowStatus extends AbstractStatusChangeWorkflowStaus
 {
 
-
     protected function loadType()
     {
+
+        $this->contentLabel[LanguageCode::EN] = 'Abort';
+        $this->contentLabel[LanguageCode::DE] = 'Abbruch';
+
         $this->contentId = '0e49408b-e3cd-4850-888f-65c53415c043';
-        $this->contentLabel = 'Abort';
+
         $this->contentName = 'worklow_abort';
         $this->subject = 'Workflow was chanceld';
         $this->closingWorkflow = true;
+
     }
 
 

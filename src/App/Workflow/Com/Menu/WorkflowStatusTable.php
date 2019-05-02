@@ -8,6 +8,7 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Com\TableBuilder\TableRow;
+use Nemundo\Core\Language\Translation;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Package\Bootstrap\Color\BootstrapFontColor;
@@ -97,7 +98,7 @@ class WorkflowStatusTable extends AbstractHtmlContainer
                 foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {
 
                     if ($site->isActiveWorkflowStatus()) {
-                        $list->addText((new ArrowRightIcon())->getHtml() . ' ' . $site->title);
+                        $list->addText((new ArrowRightIcon())->getHtml() . ' ' .(new Translation())->getText( $site->title));
                     } else {
 
                         if ($site->workflowStatus->checkUserVisibility()) {

@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type\Comment;
 
 
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Core\Type\Text\Html;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\Comment\CommentForm;
@@ -24,7 +25,10 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
     protected function loadType()
     {
 
-        $this->contentLabel = 'Kommentar';
+        $this->contentLabel[LanguageCode::EN] = 'Comment';
+        $this->contentLabel[LanguageCode::DE] = 'Kommentar';
+
+
         $this->contentName = 'comment';
         $this->contentId = '9fc81c7a-1fe8-4b8d-aa52-5a9f60431330';
         $this->changeStatus = false;
