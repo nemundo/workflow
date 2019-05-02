@@ -3,6 +3,7 @@
 namespace Nemundo\Workflow\App\Workflow\Content\Type;
 
 
+use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\App\Content\Type\Menu\MenuContentTypeTrait;
 use Nemundo\App\Content\Type\Sequence\SequenceContentTypeTrait;
@@ -43,11 +44,24 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 
     /**
      * @param string $sortOrder
-     * @return AbstractTreeContentType[]|AbstractWorkflowStatus[]
+     * @return AbstractContentType[]|AbstractWorkflowStatus[]
      */
     public function getChild($sortOrder = SortOrder::ASCENDING)
     {
+
         return parent::getChild($sortOrder);
+
+        /** @var AbstractWorkflowStatus[] $child */
+        //$child = parent::getChild($sortOrder);
+/*
+        foreach ($child as $item) {
+          $item->parentContentType = $this->parentContentType;
+        }
+        //$child->parentContentType = $this->parentContentType;
+
+        return $child;
+*/
+
     }
 
 }
