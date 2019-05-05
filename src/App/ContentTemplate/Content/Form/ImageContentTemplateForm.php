@@ -22,14 +22,14 @@ class ImageContentTemplateForm extends BootstrapForm  // ContentTreeForm
      */
     private $image;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->image = new BootstrapFileUpload($this);
         $this->image->label = 'Image';
         $this->image->acceptFileType = AcceptFileType::IMAGE;
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

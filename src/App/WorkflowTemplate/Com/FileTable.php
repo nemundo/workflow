@@ -24,7 +24,7 @@ class FileTable extends AdminTable
      */
     public $dataId;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $header = new TableHeader($this);
@@ -81,7 +81,7 @@ class FileTable extends AdminTable
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

@@ -10,12 +10,12 @@ use Nemundo\Workflow\App\ToDo\Site\ToDoSite;
 class ToDoNavigation extends BootstrapSiteTabs
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->site = ToDoSite::$site;
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 }

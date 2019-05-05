@@ -15,13 +15,13 @@ class TemplateFileTypeForm extends AbstractContentTreeForm
      */
     private $file;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->file = new BootstrapFileUpload($this);
         $this->file->label = 'Datei';
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

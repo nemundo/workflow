@@ -30,7 +30,7 @@ class AbstractStoreForm extends BootstrapForm
      */
     private $hidden;
 
-    public function getHtml()
+    public function getContent()
     {
 
         if ($this->urlRefererRedirect) {
@@ -43,7 +43,7 @@ class AbstractStoreForm extends BootstrapForm
             }
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

@@ -20,7 +20,7 @@ class WorkflowHistoryTable extends AbstractHtmlContainer
     public $process;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $title = new AdminSubtitle($this);
@@ -49,7 +49,7 @@ class WorkflowHistoryTable extends AbstractHtmlContainer
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

@@ -18,7 +18,7 @@ class AssignmentWidget extends AbstractAdminWidget
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $table = new AssignmentTable($this);
@@ -26,7 +26,7 @@ class AssignmentWidget extends AbstractAdminWidget
         $table->addUserId((new UserSessionType())->userId);
 
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

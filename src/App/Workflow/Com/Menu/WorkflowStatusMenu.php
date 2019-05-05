@@ -24,7 +24,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainer
      */
     public $showMenuAfterWorklowClosing = true;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $status = $this->process->getCurrentStatus();
@@ -70,7 +70,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainer
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

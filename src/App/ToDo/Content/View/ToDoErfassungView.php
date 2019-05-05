@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\ToDo\Data\ToDo\ToDoReader;
 class ToDoErfassungView extends AbstractContentView
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $todoRow = (new ToDoReader())->getRowById($this->dataId);
@@ -18,7 +18,7 @@ class ToDoErfassungView extends AbstractContentView
         $p = new Paragraph($this);
         $p->content = $todoRow->todo;
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

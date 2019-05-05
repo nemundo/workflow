@@ -10,7 +10,7 @@ use Nemundo\Workflow\App\Notification\Data\NotificationFilter\NotificationFilter
 class NotificationFilterListBox extends BootstrapListBox
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $contentType = new ContentTypeParameter();
@@ -25,7 +25,7 @@ class NotificationFilterListBox extends BootstrapListBox
             $this->addItem($filterRow->contentTypeId, $filterRow->contentType->contentType);
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

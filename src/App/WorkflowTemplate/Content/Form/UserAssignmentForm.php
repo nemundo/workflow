@@ -16,12 +16,12 @@ class UserAssignmentForm extends AbstractContentTreeForm
      */
     private $user;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->user = new UserListBox($this);
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
     protected function onSubmit()

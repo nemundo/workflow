@@ -39,7 +39,7 @@ class WorkflowLogTable extends AbstractHtmlContainer
     public $showDataIdColumn = false;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $title = new AdminSubtitle($this);
@@ -86,7 +86,7 @@ class WorkflowLogTable extends AbstractHtmlContainer
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

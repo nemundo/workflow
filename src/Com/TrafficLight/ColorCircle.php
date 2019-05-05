@@ -16,10 +16,10 @@ class ColorCircle extends Div
      */
     public $color = TrafficLightColor::WHITE;
 
-    public function getHtml()
+    public function getContent()
     {
         $style = 'background: ' . $this->color . ';border-radius: 50%;width: ' . $this->size . 'px;height: ' . $this->size . 'px; border-style: solid;border; border-width: 1px;';
         $this->addAttribute('style', $style);
-        return parent::getHtml();
+        return parent::getContent();
     }
 }

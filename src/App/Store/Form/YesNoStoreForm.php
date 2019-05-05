@@ -14,14 +14,14 @@ class YesNoStoreForm extends AbstractStoreForm
     private $checkbox;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->checkbox = new BootstrapCheckBox($this);
         $this->checkbox->label = $this->store->storeLabel;
         $this->checkbox->value = $this->store->getValue();
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

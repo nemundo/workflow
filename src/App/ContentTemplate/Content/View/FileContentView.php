@@ -10,7 +10,7 @@ use Nemundo\Html\Hyperlink\Hyperlink;
 class FileContentView extends AbstractContentView
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         /*
@@ -21,7 +21,7 @@ class FileContentView extends AbstractContentView
         $hyperlink->content = $row->file->getFilename();
         $hyperlink->url = $row->file->getUrl();*/
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 }

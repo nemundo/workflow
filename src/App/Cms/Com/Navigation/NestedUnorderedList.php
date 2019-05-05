@@ -29,12 +29,12 @@ class NestedUnorderedList extends AbstractHtmlContainer
     public $activeCssClass = '';
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->addMenu($this->site, $this);
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

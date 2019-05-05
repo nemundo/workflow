@@ -23,7 +23,7 @@ class WorkflowStatusButton extends AbstractHtmlContainer
     public $label;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $label = $this->label;
@@ -37,7 +37,7 @@ class WorkflowStatusButton extends AbstractHtmlContainer
         $btn->site = new Site();
         $btn->site->addParameter(new ContentTypeParameter($this->workflowStatus->contentId));
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

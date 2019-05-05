@@ -22,7 +22,7 @@ class NumberStoreForm extends AbstractStoreForm
     private $number;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->number = new BootstrapTextBox($this);
@@ -31,7 +31,7 @@ class NumberStoreForm extends AbstractStoreForm
         $this->number->validation = true;
         $this->number->validationType = ValidationType::IS_NUMBER;
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

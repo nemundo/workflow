@@ -56,7 +56,7 @@ class AssignmentTable extends AbstractHtmlContainer
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $assignmentReader = new AssignmentPaginationReader();
@@ -207,7 +207,7 @@ class AssignmentTable extends AbstractHtmlContainer
         $pagination = new BootstrapModelPagination($this);
         $pagination->paginationReader = $assignmentReader;
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

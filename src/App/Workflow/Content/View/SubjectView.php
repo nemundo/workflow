@@ -10,13 +10,13 @@ class SubjectView extends AbstractContentView
 {
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $p = new Paragraph($this);
         $p->content = $this->contentType->getSubject();
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 }

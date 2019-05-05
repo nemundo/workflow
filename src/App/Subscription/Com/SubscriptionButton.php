@@ -36,7 +36,7 @@ class SubscriptionButton extends AbstractHtmlContainer
      */
     public $label = 'Subscribe';
 
-    public function getHtml()
+    public function getContent()
     {
 
         $count = new SubscriptionCount();
@@ -81,7 +81,7 @@ class SubscriptionButton extends AbstractHtmlContainer
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

@@ -9,7 +9,7 @@ use Nemundo\Workflow\App\Assignment\Data\AssignmentFilter\AssignmentFilterReader
 class AssignmentFilterListBox extends BootstrapListBox
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->label = 'Quelle';
@@ -20,7 +20,7 @@ class AssignmentFilterListBox extends BootstrapListBox
             $this->addItem($filterRow->contentTypeId, $filterRow->filterLabel);
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

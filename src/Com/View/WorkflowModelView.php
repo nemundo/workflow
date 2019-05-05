@@ -18,7 +18,7 @@ class WorkflowModelView extends AbstractHtmlContainer
         $this->loadModelView();
     }
 
-    public function getHtml()
+    public function getContent()
     {
 
         $table = new BootstrapLabelValueTable($this);
@@ -26,10 +26,10 @@ class WorkflowModelView extends AbstractHtmlContainer
         $table->smallTable = true;
 
         foreach ($this->getComList() as $com) {
-            $table->addLabelValue($com->type->label, $com->getHtml());
+            $table->addLabelValue($com->type->label, $com->getContent());
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

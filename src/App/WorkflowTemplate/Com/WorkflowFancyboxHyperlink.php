@@ -26,7 +26,7 @@ class WorkflowFancyboxHyperlink extends AbstractHtmlContainer  // FancyboxHyperl
 
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $extension = (new File($this->filename))->getFileExtension();
@@ -45,7 +45,7 @@ class WorkflowFancyboxHyperlink extends AbstractHtmlContainer  // FancyboxHyperl
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

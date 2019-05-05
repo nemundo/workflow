@@ -11,7 +11,7 @@ use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentReader;
 class CommentWorkflowTemplateView extends AbstractContentView
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $row = (new CommentReader())->getRowById($this->dataId);
@@ -19,7 +19,7 @@ class CommentWorkflowTemplateView extends AbstractContentView
         $p = new Paragraph($this);
         $p->content = (new Html($row->comment))->getValue();
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

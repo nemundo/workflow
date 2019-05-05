@@ -21,13 +21,13 @@ class LargeTextContentTemplateForm extends AbstractContentTreeForm
      */
     private $text;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->text = new BootstrapLargeTextBox($this);
         $this->text->label = $this->contentType->largeTextLabel;
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 

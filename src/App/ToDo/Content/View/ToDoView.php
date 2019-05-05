@@ -16,7 +16,7 @@ class ToDoView extends AbstractContentView
      */
     public $contentType;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $table = new AdminLabelValueTable($this);
@@ -28,7 +28,7 @@ class ToDoView extends AbstractContentView
         $btn->content = 'More';
         $btn->site = $this->contentType->getViewSite();
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

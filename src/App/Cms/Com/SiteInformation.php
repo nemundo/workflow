@@ -14,7 +14,7 @@ class SiteInformation extends AbstractHtmlContainer
 {
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $layout = new BootstrapThreeColumnLayout($this);
@@ -43,13 +43,13 @@ class SiteInformation extends AbstractHtmlContainer
                 foreach ($site->getRestrictedUsergroupList() as $usergroup) {
                     $list->addText($usergroup->usergroup);
                 }
-                $table->addLabelValue('Restricted Usergroup', $list->getHtml());
+                $table->addLabelValue('Restricted Usergroup', $list->getContent());
 
             }
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

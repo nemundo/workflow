@@ -15,13 +15,13 @@ class YouTubeTypeForm extends AbstractContentTreeForm
      */
     private $videoId;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->videoId = new BootstrapTextBox($this);
         $this->videoId->label = 'YouTube Url';
 
-        return parent::getHtml();
+        return parent::getContent();
 
 
     }

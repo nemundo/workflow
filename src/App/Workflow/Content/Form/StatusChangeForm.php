@@ -9,13 +9,13 @@ use Nemundo\Html\Paragraph\Paragraph;
 class StatusChangeForm extends AbstractContentTreeForm
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $p = new Paragraph($this);
         $p->content = 'Folgende Aktion ausführen: ' . (new Translation())->getText( $this->contentType->contentLabel);
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

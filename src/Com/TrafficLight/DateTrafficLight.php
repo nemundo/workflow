@@ -14,7 +14,7 @@ class DateTrafficLight extends AbstractHtmlContainer
      */
     public $date;
 
-    public function getHtml()
+    public function getContent()
     {
 
         //$circle = new ColorCircle($this);
@@ -27,7 +27,7 @@ class DateTrafficLight extends AbstractHtmlContainer
             }
         }
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 

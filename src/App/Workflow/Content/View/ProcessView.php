@@ -21,7 +21,7 @@ class ProcessView extends AbstractProcessView
     public $contentType;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $layout = new WorkflowLayout($this);
@@ -40,7 +40,7 @@ class ProcessView extends AbstractProcessView
         $betaController->getLogTable($layout->col3);
 
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

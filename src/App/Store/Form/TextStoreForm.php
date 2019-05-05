@@ -15,14 +15,14 @@ class TextStoreForm extends AbstractStoreForm
     private $text;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->text = new BootstrapTextBox($this);
         $this->text->label = $this->store->storeLabel;
         $this->text->value = $this->store->getValue();
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

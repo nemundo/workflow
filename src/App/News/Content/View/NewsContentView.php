@@ -12,7 +12,7 @@ use Nemundo\Workflow\App\News\Data\News\NewsReader;
 class NewsContentView extends AbstractContentView
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         $newsRow = (new NewsReader())->getRowById($this->dataId);
@@ -24,7 +24,7 @@ class NewsContentView extends AbstractContentView
         $p->content = (new Html($newsRow->text))->getValue();
 
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 

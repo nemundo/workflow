@@ -18,7 +18,7 @@ class ToDoTypeForm extends AbstractContentTreeForm
     private $toDo;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         if ($this->parentContentType !== null) {
@@ -32,7 +32,7 @@ class ToDoTypeForm extends AbstractContentTreeForm
         $this->toDo->label = 'To Do';
 
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 

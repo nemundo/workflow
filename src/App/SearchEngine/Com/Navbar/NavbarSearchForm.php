@@ -20,7 +20,7 @@ class NavbarSearchForm extends AbstractHtmlContainer
      */
     public $searchSite;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $form = new SearchForm($this);  // new SiteForm($this);
@@ -38,7 +38,7 @@ class NavbarSearchForm extends AbstractHtmlContainer
         //$submit->label[LanguageCode::DE] = 'Suchen';
         $submit->addCssClass('btn btn-secondary my-2 my-sm-0');
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

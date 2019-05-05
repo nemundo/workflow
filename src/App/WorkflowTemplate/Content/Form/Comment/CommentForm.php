@@ -21,7 +21,7 @@ class CommentForm extends AbstractContentTreeForm
      */
     public $contentType;
 
-    public function getHtml()
+    public function getContent()
     {
 
         //$this->comment = new BootstrapLargeTextBox($this);
@@ -29,7 +29,7 @@ class CommentForm extends AbstractContentTreeForm
         $this->comment->label = $this->contentType->commentLabel;  // 'Kommentar';
         $this->comment->validation = true;
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 

@@ -9,7 +9,7 @@ use Nemundo\App\Content\View\AbstractContentView;
 class TemplateImageView extends AbstractContentView
 {
 
-    public function getHtml()
+    public function getContent()
     {
 
         /*
@@ -21,7 +21,7 @@ class TemplateImageView extends AbstractContentView
         $img = new BootstrapResponsiveImage($div);
         $img->src = $row->image->getImageUrl($reader->model->imageAutoSize800);*/
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

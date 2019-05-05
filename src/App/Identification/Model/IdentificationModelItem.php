@@ -14,7 +14,7 @@ class IdentificationModelItem extends AbstractModelItem
      */
     public $type;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $identificationTypeId = $this->row->getModelValue($this->type->identificationTypeId);
@@ -23,9 +23,9 @@ class IdentificationModelItem extends AbstractModelItem
         $identification->identificationType = IdentificationConfig::getIdentificationType($identificationTypeId);
         $identification->identificationId = $this->row->getModelValue($this->type->identificationId);
 
-        $this->addHtml($identification->getValue());
+        $this->addContent($identification->getValue());
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

@@ -26,13 +26,13 @@ class TextStoreSiteButton extends AdminSiteButton
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->site = TextStoreEditSite::$site;
         $this->site->addParameter(new StoreParameter($this->store->storeId));
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

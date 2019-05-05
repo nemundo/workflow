@@ -33,7 +33,7 @@ class FavoriteButton extends AbstractHtmlContainer
      */
     public $label = 'Favorite (Icon)/Bookmark';
 
-    public function getHtml()
+    public function getContent()
     {
 
         $count = new FavoriteCount();
@@ -61,7 +61,7 @@ class FavoriteButton extends AbstractHtmlContainer
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

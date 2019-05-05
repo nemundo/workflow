@@ -25,7 +25,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->label = 'Status';
@@ -44,7 +44,7 @@ class OpenClosedWorkflowListBox extends BootstrapListBox
             $this->value = $this->getValue();
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

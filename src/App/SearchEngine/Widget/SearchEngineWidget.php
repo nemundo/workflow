@@ -22,7 +22,7 @@ class SearchEngineWidget extends AbstractAdminWidget
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $form = new SearchEngineForm($this);
@@ -49,7 +49,7 @@ class SearchEngineWidget extends AbstractAdminWidget
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

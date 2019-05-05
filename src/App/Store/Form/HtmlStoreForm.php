@@ -30,7 +30,7 @@ class HtmlStoreForm extends BootstrapForm
      */
     private $hidden;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->text = new BootstrapCkEditor5Editor($this);  // new BootstrapHtmlEditor($this);
@@ -45,7 +45,7 @@ class HtmlStoreForm extends BootstrapForm
             $this->hidden->value = (new UrlReferer())->getUrl();
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

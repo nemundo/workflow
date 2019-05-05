@@ -26,13 +26,13 @@ class HtmlStoreSiteButton extends AdminSiteButton
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->site = HtmlStoreEditSite::$site;
         $this->site->addParameter(new StoreParameter($this->store->storeId));
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

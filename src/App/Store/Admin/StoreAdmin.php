@@ -22,7 +22,7 @@ class StoreAdmin extends AbstractHtmlContainer
     }
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         /*
@@ -48,7 +48,7 @@ class StoreAdmin extends AbstractHtmlContainer
         }
 
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

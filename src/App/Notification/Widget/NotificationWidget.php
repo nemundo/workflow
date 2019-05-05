@@ -29,7 +29,7 @@ class NotificationWidget extends AdminWidget
     public $showDateTime = true;
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->widgetTitle[LanguageCode::EN] = 'Notification';
@@ -80,7 +80,7 @@ class NotificationWidget extends AdminWidget
 
         }
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

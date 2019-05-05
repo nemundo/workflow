@@ -15,7 +15,7 @@ class YouTubeView extends AbstractContentView
      */
     public $contentType;
 
-    public function getHtml()
+    public function getContent()
     {
 
 
@@ -24,7 +24,7 @@ class YouTubeView extends AbstractContentView
 
 
 
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 }

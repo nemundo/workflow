@@ -16,13 +16,13 @@ class LargeTextContentView extends AbstractContentView
      */
     public $contentType;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $p = new Paragraph($this);
         $p->content = $this->contentType->text;
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

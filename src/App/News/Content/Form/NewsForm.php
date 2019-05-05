@@ -21,7 +21,7 @@ class NewsForm extends AbstractContentTreeForm
      */
     private $text;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->title = new BootstrapTextBox($this);
@@ -30,7 +30,7 @@ class NewsForm extends AbstractContentTreeForm
         $this->text = new BootstrapLargeTextBox($this);
         $this->text->label = 'Text';
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

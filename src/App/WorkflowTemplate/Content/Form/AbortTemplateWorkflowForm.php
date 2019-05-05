@@ -15,7 +15,7 @@ class AbortTemplateWorkflowForm extends AbstractHtmlContainer
     use RedirectTrait;
     //use EventTrait;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->contentType->parentContentType = $this->parentContentType;
@@ -23,7 +23,7 @@ class AbortTemplateWorkflowForm extends AbstractHtmlContainer
 
         $this->checkRedirect();
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 

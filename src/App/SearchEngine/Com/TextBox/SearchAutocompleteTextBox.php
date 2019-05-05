@@ -26,13 +26,13 @@ class SearchAutocompleteTextBox extends BootstrapAutocompleteTextBox
 
 
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->value = $this->getValue();
 
         //$this->name = (new QueryParameter())->getParameterName();
-        return parent::getHtml();
+        return parent::getContent();
     }
 
 }

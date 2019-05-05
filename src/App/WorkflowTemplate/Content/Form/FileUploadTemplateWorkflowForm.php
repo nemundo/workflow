@@ -16,14 +16,14 @@ class FileUploadTemplateWorkflowForm extends AbstractContentTreeForm
      */
     private $file;
 
-    public function getHtml()
+    public function getContent()
     {
 
         $this->file = new BootstrapFileUpload($this);
         $this->file->label = 'Datei';
         $this->file->multiUpload = true;
 
-        return parent::getHtml();
+        return parent::getContent();
 
     }
 
