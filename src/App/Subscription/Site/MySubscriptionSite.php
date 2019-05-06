@@ -29,6 +29,8 @@ class MySubscriptionSite extends AbstractSite
         $this->title = 'My Subscription';
         $this->url = 'my-subscription';
 
+        //$this->restricted=true;
+
         new MySubscriptionDeleteSite($this);
 
     }
