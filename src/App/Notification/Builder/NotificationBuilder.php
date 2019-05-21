@@ -22,6 +22,7 @@ class NotificationBuilder extends AbstractBaseClass
      * @var string
      */
     public $subject = '';
+    // braucht es subject ???
 
     /**
      * @var string
