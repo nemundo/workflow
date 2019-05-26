@@ -22,7 +22,7 @@ class AssignmentSite extends AbstractSite
     {
 
         $this->title[LanguageCode::EN] = 'Assignment';
-        $this->title[LanguageCode::DE] = 'Zuweisung';
+        $this->title[LanguageCode::DE] = 'Zuweisungen';
 
         $this->url = 'assignment';
 
