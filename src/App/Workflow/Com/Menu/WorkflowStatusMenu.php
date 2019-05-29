@@ -2,6 +2,7 @@
 
 namespace Nemundo\Workflow\App\Workflow\Com\Menu;
 
+use Nemundo\Core\Debug\Debug;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
@@ -56,6 +57,7 @@ class WorkflowStatusMenu extends AbstractHtmlContainer
                 if ($this->formStatus->contentId == $nextStatus->contentId) {
                     $active = true;
                 }
+
                 $table->addActiveWorkflowStatus($nextStatus, $active);
 
             }

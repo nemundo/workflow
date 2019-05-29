@@ -67,10 +67,14 @@ class WorkflowStatusTable extends AbstractHtmlContainer
 
             $row->addEmpty();
 
-            $hyperlink = new SiteHyperlink($row);
-            $hyperlink->site = new Site();
-            $hyperlink->site->title = $workflowStatus->contentLabel;
-            $hyperlink->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
+            if ($workflowStatus->checkUserVisibility()) {
+                $hyperlink = new SiteHyperlink($row);
+                $hyperlink->site = new Site();
+                $hyperlink->site->title = $workflowStatus->contentLabel;
+                $hyperlink->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
+            } else {
+                $row->addText($workflowStatus->contentLabel);
+            }
 
         }
 
@@ -92,7 +96,6 @@ class WorkflowStatusTable extends AbstractHtmlContainer
                 $row->addEmpty();
 
                 $list = new UnorderedList($row);
-                //$list->addCssClass('no-bullet');
                 $list->addCssClass('list-unstyled');
 
                 foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {

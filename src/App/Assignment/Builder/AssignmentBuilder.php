@@ -28,11 +28,6 @@ class AssignmentBuilder extends AbstractBase
     /**
      * @var string
      */
-    //public $subject;
-
-    /**
-     * @var string
-     */
     public $message = '';
 
     /**
