@@ -14,7 +14,7 @@ class NewsForm extends AbstractContentTreeForm
     /**
      * @var BootstrapTextBox
      */
-    private $title;
+    private $newsTitle;
 
     /**
      * @var BootstrapLargeTextBox
@@ -40,7 +40,7 @@ class NewsForm extends AbstractContentTreeForm
 
         $type = new NewsContentType();
         $type->parentContentType = $this->parentContentType;
-        $type->title = $this->title->getValue();
+        $type->title = $this->newsTitle->getValue();
         $type->text = $this->text->getValue();
         $type->saveType();
 
