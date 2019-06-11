@@ -23,6 +23,7 @@ class ProcessSetup extends AbstractBaseClass
         $data->id = $process->contentId;
         $data->process = $process->contentLabel;
         $data->processClass = $process->getClassName();
+        $data->setupStatus=true;
         $data->save();
 
         return $this;
