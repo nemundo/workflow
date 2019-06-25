@@ -13,6 +13,7 @@ use Nemundo\Workflow\App\Workflow\Builder\WorkflowBuilder;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\Workflow\Content\View\AbstractProcessView;
 use Nemundo\Workflow\App\Workflow\Content\View\ProcessView;
+use Nemundo\Workflow\App\Workflow\Utility\WorkflowTimeLeap;
 
 
 abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
@@ -253,5 +254,17 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
         $this->changeStatus($contentType);
 
     }
+
+
+    public function getLeadTimeInDay()
+    {
+
+        $timeLeap = new WorkflowTimeLeap($this);
+$day = $timeLeap->getTimeLeapInDay();
+
+        return $day;
+
+    }
+
 
 }

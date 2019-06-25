@@ -154,6 +154,9 @@ class AssignmentTable extends AbstractHtmlContainer
                 $row->addEmpty();
             }
 
+
+            $row->addText('Tmp'.$assignmentRow->contentType->contentType);
+
             $row->addText($assignmentRow->source);
             $row->addText($contentType->getSubject());
 
