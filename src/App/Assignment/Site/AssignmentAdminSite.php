@@ -45,6 +45,7 @@ class AssignmentAdminSite extends AbstractSite
 
         $table = new AssignmentTable($page);
         $table->showIdentificationType=true;
+        $table->showDebug=true;
         $table->filter = $searchForm->getFilter();
 
 

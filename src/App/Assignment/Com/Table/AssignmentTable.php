@@ -46,6 +46,11 @@ class AssignmentTable extends AbstractHtmlContainer
      */
     public $showIdentificationType = false;
 
+    /**
+     * @var bool
+     */
+    public $showDebug = false;
+
 
     private $userIdList = [];
 
@@ -132,6 +137,16 @@ class AssignmentTable extends AbstractHtmlContainer
         }
 
 
+        if ($this->showDebug) {
+
+            $header->addText('Content Type');
+            $header->addText('Source Type');
+
+
+        }
+
+
+
         if ((new SortingParameter())->notExists()) {
             $assignmentReader->addOrder($assignmentReader->model->deadline, SortOrder::DESCENDING);
             $assignmentReader->addOrder($assignmentReader->model->dateTimeCreated, SortOrder::DESCENDING);
@@ -155,7 +170,7 @@ class AssignmentTable extends AbstractHtmlContainer
             }
 
 
-            $row->addText('Tmp'.$assignmentRow->contentType->contentType);
+//            $row->addText('Tmp'.$assignmentRow->contentType->contentType);
 
             $row->addText($assignmentRow->source);
             $row->addText($contentType->getSubject());
@@ -183,6 +198,14 @@ class AssignmentTable extends AbstractHtmlContainer
 
             if ($this->showArchive) {
                 $row->addYesNo($assignmentRow->archive);
+            }
+
+
+            if ($this->showDebug) {
+
+                $row->addText($assignmentRow->contentType->contentTypeClass);
+
+
             }
 
 
