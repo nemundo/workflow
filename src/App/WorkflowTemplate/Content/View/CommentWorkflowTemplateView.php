@@ -17,7 +17,7 @@ class CommentWorkflowTemplateView extends AbstractContentView
         $row = (new CommentReader())->getRowById($this->dataId);
 
         $p = new Paragraph($this);
-        $p->content = (new Html($row->comment))->getValue();
+        $p->content =$row->comment;  // (new Html($row->comment))->getValue();
 
         return parent::getContent();
 
