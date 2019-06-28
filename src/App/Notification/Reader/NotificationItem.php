@@ -25,6 +25,11 @@ class NotificationItem extends AbstractBase
     /**
      * @var string
      */
+    public $message2;
+
+    /**
+     * @var string
+     */
     public $source;
 
     /**

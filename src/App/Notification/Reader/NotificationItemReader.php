@@ -39,8 +39,9 @@ class NotificationItemReader extends AbstractDataSource
             $item = new NotificationItem();
             $item->id = $notificationRow->id;
             $item->source = $notificationRow->contentType->contentType;
-            $item->subject = $notificationRow->subject;
+            //$item->subject = $notificationRow->subject;
             $item->message = $notificationRow->message;
+
             $item->dateTime = $notificationRow->dateTimeCreated;
             $item->dateTimeText = $notificationRow->dateTimeCreated->getShortDateLeadingZeroFormat();
 
@@ -49,8 +50,8 @@ class NotificationItemReader extends AbstractDataSource
             /** @var AbstractContentType $contentType */
             $contentType = new $className($notificationRow->dataId);
 
-            // (new Debug())->write($contentType->getViewSite());
-
+            $item->subject = $contentType->getSubject();
+            $item->message2 = $contentType->getText();
 
             if ($contentType->hasViewSite()) {
                 $site = $contentType->getViewSite();
