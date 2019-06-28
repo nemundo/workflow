@@ -47,7 +47,7 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
     public function getValue()
     {
 
-        $value = $this->defaultValue;
+        /*$value = $this->defaultValue;
 
         $count = new UserConfigYesNoCount();
         $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
@@ -57,6 +57,29 @@ abstract class AbstractYesNoUserConfig extends AbstractUserConfig
             $configValue = new UserConfigYesNoValue();
             $configValue->field = $configValue->model->value;
             $configValue->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+            $configValue->filter->andEqual($count->model->userConfigId, $this->configId);
+            $value = $configValue->getValue();
+
+        }*/
+
+        $value = $this->getValueByUserId((new UserSessionType())->userId);
+        return $value;
+
+    }
+
+
+    public function getValueByUserId($userId) {
+
+        $value = $this->defaultValue;
+
+        $count = new UserConfigYesNoCount();
+        $count->filter->andEqual($count->model->userId,$userId);
+        $count->filter->andEqual($count->model->userConfigId, $this->configId);
+        if ($count->getCount() == 1) {
+
+            $configValue = new UserConfigYesNoValue();
+            $configValue->field = $configValue->model->value;
+            $configValue->filter->andEqual($count->model->userId, $userId);
             $configValue->filter->andEqual($count->model->userConfigId, $this->configId);
             $value = $configValue->getValue();
 

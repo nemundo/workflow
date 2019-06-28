@@ -106,8 +106,8 @@ class NotificationBuilder extends AbstractBaseClass
 
         if (NotificationConfig::$sendMail) {
 
-            if ((new NotificationSendMailConfig)->getValue()) {
-
+            //if ((new NotificationSendMailConfig)->getValue()) {
+            if ((new NotificationSendMailConfig)->getValueByUserId($userId)) {
                 $userType = new UserItemType($userId);
 
                 $mail = new ResponsiveActionMailMessage();

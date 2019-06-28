@@ -147,7 +147,8 @@ class AssignmentBuilder extends AbstractBase
 
             foreach ($this->assignment->getUserIdListFromIdentificationId() as $userId) {
 
-                if ((new AssignmentSendMailConfig())->getValue()) {
+                //if ((new AssignmentSendMailConfig())->getValue()) {
+                    if ((new AssignmentSendMailConfig())->getValueByUserId($userId)) {
 
                     $userType = new UserItemType($userId);
 

@@ -43,7 +43,7 @@ $this->id->tableName = "userconfig_unique_id";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "userconfig_unique_id_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -54,23 +54,29 @@ $this->userId->tableName = "userconfig_unique_id";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "userconfig_unique_id_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 $this->userConfigId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userConfigId->tableName = "userconfig_unique_id";
 $this->userConfigId->fieldName = "user_config";
 $this->userConfigId->aliasFieldName = "userconfig_unique_id_user_config";
 $this->userConfigId->label = "User Config";
+$this->userConfigId->allowNullValue = false;
 
 $this->value = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->value->tableName = "userconfig_unique_id";
 $this->value->fieldName = "value";
 $this->value->aliasFieldName = "userconfig_unique_id_value";
 $this->value->label = "Value";
-$this->value->allowNullValue = "";
+$this->value->allowNullValue = false;
 $this->value->visible->form = false;
 $this->value->visible->table = false;
 $this->value->visible->view = false;
 $this->id->visible->form = false;
+
+$index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->addType($this->userId);
+$index->addType($this->userConfigId);
 
 }
 public function loadUser() {
