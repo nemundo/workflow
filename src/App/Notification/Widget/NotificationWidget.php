@@ -57,7 +57,7 @@ class NotificationWidget extends AdminWidget
             $th->content[LanguageCode::DE] = 'Datum';
         }
 
-        $header->addText('Message2');
+        //$header->addText('Message2');
 
         $header->addEmpty();
 
@@ -69,7 +69,7 @@ class NotificationWidget extends AdminWidget
 
             $row->addText($notificationItem->subject);
             $row->addText($notificationItem->message);
-            $row->addText($notificationItem->message2);
+            //$row->addText($notificationItem->message2);
 
             if ($this->showDateTime) {
                 $row->addText($notificationItem->dateTime->getShortDateTimeLeadingZeroFormat());
