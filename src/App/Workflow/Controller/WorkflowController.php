@@ -223,7 +223,7 @@ class WorkflowController extends AbstractBase
                 }
 
 
-                $parent = $this->process->getParent();
+                $parent = $this->process->getParentContentType();
                 if ($parent !== null) {
 
                     $table->addLabelValue('Parent', $parent->contentLabel);

@@ -157,10 +157,13 @@ class AssignmentTable extends AbstractHtmlContainer
 
             $row = new BootstrapClickableTableRow($table);
 
-            $className = $assignmentRow->contentType->contentTypeClass;
+            //$className = $assignmentRow->contentType->contentTypeClass;
 
             /** @var AbstractTreeContentType $contentType */
-            $contentType = new $className($assignmentRow->dataId);
+            //$contentType = new $className($assignmentRow->dataId);
+
+
+            $contentType = $assignmentRow->getContentType();
 
             if ($assignmentRow->deadline !== null) {
                 $trafficLight = new DateTrafficLight($row);
@@ -170,9 +173,14 @@ class AssignmentTable extends AbstractHtmlContainer
             }
 
 
+
+
 //            $row->addText('Tmp'.$assignmentRow->contentType->contentType);
 
-            $row->addText($assignmentRow->source);
+            //$row->addText($assignmentRow->source);
+
+            $row->addText($contentType->getSource());
+
             $row->addText($contentType->getSubject());
 
 

@@ -11,12 +11,12 @@ parent::__construct();
 $this->model = new AssignmentModel();
 }
 /**
-* @return AssignmentRow[]
+* @return \Nemundo\Workflow\App\Assignment\Row\AssignmentCustomRow[]
 */
 public function getData() {
 $list = [];
 foreach (parent::getData() as $dataRow) {
-$row = new AssignmentRow($dataRow, $this->model);
+$row = new \Nemundo\Workflow\App\Assignment\Row\AssignmentCustomRow($dataRow, $this->model);
 $list[] = $row;
 }
 return $list;

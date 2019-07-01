@@ -11,7 +11,7 @@ parent::__construct();
 $this->model = new AssignmentModel();
 }
 /**
-* @return AssignmentRow[]
+* @return \Nemundo\Workflow\App\Assignment\Row\AssignmentCustomRow[]
 */
 public function getData() {
 $this->addFieldByModel($this->model);
@@ -24,7 +24,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return AssignmentRow
+* @return \Nemundo\Workflow\App\Assignment\Row\AssignmentCustomRow
 */
 public function getRow() {
 $this->addFieldByModel($this->model);
@@ -34,13 +34,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return AssignmentRow
+* @return \Nemundo\Workflow\App\Assignment\Row\AssignmentCustomRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new AssignmentRow($dataRow, $this->model);
+$row = new \Nemundo\Workflow\App\Assignment\Row\AssignmentCustomRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }
