@@ -15,11 +15,6 @@ public $contentTypeId;
 /**
 * @var string
 */
-public $subject;
-
-/**
-* @var string
-*/
 public $message;
 
 /**
@@ -47,11 +42,6 @@ public $dataId;
 */
 public $archive;
 
-/**
-* @var string
-*/
-public $source;
-
 public function __construct() {
 parent::__construct();
 $this->model = new AssignmentModel();
@@ -60,7 +50,6 @@ $this->deadline = new \Nemundo\Core\Type\DateTime\Date();
 }
 public function update() {
 $this->typeValueList->setModelValue($this->model->contentTypeId, $this->contentTypeId);
-$this->typeValueList->setModelValue($this->model->subject, $this->subject);
 $this->typeValueList->setModelValue($this->model->message, $this->message);
 $property = new \Nemundo\Workflow\App\Identification\Model\IdentificationDataProperty($this->model->assignment, $this->typeValueList);
 $property->setValue($this->assignment);
@@ -69,7 +58,6 @@ $property = new \Nemundo\Model\Data\Property\DateTime\DateDataProperty($this->mo
 $property->setValue($this->deadline);
 $this->typeValueList->setModelValue($this->model->dataId, $this->dataId);
 $this->typeValueList->setModelValue($this->model->archive, $this->archive);
-$this->typeValueList->setModelValue($this->model->source, $this->source);
 parent::update();
 }
 }

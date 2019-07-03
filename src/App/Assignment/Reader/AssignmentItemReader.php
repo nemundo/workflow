@@ -56,13 +56,14 @@ class AssignmentItemReader extends AbstractDataSource
         foreach ($assignmentReader->getData() as $assignmentRow) {
 
             $item = new AssignmentItem();
-            $item->subject = $assignmentRow->subject;
+            //$item->subject = $assignmentRow->subject;
 
             $className = $assignmentRow->contentType->contentTypeClass;
 
             /** @var AbstractTreeContentType $contentType */
             $contentType = new $className($assignmentRow->dataId);
 
+            $item->subject = $contentType->getSubject();
             $item->site = $contentType->getViewSite();
 
             $item->deadline = $assignmentRow->deadline;

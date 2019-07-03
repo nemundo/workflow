@@ -29,11 +29,6 @@ public $contentType;
 /**
 * @var string
 */
-public $subject;
-
-/**
-* @var string
-*/
 public $message;
 
 /**
@@ -76,11 +71,6 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
-/**
-* @var string
-*/
-public $source;
-
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -89,7 +79,6 @@ $this->contentTypeId = $this->getModelValue($model->contentTypeId);
 if ($model->contentType !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
-$this->subject = $this->getModelValue($model->subject);
 $this->message = $this->getModelValue($model->message);
 $property = new \Nemundo\Workflow\App\Identification\Model\IdentificationReaderProperty($row, $model->assignment);
 $this->assignment = $property->getValue();
@@ -105,7 +94,6 @@ if ($model->userCreated !== null) {
 $this->loadNemundoUserDataUserUseruserCreatedRow($model->userCreated);
 }
 $this->dateTimeCreated = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTimeCreated));
-$this->source = $this->getModelValue($model->source);
 }
 private function loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model) {
 $this->contentType = new \Nemundo\App\Content\Data\ContentType\ContentTypeRow($this->row, $model);

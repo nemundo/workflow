@@ -104,12 +104,15 @@ class AssignmentTable extends AbstractHtmlContainer
         $header->addText('Source');
         //$header->addText('Quelle');
 
+        /*
         $subjectSorting = new UpDownSortingHyperlink($header);
         $subjectSorting->fieldType = $assignmentReader->model->subject;
         $subjectSorting->label[LanguageCode::EN] = 'Subject';
         $subjectSorting->label[LanguageCode::DE] = 'Betreff';
+        $subjectSorting->checkSorting($assignmentReader);*/
 
-        $subjectSorting->checkSorting($assignmentReader);
+
+        $header->addText('Subject');
 
         $header->addText('Message');
         //$header->addText('Nachricht');

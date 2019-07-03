@@ -17,11 +17,6 @@ public $contentTypeId;
 public $contentType;
 
 /**
-* @var \Nemundo\Model\Type\Text\TextType
-*/
-public $subject;
-
-/**
 * @var \Nemundo\Model\Type\Text\LargeTextType
 */
 public $message;
@@ -66,11 +61,6 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
-/**
-* @var \Nemundo\Model\Type\Text\TextType
-*/
-public $source;
-
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = AssignmentModel::class;
@@ -89,13 +79,6 @@ $this->contentTypeId->tableName = $this->parentFieldName . "_" . $this->external
 $this->contentTypeId->aliasFieldName = $this->contentTypeId->tableName ."_".$this->contentTypeId->fieldName;
 $this->contentTypeId->label = "Content Type";
 $this->addType($this->contentTypeId);
-
-$this->subject = new \Nemundo\Model\Type\Text\TextType();
-$this->subject->fieldName = "subject";
-$this->subject->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->subject->aliasFieldName = $this->subject->tableName . "_" . $this->subject->fieldName;
-$this->subject->label = "Betreff";
-$this->addType($this->subject);
 
 $this->message = new \Nemundo\Model\Type\Text\LargeTextType();
 $this->message->fieldName = "message";
@@ -153,13 +136,6 @@ $this->dateTimeCreated->tableName = $this->parentFieldName . "_" . $this->extern
 $this->dateTimeCreated->aliasFieldName = $this->dateTimeCreated->tableName . "_" . $this->dateTimeCreated->fieldName;
 $this->dateTimeCreated->label = "Date Time Created";
 $this->addType($this->dateTimeCreated);
-
-$this->source = new \Nemundo\Model\Type\Text\TextType();
-$this->source->fieldName = "source";
-$this->source->tableName = $this->parentFieldName . "_" . $this->externalTableName;
-$this->source->aliasFieldName = $this->source->tableName . "_" . $this->source->fieldName;
-$this->source->label = "Source";
-$this->addType($this->source);
 
 }
 public function loadContentType() {

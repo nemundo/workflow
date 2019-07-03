@@ -84,7 +84,7 @@ class AssignmentBuilder extends AbstractBase
         $data = new Assignment();
         $data->contentTypeId = $this->contentType->contentId;
         $data->dataId = $this->contentType->dataId;
-        $data->subject = $this->contentType->getSubject();
+        //$data->subject = $this->contentType->getSubject();
 
         $source = $this->source;
 
@@ -102,7 +102,7 @@ class AssignmentBuilder extends AbstractBase
             }
         }
 
-        $data->source = $source;
+        //$data->source = $source;
         $data->message = $this->message;
         $data->assignment = $this->assignment;
         $data->assignmentText = $this->assignment->getValue();

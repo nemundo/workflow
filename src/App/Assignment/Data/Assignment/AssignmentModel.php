@@ -17,11 +17,6 @@ public $contentTypeId;
 public $contentType;
 
 /**
-* @var \Nemundo\Model\Type\Text\TextType
-*/
-public $subject;
-
-/**
 * @var \Nemundo\Model\Type\Text\LargeTextType
 */
 public $message;
@@ -66,11 +61,6 @@ public $userCreated;
 */
 public $dateTimeCreated;
 
-/**
-* @var \Nemundo\Model\Type\Text\TextType
-*/
-public $source;
-
 protected function loadModel() {
 $this->tableName = "assignment_assignment";
 $this->aliasTableName = "assignment_assignment";
@@ -96,14 +86,6 @@ $this->contentTypeId->aliasFieldName = "assignment_assignment_content_type";
 $this->contentTypeId->label = "Content Type";
 $this->contentTypeId->allowNullValue = false;
 $this->loadContentType();
-
-$this->subject = new \Nemundo\Model\Type\Text\TextType($this);
-$this->subject->tableName = "assignment_assignment";
-$this->subject->fieldName = "subject";
-$this->subject->aliasFieldName = "assignment_assignment_subject";
-$this->subject->label = "Betreff";
-$this->subject->allowNullValue = false;
-$this->subject->length = 255;
 
 $this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->message->tableName = "assignment_assignment";
@@ -167,14 +149,6 @@ $this->dateTimeCreated->aliasFieldName = "assignment_assignment_date_time_create
 $this->dateTimeCreated->label = "Date Time Created";
 $this->dateTimeCreated->allowNullValue = false;
 $this->dateTimeCreated->visible->form = false;
-
-$this->source = new \Nemundo\Model\Type\Text\TextType($this);
-$this->source->tableName = "assignment_assignment";
-$this->source->fieldName = "source";
-$this->source->aliasFieldName = "assignment_assignment_source";
-$this->source->label = "Source";
-$this->source->allowNullValue = false;
-$this->source->length = 255;
 
 }
 public function loadContentType() {
