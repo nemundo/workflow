@@ -111,9 +111,7 @@ class AssignmentTable extends AbstractHtmlContainer
         $subjectSorting->label[LanguageCode::DE] = 'Betreff';
         $subjectSorting->checkSorting($assignmentReader);*/
 
-
         $header->addText('Subject');
-
         $header->addText('Message');
         //$header->addText('Nachricht');
 
