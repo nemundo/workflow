@@ -4,8 +4,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\View;
 
 
 use Nemundo\App\Content\View\AbstractContentView;
-use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\Core\Type\Text\Html;
+use Nemundo\Html\Block\ContentDiv;
 use Nemundo\Workflow\App\WorkflowTemplate\Data\Comment\CommentReader;
 
 class CommentWorkflowTemplateView extends AbstractContentView
@@ -16,8 +15,8 @@ class CommentWorkflowTemplateView extends AbstractContentView
 
         $row = (new CommentReader())->getRowById($this->dataId);
 
-        $p = new Paragraph($this);
-        $p->content =$row->comment;  // (new Html($row->comment))->getValue();
+        $div = new ContentDiv($this);
+        $div->content = $row->comment;
 
         return parent::getContent();
 

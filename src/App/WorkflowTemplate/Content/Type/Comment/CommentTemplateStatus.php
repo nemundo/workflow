@@ -4,7 +4,6 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Content\Type\Comment;
 
 
 use Nemundo\Core\Language\LanguageCode;
-use Nemundo\Core\Type\Text\Html;
 use Nemundo\Workflow\App\Workflow\Content\Type\AbstractWorkflowStatus;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\Form\Comment\CommentForm;
 use Nemundo\Workflow\App\WorkflowTemplate\Content\View\CommentWorkflowTemplateView;
@@ -28,12 +27,10 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
         $this->contentLabel[LanguageCode::EN] = 'Comment';
         $this->contentLabel[LanguageCode::DE] = 'Kommentar';
 
-
         $this->contentName = 'comment';
         $this->contentId = '9fc81c7a-1fe8-4b8d-aa52-5a9f60431330';
         $this->changeStatus = false;
         $this->showMenu = false;
-        //$this->hideView = true;
 
         $this->formClass = CommentForm::class;
         $this->viewClass = CommentWorkflowTemplateView::class;
@@ -45,7 +42,7 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
     {
 
         $commentRow = (new CommentReader())->getRowById($this->dataId);
-        $this->comment = (new Html($commentRow->comment))->getValue();
+        $this->comment = $commentRow->comment;
 
     }
 
@@ -66,13 +63,8 @@ class CommentTemplateStatus extends AbstractWorkflowStatus
     {
 
         $this->loadData();
-
-
-        // Kommentar von LAU
-
         $subject = $this->comment;
-      //  $subject = 'Kommentar ' . $this->comment;  // $this->getSubject();
-//von '.(new UserSessionType())->getLabel().(new Br())->getHtml().
+
         return $subject;
 
     }
