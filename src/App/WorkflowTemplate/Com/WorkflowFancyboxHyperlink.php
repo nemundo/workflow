@@ -8,10 +8,8 @@ use Nemundo\Core\Type\File\File;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Package\Fancybox\FancyboxHyperlink;
 
-class WorkflowFancyboxHyperlink extends AbstractHtmlContainer  // FancyboxHyperlink
+class WorkflowFancyboxHyperlink extends AbstractHtmlContainer
 {
-
-    //public $imageUrl;
 
     /**
      * @var string
