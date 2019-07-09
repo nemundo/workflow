@@ -16,6 +16,11 @@ public $userId;
 */
 public $widgetId;
 
+/**
+* @var int
+*/
+public $itemOrder;
+
 public function __construct() {
 parent::__construct();
 $this->model = new UserWidgetModel();
@@ -23,6 +28,7 @@ $this->model = new UserWidgetModel();
 public function save() {
 $this->typeValueList->setModelValue($this->model->userId, $this->userId);
 $this->typeValueList->setModelValue($this->model->widgetId, $this->widgetId);
+$this->typeValueList->setModelValue($this->model->itemOrder, $this->itemOrder);
 $id = parent::save();
 return $id;
 }

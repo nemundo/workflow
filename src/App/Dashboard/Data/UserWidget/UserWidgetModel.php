@@ -26,6 +26,11 @@ public $widgetId;
 */
 public $widget;
 
+/**
+* @var \Nemundo\Model\Type\Number\NumberType
+*/
+public $itemOrder;
+
 protected function loadModel() {
 $this->tableName = "dashboard_user_widget";
 $this->aliasTableName = "dashboard_user_widget";
@@ -57,6 +62,13 @@ $this->widgetId->fieldName = "widget";
 $this->widgetId->aliasFieldName = "dashboard_user_widget_widget";
 $this->widgetId->label = "Widget";
 $this->widgetId->allowNullValue = false;
+
+$this->itemOrder = new \Nemundo\Model\Type\Number\NumberType($this);
+$this->itemOrder->tableName = "dashboard_user_widget";
+$this->itemOrder->fieldName = "item_order";
+$this->itemOrder->aliasFieldName = "dashboard_user_widget_item_order";
+$this->itemOrder->label = "Item Order";
+$this->itemOrder->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->addType($this->userId);

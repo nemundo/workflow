@@ -26,6 +26,11 @@ public $widgetId;
 */
 public $widget;
 
+/**
+* @var \Nemundo\Model\Type\Number\NumberType
+*/
+public $itemOrder;
+
 protected function loadExternalType() {
 parent::loadExternalType();
 $this->externalModelClassName = UserWidgetModel::class;
@@ -51,6 +56,13 @@ $this->widgetId->tableName = $this->parentFieldName . "_" . $this->externalTable
 $this->widgetId->aliasFieldName = $this->widgetId->tableName ."_".$this->widgetId->fieldName;
 $this->widgetId->label = "Widget";
 $this->addType($this->widgetId);
+
+$this->itemOrder = new \Nemundo\Model\Type\Number\NumberType();
+$this->itemOrder->fieldName = "item_order";
+$this->itemOrder->tableName = $this->parentFieldName . "_" . $this->externalTableName;
+$this->itemOrder->aliasFieldName = $this->itemOrder->tableName . "_" . $this->itemOrder->fieldName;
+$this->itemOrder->label = "Item Order";
+$this->addType($this->itemOrder);
 
 }
 public function loadUser() {

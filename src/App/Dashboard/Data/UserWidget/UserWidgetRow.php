@@ -36,6 +36,11 @@ public $widgetId;
 */
 public $widget;
 
+/**
+* @var int
+*/
+public $itemOrder;
+
 public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
@@ -48,6 +53,7 @@ $this->widgetId = $this->getModelValue($model->widgetId);
 if ($model->widget !== null) {
 $this->loadNemundoWorkflowAppDashboardDataWidgetWidgetwidgetRow($model->widget);
 }
+$this->itemOrder = $this->getModelValue($model->itemOrder);
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

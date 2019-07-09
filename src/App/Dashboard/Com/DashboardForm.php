@@ -65,13 +65,17 @@ class DashboardForm extends BootstrapForm
         $delete->filter->andEqual($delete->model->userId, $userId);
         $delete->delete();
 
+        $itemOrder=0;
 
         foreach ($this->widgetGroup->getValueList() as $value) {
 
             $data = new UserWidget();
             $data->userId = $userId;
             $data->widgetId = $value;
+            $data->itemOrder= $itemOrder;
             $data->save();
+
+            $itemOrder++;
 
         }
 

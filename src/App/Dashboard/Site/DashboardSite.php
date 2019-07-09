@@ -29,6 +29,8 @@ class DashboardSite extends AbstractSite
 
         DashboardSite::$site=$this;
 
+        new DashboardSortableSite($this);
+
     }
 
     public function loadContent()
