@@ -5,6 +5,8 @@ namespace Nemundo\Workflow\Com\TrafficLight;
 
 use Nemundo\Html\Block\Div;
 
+
+// TrafficLight
 class ColorCircle extends Div
 {
     /**
@@ -22,4 +24,27 @@ class ColorCircle extends Div
         $this->addAttribute('style', $style);
         return parent::getContent();
     }
+
+
+    public function setGreen() {
+
+    }
+
+    public function setRed() {
+
+    }
+
+
+    public function setOrange() {
+
+    }
+
+    public function setWhite() {
+
+    }
+
+
+
+
+
 }

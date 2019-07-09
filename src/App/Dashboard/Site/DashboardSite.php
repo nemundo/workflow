@@ -7,15 +7,28 @@ use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\Com\FormBuilder\SearchForm;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapListBox;
+use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
 use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Workflow\App\Dashboard\Com\DashboardContainer;
+use Nemundo\Workflow\App\Dashboard\Com\DashboardForm;
 use Nemundo\Workflow\App\Dashboard\Data\DashboardContentType\DashboardContentTypeReader;
+use Schleuniger\Site\HomeSite;
 
 class DashboardSite extends AbstractSite
 {
+
+    /**
+     * @var DashboardSite
+     */
+    public static $site;
+
     protected function loadSite()
     {
         $this->title = 'Dashboard';
         $this->url = 'dashboard';
+
+        DashboardSite::$site=$this;
+
     }
 
     public function loadContent()
@@ -24,6 +37,17 @@ class DashboardSite extends AbstractSite
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
 
+        $layout = new BootstrapThreeColumnLayout($page);
+
+        $form = new DashboardForm($layout->col2);
+        $form->redirectSite = DashboardSite::$site;
+
+        new DashboardContainer($layout->col3);
+
+
+
+
+        /*
         $contentTypeParameter = new ContentTypeParameter();
 
         $form = new SearchForm($page);
@@ -48,7 +72,7 @@ class DashboardSite extends AbstractSite
             $widget->widgetTitle = $contentType->getSubject();
             $contentType->getView($widget);
 
-        }
+        }*/
 
 
         $page->render();

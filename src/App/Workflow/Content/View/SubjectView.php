@@ -9,7 +9,6 @@ use Nemundo\Html\Paragraph\Paragraph;
 class SubjectView extends AbstractContentView
 {
 
-
     public function getContent()
     {
 

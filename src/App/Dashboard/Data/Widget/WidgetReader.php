@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\Workflow\App\Dashboard\Data\DashboardContentType;
-class DashboardContentTypeReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\Workflow\App\Dashboard\Data\Widget;
+class WidgetReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var DashboardContentTypeModel
+* @var WidgetModel
 */
 public $model;
 
 public function __construct() {
 parent::__construct();
-$this->model = new DashboardContentTypeModel();
+$this->model = new WidgetModel();
 }
 /**
-* @return DashboardContentTypeRow[]
+* @return WidgetRow[]
 */
 public function getData() {
 $this->addFieldByModel($this->model);
@@ -24,7 +24,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return DashboardContentTypeRow
+* @return WidgetRow
 */
 public function getRow() {
 $this->addFieldByModel($this->model);
@@ -34,13 +34,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return DashboardContentTypeRow
+* @return WidgetRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new DashboardContentTypeRow($dataRow, $this->model);
+$row = new WidgetRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }
