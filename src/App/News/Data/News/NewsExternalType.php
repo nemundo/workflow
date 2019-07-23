@@ -21,8 +21,8 @@ public $text;
 */
 public $dateTime;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = NewsModel::class;
 $this->externalTableName = "collaboration_news";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

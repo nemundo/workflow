@@ -6,8 +6,8 @@ class SearchFilterExternalType extends \Nemundo\Model\Type\External\ExternalType
 */
 public $id;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = SearchFilterModel::class;
 $this->externalTableName = "assignment_search_filter";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

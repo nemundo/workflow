@@ -16,8 +16,8 @@ public $file;
 */
 public $delete;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = FileModel::class;
 $this->externalTableName = "workflow_template_file";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

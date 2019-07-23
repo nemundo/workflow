@@ -21,8 +21,8 @@ public $subject;
 */
 public $text;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = MailModel::class;
 $this->externalTableName = "wiki_mail";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

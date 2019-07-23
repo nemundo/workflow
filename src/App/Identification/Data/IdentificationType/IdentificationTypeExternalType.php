@@ -16,8 +16,8 @@ public $identification;
 */
 public $identificationTypeClass;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = IdentificationTypeModel::class;
 $this->externalTableName = "identification_identification_type";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

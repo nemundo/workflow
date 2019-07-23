@@ -16,8 +16,8 @@ public $contentTypeId;
 */
 public $contentType;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = NotificationFilterModel::class;
 $this->externalTableName = "notification_filter";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

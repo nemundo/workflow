@@ -11,8 +11,8 @@ public $id;
 */
 public $text;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = LargeTextStoreModel::class;
 $this->externalTableName = "store_large_text";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

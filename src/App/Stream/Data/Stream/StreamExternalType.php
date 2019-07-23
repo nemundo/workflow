@@ -36,8 +36,8 @@ public $subject;
 */
 public $message;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = StreamModel::class;
 $this->externalTableName = "stream_stream";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

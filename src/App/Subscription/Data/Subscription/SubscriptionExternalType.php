@@ -31,8 +31,8 @@ public $userId;
 */
 public $user;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = SubscriptionModel::class;
 $this->externalTableName = "subscription_subscription";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

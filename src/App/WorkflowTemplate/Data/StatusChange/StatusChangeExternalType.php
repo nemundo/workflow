@@ -6,8 +6,8 @@ class StatusChangeExternalType extends \Nemundo\Model\Type\External\ExternalType
 */
 public $id;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = StatusChangeModel::class;
 $this->externalTableName = "workflow_template_status_change";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -11,8 +11,8 @@ public $id;
 */
 public $comment;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = CommentModel::class;
 $this->externalTableName = "workflow_template_comment";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -66,8 +66,8 @@ public $message;
 */
 public $assignment;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = StatusChangeModel::class;
 $this->externalTableName = "workflow_status_change";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

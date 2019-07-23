@@ -16,8 +16,8 @@ public $widget;
 */
 public $phpClass;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = WidgetModel::class;
 $this->externalTableName = "dashboard_widget";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

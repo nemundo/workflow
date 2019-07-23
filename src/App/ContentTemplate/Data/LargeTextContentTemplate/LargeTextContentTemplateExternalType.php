@@ -11,8 +11,8 @@ public $id;
 */
 public $text;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = LargeTextContentTemplateModel::class;
 $this->externalTableName = "content_template_largetextcontenttemplate";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

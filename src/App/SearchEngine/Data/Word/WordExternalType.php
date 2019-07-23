@@ -11,8 +11,8 @@ public $id;
 */
 public $word;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = WordModel::class;
 $this->externalTableName = "searchengine_word";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

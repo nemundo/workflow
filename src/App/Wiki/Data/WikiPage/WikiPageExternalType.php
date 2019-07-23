@@ -21,8 +21,8 @@ public $count;
 */
 public $url;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = WikiPageModel::class;
 $this->externalTableName = "wiki_wiki_page";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

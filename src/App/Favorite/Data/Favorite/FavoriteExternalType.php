@@ -31,8 +31,8 @@ public $userId;
 */
 public $user;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = FavoriteModel::class;
 $this->externalTableName = "favorite_favorite";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -11,8 +11,8 @@ public $id;
 */
 public $file;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = FileContentTemplateModel::class;
 $this->externalTableName = "content_template_filecontenttemplate";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

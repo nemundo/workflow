@@ -111,8 +111,8 @@ public $userCreatedId;
 */
 public $userCreated;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = WorkflowModel::class;
 $this->externalTableName = "workflow_workflow";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

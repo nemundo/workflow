@@ -16,8 +16,8 @@ public $userId;
 */
 public $user;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = UserAssignmentChangeModel::class;
 $this->externalTableName = "workflow_template_user_assignment_change";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

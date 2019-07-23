@@ -21,8 +21,8 @@ public $contentType;
 */
 public $filterLabel;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = AssignmentFilterModel::class;
 $this->externalTableName = "assignment_filter";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

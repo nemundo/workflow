@@ -41,8 +41,8 @@ public $delete;
 */
 public $itemOrder;
 
-protected function loadExternalType() {
-parent::loadExternalType();
+protected function loadType() {
+parent::loadType();
 $this->externalModelClassName = WikiContentModel::class;
 $this->externalTableName = "wiki_wiki_content";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
