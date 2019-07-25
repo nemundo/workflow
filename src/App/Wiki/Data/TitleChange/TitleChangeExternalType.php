@@ -11,8 +11,8 @@ public $id;
 */
 public $title;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = TitleChangeModel::class;
 $this->externalTableName = "wiki_title_change";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -31,8 +31,8 @@ public $widget;
 */
 public $itemOrder;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = UserWidgetModel::class;
 $this->externalTableName = "dashboard_user_widget";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

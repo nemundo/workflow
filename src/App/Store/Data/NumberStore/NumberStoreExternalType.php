@@ -11,8 +11,8 @@ public $id;
 */
 public $number;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = NumberStoreModel::class;
 $this->externalTableName = "store_number";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -16,8 +16,8 @@ public $dataId;
 */
 public $text;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = TextListModel::class;
 $this->externalTableName = "wiki_text_list";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

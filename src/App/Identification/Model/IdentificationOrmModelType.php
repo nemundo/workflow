@@ -14,9 +14,9 @@ class IdentificationOrmModelType extends IdentificationModelType
     use OrmTypeTrait;
 
 
-    protected function loadType()
+    protected function loadExternalType()
     {
-        parent::loadType();
+        parent::loadExternalType();
         $this->typeLabel = 'Identification';
         $this->typeId = 'b8b75242-ada5-4820-b486-005f7cf5bfe1';
     }

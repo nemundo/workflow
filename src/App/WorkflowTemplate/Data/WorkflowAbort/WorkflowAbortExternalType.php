@@ -11,8 +11,8 @@ public $id;
 */
 public $reason;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = WorkflowAbortModel::class;
 $this->externalTableName = "workflow_template_workflow_abort";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

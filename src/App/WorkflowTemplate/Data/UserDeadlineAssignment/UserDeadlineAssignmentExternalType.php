@@ -21,8 +21,8 @@ public $user;
 */
 public $deadline;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = UserDeadlineAssignmentModel::class;
 $this->externalTableName = "workflow_template_user_deadline_assignment";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

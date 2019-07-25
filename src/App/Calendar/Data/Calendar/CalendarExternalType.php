@@ -46,8 +46,8 @@ public $contentType;
 */
 public $dataId;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = CalendarModel::class;
 $this->externalTableName = "calendar_calendar";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

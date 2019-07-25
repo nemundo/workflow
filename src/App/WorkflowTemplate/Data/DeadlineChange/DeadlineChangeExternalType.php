@@ -11,8 +11,8 @@ public $id;
 */
 public $deadline;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = DeadlineChangeModel::class;
 $this->externalTableName = "workflow_template_deadline_change";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

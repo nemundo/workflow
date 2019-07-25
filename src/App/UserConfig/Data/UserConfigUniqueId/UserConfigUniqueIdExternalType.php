@@ -31,8 +31,8 @@ public $userConfig;
 */
 public $value;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = UserConfigUniqueIdModel::class;
 $this->externalTableName = "userconfig_unique_id";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

@@ -21,7 +21,7 @@ class IdentificationModelType extends AbstractComplexType
      */
     public $identificationId;
 
-    protected function loadType()
+    protected function loadExternalType()
     {
 
         $this->fieldMapping = false;

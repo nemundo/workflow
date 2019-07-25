@@ -16,8 +16,8 @@ public $contentTypeId;
 */
 public $contentType;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = WikiTypeModel::class;
 $this->externalTableName = "wiki_wiki_type";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;

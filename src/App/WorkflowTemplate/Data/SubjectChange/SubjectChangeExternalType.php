@@ -11,8 +11,8 @@ public $id;
 */
 public $subject;
 
-protected function loadType() {
-parent::loadType();
+protected function loadExternalType() {
+parent::loadExternalType();
 $this->externalModelClassName = SubjectChangeModel::class;
 $this->externalTableName = "workflow_template_subject_change";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
