@@ -3,48 +3,28 @@
 namespace Nemundo\Workflow\Com\TrafficLight;
 
 
-use Nemundo\Html\Block\Div;
+use Nemundo\Html\Container\AbstractHtmlContainer;
 
-
-// TrafficLight
-class ColorCircle extends Div
+abstract class AbstractTrafficLight extends AbstractHtmlContainer
 {
+
     /**
      * @var int
      */
-    public $size = 20;
+    protected $size = 20;
+
     /**
      * @var string
      */
-    public $color = TrafficLightColor::WHITE;
+    protected $color = TrafficLightColor::WHITE;
 
     public function getContent()
     {
+        $this->tagName = 'div';
         $style = 'background: ' . $this->color . ';border-radius: 50%;width: ' . $this->size . 'px;height: ' . $this->size . 'px; border-style: solid;border; border-width: 1px;';
         $this->addAttribute('style', $style);
         return parent::getContent();
     }
-
-
-    public function setGreen() {
-
-    }
-
-    public function setRed() {
-
-    }
-
-
-    public function setOrange() {
-
-    }
-
-    public function setWhite() {
-
-    }
-
-
-
 
 
 }
