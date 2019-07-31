@@ -23,7 +23,6 @@ class WorkflowFancyboxHyperlink extends AbstractHtmlContainer
 
 
 
-
     public function getContent()
     {
 
