@@ -8,8 +8,10 @@ use Nemundo\App\Content\Setup\ContentTypeSetup;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Debug\Debug;
+use Nemundo\Core\Language\Translation;
 use Nemundo\Workflow\App\Dashboard\Data\DashboardContentType\DashboardContentType;
 use Nemundo\Workflow\App\Dashboard\Data\Widget\Widget;
+use Nemundo\Workflow\App\Dashboard\Data\Widget\WidgetDelete;
 
 // WidgetSetup
 class DashboardSetup extends AbstractBaseClass
@@ -26,7 +28,7 @@ class DashboardSetup extends AbstractBaseClass
         $data = new Widget();
         $data->updateOnDuplicate=true;
         $data->id = $widget->widgetId;
-        $data->widget = $widget->widgetTitle;
+        $data->widget = (new Translation())->getText( $widget->widgetTitle);
         $data->phpClass = $widget->getClassName();
         $data->save();
 
@@ -35,27 +37,10 @@ class DashboardSetup extends AbstractBaseClass
     }
 
 
+    public function resetDashboard() {
 
-    /*
-    public function addContentType(AbstractContentType $contentType)
-    {
-
-        $setup = new ContentTypeSetup();
-        $setup->addContentType($contentType);
-
-
-        $data = new DashboardContentType();
-        $data->ignoreIfExists = true;
-        $data->contentTypeId = $contentType->contentId;
-        $data->save();
+        (new WidgetDelete())->delete();
 
     }
-
-
-    public function removeContentType(AbstractContentType $contentType)
-    {
-
-    }*/
-
 
 }

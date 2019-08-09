@@ -29,11 +29,19 @@ class NotificationWidget extends AdminWidget
     public $showDateTime = true;
 
 
-    public function getContent()
+    protected function loadWidget()
     {
 
         $this->widgetTitle[LanguageCode::EN] = 'Notification';
         $this->widgetTitle[LanguageCode::DE] = 'Benachrichtigungen';
+        $this->widgetId = '4157c73c-d498-42cb-865c-ff696e4005de';
+
+    }
+
+    public function getContent()
+    {
+
+
 
         if ($this->showWidgetHyperlink) {
             $this->widgetSite = NotificationSite::$site;

@@ -31,15 +31,8 @@ class DashboardSortableSite extends AbstractSite
 
     public function loadContent()
     {
-        // TODO: Implement loadContent() method.
-
-        //(new Debug())->write($_GET);
-        //(new Debug())->write($_POST);
-
-        //foreach ($_POST as )
 
         $userId = (new UserSessionType())->userId;
-
 
         $delete = new UserWidgetDelete();
         $delete->filter->andEqual($delete->model->userId, $userId);
@@ -50,9 +43,6 @@ class DashboardSortableSite extends AbstractSite
 
         foreach ((new MultiplePostRequest('item'))->getValueList() as $value) {
 
-            //$setup = new DashboardUserSetup();
-            //$setup->addWidget()
-
             $data = new UserWidget();
             $data->ignoreIfExists = true;
             $data->userId = $userId;
@@ -61,8 +51,6 @@ class DashboardSortableSite extends AbstractSite
             $data->save();
 
             $itemOrder++;
-
-
 
         }
 
