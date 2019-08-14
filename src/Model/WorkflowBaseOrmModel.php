@@ -20,7 +20,7 @@ class WorkflowBaseOrmModel extends AbstractOrmModel
     {
         parent::__construct();
 
-        $this->template = 'Workflow Base Model';
+        $this->templateLabel = 'Workflow Base Model';
         $this->templateId = 'fdef5ced-b111-45a2-a12b-92074140bd75';
         $this->templateExtendsClass = AbstractWorkflowBaseModel::class;
 
