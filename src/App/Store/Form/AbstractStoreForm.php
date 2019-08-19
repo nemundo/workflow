@@ -3,8 +3,9 @@
 namespace Nemundo\Workflow\App\Store\Form;
 
 
+use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Com\FormBuilder\Item\HiddenFormItem;
-use Nemundo\Html\Form\Input\HiddenInput;
+use Nemundo\Core\Http\Request\Post\PostRequest;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Web\Url\UrlRedirect;
 use Nemundo\Web\Url\UrlReferer;
@@ -29,6 +30,7 @@ class AbstractStoreForm extends BootstrapForm
      * @var HiddenFormItem
      */
     private $hidden;
+
 
     public function getContent()
     {
@@ -60,7 +62,10 @@ class AbstractStoreForm extends BootstrapForm
         $this->store->setValue($this->getStoreValue());
 
         if ($this->urlRefererRedirect) {
-            (new UrlRedirect())->redirect($this->hidden->getValue());
+
+            $url = (new PostRequest('redirect'))->getValue();
+            (new UrlRedirect())->redirect($url);
+
         }
 
     }

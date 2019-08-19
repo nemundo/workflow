@@ -44,6 +44,7 @@ class HtmlStoreEditSite extends AbstractSite
 
         $form = new HtmlStoreForm($page);
         $form->store = $store;
+        $form->urlRefererRedirect = true;
 
         $page->render();
 
