@@ -120,6 +120,8 @@ class AssignmentTable extends AbstractHtmlContainer
             $header->addText('Identification Type');
         }
 
+
+
         $assignmentSorting = new UpDownSortingHyperlink($header);
         $assignmentSorting->fieldType = $assignmentReader->model->assignmentText;
         $assignmentSorting->checkSorting($assignmentReader);
@@ -127,6 +129,7 @@ class AssignmentTable extends AbstractHtmlContainer
         $deadlineSorting = new UpDownSortingHyperlink($header);
         $deadlineSorting->fieldType = $assignmentReader->model->deadline;
         $deadlineSorting->label[LanguageCode::EN] = 'Deadline';
+        $deadlineSorting->label[LanguageCode::DE] = 'Erledigen bis';
         $deadlineSorting->label[LanguageCode::DE] = 'Erledigen bis';
         $deadlineSorting->checkSorting($assignmentReader);
 
