@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\SearchEngine\Builder;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\AbstractBase;
 use Nemundo\Core\Debug\Debug;
-use Nemundo\Core\Text\Keyword;
+use Nemundo\Core\Text\KeywordList;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\Document;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentDelete;
 use Nemundo\Workflow\App\SearchEngine\Data\Document\DocumentId;
@@ -74,7 +74,7 @@ class SearchEngineBuilder extends AbstractBase  //AbstractContentBuilder
     public function addText($text)
     {
 
-        foreach ((new Keyword())->getKeywordList($text) as $word) {
+        foreach ((new KeywordList())->getKeywordList($text) as $word) {
             $this->addWord($word);
         }
 
