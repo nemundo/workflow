@@ -10,7 +10,7 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
-use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Breadcrumb\WorkflowBreadcrumb;
@@ -138,7 +138,7 @@ class WorkflowSite extends AbstractSite
         }
 
 
-        $pagination = new BootstrapModelPagination($page);
+        $pagination = new BootstrapPagination($page);
         $pagination->paginationReader = $workflowReader;
 
 

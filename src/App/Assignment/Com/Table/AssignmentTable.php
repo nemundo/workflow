@@ -13,7 +13,7 @@ use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
-use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
 use Nemundo\User\Usergroup\UsergroupMembership;
@@ -242,7 +242,7 @@ class AssignmentTable extends AbstractHtmlContainer
 
         }
 
-        $pagination = new BootstrapModelPagination($this);
+        $pagination = new BootstrapPagination($this);
         $pagination->paginationReader = $assignmentReader;
 
         return parent::getContent();

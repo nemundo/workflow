@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Stream\Site;
 use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Widget\AdminWidget;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
-use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Stream\Reader\StreamContentTypeReader;
 
@@ -42,7 +42,7 @@ class StreamSite extends AbstractSite
 
         }
 
-        $pagination = new BootstrapModelPagination($page);
+        $pagination = new BootstrapPagination($page);
         $pagination->paginationReader = $streamReader->getPaginationReader();
 
         $page->render();

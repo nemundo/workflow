@@ -14,7 +14,7 @@ use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
-use Nemundo\Package\Bootstrap\Pagination\BootstrapModelPagination;
+use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationReader;
@@ -141,7 +141,7 @@ $notificationReader->paginationLimit = 50;
         }
 
 
-        $pagination = new BootstrapModelPagination($layout->col2);
+        $pagination = new BootstrapPagination($layout->col2);
         $pagination->paginationReader = $notificationReader;
 
         $page->render();
