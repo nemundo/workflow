@@ -16,7 +16,7 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Workflow\Com\Breadcrumb\WorkflowBreadcrumb;
 use Nemundo\Workflow\App\Workflow\Com\ListBox\OpenClosedWorkflowListBox;
 use Nemundo\Workflow\App\Workflow\Data\Process\ProcessListBox;
-use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationReader;
+use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowPaginationModelReader;
 use Nemundo\Workflow\App\Workflow\Parameter\ProcessParameter;
 use Nemundo\Workflow\App\Workflow\Parameter\WorkflowParameter;
 use Nemundo\Workflow\App\Workflow\Site\Delete\WorkflowStatusDeleteSite;
@@ -83,7 +83,7 @@ class WorkflowSite extends AbstractSite
         $header->addText('Creator');
         $header->addText('Date/Time');
 
-        $workflowReader = new WorkflowPaginationReader();
+        $workflowReader = new WorkflowPaginationModelReader();
         $workflowReader->model->loadProcess();
         $workflowReader->model->loadUserCreated();
 

@@ -17,7 +17,7 @@ use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationReader;
+use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationModelReader;
 use Nemundo\Workflow\App\Notification\Data\NotificationFilter\NotificationFilterReader;
 
 class NotificationAdminSite extends AbstractSite
@@ -77,7 +77,7 @@ class NotificationAdminSite extends AbstractSite
         $table = new AdminClickableTable($layout->col2);
 
 
-        $notificationReader = new NotificationPaginationReader();
+        $notificationReader = new NotificationPaginationModelReader();
         //$notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSessionType())->userId);
 
         /*

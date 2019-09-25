@@ -16,7 +16,7 @@ use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationReader;
+use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationModelReader;
 use Nemundo\Workflow\App\Notification\Data\NotificationFilter\NotificationFilterReader;
 
 class NotificationSite extends AbstractSite
@@ -90,7 +90,7 @@ class NotificationSite extends AbstractSite
         $header->addText('Date/Time');
 
 
-        $notificationReader = new NotificationPaginationReader();
+        $notificationReader = new NotificationPaginationModelReader();
         $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSessionType())->userId);
 
         if ($contentTypeParameter->exists()) {

@@ -17,7 +17,7 @@ use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
 use Nemundo\Project\Usergroup\SystemAdministratorUsergroup;
 use Nemundo\User\Usergroup\UsergroupMembership;
-use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentPaginationReader;
+use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentPaginationModelReader;
 use Nemundo\Workflow\App\Assignment\Parameter\AssignmentParameter;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentDeleteSite;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
@@ -64,7 +64,7 @@ class AssignmentTable extends AbstractHtmlContainer
     public function getContent()
     {
 
-        $assignmentReader = new AssignmentPaginationReader();
+        $assignmentReader = new AssignmentPaginationModelReader();
 
         if ($this->filter !== null) {
             $assignmentReader->filter = $this->filter;

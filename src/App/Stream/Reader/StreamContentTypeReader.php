@@ -7,7 +7,7 @@ use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\Workflow\App\Stream\Data\Stream\StreamPaginationReader;
+use Nemundo\Workflow\App\Stream\Data\Stream\StreamPaginationModelReader;
 
 
 class StreamContentTypeReader extends AbstractDataSource
@@ -19,7 +19,7 @@ class StreamContentTypeReader extends AbstractDataSource
     public $limit = 30;
 
     /**
-     * @var StreamPaginationReader
+     * @var StreamPaginationModelReader
      */
     private $streamReader;
 
@@ -35,7 +35,7 @@ class StreamContentTypeReader extends AbstractDataSource
     protected function loadData()
     {
 
-        $this->streamReader = new StreamPaginationReader();
+        $this->streamReader = new StreamPaginationModelReader();
         $this->streamReader->addOrder($this->streamReader->model->id, SortOrder::DESCENDING);
 
         foreach ($this->streamReader->getData() as $streamRow) {
