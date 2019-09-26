@@ -78,7 +78,7 @@ $this->id->tableName = "workflow_status_change";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_status_change_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -89,19 +89,21 @@ $this->workflowId->tableName = "workflow_status_change";
 $this->workflowId->fieldName = "workflow";
 $this->workflowId->aliasFieldName = "workflow_status_change_workflow";
 $this->workflowId->label = "Workflow";
+$this->workflowId->allowNullValue = false;
 
 $this->workflowStatusId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->workflowStatusId->tableName = "workflow_status_change";
 $this->workflowStatusId->fieldName = "workflow_status";
 $this->workflowStatusId->aliasFieldName = "workflow_status_change_workflow_status";
 $this->workflowStatusId->label = "Workflow Status";
+$this->workflowStatusId->allowNullValue = false;
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->dataId->tableName = "workflow_status_change";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "workflow_status_change_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
@@ -112,13 +114,14 @@ $this->userId->tableName = "workflow_status_change";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_status_change_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 $this->dateTime = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
 $this->dateTime->tableName = "workflow_status_change";
 $this->dateTime->fieldName = "date_time";
 $this->dateTime->aliasFieldName = "workflow_status_change_date_time";
 $this->dateTime->label = "Date Time";
-$this->dateTime->allowNullValue = "";
+$this->dateTime->allowNullValue = false;
 $this->dateTime->visible->form = false;
 
 $this->itemOrder = new \Nemundo\Model\Type\Number\ItemOrderType($this);
@@ -126,7 +129,7 @@ $this->itemOrder->tableName = "workflow_status_change";
 $this->itemOrder->fieldName = "item_order";
 $this->itemOrder->aliasFieldName = "workflow_status_change_item_order";
 $this->itemOrder->label = "Item Order";
-$this->itemOrder->allowNullValue = "";
+$this->itemOrder->allowNullValue = false;
 $this->itemOrder->visible->form = false;
 
 $this->draft = new \Nemundo\Model\Type\Number\YesNoType($this);
@@ -134,21 +137,21 @@ $this->draft->tableName = "workflow_status_change";
 $this->draft->fieldName = "draft";
 $this->draft->aliasFieldName = "workflow_status_change_draft";
 $this->draft->label = "Draft";
-$this->draft->allowNullValue = "";
+$this->draft->allowNullValue = false;
 
 $this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->message->tableName = "workflow_status_change";
 $this->message->fieldName = "message";
 $this->message->aliasFieldName = "workflow_status_change_message";
 $this->message->label = "Message";
-$this->message->allowNullValue = "";
+$this->message->allowNullValue = false;
 
 $this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType($this);
 $this->assignment->tableName = "workflow_status_change";
 $this->assignment->fieldName = "assignment";
 $this->assignment->aliasFieldName = "workflow_status_change_assignment";
 $this->assignment->label = "Assignment";
-$this->assignment->allowNullValue = "";
+$this->assignment->allowNullValue = false;
 
 }
 public function loadWorkflow() {

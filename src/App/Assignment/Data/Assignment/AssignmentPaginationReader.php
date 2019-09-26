@@ -1,6 +1,6 @@
 <?php
 namespace Nemundo\Workflow\App\Assignment\Data\Assignment;
-class AssignmentPaginationModelReader extends \Nemundo\Model\Reader\AbstractPaginationModelDataReader {
+class AssignmentPaginationReader extends \Nemundo\Model\Reader\AbstractPaginationModelDataReader {
 /**
 * @var AssignmentModel
 */

@@ -58,7 +58,7 @@ $this->id->tableName = "calendar_calendar";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "calendar_calendar_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -69,14 +69,14 @@ $this->date->tableName = "calendar_calendar";
 $this->date->fieldName = "date";
 $this->date->aliasFieldName = "calendar_calendar_date";
 $this->date->label = "Date";
-$this->date->allowNullValue = "";
+$this->date->allowNullValue = false;
 
 $this->event = new \Nemundo\Model\Type\Text\TextType($this);
 $this->event->tableName = "calendar_calendar";
 $this->event->fieldName = "event";
 $this->event->aliasFieldName = "calendar_calendar_event";
 $this->event->label = "Event";
-$this->event->allowNullValue = "";
+$this->event->allowNullValue = false;
 $this->event->length = 255;
 
 $this->identificationTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
@@ -84,13 +84,14 @@ $this->identificationTypeId->tableName = "calendar_calendar";
 $this->identificationTypeId->fieldName = "identification_type";
 $this->identificationTypeId->aliasFieldName = "calendar_calendar_identification_type";
 $this->identificationTypeId->label = "Identification Type";
+$this->identificationTypeId->allowNullValue = false;
 
 $this->identificationId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->identificationId->tableName = "calendar_calendar";
 $this->identificationId->fieldName = "identification_id";
 $this->identificationId->aliasFieldName = "calendar_calendar_identification_id";
 $this->identificationId->label = "Identification Id";
-$this->identificationId->allowNullValue = "";
+$this->identificationId->allowNullValue = false;
 $this->identificationId->visible->form = false;
 $this->identificationId->visible->table = false;
 $this->identificationId->visible->view = false;
@@ -101,19 +102,21 @@ $this->contentTypeId->tableName = "calendar_calendar";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "calendar_calendar_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->dataId->tableName = "calendar_calendar";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "calendar_calendar_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
 $this->id->visible->form = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelIndex($this);
+$index->indexName = "";
 $index->addType($this->identificationId);
 
 }

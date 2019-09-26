@@ -23,7 +23,7 @@ $this->id->tableName = "content_template_textcontenttemplate";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "content_template_textcontenttemplate_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -34,7 +34,7 @@ $this->text->tableName = "content_template_textcontenttemplate";
 $this->text->fieldName = "text";
 $this->text->aliasFieldName = "content_template_textcontenttemplate_text";
 $this->text->label = "Text";
-$this->text->allowNullValue = "";
+$this->text->allowNullValue = false;
 $this->text->length = 255;
 
 }

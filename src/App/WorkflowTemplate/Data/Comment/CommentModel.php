@@ -23,7 +23,7 @@ $this->id->tableName = "workflow_template_comment";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_comment_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -34,7 +34,7 @@ $this->comment->tableName = "workflow_template_comment";
 $this->comment->fieldName = "comment";
 $this->comment->aliasFieldName = "workflow_template_comment_comment";
 $this->comment->label = "Kommentar";
-$this->comment->allowNullValue = "";
+$this->comment->allowNullValue = false;
 
 }
 }

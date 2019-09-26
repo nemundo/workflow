@@ -23,7 +23,7 @@ $this->id->tableName = "store_number";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "store_number_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -34,7 +34,7 @@ $this->number->tableName = "store_number";
 $this->number->fieldName = "number";
 $this->number->aliasFieldName = "store_number_number";
 $this->number->label = "Number";
-$this->number->allowNullValue = "";
+$this->number->allowNullValue = false;
 
 }
 }

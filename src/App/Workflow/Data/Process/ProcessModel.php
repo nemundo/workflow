@@ -33,7 +33,7 @@ $this->id->tableName = "workflow_process";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_process_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -44,7 +44,7 @@ $this->process->tableName = "workflow_process";
 $this->process->fieldName = "process";
 $this->process->aliasFieldName = "workflow_process_process";
 $this->process->label = "Process";
-$this->process->allowNullValue = "";
+$this->process->allowNullValue = false;
 $this->process->length = 255;
 
 $this->processClass = new \Nemundo\Model\Type\Php\PhpClassType($this);
@@ -52,7 +52,7 @@ $this->processClass->tableName = "workflow_process";
 $this->processClass->fieldName = "process_class";
 $this->processClass->aliasFieldName = "workflow_process_process_class";
 $this->processClass->label = "Process Class";
-$this->processClass->allowNullValue = "";
+$this->processClass->allowNullValue = false;
 $this->processClass->phpClassName = \Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess::class;
 
 $this->setupStatus = new \Nemundo\Model\Type\Number\YesNoType($this);
@@ -60,7 +60,7 @@ $this->setupStatus->tableName = "workflow_process";
 $this->setupStatus->fieldName = "setup_status";
 $this->setupStatus->aliasFieldName = "workflow_process_setup_status";
 $this->setupStatus->label = "Setup Status";
-$this->setupStatus->allowNullValue = "";
+$this->setupStatus->allowNullValue = false;
 
 $this->addDefaultType($this->process);
 $this->addDefaultOrderType($this->process);

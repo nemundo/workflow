@@ -23,7 +23,7 @@ $this->id->tableName = "wiki_title_change";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "wiki_title_change_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -34,7 +34,7 @@ $this->title->tableName = "wiki_title_change";
 $this->title->fieldName = "title";
 $this->title->aliasFieldName = "wiki_title_change_title";
 $this->title->label = "Title";
-$this->title->allowNullValue = "";
+$this->title->allowNullValue = false;
 $this->title->length = 255;
 
 }

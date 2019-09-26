@@ -23,7 +23,7 @@ $this->id->tableName = "content_template_filecontenttemplate";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "content_template_filecontenttemplate_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -34,7 +34,7 @@ $this->file->tableName = "content_template_filecontenttemplate";
 $this->file->fieldName = "file";
 $this->file->aliasFieldName = "content_template_filecontenttemplate_file";
 $this->file->label = "File";
-$this->file->allowNullValue = "";
+$this->file->allowNullValue = false;
 $this->file->redirectSite = \Nemundo\Workflow\App\ContentTemplate\Data\FileContentTemplate\Redirect\FileContentTemplateRedirectConfig::$redirectFileContentTemplateFileSite;
 
 }

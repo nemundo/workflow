@@ -33,7 +33,7 @@ $this->id->tableName = "workflow_template_send_inbox";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_send_inbox_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -44,6 +44,7 @@ $this->userId->tableName = "workflow_template_send_inbox";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_template_send_inbox_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 $this->loadUser();
 
 $this->comment = new \Nemundo\Model\Type\Text\LargeTextType($this);
@@ -51,7 +52,7 @@ $this->comment->tableName = "workflow_template_send_inbox";
 $this->comment->fieldName = "comment";
 $this->comment->aliasFieldName = "workflow_template_send_inbox_comment";
 $this->comment->label = "Comment";
-$this->comment->allowNullValue = "";
+$this->comment->allowNullValue = false;
 
 }
 public function loadUser() {

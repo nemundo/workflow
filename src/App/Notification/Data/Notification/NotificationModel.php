@@ -63,7 +63,7 @@ $this->id->tableName = "notification_notification";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "notification_notification_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -76,6 +76,7 @@ $this->userId->tableName = "notification_notification";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "notification_notification_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 $this->loadUser();
 
 $this->contentTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
@@ -83,13 +84,14 @@ $this->contentTypeId->tableName = "notification_notification";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "notification_notification_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType($this);
 $this->subject->tableName = "notification_notification";
 $this->subject->fieldName = "subject";
 $this->subject->aliasFieldName = "notification_notification_subject";
 $this->subject->label = "Subject";
-$this->subject->allowNullValue = "";
+$this->subject->allowNullValue = false;
 $this->subject->length = 255;
 
 $this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
@@ -97,14 +99,14 @@ $this->message->tableName = "notification_notification";
 $this->message->fieldName = "message";
 $this->message->aliasFieldName = "notification_notification_message";
 $this->message->label = "Message";
-$this->message->allowNullValue = "";
+$this->message->allowNullValue = false;
 
 $this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\CreatedDateTimeType($this);
 $this->dateTimeCreated->tableName = "notification_notification";
 $this->dateTimeCreated->fieldName = "date_time_created";
 $this->dateTimeCreated->aliasFieldName = "notification_notification_date_time_created";
 $this->dateTimeCreated->label = "Date Time Created";
-$this->dateTimeCreated->allowNullValue = "";
+$this->dateTimeCreated->allowNullValue = false;
 $this->dateTimeCreated->visible->form = false;
 
 $this->read = new \Nemundo\Model\Type\Number\YesNoType($this);
@@ -112,14 +114,14 @@ $this->read->tableName = "notification_notification";
 $this->read->fieldName = "read";
 $this->read->aliasFieldName = "notification_notification_read";
 $this->read->label = "Read";
-$this->read->allowNullValue = "";
+$this->read->allowNullValue = false;
 
 $this->archive = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->archive->tableName = "notification_notification";
 $this->archive->fieldName = "archive";
 $this->archive->aliasFieldName = "notification_notification_archive";
 $this->archive->label = "Archive";
-$this->archive->allowNullValue = "";
+$this->archive->allowNullValue = false;
 
 }
 public function loadUser() {

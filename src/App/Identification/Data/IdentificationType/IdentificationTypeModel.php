@@ -28,7 +28,7 @@ $this->id->tableName = "identification_identification_type";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "identification_identification_type_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -39,7 +39,7 @@ $this->identification->tableName = "identification_identification_type";
 $this->identification->fieldName = "identification";
 $this->identification->aliasFieldName = "identification_identification_type_identification";
 $this->identification->label = "Identification";
-$this->identification->allowNullValue = "";
+$this->identification->allowNullValue = false;
 $this->identification->length = 255;
 
 $this->identificationTypeClass = new \Nemundo\Model\Type\Php\PhpClassType($this);
@@ -47,7 +47,7 @@ $this->identificationTypeClass->tableName = "identification_identification_type"
 $this->identificationTypeClass->fieldName = "identification_type_class";
 $this->identificationTypeClass->aliasFieldName = "identification_identification_type_identification_type_class";
 $this->identificationTypeClass->label = "Identification Type Class";
-$this->identificationTypeClass->allowNullValue = "";
+$this->identificationTypeClass->allowNullValue = false;
 $this->identificationTypeClass->phpClassName = \Nemundo\Workflow\App\Identification\Type\AbstractIdentificationType::class;
 
 }

@@ -123,7 +123,7 @@ $this->id->tableName = "workflow_workflow";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_workflow_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -134,20 +134,21 @@ $this->processId->tableName = "workflow_workflow";
 $this->processId->fieldName = "process";
 $this->processId->aliasFieldName = "workflow_workflow_process";
 $this->processId->label = "Process";
+$this->processId->allowNullValue = false;
 
 $this->number = new \Nemundo\Model\Type\Number\NumberType($this);
 $this->number->tableName = "workflow_workflow";
 $this->number->fieldName = "number";
 $this->number->aliasFieldName = "workflow_workflow_number";
 $this->number->label = "Number";
-$this->number->allowNullValue = "";
+$this->number->allowNullValue = false;
 
 $this->workflowNumber = new \Nemundo\Model\Type\Text\TextType($this);
 $this->workflowNumber->tableName = "workflow_workflow";
 $this->workflowNumber->fieldName = "workflow_number";
 $this->workflowNumber->aliasFieldName = "workflow_workflow_workflow_number";
 $this->workflowNumber->label = "Nr.";
-$this->workflowNumber->allowNullValue = "";
+$this->workflowNumber->allowNullValue = false;
 $this->workflowNumber->length = 20;
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType($this);
@@ -155,7 +156,7 @@ $this->subject->tableName = "workflow_workflow";
 $this->subject->fieldName = "subject";
 $this->subject->aliasFieldName = "workflow_workflow_subject";
 $this->subject->label = "Subject";
-$this->subject->allowNullValue = "";
+$this->subject->allowNullValue = false;
 $this->subject->length = 255;
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
@@ -163,7 +164,7 @@ $this->dataId->tableName = "workflow_workflow";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "workflow_workflow_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
@@ -174,21 +175,21 @@ $this->draft->tableName = "workflow_workflow";
 $this->draft->fieldName = "draft";
 $this->draft->aliasFieldName = "workflow_workflow_draft";
 $this->draft->label = "Draft";
-$this->draft->allowNullValue = "";
+$this->draft->allowNullValue = false;
 
 $this->closed = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->closed->tableName = "workflow_workflow";
 $this->closed->fieldName = "closed";
 $this->closed->aliasFieldName = "workflow_workflow_closed";
 $this->closed->label = "Abgeschlossen";
-$this->closed->allowNullValue = "";
+$this->closed->allowNullValue = false;
 
 $this->itemOrder = new \Nemundo\Model\Type\Number\ItemOrderType($this);
 $this->itemOrder->tableName = "workflow_workflow";
 $this->itemOrder->fieldName = "item_order";
 $this->itemOrder->aliasFieldName = "workflow_workflow_item_order";
 $this->itemOrder->label = "Item Order";
-$this->itemOrder->allowNullValue = "";
+$this->itemOrder->allowNullValue = false;
 $this->itemOrder->visible->form = false;
 
 $this->workflowStatusId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
@@ -196,32 +197,35 @@ $this->workflowStatusId->tableName = "workflow_workflow";
 $this->workflowStatusId->fieldName = "workflow_status";
 $this->workflowStatusId->aliasFieldName = "workflow_workflow_workflow_status";
 $this->workflowStatusId->label = "Status";
+$this->workflowStatusId->allowNullValue = false;
 
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
 $this->deadline->tableName = "workflow_workflow";
 $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "workflow_workflow_deadline";
 $this->deadline->label = "Erledigen bis";
-$this->deadline->allowNullValue = "";
+$this->deadline->allowNullValue = false;
 
 $this->userId = new \Nemundo\Model\Type\User\CreatedUserType($this);
 $this->userId->tableName = "workflow_workflow";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_workflow_user";
 $this->userId->label = "Ersteller";
+$this->userId->allowNullValue = false;
 
 $this->userModifiedId = new \Nemundo\Model\Type\User\ModifiedUserType($this);
 $this->userModifiedId->tableName = "workflow_workflow";
 $this->userModifiedId->fieldName = "user_modified";
 $this->userModifiedId->aliasFieldName = "workflow_workflow_user_modified";
 $this->userModifiedId->label = "User Modified";
+$this->userModifiedId->allowNullValue = false;
 
 $this->dateTimeModified = new \Nemundo\Model\Type\DateTime\ModifiedDateTimeType($this);
 $this->dateTimeModified->tableName = "workflow_workflow";
 $this->dateTimeModified->fieldName = "date_time_modified";
 $this->dateTimeModified->aliasFieldName = "workflow_workflow_date_time_modified";
 $this->dateTimeModified->label = "Date Time Modified";
-$this->dateTimeModified->allowNullValue = "";
+$this->dateTimeModified->allowNullValue = false;
 $this->dateTimeModified->visible->form = false;
 
 $this->assignment = new \Nemundo\Workflow\App\Identification\Model\IdentificationModelType($this);
@@ -229,22 +233,24 @@ $this->assignment->tableName = "workflow_workflow";
 $this->assignment->fieldName = "assignment";
 $this->assignment->aliasFieldName = "workflow_workflow_assignment";
 $this->assignment->label = "Assignment";
-$this->assignment->allowNullValue = "";
+$this->assignment->allowNullValue = false;
 
 $this->dateTimeCreated = new \Nemundo\Model\Type\DateTime\DateTimeType($this);
 $this->dateTimeCreated->tableName = "workflow_workflow";
 $this->dateTimeCreated->fieldName = "date_time_created";
 $this->dateTimeCreated->aliasFieldName = "workflow_workflow_date_time_created";
 $this->dateTimeCreated->label = "Date Time Created";
-$this->dateTimeCreated->allowNullValue = "";
+$this->dateTimeCreated->allowNullValue = false;
 
 $this->userCreatedId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userCreatedId->tableName = "workflow_workflow";
 $this->userCreatedId->fieldName = "user_created";
 $this->userCreatedId->aliasFieldName = "workflow_workflow_user_created";
 $this->userCreatedId->label = "User Created";
+$this->userCreatedId->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelIndex($this);
+$index->indexName = "";
 $index->addType($this->dateTimeCreated);
 
 }

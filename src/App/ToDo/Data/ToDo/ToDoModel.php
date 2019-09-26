@@ -38,7 +38,7 @@ $this->id->tableName = "todo_todo";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "todo_todo_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -54,7 +54,7 @@ $this->todo->fieldName = "todo";
 $this->todo->aliasFieldName = "todo_todo_todo";
 $this->todo->label = "To Do";
 $this->todo->validation = true;
-$this->todo->allowNullValue = "";
+$this->todo->allowNullValue = false;
 $this->todo->length = 255;
 
 $this->done = new \Nemundo\Model\Type\Number\YesNoType($this);
@@ -62,7 +62,7 @@ $this->done->tableName = "todo_todo";
 $this->done->fieldName = "done";
 $this->done->aliasFieldName = "todo_todo_done";
 $this->done->label = "Done";
-$this->done->allowNullValue = "";
+$this->done->allowNullValue = false;
 $this->done->visible->form = false;
 
 $this->userId = new \Nemundo\Model\Type\User\CreatedUserType($this);
@@ -70,6 +70,7 @@ $this->userId->tableName = "todo_todo";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "todo_todo_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 }
 public function loadUser() {

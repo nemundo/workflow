@@ -28,7 +28,7 @@ $this->id->tableName = "wiki_hyperlink";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "wiki_hyperlink_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -39,7 +39,7 @@ $this->title->tableName = "wiki_hyperlink";
 $this->title->fieldName = "title";
 $this->title->aliasFieldName = "wiki_hyperlink_title";
 $this->title->label = "Title";
-$this->title->allowNullValue = "";
+$this->title->allowNullValue = false;
 $this->title->length = 255;
 
 $this->url = new \Nemundo\Model\Type\Web\UrlType($this);
@@ -47,7 +47,7 @@ $this->url->tableName = "wiki_hyperlink";
 $this->url->fieldName = "url";
 $this->url->aliasFieldName = "wiki_hyperlink_url";
 $this->url->label = "Url";
-$this->url->allowNullValue = "";
+$this->url->allowNullValue = false;
 
 }
 }

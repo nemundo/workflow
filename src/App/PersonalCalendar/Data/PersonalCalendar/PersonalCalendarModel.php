@@ -38,7 +38,7 @@ $this->id->tableName = "personal_calendar_personal_calendar";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "personal_calendar_personal_calendar_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -50,7 +50,7 @@ $this->date->fieldName = "date";
 $this->date->aliasFieldName = "personal_calendar_personal_calendar_date";
 $this->date->label = "Date";
 $this->date->validation = true;
-$this->date->allowNullValue = "";
+$this->date->allowNullValue = false;
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType($this);
 $this->subject->tableName = "personal_calendar_personal_calendar";
@@ -58,7 +58,7 @@ $this->subject->fieldName = "subject";
 $this->subject->aliasFieldName = "personal_calendar_personal_calendar_subject";
 $this->subject->label = "Subject";
 $this->subject->validation = true;
-$this->subject->allowNullValue = "";
+$this->subject->allowNullValue = false;
 $this->subject->length = 255;
 
 $this->userId = new \Nemundo\Model\Type\User\CreatedUserType($this);
@@ -66,6 +66,7 @@ $this->userId->tableName = "personal_calendar_personal_calendar";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "personal_calendar_personal_calendar_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 }
 public function loadUser() {

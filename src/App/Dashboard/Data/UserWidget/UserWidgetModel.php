@@ -71,6 +71,7 @@ $this->itemOrder->label = "Item Order";
 $this->itemOrder->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->indexName = "";
 $index->addType($this->userId);
 $index->addType($this->widgetId);
 

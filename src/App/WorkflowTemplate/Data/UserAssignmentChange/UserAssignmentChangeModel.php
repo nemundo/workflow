@@ -28,7 +28,7 @@ $this->id->tableName = "workflow_template_user_assignment_change";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_user_assignment_change_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -39,6 +39,7 @@ $this->userId->tableName = "workflow_template_user_assignment_change";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_template_user_assignment_change_user";
 $this->userId->label = "Mitarbeiter";
+$this->userId->allowNullValue = false;
 $this->loadUser();
 
 }

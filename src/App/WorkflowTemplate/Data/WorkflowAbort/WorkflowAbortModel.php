@@ -23,7 +23,7 @@ $this->id->tableName = "workflow_template_workflow_abort";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_workflow_abort_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -35,7 +35,7 @@ $this->reason->fieldName = "reason";
 $this->reason->aliasFieldName = "workflow_template_workflow_abort_reason";
 $this->reason->label = "Begründung";
 $this->reason->validation = true;
-$this->reason->allowNullValue = "";
+$this->reason->allowNullValue = false;
 
 }
 }

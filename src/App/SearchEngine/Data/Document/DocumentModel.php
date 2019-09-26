@@ -33,7 +33,7 @@ $this->id->tableName = "searchengine_document";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "searchengine_document_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -44,6 +44,7 @@ $this->contentTypeId->tableName = "searchengine_document";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "searchengine_document_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 $this->loadContentType();
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
@@ -51,13 +52,14 @@ $this->dataId->tableName = "searchengine_document";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "searchengine_document_data_id";
 $this->dataId->label = "DataId";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
 $this->id->visible->form = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->indexName = "";
 $index->addType($this->contentTypeId);
 $index->addType($this->dataId);
 

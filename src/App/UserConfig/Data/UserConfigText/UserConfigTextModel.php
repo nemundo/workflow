@@ -43,7 +43,7 @@ $this->id->tableName = "userconfig_text";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "userconfig_text_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -54,19 +54,21 @@ $this->userId->tableName = "userconfig_text";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "userconfig_text_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 $this->userConfigId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userConfigId->tableName = "userconfig_text";
 $this->userConfigId->fieldName = "user_config";
 $this->userConfigId->aliasFieldName = "userconfig_text_user_config";
 $this->userConfigId->label = "User Config";
+$this->userConfigId->allowNullValue = false;
 
 $this->value = new \Nemundo\Model\Type\Text\TextType($this);
 $this->value->tableName = "userconfig_text";
 $this->value->fieldName = "value";
 $this->value->aliasFieldName = "userconfig_text_value";
 $this->value->label = "Value";
-$this->value->allowNullValue = "";
+$this->value->allowNullValue = false;
 $this->value->length = 255;
 
 }

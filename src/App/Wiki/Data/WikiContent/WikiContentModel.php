@@ -53,7 +53,7 @@ $this->id->tableName = "wiki_wiki_content";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "wiki_wiki_content_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -64,12 +64,14 @@ $this->pageId->tableName = "wiki_wiki_content";
 $this->pageId->fieldName = "page";
 $this->pageId->aliasFieldName = "wiki_wiki_content_page";
 $this->pageId->label = "Page";
+$this->pageId->allowNullValue = false;
 
 $this->contentTypeId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->contentTypeId->tableName = "wiki_wiki_content";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "wiki_wiki_content_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 $this->loadContentType();
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
@@ -77,7 +79,7 @@ $this->dataId->tableName = "wiki_wiki_content";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "wiki_wiki_content_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
@@ -88,14 +90,14 @@ $this->delete->tableName = "wiki_wiki_content";
 $this->delete->fieldName = "delete";
 $this->delete->aliasFieldName = "wiki_wiki_content_delete";
 $this->delete->label = "Delete";
-$this->delete->allowNullValue = "";
+$this->delete->allowNullValue = false;
 
 $this->itemOrder = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->itemOrder->tableName = "wiki_wiki_content";
 $this->itemOrder->fieldName = "item_order";
 $this->itemOrder->aliasFieldName = "wiki_wiki_content_item_order";
 $this->itemOrder->label = "Item Order";
-$this->itemOrder->allowNullValue = "";
+$this->itemOrder->allowNullValue = false;
 
 }
 public function loadPage() {

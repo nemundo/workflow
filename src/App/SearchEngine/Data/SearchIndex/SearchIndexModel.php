@@ -38,7 +38,7 @@ $this->id->tableName = "searchengine_search_index";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "searchengine_search_index_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -49,6 +49,7 @@ $this->documentId->tableName = "searchengine_search_index";
 $this->documentId->fieldName = "document";
 $this->documentId->aliasFieldName = "searchengine_search_index_document";
 $this->documentId->label = "Document";
+$this->documentId->allowNullValue = false;
 $this->loadDocument();
 
 $this->wordId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
@@ -56,8 +57,10 @@ $this->wordId->tableName = "searchengine_search_index";
 $this->wordId->fieldName = "word";
 $this->wordId->aliasFieldName = "searchengine_search_index_word";
 $this->wordId->label = "Word";
+$this->wordId->allowNullValue = false;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->indexName = "";
 $index->addType($this->wordId);
 $index->addType($this->documentId);
 

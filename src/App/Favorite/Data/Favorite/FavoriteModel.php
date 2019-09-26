@@ -43,7 +43,7 @@ $this->id->tableName = "favorite_favorite";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "favorite_favorite_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -54,6 +54,7 @@ $this->contentTypeId->tableName = "favorite_favorite";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "favorite_favorite_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 $this->loadContentType();
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
@@ -61,7 +62,7 @@ $this->dataId->tableName = "favorite_favorite";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "favorite_favorite_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
@@ -72,6 +73,7 @@ $this->userId->tableName = "favorite_favorite";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "favorite_favorite_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 }
 public function loadContentType() {

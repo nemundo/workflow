@@ -23,7 +23,7 @@ $this->id->tableName = "workflow_template_subject_change";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_subject_change_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -35,7 +35,7 @@ $this->subject->fieldName = "subject";
 $this->subject->aliasFieldName = "workflow_template_subject_change_subject";
 $this->subject->label = "Subject";
 $this->subject->validation = true;
-$this->subject->allowNullValue = "";
+$this->subject->allowNullValue = false;
 $this->subject->length = 255;
 
 }

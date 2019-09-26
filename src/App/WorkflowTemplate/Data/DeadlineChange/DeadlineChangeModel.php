@@ -23,7 +23,7 @@ $this->id->tableName = "workflow_template_deadline_change";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_deadline_change_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -35,7 +35,7 @@ $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "workflow_template_deadline_change_deadline";
 $this->deadline->label = "Datum";
 $this->deadline->validation = true;
-$this->deadline->allowNullValue = "";
+$this->deadline->allowNullValue = false;
 
 }
 }

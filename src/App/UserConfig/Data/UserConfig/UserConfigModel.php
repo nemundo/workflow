@@ -23,7 +23,7 @@ $this->id->tableName = "userconfig_userconfig";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "userconfig_userconfig_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -34,7 +34,7 @@ $this->userConfig->tableName = "userconfig_userconfig";
 $this->userConfig->fieldName = "user_config";
 $this->userConfig->aliasFieldName = "userconfig_userconfig_user_config";
 $this->userConfig->label = "User Config";
-$this->userConfig->allowNullValue = "";
+$this->userConfig->allowNullValue = false;
 $this->userConfig->length = 255;
 
 }

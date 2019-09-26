@@ -43,7 +43,7 @@ $this->id->tableName = "subscription_subscription";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "subscription_subscription_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -54,13 +54,14 @@ $this->contentTypeId->tableName = "subscription_subscription";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "subscription_subscription_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
 $this->dataId->tableName = "subscription_subscription";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "subscription_subscription_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
@@ -71,6 +72,7 @@ $this->userId->tableName = "subscription_subscription";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "subscription_subscription_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 }
 public function loadContentType() {

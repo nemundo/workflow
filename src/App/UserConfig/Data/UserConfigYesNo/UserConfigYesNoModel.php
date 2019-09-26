@@ -43,7 +43,7 @@ $this->id->tableName = "userconfig_yes_no";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "userconfig_yes_no_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -54,19 +54,21 @@ $this->userId->tableName = "userconfig_yes_no";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "userconfig_yes_no_user";
 $this->userId->label = "User";
+$this->userId->allowNullValue = false;
 
 $this->userConfigId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userConfigId->tableName = "userconfig_yes_no";
 $this->userConfigId->fieldName = "user_config";
 $this->userConfigId->aliasFieldName = "userconfig_yes_no_user_config";
 $this->userConfigId->label = "User Config";
+$this->userConfigId->allowNullValue = false;
 
 $this->value = new \Nemundo\Model\Type\Number\YesNoType($this);
 $this->value->tableName = "userconfig_yes_no";
 $this->value->fieldName = "value";
 $this->value->aliasFieldName = "userconfig_yes_no_value";
 $this->value->label = "Value";
-$this->value->allowNullValue = "";
+$this->value->allowNullValue = false;
 
 }
 public function loadUser() {

@@ -33,7 +33,7 @@ $this->id->tableName = "workflow_template_user_deadline_assignment";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "workflow_template_user_deadline_assignment_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -44,6 +44,7 @@ $this->userId->tableName = "workflow_template_user_deadline_assignment";
 $this->userId->fieldName = "user";
 $this->userId->aliasFieldName = "workflow_template_user_deadline_assignment_user";
 $this->userId->label = "Mitarbeiter";
+$this->userId->allowNullValue = false;
 $this->loadUser();
 
 $this->deadline = new \Nemundo\Model\Type\DateTime\DateType($this);
@@ -52,7 +53,7 @@ $this->deadline->fieldName = "deadline";
 $this->deadline->aliasFieldName = "workflow_template_user_deadline_assignment_deadline";
 $this->deadline->label = "Erledigen bis";
 $this->deadline->validation = true;
-$this->deadline->allowNullValue = "";
+$this->deadline->allowNullValue = false;
 
 }
 public function loadUser() {

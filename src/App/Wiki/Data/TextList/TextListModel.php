@@ -23,7 +23,7 @@ $this->id->tableName = "wiki_text_list";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "wiki_text_list_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -36,7 +36,7 @@ $this->text->tableName = "wiki_text_list";
 $this->text->fieldName = "text";
 $this->text->aliasFieldName = "wiki_text_list_text";
 $this->text->label = "Text";
-$this->text->allowNullValue = "";
+$this->text->allowNullValue = false;
 $this->text->length = 255;
 
 }

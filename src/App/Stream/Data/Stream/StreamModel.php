@@ -48,7 +48,7 @@ $this->id->tableName = "stream_stream";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "stream_stream_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -59,6 +59,7 @@ $this->contentTypeId->tableName = "stream_stream";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "stream_stream_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 $this->loadContentType();
 
 $this->dataId = new \Nemundo\Model\Type\Id\UniqueIdType($this);
@@ -66,7 +67,7 @@ $this->dataId->tableName = "stream_stream";
 $this->dataId->fieldName = "data_id";
 $this->dataId->aliasFieldName = "stream_stream_data_id";
 $this->dataId->label = "Data Id";
-$this->dataId->allowNullValue = "";
+$this->dataId->allowNullValue = false;
 $this->dataId->visible->form = false;
 $this->dataId->visible->table = false;
 $this->dataId->visible->view = false;
@@ -77,7 +78,7 @@ $this->dateTime->tableName = "stream_stream";
 $this->dateTime->fieldName = "date_time";
 $this->dateTime->aliasFieldName = "stream_stream_date_time";
 $this->dateTime->label = "Date Time";
-$this->dateTime->allowNullValue = "";
+$this->dateTime->allowNullValue = false;
 $this->dateTime->visible->form = false;
 
 $this->subject = new \Nemundo\Model\Type\Text\TextType($this);
@@ -85,7 +86,7 @@ $this->subject->tableName = "stream_stream";
 $this->subject->fieldName = "subject";
 $this->subject->aliasFieldName = "stream_stream_subject";
 $this->subject->label = "Subject";
-$this->subject->allowNullValue = "";
+$this->subject->allowNullValue = false;
 $this->subject->length = 255;
 
 $this->message = new \Nemundo\Model\Type\Text\LargeTextType($this);
@@ -93,7 +94,7 @@ $this->message->tableName = "stream_stream";
 $this->message->fieldName = "message";
 $this->message->aliasFieldName = "stream_stream_message";
 $this->message->label = "Message";
-$this->message->allowNullValue = "";
+$this->message->allowNullValue = false;
 
 }
 public function loadContentType() {

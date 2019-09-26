@@ -33,7 +33,7 @@ $this->id->tableName = "assignment_filter";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "assignment_filter_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -44,16 +44,18 @@ $this->contentTypeId->tableName = "assignment_filter";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "assignment_filter_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 
 $this->filterLabel = new \Nemundo\Model\Type\Text\TextType($this);
 $this->filterLabel->tableName = "assignment_filter";
 $this->filterLabel->fieldName = "filter_label";
 $this->filterLabel->aliasFieldName = "assignment_filter_filter_label";
 $this->filterLabel->label = "Filter Label";
-$this->filterLabel->allowNullValue = "";
+$this->filterLabel->allowNullValue = false;
 $this->filterLabel->length = 255;
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
+$index->indexName = "";
 $index->addType($this->contentTypeId);
 
 }

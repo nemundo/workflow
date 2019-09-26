@@ -28,7 +28,7 @@ $this->id->tableName = "wiki_wiki_type";
 $this->id->fieldName = "id";
 $this->id->aliasFieldName = "wiki_wiki_type_id";
 $this->id->label = "Id";
-$this->id->allowNullValue = "";
+$this->id->allowNullValue = false;
 $this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
@@ -39,6 +39,7 @@ $this->contentTypeId->tableName = "wiki_wiki_type";
 $this->contentTypeId->fieldName = "content_type";
 $this->contentTypeId->aliasFieldName = "wiki_wiki_type_content_type";
 $this->contentTypeId->label = "Content Type";
+$this->contentTypeId->allowNullValue = false;
 
 }
 public function loadContentType() {
