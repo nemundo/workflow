@@ -10,9 +10,7 @@ use Nemundo\Orm\Type\OrmTypeTrait;
 class IdentificationOrmModelType extends IdentificationModelType
 {
 
-
     use OrmTypeTrait;
-
 
     protected function loadExternalType()
     {
