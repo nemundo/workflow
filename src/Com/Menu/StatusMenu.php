@@ -15,6 +15,8 @@ use Nemundo\Package\FontAwesome\Icon\CheckIcon;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Web\Site\Site;
 
+
+// ProcedureMenu
 class StatusMenu extends AbstractRestrictedUserHtmlContainer
 {
 
@@ -26,29 +28,8 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
     protected function loadContainer()
     {
         $this->table = new AdminTable($this);
-        //$this->table->border = 1;
     }
 
-
-    /*
-    public function addLogMenu($label, $id = null)
-    {
-
-        $row = new TableRow($this->table);
-
-        new CheckIcon($row);
-
-        $link = new Hyperlink($row);
-        $link->content = $label;  // $workflowStatus->contentLabel;
-
-        //$link->href = '#log-' . $workflowStatus->logId;
-
-        $link->addCssClass(BootstrapFontColor::DARK);
-
-        //$row->addText($workflowStatus->userCreated->displayName);
-        //$row->addText($workflowStatus->dateTimeCreated->getShortDateLeadingZeroFormat());
-
-    }*/
 
 
     public function addActiveMenuOld($label, $active = false)
@@ -66,7 +47,6 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
             $hyperlink = new SiteHyperlink($row);
             $hyperlink->site = new Site();
             $hyperlink->site->title = $label;
-            //$hyperlink->site->addParameter(new ContentTypeParameter($workflowStatus->contentId));
 
         }
 
@@ -84,6 +64,18 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
         new ArrowRightIcon($row);
         $row->addBoldText($label);
 
+        $row->addEmpty();
+        $row->addEmpty();
+
+    }
+
+
+    public function addEmptyMenu()
+    {
+
+        $row = new TableRow($this->table);
+        $row->addEmpty();
+        $row->addEmpty();
         $row->addEmpty();
         $row->addEmpty();
 
@@ -182,10 +174,6 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
         }
 
         if ($active) {
-            //new ArrowRightIcon($row);
-
-            //$row->addBoldText($site->title);
-
 
             $hyperlink = new SiteHyperlink($row);
             $hyperlink->site = $site;
@@ -195,8 +183,6 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
             $bold->content = $site->title;
 
         } else {
-
-            //$row->addEmpty();
 
             $hyperlink = new SiteHyperlink($row);
             $hyperlink->site = $site;
@@ -209,46 +195,7 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
     }
 
 
-    /*
-    public function addMenu()
-    {
 
-        $row = new TableRow($this->table);
-        $row->addEmpty();
-
-        $list = new UnorderedList($row);
-        //$list->addCssClass('no-bullet');
-        $list->addCssClass('list-unstyled');
-
-        foreach ($this->process->getCurrentStatus()->getMenuSite() as $site) {
-
-            if ($site->isActiveWorkflowStatus()) {
-                $list->addText((new ArrowRightIcon())->getHtml() . ' ' . $site->title);
-            } else {
-
-                if ($site->workflowStatus->checkUserVisibility()) {
-
-                    $hyperlink = new SiteHyperlink($list);
-                    $hyperlink->site = $site;
-
-                } else {
-
-                    $list->addText($site->title);
-
-                }
-
-            }
-
-        }
-
-        $row->addEmpty();
-        $row->addEmpty();
-
-        //}
-
-        //}
-
-    }*/
 
 
     public function addNextMenu($label)
