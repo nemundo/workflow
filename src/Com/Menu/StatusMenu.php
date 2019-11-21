@@ -31,7 +31,7 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
     }
 
 
-
+/*
     public function addActiveMenuOld($label, $active = false)
     {
 
@@ -53,7 +53,7 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
         $row->addEmpty();
         $row->addEmpty();
 
-    }
+    }*/
 
 
     public function addActiveMenu($label)
@@ -156,6 +156,7 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
 
     public function addSite(AbstractSite $site)
     {
+
 
         $this->addSiteMenu($site);
 
