@@ -30,5 +30,10 @@ class MenuItem extends AbstractBase
      */
     public $site;
 
+    /**
+     * @var bool
+     */
+   // public $subMenu = false;
+
 
 }
