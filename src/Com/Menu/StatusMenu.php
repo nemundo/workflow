@@ -9,6 +9,7 @@ use Nemundo\Com\Html\Hyperlink\SiteHyperlink;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Html\Character\HtmlCharacter;
 use Nemundo\Package\FontAwesome\Icon\ArrowRightIcon;
+use Nemundo\Package\FontAwesome\Icon\CheckIcon;
 use Nemundo\Web\Site\AbstractSite;
 
 
@@ -20,6 +21,9 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
      * @var AdminTable
      */
     private $table;
+
+
+    private $activeFound = false;
 
     protected function loadContainer()
     {
@@ -74,6 +78,8 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
     private function addActiveMenu($label)
     {
 
+        $this->activeFound=true;
+
         $row = new TableRow($this->table);
 
         new ArrowRightIcon($row);
@@ -127,7 +133,14 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
     {
 
         $row = new TableRow($this->table);
-        $row->addEmpty();
+
+        if (!$this->activeFound) {
+            //new ArrowRightIcon($row);
+            new CheckIcon($row);
+
+        } else {
+            $row->addEmpty();
+        }
 
         $hyperlink = new SiteHyperlink($row);
         $hyperlink->site = $site;
@@ -143,7 +156,15 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
 
         $row = new TableRow($this->table);
 
-        $row->addEmpty();
+        //$row->addEmpty();
+
+        if (!$this->activeFound) {
+            //new ArrowRightIcon($row);
+            new CheckIcon($row);
+        } else {
+            $row->addEmpty();
+        }
+
         $row->addText($label);
         $row->addEmpty();
         $row->addEmpty();
