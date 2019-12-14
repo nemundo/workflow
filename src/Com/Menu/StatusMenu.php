@@ -103,6 +103,8 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
     }
 
 
+
+    /*
     public function addSubMenu(AbstractSite $site, $active = false)
     {
 
@@ -126,7 +128,7 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
         $row->addEmpty();
         $row->addEmpty();
 
-    }
+    }*/
 
 
     private function addSite(AbstractSite $site)
@@ -161,6 +163,7 @@ class StatusMenu extends AbstractRestrictedUserHtmlContainer
         if (!$this->activeFound) {
             //new ArrowRightIcon($row);
             new CheckIcon($row);
+
         } else {
             $row->addEmpty();
         }
