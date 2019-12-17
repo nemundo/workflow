@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\News\Content\Type;
 
 
 use Nemundo\App\Content\Type\AbstractTreeContentType;
-use Nemundo\Workflow\App\News\Content\Form\NewsForm;
+use Nemundo\Workflow\App\News\Content\Form\NewsContentForm;
 use Nemundo\Workflow\App\News\Content\View\NewsContentView;
 use Nemundo\Workflow\App\News\Data\News\News;
 use Nemundo\Workflow\App\News\Data\News\NewsDelete;
@@ -36,7 +36,7 @@ class NewsContentType extends AbstractTreeContentType  // AbstractModelDataTreeC
         $this->viewSite = NewsItemSite::$site;
         $this->viewClass = NewsContentView::class;
         $this->parameterClass = NewsParameter::class;
-        $this->formClass = NewsForm::class;
+        $this->formClass = NewsContentForm::class;
 
         //$this->modelClass = NewsModel::class;
 

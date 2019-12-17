@@ -8,7 +8,7 @@ use Nemundo\Package\Bootstrap\FormElement\BootstrapLargeTextBox;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
 use Nemundo\Workflow\App\News\Content\Type\NewsContentType;
 
-class NewsForm extends AbstractContentTreeForm
+class NewsContentForm extends AbstractContentTreeForm
 {
 
     /**
