@@ -51,17 +51,6 @@ abstract class AbstractWorkflowStatus extends AbstractTreeContentType
 
         return parent::getChild($sortOrder);
 
-        /** @var AbstractWorkflowStatus[] $child */
-        //$child = parent::getChild($sortOrder);
-/*
-        foreach ($child as $item) {
-          $item->parentContentType = $this->parentContentType;
-        }
-        //$child->parentContentType = $this->parentContentType;
-
-        return $child;
-*/
-
     }
 
 }
