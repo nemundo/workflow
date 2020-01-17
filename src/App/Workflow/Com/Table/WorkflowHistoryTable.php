@@ -40,7 +40,6 @@ class WorkflowHistoryTable extends AbstractHtmlContainer
             if ($child->showLog) {
 
                 $row = new TableRow($table);
-
                 $row->addText($child->getSubject());
                 $row->addText($child->userCreated->displayName);
                 $row->addText($child->dateTimeCreated->getShortDateTimeLeadingZeroFormat());
