@@ -25,6 +25,6 @@ public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
-$this->value = $this->getModelValue($model->value);
+$this->value = boolval($this->getModelValue($model->value));
 }
 }

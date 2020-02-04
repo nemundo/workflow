@@ -95,7 +95,7 @@ $this->loadNemundoUserDataUserUseruserRow($model->user);
 }
 $this->dateTime = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTime));
 $this->itemOrder = $this->getModelValue($model->itemOrder);
-$this->draft = $this->getModelValue($model->draft);
+$this->draft = boolval($this->getModelValue($model->draft));
 $this->message = $this->getModelValue($model->message);
 $property = new \Nemundo\Workflow\App\Identification\Model\IdentificationReaderProperty($row, $model->assignment);
 $this->assignment = $property->getValue();

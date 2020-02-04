@@ -53,7 +53,7 @@ $this->widgetId = $this->getModelValue($model->widgetId);
 if ($model->widget !== null) {
 $this->loadNemundoWorkflowAppDashboardDataWidgetWidgetwidgetRow($model->widget);
 }
-$this->itemOrder = $this->getModelValue($model->itemOrder);
+$this->itemOrder = intval($this->getModelValue($model->itemOrder));
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

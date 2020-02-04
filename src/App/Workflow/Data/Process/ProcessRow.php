@@ -37,7 +37,7 @@ $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->process = $this->getModelValue($model->process);
 $this->processClass = $this->getModelValue($model->processClass);
-$this->setupStatus = $this->getModelValue($model->setupStatus);
+$this->setupStatus = boolval($this->getModelValue($model->setupStatus));
 }
 /**
 * @return \Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess

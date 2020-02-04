@@ -36,7 +36,7 @@ parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->title = $this->getModelValue($model->title);
-$this->count = $this->getModelValue($model->count);
+$this->count = intval($this->getModelValue($model->count));
 $this->url = $this->getModelValue($model->url);
 }
 }

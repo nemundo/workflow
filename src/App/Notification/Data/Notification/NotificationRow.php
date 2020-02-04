@@ -82,8 +82,8 @@ $this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->con
 $this->subject = $this->getModelValue($model->subject);
 $this->message = $this->getModelValue($model->message);
 $this->dateTimeCreated = new \Nemundo\Core\Type\DateTime\DateTime($this->getModelValue($model->dateTimeCreated));
-$this->read = $this->getModelValue($model->read);
-$this->archive = $this->getModelValue($model->archive);
+$this->read = boolval($this->getModelValue($model->read));
+$this->archive = boolval($this->getModelValue($model->archive));
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

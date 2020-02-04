@@ -31,6 +31,6 @@ parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
 $this->file = new \Nemundo\Model\Reader\Property\File\RedirectFilenameReaderProperty($row, $model->file, $this->id);
-$this->delete = $this->getModelValue($model->delete);
+$this->delete = boolval($this->getModelValue($model->delete));
 }
 }

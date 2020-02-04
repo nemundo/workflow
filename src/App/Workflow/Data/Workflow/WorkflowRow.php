@@ -129,12 +129,12 @@ $this->processId = $this->getModelValue($model->processId);
 if ($model->process !== null) {
 $this->loadNemundoWorkflowAppWorkflowDataProcessProcessprocessRow($model->process);
 }
-$this->number = $this->getModelValue($model->number);
+$this->number = intval($this->getModelValue($model->number));
 $this->workflowNumber = $this->getModelValue($model->workflowNumber);
 $this->subject = $this->getModelValue($model->subject);
 $this->dataId = $this->getModelValue($model->dataId);
-$this->draft = $this->getModelValue($model->draft);
-$this->closed = $this->getModelValue($model->closed);
+$this->draft = boolval($this->getModelValue($model->draft));
+$this->closed = boolval($this->getModelValue($model->closed));
 $this->itemOrder = $this->getModelValue($model->itemOrder);
 $this->workflowStatusId = $this->getModelValue($model->workflowStatusId);
 if ($model->workflowStatus !== null) {

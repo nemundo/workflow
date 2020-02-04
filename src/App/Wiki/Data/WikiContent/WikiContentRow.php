@@ -64,8 +64,8 @@ if ($model->contentType !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypecontentTypeRow($model->contentType);
 }
 $this->dataId = $this->getModelValue($model->dataId);
-$this->delete = $this->getModelValue($model->delete);
-$this->itemOrder = $this->getModelValue($model->itemOrder);
+$this->delete = boolval($this->getModelValue($model->delete));
+$this->itemOrder = boolval($this->getModelValue($model->itemOrder));
 }
 private function loadNemundoWorkflowAppWikiDataWikiPageWikiPagepageRow($model) {
 $this->page = new \Nemundo\Workflow\App\Wiki\Data\WikiPage\WikiPageRow($this->row, $model);

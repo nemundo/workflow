@@ -53,7 +53,7 @@ $this->userConfigId = $this->getModelValue($model->userConfigId);
 if ($model->userConfig !== null) {
 $this->loadNemundoWorkflowAppUserConfigDataUserConfigUserConfiguserConfigRow($model->userConfig);
 }
-$this->value = $this->getModelValue($model->value);
+$this->value = boolval($this->getModelValue($model->value));
 }
 private function loadNemundoUserDataUserUseruserRow($model) {
 $this->user = new \Nemundo\User\Data\User\UserRow($this->row, $model);

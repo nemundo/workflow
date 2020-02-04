@@ -65,9 +65,9 @@ if ($model->status !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypestatusRow($model->status);
 }
 $this->statusDataId = $this->getModelValue($model->statusDataId);
-$this->closed = $this->getModelValue($model->closed);
+$this->closed = boolval($this->getModelValue($model->closed));
 $this->todo = $this->getModelValue($model->todo);
-$this->done = $this->getModelValue($model->done);
+$this->done = boolval($this->getModelValue($model->done));
 $this->userId = $this->getModelValue($model->userId);
 if ($model->user !== null) {
 $this->loadNemundoUserDataUserUseruserRow($model->user);
