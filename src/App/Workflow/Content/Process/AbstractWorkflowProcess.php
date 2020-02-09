@@ -259,9 +259,10 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function getLeadTimeInDay()
     {
 
-        $timeLeap = new WorkflowTimeLeap($this);
-        $day = $timeLeap->getTimeLeapInDay();
+        //$timeLeap = new WorkflowTimeLeap($this);
+        //$day = $timeLeap->getTimeLeapInDay();
 
+        $day = 0;
         return $day;
 
     }
@@ -270,7 +271,8 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
     public function getLeadTimeText()
     {
 
-        $text = $this->getLeadTimeInDay() . ' Tage';
+        //$text = $this->getLeadTimeInDay() . ' Tage';
+        $text = '0';
         return $text;
 
     }
