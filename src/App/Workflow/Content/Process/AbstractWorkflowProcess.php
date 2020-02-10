@@ -54,8 +54,11 @@ abstract class AbstractWorkflowProcess extends AbstractWorkflowStatus
 
         $reader = new ModelDataReader();
         $reader->model = $model;
-        $reader->addFieldByModel($model);
-        $reader->checkExternal($model);
+
+        // deaktiviert 9Feb20
+        //$reader->addFieldByModel($model);
+        //$reader->checkExternal($model);
+
         $this->baseRow = $reader->getRowById($this->dataId);
 
         //}

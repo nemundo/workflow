@@ -42,6 +42,9 @@ class WorkflowController extends AbstractBase
         $formStatus = null;
 
         $status = $this->process->getCurrentStatus();
+
+
+
         if ($status !== null) {
 
             if ($status->isDraft()) {
@@ -170,6 +173,7 @@ class WorkflowController extends AbstractBase
         $menu = new WorkflowStatusMenu($parentItem);
         $menu->process = $this->process;
         $menu->formStatus = $this->getFormStatus();
+
 
         return $menu;
 

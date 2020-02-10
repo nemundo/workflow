@@ -35,15 +35,20 @@ class FileTable extends AdminTable
         $fileReader = new FileReader();
 
         $contentLogModel = new ContentLogModel();
-        $fileReader->addFieldByModel($contentLogModel);
+
+        // 9Feb20
+        //$fileReader->addFieldByModel($contentLogModel);
 
         $userModel = new UserModel();
-        $fileReader->addFieldByModel($userModel);
+
+        // 9Feb20
+        //$fileReader->addFieldByModel($userModel);
 
         $join = new ModelJoin($fileReader);
         $join->externalModel = $contentLogModel;
         $join->type = $fileReader->model->id;
         $join->externalType = $contentLogModel->dataId;
+
 
         $join = new ModelJoin($fileReader);
         $join->externalModel = $userModel;
@@ -52,6 +57,8 @@ class FileTable extends AdminTable
 
         $fileReader->filter->andEqual($contentLogModel->parentId, $this->dataId);
         $fileReader->filter->andEqual($contentLogModel->contentTypeId, (new FileTemplateStatus())->contentId);
+
+
         foreach ($fileReader->getData() as $fileRow) {
 
             $row = new TableRow($this);
