@@ -5,17 +5,14 @@ namespace Nemundo\Workflow\App\SearchEngine\Com\Navbar;
 
 use Nemundo\App\Search\Parameter\SearchQueryParameter;
 use Nemundo\Com\FormBuilder\SearchForm;
+use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Html\Character\HtmlCharacter;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Form\Button\SubmitButton;
-use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Package\Bootstrap\Autocomplete\BootstrapAutocompleteMultipleValueTextBox;
-use Nemundo\Process\Search\Site\SearchJsonSite;
+use Nemundo\Process\Search\Site\Json\SearchJsonSite;
 use Nemundo\Process\Search\Site\SearchSite;
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Workflow\App\SearchEngine\Com\TextBox\SearchAutocompleteTextBox;
-use Nemundo\Workflow\App\SearchEngine\Parameter\QueryParameter;
-use Nemundo\Workflow\App\SearchEngine\Site\SearchEngineSite;
 
 class NavbarSearchForm extends AbstractHtmlContainer
 {
@@ -28,20 +25,21 @@ class NavbarSearchForm extends AbstractHtmlContainer
     public function getContent()
     {
 
-        $form = new SearchForm($this);  // new SiteForm($this);
-        $form->site = SearchSite::$site;  // SearchEngineSite::$site;
+        $form = new SearchForm($this);
+        $form->site = SearchSite::$site;
 
         $form->addCssClass('form-inline');
 
         $query = new BootstrapAutocompleteMultipleValueTextBox($form);
-        $query->name = (new SearchQueryParameter())->parameterName;
+        $query->name = (new \Nemundo\Process\Search\Parameter\SearchQueryParameter())->getParameterName();  // (new SearchQueryParameter())->parameterName;
         $query->seperator = ' ';
         $query->searchMode = true;
-        $query->placeholder = 'Search';
+        $query->placeholder[LanguageCode::EN] = 'Search';
+        $query->placeholder[LanguageCode::DE] = 'Suche';
         $query->label = HtmlCharacter::NON_BREAKING_SPACE;
-        $query->sourceSite = SearchJsonSite::$site;
-        
-        
+        $query->sourceSite =SearchJsonSite::$site;
+
+
         /*$input = new SearchAutocompleteTextBox($form);
         $input->name = (new QueryParameter())->getParameterName();
         $input->addCssClass('mr-sm-2');*/
