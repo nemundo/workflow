@@ -26,7 +26,7 @@ class WorkflowModelView extends AbstractHtmlContainer
         $table->smallTable = true;
 
         foreach ($this->getComList() as $com) {
-            $table->addLabelValue($com->type->label, $com->getContent());
+             $table->addLabelValue($com->type->label, $com->getContent());
         }
 
         return parent::getContent();

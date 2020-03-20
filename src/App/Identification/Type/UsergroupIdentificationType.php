@@ -6,6 +6,7 @@ namespace Nemundo\Workflow\App\Identification\Type;
 use Nemundo\Admin\Usergroup\Parameter\UsergroupParameter;
 use Nemundo\User\Data\Usergroup\UsergroupReader;
 use Nemundo\User\Type\UserItemType;
+use Nemundo\User\Usergroup\Usergroup;
 use Nemundo\User\Usergroup\UsergroupMembership;
 use Nemundo\Workflow\App\Identification\Site\UsergroupIdentificationSite;
 
@@ -52,7 +53,10 @@ class UsergroupIdentificationType extends AbstractIdentificationType
 
         $row = (new UsergroupReader())->getRowById($identificationId);
 
-        $usergroup = $row->getUsergroupClassObject();
+        $usergroup = new Usergroup();
+        $usergroup->usergroupId = $row->id;
+
+        //$usergroup = $row->getUsergroupClassObject();
 
         $list = [];
         foreach ($usergroup->getUserList() as $userRow) {

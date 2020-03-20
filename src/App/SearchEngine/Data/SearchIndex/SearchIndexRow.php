@@ -17,7 +17,7 @@ public $model;
 public $id;
 
 /**
-* @var string
+* @var int
 */
 public $documentId;
 
@@ -27,7 +27,7 @@ public $documentId;
 public $document;
 
 /**
-* @var string
+* @var int
 */
 public $wordId;
 
@@ -40,11 +40,11 @@ public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
-$this->documentId = $this->getModelValue($model->documentId);
+$this->documentId = intval($this->getModelValue($model->documentId));
 if ($model->document !== null) {
 $this->loadNemundoWorkflowAppSearchEngineDataDocumentDocumentdocumentRow($model->document);
 }
-$this->wordId = $this->getModelValue($model->wordId);
+$this->wordId = intval($this->getModelValue($model->wordId));
 if ($model->word !== null) {
 $this->loadNemundoWorkflowAppSearchEngineDataWordWordwordRow($model->word);
 }

@@ -17,7 +17,7 @@ public $model;
 public $id;
 
 /**
-* @var string
+* @var int
 */
 public $statusId;
 
@@ -60,7 +60,7 @@ public function __construct(\Nemundo\Db\Row\AbstractDataRow $row, $model) {
 parent::__construct($row->getData());
 $this->row = $row;
 $this->id = $this->getModelValue($model->id);
-$this->statusId = $this->getModelValue($model->statusId);
+$this->statusId = intval($this->getModelValue($model->statusId));
 if ($model->status !== null) {
 $this->loadNemundoAppContentDataContentTypeContentTypestatusRow($model->status);
 }
