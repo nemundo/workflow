@@ -37,17 +37,13 @@ class NavbarSearchForm extends AbstractHtmlContainer
         $query->placeholder[LanguageCode::EN] = 'Search';
         $query->placeholder[LanguageCode::DE] = 'Suche';
         $query->label = HtmlCharacter::NON_BREAKING_SPACE;
+        $query->id= 'q_navbar';
         $query->sourceSite =SearchJsonSite::$site;
 
 
-        /*$input = new SearchAutocompleteTextBox($form);
-        $input->name = (new QueryParameter())->getParameterName();
-        $input->addCssClass('mr-sm-2');*/
-
         $submit = new SubmitButton($form);
-        $submit->label = 'Suchen';
-        //$submit->label[LanguageCode::EN] = 'Search';
-        //$submit->label[LanguageCode::DE] = 'Suchen';
+        $submit->label[LanguageCode::EN] = 'Search';
+        $submit->label[LanguageCode::DE] = 'Suchen';
         $submit->addCssClass('btn btn-secondary my-2 my-sm-0');
 
         return parent::getContent();
