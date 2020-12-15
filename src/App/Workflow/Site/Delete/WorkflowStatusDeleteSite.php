@@ -7,7 +7,7 @@ use Nemundo\App\Content\Data\ContentLog\ContentLogReader;
 use Nemundo\App\Content\Parameter\ContentLogParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 
 class WorkflowStatusDeleteSite extends AbstractDeleteIconSite
 {

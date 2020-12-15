@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Assignment\Site;
 
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentDelete;
 use Nemundo\Workflow\App\Assignment\Parameter\AssignmentParameter;
 

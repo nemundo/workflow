@@ -8,7 +8,7 @@ use Nemundo\Com\FormBuilder\Item\HiddenFormItem;
 use Nemundo\Core\Http\Request\Post\PostRequest;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Web\Url\UrlRedirect;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Workflow\App\Store\Type\AbstractStoreType;
 
 

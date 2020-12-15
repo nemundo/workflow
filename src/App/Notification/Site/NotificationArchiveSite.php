@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Notification\Site;
 
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationUpdate;
 use Nemundo\Workflow\App\Notification\Parameter\NotificationParameter;
 

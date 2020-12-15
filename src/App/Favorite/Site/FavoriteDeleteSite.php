@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Favorite\Site;
 
 use Nemundo\Package\FontAwesome\Icon\DeleteIcon;
 use Nemundo\Package\FontAwesome\Site\AbstractIconSite;
-use Nemundo\Web\Url\UrlReferer;
+use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteDelete;
 use Nemundo\Workflow\App\Favorite\Parameter\FavoriteParameter;
 
