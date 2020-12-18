@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\ToDo\Content\Type\Process;
 
 
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Assignment\Builder\AssignmentBuilder;
 use Nemundo\Workflow\App\ToDo\Content\Type\Status\ToDoErfassungStatus;
 use Nemundo\Workflow\App\ToDo\Content\View\ToDoView;
@@ -85,7 +85,7 @@ class ToDoProcess extends AbstractWorkflowProcess
         $status->saveType();
 
         $assignment = new AssignmentBuilder($this);
-        $assignment->createUserAssignment((new UserSessionType())->userId);
+        $assignment->createUserAssignment((new UserSession())->userId);
 
     }
 

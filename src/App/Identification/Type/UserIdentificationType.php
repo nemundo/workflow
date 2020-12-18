@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Identification\Type;
 
 
 use Nemundo\User\Data\User\UserReader;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 
 class UserIdentificationType extends AbstractIdentificationType
 {
@@ -60,7 +60,7 @@ class UserIdentificationType extends AbstractIdentificationType
     {
 
         $list = [];
-        $list[] = (new UserSessionType())->userId;
+        $list[] = (new UserSession())->userId;
         return $list;
 
     }

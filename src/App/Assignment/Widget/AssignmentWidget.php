@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Assignment\Widget;
 
 use Nemundo\Admin\Com\Widget\AbstractAdminWidget;
 use Nemundo\Core\Language\LanguageCode;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Assignment\Com\Table\AssignmentTable;
 use Nemundo\Workflow\App\Assignment\Site\AssignmentSite;
 
@@ -32,7 +32,7 @@ class AssignmentWidget extends AbstractAdminWidget
 
         $table = new AssignmentTable($this);
         $table->showArchive = false;
-        $table->addUserId((new UserSessionType())->userId);
+        $table->addUserId((new UserSession())->userId);
 
 
         return parent::getContent();

@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Notification\Reader;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Db\Sql\Order\SortOrder;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationReader;
 use Nemundo\Workflow\App\Notification\Parameter\NotificationParameter;
 use Nemundo\Workflow\App\Notification\Site\NotificationRedirectSite;
@@ -29,7 +29,7 @@ class NotificationItemReader extends AbstractDataSource
 
         $notificationReader = new NotificationReader();
         $notificationReader->model->loadContentType();
-        $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSessionType())->userId);
+        $notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSession())->userId);
         $notificationReader->filter->andEqual($notificationReader->model->archive, false);
         $notificationReader->addOrder($notificationReader->model->dateTimeCreated, SortOrder::DESCENDING);
         $notificationReader->limit = 20;  // paginationLimit = 50;

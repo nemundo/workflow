@@ -10,7 +10,7 @@ use Nemundo\Com\TableBuilder\TableHeader;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Table\BootstrapClickableTableRow;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionReader;
 use Nemundo\Workflow\App\Subscription\Parameter\SubscriptionParameter;
@@ -63,7 +63,7 @@ class MySubscriptionSite extends AbstractSite
         $subscriptionReader = new SubscriptionReader();
         $subscriptionReader->model->loadContentType();
         $subscriptionReader->model->loadUser();
-        $subscriptionReader->filter->andEqual($subscriptionReader->model->userId, (new UserSessionType())->userId);
+        $subscriptionReader->filter->andEqual($subscriptionReader->model->userId, (new UserSession())->userId);
 
         foreach ($subscriptionReader->getData() as $subscriptionRow) {
 

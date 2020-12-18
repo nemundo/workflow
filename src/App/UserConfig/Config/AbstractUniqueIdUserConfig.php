@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\UserConfig\Config;
 
 
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigText;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextCount;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextUpdate;
@@ -21,12 +21,12 @@ abstract class AbstractUniqueIdUserConfig extends AbstractUserConfig
     {
 
         $count = new UserConfigUniqueIdCount();
-        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+        $count->filter->andEqual($count->model->userId, (new UserSession())->userId);
         $count->filter->andEqual($count->model->userConfigId, $this->configId);
         if ($count->getCount() == 0) {
 
             $data = new UserConfigUniqueId();
-            $data->userId = (new UserSessionType())->userId;
+            $data->userId = (new UserSession())->userId;
             $data->userConfigId = $this->configId;
             $data->value = $value;
             $data->save();
@@ -34,7 +34,7 @@ abstract class AbstractUniqueIdUserConfig extends AbstractUserConfig
         } else {
 
             $update = new UserConfigUniqueIdUpdate();
-            $update->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+            $update->filter->andEqual($count->model->userId, (new UserSession())->userId);
             $update->filter->andEqual($count->model->userConfigId, $this->configId);
             $update->value = $value;
             $update->update();
@@ -52,13 +52,13 @@ abstract class AbstractUniqueIdUserConfig extends AbstractUserConfig
 
 
         $count = new UserConfigUniqueIdCount();
-        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+        $count->filter->andEqual($count->model->userId, (new UserSession())->userId);
         $count->filter->andEqual($count->model->userConfigId, $this->configId);
         if ($count->getCount() == 1) {
 
             $configValue = new UserConfigUniqueIdValue();
             $configValue->field = $configValue->model->value;
-            $configValue->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+            $configValue->filter->andEqual($count->model->userId, (new UserSession())->userId);
             $configValue->filter->andEqual($count->model->userConfigId, $this->configId);
             $value = $configValue->getValue();
 

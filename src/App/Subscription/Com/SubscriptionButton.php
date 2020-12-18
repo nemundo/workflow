@@ -12,7 +12,7 @@ use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Html\Hyperlink\Hyperlink;
 use Nemundo\Package\FontAwesome\FontAwesomeIcon;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\SubscriptionCount;
 use Nemundo\Workflow\App\Subscription\Site\SubscriptionDeleteSite;
 use Nemundo\Workflow\App\Subscription\Site\SubscriptionSite;
@@ -42,7 +42,7 @@ class SubscriptionButton extends AbstractHtmlContainer
         $count = new SubscriptionCount();
         $count->filter->andEqual($count->model->contentTypeId, $this->contentType->contentId);
         $count->filter->andEqual($count->model->dataId, $this->dataId);
-        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+        $count->filter->andEqual($count->model->userId, (new UserSession())->userId);
 
         if ($count->getCount() == 0) {
 

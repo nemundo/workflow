@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Workflow\Builder;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Core\Base\AbstractBaseClass;
 use Nemundo\Core\Type\DateTime\DateTime;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\Workflow;
 use Nemundo\Workflow\App\Workflow\Data\Workflow\WorkflowUpdate;
 
@@ -47,7 +47,7 @@ class WorkflowBuilder extends AbstractBaseClass  // AbstractContentBuilder
 
         $data = new Workflow();
         $data->processId = $this->process->contentId;
-        $data->userCreatedId = (new UserSessionType())->userId;
+        $data->userCreatedId = (new UserSession())->userId;
         $data->dateTimeCreated = (new DateTime())->setNow();
         $data->dataId = $this->process->dataId;
         $data->save();

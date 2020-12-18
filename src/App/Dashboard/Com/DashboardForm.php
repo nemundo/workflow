@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Dashboard\Com;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Package\Bootstrap\Form\BootstrapForm;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapCheckBoxGroup;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Dashboard\Data\UserWidget\UserWidget;
 use Nemundo\Workflow\App\Dashboard\Data\UserWidget\UserWidgetCount;
 use Nemundo\Workflow\App\Dashboard\Data\UserWidget\UserWidgetDelete;
@@ -27,7 +27,7 @@ class DashboardForm extends BootstrapForm
         $subtitle->content = 'Widget';
 
 
-        $userId = (new UserSessionType())->userId;
+        $userId = (new UserSession())->userId;
 
         $this->widgetGroup = new BootstrapCheckBoxGroup($this);
 
@@ -59,7 +59,7 @@ class DashboardForm extends BootstrapForm
     protected function onSubmit()
     {
 
-        $userId = (new UserSessionType())->userId;
+        $userId = (new UserSession())->userId;
 
         $delete = new UserWidgetDelete();
         $delete->filter->andEqual($delete->model->userId, $userId);

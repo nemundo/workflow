@@ -15,7 +15,7 @@ use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Notification\Data\Notification\NotificationPaginationModelReader;
 use Nemundo\Workflow\App\Notification\Data\NotificationFilter\NotificationFilterReader;
@@ -78,7 +78,7 @@ class NotificationAdminSite extends AbstractSite
 
 
         $notificationReader = new NotificationPaginationModelReader();
-        //$notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSessionType())->userId);
+        //$notificationReader->filter->andEqual($notificationReader->model->userId, (new UserSession())->userId);
 
         /*
         if ($contentTypeParameter->exists()) {

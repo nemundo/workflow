@@ -40,7 +40,7 @@ class FavoriteDeleteSite extends AbstractIconSite
         /*$delete = new FavoriteDelete();
         $delete->filter->andEqual($delete->model->contentTypeId, (new ContentTypeParameter())->getValue());
         $delete->filter->andEqual($delete->model->dataId, (new DataIdParameter())->getValue());
-        $delete->filter->andEqual($delete->model->userId, (new UserSessionType())->userId);
+        $delete->filter->andEqual($delete->model->userId, (new UserSession())->userId);
         $delete->delete();*/
 
         (new UrlReferer())->redirect();

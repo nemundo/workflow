@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Dashboard\Site;
 
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Core\Http\Request\Post\MultiplePostRequest;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Workflow\App\Dashboard\Data\UserWidget\UserWidget;
 use Nemundo\Workflow\App\Dashboard\Data\UserWidget\UserWidgetDelete;
@@ -32,7 +32,7 @@ class DashboardSortableSite extends AbstractSite
     public function loadContent()
     {
 
-        $userId = (new UserSessionType())->userId;
+        $userId = (new UserSession())->userId;
 
         $delete = new UserWidgetDelete();
         $delete->filter->andEqual($delete->model->userId, $userId);

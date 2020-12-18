@@ -6,7 +6,7 @@ namespace Nemundo\Workflow\App\Assignment\Reader;
 use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\Base\DataSource\AbstractDataSource;
 use Nemundo\Db\Filter\Filter;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Assignment\Data\Assignment\AssignmentPaginationModelReader;
 use Nemundo\Workflow\App\Identification\Config\IdentificationConfig;
 
@@ -28,7 +28,7 @@ class AssignmentItemReader extends AbstractDataSource
     {
 
 
-        $userId = (new UserSessionType())->userId;
+        $userId = (new UserSession())->userId;
 
         $assignmentReader = new AssignmentPaginationModelReader();
 

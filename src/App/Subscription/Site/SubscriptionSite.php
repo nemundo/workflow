@@ -4,7 +4,7 @@ namespace Nemundo\Workflow\App\Subscription\Site;
 
 use Nemundo\App\Content\Parameter\ContentTypeParameter;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Workflow\App\Subscription\Data\Subscription\Subscription;
@@ -40,7 +40,7 @@ class SubscriptionSite extends AbstractSite
         $data = new Subscription();
         $data->contentTypeId = (new ContentTypeParameter())->getValue();
         $data->dataId = (new DataIdParameter())->getValue();
-        $data->userId = (new UserSessionType())->userId;
+        $data->userId = (new UserSession())->userId;
         $data->save();
 
         (new UrlReferer())->redirect();

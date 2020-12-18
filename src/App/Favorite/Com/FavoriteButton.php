@@ -9,7 +9,7 @@ use Nemundo\App\Content\Parameter\DataIdParameter;
 use Nemundo\App\Content\Type\AbstractContentType;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Html\Paragraph\Paragraph;
-use Nemundo\User\Type\UserSessionType;
+use Nemundo\User\Type\UserSession;
 use Nemundo\Workflow\App\Favorite\Data\Favorite\FavoriteCount;
 use Nemundo\Workflow\App\Favorite\Site\FavoriteDeleteSite;
 use Nemundo\Workflow\App\Favorite\Site\FavoriteSite;
@@ -39,7 +39,7 @@ class FavoriteButton extends AbstractHtmlContainer
         $count = new FavoriteCount();
         $count->filter->andEqual($count->model->contentTypeId, $this->contentType->contentId);
         $count->filter->andEqual($count->model->dataId, $this->dataId);
-        $count->filter->andEqual($count->model->userId, (new UserSessionType())->userId);
+        $count->filter->andEqual($count->model->userId, (new UserSession())->userId);
 
         if ($count->getCount() == 0) {
             $button = new AdminSiteButton($this);
