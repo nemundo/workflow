@@ -24,10 +24,10 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "store_large_text_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
+/*$this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
-$this->id->visible->form = false;
+$this->id->visible->form = false;*/
 
 $this->text = new \Nemundo\Model\Type\Text\LargeTextType($this);
 $this->text->tableName = "store_large_text";

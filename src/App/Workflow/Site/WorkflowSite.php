@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\Workflow\Site;
 use Nemundo\Admin\Com\Table\AdminClickableTable;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Com\FormBuilder\SearchForm;
-use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\Bootstrap\Form\BootstrapFormRow;
@@ -75,7 +75,7 @@ class WorkflowSite extends AbstractSite
 
         $table = new AdminClickableTable($layout->col1);
 
-        $header = new TableHeader($table);
+        $header = new AdminTableHeader($table);
         $header->addText('Closed');
         $header->addText('Process');
         $header->addText('Subject');

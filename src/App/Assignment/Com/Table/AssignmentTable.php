@@ -10,7 +10,7 @@ use Nemundo\App\Content\Type\AbstractTreeContentType;
 use Nemundo\Core\Language\LanguageCode;
 use Nemundo\Db\Sql\Order\SortOrder;
 use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Core\Log\LogMessage;
 use Nemundo\Db\Filter\Filter;
 use Nemundo\Package\Bootstrap\Pagination\BootstrapPagination;
@@ -100,7 +100,7 @@ class AssignmentTable extends AbstractHtmlContainer
 
         $table = new AdminClickableTable($this);
 
-        $header = new TableHeader($table);
+        $header = new AdminTableHeader($table);
         $header->addEmpty();
         $header->addText('Source');
         //$header->addText('Quelle');

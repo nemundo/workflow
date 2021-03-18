@@ -5,7 +5,7 @@ namespace Nemundo\Workflow\App\WorkflowTemplate\Com;
 use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\App\Content\Data\ContentLog\ContentLogModel;
 use Nemundo\App\Content\Parameter\DataIdParameter;
-use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 use Nemundo\Core\Type\DateTime\DateTime;
 use Nemundo\Html\Formatting\Strike;
@@ -27,7 +27,7 @@ class FileTable extends AdminTable
     public function getContent()
     {
 
-        $header = new TableHeader($this);
+        $header = new AdminTableHeader($this);
         $header->addText('Dokument');
         $header->addText('Ersteller');
         $header->addEmpty();

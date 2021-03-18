@@ -44,10 +44,10 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "userconfig_unique_id_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
+/*$this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
-$this->id->visible->form = false;
+$this->id->visible->form = false;*/
 
 $this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userId->tableName = "userconfig_unique_id";
@@ -69,10 +69,10 @@ $this->value->fieldName = "value";
 $this->value->aliasFieldName = "userconfig_unique_id_value";
 $this->value->label = "Value";
 $this->value->allowNullValue = false;
-$this->value->visible->form = false;
+/*$this->value->visible->form = false;
 $this->value->visible->table = false;
 $this->value->visible->view = false;
-$this->id->visible->form = false;
+$this->id->visible->form = false;*/
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
 $index->indexName = "";

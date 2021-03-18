@@ -3,7 +3,7 @@
 namespace Nemundo\Workflow\App\UserConfig\Config;
 
 
-use Nemundo\User\Type\UserSession;
+use Nemundo\User\Session\UserSession;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigText;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextCount;
 use Nemundo\Workflow\App\UserConfig\Data\UserConfigText\UserConfigTextUpdate;

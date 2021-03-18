@@ -7,7 +7,7 @@ use Nemundo\Admin\Com\Table\AdminTable;
 use Nemundo\Admin\Com\Title\AdminSubtitle;
 use Nemundo\Workflow\App\Workflow\Content\Process\AbstractWorkflowProcess;
 use Nemundo\Html\Container\AbstractHtmlContainer;
-use Nemundo\Com\TableBuilder\TableHeader;
+use Nemundo\Admin\Com\Table\AdminTableHeader;
 use Nemundo\Com\TableBuilder\TableRow;
 
 
@@ -28,7 +28,7 @@ class WorkflowHistoryTable extends AbstractHtmlContainer
 
         $table = new AdminTable($this);
 
-        $header = new TableHeader($table);
+        $header = new AdminTableHeader($table);
 
         $header->addText('Betreff');
         $header->addText('Mitarbeiter');

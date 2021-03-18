@@ -44,10 +44,10 @@ $this->id->fieldName = "id";
 $this->id->aliasFieldName = "userconfig_user_config_number_id";
 $this->id->label = "Id";
 $this->id->allowNullValue = false;
-$this->id->visible->form = false;
+/*$this->id->visible->form = false;
 $this->id->visible->table = false;
 $this->id->visible->view = false;
-$this->id->visible->form = false;
+$this->id->visible->form = false;*/
 
 $this->userId = new \Nemundo\Model\Type\External\Id\ExternalUniqueIdType($this);
 $this->userId->tableName = "userconfig_user_config_number";
