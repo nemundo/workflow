@@ -75,7 +75,7 @@ $this->value->visible->view = false;
 $this->id->visible->form = false;*/
 
 $index = new \Nemundo\Model\Definition\Index\ModelUniqueIndex($this);
-$index->indexName = "";
+$index->indexName = "user_config";
 $index->addType($this->userId);
 $index->addType($this->userConfigId);
 
